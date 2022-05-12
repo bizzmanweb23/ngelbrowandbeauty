@@ -20,20 +20,32 @@
             <div class="card" style="border-radius: 15px">
               	<div class="card-header">
 					<div class="row">
-						<div class="col-md-3"><h5>Holidays List</h5></div>
+						<div class="col-md-6"><h4>Holidays List</h4></div>
+						
+							<div class="col-md-4">
+								<form action="<?= base_url('admin/employeeManagement/download_empHoliday')?>" method="post" enctype="multipart/form-data">
+									<div class="row">
+										
+										<div class="col-md-6">
+										<select name = "getyear" class="form-control getyear" required>
+											<option value="">Select Year</option> 
+											<?php
+												$curyear = (int)date("Y");
+												for($i=1990; $i<= $curyear; $i++){?>
+												<option value="<?php echo $i;?>"><?php echo $i;?></option>  
+											<?php } ?>
+										</select>
+										</div>
+										<div class="col-md-6">
+											<input type="submit" class="btn btn-primary btn-custom" value="Download Holidays">
+										</div>
+									
+									</div>
+								</form>
+							</div>
+							
 						<div class="col-md-2">
-							<select name = "getyear" class="form-control getyear">
-								<option>Select Year</option> 
-								<?php  $lasttenYear = (int)date("Y") - 20;
-									$curyear = (int)date("Y");
-									for($i=$lasttenYear; $i<= $curyear; $i++){?>
-									<option value="<?php echo $i;?>"><?php echo $i;?></option>  
-								<?php } ?>
-							</select>
-						</div>
-						<div class="col-md-3 "><button type="button" class="btn btn-primary btn-custom">Download List </button></div>
-						<div class="col-md-3">
-            				<a href="<?=base_url('admin/employeeManagement/add_holidays')?>"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add New </button></a>
+            				<a href="<?=base_url('admin/employeeManagement/add_holidays')?>"><button type="button" class="btn btn-block btn-primary btn-custom" style=" float: right;">Add New </button></a>
 						</div>
 					</div>
 
@@ -161,6 +173,8 @@
 				});
 			//}
 		});
+
+		
     });
 	function myholidayDay(){
 		let holidayDate = $(".modal_set_HolidayDate").val(); 
@@ -172,4 +186,5 @@
 		//alert(day);
 		$(".modal_set_holidayDay").val(day);
 	}
+	
 </script>

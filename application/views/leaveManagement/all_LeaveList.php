@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Employee Leave</h1>
+            <h1> Leave Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -19,7 +19,7 @@
 
             <div class="card" style="border-radius: 15px;height: 40rem;">
               <div class="card-header">
-                <a href="<?=base_url('admin/employeeManagement/add_employeeleave')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Employee Leave </button></a>
+                <!--<a href="<?=base_url('admin/employeeManagement/add_employeeleave')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Employee Leave </button></a>-->
 				<h2>Employee's Leave List</h2>
               </div>
               <!-- /.card-header -->
@@ -47,7 +47,6 @@
 							<td><?= $employee_leaveRow['total_leave_days']?></td>
 							<td><?= $employee_leaveRow['reason_for_leave']?></td>
 							<td>
-								<a data-leave_id="<?=  $employee_leaveRow['id'] ?>" href="javascript:void(0);" data-toggle="modal" data-target="#leaveStatusModel" Class = "leaveStatus" title="Edit" style="color:#b8860b">
 								<?php if($employee_leaveRow['status'] == 0){ ?>
 										<span class="btn btn-secondary" style="box-shadow:none !important; text-transform:uppercase;">Leave Pending</span>
 								<?php }elseif($employee_leaveRow['status'] == 1) { ?>
@@ -55,11 +54,10 @@
 								<?php }else{ ?>
 									<span class="btn btn-danger" style="box-shadow:none !important; text-transform:uppercase;">Leave Rejected</span>
 								<?php } ?>
-									
-								</a>
 							</td>
 							<td>
-								<a href="<?= base_url('admin/employeeManagement/edit_employeeLeave/'.$employee_leaveRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
+								<!--<a href="<?= base_url('admin/employeeManagement/edit_employeeLeave/'.$employee_leaveRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>-->
+								<a data-leave_id="<?=  $employee_leaveRow['id'] ?>" href="javascript:void(0);" Class = "btn btn-default leaveStatus" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
 								<a href="<?= base_url('admin/employeeManagement/deleteEmployeeLeave/'. $employee_leaveRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
 							</td>
 						</tr>
@@ -87,25 +85,25 @@
 				<h5 class="modal-title">Leave Response</h5>
 				<button type="button" class="close close_btn" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
-				<div class="modal-body">
-					<form id="add_category" action="<?= base_url('admin/employeeManagement/update_Leavestatus')?>" method="post" enctype="multipart/form-data">   
-						<input type="hidden" class="status_leaveid" name = "status_leaveid" value="">
-							<div class="row">     
-									<div class="col-md-12">                       
-										<div class="form-group">
-												<select  class="form-control chosen chosen-select" name="status" id="status">
-														<option value="">Select Response Option</option>
-														<option value="1">Accept</option>
-														<option value="2">Reject</option>
-												</select>
-										</div>
-									</div>
+			<div class="modal-body">
+				<form id="add_category" action="<?= base_url('admin/employeeManagement/update_Leavestatus')?>" method="post" enctype="multipart/form-data">   
+					<input type="hidden" class="status_leaveid" name = "status_leaveid" value="">
+						<div class="row">     
+							<div class="col-md-12">                       
+								<div class="form-group">
+									<select  class="form-control chosen chosen-select" name="status" id="status">
+										<option value="">Select Response Option</option>
+										<option value="1">Accept</option>
+										<option value="2">Reject</option>
+									</select>
+								</div>
 							</div>
-							<div class="col-md-12">    
-								<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:130px;"> 
-							</div>
-					</form>
-				</div>
+						</div>
+						<div class="col-md-12">    
+							<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:130px;"> 
+						</div>
+				</form>
+			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary close_btn" data-dismiss="modal">Cancel</button>
 			</div>
@@ -131,10 +129,22 @@
 	});
 
 	$(document).ready(function(){  	
-  		$(".leaveStatus").click(function(){
+  		/*$(".leaveStatus").click(function(){
 			var leaveID = $(this).data('leave_id');
 			$('.status_leaveid').val(leaveID);	
-		});
+		});*/
+
+		$(".leaveStatus").click(function(){
+          $("#leaveStatusModel").modal('show');
+		  	var leaveID = $(this).data('leave_id');
+			$('.status_leaveid').val(leaveID);	
+        });
+			$(".close_btn").click(function(){
+			$("#editholidays_dataModal").modal("hide"); 
+						
+        });
+
+
 	});
 	
 </script>

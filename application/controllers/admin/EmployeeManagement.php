@@ -277,6 +277,8 @@ class EmployeeManagement extends CI_Controller {
         $datetime2 = new DateTime($this->input->post('leave_to'));
 		$diff       = date_diff($datetime1,$datetime2);
 		$days       = $diff->format("%a")+1;
+		/*$yearly_leave = 13;
+		$*/
 		
 		$data = array(
 			'emp_id' 			=> $this->input->post('employeeName'),
@@ -452,7 +454,22 @@ class EmployeeManagement extends CI_Controller {
 			redirect('admin/employeeManagement/all_holidaysList');
 		}
 	}
-	
+	public function download_empHoliday()
+    {
+		$getyear = $_POST['getyear'];
+		if($getyear != ''){
+			$data["empHoliday"]=$this->EmployeeManagement->getSearchHolidayYearData($getyear);
+
+			$mpdf = new \Mpdf\Mpdf();
+			
+			$html=$this->load->view('GenerateHolidays',$data,true);
+			$mpdf->WriteHTML($html);
+			$mpdf->Output('GenerateHolidays_"'.$getyear.'".pdf','D');
+			//$mpdf->Output();
+		}
+		
+        
+    }
 	public function deleteEmployeeSalary()
 	{
 	   if($this->session->has_userdata('id')!=false)

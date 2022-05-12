@@ -41,7 +41,6 @@
 						</div>
 					</div>
 					
-					
 					<!-- Educational Qualification -->
 					<div id="holiday-tab">	
 						<div class="row p-2" >

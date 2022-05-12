@@ -226,9 +226,10 @@ class EmployeeManagement_model extends CI_Model
 		return $empname;
 	}
 	function getAllholidaysList(){
-		
+		$year = date("Y"); 
 		$this->db->select('nbb_emp_holidays.*');
 		$this->db->from('nbb_emp_holidays');
+		$this->db->where('nbb_emp_holidays.year', $year);
 		return $this->db->get()->result_array();
 		
 	}

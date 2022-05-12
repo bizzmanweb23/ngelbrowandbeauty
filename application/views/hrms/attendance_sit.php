@@ -100,7 +100,7 @@
 						<div class="row">     
 							<div class="col-md-6">                       
 								<div class="form-group ">
-									<label for="status" class="col-sm-6 control-label">Login Time 
+									<label for="status" class="col-sm-6 control-label">Logout Time 
 									<i class="required">*</i>
 									</label>
 									<div class="col-sm-12">
