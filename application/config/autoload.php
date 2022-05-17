@@ -141,4 +141,5 @@ $autoload['model'] = array('Auth_Model'=>'Auth',
 'EmployeeManagement_model' =>'EmployeeManagement',
 'PayStructure_Model'=>'PayStructure',
 'Empauth_Model'=>'Empauth',
+'OfferAndPackages_Model'=>'OfferAndPackages',
 );

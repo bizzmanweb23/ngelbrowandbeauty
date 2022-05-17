@@ -176,78 +176,140 @@
 						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Delivery Management</span>
 					</a>
 				</li> 
-              <?php /*        
-					<li class="nav-item mb-3">
-                        <a data-bs-toggle="collapse" href="#pagesExamples1" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#541728 !important;">
-                        <i class="far fa-handshake"></i>
-            					</div>
-                          <span class="nav-link-text ms-1" style="color:#541728; font-weight:bold; font-zise:14px !important;">Marketing Fields</span>
-                        </a>
-                        <div class="collapse" id="pagesExamples1" style="">
-                          <ul class="nav ms-4 ps-3">
-                            <li class="nav-item ">
-                            <a class="nav-link  " href="<?= base_url(); ?>admin/welcome/package_list">
-                                <span class="sidenav-mini-icon"> P </span>
-                                <span class="sidenav-normal"> Packages </span>
-                              </a>
-                            </li>
-                            <li class="nav-item ">
-                            <a class="nav-link  " href="<?= base_url(); ?>admin/welcome/promotion">
-                                <span class="sidenav-mini-icon"> P </span>
-                                <span class="sidenav-normal"> Promotion </span>
-                              </a>
-                            </li>
-                            <li class="nav-item ">
-                            <a class="nav-link  " href="<?= base_url(); ?>admin/welcome/coupon">
-                                <span class="sidenav-mini-icon"> C </span>
-                                <span class="sidenav-normal"> Coupons </span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>    */ ?>               
-        
-						<li class="nav-item" >
-							<a data-bs-toggle="collapse" href="#pagesExamples2" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-							<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
-							<i class="fas fa-users"></i>
-							</div>
-								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Human Resource</span>
+				<li class="nav-item">
+					<a data-bs-toggle="collapse" href="#pagesExamples7" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+						<i class="far fa-handshake"></i>
+					</div>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Offer & Packages</span>
+					</a>
+					<div class="collapse" id="pagesExamples7" style="">
+						<ul class="nav ms-4 ps-3">
+						<li class="nav-item ">
+						<a class="nav-link  " href="<?= base_url(); ?>admin/offerAndPackages/package_list">
+							<span class="sidenav-mini-icon"> P </span>
+							<span class="sidenav-normal"> Packages </span>
 							</a>
-							<div class="collapse" id="pagesExamples2" style="">
-								<ul class="nav ms-4 ps-3">
+						</li>
+						<?php /* <li class="nav-item ">
+						<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/promotion">
+							<span class="sidenav-mini-icon"> P </span>
+							<span class="sidenav-normal"> Promotion </span>
+							</a>
+						</li> */ ?>    
+						<li class="nav-item ">
+						<a class="nav-link  " href="<?= base_url(); ?>admin/offerAndPackages/coupon">
+							<span class="sidenav-mini-icon"> O </span>
+							<span class="sidenav-normal"> Offers </span>
+							</a>
+						</li>
+						</ul>
+                    </div>
+				</li>                
+        
+				<li class="nav-item" >
+					<a data-bs-toggle="collapse" href="#pagesExamples2" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<i class="fas fa-users"></i>
+					</div>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Human Resource</span>
+					</a>
+					<div class="collapse" id="pagesExamples2">
+						<ul class="nav ms-4 ps-3" style="list-style-type: none !important;" >
+						<li class="nav-item">
+							<a data-bs-toggle="collapse" href="#pagesExamples5" class="nav-link collapsed" aria-controls="pagesExamples5" role="button" aria-expanded="false">
+								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Employee Management</span>
+							</a>
+							<div class="collapse" id="pagesExamples5">
+								<ul class="nav ms-2 ps-1">
+									<li class="nav-item">
+									<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_employees">
+											<span class="sidenav-mini-icon"> E </span>
+											<span class="sidenav-normal"> Employee Registration </span>
+										</a>
+									</li>
+									<li class="nav-item">
+									<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_ArchiveEmployees">
+											<span class="sidenav-mini-icon"> A </span>
+											<span class="sidenav-normal"> Archive Employee </span>
+										</a>
+									</li>
 									<li class="nav-item ">
-									<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_therapists">
-									<span class="sidenav-mini-icon"> T </span>
+										<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_therapists">
+											<span class="sidenav-mini-icon"> T </span>
 											<span class="sidenav-normal"> Therapists </span>
 										</a>
 									</li>
-									
-								</ul>
-							</div>
-						</li>
-                   
-						<li class="nav-item" >
-							<a data-bs-toggle="collapse" href="#pagesExamples3" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-							<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
-							<i class="far fa-user"></i>
-							</div>
-								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Admin User </span>
-							</a>
-							<div class="collapse" id="pagesExamples3" style="">
-								<ul class="nav ms-4 ps-3">
-								
-									<li class="nav-item ">
-									<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/user_details">
-											<span class="sidenav-mini-icon"> U </span>
-											<span class="sidenav-normal"> Users </span>
+									<li class="nav-item">
+										<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/allEmployeeSalary">
+											<span class="sidenav-mini-icon"> E </span>
+											<span class="sidenav-normal"> Employee Salary </span>
 										</a>
 									</li>
-									
+									<li class="nav-item">
+										<a class="nav-link" href="<?= base_url(); ?>admin/Pay_Structure/allPay_Structure">
+											<span class="sidenav-mini-icon"> P </span>
+											<span class="sidenav-normal"> Pay Structure </span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
+
+
+						<li class="nav-item">
+							<a data-bs-toggle="collapse" href="#pagesExamples6" class="nav-link collapsed" aria-controls="pagesExamples6" role="button" aria-expanded="false">
+								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Leave Management</span>
+							</a>
+							<div class="collapse" id="pagesExamples6">
+								<ul class="nav ms-2 ps-1">
+									<li class="nav-item">
+									<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/allLeaveList">
+											<span class="sidenav-mini-icon"> E </span>
+											<span class="sidenav-normal"> Employee's Leave </span>
+										</a>
+									</li>
+									<li class="nav-item">
+									<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_holidaysList">
+											<span class="sidenav-mini-icon"> H </span>
+											<span class="sidenav-normal"> Holidays </span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link " href="<?= base_url(); ?>admin/employeeManagement/allAttendance">
+								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Employee Attendance</span>
+							</a>
+						</li> 
+
+
+						</ul>
+					</div>
+				</li>
+                   
+				<li class="nav-item" >
+					<a data-bs-toggle="collapse" href="#pagesExamples3" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<i class="far fa-user"></i>
+					</div>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Admin User </span>
+					</a>
+					<div class="collapse" id="pagesExamples3" style="">
+						<ul class="nav ms-4 ps-3">
+						
+							<li class="nav-item ">
+							<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/user_details">
+									<span class="sidenav-mini-icon"> U </span>
+									<span class="sidenav-normal"> Users </span>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</li>
                      
 	<?php /*
         <li class="nav-item">
@@ -264,82 +326,12 @@
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
             <i class="fa fa-user"></i>
             </div>
-            <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Profile management</span>
+            <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Customer management</span>
           </a>
         </li> 
 
 
-		<li class="nav-item">
-			<a data-bs-toggle="collapse" href="#pagesExamples5" class="nav-link collapsed" aria-controls="pagesExamples5" role="button" aria-expanded="false">
-			<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
-			<i class="fas fa-users"></i>
-			</div>
-				<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Employee Management</span>
-			</a>
-			<div class="collapse" id="pagesExamples5" style="">
-				<ul class="nav ms-4 ps-3">
-					<li class="nav-item">
-					<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_employees">
-							<span class="sidenav-mini-icon"> E </span>
-							<span class="sidenav-normal"> Employee Registration </span>
-						</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_ArchiveEmployees">
-							<span class="sidenav-mini-icon"> A </span>
-							<span class="sidenav-normal"> Archive Employee </span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/allEmployeeSalary">
-							<span class="sidenav-mini-icon"> E </span>
-							<span class="sidenav-normal"> Employee Salary </span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?= base_url(); ?>admin/Pay_Structure/allPay_Structure">
-							<span class="sidenav-mini-icon"> P </span>
-							<span class="sidenav-normal"> Pay Structure </span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-
-		<li class="nav-item">
-			<a data-bs-toggle="collapse" href="#pagesExamples6" class="nav-link collapsed" aria-controls="pagesExamples6" role="button" aria-expanded="false">
-			<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
-			<i class="fas fa-users"></i>
-			</div>
-				<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Leave Management</span>
-			</a>
-			<div class="collapse" id="pagesExamples6" style="">
-				<ul class="nav ms-4 ps-3">
-					<li class="nav-item">
-					<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/allLeaveList">
-							<span class="sidenav-mini-icon"> E </span>
-							<span class="sidenav-normal"> Employee's Leave </span>
-						</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_holidaysList">
-							<span class="sidenav-mini-icon"> H </span>
-							<span class="sidenav-normal"> Holidays </span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-
-        <li class="nav-item">
-          <a class="nav-link  " href="<?= base_url(); ?>admin/employeeManagement/allAttendance">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
-            <i class="fa fa-user"></i>
-            </div>
-            <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Employee Attendance</span>
-          </a>
-        </li> 
-
+       
        
       </ul>
     </div>

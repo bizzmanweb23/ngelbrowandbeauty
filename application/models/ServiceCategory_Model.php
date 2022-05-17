@@ -60,7 +60,7 @@ class ServiceCategory_Model extends CI_Model
         $insert = $this->db->insert_batch('nbb_category',$data); 
         return true;
     }
-    function getAllAppointment()
+   /* function getAllAppointment()
     {
         $this->db->select('nbb_appointment.*, nbb_service.service_name,nbb_therapists.name');
         $this->db->from('nbb_appointment');
@@ -68,8 +68,16 @@ class ServiceCategory_Model extends CI_Model
         $this->db->join('nbb_therapists','nbb_therapists.id = nbb_appointment.therapists');
 
         return $this->db->get()->result_array();
+    }*/
+    function getAllAppointment()
+    {
+        $this->db->select('nbb_dashboard.*, nbb_service.service_name,nbb_employees.first_name,nbb_employees.last_name');
+        $this->db->from('nbb_dashboard');
+        $this->db->join('nbb_service','nbb_service.id = nbb_dashboard.services');
+        $this->db->join('nbb_employees','nbb_employees.id = nbb_dashboard.therapist_id');
+
+        return $this->db->get()->result_array();
     }
-    
     function getAllServices()
     {
         $this->db->select('nbb_service.*,nbb_category.category_name');

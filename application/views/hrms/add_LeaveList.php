@@ -44,7 +44,7 @@
 								<i class="required">*</i>
 								</label>
 								<div class="col-sm-12">
-									<input type="date" class="form-control" name="leave_from" value="">
+									<input type="date" class="form-control leave_from" name="leave_from" value="" onchange="leaveDay_count();">
 									<small class="info help-block">
 									</small>
 								</div>
@@ -57,7 +57,31 @@
 								<i class="required">*</i>
 								</label>
 								<div class="col-sm-12">
-									<input type="date" class="form-control" name="leave_to" value="">
+									<input type="date" class="form-control leave_to" name="leave_to" value="" onchange="leaveDay_count();">
+								</div>
+							</div>
+						</div>  
+					</div> 
+					<div class="row">     
+						<div class="col-md-6">                       
+							<div class="form-group ">
+								<label for="status" class="col-sm-6 control-label">Number of Day</label>
+								<div class="col-sm-12">
+									<input type="text" class="form-control total_leave_days" name="total_leave_days" value="" readonly>
+									<small class="info help-block">
+									</small>
+								</div>
+							</div>
+						</div>  
+
+						<div class="col-md-6">                       
+							<div class="form-group ">
+								<label for="status" class="col-sm-6 control-label">Available leave
+								<i class="required">*</i>
+								</label>
+								<div class="col-sm-12">
+									
+									<input type="text" class="form-control" name="available_leave" value="<?= $availableleaveRow['available_leave'] ?>" readonly>
 								</div>
 							</div>
 						</div>  
@@ -101,5 +125,21 @@
 		// Initialize select2
 		$(".SelempName").select2();
 	});
+	function leaveDay_count(){
+		let leave_from = $(".leave_from").val(); 
+		let leave_to = $(".leave_to").val(); 
+		let leave_from_date = new Date(leave_from); 
+		let leave_to_date = new Date(leave_to); 
+  
+		let diff = leave_to_date.getTime() - leave_from_date.getTime(); 
+  
+		let daydiff = diff / (1000 * 60 * 60 * 24)+1; 
+		if(leave_to != ''){
+			$(".total_leave_days").val(daydiff);
+		}
+		
+		//alert(daydiff);
+	}
+
 
 </script>

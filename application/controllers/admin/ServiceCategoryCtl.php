@@ -378,6 +378,7 @@ class ServiceCategoryCtl extends CI_Controller {
      
        $this->layout->view('appointment',$data);
   	}
+	  
 	public function add_appointment(){
 		if(empty($this->session->has_userdata('id'))){
 		 redirect('admin');

@@ -232,7 +232,8 @@ class EmployeeManagement extends CI_Controller {
 
 	}
 	public function add_employeeleave(){
-		$data['id'] = $this->session->userdata('id');
+		$empid = $this->session->userdata('id');
+		$data['availableleaveRow'] = $this->EmployeeManagement->getAllempAvailable_leave($empid);
        	$this->layout_2->view('hrms/add_LeaveList',$data); 
 	}
 	public function post_add_empLeave(){
@@ -241,18 +242,31 @@ class EmployeeManagement extends CI_Controller {
 		
 		$datetime1 = new DateTime($this->input->post('leave_from'));
         $datetime2 = new DateTime($this->input->post('leave_to'));
-		$diff       = date_diff($datetime1,$datetime2);
-		$days       = $diff->format("%a")+1;
-		
+		/*$diff       = date_diff($datetime1,$datetime2);
+		$days       = $diff->format("%a")+1;*/
+		$total_leave_days = $this->input->post('total_leave_days');
+		$available_leave = $this->input->post('available_leave');
+		$countAvailable_leave = $available_leave - $total_leave_days;
+		//echo $countAvailable_leave;exit;
+
 		$data = array(
 			'emp_id' 			=> $empid,
 			'leave_from' 		=> $datetime1->format('Y-m-d'),
 			'leave_to' 			=> $datetime2->format('Y-m-d'),
-			'total_leave_days' 	=> $days,
+			'total_leave_days' 	=> $total_leave_days,
+			'available_leave'   => $countAvailable_leave,
 			'reason_for_leave' 	=> $this->input->post('reason_for_leave'));
 
-			$insert = $this->EmployeeManagement->storeEmployeeleave($data); 
-			if($insert){
+			$insert = $this->Main->insert('nbb_employee_leave',$data); 
+			if($total_leave_days != '' ){
+				$leave_data = array(
+					'available_leave' => $countAvailable_leave);
+
+				$update = $this->Main->update('id',$empid, $leave_data,'nbb_employees');
+					
+			}
+
+			if($insert || $update){
 				redirect('hrms/employeeManagement/allLeaveList');
 			}
 	}
@@ -292,7 +306,7 @@ class EmployeeManagement extends CI_Controller {
 		   $result=$this->Main->delete('id',$empLeaveId,'nbb_employee_leave');
 		   if($result==true)
 		   {
-			   redirect('admin/employeeManagement/allLeaveList');
+			   redirect('hrms/employeeManagement/allLeaveList');
 		   }
 	   }
 	}

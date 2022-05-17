@@ -132,20 +132,20 @@
 		}
 
 		//e.preventDefault();
-			//var quantityCheck = $(this).val();
-			$.ajax({
-				url: "<?= base_url("admin/OrderManagement/showQuantityCheck")?>",
-				type: 'GET',
-				data: {product_id:product_id},
-				success: function(response) {
+		//var quantityCheck = $(this).val();
+		$.ajax({
+			url: "<?= base_url("admin/OrderManagement/showQuantityCheck")?>",
+			type: 'GET',
+			data: {product_id:product_id},
+			success: function(response) {
+				//alert(response);
+				if(response < quantity)
+				{
 					//alert(response);
-					if(response < quantity)
-					{
-						//alert(response);
-						Swal.fire('You have entered more quantity than available stock');
-					}
+					Swal.fire('You have entered more quantity than available stock');
 				}
-			});
+			}
+		});
 
 	}
 	

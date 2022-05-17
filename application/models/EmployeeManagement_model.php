@@ -135,7 +135,7 @@ class EmployeeManagement_model extends CI_Model
 	}
 	function getAllemp_leave(){
 		$this->db->select('nbb_employee_leave.*,nbb_employees.first_name,
-		nbb_employees.last_name');
+		nbb_employees.last_name,nbb_employees.yearly_leave');
 		$this->db->from('nbb_employee_leave');
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_employee_leave.emp_id', 'LEFT');
 		return $this->db->get()->result_array();
@@ -158,11 +158,25 @@ class EmployeeManagement_model extends CI_Model
 	
 	function getHrmsAllemp_leave($empid){
 		$this->db->select('nbb_employee_leave.*,nbb_employees.first_name,
-		nbb_employees.last_name');
+		nbb_employees.last_name,nbb_employees.yearly_leave');
 		$this->db->from('nbb_employee_leave');
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_employee_leave.emp_id', 'LEFT');
 		$this->db->where('nbb_employee_leave.emp_id', $empid);
 		return $this->db->get()->result_array();
+	}
+	function getAllempAvailable_leave($id){
+		$this->db->select('nbb_employees.available_leave');
+		$this->db->from('nbb_employees');
+		$this->db->where('nbb_employees.id', $id);
+		$employees_query = $this->db->get()->result_array();
+		$data = array();			
+
+		foreach($employees_query as $row){	
+			$data = array(
+				'available_leave' => $row['available_leave'],
+			);
+		}
+		return $data;
 	}
 	function getAllHrmsEmployees($empid){
 		$this->db->select('nbb_employees.*,

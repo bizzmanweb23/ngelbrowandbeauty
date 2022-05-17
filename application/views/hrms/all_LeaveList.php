@@ -34,6 +34,8 @@
 							<th>Leave To</th>
 							<th>Total Leave Days</th>
 							<th>Reason For leave</th>
+							<th>Available Leave</th>
+							<th>Yearly Leave</th>
 							<th>Change Status</th>
 							<th>Action</th>
 						</tr>
@@ -46,6 +48,8 @@
 							<td><?= date("d-m-Y", strtotime($employee_leaveRow['leave_to']))?></td>
 							<td><?= $employee_leaveRow['total_leave_days']?></td>
 							<td><?= $employee_leaveRow['reason_for_leave']?></td>
+							<td><?= $employee_leaveRow['available_leave']?></td>
+							<td><?= $employee_leaveRow['yearly_leave']?></td>
 							<td>
 								<a data-leave_id="<?=  $employee_leaveRow['id'] ?>" href="javascript:void(0);" data-toggle="modal" data-target="#leaveStatusModel" Class = "leaveStatus" title="Edit" style="color:#b8860b">
 								<?php if($employee_leaveRow['status'] == 0){ ?>

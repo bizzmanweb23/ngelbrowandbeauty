@@ -6,7 +6,7 @@ class OrderManagement extends CI_Controller {
 	public function __construct() {
 
 		parent::__construct();
-		//$this->load->library('m_pdf');
+		//$this->load->library('M_pdf');
 		//$this->db2 = $this->load->database('database2', TRUE);
 	}
 
@@ -15,12 +15,15 @@ class OrderManagement extends CI_Controller {
 		$order_Id = $_GET['order_Id'];
         $data["invoiceData"]=$this->OrderManagement->showInvoiceDetails($order_Id);
 
-
 		$mpdf = new \Mpdf\Mpdf();
 		
 		$html=$this->load->view('GeneratePdfView',$data,true);
 		$mpdf->WriteHTML($html);
 		$mpdf->Output();
+		/*$html=$this->load->view('GeneratePdfView',$data,true);
+		$this->m_pdf->pdf->WriteHTML($html);
+		//download it D save F.
+		$this->m_pdf->pdf->Output('invoice_"'.$order_Id.'".pdf','D');*/
     }
 	public function all_OrderProduct()
     {

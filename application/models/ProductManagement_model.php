@@ -48,5 +48,12 @@ class ProductManagement_model extends CI_Model
 			$this->db->where('id',$id);
 			return $this->db->get()->result_array();
 		}
+	function getAllProductName()
+		{
+			$this->db->select('nbb_product.name AS p_name,nbb_product.id');
+			$this->db->from('nbb_product');
+			$this->db->where('nbb_product.status','1');
+			return $this->db->get()->result_array();
+		}
 }
 ?>
