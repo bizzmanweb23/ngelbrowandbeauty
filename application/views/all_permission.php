@@ -37,8 +37,8 @@
                 <table class="table table-bordered">
                   <thead style="background-color: #fff; color:#b8860b">
                   <tr>
-                    <th>Role Name</th>
-					<th>Action</th>
+                    <th>Permission Name</th>
+										<th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
