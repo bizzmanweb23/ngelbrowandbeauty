@@ -8711,7 +8711,7 @@ body .multi-optn {
 }
 
 .visits input:checked~.visit-rsn {
-    background-color: #541728 !important;
+    background-color: #b88609 !important;
     color: #fff;
     border-radius: 4px
 }

@@ -18,6 +18,7 @@ class ServiceCategoryCtl extends CI_Controller {
 
        $this->layout->view('all_category',$data); 
     }
+
 	public function add_category(){
         if(empty($this->session->has_userdata('id'))){
          redirect('admin');
@@ -26,6 +27,7 @@ class ServiceCategoryCtl extends CI_Controller {
         
         $this->layout->view('add_nbbCategory',$data);
     }
+
 	public function post_add_category()
 	{
 	  $errorUploadType = "";
@@ -125,7 +127,7 @@ class ServiceCategoryCtl extends CI_Controller {
 				'category_details' => $this->input->post('details'),
 				'status' => $this->input->post('status')
 			);
-			$result=$this->Main->update('id',$servicecategory_id, $service_data,'nbb_category');
+			$result = $this->Main->update('id',$servicecategory_id, $service_data,'nbb_category');
 			
 			$this->load->library('upload');
 			if($_FILES['catagoryfiles']['name'] != '')
@@ -157,13 +159,13 @@ class ServiceCategoryCtl extends CI_Controller {
 					$uploadImgData['id'] = $servicecategory_id;
 				}
 			if(!empty($uploadImgData)){
-				$update=$this->Main->update('id',$servicecategory_id, $uploadImgData,'nbb_category');
-					if($update==true)
-					{
-						redirect('admin/ServiceCategoryCtl/edit_category/'.$servicecategory_id);
-					}           
+				$update=$this->Main->update('id',$servicecategory_id, $uploadImgData,'nbb_category');         
 			}
 		}
+		if($update==true || $result == true)
+			{
+				redirect('admin/ServiceCategoryCtl/edit_category/'.$servicecategory_id);
+			}  
 	}
   public function deleteCategory()
     {
@@ -317,7 +319,7 @@ class ServiceCategoryCtl extends CI_Controller {
 				'loyalty_points' => $this->input->post('loyalty_points'),
 				'status' => $this->input->post('status'),
 			);
-			$result=$this->Main->update('id',$service_id, $service_data,'nbb_service');
+			$result = $this->Main->update('id',$service_id, $service_data,'nbb_service');
 			
 			$this->load->library('upload');
 			if($_FILES['servicefiles']['name'] != '')
@@ -347,14 +349,15 @@ class ServiceCategoryCtl extends CI_Controller {
 					$imageData = $this->upload->data();
 					$uploadImgData['service_icon'] = $imageData['file_name'];
 				}
-			if(!empty($uploadImgData)){
-				$update=$this->Main->update('id',$service_id, $uploadImgData,'nbb_service');
-					if($update==true)
-					{
-						redirect('admin/ServiceCategoryCtl/editService/'.$service_id);
-					}           
+				if(!empty($uploadImgData)){
+					$update=$this->Main->update('id',$service_id, $uploadImgData,'nbb_service');
+							
+				}
 			}
-		}
+			if($update==true || $result == true)
+				{
+					redirect('admin/ServiceCategoryCtl/editService/'.$service_id);
+				}     
 	}
 	public function deleteService()
 	{
@@ -374,7 +377,10 @@ class ServiceCategoryCtl extends CI_Controller {
 	}
 	public function appointment()
     {
-       $data['appointment'] = $this->ServiceCategory->getAllAppointment();
+		$data['therapist'] = $this->ServiceCategory->getAllTherapist();
+		$data['service'] = $this->ServiceCategory->getAllServices();
+       	$data['appointment'] = $this->ServiceCategory->getAllTodayAppointment();
+	   	$data['allAppointment'] = $this->ServiceCategory->getAllAppointment();
      
        $this->layout->view('appointment',$data);
   	}
@@ -393,7 +399,18 @@ class ServiceCategoryCtl extends CI_Controller {
 
         extract($_POST);
         $data = array(
-            'customer_number' => $customer_number,
+			'therapist_id' =>$therapist,
+			'customer_number' => $customer_number,
+			'customer_name' => $customer_name,
+			'services' => implode(',',$service),
+			'start_date' => $date,
+			'start_time' => $Start_duration,
+			'end_date' => $date,
+			'end_time' => $End_duration,
+			'amount' => $amount,
+			'created_by' => $this->session->userdata('id')
+
+            /*'customer_number' => $customer_number,
             'customer_id' => $customer_id,
             'customer_name' => $customer_name,
             'email' => $email,
@@ -403,8 +420,10 @@ class ServiceCategoryCtl extends CI_Controller {
             'total_amount' => $amount,
             'appointment_date' => $date,
             'created_by' => $this->session->userdata('id'),
-            'created_at' => date("Y-m-d H:i:s"));  
-            $insert = $this->ServiceCategory->storeAppointment($data); 
+            'created_at' => date("Y-m-d H:i:s")*/
+		);  
+           // $insert = $this->ServiceCategory->storeAppointment($data); 
+			$insert = $this->Main->insert('nbb_dashboard',$data); 
             if($insert == true)
             {
                 return redirect('appointment');
@@ -414,12 +433,23 @@ class ServiceCategoryCtl extends CI_Controller {
                 $errorUploadType = 'Some problem occurred, please try again.';
             }      
     }
+	public function update_appointmentStatus()
+	{
+		$status_appointtmentid = $this->input->post('status_appoinmentid');
+		$appointtmentStatus = $this->input->post('status');
+
+		$this->db->where('id' , $status_appointtmentid);
+		$this->db->update('nbb_dashboard', array('status'=>$appointtmentStatus));
+
+		redirect('admin/ServiceCategoryCtl/appointment');
+
+	}
 	public function deleteAppointment()
      {
         if($this->session->has_userdata('id')!=false)
         {
             $appointmentId=$this->uri->segment(4);
-            $result=$this->Main->delete('id',$appointmentId,'nbb_appointment');
+            $result=$this->Main->delete('id',$appointmentId,'nbb_dashboard');
             if($result==true)
             {
                 redirect('appointment');
@@ -587,9 +617,23 @@ class ServiceCategoryCtl extends CI_Controller {
 				 echo json_encode($insert);				 
 	 }
    
-	 public function getCustomerByID(){
+	public function getCustomerByID(){
 		 $data=$this->ServiceCategory->getCustomerByID($this->input->get('contact'));
 		 echo json_encode($data);
-	 }
+	}
+
+	public function searchAppointmentData()
+    {
+
+       $appointment_date = $_GET['appointment_date'];
+	   $therapistID = $_GET['therapistID'];
+	   $serviceID = $_GET['serviceID'];
+	   $statusID = $_GET['statusID'];
+
+		$data['allAppointment'] = $this->ServiceCategory->searchGetAppointmentData($appointment_date,$therapistID,$serviceID,$statusID); 
+      
+       $this->load->view('appointmentSearchFile',$data); 
+
+    }
 
 }

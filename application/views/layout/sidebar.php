@@ -80,6 +80,28 @@
           </a>
         </li>
 
+		<?php 
+		$role_sql="SELECT nbb_users.role_id FROM nbb_users  where id ='".$this->session->userdata('id')."'" ;
+		$role_query = $this->db->query($role_sql);
+		foreach ($role_query->result_array() as $role_row) 
+		{
+			$role_id = $role_row['role_id'];
+		}
+	$permission_sql = "select nbb_permission.* from nbb_permission
+	left join nbb_rolepermission on nbb_permission.id = nbb_rolepermission.permission_id
+	where nbb_rolepermission.role_id ='".$role_id."'"; 
+	 
+	 $permission_query = $this->db->query($permission_sql);
+	 
+	 
+		 if ($permission_query->num_rows() > 0) {
+	
+			foreach ($permission_query->result_array() as $permission_row) { 
+
+				$menuname =  $permission_row['menuname'];
+
+		?>
+		<?php if( $menuname == 'Service & Categories'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples4" class="nav-link collapsed" aria-controls="pagesExamples4" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
@@ -111,7 +133,7 @@
 						</ul>
 					</div>
 				</li>
-
+				<?php } if( $menuname == 'Product Management'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesTabs2" class="nav-link collapsed" aria-controls="pagesTabs2" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
@@ -136,7 +158,7 @@
 						</ul>
 					</div>
 				</li>
-
+				<?php } if( $menuname == 'Order Management'){ ?>
 				<li class="nav-item">
 					<a data-bs-toggle="collapse" href="#pagesExamples1" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
@@ -167,7 +189,7 @@
 						</ul>
 					</div>
 				</li>  
-
+				<?php } if( $menuname == 'Delivery Management'){ ?>
 				<li class="nav-item">
 					<a class="nav-link  " href="<?= base_url(); ?>admin/OrderManagement/all_DeliveryDetails">
 						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
@@ -176,6 +198,7 @@
 						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Delivery Management</span>
 					</a>
 				</li> 
+				<?php } if( $menuname == 'Offer & Packages'){ ?>
 				<li class="nav-item">
 					<a data-bs-toggle="collapse" href="#pagesExamples7" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
@@ -198,15 +221,46 @@
 							</a>
 						</li> */ ?>    
 						<li class="nav-item ">
-						<a class="nav-link  " href="<?= base_url(); ?>admin/offerAndPackages/coupon">
+						<a class="nav-link  " href="<?= base_url(); ?>admin/offerAndPackages/coupons_list">
 							<span class="sidenav-mini-icon"> O </span>
 							<span class="sidenav-normal"> Offers </span>
 							</a>
 						</li>
 						</ul>
                     </div>
-				</li>                
-        
+				</li>   
+				<?php } if( $menuname == 'Procurement Module'){ ?>
+				<li class="nav-item">
+					<a data-bs-toggle="collapse" href="#pagesExamples9" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+						<i class="far fa-handshake"></i>
+					</div>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Procurement Module</span>
+					</a>
+					<div class="collapse" id="pagesExamples9" style="">
+						<ul class="nav ms-4 ps-3">
+						<li class="nav-item ">
+						<a class="nav-link  " href="<?= base_url(); ?>admin/ProcurementManagement/all_supplier">
+							<span class="sidenav-mini-icon"> P </span>
+							<span class="sidenav-normal"> Packages </span>
+							</a>
+						</li>
+						<?php /* <li class="nav-item ">
+						<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/promotion">
+							<span class="sidenav-mini-icon"> P </span>
+							<span class="sidenav-normal"> Promotion </span>
+							</a>
+						</li> */ ?>    
+						<li class="nav-item ">
+						<a class="nav-link  " href="<?= base_url(); ?>admin/ProcurementManagement/coupons_list">
+							<span class="sidenav-mini-icon"> O </span>
+							<span class="sidenav-normal"> Offers </span>
+							</a>
+						</li>
+						</ul>
+                    </div>
+				</li>  
+				<?php } if( $menuname == 'Human Resource'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples2" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
@@ -255,8 +309,7 @@
 								</ul>
 							</div>
 						</li>
-
-
+		
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#pagesExamples6" class="nav-link collapsed" aria-controls="pagesExamples6" role="button" aria-expanded="false">
 								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Leave Management</span>
@@ -278,7 +331,7 @@
 								</ul>
 							</div>
 						</li>
-
+						
 						<li class="nav-item">
 							<a class="nav-link " href="<?= base_url(); ?>admin/employeeManagement/allAttendance">
 								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Employee Attendance</span>
@@ -289,7 +342,7 @@
 						</ul>
 					</div>
 				</li>
-                   
+				<?php } if( $menuname == 'Admin User'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples3" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
@@ -301,15 +354,45 @@
 						<ul class="nav ms-4 ps-3">
 						
 							<li class="nav-item ">
-							<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/user_details">
+							<a class="nav-link  " href="<?= base_url(); ?>admin/UserManagement/user_details">
 									<span class="sidenav-mini-icon"> U </span>
 									<span class="sidenav-normal"> Users </span>
 								</a>
 							</li>
+
+							<li class="nav-item">
+								<a data-bs-toggle="collapse" href="#pagesExamples8" class="nav-link collapsed" aria-controls="pagesExamples8" role="button" aria-expanded="false">
+									<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Role Management</span>
+								</a>
+								<div class="collapse" id="pagesExamples8">
+									<ul class="nav ms-2 ps-1">
+										<li class="nav-item">
+											<a class="nav-link" href="<?= base_url(); ?>admin/UserManagement/all_roles">
+												<span class="sidenav-mini-icon"> R </span>
+												<span class="sidenav-normal"> Role </span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="<?= base_url(); ?>admin/UserManagement/all_permission">
+												<span class="sidenav-mini-icon"> P </span>
+												<span class="sidenav-normal"> Permission </span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="<?= base_url(); ?>admin/UserManagement/all_rolePermission">
+												<span class="sidenav-mini-icon"> A </span>
+												<span class="sidenav-normal"> Assign Permission </span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
 							
 						</ul>
+						
 					</div>
 				</li>
+				<?php } if( $menuname == 'Customer management'){ ?>
                      
 	<?php /*
         <li class="nav-item">
@@ -330,7 +413,10 @@
           </a>
         </li> 
 
-
+		<?php	}
+				}
+		 	}
+		?>
        
        
       </ul>

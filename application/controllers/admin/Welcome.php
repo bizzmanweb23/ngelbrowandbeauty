@@ -16,11 +16,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('login');
 	}
 
-    public function user_details(){
-        $data['user']=$this->Auth->getAllUser();
-        $this->layout->view('users',$data);
-    }
-
 	public function post_login()
         {
  
@@ -65,11 +60,6 @@ class Welcome extends CI_Controller {
         }
          
     }
-/*
-    public function dashboard(){
-      
-       $this->layout->view('dashboard');
-    }*/
 
     public function dashboard(){
 
@@ -165,6 +155,7 @@ class Welcome extends CI_Controller {
             $data['service'] = $this->Auth->getAllServices();
             $data['therapist'] = $this->Auth->getAllTherapistH();
             $data['duration'] = $this->Auth->getAllDuration();
+			$data['todayAppointment'] = $this->ServiceCategory->getAllTodayAppointment();
             $data['cal'] = json_encode($data1);
             $data['event'] = json_encode($data2);
             $this->layout->view('dashboard',$data);
@@ -608,7 +599,6 @@ class Welcome extends CI_Controller {
 	    $this->session->sess_destroy();
 	    redirect('welcome');
    }    
-  
   
 }
 

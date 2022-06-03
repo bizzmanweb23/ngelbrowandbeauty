@@ -44,94 +44,66 @@
               <!-- <?php echo validation_errors(); ?>  -->
               <form id="" action="<?= base_url('admin/ServiceCategoryCtl/post_add_appointment') ?>" method="post" enctype="multipart/form-data">
                 <div class="row">
-										<div class="col-md-12">
-										<label for="services" class="col-sm-6 control-label">Services
-														<i class="required">*</i>
-													</label>
+										<div class="col-md-6">
+											<label for="services" class="col-sm-6 control-label">Services<i class="required">*</i></label>
 													<select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control ml-2"  name="service[]" id="services" style="width: 98%;">
-														<option>Select Services</option>
 														<?php foreach ($service as $services) : ?>
 															<option value="<?= $services['id'] ?>"><?= $services['service_name'] ?></option>
 														<?php endforeach; ?>
 													</select>
-													
-												
-									</div>
-
-                  <!--<div class="col-md-4">
-                    <div class="form-group ">
-                      <label for="services" class="col-sm-6 control-label">Services
-                        <i class="required">*</i>
-                      </label>
-                      <div class="col-sm-12">
-                        <select class="form-control multiple-select" name="service[]" id="services" data-placeholder="Select Services" multiple>
-                          <option>Select Services</option>
-                          <?php foreach ($service as $services) : ?>
-                            <option value="<?= $services['id'] ?>"><?= $services['service_name'] ?></option>
-                          <?php endforeach; ?>
-
-                        </select>
-                      </div>
-                    </div>
-                  </div>-->
-
-                  
+										</div>
+										<div class="col-md-6">
+											<label for="services" class="col-sm-6 control-label">Services Package<i class="required">*</i></label>
+													<select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control ml-2"  name="service[]" id="services" style="width: 98%;">
+														<?php foreach ($service as $services) : ?>
+															<option value="<?= $services['id'] ?>"><?= $services['service_name'] ?></option>
+														<?php endforeach; ?>
+													</select>
+										</div>
                 </div>
+
                 <div class="row mt-3">
-								<div class="col-md-6">
-                    <div class="form-group">
-                      <label for="add_on" class="col-sm-6 control-label">Add ons
-                      </label>
-                      <div class="col-sm-12">
-                        <select class="form-control chosen chosen-select-deselect" name="add_on" id="add_on" data-placeholder="Select Add ons">
-                          <option placeholder=""></option>
-                          <?php foreach ($addon as $addons) : ?>
-                            <option value="<?= $addons['id'] ?>"><?= $addons['name'] ?></option>
-                          <?php endforeach; ?>
+									<div class="col-md-6">
+											<div class="form-group">
+												<label for="therapist" class="col-sm-6 control-label">Therapist
+												</label>
+												<div class="col-sm-12">
+													<select class="form-control chosen chosen-select-deselect" name="therapist" id="therapist" data-placeholder="Select Add ons" required>
+														<option hidden>Select Therapist</option>
+														<?php foreach ($therapist as $therapists) : ?>
+															<option value="<?= $therapists['id'] ?>"><?= $therapists['first_name']." ". $therapists['last_name'] ?></option>
+														<?php endforeach; ?>
 
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group ">
-                      <label for="amount" class="col-sm-6 control-label">Total Amount
-                        <i class="required">*</i>
-                      </label>
-                      <div class="col-sm-12">
-                        <input type="text" class="form-control" name="amount" id="amount" placeholder="Total Amount" value="">
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group ">
+												<label for="amount" class="col-sm-6 control-label">Total Amount
+													<i class="required">*</i>
+												</label>
+												<div class="col-sm-12">
+													<input type="text" class="form-control" name="amount" id="amount" placeholder="Total Amount" value="">
 
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="therapist" class="col-sm-6 control-label">Therapist
-                      </label>
-                      <div class="col-sm-12">
-                        <select class="form-control chosen chosen-select-deselect" name="therapist" id="therapist" data-placeholder="Select Add ons" required>
-                          <option placeholder=""></option>
-                          <?php foreach ($therapist as $therapists) : ?>
-                            <option value="<?= $therapists['id'] ?>"><?= $therapists['first_name']." ". $therapists['last_name'] ?></option>
-                          <?php endforeach; ?>
+												</div>
+											</div>
+										</div>
+                </div>
 
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-6">
+                <div class="row">
+									<div class="col-md-6">
                     <div class="form-group ">
                       <label for="duration" class="col-sm-6 control-label">Duration
                         <i class="required">*</i>
                       </label>
                       <div class="col-sm-12">
                         <input type="text" class="form-control" name="duration" id="duration" placeholder="Duration" value="" >
+												<input type="hidden" class="form-control Start_duration" name="Start_duration" value="" >
+												<input type="hidden" class="form-control End_duration" name="End_duration" value="" >
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group ">
                       <label for="date" class="col-sm-6 control-label">Appointment Date
@@ -148,9 +120,12 @@
                     </div>
                   </div>
                 </div>
-              <div class="customer_details">
-                
-              </div>
+
+								
+
+								<div class="customer_details">
+									
+								</div>
                 <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
               </form>
             </div>
@@ -171,8 +146,7 @@
               <div class="modal-content">
 
                   <!-- Modal Header -->
-                  <div class="modal-header">
-                      
+                  <div class="modal-header"> 
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
 
@@ -258,7 +232,6 @@
                   </div>
 
                   <!-- Modal footer -->
-                  
 
               </div>
           </div>
@@ -280,9 +253,8 @@
 <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 
 <script>
-	/*
+
   $("#services").change(function() {
-    //  console.log('1');
    // alert($(this).val());
     $.ajax({
       url: "<?= base_url("getServiceByID") ?>",
@@ -292,13 +264,12 @@
       },
       dataType: "json",
       success: function(data) {
-        //console.log(data);
         $("#amount").val(data.totalPrice);
         $("#duration").val(data.totalDuration);
         //timeslot(data.duration);
       }
     })
-  })*/
+  });
 	
   $(".chosen-select").chosen({
 		no_results_text: "Oops, nothing found!"
@@ -311,7 +282,7 @@
   }
   $('#date').change(function() { 
     //  console.log($(this).val())
-    //  console.log($('#therapist').val())
+  
     var therapistId = $('#therapist').val();
     var date = $(this).val();
     var selectedDate = new Date(date);
@@ -352,7 +323,7 @@
 
           $("#all_slots").append('<div class="form-check-inline visits mr-0">' +
             '<label class="visit-btns">' +
-            '<input type="checkbox" ' + inputdisable + ' id="timeslot" onclick="myFunction()" name="selected_timeslot" class="form-check-input" value="' + currentElem['slot_start_time'] + '-' + currentElem['slot_end_time'] + '">' +
+            '<input type="radio" ' + inputdisable + ' id="timeslot" onclick="customerDetailsFunction()" name="selected_timeslot" class="form-check-input" value="' + currentElem['slot_start_time'] + '-' + currentElem['slot_end_time'] + '">' +
             '<span class="visit-rsn"  data-toggle="tooltip" title="">' + currentElem['slot_start_time'] + '-' + currentElem['slot_end_time'] + '</span>' +
             '</label>' +
             '</div>');
@@ -367,14 +338,21 @@
 
   });
 
-  function myFunction(){
-   //console.log('1');
+  function customerDetailsFunction(){
+   
+	  let timeslot= $('#timeslot').val();
+		const timeSplit = timeslot.split("-");
+		/*alert(myArray[0]);
+		alert(myArray[1]);*/
+		$(".Start_duration").val(timeSplit[0]);
+		$(".End_duration").val(timeSplit[1]);
+
       $('.customer_details').html('');
       $('.customer_details').append('<div class="row">'+
                   '<div class="col-md-8">'+
                   '<div class="form-group">'+
                   ' <?php echo form_error('customer_number'); ?>'+
-                  ' <label for="customer_number" class="col-sm-6 control-label">Customer Number <i class="required">*</i>'+
+                  ' <label for="customer_number" class="col-sm-6 control-label">Customer Contact Number <i class="required">*</i>'+
                   '  </label>'+
                   ' <div class="row">'+
                   ' <div class="col-sm-7">'+
@@ -392,7 +370,7 @@
                   ' </div>');
      $('#customer_number').keyup(function() {
       var customer_contact= $(this).val();
-      if(customer_contact.length<10){
+      if(customer_contact.length<8){
         return false;
       }
      //console.log($(this).val())
@@ -415,8 +393,8 @@
           $('.customer_data').html('');
           $('.customer_data').html('<div class="" style="padding:0px; margin:0px; background-color:none; color:red;">Data Not Found</div>');
           $('.new_customer_data').html('');
-          $('.new_customer_data').html('<div class="col-sm-12"><button type="button" class="btn btn-primary btn-custom" data-toggle="modal" data-target="#myModal">Add Customer</button> </div>');
-          console.log('data not found');
+          $('.new_customer_data').html('<div class="col-sm-12"><a href="<?= base_url('admin/welcome/add_customer')?>" target="_blank" data-toggle="tooltip" style="color:#b8860b"><button type="button" class="btn btn-primary btn-custom">Add Customer</button></a></div>');
+          //console.log('data not found');
         }
         
       }
@@ -453,6 +431,7 @@
 }
     
   })
+	
    })
  
   </script>

@@ -110,269 +110,127 @@
     </div>
 </div>
 <div class="content-wrapper" style="margin-left: 280px;">
-
-
-		<?php //end appointment ?>
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="card chart-card">
-					<div class="card-header">
-						<h4>Today Booking Summary </h4>
-					</div>
-					<div class="card-body pb-4">
-						<div class="chart-holder">
-							<?php 
-							$todayAppointmentcount = count($todayAppointment);
-									if($todayAppointmentcount > 0){
-							?>
-						
-							<div class="table-responsive">
-								<table class="table table-styled mb-0">
-									<thead>
-										<tr>
-											<th>Customer Name</th>
-											<th>Contact Number</th>
-											<th>Therapist Name</th>
-											<th>Services</th>
-											<th>Total</th>
-											<th>Start Time</th>
-											<th>End Time</th>
-											<th>Status</th>
-											<th>Payment Method</th>
-											<th>View Details</th>
-											<!--<th>Action</th>-->
-										</tr>
-									</thead>
-									<tbody>
-										
-									<?php 
-									foreach($todayAppointment as $appointments): ?>
-										<tr>
-											<td><?= $appointments['customer_name']?></td>
-											<td>
-												<span class="img-thumb">
-													<span class="ml-2 "><?= $appointments['customer_number']?></span>
-												</span>
-											</td>
-											<td><?= $appointments['first_name'].''.$appointments['last_name']?></td>
-											<td><?php
-												$splittedstring = explode(",", $appointments['services']);
-												foreach ($splittedstring as $key => $value) {
-													$service_sql = "SELECT nbb_service.service_name FROM nbb_service WHERE nbb_service.id = '".$value."'";
-													$service_query = $this->db->query($service_sql);	
-													foreach($service_query->result_array() as $serviceRow){
-														
-														echo  $service_name = $serviceRow['service_name'];
-
-													}
-													if(count($splittedstring) > 1){
-														echo ',';
-													}
-												}
-												?>
-											</td>
-											<td><?= $appointments['amount']?></td>
-											<td><?= $appointments['start_time']?></td>
-											<td><?= $appointments['end_time']?></td>
-											<td>
-											<?php if($appointments['status'] == 1){ ?>
-												<label class="mb-0 badge badge-primary" title="" data-original-title="Pending">Approved</label>
-											<?php }elseif($appointments['status'] == 2){ ?>
-												<label class="mb-0 badge badge-success" title="" data-original-title="Pending">Completed</label>
-											<?php }else{ ?>
-												<label class="mb-0 badge badge-danger" title="" data-original-title="Pending">Pending</label>
-											<?php }?>
-											
-											</td>
-											<td>
-												<span class="img-thumb">
-													<i class="fab fa-cc-paypal"></i>
-													<span class="ml-2">Paypal</span>
-												</span>
-											</td>
-											<td>
-											<a href="<?= base_url('admin/ServiceCategoryCtl/appointment')?>" target="_blank" title="View"><label class="mb-0 badge badge-primary" data-original-title="Pending">View Detail</label><a>
-											</td>
-											<?php /*<td class="relative">
-												<div class="action-option ">
-													<ul>
-														<li>
-															<a href="javascript:void(0); "><i class="far fa-edit mr-2 "></i>Edit</a>
-														</li>
-														<li>
-															<a href="javascript:void(0); "><i class="far fa-trash-alt mr-2 "></i>Delete</a>
-														</li>
-													</ul>
-												</div>
-											</td>*/ ?>
-										</tr>
-										<?php endforeach;  ?>
-									</tbody>
-								</table>
-							</div>
-							<?php 
-								}else{
-
-									echo "<tr><td><h5 class='font-weight-bold pl-2 product-bar'>No data found</h5></td></tr>";
-
-								}
-
-							?>
-						</div>
-					</div>
-				</div>
-			</div>
-		<?php //end appointment ?>
    
-    	<!-- Revanue Status Start -->
-		<div class="col-xl-12 col-lg-12 col-md-12">
-			<div class="card chart-card">
-				<div class="card-body">
-					<div class="row">
-						
-						<div class="container-fluid py-4 ">
+    <div class="container-fluid py-4 ">
+    <h2 class="d_day">
+    <span><form action="" id="findDate"><input type="date" id="find" name="date" value="<?= isset($_GET['date']) ? date('Y-m-d', strtotime($_GET['date'])) : date('Y-m-d') ?>" /><input type="submit" value="Find" /></form></span>
+    </h2>
 
-							<h2 class="d_day">
-							<span>
-								<form action="" id="findDate">
-									<div class="row" >
-										<div class="col-xl-8 col-lg-8 col-md-8">
-											<input type="date" class="form-control" id="find" name="date" value="<?= isset($_GET['date']) ? date('Y-m-d', strtotime($_GET['date'])) : date('Y-m-d') ?>" />
-										</div>
-										<div class="col-xl-4 col-lg-4 col-md-4">
-											<input type="submit" value="Find" class="btn btn-custom" />
-										</div>
-										
+		<div id='calendar' style="width: 1200px;"></div>
+		
+	</div>
+	
+	
+
+<div class="modal fade formModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left;">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5>CREATE APPOINTMENT</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        
+        <div style="margin: 2px 20px 0px 4px; float: right; display: none" id="remove-block">
+            <button type="button" class="btn btn-danger btn-xs ladda-button" data-style="expand-left" data-event-id="" id="remove-link"><span class="ladda-label">Remove This Event</span></button>
+        </div>
+        <div style="clear: both"></div>
+        <form role="form" id="eventForm" class="form-horizontal">
+            <div class="modal-body" style="padding-top: 10px">
+                <fieldset>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <!-- ?php $id=(int)$_GET['id']; ?-->
+                            <!--?php echo '<h1>'.$id.'</h1>';?-->
+                            <input type="hidden" class="form-control" id="thera_id" name="thera_id"  />
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="customer_num" class="col-sm-6 control-label">Customer Number</label>
+										<input type="text" class="form-control" id="customer_num" name="customer_num" placeholder="Customer Number" pattern="[0-9]+"/>
 									</div>
-									
-								</form>
-							</span>
-							</h2>
-
-								<div id='calendar' style="width: 1200px;"></div>
-								
-						</div>
-							
-							
-
-						<div class="modal fade formModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align:left;">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-								<h5>CREATE APPOINTMENT</h5>
-									<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
 								</div>
-								
-								<div style="margin: 2px 20px 0px 4px; float: right; display: none" id="remove-block">
-									<button type="button" class="btn btn-danger btn-xs ladda-button" data-style="expand-left" data-event-id="" id="remove-link"><span class="ladda-label">Remove This Event</span></button>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="name" class="col-sm-6 control-label">Customer Name</label>
+										<input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" pattern="[a-zA-Z]+" />
+									</div>
 								</div>
-								<div style="clear: both"></div>
-								<form role="form" id="eventForm" class="form-horizontal">
-									<div class="modal-body" style="padding-top: 10px">
-										<fieldset>
-											<div class="panel panel-default">
-												<div class="panel-body">
-													<!-- ?php $id=(int)$_GET['id']; ?-->
-													<!--?php echo '<h1>'.$id.'</h1>';?-->
-													<input type="hidden" class="form-control" id="thera_id" name="thera_id"  />
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="customer_num" class="col-sm-6 control-label">Customer Number</label>
-																<input type="text" class="form-control" id="customer_num" name="customer_num" placeholder="Customer Number" pattern="[0-9]+"/>
-															</div>
-														</div>
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="name" class="col-sm-6 control-label">Customer Name</label>
-																<input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" pattern="[a-zA-Z]+" />
-															</div>
-														</div>
-													</div>
+							</div>
 
-													<div class="form-group ">
-														<label for="services" class="col-sm-6 control-label">Services 
-														</label>
-														<div class="col-sm-12">
-														<select data-placeholder="" multiple class="chosen-select form-control" name="service[]" id="services" style="height: 45px !important;">
-															<?php foreach($service as $services): ?>
-															<option value="<?= $services['id']?>"><?= $services['service_name']?></option>
-														<?php endforeach; ?> 
-															
-														</select>
-														</div>
-													</div>  
+                            <div class="form-group ">
+                                <label for="services" class="col-sm-6 control-label">Services 
+                                </label>
+                                <div class="col-sm-12">
+                                <select data-placeholder="" multiple class="chosen-select form-control" name="service[]" id="services" style="height: 45px !important;">
+                                    <?php foreach($service as $services): ?>
+                                    <option value="<?= $services['id']?>"><?= $services['service_name']?></option>
+                                <?php endforeach; ?> 
+                                    
+                                </select>
+                                </div>
+                            </div>  
 
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="amount" class="col-sm-6 control-label">Total Amount</label>
-																<input type="text" class="form-control" name="amount" id="amount" placeholder="Total Amount" value="" readonly>
-															</div>
-														</div> 
-												
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="sduration" class="col-sm-6 control-label">Duration</label>
-																<input type="text" class="form-control" name="sduration" id="sduration" placeholder="Total Duration" value="" readonly>
-															</div>
-														</div> 
-													</div> 
-
-													<div class="form-group">
-														<label for="start-date" class="col-sm-3 control-label">Start</label>
-														<div class="row">
-															<div class="input-group col-sm-6 date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="start" data-link-format="yyyy-mm-dd" >
-																<input type="date" class="form-control" id="start-date" name="start_date" placeholder="Start Date"  style="background-color: white; cursor: default;" />
-																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-															</div>
-															<div class="col-sm-3">
-																<input type="time" name="start_time" id="start-time" class="form-control"  style="background-color: white; cursor: default;"/>
-															</div>
-														</div>
-													</div>
-
-													<div class="form-group" id="end-group">
-														<label for="end" class="col-sm-3 control-label">End</label>
-														<div class="row">
-															<div class="input-group col-sm-6 form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="end" data-link-format="yyyy-mm-dd">
-																<input type="date" class="form-control" placeholder="End Date" name="end_date" id="end-date"  style="background-color: white; cursor: default;"/>
-																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-															</div>
-															<div class="col-sm-3">
-																<input type="time" name="end_time" id="end-time" class="form-control"   style="background-color: white; cursor: default;" />
-															</div>
-														</div> 
-													</div>
-													
-
-												</div>
-
-											</div>
-											<!--- Action Links -->
-
-										</fieldset>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="amount" class="col-sm-6 control-label">Total Amount</label>
+										<input type="text" class="form-control" name="amount" id="amount" placeholder="Total Amount" value="" readonly>
 									</div>
-									<div class="modal-footer">
-										<input type="hidden" value="-1" name="update-event" id="update-event" />
-										<input type="hidden" value="" name="currentView" id="currentView" />
-										<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary" id="">submit</button>
+								</div> 
+						
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="sduration" class="col-sm-6 control-label">Duration</label>
+										<input type="text" class="form-control" name="sduration" id="sduration" placeholder="Total Duration" value="" readonly>
 									</div>
-								</form>
+								</div> 
+							</div> 
 
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-						</div><!-- /.modal -->
-						
-						
-					</div>
-				</div>
-			</div>
-		</div>
-        <!-- calender  end -->
+							<div class="form-group">
+                                <label for="start-date" class="col-sm-3 control-label">Start</label>
+								<div class="row">
+									<div class="input-group col-sm-6 date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="start" data-link-format="yyyy-mm-dd" >
+                                    	<input type="date" class="form-control" id="start-date" name="start_date" placeholder="Start Date"  style="background-color: white; cursor: default;" />
+                                    	<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                	</div>
+									<div class="col-sm-3">
+										<input type="time" name="start_time" id="start-time" class="form-control"  style="background-color: white; cursor: default;"/>
+									</div>
+								</div>
+                            </div>
 
+                            <div class="form-group" id="end-group">
+                                <label for="end" class="col-sm-3 control-label">End</label>
+								<div class="row">
+									<div class="input-group col-sm-6 form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="end" data-link-format="yyyy-mm-dd">
+                                    	<input type="date" class="form-control" placeholder="End Date" name="end_date" id="end-date"  style="background-color: white; cursor: default;"/>
+                                    	<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+									</div>
+									<div class="col-sm-3">
+										<input type="time" name="end_time" id="end-time" class="form-control"   style="background-color: white; cursor: default;" />
+									</div>
+								</div> 
+                            </div>
+                            
 
+                        </div>
 
+                    </div>
+                    <!--- Action Links -->
+
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" value="-1" name="update-event" id="update-event" />
+                <input type="hidden" value="" name="currentView" id="currentView" />
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="">submit</button>
+            </div>
+        </form>
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </div>
 <script>
     // format time displayed

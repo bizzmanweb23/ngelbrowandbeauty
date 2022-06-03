@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Service</h1>
+            <h1>Service & Category</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -47,12 +47,26 @@
                         <td><?= $services['service_name']?></td>
                         <td><img src="<?= base_url('uploads/'.$services['service_icon'])?>" width="40" height="40"></td>
                         <td><?= $services['category_name']?></td>
-                        <td><?= $services['description']?></td>
+                        <td><?php if($services['description'] != ''){ ?>
+													<?= substr($services['description'],0,50); ?>....
+												<?php } ?>
+												</td>
                         <td><?= $services['service_price']?></td>
                         <td><?= $services['therapist_commission']?></td>
                         <td><?= $services['commission_amount']?></td>
                         <td><?= $services['duration']?></td>
-                        <td><?= $services['priority']?></td>
+                        <td>
+													<?php if($services['priority'] == 1){ 
+													   echo 'High';
+														} elseif($services['priority'] == 2){
+															echo 'Important';
+														}elseif($services['priority'] == 3){
+															echo 'Normal';
+														}elseif($services['priority'] == 4){
+															echo 'Low';
+														}else{} ?>
+												
+												</td>
                         <td><?= $services['loyalty_points']?></td>
                         <td><?php if($services['status'] == 1)
 													{

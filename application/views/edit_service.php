@@ -39,8 +39,8 @@
 											<i class="required">*</i>
 											</label>
 												<div class="col-sm-12">
-														<select  class="form-control chosen chosen-select-deselect" name="service_category" id="category" data-placeholder="Select Service Category" >
-															<option>Select Service Category</option>
+														<select  class="form-control chosen chosen-select-deselect" name="service_category" id="category">
+															<option value="" selected hidden>Select Category</option>
 															<?php foreach($category as $categorys): ?>
 															<option value="<?= $categorys['id']?>" <?php if($categorys['id'] == $serviceData['service_category']){echo "Selected";} ?>><?= $categorys['category_name']?></option>
 														<?php endforeach; ?> 
@@ -79,7 +79,7 @@
 										</label>
 										<div class="col-sm-12">
 											<select  class="form-control chosen chosen-select" name="duration" id="duration" data-placeholder="Select Duration" >
-														<option value=""></option>
+														<option value="" selected hidden>Select Duration</option>
 														<option value="30" <?php if($serviceData['duration'] == '30'){echo "Selected";} ?>>30 minutes</option>
 														<option value="60" <?php if($serviceData['duration'] == '60'){echo "Selected";} ?>>60 minutes</option>
 														<option value="90" <?php if($serviceData['duration'] == '90'){echo "Selected";} ?>>90 minutes</option>
@@ -95,8 +95,8 @@
                         <label for="therapist_commission" class="col-sm-6 control-label">Therapist Commission 
                         </label>
                         <div class="col-sm-12">
-                            <select  class="form-control chosen chosen-select" name="therapist_commission" id="therapist_commission" data-placeholder="Select Therapist Commission" >
-                                <option>Select Commission Type</option>
+                            <select  class="form-control chosen chosen-select" name="therapist_commission" id="therapist_commission">
+																<option value="" selected hidden>Select Commission</option>
                                 <option value="fixed" <?php if($serviceData['therapist_commission'] == 'fixed'){echo "Selected";} ?>>Fixed</option>
                                 <option value="percentage" <?php if($serviceData['therapist_commission'] == 'percentage'){echo "Selected";} ?>>Percentage</option>
                                 </select>
@@ -122,8 +122,6 @@
                         </label>
                           <div class="col-sm-12">
                               <input type="text" class="form-control" name="priority" id="priority" placeholder="Priority" value="<?= $serviceData['priority'];?>">
-                              <small class="info help-block">
-                              </small>
                           </div>
                   </div>
                   </div>
@@ -144,8 +142,8 @@
                     <i class="required">*</i>
                     </label>
                     <div class="col-sm-12">
-                        <select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
-                            <option value=""></option>
+                        <select  class="form-control chosen chosen-select" name="status" id="status">
+												<option value="" selected hidden>Select Status</option>
                             <option value="0" <?php if($serviceData['status'] == 0){echo "Selected";} ?>>Inactive</option>
                             <option value="1" <?php if($serviceData['status'] == 1){echo "Selected";} ?>>Active</option>
                         </select>
@@ -161,9 +159,7 @@
 											</label>
 												<div class="col-sm-12">
 														<div id="image"></div>
-														<input type="file" name="servicefiles" required="">
-														<small class="info help-block">
-														</small>
+														<input type="file" name="servicefiles">
 												</div>
 										</div>
                   </div>                           

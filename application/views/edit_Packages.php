@@ -21,14 +21,16 @@
               
               <!-- /.card-header -->
               <div class="card-body">
-                <form id="add_package" action="<?= base_url('admin/OfferAndPackages/post_add_package')?>" method="post" enctype="multipart/form-data">
+			  <?php foreach($productPackages as $productPackagesRow){ ?>
+                <form id="add_package" action="<?= base_url('admin/OfferAndPackages/post_update_package')?>" method="post" enctype="multipart/form-data">
+				<input type="hidden" class="form-control" name="package_id" value="<?= $productPackagesRow['id']?>">
                 <div class="row">
 					<div class="col-md-12">   
 						<div class="form-group ">
 							<label for="package_name" class="col-sm-6 control-label">Package Name <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="package_name" id="package_name" placeholder="Package Name Max Length : 100." value="">
+								<input type="text" class="form-control" name="package_name" id="package_name" value="<?= $productPackagesRow['package_name']?>">
 							</div>
 						</div>      
 					</div>
@@ -40,7 +42,7 @@
 							<label for="package_detail" class="col-sm-6 control-label">Package Detail <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="package_detail" id="package_detail" placeholder="Package Detail Max Length : 100." value="">
+								<input type="text" class="form-control" name="package_detail" id="package_detail" placeholder="Package Detail Max Length : 100." value="<?= $productPackagesRow['package_detail']?>">
 							</div>
 						</div>     
                 	</div> 
@@ -52,7 +54,7 @@
 							<label for="package_price" class="col-sm-6 control-label">Package Price <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="package_price" id="package_price" placeholder="Package Price" value="">
+								<input type="number" class="form-control" name="package_price" id="package_price" placeholder="Package Price" value="<?= $productPackagesRow['package_price']?>">
 							</div>
 						</div> 
 					</div>
@@ -61,7 +63,7 @@
 							<label for="package_credits" class="col-sm-6 control-label">Package Credits<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="package_credits" id="package_credits" placeholder="Package Credits" value="">
+								<input type="number" class="form-control" name="package_credits" id="package_credits" placeholder="Package Credits" value="<?= $productPackagesRow['package_credits']?>">
 							</div>
 						</div>  
 					</div>
@@ -72,10 +74,14 @@
 							<label for="package_status" class="col-sm-6 control-label">Package Products <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select multiple class="chosen-select form-control" data-live-search="true" name="productName[]" style="height: 45px !important;" required>
-                                    <?php foreach($serviceName as $serviceNameRow): ?>
-                                    <option value="<?= $serviceNameRow['id']?>"><?= $serviceNameRow['service_name']?></option>
+								<select class="chosen-select form-control" data-live-search="true" name="productName[]" style="height: 45px !important;" required multiple>
+									<?php foreach($AllPackageProductName as $AllPackageProductNameRow): ?>
+                                    <option value="<?= $AllPackageProductNameRow['id']?>" selected><?= $AllPackageProductNameRow['p_name']?></option>
                                 	<?php endforeach; ?>  
+                                    <?php foreach($productName as $productNameRow): ?>
+                                    <option value="<?= $productNameRow['id']?>"><?= $productNameRow['p_name']?></option>
+                                	<?php endforeach; ?>
+
                                 </select>
 							</div>
 						</div> 
@@ -89,8 +95,8 @@
 							<div class="col-sm-12">
 								<select  class="form-control" name="status" id="status" data-placeholder="Select Status" >
 									<option value=""></option>
-									<option value="0">Inactive</option>
-									<option value="1">Active</option>
+									<option value="0" <?php if($productPackagesRow['status'] == '0'){?> selected <?php } ?>>Inactive</option>
+									<option value="1" <?php if($productPackagesRow['status'] == '1'){?> selected <?php } ?>>Active</option>
 								</select>
 							</div>
 						</div> 
@@ -99,6 +105,7 @@
 
                       <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
               </form>
+			  <?php } ?>
               </div>
               <!-- /.card-body -->
             </div>

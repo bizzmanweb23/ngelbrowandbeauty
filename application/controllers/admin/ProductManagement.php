@@ -294,8 +294,9 @@ class ProductManagement extends CI_Controller {
 				if(file_exists($product_image)){
 					unlink(base_url("uploads/product_img/".$product_image));
 				}
+				$result2=$this->Main->delete('product_id',$productId,'nbb_product_image');
 			 }
-			 $result2=$this->Main->delete('product_id',$productId,'nbb_product_image');
+			 
 			 if($result==true)
 			 {
 				 redirect('product');

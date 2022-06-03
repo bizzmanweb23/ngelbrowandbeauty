@@ -78,7 +78,7 @@
                       </label>
                       <div class="col-sm-12">
                           <select  class="form-control chosen chosen-select" name="duration" id="duration" data-placeholder="Select Duration" >
-                              <option value=""></option>
+															<option value="" selected hidden>Select Duration</option>
                               <option value="30">30 minutes</option>
                               <option value="60">60 minutes</option>
                               <option value="90">90 minutes</option>
@@ -95,7 +95,7 @@
                         </label>
                         <div class="col-sm-12">
                             <select  class="form-control chosen chosen-select" name="therapist_commission" id="therapist_commission" data-placeholder="Select Therapist Commission" >
-                                <option>Select Commission Type</option>
+																<option value="" selected hidden>Select Commission Type</option>
                                 <option value="fixed">Fixed</option>
                                 <option value="percentage">Percentage</option>
                                 </select>
@@ -120,9 +120,14 @@
                         <label for="priority" class="col-sm-6 control-label">Priority 
                         </label>
                           <div class="col-sm-12">
-                              <input type="text" class="form-control" name="priority" id="priority" placeholder="Priority" value="">
-                              <small class="info help-block">
-                              </small>
+                              <!--<input type="text" class="form-control" name="priority" id="priority" placeholder="Priority" value="">-->
+                              <select class="form-control" id="priority" name="priority">
+															<option value="" selected hidden>Set Priority</option>
+																<option value="1">High</option>
+																<option value="2">Important</option>
+																<option value="3">Normal</option>
+																<option value="4">Low</option>
+														</select>
                           </div>
                   </div>
                   </div>
@@ -144,7 +149,7 @@
                     </label>
                     <div class="col-sm-12">
                         <select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
-                            <option value=""></option>
+														<option value="" selected hidden>Select Status</option>
                             <option value="0">Inactive</option>
                             <option value="1">Active</option>
                         </select>

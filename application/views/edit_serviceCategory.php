@@ -51,9 +51,8 @@
                         </label>
                         <div class="col-sm-12">
                               <select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
-                                <option value=""></option>
-                                <option value="0" <?php if($customerRow['category_details'] == 0){echo "Selected";}?>>Inactive</option>
-                                <option value="1" <?php if($customerRow['category_details'] == 1){echo "Selected";}?>>Active</option>
+                                <option value="0" <?php if($customerRow['status'] == 0){echo "Selected";}?>>Inactive</option>
+                                <option value="1" <?php if($customerRow['status'] == 1){echo "Selected";}?>>Active</option>
                               </select>
                             <small class="info help-block">
                             </small>
@@ -69,9 +68,7 @@
 												</label>
 												<div class="col-sm-12">
 													<div id="promotions_image_galery"></div>
-													<input type="file" name="catagoryfiles" multiple required="">
-													<small class="info help-block">
-													</small>
+													<input type="file" name="catagoryfiles">
 												</div>
 											</div>
                   	</div>      

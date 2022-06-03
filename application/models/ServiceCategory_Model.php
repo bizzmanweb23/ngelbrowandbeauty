@@ -60,24 +60,28 @@ class ServiceCategory_Model extends CI_Model
         $insert = $this->db->insert_batch('nbb_category',$data); 
         return true;
     }
-   /* function getAllAppointment()
-    {
-        $this->db->select('nbb_appointment.*, nbb_service.service_name,nbb_therapists.name');
-        $this->db->from('nbb_appointment');
-        $this->db->join('nbb_service','nbb_service.id = nbb_appointment.services');
-        $this->db->join('nbb_therapists','nbb_therapists.id = nbb_appointment.therapists');
 
-        return $this->db->get()->result_array();
-    }*/
-    function getAllAppointment()
+    function getAllTodayAppointment()
     {
+		$now = date('Y-m-d');
         $this->db->select('nbb_dashboard.*, nbb_service.service_name,nbb_employees.first_name,nbb_employees.last_name');
         $this->db->from('nbb_dashboard');
         $this->db->join('nbb_service','nbb_service.id = nbb_dashboard.services');
         $this->db->join('nbb_employees','nbb_employees.id = nbb_dashboard.therapist_id');
+		$this->db->where('nbb_dashboard.start_date',$now);
+		$this->db->order_by("nbb_dashboard.start_date", "DESC");
 
         return $this->db->get()->result_array();
     }
+	function getAllAppointment(){
+
+		$this->db->select('nbb_dashboard.*, nbb_service.service_name,nbb_employees.first_name,nbb_employees.last_name');
+        $this->db->from('nbb_dashboard');
+        $this->db->join('nbb_service','nbb_service.id = nbb_dashboard.services');
+        $this->db->join('nbb_employees','nbb_employees.id = nbb_dashboard.therapist_id');
+		$this->db->order_by("nbb_dashboard.start_date", "DESC");
+		return $this->db->get()->result_array();
+	}
     function getAllServices()
     {
         $this->db->select('nbb_service.*,nbb_category.category_name');
@@ -85,6 +89,11 @@ class ServiceCategory_Model extends CI_Model
         $this->db->join('nbb_category','nbb_category.id = nbb_service.service_category');
         return $this->db->get()->result_array();
     }
+	function getAllServicesPackages(){
+		$this->db->select('nbb_service.*');
+        $this->db->from('nbb_service');
+        return $this->db->get()->result_array();
+	}
 	function getServiceDataEdit($id){
 		$this->db->select('*');
 		$this->db->from('nbb_service');
@@ -146,6 +155,41 @@ class ServiceCategory_Model extends CI_Model
 			}
 		}
 		return $time;
+	}
+	function getPackageServiceName($allService_id)
+		{
+			$this->db->select('nbb_service.service_name AS p_name,nbb_service.id');
+			$this->db->from('nbb_service');
+			$this->db->where('nbb_service.status',1);
+			$this->db->where_not_in('nbb_service.id', $allService_id);
+			return $this->db->get()->result_array();
+		}
+	function searchGetAppointmentData($appointment_date='',$therapistID= '',$serviceID = '',$statusID = ''){
+		$where = "";
+		if($appointment_date != ''){
+			$where .=" AND nbb_dashboard.start_date = '".$appointment_date."'";
+		}
+		if($therapistID != ''){
+			$where .=" AND nbb_dashboard.therapist_id = '".$therapistID."'";
+		}
+		if($serviceID != ''){
+			$where .=" AND nbb_dashboard.services = '".$serviceID."'";
+		}
+		if($statusID != ''){
+			$where .=" AND nbb_dashboard.status = '".$statusID."'";
+		}
+
+		$nbb_dashboard_sql = "SELECT nbb_dashboard.*, 
+		nbb_service.service_name,
+		nbb_employees.first_name,
+		nbb_employees.last_name 
+		FROM nbb_dashboard 
+		LEFT JOIN nbb_service ON nbb_service.id = nbb_dashboard.services
+		LEFT JOIN nbb_employees ON nbb_employees.id = nbb_dashboard.therapist_id
+		WHERE 1 ".$where;
+		$nbb_dashboard_query = $this->db->query($nbb_dashboard_sql);
+		return $result_nbb_dashboard = $nbb_dashboard_query->result_array();	
+
 	}
 
 }

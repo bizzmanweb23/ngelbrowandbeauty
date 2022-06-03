@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Users Detail</h1>
+            <h1>Role Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -18,27 +18,34 @@
           <div class="col-12">   
 
             <div class="card" style="border-radius: 15px">
-							<div class="card-header">
-                <a href="<?=base_url('admin/userManagement/add_adminUser')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add User </button></a>
-              </div>
+				<div class="card-header">
+					<form action="<?= base_url('admin/userManagement/add_post_userRole')?>" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group ">
+									<input type="text" class="form-control" name="role_name" placeholder="Enter Role Name" value="">
+								</div>    
+							</div>
+							<div class="col-md-4">
+								<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
+							</div>
+						</div>
+					</form>
+              	</div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead style="background-color: #fff; color:#b8860b">
                   <tr>
-                    <th>User Name</th>
-                    <th>Email</th>
                     <th>Role Name</th>
-										<th>Action</th>
+					<th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($user as $users): ?>
+                    <?php foreach($allRoles as $rolesRow): ?>
                       <tr>
-                        <td><?= $users['first_name']?></td>
-                        <td><?= $users['email']?></td>
-                        <td><?= $users['role_name']?></td>
-												<td><a href="<?= base_url('admin/userManagement/deleteAdminUser/'. $users['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a></td>
+                        <td><?= $rolesRow['role_name']?></td>
+						<td><a href="<?= base_url('admin/userManagement/deleteRoles/'. $rolesRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
