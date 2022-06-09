@@ -35,7 +35,7 @@
 					<th>Price</th>
 					<th>Package Credits</th>
 					<th>Number Of Product</th>
-					<?php /*<th>Status</th>*/?>
+					<th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -44,17 +44,22 @@
                       <tr>
                         <td><?= $packagesRow['package_name']?></td>
 						<td><?= $packagesRow['package_detail'] ?></td>	
-                        <td><?= $packagesRow['package_price']?></td>
+                        <td>$<?= $packagesRow['package_price']?></td>
                         <td><?= $packagesRow['package_credits']?></td>
 						<td>
-							<?php $packages_product_sql = "SELECT * FROM nbb_packages_product WHERE nbb_packages_product.package_id = '".$packagesRow['id']."'";
+							<?php $packages_product_sql = "SELECT * FROM nbb_service_packages WHERE nbb_service_packages.package_id = '".$packagesRow['id']."'";
 							$order_product_query = $this->db->query($packages_product_sql);
 							echo $order_product_query->num_rows();
 							?>
 						</td>
-                        <?php /*<td><?= $packagesRow['status']?></td>*/?>
+                        <td><?php if($packagesRow['status'] == 1){ ?>
+							On going
+						<?php }else{ ?>
+							Ended
+						<?php } ?>
+						</td>
                         <td>
-							<a data-package_id="<?= $packagesRow['id']; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showAllProduct" class="btn btn-default" title="Edit" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
+							<a data-package_id="<?= $packagesRow['id']; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showAllProduct" class="btn btn-default" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
 							<a href="<?= base_url('admin/OfferAndPackages/edit_packages/'.$packagesRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
 							<a href="<?= base_url('admin/OfferAndPackages/deletePackage/'. $packagesRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
 						</td>

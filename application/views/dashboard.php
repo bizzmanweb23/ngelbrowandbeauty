@@ -518,8 +518,13 @@
     });
 
     $('#calendar').fullCalendar({
-        defaultView: 'agendaDay',
-        groupByResource: true,
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+        defaultView: 'month',
+        //groupByResource: true,
         selectable: 'false',
         selectHelper: 'false',
         unselectAuto: 'true',

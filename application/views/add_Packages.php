@@ -88,9 +88,9 @@
 							</label>
 							<div class="col-sm-12">
 								<select  class="form-control" name="status" id="status" data-placeholder="Select Status" >
-									<option value=""></option>
-									<option value="0">Inactive</option>
-									<option value="1">Active</option>
+									<option value="" hidden>Select Status</option>
+									<option value="0">Ended</option>
+									<option value="1">On going </option>
 								</select>
 							</div>
 						</div> 

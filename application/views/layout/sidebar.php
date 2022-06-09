@@ -241,8 +241,8 @@
 						<ul class="nav ms-4 ps-3">
 						<li class="nav-item ">
 						<a class="nav-link  " href="<?= base_url(); ?>admin/ProcurementManagement/all_supplier">
-							<span class="sidenav-mini-icon"> P </span>
-							<span class="sidenav-normal"> Packages </span>
+							<span class="sidenav-mini-icon"> S </span>
+							<span class="sidenav-normal"> Supplier Details </span>
 							</a>
 						</li>
 						<?php /* <li class="nav-item ">
@@ -352,68 +352,48 @@
 					</a>
 					<div class="collapse" id="pagesExamples3" style="">
 						<ul class="nav ms-4 ps-3">
-						
 							<li class="nav-item ">
-							<a class="nav-link  " href="<?= base_url(); ?>admin/UserManagement/user_details">
+								<a class="nav-link  " href="<?= base_url(); ?>admin/UserManagement/user_details">
 									<span class="sidenav-mini-icon"> U </span>
 									<span class="sidenav-normal"> Users </span>
 								</a>
 							</li>
-
-							<li class="nav-item">
-								<a data-bs-toggle="collapse" href="#pagesExamples8" class="nav-link collapsed" aria-controls="pagesExamples8" role="button" aria-expanded="false">
-									<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Role Management</span>
-								</a>
-								<div class="collapse" id="pagesExamples8">
-									<ul class="nav ms-2 ps-1">
-										<li class="nav-item">
-											<a class="nav-link" href="<?= base_url(); ?>admin/UserManagement/all_roles">
-												<span class="sidenav-mini-icon"> R </span>
-												<span class="sidenav-normal"> Role </span>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="<?= base_url(); ?>admin/UserManagement/all_permission">
-												<span class="sidenav-mini-icon"> P </span>
-												<span class="sidenav-normal"> Permission </span>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="<?= base_url(); ?>admin/UserManagement/all_rolePermission">
-												<span class="sidenav-mini-icon"> A </span>
-												<span class="sidenav-normal"> Assign Permission </span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
 						</ul>
-						
 					</div>
 				</li>
 				<?php } if( $menuname == 'Customer management'){ ?>
                      
-	<?php /*
-        <li class="nav-item">
-          <a class="nav-link  " href="<?= base_url(); ?>admin/welcome/feedback">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
-            <i class="far fa-comment-alt"></i>
-            </div>
-            <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Feedback</span>
-          </a>
-        </li>*/ ?>
-			
-        <li class="nav-item">
-          <a class="nav-link  " href="<?= base_url(); ?>admin/welcome/customer">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
-            <i class="fa fa-user"></i>
-            </div>
-            <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Customer management</span>
-          </a>
-        </li> 
+				<?php /*
+					<li class="nav-item">
+					<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/feedback">
+						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+						<i class="far fa-comment-alt"></i>
+						</div>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Feedback</span>
+					</a>
+					</li>*/ ?>
+						
+					<li class="nav-item">
+					<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/customer">
+						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+						<i class="fa fa-user"></i>
+						</div>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Customer Management</span>
+					</a>
+					</li> 
 
-		<?php	}
+					<?php } if( $menuname == 'Course Management'){ ?>
+                     
+						<li class="nav-item">
+						 <a class="nav-link" href="<?= base_url(); ?>admin/CourseManagement/all_courses">
+							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+							 <i class="fa fa-book-open"></i>
+							 </div>
+							 <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Course Management</span>
+						 </a>
+						</li> 
+
+		<?php		}
 				}
 		 	}
 		?>

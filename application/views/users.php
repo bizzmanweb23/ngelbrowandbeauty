@@ -19,7 +19,18 @@
 
             <div class="card" style="border-radius: 15px">
 							<div class="card-header">
-                <a href="<?=base_url('admin/userManagement/add_adminUser')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add User </button></a>
+								<div class="row" >
+									<div class="col-md-2">
+										<a href="<?=base_url('admin/userManagement/add_adminUser')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom">Add User </button></a>
+									</div>
+									<div class="col-md-2">
+										<a href="<?=base_url('admin/userManagement/all_roles')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom">Add Role </button></a>
+									</div>
+									<div class="col-md-2">
+										<a href="<?=base_url('admin/userManagement/all_rolePermission')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom"> Assign Permission </button></a>
+									</div>
+								</div>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body">

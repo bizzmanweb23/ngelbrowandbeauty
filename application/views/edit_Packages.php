@@ -94,9 +94,9 @@
 							</label>
 							<div class="col-sm-12">
 								<select  class="form-control" name="status" id="status" data-placeholder="Select Status" >
-									<option value=""></option>
-									<option value="0" <?php if($productPackagesRow['status'] == '0'){?> selected <?php } ?>>Inactive</option>
-									<option value="1" <?php if($productPackagesRow['status'] == '1'){?> selected <?php } ?>>Active</option>
+									<option value="" hidden>Select Status</option>
+									<option value="0" <?php if($productPackagesRow['status'] == '0'){?> selected <?php } ?>>Ended</option>
+									<option value="1" <?php if($productPackagesRow['status'] == '1'){?> selected <?php } ?>>On going</option>
 								</select>
 							</div>
 						</div> 
