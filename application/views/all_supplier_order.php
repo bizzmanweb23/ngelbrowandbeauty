@@ -27,27 +27,37 @@
                 <table class="table table-bordered" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
                   <tr>
-					        <th>Supplier Code</th>
-                  <th>Supplier Name</th>
-                  <th>Email</th>
-                  <th>Supplier Address</th>
-                  <th>Action</th>
+					<th>Order Code</th>
+					<th>Supplier Name</th>
+					<th>order Details</th>
+					<th>Supplier Address</th>
+					<th>Status</th>
+					<th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($all_Supplier as $supplierRow): ?>
+                    <?php foreach($OrderSupplierData as $OrderSupplierRow): ?>
                       <tr>
-                        <td><?= $supplierRow['supplier_code']?></td>
-                        <td><?= $supplierRow['supplier_name']?></td>
-                        <td><?= $supplierRow['email']?></td>
-                        <td><?= $supplierRow['supplier_address']?></td>
+                        <td><?= $OrderSupplierRow['order_code']?></td>
+                        <td><?= $OrderSupplierRow['supplier_name']?></td>
+                        <td><?= $OrderSupplierRow['order_details']?></td>
+                        <td><?= $OrderSupplierRow['supplier_address']?></td>
+                        <td>
+                          <?php if($OrderSupplierRow['status'] == 1){ 
+                            echo 'Approve';
+                          }elseif($OrderSupplierRow['status'] == 1){
+								echo "Reject";
+							}else{ 
+                            echo 'Pending';
+                            } ?>
+                        </td>
                         <td>
 
-													<a href="<?= base_url('admin/ProcurementManagement/deleteSupplier/'. $supplierRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
-													<a href="<?= base_url('admin/ProcurementManagement/sendEmailSupplier/'. $supplierRow['id'])?>" class="btn btn-default" title="Email" style="color:#b8860b"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-													
+							<a href="<?= base_url('admin/ProcurementManagement/deleteSupplier/'. $OrderSupplierRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+							<a href="<?= base_url('admin/ProcurementManagement/sendEmailSupplier/'. $OrderSupplierRow['id'])?>" class="btn btn-default" title="Email" style="color:#b8860b"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+							
 
-												</td>
+						</td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

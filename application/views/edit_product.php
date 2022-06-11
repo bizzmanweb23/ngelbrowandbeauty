@@ -90,7 +90,7 @@
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="product_price" id="product_price" placeholder="Product Price Max Length : 50." value="<?= $productData['price'] ?>">
+								<input type="number" class="form-control" name="product_price" id="product_price" placeholder="Product Price Max Length : 50." value="<?= $productData['price'] ?>" required>
 							</div>
 						</div>        
 					</div> 
@@ -106,7 +106,20 @@
 					</div> 
                 </div>   
                	<div class="row">
-					<div class="col-md-12">
+				   <div class="col-md-6">
+						<div class="form-group ">
+							<label for="therapist_commission" class="col-sm-6 control-label">Supplier Name<i class="required">*</i> </label>
+							<div class="col-sm-12">
+								<select class="form-control chosen chosen-select-deselect" name="supplier_name" required>
+									<option value="" hidden>Select Supplier Name</option>
+									<?php foreach($all_Supplier as $Supplier_row): ?>
+									<option value="<?= $Supplier_row['id']?>"<?php if($productData['supplier_name'] == $Supplier_row['id']){ echo "Selected";} ?>><?= $Supplier_row['supplier_name']?>(<?= $Supplier_row['supplier_code']?>)</option>
+									<?php endforeach; ?> 
+								</select>
+							</div>
+						</div>                                
+					</div>  
+					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="therapist_commission" class="col-sm-6 control-label">Tag </label>
 							<div class="col-sm-12">

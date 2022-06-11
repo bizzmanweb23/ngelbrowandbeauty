@@ -32,10 +32,11 @@
                   <tr>
                     <th>Coupon Code </th>
                     <th>Description</th>
-					<th>Banner Icon</th>
-					<th>Discount</th>
-					<th>Expiry Date</th>
-					<?php /*<th>Status</th>*/?>
+										<th>Banner Icon</th>
+										<th>Discount</th>
+										<th>Start Date</th>
+										<th>Expiry Date</th>
+										<th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -44,10 +45,16 @@
                       <tr>
                         <td><?= $AllCouponsRow['coupon_code']?></td>
 												<td><?= $AllCouponsRow['description'] ?></td>	
-                        <td><?= $AllCouponsRow['coupon_icon']?></td>
+                        <td><?= $AllCouponsRow['banner_icon']?></td>
                         <td><?= $AllCouponsRow['discount']?></td>
+												<td><?= $AllCouponsRow['start_date']?></td>
 												<td><?= $AllCouponsRow['expiry_date']?></td>
-                        <?php /*<td><?= $packagesRow['status']?></td>*/?>
+                        <td><?php if($AllCouponsRow['status'] == 1){ ?>
+														On going
+												<?php }else{ ?>
+														Ended
+												<?php } ?>
+												</td>
                         <td>
 													<a href="<?= base_url('admin/OfferAndPackages/edit_coupon/'.$AllCouponsRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
 													<a href="<?= base_url('admin/OfferAndPackages/deletePackage/'. $AllCouponsRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>

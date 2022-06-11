@@ -137,8 +137,9 @@ class OfferAndPackages extends CI_Controller {
 			'coupon_code' => $this->input->post('coupon_code'),
 			'description' => $this->input->post('description'),
 			'discount' => $this->input->post('discount'),
+			'start_date' => $this->input->post('start_date'),
 			'expiry_date' => $this->input->post('expiry_date'),
-			'loyalty_points' => $this->input->post('loyalty_points'),
+			'coupon_loyalty_points' => $this->input->post('loyalty_points'),
 			'status' =>$this->input->post('status')
 			);
 			
@@ -170,7 +171,7 @@ class OfferAndPackages extends CI_Controller {
 					if($this->upload->do_upload('file')){
 						// Uploaded file data
 						$imageData = $this->upload->data();
-						$uploadImgData['coupon_icon'] = $imageData['file_name'];
+						$uploadImgData['banner_icon'] = $imageData['file_name'];
 					}
 					$update=$this->Main->update('id',$insert_id, $uploadImgData,'nbb_coupons');         
 				} 
@@ -190,8 +191,9 @@ class OfferAndPackages extends CI_Controller {
 			'coupon_code' => $this->input->post('coupon_code'),
 			'description' => $this->input->post('description'),
 			'discount' => $this->input->post('discount'),
+			'start_date' => $this->input->post('start_date'),
 			'expiry_date' => $this->input->post('expiry_date'),
-			'loyalty_points' => $this->input->post('loyalty_points'),
+			'coupon_loyalty_points' => $this->input->post('loyalty_points'),
 			'status' =>$this->input->post('status')
 			);
 		
@@ -222,7 +224,7 @@ class OfferAndPackages extends CI_Controller {
 					if($this->upload->do_upload('file')){
 						// Uploaded file data
 						$imageData = $this->upload->data();
-						$uploadImgData['coupon_icon'] = $imageData['file_name'];
+						$uploadImgData['banner_icon'] = $imageData['file_name'];
 					}
 					$update=$this->Main->update('id',$coupon_id, $uploadImgData,'nbb_coupons');         
 				} 

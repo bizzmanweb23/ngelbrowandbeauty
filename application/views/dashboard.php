@@ -530,6 +530,10 @@
         unselectAuto: 'true',
         minTime: "10:00:00",
 	    maxTime: "24:00:00",
+		slotDuration: '00:30:00',
+    	slotLabelInterval: 30,
+   		slotMinutes: 30,
+    	snapDuration: '00:30:00',
         unselectCancel: '',
         resources: <?php echo $cal; ?>,
         select:function(start, end, jsEvent, view, resource) {

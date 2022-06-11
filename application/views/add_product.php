@@ -122,17 +122,16 @@
 					</div> 
 					<div class="col-md-6">                              
 						<div class="form-group ">
-							<label for="status" class="col-sm-6 control-label">Status 
+							<label for="status" class="col-sm-6 control-label">Supplier Name 
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
-									<option value=""></option>
-									<option value="0">Inactive</option>
-									<option value="1">Active</option>
+								<select class="form-control chosen chosen-select-deselect" name="supplier_name" required>
+									<option value="" hidden>Select Supplier Name</option>
+									<?php foreach($all_Supplier as $Supplier_row): ?>
+									<option value="<?= $Supplier_row['id']?>"><?= $Supplier_row['supplier_name']?>(<?= $Supplier_row['supplier_code']?>)</option>
+									<?php endforeach; ?> 
 								</select>
-								<small class="info help-block">
-								</small>
 							</div>
 						</div>
                   	</div>  
@@ -158,7 +157,7 @@
                   	</div>  
                 </div>
                 <div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="image" class="col-sm-6 control-label">Product Image </label>
 							<div class="col-sm-12">
@@ -169,6 +168,22 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-md-6">                              
+						<div class="form-group ">
+							<label for="status" class="col-sm-6 control-label">Status 
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
+									<option value=""></option>
+									<option value="0">Inactive</option>
+									<option value="1">Active</option>
+								</select>
+								<small class="info help-block">
+								</small>
+							</div>
+						</div>
+                  	</div>  
                  	
                 </div>                             
                       

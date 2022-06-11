@@ -52,7 +52,6 @@ class ProcurementManagement extends CI_Controller {
 		$supplierId = $this->uri->segment(4);
 		$data['SupplierData'] = $this->ProcurementManagement->getSupplierData($supplierId);
         $this->layout->view('supplier_email',$data);
-
 	}
 
 	public function post_add_SendMail(){
@@ -231,6 +230,34 @@ class ProcurementManagement extends CI_Controller {
 				}
 			}
 		}
+	public function sendSupplierApprove(){
+
+		$supplierId = $this->uri->segment(4);
+		$data['supplierOrderData'] = $this->ProcurementManagement->getSupplierForAppovel($supplierId);
+        $this->load->view('supplierApprove_page',$data);
+	}
+	public function sendSupplierApprovel(){
+
+		$orderId = $this->uri->segment(4);
+		$this->db->where('id' , $orderId);
+		$this->db->update('nbb_supplier_order', array('status'=> '1'));
+
+		redirect('admin/ProcurementManagement/sendSupplierApprove/'.$orderId);
+	}
+	public function sendSupplierRejection(){
+		
+		$orderId = $this->uri->segment(4);
+		$this->db->where('id' , $orderId);
+		$this->db->update('nbb_supplier_order', array('status'=> '2'));
+
+		redirect('admin/ProcurementManagement/sendSupplierApprove/'.$orderId);
+	}
+	public function allOrderSupplier(){
+
+		$data['id'] = $this->session->userdata('id');
+		$data['OrderSupplierData'] = $this->ProcurementManagement->getAllSupplier_order();
+        $this->layout->view('all_supplier_order',$data);
+	}
 
 	public function generateOrderNumber($id)
 		{

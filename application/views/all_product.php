@@ -42,7 +42,7 @@
 										<th>Available stock</th>
 										<th>Bar Code</th>
                     <th>Short Description</th>
-                    <th>Tags</th>
+                    <th>Supplier Name</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -90,7 +90,11 @@
 													<?php } ?>
 												</td>
                         <td><?= $productRow['short_description']?></td>
-												<td><?= $productRow['tags']?></td>
+												<td><?php if($productRow['id']){ ?>
+													<?= $productRow['supplier_name']?>(<?= $productRow['supplier_code']?>)
+												<?php }else{}?>
+													
+												</td>
 												<td><?php if($productRow['status'] == 1)
 												{
 													echo 'Active';

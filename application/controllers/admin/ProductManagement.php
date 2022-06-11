@@ -102,6 +102,7 @@ class ProductManagement extends CI_Controller {
 			}
 		   $data['name'] = $this->session->userdata('name');
 		   $data['category'] = $this->ProductManagement->getAllProductCategory();
+		   $data['all_Supplier']=$this->ProcurementManagement->getAllsupplier();
 		   
 		   $this->layout->view('add_product',$data);
 	}
@@ -124,6 +125,7 @@ class ProductManagement extends CI_Controller {
 			'available_stock' => $this->input->post('stock'),
 			'mfg_date' => $this->input->post('mfg_date'),
 			'expiry_date' => $this->input->post('expiry_date'),
+			'supplier_id' => $this->input->post('supplier_name'),
 			'status' =>$this->input->post('status')
 			);
 			$this->db->insert('nbb_product',$product_data); 
@@ -176,6 +178,7 @@ class ProductManagement extends CI_Controller {
 		   	$data['category'] = $this->ProductManagement->getAllProductCategory();
 		   	$productId = $this->uri->segment(4);
 			$data['productDataEdit'] = $this->ProductManagement->getProductDataEdit($productId);
+			$data['all_Supplier']=$this->ProcurementManagement->getAllsupplier();
 		   	$this->layout->view('edit_product',$data);
 	}
 	public function post_edit_product()
@@ -194,6 +197,7 @@ class ProductManagement extends CI_Controller {
 			'stock' => $this->input->post('stock'),
 			'mfg_date' => $this->input->post('mfg_date'),
 			'expiry_date' => $this->input->post('expiry_date'),
+			'supplier_id' => $this->input->post('supplier_name'),
 			'status' =>$this->input->post('status')
 			);
 			$result=$this->Main->update('id',$product_id, $product_data,'nbb_product');

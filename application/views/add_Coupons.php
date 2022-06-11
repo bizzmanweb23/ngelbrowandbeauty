@@ -55,6 +55,15 @@
 					<div class="row">    
 						<div class="col-md-6">    
 							<div class="form-group ">
+								<label for="start_date" class="col-sm-6 control-label">Start Date <i class="required">*</i>
+								</label>
+								<div class="col-sm-12">
+									<input type="date" class="form-control" name="start_date" placeholder="Start Date" value="">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">    
+							<div class="form-group ">
 								<label for="expiry_date" class="col-sm-6 control-label">Expiry Date <i class="required">*</i>
 								</label>
 								<div class="col-sm-12">
@@ -62,15 +71,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">                
-							<div class="form-group ">
-								<label for="image" class="col-sm-6 control-label">Coupon Icon</label>
-								<div class="col-sm-12">
-									<div id="image"></div>
-									<input type="file" name="couponFiles">
-								</div>
-							</div>
-						</div>
+					
 					</div>  
 					<div class="row">
 						<div class="col-md-6">    
@@ -96,6 +97,18 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-6">                
+							<div class="form-group ">
+								<label for="image" class="col-sm-6 control-label">Coupon Icon</label>
+								<div class="col-sm-12">
+									<div id="image"></div>
+									<input type="file" name="couponFiles">
+								</div>
+							</div>
+						</div>
+					</div>
+					
                       <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
               </form>
               </div>
