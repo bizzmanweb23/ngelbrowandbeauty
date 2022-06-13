@@ -523,7 +523,7 @@
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay'
 		},
-        defaultView: 'month',
+        defaultView: 'agendaDay',
         //groupByResource: true,
         selectable: 'false',
         selectHelper: 'false',

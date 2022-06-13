@@ -53,20 +53,24 @@ class OrderManagement_Model extends CI_Model
 	function getAllOrderProduct()
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
 		$this->db->where('type_flag', 'O');
 		return $this->db->get()->result_array();
 	}
 	function getAllCurrentOrder()
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 1
@@ -77,10 +81,12 @@ class OrderManagement_Model extends CI_Model
 	function getAllComplatedOrder()
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 2
@@ -91,10 +97,12 @@ class OrderManagement_Model extends CI_Model
 	function getAllCanceledOrder()
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 3

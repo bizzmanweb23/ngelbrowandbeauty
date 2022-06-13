@@ -54,9 +54,9 @@
 								<?php if($employee_leaveRow['status'] == 0){ ?>
 										<span class="btn btn-secondary" style="box-shadow:none !important; text-transform:uppercase;">Leave Pending</span>
 								<?php }elseif($employee_leaveRow['status'] == 1) { ?>
-									<span class="btn btn-success" style="box-shadow:none !important; text-transform:uppercase;">Leave Accepted</span>
+									<span class="btn btn-success" style="box-shadow:none !important; text-transform:uppercase;">Approved</span>
 								<?php }else{ ?>
-									<span class="btn btn-danger" style="box-shadow:none !important; text-transform:uppercase;">Leave Rejected</span>
+									<span class="btn btn-danger" style="box-shadow:none !important; text-transform:uppercase;">Not Approved</span>
 								<?php } ?>
 							</td>
 							<td>
@@ -97,8 +97,8 @@
 								<div class="form-group">
 									<select  class="form-control chosen chosen-select" name="status" id="status">
 										<option value="">Select Response Option</option>
-										<option value="1">Accept</option>
-										<option value="2">Reject</option>
+										<option value="1">Approved</option>
+										<option value="2">Not Approved</option>
 									</select>
 								</div>
 							</div>

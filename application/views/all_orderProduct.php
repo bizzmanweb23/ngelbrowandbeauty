@@ -55,7 +55,7 @@
 									<th>Order Date</th>
 									<th>Order Status</th>
 									<th>Assign To Delivery</th>
-									<!--<th>Payment Method</th>-->
+									<th>Payment Method</th>
 									<th>Action</th>
 								</tr>
 								</thead>
@@ -64,7 +64,7 @@
 										$order_id =   $orderProductRow['id'];
 									?>
 									<tr>
-										<td><?= $orderProductRow['order_number']?></td>
+										<td><?= $orderProductRow['order_number'] ?></td>
 										<td><?php if($orderProductRow['customer_firstname'] == ''){ ?>	
 											<?= $orderProductRow['first_name'].' '.$orderProductRow['last_name'] ?>
 											<?php }else{ ?>
@@ -82,7 +82,8 @@
 											<?php }else{ ?>
 											<span></span>
 											<?php } ?></td>
-											<th><a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$orderProductRow['id'])?>" target="_blank" title="Assign To Delivery"><span class = "btn btn-warning" style="box-shadow:none !important; text-transform:uppercase;">Assign To Delivery</span></a></th>
+											<td><a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$orderProductRow['id'])?>" target="_blank" title="Assign To Delivery"><span class = "btn btn-warning" style="box-shadow:none !important; text-transform:uppercase;">Assign To Delivery</span></a></td>
+											<td><?= $orderProductRow['payment_name']?></td>
 											<td>
 											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$orderProductRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
 											<a data-order_id="<?=  $order_id; ?>"
@@ -109,7 +110,7 @@
 										<th>Customer Name</th>
 										<th>Order Date</th>
 										<th>Order Status</th>
-										<!--<th>Payment Method</th>-->
+										<th>Payment Method</th>
 										<th>Action</th>
 									</tr>
 									</thead>
@@ -132,6 +133,7 @@
 												<?php }else{
 													echo '';
 												} ?></td>
+												<td><?= $AllCurrentOrdertRow['payment_name']?></td>
 												<td>
 												<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllCurrentOrdertRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
 												<a data-order_id="<?=  $order_id; ?>"
@@ -158,7 +160,7 @@
 										<th>Customer Name</th>
 										<th>Order Date</th>
 										<th>Order Status</th>
-										<!--<th>Payment Method</th>-->
+										<th>Payment Method</th>
 										<th>Action</th>
 									</tr>
 									</thead>
@@ -182,6 +184,7 @@
 													echo '';
 												} ?></td>
 											<td>
+											<td><?= $AllComplatedOrderRow['payment_name']?></td>
 											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllComplatedOrderRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
 											<a data-order_id="<?=  $order_id; ?>"
 												 href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#b8860b" ><i class="fa fa-eye"></i></a>

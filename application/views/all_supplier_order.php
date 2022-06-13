@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Users Detail</h1>
+            <h1>Procurement Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -19,7 +19,7 @@
 
             <div class="card" style="border-radius: 15px">
 							<div class="card-header">
-                <a href="<?=base_url('admin/procurementManagement/add_Supplier')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add supplier </button></a>
+							<h5>Supplier Order</h5>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -27,12 +27,11 @@
                 <table class="table table-bordered" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
                   <tr>
-					<th>Order Code</th>
-					<th>Supplier Name</th>
-					<th>order Details</th>
-					<th>Supplier Address</th>
-					<th>Status</th>
-					<th>Action</th>
+										<th>Order Code</th>
+										<th>Supplier Name</th>
+										<th>order Details</th>
+										<th>Status</th>
+										<th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -40,24 +39,25 @@
                       <tr>
                         <td><?= $OrderSupplierRow['order_code']?></td>
                         <td><?= $OrderSupplierRow['supplier_name']?></td>
-                        <td><?= $OrderSupplierRow['order_details']?></td>
-                        <td><?= $OrderSupplierRow['supplier_address']?></td>
+                        <td><?php if($OrderSupplierRow['order_details'] != ''){ ?>
+													<?= substr($OrderSupplierRow['order_details'],0,50) ?>...<a data-OrderSupplierid="<?=  $OrderSupplierRow['id'];?>" href="javascript:void(0);" class="btn btn-default OrderSupplierDetails" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
+													<?php }else{ ?>
+
+													<?php } ?>
+												</td>
                         <td>
                           <?php if($OrderSupplierRow['status'] == 1){ 
                             echo 'Approve';
                           }elseif($OrderSupplierRow['status'] == 1){
-								echo "Reject";
-							}else{ 
+														echo "Reject";
+													}else{ 
                             echo 'Pending';
                             } ?>
                         </td>
                         <td>
-
-							<a href="<?= base_url('admin/ProcurementManagement/deleteSupplier/'. $OrderSupplierRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
-							<a href="<?= base_url('admin/ProcurementManagement/sendEmailSupplier/'. $OrderSupplierRow['id'])?>" class="btn btn-default" title="Email" style="color:#b8860b"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+												
 							
-
-						</td>
+												</td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -76,3 +76,48 @@
     </section>
 </div> 
 
+<div id="OrderSupplierDetailsModal" class="modal fade" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Supplier Order </h5>
+					<button type="button" class="close close_btn" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+		
+					<h5 class= "product_style" align="center">Order Details</h5>
+					<div class = "OrderSupplierdata"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary close_btn" data-dismiss="modal">Cancel</button>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script>
+
+	$(document).ready(function(){
+        $(".OrderSupplierDetails").click(function(){
+          $("#OrderSupplierDetailsModal").modal('show');
+					var OrderSupplierid = $(this).attr('data-OrderSupplierid');
+					$.ajax({
+						type : 'GET',
+						url : '<?= base_url("admin/ProcurementManagement/orderSupplierDetails")?>', 
+						data :  {OrderSupplierid:OrderSupplierid}, 
+						success : function(data){
+							//alert(data);
+
+						$('.OrderSupplierdata').html(data);
+						}
+					});
+					
+        });
+				$(".close_btn").click(function(){
+						$("#OrderSupplierDetailsModal").modal("hide"); 
+						
+        });
+    });
+	</script>

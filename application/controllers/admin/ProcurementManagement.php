@@ -258,7 +258,20 @@ class ProcurementManagement extends CI_Controller {
 		$data['OrderSupplierData'] = $this->ProcurementManagement->getAllSupplier_order();
         $this->layout->view('all_supplier_order',$data);
 	}
+	public function orderSupplierDetails(){
 
+		$OrderSupplierid = $_GET['OrderSupplierid'];
+		$order_details = '';
+		$supplier_order_sql  = "SELECT nbb_supplier_order.*
+		FROM nbb_supplier_order 
+		WHERE nbb_supplier_order.id =  $OrderSupplierid"; 
+		$supplier_order_query = $this->db->query($supplier_order_sql);
+		$supplier_order_array = $supplier_order_query->result_array();
+		foreach($supplier_order_array as $packages_row){
+			 $order_details = $packages_row['order_details'];
+		}
+		echo $order_details;
+	}
 	public function generateOrderNumber($id)
 		{
 			return 'NBBO' . str_pad($id, 4, 0, STR_PAD_LEFT);

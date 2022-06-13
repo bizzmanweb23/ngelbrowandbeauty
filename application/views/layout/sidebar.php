@@ -252,9 +252,9 @@
 							</a>
 						</li> */ ?>    
 						<li class="nav-item ">
-						<a class="nav-link  " href="<?= base_url(); ?>admin/ProcurementManagement/coupons_list">
-							<span class="sidenav-mini-icon"> O </span>
-							<span class="sidenav-normal"> Offers </span>
+						<a class="nav-link  " href="<?= base_url(); ?>admin/ProcurementManagement/allOrderSupplier">
+							<span class="sidenav-mini-icon"> S </span>
+							<span class="sidenav-normal"> Supplier Order </span>
 							</a>
 						</li>
 						</ul>
