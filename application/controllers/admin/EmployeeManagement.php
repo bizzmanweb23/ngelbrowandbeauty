@@ -216,8 +216,8 @@ class EmployeeManagement extends CI_Controller {
 			'dearness_allowance' => $this->input->post('dearness_allowance'),
 			'Provident_fund' => $this->input->post('Provident_fund'),
 			'employees_state_insurance' => $this->input->post('employees_state_insurance'),
-			//'house_rent_allowance' => $this->input->post('gender'),
 			'medical_allowance' => $this->input->post('medical_allowance'),
+			'medical_leave_entitlement' => $this->input->post('medical_leave_entitlement'),
 			'total_earning' => $this->input->post('total_earning'),
 			'total_deduction' => $this->input->post('total_deduction'),
 			'net_pay' => $this->input->post('net_pay'),
@@ -228,7 +228,7 @@ class EmployeeManagement extends CI_Controller {
 				redirect('admin/employeeManagement/allEmployeeSalary');
 			}
 	}
-	/*public function edit_employeeSalary(){
+	public function edit_employeeSalary(){
 		$data['name'] = $this->session->userdata('name');
 		$data['lastpay_structure'] = $this->PayStructure->getLastpay_structure();
 		$data['allemployees'] = $this->EmployeeManagement->getAllemployees();
@@ -236,7 +236,7 @@ class EmployeeManagement extends CI_Controller {
 		$id = $this->uri->segment(4);	
 		$data['empSalary'] = $this->EmployeeManagement->geteditEmployeeSalary($id);
        	$this->layout->view('edit_EmpSalary',$data); 
-	}*/
+	}
 	public function post_edit_employeeSalary(){
 		
 		$empSalaryid = $this->input->post('empSalaryid');
@@ -247,15 +247,15 @@ class EmployeeManagement extends CI_Controller {
 			'dearness_allowance' => $this->input->post('dearness_allowance'),
 			'Provident_fund' => $this->input->post('Provident_fund'),
 			'employees_state_insurance' => $this->input->post('employees_state_insurance'),
-			//'house_rent_allowance' => $this->input->post('gender'),
 			'medical_allowance' => $this->input->post('medical_allowance'),
+			'medical_leave_entitlement' => $this->input->post('medical_leave_entitlement'),
 			'total_earning' => $this->input->post('total_earning'),
 			'total_deduction' => $this->input->post('total_deduction'),
 			'net_pay' => $this->input->post('net_pay'));
 
 			$update = $this->Main->update('id',$empSalaryid, $data,'nbb_employee_salary');    
 			if($update){
-				redirect('admin/employeeManagement/edit_employeeSalary'.$empSalaryid);
+				redirect('admin/employeeManagement/edit_employeeSalary/'.$empSalaryid);
 			}
 	}
 

@@ -34,10 +34,10 @@
                     <th>Employee Name</th>
 										<th>Designation</th>
 										<th>Basic Pay</th>
-										<th>Dearness Allowance(DA)</th>
-										<th>Provident Fund</th>
-										<th>Employees State Insurance</th>
-										<!--<th>House Rent Allowance</th>-->
+										<th>Commission</th>
+										<th> CPF</th>
+										<th>Insurance</th>
+										<th>Medical Leave Entitlement</th>
 										<th>Medical Allowance</th>
 										<th>Total Earning</th>
 										<th>Net Pay</th>
@@ -55,7 +55,7 @@
                         <td><?= $employeeSalaryRow['dearness_allowance']?></td>
 												<td><?= $employeeSalaryRow['Provident_fund']?></td>
                         <td><?= $employeeSalaryRow['employees_state_insurance']?></td>
-                        <?php /* <td><?= $employeeSalaryRow['house_rent_allowance'] ?></td>*/ ?>
+                        <td><?= $employeeSalaryRow['medical_leave_entitlement'] ?></td>
 												<td><?= $employeeSalaryRow['medical_allowance'] ?></td>
 												<td><?= $employeeSalaryRow['total_earning'] ?></td>
 												<td><?= $employeeSalaryRow['net_pay'] ?></td>

@@ -36,6 +36,7 @@
 							<th>Reason For leave</th>
 							<th>Available Leave</th>
 							<th>Yearly Leave</th>
+							<th>Medical Certificate</th>
 							<th>Change Status</th>
 							<th>Action</th>
 						</tr>
@@ -51,6 +52,11 @@
 							<td><?= $employee_leaveRow['available_leave']?></td>
 							<td><?= $employee_leaveRow['yearly_leave']?></td>
 							<td>
+								<?php if($employee_leaveRow['MC_files'] != ''){ ?>
+									<a href="<?= base_url('uploads/MC_image/'.$employee_leaveRow['MC_files']) ?>" target="_blank" title="MC"><img src="<?= base_url('uploads/MC_image/'.$employee_leaveRow['MC_files']) ?>" width="40" height="40"></a>
+								<?php }else{}  ?>
+							</td>
+							<td>
 								<a data-leave_id="<?=  $employee_leaveRow['id'] ?>" href="javascript:void(0);" data-toggle="modal" data-target="#leaveStatusModel" Class = "leaveStatus" title="Edit" style="color:#b8860b">
 								<?php if($employee_leaveRow['status'] == 0){ ?>
 										<span class="btn btn-secondary" style="box-shadow:none !important; text-transform:uppercase;">Leave Pending</span>
@@ -63,7 +69,11 @@
 								</a>
 							</td>
 							<td>
-								<!--<a href="<?= base_url('admin/employeeManagement/edit_employeeLeave/'.$employee_leaveRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>-->
+								<?php if($employee_leaveRow['MC_files'] == ''){ ?>
+									<a data-leave_Id="<?=  $employee_leaveRow['id']; ?>" href="javascript:void(0);" class="btn btn-default employeeLeaveMc" title="Edit" style="color:#b8860b" ><i class="fa fa-file" aria-hidden="true"></i></a>
+								<?php }else{ ?>
+
+								<?php } ?>
 								<a href="<?= base_url('hrms/employeeManagement/deleteEmployeeLeave/'. $employee_leaveRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
 							</td>
 						</tr>
@@ -84,26 +94,22 @@
     </section>
  </div> 
 
- <div id="leaveStatusModel" class="modal fade" tabindex="-1">
+ <div id="LeaveMcModal" class="modal fade" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Leave Response</h5>
+				<h5 class="modal-title">Medical Certificate </h5>
 				<button type="button" class="close close_btn" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 				<div class="modal-body">
-					<form id="add_category" action="<?= base_url('admin/employeeManagement/update_Leavestatus')?>" method="post" enctype="multipart/form-data">   
-						<input type="hidden" class="status_leaveid" name = "status_leaveid" value="">
+					<form id="add_category" action="<?= base_url('hrms/employeeManagement/add_employeeMC')?>" method="post" enctype="multipart/form-data">   
+						<input type="hidden" class="modal_leave_Id" name = "modal_leave_Id" value="">
 							<div class="row">     
-									<div class="col-md-12">                       
-										<div class="form-group">
-												<select  class="form-control chosen chosen-select" name="status" id="status">
-														<option value="">Select Response Option</option>
-														<option value="1">Accept</option>
-														<option value="2">Reject</option>
-												</select>
-										</div>
+								<div class="col-md-12">                       
+									<div class="form-group">
+										<input type="file" name="MC_files">
 									</div>
+								</div>
 							</div>
 							<div class="col-md-12">    
 								<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:130px;"> 
@@ -134,11 +140,17 @@
 		});
 	});
 
-	$(document).ready(function(){  	
-  		$(".leaveStatus").click(function(){
-			var leaveID = $(this).data('leave_id');
-			$('.status_leaveid').val(leaveID);	
-		});
-	});
+	$(document).ready(function(){
+        $(".employeeLeaveMc").click(function(){
+          $("#LeaveMcModal").modal('show');
+				var leave_Id = $(this).attr('data-leave_Id');
+     			$("#LeaveMcModal .modal_leave_Id").val( leave_Id );
+					
+        });
+				$(".close_btn").click(function(){
+					$("#LeaveMcModal").modal("hide"); 
+						
+        });
+    });
 	
 </script>

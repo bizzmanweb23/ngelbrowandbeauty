@@ -25,7 +25,7 @@ class Pay_Structure extends CI_Controller {
 			'dearness_allowance' => $this->input->post('dearness_allowance'),
 			'Provident_fund' => $this->input->post('Provident_fund'),
 			'ESI' => $this->input->post('employees_state_insurance'),
-			//'house_rent_allowance' => $this->input->post('gender'),
+			'medical_leave_entitlement' => $this->input->post('medical_leave_entitlement'),
 			'medical_allowance' => $this->input->post('medical_allowance'));
 
 			$insert = $this->PayStructure->storeEmpPay_structure($data); 

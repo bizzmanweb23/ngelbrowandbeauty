@@ -31,10 +31,10 @@
                   <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
                   <tr>
 										<th>Year</th>
-										<th>Dearness Allowance(DA)</th>
-										<th>Provident Fund</th>
-										<th>Employees State Insurance</th>
-										<!--<th>House Rent Allowance</th>-->
+										<th>Commission</th>
+										<th>Central Provident Fund</th>
+										<th>Insurance</th>
+										<th>Medical Leave Entitlement</th>
 										<th>Medical Allowance</th>
                     <th>Action</th>
                   </tr>
@@ -46,7 +46,7 @@
                         <td><?= $allpay_structureRow['dearness_Allowance']?></td>
 												<td><?= $allpay_structureRow['provident_Fund']?></td>
                         <td><?= $allpay_structureRow['ESI']?></td>
-                        <?php /* <td><?= $allpay_structureRow['house_rent_allowance'] ?></td>*/ ?>
+                        <td><?= $allpay_structureRow['medical_leave_entitlement'] ?></td>
 												<td><?= $allpay_structureRow['medical_Allowance'] ?></td>
                         <td>
 												<!--<a href="<?= base_url('admin/pay_Structure/edit_empPay_Structure/'.$allpay_structureRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>-->

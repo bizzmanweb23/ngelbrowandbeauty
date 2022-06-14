@@ -518,12 +518,13 @@
     });
 
     $('#calendar').fullCalendar({
+	
 		header: {
 			left: 'prev,next today',
 			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
+			right: 'month,agendaDay'
 		},
-        defaultView: 'agendaDay',
+		defaultView: 'month',
         //groupByResource: true,
         selectable: 'false',
         selectHelper: 'false',
@@ -533,7 +534,6 @@
 		slotDuration: '00:30:00',
     	slotLabelInterval: 30,
    		slotMinutes: 30,
-    	snapDuration: '00:30:00',
         unselectCancel: '',
         resources: <?php echo $cal; ?>,
         select:function(start, end, jsEvent, view, resource) {

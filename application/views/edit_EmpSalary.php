@@ -52,41 +52,49 @@
 								<td>
 									<input type="text" name="basic_pay" placeholder="Basic Pay" value ="<?= $empSalaryRow['basic_pay'] ?>" id = "basic_pay" class="form-control" onkeyup ="calcSalary()">
 								</td>
-								<td>Dearness Allowance</td>
+								<td>Commission</td>
 								<td>
 									<input type="hidden" name="da" value ="<?= $lastpay_structure['dearness_Allowance']?>" id = "da">
-									<input type="text" name="dearness_allowance" placeholder="Dearness Allowance" value ="<?= $empSalaryRow['dearness_allowance'] ?>" class="form-control" id = "dearness_allowance">
+									<input type="text" name="dearness_allowance" placeholder="Commission" value ="<?= $empSalaryRow['dearness_allowance'] ?>" class="form-control" id = "dearness_allowance">
 								</td>
 							</tr>
 							<tr>
-								<td>Provident Fund</td>
+								<td>Central Provident Fund</td>
 								<td>
 									<input type="hidden" name="pf" value ="<?= $lastpay_structure['provident_Fund']?>" id = "pf">
-									<input type="text" name="Provident_fund" value ="<?= $empSalaryRow['Provident_fund'] ?>" placeholder="Provident Fund" class="form-control" id = "Provident_fund">
+									<input type="text" name="Provident_fund" value ="<?= $empSalaryRow['Provident_fund'] ?>" placeholder="Central Provident Fund" class="form-control" id = "Provident_fund">
 								</td>
-								<td>Employees State Insurance</td>
+								<td>Insurance</td>
 								<td>
 									<input type="hidden" name="esi" value ="<?= $lastpay_structure['ESI']?>" id = "esi">
-									<input type="text" name="employees_state_insurance" placeholder="Employees State Insurance" value ="<?= $empSalaryRow['employees_state_insurance'] ?>" class="form-control" id="EmployeesStateInsurance">
+									<input type="text" name="employees_state_insurance" placeholder="Insurance" value ="<?= $empSalaryRow['employees_state_insurance'] ?>" class="form-control" id="EmployeesStateInsurance">
 								</td>
 							</tr>
 							
 							<tr>
+								<td>Medical Leave Entitlement</td>
+								<td>
+									<input type="hidden" name="mle" value ="<?= $lastpay_structure['medical_leave_entitlement']?>" id = "mle">
+									<input type="text" name="medical_leave_entitlement" placeholder="Medical Leave Entitlement" value="<?= $empSalaryRow['medical_leave_entitlement'] ?>" class="form-control" id = "medical_leave_entitlement">
+								</td>
 								<td>Medical Allowance</td>
 								<td>
 									<input type="hidden" name="ma" value ="<?= $lastpay_structure['medical_Allowance']?>" id = "ma">
 									<input type="text" name="medical_allowance" placeholder="Medical Allowance" value="<?= $empSalaryRow['medical_allowance'] ?>" class="form-control" id = "medical_allowance">
 								</td>
+								
+							</tr>
+							<tr>
 								<td>Total Earning</td>
 								<td>
 									<input type="text" name="total_earning" placeholder="Total Earning" value="<?= $empSalaryRow['total_earning'] ?>" class="form-control" id="total_earning">
 								</td>
-							</tr>
-							<tr>
 								<td>Net Pay</td>
 								<td>
 									<input type="text" name="net_pay" placeholder="Net Pay" value="<?= $empSalaryRow['net_pay'] ?>" class="form-control" id="net_pay">
 								</td>
+							</tr>
+							<tr>
 								<td>Total Deduction</td>
 								<td>
 									<input type="text" name="total_deduction" placeholder="Total Deduction" value="<?= $empSalaryRow['total_deduction'] ?>" class="form-control" id="total_deduction" >
@@ -149,12 +157,13 @@
 		const pf = document.getElementById("pf").value;
 		const esi = document.getElementById("esi").value;
 		const ma = document.getElementById("ma").value;
-
+		const mle = document.getElementById("mle").value;
 		//alert(da);
 
 		const DA = basic_pay * da;
 		//const HRA = basic_pay * 0.5;
 		const MA = basic_pay * ma;
+		const MLE = basic_pay * mle;
 		const GrandPay = basic_pay + DA;
 		const PF = GrandPay * pf;
 		const EmployeesStateInsurance = GrandPay * esi;
@@ -168,6 +177,7 @@
 			document.getElementById('Provident_fund').value = PF;
 			document.getElementById('EmployeesStateInsurance').value = EmployeesStateInsurance;
 			document.getElementById('medical_allowance').value = MA;
+			document.getElementById('medical_leave_entitlement').value = MLE;
 			document.getElementById('total_earning').value = GrandPay;
 			document.getElementById('net_pay').value = NetPay;
 			document.getElementById('total_deduction').value = Deduction;

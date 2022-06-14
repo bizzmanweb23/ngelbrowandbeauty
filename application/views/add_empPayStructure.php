@@ -26,9 +26,9 @@
 					<div id="personal-details">
 						<table width="100%">
 							<tr>
-								<td>Year</td>
+								<td>Year*</td>
 								<td>
-									<select name = "getyear" class="form-control">
+									<select name = "getyear" class="form-control" require>
 									<option>Select Year</option> 
 										<?php  $lasttenYear = (int)date("Y") - 20;
 											$curyear = (int)date("Y");
@@ -37,23 +37,27 @@
 										<?php } ?>
 									</select>
 								</td>	
-							</tr>
-							<tr>
-								<td>Dearness Allowance</td>
+								<td>Employees Insurance</td>
 								<td>
-									<input type="text" name="dearness_allowance" placeholder="DA (Don't use special character)" value ="" class="form-control">
-								</td>
-								<td>Provident Fund</td>
-								<td>
-									<input type="text" name="Provident_fund" value ="" placeholder="PF" class="form-control">
+									<input type="text" name="employees_state_insurance" placeholder="Insurance" value ="" class="form-control">
 								</td>
 							</tr>
 							<tr>
+								<td>Commission </td>
+								<td>
+									<input type="text" name="dearness_allowance" placeholder="Commission (Don't use special character)" value ="" class="form-control">
+								</td>
+								<td>Central Provident Fund</td>
+								<td>
+									<input type="text" name="Provident_fund" value ="" placeholder="CPF" class="form-control">
+								</td>
+							</tr>
+							<tr>
+								<td>Medical Leave Entitlement </td>
+								<td>
+									<input type="text" name="medical_leave_entitlement" placeholder="Medical Leave Entitlement" value="" class="form-control">
+								</td>
 								
-								<td>Employees State Insurance</td>
-								<td>
-									<input type="text" name="employees_state_insurance" placeholder="ESI" value ="" class="form-control">
-								</td>
 								<td>Medical Allowance</td>
 								<td>
 									<input type="text" name="medical_allowance" placeholder="Medical Allowance" value="" class="form-control">

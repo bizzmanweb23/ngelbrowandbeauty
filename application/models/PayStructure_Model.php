@@ -39,6 +39,7 @@ class PayStructure_Model extends CI_Model
 				'provident_Fund' 		=> $row['provident_Fund'],
 				'ESI' 					=> $row['ESI'],
 				'medical_Allowance' 	=> $row['medical_Allowance'],
+				'medical_leave_entitlement' 	=> $row['medical_leave_entitlement'],
 				
 			);	
 

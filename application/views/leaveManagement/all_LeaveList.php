@@ -36,7 +36,8 @@
 							<th>Reason For leave</th>
 							<th>Available Leave</th>
 							<th>Yearly Leave</th>
-							<th>Change Status</th>
+							<th>Medical Certificate</th>
+							<th>Response</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -50,6 +51,11 @@
 							<td><?= $employee_leaveRow['reason_for_leave']?></td>
 							<td><?= $employee_leaveRow['available_leave']?></td>
 							<td><?= $employee_leaveRow['yearly_leave']?></td>
+							<td>
+								<?php if($employee_leaveRow['MC_files'] != ''){ ?>
+									<a href="<?= base_url('uploads/MC_image/'.$employee_leaveRow['MC_files']) ?>" target="_blank" title="MC"><img src="<?= base_url('uploads/MC_image/'.$employee_leaveRow['MC_files']) ?>" width="40" height="40"></a>
+								<?php }else{}  ?>
+							</td>
 							<td>
 								<?php if($employee_leaveRow['status'] == 0){ ?>
 										<span class="btn btn-secondary" style="box-shadow:none !important; text-transform:uppercase;">Leave Pending</span>
@@ -119,7 +125,8 @@
 <link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ajax_datatables/css/jquery.dataTables.css"> 
 <script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery-1.8.2.min.js"></script>
 <script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery.dataTables.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <script>
 	$(function() {
@@ -135,18 +142,14 @@
 	});
 
 	$(document).ready(function(){  	
-  		/*$(".leaveStatus").click(function(){
-			var leaveID = $(this).data('leave_id');
-			$('.status_leaveid').val(leaveID);	
-		});*/
-
+  	
 		$(".leaveStatus").click(function(){
           $("#leaveStatusModel").modal('show');
 		  	var leaveID = $(this).data('leave_id');
 			$('.status_leaveid').val(leaveID);	
         });
 			$(".close_btn").click(function(){
-			$("#editholidays_dataModal").modal("hide"); 
+			$("#leaveStatusModel").modal("hide"); 
 						
         });
 
