@@ -126,7 +126,7 @@
 							?>
 						
 							<div class="table-responsive">
-								<table class="table table-styled mb-0">
+								<table class="table table-bordered table-styled mb-0">
 									<thead>
 										<tr>
 											<th>Customer Name</th>
@@ -175,11 +175,13 @@
 											<td><?= $appointments['end_time']?></td>
 											<td>
 											<?php if($appointments['status'] == 1){ ?>
-												<label class="mb-0 badge badge-primary" title="" data-original-title="Pending">Approved</label>
+												<label class="mb-0 badge badge-primary" style = "background-color: #A020F0;" title="" data-original-title="Pending">Approved</label>
 											<?php }elseif($appointments['status'] == 2){ ?>
-												<label class="mb-0 badge badge-success" title="" data-original-title="Pending">Completed</label>
+												<label class="mb-0 badge badge-success" style = "background-color: #008000;" data-original-title="Pending">Completed</label>
+											<?php }elseif($appointments['status'] == 3){ ?>
+												<label class="mb-0 badge badge-success" style = "background-color: #FF0000;" data-original-title="Pending">Cancel</label>
 											<?php }else{ ?>
-												<label class="mb-0 badge badge-danger" title="" data-original-title="Pending">Pending</label>
+												<label class="mb-0 badge badge-danger" style = "background-color: #FFA500;" title="" data-original-title="Pending">Pending</label>
 											<?php }?>
 											
 											</td>
@@ -537,6 +539,7 @@
         unselectCancel: '',
         resources: <?php echo $cal; ?>,
         select:function(start, end, jsEvent, view, resource) {
+			
         $('#myModal').modal('show');
         $('#thera_id').val(resource.id);
         var dt = new Date();
@@ -577,9 +580,13 @@
 
         $('#start-time').val(start.format('HH:mm'));
         $('#end-time').val(end.format('HH:mm'));
+
+		//console.log(ev_status); 
+
       },
       dayClick: function(date, jsEvent, view, resourceObj) {
-        $('#myModal').modal('show');
+		
+		$('#myModal').modal('show');
         $('#start-date').val(date)
         $('#thera_id').val(resourceObj.id);
         var dt = new Date();
@@ -624,6 +631,7 @@
 
     },
     events: <?php echo $event; ?>,
+	//eventColor: '#FFA500',
 
     });
 

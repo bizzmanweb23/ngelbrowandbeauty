@@ -78,13 +78,14 @@
 										<label for="duration" class="col-sm-6 control-label">Duration 
 										</label>
 										<div class="col-sm-12">
-											<select  class="form-control chosen chosen-select" name="duration" id="duration" data-placeholder="Select Duration" >
+											<input type="Number" class="form-control" name="duration" id="duration" placeholder="Duration (Use only Number)" value="<?= $serviceData['duration']; ?>">
+											<?php /*<select  class="form-control chosen chosen-select" name="duration" id="duration" data-placeholder="Select Duration" >
 														<option value="" selected hidden>Select Duration</option>
 														<option value="30" <?php if($serviceData['duration'] == '30'){echo "Selected";} ?>>30 minutes</option>
 														<option value="60" <?php if($serviceData['duration'] == '60'){echo "Selected";} ?>>60 minutes</option>
 														<option value="90" <?php if($serviceData['duration'] == '90'){echo "Selected";} ?>>90 minutes</option>
 														<option value="120" <?php if($serviceData['duration'] == '120'){echo "Selected";} ?>>120 minutes</option>
-												</select>
+												</select> */ ?>
 										</div>
                 </div>
                 </div>

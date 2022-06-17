@@ -99,9 +99,11 @@
 									<td><?= $appointmentsRow['amount']?></td>
 									<td>
 										<?php if($appointmentsRow['status'] == 1){ ?>
-											<span class="font-weight-bold" style='color: #00008B'></i>Approved</span>
+											<span class="font-weight-bold" style='color: #A020F0'></i>Approved</span>
 										<?php }elseif($appointmentsRow['status'] == 2){ ?>
 											<span class="font-weight-bold" style='color: #008000'></i>Completed</span>
+										<?php }elseif($appointmentsRow['status'] == 3){ ?>
+											<span class="font-weight-bold" style='color: #FF0000'></i>Cancel</span>
 										<?php }else{ ?>
 											<span class="font-weight-bold" style='color: #FFA500;'>Pending</span>
 										<?php }?>
@@ -146,6 +148,7 @@
 									<option value="" hidden>Select Response Option</option>
 									<option value="1">Approved</option>
 									<option value="2">Completed</option>
+									<option value="3">Cancel</option>
 								</select>
 							</div>
 						</div>

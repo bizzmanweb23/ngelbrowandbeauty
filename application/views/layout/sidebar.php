@@ -89,7 +89,7 @@
 		}
 	$permission_sql = "select nbb_permission.* from nbb_permission
 	left join nbb_rolepermission on nbb_permission.id = nbb_rolepermission.permission_id
-	where nbb_rolepermission.role_id ='".$role_id."'"; 
+	WHERE nbb_rolepermission.role_id ='".$role_id."' ORDER BY nbb_permission.menuname ASC"; 
 	 
 	 $permission_query = $this->db->query($permission_sql);
 	 
@@ -101,13 +101,13 @@
 				$menuname =  $permission_row['menuname'];
 
 		?>
-		<?php if( $menuname == 'Service & Categories'){ ?>
+		<?php if( $menuname == 'Service & Appointment'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples4" class="nav-link collapsed" aria-controls="pagesExamples4" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
 						<i class="far fa-calendar-check"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Service & Categories</span>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Service & Appointment</span>
 					</a>
 					<div class="collapse" id="pagesExamples4" style="">
 						<ul class="nav ms-4 ps-3">
@@ -129,6 +129,32 @@
 									<span class="sidenav-normal"> Appointments </span>
 								</a>
 							</li>
+							
+						</ul>
+					</div>
+				</li>
+				<?php }if( $menuname == 'Category Management'){ ?>
+				<li class="nav-item" >
+					<a data-bs-toggle="collapse" href="#pagesExamples8" class="nav-link collapsed" aria-controls="pagesExamples8" role="button" aria-expanded="false">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+						<i class="far fa-calendar-check"></i>
+					</div>
+						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Category Management</span>
+					</a>
+					<div class="collapse" id="pagesExamples8" style="">
+						<ul class="nav ms-4 ps-3">
+							<li class="nav-item ">
+							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_parentCategory">
+									<span class="sidenav-mini-icon"> P </span>
+									<span class="sidenav-normal"> Parent Category </span>
+								</a>
+							</li>
+							<!--li class="nav-item ">
+							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_category">
+									<span class="sidenav-mini-icon"> C </span>
+									<span class="sidenav-normal"> Child Category </span>
+								</a>
+							</li-->
 							
 						</ul>
 					</div>

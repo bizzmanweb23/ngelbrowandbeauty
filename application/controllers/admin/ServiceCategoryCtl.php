@@ -10,7 +10,55 @@ class ServiceCategoryCtl extends CI_Controller {
 		//$this->db2 = $this->load->database('database2', TRUE);
 
 	}
-     
+    
+	public function all_parentCategory()
+    {
+       $data['parentCategory'] = $this->ServiceCategory->getAllParentCategory();
+       $this->layout->view('all_Parentcategory',$data); 
+    }
+	public function add_parentCategory(){
+        if(empty($this->session->has_userdata('id'))){
+         redirect('admin');
+       }
+        $data['name'] = $this->session->userdata('name');
+        
+        $this->layout->view('add_ParentCategory',$data);
+    }
+	public function post_add_ParentCategory(){
+		
+		$Category_data = array(
+			'name' => $this->input->post('name'),
+			'details' => $this->input->post('details')
+		);
+		$result = $this->Main->insert('nbb_parentcategory',$Category_data);
+		
+		if($result == true)
+			{
+				redirect('admin/ServiceCategoryCtl/all_parentCategory');
+			} 
+	}
+	public function edit_parentCategory(){
+		$data['name'] = $this->session->userdata('name');
+		$parentCategoryId = $this->uri->segment(4);
+		$data['ParentCategoryEdit'] = $this->ServiceCategory->getAllParentCategoryEdit($parentCategoryId);
+		$this->layout->view('edit_ParentCategory',$data);
+	}
+	public function post_edit_ParentCategory(){
+
+		$category_id = $this->input->post('category_id');
+		$Category_data = array(
+			'name' => $this->input->post('name'),
+			'details' => $this->input->post('details')
+		);
+		
+		$result = $this->Main->update('id',$category_id, $Category_data,'nbb_parentcategory');
+		if($result == true)
+			{
+				/*$this->session->set_flashdata('status','Category updated successfully! <a href="'. site_url("admin/ServiceCategoryCtl/all_parentCategory") . '" title="Back to product list">Back to list</a>');*/
+
+				redirect('admin/ServiceCategoryCtl/edit_parentCategory/'.$category_id);
+			} 
+	}
 	public function all_category()
     {
        

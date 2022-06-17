@@ -19,6 +19,7 @@ class EmployeeManagement extends CI_Controller {
        
 		$data['name'] = $this->session->userdata('name');
 		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
+		$data['allRoles']=$this->UserManagement->getAllRoles();
        	$this->layout->view('add_EmployeeDetails',$data); 
 
     }
@@ -195,6 +196,13 @@ class EmployeeManagement extends CI_Controller {
 		$data['allemployees'] = $this->EmployeeManagement->getAllArchiveEmployees();
 		$this->layout->view('all_employees',$data); 
 	}
+	/*public function add_Designation()
+    {
+       
+		$data['name'] = $this->session->userdata('name');
+       	$this->layout->view('add_Designation',$data); 
+
+    }*/
 	public function allEmployeeSalary(){
 
 		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeeSalary();

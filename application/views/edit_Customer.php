@@ -144,7 +144,11 @@
 								<label for="contact" class="col-sm-6 control-label">Membership</label>
 								<div class="col-sm-12">
 									<select  class="form-control chosen chosen-select" name="membership" data-placeholder="Select Membership" >
-										<option value="">Select Membership</option>
+										<option value="" hidden>Select Membership</option>
+										<option value="1"<?php if($customerData['membership'] == 1){echo "Selected"; } ?>>Basic Membership</option>
+										<option value="2"<?php if($customerData['membership'] == 2){echo "Selected"; } ?>>Gold Membership</option>
+										<option value="3"<?php if($customerData['membership'] == 3){echo "Selected"; } ?>>VIP Membership</option>
+										<option value="4"<?php if($customerData['membership'] == 4){echo "Selected"; } ?>>Gold Membership </option>
 									</select>
 								</div>
 							</div>

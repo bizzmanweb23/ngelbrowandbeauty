@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ServiceCategory_Model extends CI_Model
 {
 
-     function findList($id,$selectDate){
+    function findList($id,$selectDate){
          $this->db->select('*');
          $this->db->from('nbb_appointment');
          $this->db->where('appointment_date',$selectDate);
@@ -14,9 +14,8 @@ class ServiceCategory_Model extends CI_Model
          //$this->db->join('customer','customer.id=appointment.customer_id');
          return $this->db->get()->result_array();
         //  print_r($this->db->last_query()); 
-        //  die;
-         
-     }
+        //  die;  
+    }
 
     function getBookingAvailable($date,$therapist)
     {
@@ -37,6 +36,33 @@ class ServiceCategory_Model extends CI_Model
         $this->db->select('*');
         $this->db->from('nbb_add_ons');
         return $this->db->get()->result_array();
+    }
+	function getAllParentCategory()
+    {
+        $this->db->select('nbb_parentcategory.*');
+        $this->db->from('nbb_parentcategory');
+        return $this->db->get()->result_array();
+    }
+	function getAllParentCategoryEdit($id)
+    {
+		
+        $this->db->select('nbb_parentcategory.*');
+        $this->db->from('nbb_parentcategory');
+		$this->db->where('id',$id);
+       
+		$parentcategory_query = $this->db->get()->result_array();
+			$data = array();			
+
+			foreach($parentcategory_query as $row){				
+
+				$data = array(
+					'id' 			=> $id,
+					'c_name' 		=> $row['name'],
+					'details' 		=> $row['details'],
+				);	
+
+			}
+			return $data;
     }
     function getAllCategory()
     {

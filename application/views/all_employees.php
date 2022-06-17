@@ -19,7 +19,7 @@
 
             <div class="card" style="border-radius: 15px">
               <div class="card-header">
-                <a href="<?=base_url('admin/employeeManagement/add_employeeDetails')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add New Employee </button></a>
+									<a href="<?=base_url('admin/employeeManagement/add_employeeDetails')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Employee</button></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -74,6 +74,7 @@
       <!-- /.container-fluid -->
     </section>
  </div> 
+
 <style>
 
 body{

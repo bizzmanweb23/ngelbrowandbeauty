@@ -138,18 +138,35 @@ class Welcome extends CI_Controller {
             $event = $this->Auth->getAllEvent();
             $data2 = array();
             foreach($event as $events){
+				$color = null;
                 $resourceId = $events['therapist_id'];  
                 $name = $events['customer_name'];
                 $start = $events['start_date'];
                 $startTime = $events['start_time'];
                 $end = $events['end_date'];
                 $endTime = $events['end_time'];
+				$ev_status = $events['status'];
+
+				if($ev_status == 1){
+					$color = '#A020F0';
+				}
+				elseif($ev_status == 2){
+					$color = '#008000';
+				}
+				elseif($ev_status == 3){
+					$color = '#FF0000';
+				}
+				else{
+					$color = '#FFA500';
+				}
+
                 $data2[] = 
                 [
                     'resourceId' =>$resourceId,
                     'title'=> $name,
                     'start' =>$start.'T'.$startTime,
                     'end'=>$end.'T'.$endTime,
+					'color' => $color,
                 ];    
             }    //$data['therapy']= $therapy;
             $data['service'] = $this->Auth->getAllServices();
