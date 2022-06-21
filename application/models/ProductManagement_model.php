@@ -24,10 +24,14 @@ class ProductManagement_model extends CI_Model
 		}
 	function getAllProduct()
 		{
-			$this->db->select('nbb_product.*,nbb_product_category.name as category_name,nbb_supplier.supplier_name,nbb_supplier.supplier_name,supplier_code');
+			$this->db->select('nbb_product.*,
+			nbb_parentcategory.name as category_name,
+			nbb_supplier.supplier_name,
+			nbb_supplier.supplier_name,
+			nbb_supplier.supplier_code');
 			$this->db->from('nbb_product');
-			$this->db->join('nbb_product_category', 'nbb_product_category.id = nbb_product.categorie_id', 'LEFT');
-			$this->db->join('nbb_supplier', 'nbb_supplier.id = nbb_product.supplier_name', 'LEFT');
+			$this->db->join('nbb_parentcategory', 'nbb_parentcategory.id = nbb_product.categorie_id', 'LEFT');
+			$this->db->join('nbb_supplier', 'nbb_supplier.id = nbb_product.supplier_id', 'LEFT');
 			return $this->db->get()->result_array();
 		}
 	function getAllProductImage($product_id)

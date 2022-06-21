@@ -526,6 +526,7 @@
 			center: 'title',
 			right: 'month,agendaDay'
 		},
+	
 		defaultView: 'month',
         //groupByResource: true,
         selectable: 'false',
@@ -536,8 +537,16 @@
 		slotDuration: '00:30:00',
     	slotLabelInterval: 30,
    		slotMinutes: 30,
+		
         unselectCancel: '',
+		
         resources: <?php echo $cal; ?>,
+		/*slotLabelFormat:
+		{
+		hour: '00:00',
+		minute: '00:00',
+		omitZeroMinute: true,
+		},*/
         select:function(start, end, jsEvent, view, resource) {
 			
         $('#myModal').modal('show');
@@ -631,6 +640,7 @@
 
     },
     events: <?php echo $event; ?>,
+
 	//eventColor: '#FFA500',
 
     });

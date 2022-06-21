@@ -42,7 +42,7 @@
 														<select  class="form-control chosen chosen-select-deselect" name="service_category" id="category">
 															<option value="" selected hidden>Select Category</option>
 															<?php foreach($category as $categorys): ?>
-															<option value="<?= $categorys['id']?>" <?php if($categorys['id'] == $serviceData['service_category']){echo "Selected";} ?>><?= $categorys['category_name']?></option>
+															<option value="<?= $categorys['id']?>" <?php if($categorys['id'] == $serviceData['service_category']){echo "Selected";} ?>><?= $categorys['name']?></option>
 														<?php endforeach; ?> 
 														</select>
 												</div>

@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Service Category</h1>
+            <h1>Category Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -27,8 +27,8 @@
                 <table class="table table-bordered" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
                   <tr>
-                    <th>Category Name</th>
-                    <th>category image</th>
+                    <th>Parent Category</th>
+                    <th>Category image</th>
                     <th>Category Detail</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -37,8 +37,8 @@
                   <tbody>
                     <?php foreach($category as $categories): ?>
                       <tr>
+												<td><?= $categories['parent_name']?></td>
                         <td><?= $categories['category_name']?></td>
-                        <td><img src="<?= base_url('uploads/'.$categories['category_image'])?>" width="40" height="40"></td>
                         <td><?= $categories['category_details']?></td>
                         <td><?php if($categories['status'] == 1){ ?>
 													Active

@@ -67,16 +67,17 @@ class ServiceCategory_Model extends CI_Model
     function getAllCategory()
     {
 		//$db2 = $this->load->database('database2', TRUE);
-        $this->db->select('nbb_category.*');
-        $this->db->from('nbb_category');
+        $this->db->select('nbb_child_category.*,nbb_parentcategory.name as parent_name');
+        $this->db->from('nbb_child_category');
+		$this->db->join('nbb_parentcategory','nbb_parentcategory.id = nbb_child_category.parent_category_id');
 
         return $this->db->get()->result_array();
     }
 	function getAllCategoryEdit($id)
     {
 		//$db2 = $this->load->database('database2', TRUE);
-        $this->db->select('nbb_category.*');
-        $this->db->from('nbb_category');
+        $this->db->select('nbb_child_category.*');
+        $this->db->from('nbb_child_category');
 		$this->db->where('id',$id);
 
         return $this->db->get()->result_array();
@@ -110,9 +111,9 @@ class ServiceCategory_Model extends CI_Model
 	}
     function getAllServices()
     {
-        $this->db->select('nbb_service.*,nbb_category.category_name');
+        $this->db->select('nbb_service.*,nbb_parentcategory.name as category_name');
         $this->db->from('nbb_service');
-        $this->db->join('nbb_category','nbb_category.id = nbb_service.service_category');
+        $this->db->join('nbb_parentcategory','nbb_parentcategory.id = nbb_service.service_category');
         return $this->db->get()->result_array();
     }
 	function getAllServicesPackages(){

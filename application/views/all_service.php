@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Service & Category</h1>
+            <h1>Service Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -29,7 +29,7 @@
                   <tr>
                     <th>Service Name</th>
                     <th>Service Icon</th>
-                    <th>Service Category</th>
+                    <th> Category</th>
                     <th>Description</th>
                     <th>Service price</th>
                     <th>Therapist Commission</th>

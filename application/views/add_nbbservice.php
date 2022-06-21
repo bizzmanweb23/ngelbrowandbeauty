@@ -41,7 +41,7 @@
 														<select  class="form-control chosen chosen-select-deselect" name="service_category" id="category" data-placeholder="Select Service Category" >
 															<option>Select Service Category</option>
 													<?php foreach($category as $categorys): ?>
-													<option value="<?= $categorys['id']?>"><?= $categorys['category_name']?></option>
+													<option value="<?= $categorys['id']?>"><?= $categorys['name']?></option>
 												<?php endforeach; ?> 
 														</select>
 												</div>

@@ -101,7 +101,8 @@ class ProductManagement extends CI_Controller {
 			redirect('admin');
 			}
 		   $data['name'] = $this->session->userdata('name');
-		   $data['category'] = $this->ProductManagement->getAllProductCategory();
+		   //$data['category'] = $this->ProductManagement->getAllProductCategory();
+		   $data['category'] = $this->ServiceCategory->getAllParentCategory();
 		   $data['all_Supplier']=$this->ProcurementManagement->getAllsupplier();
 		   
 		   $this->layout->view('add_product',$data);
@@ -175,7 +176,8 @@ class ProductManagement extends CI_Controller {
 			redirect('admin');
 		}
 		   	$data['name'] = $this->session->userdata('name');
-		   	$data['category'] = $this->ProductManagement->getAllProductCategory();
+		   	//$data['category'] = $this->ProductManagement->getAllProductCategory();
+			$data['category'] = $this->ServiceCategory->getAllParentCategory();
 		   	$productId = $this->uri->segment(4);
 			$data['productDataEdit'] = $this->ProductManagement->getProductDataEdit($productId);
 			$data['all_Supplier']=$this->ProcurementManagement->getAllsupplier();

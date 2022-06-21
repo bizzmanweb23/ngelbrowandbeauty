@@ -33,6 +33,19 @@
 							</div>
 						</div>      
 					</div>
+					<!--<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Category<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select  class="form-control chosen chosen-select-deselect" name="service_category">
+									<option hidden>Select Course Category</option>
+									<?php foreach($category as $categorys): ?>
+									<option value="<?= $categorys['id']?>" <?php if($categorys['id'] == $all_courses['category_id']){?> selected <?php } ?>><?= $categorys['name']?></option>
+									<?php endforeach; ?> 
+								</select>
+							</div>
+						</div> 
+                 	</div>-->
                 </div>  
                 
                 <div class="row">

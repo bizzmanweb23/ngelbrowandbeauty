@@ -23,7 +23,7 @@
               <div class="card-body">
                 <form id="add_package" action="<?= base_url('admin/courseManagement/post_add_course')?>" method="post" enctype="multipart/form-data">
                 <div class="row">
-					<div class="col-md-12">   
+					<div class="col-md-6">   
 						<div class="form-group ">
 							<label for="package_name" class="col-sm-6 control-label">Course Name <i class="required">*</i>
 							</label>
@@ -32,6 +32,20 @@
 							</div>
 						</div>      
 					</div>
+					<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Category
+							<i class="required">*</i></label>
+								<div class="col-sm-12">
+									<select  class="form-control chosen chosen-select-deselect" name="category_id">
+									<option hidden>Select Course Category</option>
+									<?php foreach($category as $categorys): ?>
+									<option value="<?= $categorys['id']?>"><?= $categorys['name']?></option>
+									<?php endforeach; ?> 
+									</select>
+								</div>
+						</div> 
+                 	</div>
                 </div>  
                 
                 <div class="row">

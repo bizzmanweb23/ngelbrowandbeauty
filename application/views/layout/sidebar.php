@@ -117,12 +117,12 @@
 									<span class="sidenav-normal"> Service </span>
 								</a>
 							</li>
-							<li class="nav-item ">
+							<?php /*<li class="nav-item ">
 							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_category">
 									<span class="sidenav-mini-icon"> C </span>
 									<span class="sidenav-normal"> Categories </span>
 								</a>
-							</li>
+							</li>*/ ?>
 							<li class="nav-item ">
 							<a class="nav-link" href="<?= base_url(); ?>admin/ServiceCategoryCtl/appointment">
 							<span class="sidenav-mini-icon"> A </span>
@@ -145,16 +145,16 @@
 						<ul class="nav ms-4 ps-3">
 							<li class="nav-item ">
 							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_parentCategory">
-									<span class="sidenav-mini-icon"> P </span>
-									<span class="sidenav-normal"> Parent Category </span>
+									<span class="sidenav-mini-icon"> M </span>
+									<span class="sidenav-normal"> Main Category </span>
 								</a>
 							</li>
-							<!--li class="nav-item ">
+							<!--<li class="nav-item ">
 							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_category">
 									<span class="sidenav-mini-icon"> C </span>
 									<span class="sidenav-normal"> Child Category </span>
 								</a>
-							</li-->
+							</li>-->
 							
 						</ul>
 					</div>
@@ -169,12 +169,12 @@
 					</a>
 					<div class="collapse" id="pagesTabs2" style="">
 						<ul class="nav ms-4 ps-3">
-							<li class="nav-item ">
+							<!--<li class="nav-item ">
 								<a class="nav-link " href="<?= base_url(); ?>admin/productManagement/all_productcategory">
 									<span class="sidenav-mini-icon"> P </span>
 									<span class="sidenav-normal"> Product Categories </span>
 								</a>
-							</li>
+							</li>-->
 							<li class="nav-item ">
 								<a class="nav-link  " href="<?= base_url(); ?>admin/productManagement/all_product">
 										<span class="sidenav-mini-icon"> P </span>

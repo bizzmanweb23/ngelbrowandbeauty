@@ -54,16 +54,26 @@ class ServiceCategoryCtl extends CI_Controller {
 		$result = $this->Main->update('id',$category_id, $Category_data,'nbb_parentcategory');
 		if($result == true)
 			{
-				/*$this->session->set_flashdata('status','Category updated successfully! <a href="'. site_url("admin/ServiceCategoryCtl/all_parentCategory") . '" title="Back to product list">Back to list</a>');*/
+				$this->session->set_flashdata('status','Category updated successfully! <a href="'. site_url("admin/ServiceCategoryCtl/all_parentCategory") . '" title="Back to product list">Back to list</a>');
 
 				redirect('admin/ServiceCategoryCtl/edit_parentCategory/'.$category_id);
 			} 
 	}
+	public function deleteParentCategory()
+    {
+       if($this->session->has_userdata('id')!=false)
+       {
+           $parentId=$this->uri->segment(4);
+           $result=$this->Main->delete('id',$parentId,'nbb_parentcategory');
+           if($result==true)
+           {
+               redirect('admin/ServiceCategoryCtl/all_parentCategory');
+           }
+       }
+    }
 	public function all_category()
     {
-       
        $data['category'] = $this->ServiceCategory->getAllCategory();
-
        $this->layout->view('all_category',$data); 
     }
 
@@ -72,155 +82,63 @@ class ServiceCategoryCtl extends CI_Controller {
          redirect('admin');
        }
         $data['name'] = $this->session->userdata('name');
+		$data['parentCategory'] = $this->ServiceCategory->getAllParentCategory();
         
         $this->layout->view('add_nbbCategory',$data);
     }
 
 	public function post_add_category()
 	{
-	  $errorUploadType = "";
-	  $statusMsg = "";
-	  if($_POST!=NULL)
-	  	{
-		  if($this->session->has_userdata('id')!=false)
-		  {
-			  if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0)
-			  {
-				  $name = $this->input->post('name');
-				  $details = $this->input->post('details');
-				  $status = $this->input->post('status');
-				  $filesCount = count($_FILES['files']['name']);
+		$Category_data = array(
+			'parent_category_id' => $this->input->post('parent_category'),
+			'category_name' => $this->input->post('name'),
+			'category_details' => $this->input->post('details'),
+			'status' => $this->input->post('status')
+			
+		);
+		$result = $this->Main->insert('nbb_child_category',$Category_data);
+		
+		if($result == true)
+			{
+				redirect('admin/ServiceCategoryCtl/all_category');
+			} 
 
-				  for($i = 0; $i < $filesCount; $i++)
-				  {
-					  $_FILES['file']['name']     = $_FILES['files']['name'][$i]; 
-					  $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
-					  $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
-					  $_FILES['file']['error']    = $_FILES['files']['error'][$i]; 
-					  $_FILES['file']['size']     = $_FILES['files']['size'][$i]; 
-					  $uploadPath = 'uploads/'; 
-					  $config['upload_path'] = $uploadPath; 
-					  $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf|doc|docx'; 
-					  $config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-					  $config['max_height'] = "";
-					  $config['max_width'] = "";
-					  $this->load->library('upload', $config); 
-					  $this->upload->initialize($config);
-
-					  if($this->upload->do_upload('file'))
-					  {
-						  $fileData = $this->upload->data(); 
-						  $uploadData[$i]['category_image'] = $fileData['file_name']; 
-						  $uploadData[$i]['category_name'] = $name;
-						  $uploadData[$i]['category_details'] = $details;
-						  $uploadData[$i]['status'] = $status;
-						  $uploadData[$i]['created_by'] = $this->session->userdata('id');
-						  $uploadData[$i]['created_at'] = date("Y-m-d H:i:s");
-	  
-					  }
-					  else
-					  {
-						  $errorUploadType .= $_FILES['file']['name'].' | ';
-					  }
-
-					  $errorUploadType = !empty($errorUploadType)?'<br/>File Type Error: '.trim($errorUploadType, ' | '):''; 
-				  }
-
-					  if(!empty($uploadData))
-					  {
-						  $insert = $this->ServiceCategory->insert_category($uploadData); 
-						  if($insert==true)
-						  {
-							  redirect('allcategory');
-						  }
-						  else
-						  {
-							  $errorUploadType = 'Some problem occurred, please try again.';
-						  }                   
-					  }
-					  else
-					  {
-						  $statusMsg = "Sorry, there was an error uploading your file.".$errorUploadType;
-					  }
-			  }
-			  else
-			  {
-				  echo "Please Select File to Upload";
-			  }
-		  }
-		  else
-		  {
-			  redirect('admin');
-		  }
-	  }
-	  else
-	  {
-		  redirect('admin');
-	  }
   	}
+
 	public function edit_category(){
-		if(empty($this->session->has_userdata('id'))){
-		redirect('admin');
-	}
+			if(empty($this->session->has_userdata('id'))){
+			redirect('admin');
+		}
 		$data['name'] = $this->session->userdata('name');
 		$serviceCategoryId = $this->uri->segment(4);
 		$data['category'] = $this->ServiceCategory->getAllCategoryEdit($serviceCategoryId);
+		$data['parentCategory'] = $this->ServiceCategory->getAllParentCategory();
 		$this->layout->view('edit_serviceCategory',$data);
 	}
 	public function post_edit_servicecategory()
 	{
 		$servicecategory_id = $this->input->post('servicecategory_id');
+
 			$service_data = array(
+				'parent_category_id' => $this->input->post('parent_category'),
 				'category_name' => $this->input->post('name'),
 				'category_details' => $this->input->post('details'),
 				'status' => $this->input->post('status')
 			);
-			$result = $this->Main->update('id',$servicecategory_id, $service_data,'nbb_category');
+			$result = $this->Main->update('id',$servicecategory_id, $service_data,'nbb_child_category');
 			
-			$this->load->library('upload');
-			if($_FILES['catagoryfiles']['name'] != '')
+		if($result == true)
 			{
-
-				$_FILES['file']['name']       = $_FILES['catagoryfiles']['name'];
-				$_FILES['file']['type']       = $_FILES['catagoryfiles']['type'];
-				$_FILES['file']['tmp_name']   = $_FILES['catagoryfiles']['tmp_name'];
-				$_FILES['file']['error']      = $_FILES['catagoryfiles']['error'];
-				$_FILES['file']['size']       = $_FILES['catagoryfiles']['size'];
-
-				// File upload configuration
-				$uploadPath = 'uploads/';
-				$config['upload_path'] = $uploadPath;
-				$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
-				$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-				$config['max_height'] = "";
-				$config['max_width'] = "";
-
-				// Load and initialize upload library
-				$this->load->library('upload', $config);
-				$this->upload->initialize($config);
-
-				// Upload file to server
-				if($this->upload->do_upload('file')){
-					// Uploaded file data
-					$imageData = $this->upload->data();
-					$uploadImgData['category_image'] = $imageData['file_name'];
-					$uploadImgData['id'] = $servicecategory_id;
-				}
-			if(!empty($uploadImgData)){
-				$update=$this->Main->update('id',$servicecategory_id, $uploadImgData,'nbb_category');         
-			}
-		}
-		if($update==true || $result == true)
-			{
+				$this->session->set_flashdata('status','Category updated successfully! <a href="'. site_url("admin/ServiceCategoryCtl/add_category") . '" title="Back to product list">Back to list</a>');
 				redirect('admin/ServiceCategoryCtl/edit_category/'.$servicecategory_id);
 			}  
 	}
-  public function deleteCategory()
+  	public function deleteCategory()
     {
        if($this->session->has_userdata('id')!=false)
        {
            $categoryId=$this->uri->segment(4);
-           $result=$this->Main->delete('id',$categoryId,'nbb_category');
+           $result=$this->Main->delete('id',$categoryId,'nbb_child_category');
            if($result==true)
            {
                redirect('allcategory');
@@ -244,7 +162,7 @@ class ServiceCategoryCtl extends CI_Controller {
         redirect('admin');
       	}
        $data['name'] = $this->session->userdata('name');
-       $data['category'] = $this->ServiceCategory->getAllCategory();
+       $data['category'] = $this->ServiceCategory->getAllParentCategory();
        $this->layout->view('add_nbbservice',$data);
     }
 	public function post_add_service()
@@ -349,7 +267,7 @@ class ServiceCategoryCtl extends CI_Controller {
 		}
 		$serviceId = $this->uri->segment(4);
 		$data['serviceDataEdit'] = $this->ServiceCategory->getServiceDataEdit($serviceId);
-		$data['category'] = $this->ServiceCategory->getAllCategory();
+		$data['category'] = $this->ServiceCategory->getAllParentCategory();
 		$this->layout->view('edit_service',$data);
    	}
 	public function post_edit_service()

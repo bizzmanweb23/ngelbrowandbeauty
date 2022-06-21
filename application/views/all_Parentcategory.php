@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Service Category</h1>
+            <h1> Category Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -38,9 +38,9 @@
                         <td><?= $parentCategoryRow['name']?></td>
                         <td><?= $parentCategoryRow['details']?></td>
                         <td>
-							<a href="<?= base_url('admin/ServiceCategoryCtl/edit_parentCategory/'.$parentCategoryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-							<a href="<?= base_url('admin/ServiceCategoryCtl/deleteCategory/'. $parentCategoryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
-						</td>
+													<a href="<?= base_url('admin/ServiceCategoryCtl/edit_parentCategory/'.$parentCategoryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
+													<a href="<?= base_url('admin/ServiceCategoryCtl/deleteParentCategory/'. $parentCategoryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+												</td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

@@ -17,12 +17,14 @@ class CourseManagement extends CI_Controller {
 	public function add_Course(){
 
         $data['id'] = $this->session->userdata('id');
+		$data['category'] = $this->ServiceCategory->getAllParentCategory();
         $this->layout->view('add_Course',$data);
     }
 	public function post_add_course(){
 
 		$data = array(
 			'course_name' => $this->input->post('course_name'),
+			'category_id' => $this->input->post('category_id'),
 			'durations' => $this->input->post('durations'),
 			'course_fees' => $this->input->post('course_fees'),
 			'description' => $this->input->post('description'),
@@ -39,6 +41,7 @@ class CourseManagement extends CI_Controller {
 		$data['id'] = $this->session->userdata('id');
 		$id = $this->uri->segment(4);
 		$data['all_courses']=$this->CourseManagement->getEditAllCourses($id);
+		$data['category'] = $this->ServiceCategory->getAllParentCategory();
         $this->layout->view('edit_Course',$data);
 	}
 	public function post_edit_course(){
@@ -47,6 +50,7 @@ class CourseManagement extends CI_Controller {
 
 		$data = array(
 			'course_name' => $this->input->post('course_name'),
+			'category_id' => $this->input->post('category_id'),
 			'durations' => $this->input->post('durations'),
 			'course_fees' => $this->input->post('course_fees'),
 			'description' => $this->input->post('description'),
