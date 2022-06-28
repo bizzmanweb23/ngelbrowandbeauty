@@ -537,16 +537,12 @@
 		slotDuration: '00:30:00',
     	slotLabelInterval: 30,
    		slotMinutes: 30,
-		
+		slotLabelFormat:"HH:mm:a",
         unselectCancel: '',
 		
         resources: <?php echo $cal; ?>,
-		/*slotLabelFormat:
-		{
-		hour: '00:00',
-		minute: '00:00',
-		omitZeroMinute: true,
-		},*/
+		//timeFormat: "H(:mm)",
+		
         select:function(start, end, jsEvent, view, resource) {
 			
         $('#myModal').modal('show');

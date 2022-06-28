@@ -24,7 +24,7 @@
 										<a href="<?=base_url('admin/userManagement/add_adminUser')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom">Add User </button></a>
 									</div>
 									<div class="col-md-2">
-										<a href="<?=base_url('admin/userManagement/all_roles')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom">Add Role </button></a>
+										<a href="<?=base_url('admin/userManagement/all_roles')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom">Add Designation </button></a>
 									</div>
 									<div class="col-md-2">
 										<a href="<?=base_url('admin/userManagement/all_rolePermission')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom"> Assign Permission </button></a>
@@ -39,7 +39,7 @@
                   <tr>
                     <th>User Name</th>
                     <th>Email</th>
-                    <th>Role Name</th>
+                    <th>Designation Name</th>
 										<th>Action</th>
                   </tr>
                   </thead>

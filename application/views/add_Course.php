@@ -6,6 +6,13 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Course Management</h1>
+			<?php $message = $this->session->flashdata('status');
+					if (isset($message)) {
+				?>
+				<div class="alert alert-success">
+					<?= $this->session->flashdata('status') ?>
+				</div>
+			<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -81,7 +88,7 @@
 					</div>
 				</div>  
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="package_status" class="col-sm-6 control-label">FOC Items <i class="required">*</i>
 							</label>
@@ -90,7 +97,7 @@
 							</div>
 						</div> 
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="package_status" class="col-sm-6 control-label">Type Of Cert <i class="required">*</i>
 							</label>
@@ -100,6 +107,31 @@
 						</div> 
 					</div>
 				</div> 
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="package_status" class="col-sm-6 control-label">Trainer  <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<select  class="form-control" name="trainer_id">
+									<option value="" hidden>Select Trainer</option>
+									<?php foreach($trainer_name as $trainer_nameRow): ?>
+									<option value="<?= $trainer_nameRow['id']?>"><?= $trainer_nameRow['first_name'].' '.$trainer_nameRow['last_name']?></option>
+									<?php endforeach; ?> 
+								</select>
+							</div>
+						</div> 
+					</div>
+					<div class="col-md-6">                
+						<div class="form-group ">
+							<label for="image" class="col-sm-6 control-label">Course Image</label>
+							<div class="col-sm-12">
+								<div id="image"></div>
+								<input type="file" name="course_image">
+							</div>
+						</div>
+					</div>
+				</div>
 				<!--<div class="row">
 					<div class="col-md-12">
 						<div class="form-group ">

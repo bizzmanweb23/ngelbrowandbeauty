@@ -1,58 +1,29 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="<?= base_url(); ?>/assets/img/favicon.png">
-  <title>
-  	N'gel Brow & Beauty admin
-  </title>
-  <!--     Fonts and icons     -->
-  
-</head>
 
   <style>
-  .navbar-vertical.navbar-expand-xs {
-  display: block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 15.625rem !important;
-  /*overflow-y: auto;*/
-  padding: 0;
-  box-shadow: none;
-}
-.navbar-vertical.navbar-expand-xs .navbar-collapse {
-    display: block;
-    overflow: auto;
-    height: calc(90vh - 100px) !important;
-}
+	 .navbar-vertical.navbar-expand-xs {
+	display: block;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	max-width: 15.625rem !important;
+	
+	padding: 0;
+	box-shadow: none;
+	}
+	.navbar-vertical.navbar-expand-xs .navbar-collapse {
+		display: block;
+		overflow: auto;
+		height: calc(90vh - 100px) !important;
+	}
+
 </style>
 
-<body class="g-sidenav-show  bg-gray-100">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps ps--active-y" id="sidenav-main" style="background-color: #fff; overflow: hidden;">
+	<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main" style="background-color: #fff;">
     <div class="sidenav-header text-center mb-5">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="" target="_blank">
-        <img src="<?= base_url(); ?>/assets/img/LOGO.png" class="navbar-brand-img" alt="main_logo" style="width:220px; max-height:100px;">
+        <img src="<?= base_url(); ?>/assets/img/LOGO.png" class="navbar-brand-img" alt="main_logo" style="width:220px;">
         
       </a>
     </div>
@@ -400,14 +371,45 @@
 
 					<?php } if( $menuname == 'Course Management'){ ?>
                      
-						<li class="nav-item">
+					<?php /*	<li class="nav-item">
 						 <a class="nav-link" href="<?= base_url(); ?>admin/CourseManagement/all_courses">
 							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
 							 <i class="fa fa-book-open"></i>
 							 </div>
 							 <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Course Management</span>
 						 </a>
-						</li> 
+						</li> */ ?>
+						<li class="nav-item">
+							<a data-bs-toggle="collapse" href="#pagesExamples10" class="nav-link collapsed" aria-controls="pagesExamples10" role="button" aria-expanded="false">
+							<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+								<i class="far fa-handshake"></i>
+							</div>
+								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Course Management</span>
+							</a>
+							<div class="collapse" id="pagesExamples10" style="">
+								<ul class="nav ms-4 ps-3">
+									<li class="nav-item ">
+									<a class="nav-link  " href="<?= base_url(); ?>admin/CourseManagement/all_courses">
+											<span class="sidenav-mini-icon"> C </span>
+											<span class="sidenav-normal"> Courses </span>
+									</a>
+									</li>
+									<li class="nav-item ">
+									<a class="nav-link  " href="<?= base_url(); ?>admin/CourseManagement/all_studentRegistrationForm">
+											<span class="sidenav-mini-icon"> C </span>
+											<span class="sidenav-normal"> Students </span>
+										</a>
+									</li>
+									<?php /* <li class="nav-item ">
+										<a class="nav-link  " href="<?= base_url(); ?>admin/OrderManagement/all_DeliveryDetails">
+											<span class="sidenav-mini-icon"> D </span>
+											<span class="sidenav-normal"> Delivery Management </span>
+										</a>
+									</li>*/ ?>
+								</ul>
+							</div>
+						</li>  
+
 
 		<?php		}
 				}
@@ -427,7 +429,5 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="<?= base_url(); ?>assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-</body>
+  <!--<script src="<?= base_url(); ?>assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>-->
 
-</html>

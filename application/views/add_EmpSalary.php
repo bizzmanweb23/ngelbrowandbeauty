@@ -161,10 +161,9 @@
 		//alert(da);
 		
 		const DA = basic_pay * da;
-		//const HRA = basic_pay * 0.5;
 		const MA = basic_pay * ma;
 		const MLE = basic_pay * mle;
-		const GrandPay = basic_pay + DA;
+		const GrandPay = basic_pay + DA + MA + MLE;
         const PF = GrandPay * pf;
         const EmployeesStateInsurance = GrandPay * esi;
         const Deduction = EmployeesStateInsurance + PF;

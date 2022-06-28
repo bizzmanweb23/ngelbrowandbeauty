@@ -34,7 +34,7 @@
 					</div>
 					<div class="col-md-6">   
 						<div class="form-group ">
-							<label for="role" class="col-sm-6 control-label">Role <i class="required">*</i>
+							<label for="role" class="col-sm-6 control-label">Designation <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
 								<select class="form-control" name="role_id" required>

@@ -9,7 +9,7 @@
 			<?php $message = $this->session->flashdata('status');
 					if (isset($message)) {
 				?>
-				<div class="alert alert-secondary">
+				<div class="alert alert-success">
 					<?= $this->session->flashdata('status') ?>
 				</div>
 			<?php } ?>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $title_for_layout; ?></title>
 
-  <?php $this->load->view('Layout/stylesheets'); ?>
+  <?php $this->load->view('layout/stylesheets'); ?>
 
 </head>
 <body class="hold-transition g-sidenav-show bg-gray-100">
@@ -13,7 +13,7 @@
 
   <!-- Preloader -->
   
-  <?php $this->load->view('Layout_2/top_nav'); ?>
+  <?php $this->load->view('layout_2/top_nav'); ?>
   <!--?php $this->load->view('layout/navbar'); ?-->
   
   <!-- Main Sidebar Container -->
@@ -21,14 +21,14 @@
     <!-- Brand Logo -->
     
 
-    <?php $this->load->view('Layout_2/sidebar'); ?>
+    <?php $this->load->view('layout_2/sidebar'); ?>
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <?php echo $content_for_layout ?>
   <!-- /.content-wrapper -->
-  <?php $this->load->view('Layout_2/footer'); ?>
+  <?php $this->load->view('layout_2/footer'); ?>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -37,7 +37,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<?php $this->load->view('Layout/scripts'); ?>
+<?php $this->load->view('layout/scripts'); ?>
 
 </body>
 </html>

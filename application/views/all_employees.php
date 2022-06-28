@@ -19,6 +19,7 @@
 
             <div class="card" style="border-radius: 15px">
               <div class="card-header">
+									<!--<a href="<?=base_url('admin/employeeManagement/add_Designation')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Designation</button></a>-->
 									<a href="<?=base_url('admin/employeeManagement/add_employeeDetails')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Employee</button></a>
               </div>
               <!-- /.card-header -->
@@ -54,6 +55,7 @@
                         <td><?= $employeesRow['designation_name'] ?></td>
 												<td><?= $employeesRow['jobtype'] ?></td>
                         <td>
+													
 													<a href="<?= base_url('admin/EmployeeManagement/viewEmployeeDetails/'.$employeesRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
 													<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$employeesRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-user-times" aria-hidden="true"></i></a>
 												</td>

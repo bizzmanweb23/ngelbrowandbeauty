@@ -13,24 +13,24 @@ class EmployeeManagement_model extends CI_Model
 	}
 	function getAllemployees(){
 		$this->db->select('nbb_employees.*,
-		nbb_emp_designation.designation_name');
+		nbb_roles.role_name AS designation_name');
 		$this->db->from('nbb_employees');
-		$this->db->join('nbb_emp_designation', 'nbb_emp_designation.id = nbb_employees.designation', 'LEFT');
+		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employees.designation', 'LEFT');
 		$this->db->where('nbb_employees.status', '1');
 		return $this->db->get()->result_array();
 	}
 	function getAllArchiveEmployees(){
 		$this->db->select('nbb_employees.*,
-		nbb_emp_designation.designation_name');
+		nbb_roles.role_name AS designation_name');
 		$this->db->from('nbb_employees');
-		$this->db->join('nbb_emp_designation', 'nbb_emp_designation.id = nbb_employees.designation', 'LEFT');
+		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employees.designation', 'LEFT');
 		$this->db->where('nbb_employees.status', '0');
 		return $this->db->get()->result_array();
 	}
 	function getAllemp_designation(){
 		
-		$this->db->select('nbb_emp_designation.*');
-		$this->db->from('nbb_emp_designation');
+		$this->db->select('nbb_roles.*');
+		$this->db->from('nbb_roles');
 		return $this->db->get()->result_array();
 		
 	}
@@ -71,14 +71,14 @@ class EmployeeManagement_model extends CI_Model
     }
 	function getAllemp_Details($id){
 		$this->db->select('nbb_employees.*,
-		nbb_emp_designation.designation_name,
+		nbb_roles.role_name,
 		nbb_employee_address.full_address,
 		nbb_employee_address.land_mark,
 		nbb_employee_address.city,
 		nbb_employee_address.pincode,
 		nbb_employee_address.state');
 		$this->db->from('nbb_employees');
-		$this->db->join('nbb_emp_designation', 'nbb_emp_designation.id = nbb_employees.designation', 'LEFT');
+		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employees.designation', 'LEFT');
 		$this->db->join('nbb_employee_address', 'nbb_employee_address.emp_id = nbb_employees.id', 'LEFT');
 		$this->db->where('nbb_employees.id', $id);
 		//return $this->db->get()->result_array();
@@ -91,7 +91,7 @@ class EmployeeManagement_model extends CI_Model
 				'emp_number' => $row['emp_number'],
 				'first_name' => $row['first_name'],
 				'last_name' => $row['last_name'],
-				'designation_name' => $row['designation_name'],
+				'designation_name' => $row['role_name'],
 				'employee_photo' => $row['employee_photo'],
 				'aadhaar_number' => $row['aadhaar_number'],
 				'pan_number' => $row['pan_number'],

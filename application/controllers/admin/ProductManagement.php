@@ -288,6 +288,44 @@ class ProductManagement extends CI_Controller {
 		}
 	}
 
+	public function updateBarcode_snap(){
+		//new filename
+		//$product_id = $this->input->post('product_detailsId');
+		$product_id = $this->uri->segment(4);
+		$filename = 'pic_'.$product_id.'_'.date("Y/m/d"). '.jpeg';
+		//echo $_FILES['webcam']['name'];exit;
+
+		if(isset($_FILES['webcam']['tmp_name'])){
+			move_uploaded_file($_FILES['webcam']['tmp_name'],'upload/barcode/'.$filename);
+			//echo $filename;
+			/*$barcode_data = array('barcode' => $filename);
+			$update = $this->Main->update('id',$product_id, $barcode_data,'nbb_product');    
+
+			if($update){
+			redirect('product');
+			}*/
+		}
+		/*$img = $_POST['barcode'];
+		$product_id = $this->input->post('product_detailsId');
+		$folderPath = "upload/barcode/";
+	
+		$image_parts = explode(";base64,", $img);
+		$image_type_aux = explode("image/", $image_parts[0]);
+		$image_type = $image_type_aux[1];
+	
+		$image_base64 = base64_decode($image_parts[1]);
+		//echo $image_base64;exit;
+		$fileName = uniqid() . '.png';
+	
+		$file = $folderPath . $fileName;
+		$file_put_contents = file_put_contents($file, $image_base64);
+		//echo $file_put_contents;exit;
+		//move_uploaded_file($file, $image_base64);
+		$barcode_data = array('barcode' => $fileName);
+		$update = $this->Main->update('id',$product_id, $barcode_data,'nbb_product');    
+
+    	print_r($file);	*/
+	}
 	public function deleteProduct()
 	{
 		 if($this->session->has_userdata('id')!=false)

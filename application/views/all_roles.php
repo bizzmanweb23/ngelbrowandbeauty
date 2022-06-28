@@ -23,7 +23,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group ">
-									<input type="text" class="form-control" name="role_name" placeholder="Enter Role Name" value="">
+									<input type="text" class="form-control" name="role_name" placeholder="Enter Designation Name" value="">
 								</div>    
 							</div>
 							<div class="col-md-4">

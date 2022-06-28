@@ -63,6 +63,7 @@ $route['promotion'] = 'admin/welcome/promotion';
 $route['appointment'] = 'admin/ServiceCategoryCtl/appointment';
 $route['productcategory'] = 'admin/productManagement/all_productcategory';
 $route['product'] = 'admin/productManagement/all_product';
+$route['studentRegistrationForm'] = 'admin/CourseManagement/all_studentRegistrationForm';
 $route['allservice'] = 'admin/ServiceCategoryCtl/service';
 $route['allcategory'] = 'admin/ServiceCategoryCtl/all_category';
 $route['alltherapists'] = 'admin/ServiceCategoryCtl/all_therapists';

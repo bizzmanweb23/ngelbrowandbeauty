@@ -40,7 +40,7 @@
 							<label for="package_detail" class="col-sm-6 control-label">Package Detail <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="package_detail" id="package_detail" placeholder="Package Detail Max Length : 100." value="">
+								<textarea class="form-control" name="package_detail" placeholder="Enter Package Detail" rows="5" cols="80" class="" style="width: 100%;"></textarea>
 							</div>
 						</div>     
                 	</div> 
@@ -72,7 +72,7 @@
 							<label for="package_status" class="col-sm-6 control-label">Package Products <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select multiple class="chosen-select form-control" data-live-search="true" name="productName[]" style="height: 45px !important;" required>
+								<select multiple class="chosen-select form-control" data-live-search="true" name="productName[]" style="height: 42px !important;" required>
                                     <?php foreach($serviceName as $serviceNameRow): ?>
                                     <option value="<?= $serviceNameRow['id']?>"><?= $serviceNameRow['service_name']?></option>
                                 	<?php endforeach; ?>  

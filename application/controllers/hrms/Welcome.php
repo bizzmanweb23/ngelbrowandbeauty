@@ -29,14 +29,14 @@ class Welcome extends CI_Controller {
 			$insert = $this->Empauth->empsignup($data); 
 		if($insert == true)
 		{
-			//return redirect('users');
+			//$this->load->view('hrms/emplogin');
+			return redirect('hrms');
 		}
 		else
 		{
 			$errorUploadType = 'Some problem occurred, please try again.';
 		}
 		
-		$this->load->view('hrms/emplogin');
 	}
 
 	public function post_login()

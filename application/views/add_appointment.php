@@ -44,7 +44,7 @@
               <!-- <?php echo validation_errors(); ?>  -->
               <form id="" action="<?= base_url('admin/ServiceCategoryCtl/post_add_appointment') ?>" method="post" enctype="multipart/form-data">
                 <div class="row">
-										<div class="col-md-6">
+										<div class="col-md-12">
 											<label for="services" class="col-sm-6 control-label">Services<i class="required">*</i></label>
 													<select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control ml-2"  name="service[]" id="services" style="width: 98%;">
 														<?php foreach ($service as $services) : ?>
@@ -52,14 +52,14 @@
 														<?php endforeach; ?>
 													</select>
 										</div>
-										<div class="col-md-6">
+										<!--<div class="col-md-6">
 											<label for="services" class="col-sm-6 control-label">Services Package<i class="required">*</i></label>
 													<select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select form-control ml-2"  name="service[]" id="services" style="width: 98%;">
 														<?php foreach ($service as $services) : ?>
 															<option value="<?= $services['id'] ?>"><?= $services['service_name'] ?></option>
 														<?php endforeach; ?>
 													</select>
-										</div>
+										</div>-->
                 </div>
 
                 <div class="row mt-3">
@@ -73,7 +73,6 @@
 														<?php foreach ($therapist as $therapists) : ?>
 															<option value="<?= $therapists['id'] ?>"><?= $therapists['first_name']." ". $therapists['last_name'] ?></option>
 														<?php endforeach; ?>
-
 													</select>
 												</div>
 											</div>
@@ -355,7 +354,7 @@
                   ' <label for="customer_number" class="col-sm-6 control-label">Customer Contact Number <i class="required">*</i>'+
                   '  </label>'+
                   ' <div class="row">'+
-                  ' <div class="col-sm-7">'+
+                  ' <div class="col-sm-8">'+
                   '  <input type="text" class="form-control" name="customer_number" id="customer_number"  value="">'+
                   '<div class="customer_data">'+
                   
@@ -391,9 +390,11 @@
         }
         else{
           $('.customer_data').html('');
-          $('.customer_data').html('<div class="" style="padding:0px; margin:0px; background-color:none; color:red;">Data Not Found</div>');
-          $('.new_customer_data').html('');
-          $('.new_customer_data').html('<div class="col-sm-12"><a href="<?= base_url('admin/welcome/add_customer')?>" target="_blank" data-toggle="tooltip" style="color:#b8860b"><button type="button" class="btn btn-primary btn-custom">Add Customer</button></a></div>');
+          $('.customer_data').html('<div class="col-md-12" style="padding:0px; margin:0px; background-color:none; color:red;">This is not an existing customer.Please provide name and email</div><br>');
+          //$('.new_customer_data').html('');
+					$('.new_customer_data').html('<div class ="row"><div class="col-md-12"><input type="hidden" name="customer_id" value=""><div class="form-group"><label for="name" class="col-md-12 control-label">Customer Name</label> <div class="col-md-12"><input class="form-control" type="text" name="customer_name" placeholder="Enter Customer Name." value=""></div><div class="form-group"><label for="email" class="col-md-12 control-label">Email</label> <div class="col-md-12"><input class="form-control" type="email" placeholder="Enter Customer E-mail." name="email" value=""></div></div></div></div>');
+          /*$('.new_customer_data').html('<div class="col-sm-12"><a href="<?= base_url('admin/welcome/add_customer')?>" target="_blank" data-toggle="tooltip" style="color:#b8860b"><button type="button" class="btn btn-primary btn-custom">Add Customer</button></a></div>');*/
+
           //console.log('data not found');
         }
         

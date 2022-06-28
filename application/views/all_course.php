@@ -28,6 +28,7 @@
 					<thead style="background-color:#fff; color:#b8860b;position: sticky;top: 0;">
 					<tr>
 						<th>Course Name</th>
+						<th>Image</th>
 						<th>Durations</th>
 						<th>Fees</th>
 						<th>Description</th>
@@ -40,6 +41,7 @@
 						<?php foreach($all_courses as $courseRow): ?>
 						<tr>
 							<td><?= $courseRow['course_name']?></td>
+							<td><img src="<?= base_url('uploads/course_image/'.$courseRow['course_image'])?>" width="50" height="50"></td>
 							<td><?= $courseRow['durations']?></td>
 							<td><?php if($courseRow['course_fees'] != ''){?>
 								$<?= $courseRow['course_fees']?>

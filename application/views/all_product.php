@@ -90,7 +90,7 @@
 													<?php } ?>
 												</td>
                         <td><?= $productRow['short_description']?></td>
-												<td><?php if($productRow['id']){ ?>
+												<td><?php if($productRow['supplier_id']){ ?>
 													<?= $productRow['supplier_name']?>(<?= $productRow['supplier_code']?>)
 												<?php }else{}?>
 													
@@ -102,7 +102,7 @@
 													echo 'Inactive';
 												} ?></td>
                         <td>
-													
+													<a data-productID="<?= $productRow['id']; ?>" href="javascript:void(0);" class="btn btn-default barCodeScannModal" title="Bar Code Scann" onclick="on_camera()" style="color:#b8860b"><i class="fa fa-camera"></i></a>
 													<a href="<?= base_url('admin/productManagement/editProduct/'.$productRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
 													<a href="<?= base_url('admin/productManagement/deleteProduct/'.$productRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
 												</td>
@@ -150,10 +150,44 @@
         </div>
     </div>
 
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.1/css/bootstrap.min.css">
+		<div id="showBarCodeScannModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Stock Management</h5>
+                    <button type="button" class="close close_btn" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+									
+								<div class = "form-group">
+											<div id="my_camera"></div>
+											<button onClick="take_snapshot()"><i class="fa fa-camera"></i>Take Snapshot</button>
+								
+												<div id="results" ></div>
+
+											<?php /* <form action="<?php echo base_url(); ?>admin/productManagement/updateBarcode_snap" method="post" enctype="multipart/form-data">
+											<input name="product_detailsId" type="hidden" class="modal_product_Id form-control" value=""/>
+											
+											<input name="barcode" type="text" class="form-control" id="modal_barcode" value=""/>
+	
+											<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
+										</form>*/ ?>
+										<input type= "button" value="Save Snapshot" onClick="saveSnap()">
+								</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close_btn" data-dismiss="modal">Cancel</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.1/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+	<script src="<?= base_url(); ?>/assets/webcamjs/webcam.js"></script>
+	<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>-->
+	<script type="text/javascript" src="<?= base_url(); ?>/assets/webcamjs/webcam.min.js"></script>
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
@@ -170,5 +204,56 @@ $(document).ready(function(){
 					
 			});
 
+
+			$(".barCodeScannModal").click(function(){
+          $("#showBarCodeScannModal").modal('show');
+					var product_id = $(this).attr('data-productID');
+     			$("#showBarCodeScannModal .modal_product_Id").val( productID );
+    
+        });
+				$(".close_btn").click(function(){
+						$("#showBarCodeScannModal").modal("hide"); 
+						
+        });
 	});
+			
+// Configure a few settings and attach camera
+		function on_camera() {
+    		Webcam.set({
+				width: 250,
+				height: 230,
+				image_format: 'jpeg',
+				jpeg_quality: 90
+			});
+
+			Webcam.attach('#my_camera');
+					
+		}
+		
+		function take_snapshot() {
+
+			var shutter = new Audio();
+			shutter.autoplay = true;
+			shutter.src = navigator.userAgent.match(/Firefox/) ? '<?= base_url("assets/webcamjs/shutter.ogg")?>' : '<?= base_url("assets/webcamjs/shutter.mp3")?>';
+					shutter.play();
+			
+					Webcam.snap( function(data_uri) {
+						
+							document.getElementById('results').innerHTML = 
+							'<img id = "imageprev" src="'+data_uri+'"/>';
+							document.getElementById("modal_barcode").value = data_uri;
+					} );
+					Webcam.reset();
+			}
+		function saveSnap(){
+
+			// Get base64 value from <img id='imageprev'> source
+			var base64image =  document.getElementById("imageprev").src;
+			
+			 Webcam.upload( base64image, '"<?= base_url(); ?>admin/productManagement/updateBarcode_snap"', function(code, text) {
+				 console.log('Save Successfully');
+				 
+        });
+
+		}
 </script>

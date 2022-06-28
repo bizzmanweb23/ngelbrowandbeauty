@@ -22,7 +22,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <form id="add_promotion" action="<?= base_url('admin/employeeManagement/post_add_emp_details')?>" method="post" enctype="multipart/form-data">
-				<h1 align="center">Employee Registration Form</h1>
+				<h1 class="heading" align="center">Employee Registration Form</h1>
 					<div id="personal-details">
 					<h3 align="center">Personal Deatils</h3>
 
@@ -255,7 +255,7 @@
 									<select name="designation" class="form-control">
 										<option>Select Designation</option>
 										<?php foreach($empDesignation as $empDesignationRow): ?>
-										<option value="<?= $empDesignationRow['id']?>"><?= $empDesignationRow['designation_name']?></option>
+										<option value="<?= $empDesignationRow['id']?>"><?= $empDesignationRow['role_name']?></option>
 										<?php endforeach; ?> 
 									</select>
 								</td>
@@ -325,7 +325,7 @@
 	</script>
 	<style>
 		
-		h3{
+		.heading{
 			background-color: #b8860b;
 			color: white;
 			padding: 5px;
