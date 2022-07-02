@@ -150,30 +150,30 @@
         </div>
     </div>
 
-		<div id="showBarCodeScannModal" class="modal fade" tabindex="-1">
+	<div id="showBarCodeScannModal" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Stock Management</h5>
+                    <h5 class="modal-title">Scann Barcode</h5>
                     <button type="button" class="close close_btn" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
 									
-								<div class = "form-group">
-											<div id="my_camera"></div>
-											<button onClick="take_snapshot()"><i class="fa fa-camera"></i>Take Snapshot</button>
-								
-												<div id="results" ></div>
+					<div class = "form-group">
+						<div id="my_camera"></div>
+						<button onClick="take_snapshot()"><i class="fa fa-camera"></i>Take Snapshot</button>
+			
+							<div id="results" ></div>
 
-											<?php /* <form action="<?php echo base_url(); ?>admin/productManagement/updateBarcode_snap" method="post" enctype="multipart/form-data">
-											<input name="product_detailsId" type="hidden" class="modal_product_Id form-control" value=""/>
-											
-											<input name="barcode" type="text" class="form-control" id="modal_barcode" value=""/>
-	
-											<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
-										</form>*/ ?>
-										<input type= "button" value="Save Snapshot" onClick="saveSnap()">
-								</div>
+						<?php /* <form action="<?php echo base_url(); ?>admin/productManagement/updateBarcode_snap" method="post" enctype="multipart/form-data">
+						<input name="product_detailsId" type="hidden" class="modal_product_Id form-control" value=""/>
+						
+						<input name="barcode" type="text" class="form-control" id="modal_barcode" value=""/>
+
+						<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
+					</form>*/ ?>
+					<input type= "button" value="Save Snapshot" onClick="saveSnap()">
+					</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary close_btn" data-dismiss="modal">Cancel</button>
                     
@@ -185,7 +185,7 @@
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.5.1/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="<?= base_url(); ?>/assets/webcamjs/webcam.js"></script>
+	<!--<script src="<?= base_url(); ?>/assets/webcamjs/webcam.js"></script>-->
 	<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>-->
 	<script type="text/javascript" src="<?= base_url(); ?>/assets/webcamjs/webcam.min.js"></script>
 <script>

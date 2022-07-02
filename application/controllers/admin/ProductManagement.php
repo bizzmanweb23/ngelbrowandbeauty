@@ -359,7 +359,7 @@ class ProductManagement extends CI_Controller {
 			$product_image = $_POST['productimage'];
 			$productId = $_POST['productId'];
 			$result=$this->Main->delete('id',$imageId,'nbb_product_image');
-			unlink(base_url(base_url("uploads/product_img/".$product_image)));
+			unlink(base_url("uploads/product_img/".$product_image));
 			
 		}
 	}

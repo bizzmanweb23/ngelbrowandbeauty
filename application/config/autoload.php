@@ -145,4 +145,5 @@ $autoload['model'] = array('Auth_Model'=>'Auth',
 'UserManagement_Model'=>'UserManagement',
 'ProcurementManagement_Model'=>'ProcurementManagement',
 'CourseManagement_Model'=>'CourseManagement',
+'LeadManagement_model'=>'LeadManagement',
 );

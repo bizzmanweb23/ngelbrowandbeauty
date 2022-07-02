@@ -409,7 +409,38 @@
 								</ul>
 							</div>
 						</li>  
-
+						<?php } if( $menuname == 'Lead Management'){ ?>
+                     
+						 <li class="nav-item">
+							 <a data-bs-toggle="collapse" href="#pagesExamples11" class="nav-link collapsed" aria-controls="pagesExamples11" role="button" aria-expanded="false">
+							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+								 <i class="far fa-handshake"></i>
+							 </div>
+								 <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Lead Management</span>
+							 </a>
+							 <div class="collapse" id="pagesExamples11" style="">
+								 <ul class="nav ms-4 ps-3">
+									 <li class="nav-item ">
+									 <a class="nav-link  " href="<?= base_url(); ?>admin/LeadManagement/all_leads">
+											 <span class="sidenav-mini-icon"> L </span>
+											 <span class="sidenav-normal"> Leads </span>
+									 </a>
+									 </li>
+									<?php /* <li class="nav-item ">
+									 <a class="nav-link  " href="<?= base_url(); ?>admin/CourseManagement/all_studentRegistrationForm">
+											 <span class="sidenav-mini-icon"> C </span>
+											 <span class="sidenav-normal"> Students </span>
+										 </a>
+									 </li>
+									  <li class="nav-item ">
+										 <a class="nav-link  " href="<?= base_url(); ?>admin/OrderManagement/all_DeliveryDetails">
+											 <span class="sidenav-mini-icon"> D </span>
+											 <span class="sidenav-normal"> Delivery Management </span>
+										 </a>
+									 </li>*/ ?>
+								 </ul>
+							 </div>
+						 </li>  
 
 		<?php		}
 				}

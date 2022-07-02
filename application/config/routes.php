@@ -50,6 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 //$route['default_controller'] = 'login';
+$route['home'] = 'front/Home/all_home';
+
 $route['hrms'] = 'hrms/Login';
 $route['empdashboard'] = 'hrms/welcome/empdashboard';
 $route['admin'] = 'admin/welcome/index';
@@ -70,6 +72,7 @@ $route['alltherapists'] = 'admin/ServiceCategoryCtl/all_therapists';
 $route['deliveryDetails'] = 'admin/OrderManagement/all_DeliveryDetails';
 $route['therapists'] = 'admin/welcome/therapists';
 $route['employees'] = 'admin/employeeManagement/all_employees';
+$route['leads'] = 'admin/LeadManagement/all_leads';
 $route['coupon'] = 'admin/welcome/coupon';
 $route['feedback'] = 'admin/welcome/feedback';
 $route['timeslot'] = 'admin/welcome/timeslot';
