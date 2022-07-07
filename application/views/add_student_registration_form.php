@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Course Management</h1>
+            <h1>Student Management</h1>
 			<?php $message = $this->session->flashdata('status');
 					if (isset($message)) {
 				?>

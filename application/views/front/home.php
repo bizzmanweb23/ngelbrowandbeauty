@@ -8,8 +8,8 @@
         <div class="slide slideResize slide1" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/home-slider-2.jpg);">
           <div class="container">
             <div class="slide-inner2 common-inner">
-              <span class="h1 from-bottom">Skin Care Solution</span><br>
-              <span class="h4 from-bottom">We provide best screen care & aging solution </span><br>
+              <span class="h1 from-bottom">Welcome to n'gel</span><br>
+              <span class="h4 from-bottom">We provide best skin care & aging solution </span><br>
               <a href="javascript:void(0)" class="btn btn-primary first-btn waves-effect waves-light scale-up">More Details</a>
             </div>
           </div>
@@ -19,7 +19,7 @@
 				<div class="slide slideResize slide2" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/home-slider-1.jpg);">
           <div class="container">
             <div class="slide-inner1 common-inner">
-              <span class="h1 from-bottom">Welcome to Angel</span><br>
+              <span class="h1 from-bottom">Skin Care Solution</span><br>
               <span class="h4 from-bottom">The best place of Mindfullness & Healthy body</span><br>
               <a href="javascript:void(0)" class="btn btn-primary first-btn waves-effect waves-light scale-up">More Details</a>
             </div>

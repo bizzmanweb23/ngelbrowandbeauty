@@ -157,7 +157,15 @@ class CourseManagement extends CI_Controller {
 
         $data['id'] = $this->session->userdata('id');
 		$data['all_courses']=$this->CourseManagement->getAllCourses();
-        $this->layout->view('student_registration_form',$data);
+        $this->layout->view('add_student_registration_form',$data);
+    }
+	public function view_studentRegistrationForm(){
+
+        $data['id'] = $this->session->userdata('id');
+		$studentId = $this->uri->segment(4);
+		$data['all_courses'] = $this->CourseManagement->getAllCourses();
+		$data['Student_registration'] = $this->CourseManagement->getEditStudent_registration($studentId);
+        $this->layout->view('view_studentRegistrationForm',$data);
     }
 	public function edit_studentRegistrationForm(){
 
@@ -244,7 +252,7 @@ class CourseManagement extends CI_Controller {
 			'address' => $this->input->post('address'),
 			'city' => $this->input->post('city'),
 			'pin_code' => $this->input->post('pin_code'),
-			'state' => hash('sha512', $this->input->post('state')),
+			'state' =>  $this->input->post('state'),
 			'country' => $this->input->post('country'),
 			'last_university' => $this->input->post('last_university'),
 			'course_id' => $this->input->post('course_id'),

@@ -49,6 +49,7 @@
                             <th>Contact No.</th>
                             <th>Reference Name</th>
                             <th>Source</th>
+														<th>Source Link</th>
                             <th>Action</th>
                           </tr>
                       </thead>
@@ -60,6 +61,7 @@
                         <td><?= $allLeadRow['contact']?></td>
                         <td><?= $allLeadRow['admin_name']?></td>
                         <td><?= $allLeadRow['source_name']?></td>
+												<td><a href = "<?= $allLeadRow['source_link'] ?>" target="_blank" class="btn btn-custom">view</a></td>
                         <td> 
 													<a href="<?= base_url('admin/leadManagement/viewleadDetails/'.$allLeadRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="past transaction history" style="color:#b8860b"><i class="fa fa-eye"></i></a>
 													<a href="<?= base_url('admin/leadManagement/edit_lead/'. $allLeadRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>

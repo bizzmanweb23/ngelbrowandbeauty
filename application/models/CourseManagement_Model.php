@@ -59,6 +59,7 @@ class CourseManagement_Model extends CI_Model
 				$data = array(
 					'id' 				=> $id,
 					'student_photo' 		=> $register_studentRow['photo'],
+					'student_code' 		=> $register_studentRow['student_code'],
 					'first_name' 		=> $register_studentRow['first_name'],
 					'last_name' 		=> $register_studentRow['last_name'],
 					'dob' 		=> $register_studentRow['dob'],

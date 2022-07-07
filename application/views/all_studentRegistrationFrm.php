@@ -50,8 +50,9 @@
 													<td><?= $Student_registrationRow['gender']?></td>
 													<td><?= $Student_registrationRow['address']?></td>
                         <td>
-													<?php /*<a href="<?= base_url('admin/courseManagement/viewEmployeeDetails/'.$allCoursesRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
+													<?php /*
 													<a href="<?= base_url('admin/courseManagement/empArchive/'.$allCoursesRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-user-times" aria-hidden="true"></i></a>*/ ?>
+													<a href="<?= base_url('admin/courseManagement/view_studentRegistrationForm/'.$Student_registrationRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
 													<a href="<?= base_url('admin/courseManagement/edit_studentRegistrationForm/'. $Student_registrationRow['id'])?>" class="btn btn-default" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
 													<a href="<?= base_url('admin/courseManagement/deleteStudent/'. $Student_registrationRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
 												</td>

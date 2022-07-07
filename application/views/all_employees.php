@@ -31,7 +31,7 @@
                     <th>Employee number </th>
                     <th>Employee Name</th>
 										<th>Photo</th>
-										<th>PAN Number</th>
+										<th>Passport No.</th>
                     <th>Date of birth</th>
                     <th>Contact No.</th>
 										<th>Email</th>

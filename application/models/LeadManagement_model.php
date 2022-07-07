@@ -59,6 +59,7 @@ class LeadManagement_model extends CI_Model
 				'reference_name' 		=> $row['reference_name'],
 				'source' 		=> $row['source'],
 				'source_name' 		=> $row['source_name'],
+				'source_link'   => $row['source_link'],
 			);	
 
 		}

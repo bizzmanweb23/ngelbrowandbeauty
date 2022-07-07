@@ -99,11 +99,11 @@
 								<td>Contact Details</td>
 							</tr>
 							<tr>
-								<td>Aadhar Number</td>
+								<td>ID No.</td>
 								<td>
 									<input type="text" name="aadhar_number" placeholder="Aadhar Number" value="" class="form-control" >
 								</td>
-								<td>Pan Card Number</td>
+								<td>Passport No.</td>
 								<td>
 									<input type="text" name="pan_number" placeholder="Pan Card Number" value="" class="form-control" >
 								</td>

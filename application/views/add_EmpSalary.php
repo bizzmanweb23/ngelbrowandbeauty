@@ -40,7 +40,7 @@
 									<select name="designation" class="form-control">
 										<option>Select Designation</option>
 										<?php foreach($empDesignation as $empDesignationRow): ?>
-										<option value="<?= $empDesignationRow['id']?>"><?= $empDesignationRow['designation_name']?></option>
+										<option value="<?= $empDesignationRow['id']?>"><?= $empDesignationRow['role_name']?></option>
 										<?php endforeach; ?> 
 									</select>
 								</td>

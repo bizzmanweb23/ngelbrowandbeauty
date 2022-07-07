@@ -129,16 +129,29 @@
 								</div>
 							</div>
 						</div>
-					</div>     
-					<div class="form-group">
-							<label for="brand_status">Where did you hear about us:</label>
-                            <select class="form-control" name="here_about_us">
-                                 <option value="" hidden>Select 'Hear about us' Name</option>
-                                 <?php foreach ($here_about_us_query as $here_about_us_row) {  ?>
-								 <option value="<?= $here_about_us_row['id'] ?>"<?php if($here_about_us_row['id'] == $leadData['source']){ echo 'selected';} ?>><?= $here_about_us_row['name'] ?></option>
-                                 <?php } ?>
-							</select>
+					</div>   
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="brand_status">Where did you hear about us:</label>
+								<select class="form-control" name="here_about_us">
+									<option value="" hidden>Select 'Hear about us' Name</option>
+									<?php foreach ($here_about_us_query as $here_about_us_row) {  ?>
+									<option value="<?= $here_about_us_row['id'] ?>"<?php if($here_about_us_row['id'] == $leadData['source']){ echo 'selected';} ?>><?= $here_about_us_row['name'] ?></option>
+									<?php } ?>
+								</select>
+							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="address" class="col-md-12 control-label">Source Link</label>
+								<div class="col-md-12">
+									<input type="text" class="form-control" name="source_link" placeholder="Source Link" value="<?= $leadData['source_link'] ?>">
+								</div>
+							</div>  
+						</div>
+					</div>  
+					
 					<div class="form-group">
 						<label for="address" class="col-md-12 control-label">Address
 						</label>

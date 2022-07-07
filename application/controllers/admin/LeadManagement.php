@@ -42,6 +42,7 @@ class LeadManagement extends CI_Controller {
 			'comment' => $this->input->post('comment'),
 			'reference_name' => $this->input->post('reference_name'),
 			'source' => $this->input->post('here_about_us'),
+			'source_link' => $this->input->post('source_link'),
 			'membership' => $this->input->post('membership'),
 			'status' => '1',
 			'created_by' => $this->session->userdata('id'),
@@ -121,6 +122,7 @@ class LeadManagement extends CI_Controller {
 			'comment' => $this->input->post('comment'),
 			'reference_name' => $this->input->post('reference_name'),
 			'source' => $this->input->post('here_about_us'),
+			'source_link' => $this->input->post('source_link'),
 			'membership' => $this->input->post('membership'),
 			'created_by' => $this->session->userdata('id'));
 

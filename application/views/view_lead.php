@@ -95,6 +95,15 @@
 									<?= $leadData['source_name'] ?>
 									</div>
 								</div>
+
+								<div class="row pt-3">
+									<div class="col-sm-3">
+									<h6 class="mb-0">Source Link</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+									<a href = "<?= $leadData['source_link'] ?>" target="_blank" class="btn btn-custom">View</a>
+									</div>
+								</div>
 								
 								<div class="row pt-3">
 									<div class="col-sm-3">
