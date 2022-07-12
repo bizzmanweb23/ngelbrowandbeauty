@@ -37,7 +37,7 @@
 										<th>Email</th>
                     <th>Gender</th>
 										<th>Designation</th>
-                    <th>Employee Type</th>
+                    <th>Job Type</th>
                     <th>Action</th>
                   </tr>
                   </thead>

@@ -30,7 +30,7 @@
               <div class="card-body">
                 <form id="add_package" action="<?= base_url('admin/courseManagement/post_add_course')?>" method="post" enctype="multipart/form-data">
                 <div class="row">
-					<div class="col-md-6">   
+					<div class="col-md-12">   
 						<div class="form-group ">
 							<label for="package_name" class="col-sm-6 control-label">Course Name <i class="required">*</i>
 							</label>
@@ -39,7 +39,7 @@
 							</div>
 						</div>      
 					</div>
-					<div class="col-md-6"> 
+					<!--<div class="col-md-6"> 
 						<div class="form-group ">
 							<label for="category" class="col-sm-6 control-label"> Category
 							<i class="required">*</i></label>
@@ -52,8 +52,38 @@
 									</select>
 								</div>
 						</div> 
+                 	</div>-->
+                </div> 
+				
+				<div class="row">
+					<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Main Category
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<select class="form-control chosen chosen-select-deselect main_category" name="main_category" required>
+									<option>Select Main Category</option>
+									<?php foreach($category as $category_row): ?>
+									<option value="<?= $category_row['id']?>"><?= $category_row['name']?></option>
+									<?php endforeach; ?> 
+								</select>
+							</div>
+						</div> 
                  	</div>
-                </div>  
+					
+                 	<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select class="form-control chosen chosen-select-deselect course_category" name="course_category" required>
+									<option>Select Main Category First</option>
+								
+								</select>
+							</div>
+						</div> 
+                 	</div>
+                </div> 
                 
                 <div class="row">
                   	<div class="col-md-6">   
@@ -168,4 +198,21 @@
 	$(".chosen-select").chosen({
 	no_results_text: "Oops, nothing found!"
 	})
+
+	$(document).ready(function(){
+		$('.main_category').on('change', function(){
+			var main_categoryID = $(this).val();
+			//alert(main_categoryID);
+			
+			$.ajax({
+				type:'GET',
+				url:'<?= base_url("admin/ProductManagement/select_Sub_Category")?>',
+				data: {main_categoryID:main_categoryID},
+				success:function(response){
+					$('.course_category').html(response);
+				}
+			}); 
+			
+		});
+	});
 </script>

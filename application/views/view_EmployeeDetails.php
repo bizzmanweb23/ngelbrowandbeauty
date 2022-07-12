@@ -144,13 +144,7 @@
 									<h6 class="mb-0">Job Type</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-									<?php if($emp_Details['jobtype'] == 'part_time'){ ?>
-										Part Time
-									<?php	}elseif($emp_Details['jobtype'] == 'full_time'){ ?>
-										Full Time
-									<?php }else{ ?>
-										Contrect
-									<?php } ?>
+									<?= $emp_Details['jobtype'] ?>
 									</div>
 								</div>
 								<div class="row pt-2">
@@ -328,7 +322,7 @@
 
 <!--Personal Deatils Modal -->
 <div class="modal fade" id="editPersonalDeatilsModel" tabindex="-1" role="dialog" aria-labelledby="editPersonalDeatilsLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="editPersonalDeatilsLabel">Personal Deatils</h5>
@@ -352,7 +346,7 @@
 			</div>
 			<div class="row pt-2">
 				<div class="col-md-3">
-					<h6 class="mb-0">Aadhaar Number</h6>
+					<h6 class="mb-0">ID No. </h6>
 				</div>
 				<div class="col-md-9 text-secondary">
 					<input type="text" name="aadhaar_number" value ="<?= $emp_Details['aadhaar_number'] ?>" class="form-control">
@@ -360,7 +354,7 @@
 			</div>
 			<div class="row pt-2">
 				<div class="col-md-3">
-					<h6 class="mb-0">PAN Number</h6>
+					<h6 class="mb-0">Passport No.</h6>
 				</div>
 				<div class="col-md-9 text-secondary">
 					<input type="text" name="pan_number" value ="<?= $emp_Details['pan_number'] ?>" class="form-control">
@@ -395,7 +389,7 @@
 					<h6 class="mb-0">Password</h6>
 				</div>
 				<div class="col-md-9 text-secondary">
-					<input type="password" name="password" value ="<?= $emp_Details['password'] ?>" class="form-control">
+					<input type="password" name="password" value ="" class="form-control">
 				</div>
 			</div>
 			<div class="row pt-2">
@@ -432,9 +426,6 @@
 				<div class="col-md-3 text-secondary">
 					<input type="radio" name="gender" value="Female" <?php if($emp_Details['gender'] == 'Female'){ echo 'checked';} ?>><label for="Male">Female </label>
 				</div>
-				<div class="col-md-3 text-secondary">
-					<input type="radio" name="gender" value="Others" <?php if($emp_Details['gender'] == 'Others'){ echo 'checked';} ?>><label for="Male">Others </label>
-				</div>
 			</div>
 			<div class="row pt-2">
 				<div class="col-md-3">
@@ -453,15 +444,12 @@
 				<div class="col-md-3">
 					<h6 class="mb-0">Job Type</h6>
 				</div>
-				<div class="col-md-3 text-secondary">
-					<input type="radio" name="jobtype" value="part_time" <?php if($emp_Details['jobtype'] == 'part_time'){ echo 'checked';} ?>>Part Time
+				<div class="col-md-4 text-secondary">
+					<input type="radio" name="jobtype" value="Commission Staff" <?php if($emp_Details['jobtype'] == 'Commission Staff'){ echo 'checked';} ?>>Commission Staff
 					
 				</div>
 				<div class="col-md-3 text-secondary">
-					<input type="radio" name="jobtype" value="full_time" <?php if($emp_Details['jobtype'] == 'full_time'){ echo 'checked';} ?>>Full Time
-				</div>
-				<div class="col-md-3 text-secondary">
-					<input type="radio" name="jobtype" value="contrect" <?php if($emp_Details['jobtype'] == 'contrect'){ echo 'checked';} ?> >Contrect
+					<input type="radio" name="jobtype" value="Partnerships" <?php if($emp_Details['jobtype'] == 'Partnerships'){ echo 'checked';} ?>>Partnerships
 				</div>
 			</div>
 			<div class=" pt-2 text-center">
@@ -516,5 +504,9 @@ $(document).ready(function(){
   	$(".close_btn").click(function(){
 		$("#editAddressDetailsModal").modal("hide"); 				
     });
+	$(".close_btn").click(function(){
+		$("#editPersonalDeatilsModel").modal("hide"); 				
+    });
+
 });
 </script>

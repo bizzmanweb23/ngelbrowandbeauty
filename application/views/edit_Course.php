@@ -31,7 +31,7 @@
                 <form id="add_package" action="<?= base_url('admin/courseManagement/post_edit_course')?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" class="form-control" name="course_id" value="<?= $all_courses['id']?>">
 				<div class="row">
-					<div class="col-md-6">   
+					<div class="col-md-12">   
 						<div class="form-group ">
 							<label for="package_name" class="col-sm-6 control-label">Course Name <i class="required">*</i>
 							</label>
@@ -40,7 +40,7 @@
 							</div>
 						</div>      
 					</div>
-					<div class="col-md-6"> 
+					<!--<div class="col-md-6"> 
 						<div class="form-group ">
 							<label for="category" class="col-sm-6 control-label"> Category
 							<i class="required">*</i></label>
@@ -53,9 +53,34 @@
 								</select>
 							</div>
 						</div> 
-                 	</div>
+                 	</div>-->
                 </div>  
-                
+                <div class="row">
+					<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Main Category
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control main_category" name="main_category" value="<?= $all_courses['parentcategory_name']?>" readonly>
+							</div>
+						</div> 
+                 	</div>
+					
+                 	<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select class="form-control chosen chosen-select-deselect course_category" name="course_category" required>
+									<option value="" hidden>Select Sub-Category</option>
+									<?php foreach($ChildCategory as $ChildCategoryRow): ?>
+									<option value="<?= $ChildCategoryRow['id']?>"<?php if($all_courses['category_id'] == $ChildCategoryRow['id']){ echo "Selected";} ?>><?= $ChildCategoryRow['child_category_name']?></option>
+									<?php endforeach; ?> 
+								</select>
+							</div>
+						</div> 
+                 	</div>
+                </div> 
                 <div class="row">
                   	<div class="col-md-6">   
 						<div class="form-group ">

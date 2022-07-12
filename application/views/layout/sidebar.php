@@ -120,12 +120,12 @@
 									<span class="sidenav-normal"> Main Category </span>
 								</a>
 							</li>
-							<!--<li class="nav-item ">
+							<li class="nav-item ">
 							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_category">
-									<span class="sidenav-mini-icon"> C </span>
-									<span class="sidenav-normal"> Child Category </span>
+									<span class="sidenav-mini-icon"> S </span>
+									<span class="sidenav-normal"> Sub-Category </span>
 								</a>
-							</li>-->
+							</li>
 							
 						</ul>
 					</div>

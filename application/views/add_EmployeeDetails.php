@@ -91,9 +91,6 @@
 								<td>
 									<input type="radio" name="gender" value="Female" ><label for="Female">Female </label>
 								</td>
-								<td>
-									<input type="radio" name="gender" value="Others" ><label for="Others">Others </label>
-								</td>
 							</tr>
 							<tr>
 								<td>Contact Details</td>
@@ -236,13 +233,10 @@
 							<tr>
 								<td>Job Type</td>
 								<td>
-									<input type="radio" name="jobtype" value="part_time" >Part Time
+									<input type="radio" name="jobtype" value="Commission Staff" >Commission Staff	
 								</td>
 								<td>
-									<input type="radio" name="jobtype" value="full_time">Full Time
-								</td>
-								<td>
-									<input type="radio" name="jobtype" value="contrect" >Contrect
+									<input type="radio" name="jobtype" value="Partnerships ">Partnerships 
 								</td>
 							</tr>
 							<tr>

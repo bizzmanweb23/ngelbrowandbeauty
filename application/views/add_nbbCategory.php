@@ -6,6 +6,13 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1> Category Management</h1>
+						<?php $message = $this->session->flashdata('status');
+								if (isset($message)) {
+							?>
+							<div class="alert alert-success">
+								<?= $this->session->flashdata('status') ?>
+							</div>
+						<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -39,7 +46,7 @@
                 	</div>
                   <div class="col-md-6">             
 										<div class="form-group ">
-												<label for="name" class="col-sm-6 control-label">Child Category Name <i class="required">*</i>
+												<label for="name" class="col-sm-6 control-label">Sub-Category Name <i class="required">*</i>
 												</label>
 												<div class="col-sm-12">
 														<input type="text" class="form-control" name="name" id="name" placeholder="Name Max Length : 100." value="">

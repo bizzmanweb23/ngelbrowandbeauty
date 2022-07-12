@@ -32,23 +32,6 @@
 							</div>
 						</div>
                 	</div>
-					<div class="col-md-6"> 
-						<div class="form-group ">
-							<label for="category" class="col-sm-6 control-label"> Category
-							<i class="required">*</i>
-							</label>
-							<div class="col-sm-12">
-								<select class="form-control chosen chosen-select-deselect" name="product_category" data-placeholder="Select Product Category" required>
-									<option>Select Product Category</option>
-									<?php foreach($category as $category_row): ?>
-									<option value="<?= $category_row['id']?>"><?= $category_row['name']?></option>
-									<?php endforeach; ?> 
-								</select>
-							</div>
-						</div> 
-                 	</div>
-                </div>
-				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="image" class="col-sm-6 control-label">Product SKU </label>
@@ -57,13 +40,32 @@
 							</div>
 						</div>
 					</div>
-                 	<div class="col-md-6"> 
+                </div>
+				<div class="row">
+					<div class="col-md-6"> 
 						<div class="form-group ">
-							<label for="category" class="col-sm-6 control-label"> product Code
+							<label for="category" class="col-sm-6 control-label"> Main Category
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="product_code" placeholder="Product Code Max Length : 50." value="">
+								<select class="form-control chosen chosen-select-deselect main_category" name="main_category" required>
+									<option>Select Main Category</option>
+									<?php foreach($category as $category_row): ?>
+									<option value="<?= $category_row['id']?>"><?= $category_row['name']?></option>
+									<?php endforeach; ?> 
+								</select>
+							</div>
+						</div> 
+                 	</div>
+					
+                 	<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select class="form-control chosen chosen-select-deselect product_category" name="product_category" required>
+									<option>Select Main Category First</option>
+								
+								</select>
 							</div>
 						</div> 
                  	</div>
@@ -201,3 +203,23 @@
       <!-- /.container-fluid -->
     </section>
  </div> 
+
+
+ <script>
+	$(document).ready(function(){
+		$('.main_category').on('change', function(){
+			var main_categoryID = $(this).val();
+			//alert(main_categoryID);
+			
+			$.ajax({
+				type:'GET',
+				url:'<?= base_url("admin/ProductManagement/select_Sub_Category")?>',
+				data: {main_categoryID:main_categoryID},
+				success:function(response){
+					$('.product_category').html(response);
+				}
+			}); 
+			
+		});
+	});
+ </script>

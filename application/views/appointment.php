@@ -18,7 +18,7 @@
 
             <div class="card" style="border-radius: 15px; background-color : #e3e3e3;">
               <div class="card-header">
-                <a href="<?=base_url('admin/ServiceCategoryCtl/add_appointment')?>"><button type="button" class="btn btn-primary btn-custom" style="float: right;">Add New Appointment </button></a>      
+               <!-- <a href="<?=base_url('admin/ServiceCategoryCtl/add_appointment')?>"><button type="button" class="btn btn-primary btn-custom" style="float: right;">Add New Appointment </button></a> -->
               </div>
               <!-- /.card-header -->
               <div class="card-body" style="overflow: auto; height: 100% ">
@@ -46,10 +46,10 @@
 							</div>
 							<div class="col-md-3">
 								<select name = "status" class="form-control getstatus">
-										<option value="" hidden>Search By Status</option> 
-										<option value="0">Pending</option>
-										<option value="1">Approved</option>
-										<option value="2">Completed</option>
+									<option value="" hidden>Search By Status</option> 
+									<option value="0">Pending</option>
+									<option value="1">Approved</option>
+									<option value="2">Completed</option>
 								</select>
 							</div>
 					</div>

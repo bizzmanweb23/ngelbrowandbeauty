@@ -6,6 +6,13 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Edit Service</h1>
+						<?php $message = $this->session->flashdata('status');
+								if (isset($message)) {
+							?>
+							<div class="alert alert-success">
+								<?= $this->session->flashdata('status') ?>
+							</div>
+						<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -34,7 +41,7 @@
 									</div>
 									</div>
 									<div class="col-md-6"> 
-									<div class="form-group ">
+									<div class="form-group">
 											<label for="category" class="col-sm-6 control-label">Service Category
 											<i class="required">*</i>
 											</label>
@@ -49,6 +56,35 @@
 									</div> 
                  </div>
                 </div>
+
+								<div class="row">
+									<div class="col-md-6"> 
+											<div class="form-group ">
+												<label for="category" class="col-sm-6 control-label"> Main Category
+												<i class="required">*</i>
+												</label>
+												<div class="col-sm-12">
+													<input type="text" class="form-control main_category" name="main_category" value="<?= $serviceData['parentcategory_name'];?>" readonly>
+												</div>
+											</div> 
+														</div>
+										
+										<div class="col-md-6"> 
+											<div class="form-group ">
+												<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
+												<div class="col-sm-12">
+													<select class="form-control chosen chosen-select-deselect service_category" name="service_category" required>
+														<option value="" hidden>Select Sub-Category</option>
+														<?php foreach($ChildCategory as $ChildCategoryRow): ?>
+														<option value="<?= $ChildCategoryRow['id']?>"<?php if($serviceData['service_category'] == $ChildCategoryRow['id']){ echo "Selected";} ?>><?= $ChildCategoryRow['child_category_name']?></option>
+														<?php endforeach; ?> 
+													</select>
+												</div>
+											</div> 
+                 	</div>
+                </div> 
+
+
                 <div class="row">
                 
                 <div class="form-group ">
@@ -159,8 +195,8 @@
 											<label for="image" class="col-sm-6 control-label">Service Icon 
 											</label>
 												<div class="col-sm-12">
-														<div id="image"></div>
-														<input type="file" name="servicefiles">
+														<div id="image"><img id="serviceimg" src="<?php echo site_url() ?>uploads/service_img/<?php echo $serviceData['service_icon'];?>" height="150" width="150"/></div>
+														<input type="file" name="servicefiles" onchange="imgshow(this);">
 												</div>
 										</div>
                   </div>                           
@@ -180,3 +216,19 @@
       <!-- /.container-fluid -->
     </section>
  </div> 
+ <script>
+   function imgshow(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#serviceimg')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>

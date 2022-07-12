@@ -113,7 +113,8 @@ class ProductManagement extends CI_Controller {
 	  $statusMsg = "";
 
 		$product_data = array(
-			'categorie_id' => $this->input->post('product_category'),
+			'categorie_id' => $this->input->post('main_category'),
+			'product_category_id' => $this->input->post('product_category'),
 			'sku' => $this->input->post('product_sku'),
 			'name' => $this->input->post('product_name'),
 			'product_code' => $this->input->post('product_code'),
@@ -133,7 +134,7 @@ class ProductManagement extends CI_Controller {
 			$insert_id = $this->db->insert_id();
 			
 			$this->load->library('upload');
-		$image = array();
+		//$image = array();
 		$ImageCount = count($_FILES['productfiles']['name']);
         for($i = 0; $i < $ImageCount; $i++){
             $_FILES['file']['name']       = $_FILES['productfiles']['name'][$i];
@@ -161,14 +162,11 @@ class ProductManagement extends CI_Controller {
                  $uploadImgData[$i]['image'] = $imageData['file_name'];
 				 $uploadImgData[$i]['product_id'] = $insert_id;
             }
+			$insertImg = $this->db->insert('nbb_product_image',$uploadImgData); 
+
         }
-         if(!empty($uploadImgData)){
-            $insert = $this->ProductManagement->insertproduct($uploadImgData); 
-				if($insert==true)
-				{
-					redirect('product');
-				}           
-        }
+         
+			redirect('product');         
 		
   	}
 	public function editProduct(){
@@ -178,6 +176,7 @@ class ProductManagement extends CI_Controller {
 		   	$data['name'] = $this->session->userdata('name');
 		   	//$data['category'] = $this->ProductManagement->getAllProductCategory();
 			$data['category'] = $this->ServiceCategory->getAllParentCategory();
+			$data['ChildCategory'] = $this->ProductManagement->getAllChildCategory();
 		   	$productId = $this->uri->segment(4);
 			$data['productDataEdit'] = $this->ProductManagement->getProductDataEdit($productId);
 			$data['all_Supplier']=$this->ProcurementManagement->getAllsupplier();
@@ -187,7 +186,7 @@ class ProductManagement extends CI_Controller {
 	{
 	  	$product_id = $this->input->post('product_id');
 			$product_data = array(
-			'categorie_id' => $this->input->post('product_category'),
+			'product_category_id' => $this->input->post('product_category'),
 			'sku' => $this->input->post('product_sku'),
 			'name' => $this->input->post('product_name'),
 			'product_code' => $this->input->post('product_code'),
@@ -205,9 +204,10 @@ class ProductManagement extends CI_Controller {
 			$result=$this->Main->update('id',$product_id, $product_data,'nbb_product');
 			
 			$this->load->library('upload');
-		$image = array();
-		$ImageCount = count($_FILES['productfiles']['name']);
-        for($i = 0; $i < $ImageCount; $i++){
+			$image = array();
+			$ImageCount = count($_FILES['productfiles']['name']);
+   
+	  for($i = 0; $i < $ImageCount; $i++){
             $_FILES['file']['name']       = $_FILES['productfiles']['name'][$i];
             $_FILES['file']['type']       = $_FILES['productfiles']['type'][$i];
             $_FILES['file']['tmp_name']   = $_FILES['productfiles']['tmp_name'][$i];
@@ -218,9 +218,6 @@ class ProductManagement extends CI_Controller {
             $uploadPath = 'uploads/product_img/';
             $config['upload_path'] = $uploadPath;
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-			$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-			$config['max_height'] = "";
-			$config['max_width'] = "";
 
             // Load and initialize upload library
             $this->load->library('upload', $config);
@@ -229,22 +226,24 @@ class ProductManagement extends CI_Controller {
             // Upload file to server
             if($this->upload->do_upload('file')){
                 // Uploaded file data
-                $imageData = $this->upload->data();
-                 $uploadImgData[$i]['image'] = $imageData['file_name'];
-				 $uploadImgData[$i]['product_id'] = $product_id;
+					$imageData = $this->upload->data();
+					$uploadImgData[$i]['image'] = $imageData['file_name'];
+					$uploadImgData[$i]['product_id'] = $product_id;
             }
         }
          if(!empty($uploadImgData)){
-            $insert = $this->ProductManagement->insertproduct($uploadImgData); 		         
+            // Insert files data into the database
+            $insertImg = $this->ProductManagement->insertproduct($uploadImgData);              
         }
-		if($insert==true || $result == true)
+		
+		if($insertImg==true || $result == true)
 			{
 				redirect('admin/productManagement/editProduct/'.$product_id);
 			}  
 		
   	}
-	  public function updateStack_status()
-	  {
+	public function updateStack_status()
+	  	{
 		  if(empty($this->session->has_userdata('id'))){
 			  redirect('admin');
 		  }
@@ -264,7 +263,27 @@ class ProductManagement extends CI_Controller {
 		  {
 			  $errorUploadType = 'Some problem occurred, please try again.';
 		  }      
-	  }
+	}
+	public function select_Sub_Category()
+	{
+ 
+		$main_categoryID = $_GET['main_categoryID'];
+		//echo $task_id;
+		
+		$main_category_sql = "SELECT nbb_child_category.* FROM nbb_child_category WHERE nbb_child_category.parent_category_id = ".$main_categoryID; 
+		$main_category_query = $this->db->query($main_category_sql); 
+		$main_category_result = $main_category_query->result_array();
+		// Generate HTML of state options list 
+		if($main_category_query->num_rows() > 0){ 
+			echo '<option value="" hidden>Select Sub-Category</option>'; 
+			foreach($main_category_result as $main_categoryRow){ 
+				echo '<option value="'.$main_categoryRow['id'].'">'.$main_categoryRow['category_name'].'</option>'; 
+			} 
+		}else{ 
+			echo '<option value="">Sub-Category Not Available</option>'; 
+		} 
+		
+	}
 	public function set_barcode()
 	{
 		$product_id = $_GET['product_id']; 

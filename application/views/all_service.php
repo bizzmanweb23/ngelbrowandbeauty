@@ -45,7 +45,7 @@
                     <?php foreach($service as $services): ?>
                       <tr>
                         <td><?= $services['service_name']?></td>
-                        <td><img src="<?= base_url('uploads/'.$services['service_icon'])?>" width="40" height="40"></td>
+                        <td><img src="<?= base_url('uploads/service_img/'.$services['service_icon'])?>" width="40" height="40"></td>
                         <td><?= $services['category_name']?></td>
                         <td><?php if($services['description'] != ''){ ?>
 													<?= substr($services['description'],0,50); ?>....

@@ -6,6 +6,13 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Add New Service</h1>
+						<?php $message = $this->session->flashdata('status');
+								if (isset($message)) {
+							?>
+							<div class="alert alert-success">
+								<?= $this->session->flashdata('status') ?>
+							</div>
+						<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -23,7 +30,7 @@
               <div class="card-body">
                 <form id="add_promotion" action="<?= base_url('admin/ServiceCategoryCtl/post_add_service')?>" method="post" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col-md-6">   
+                  <div class="col-md-12">   
 									<div class="form-group ">
 											<label for="service_name" class="col-sm-6 control-label">Service Name <i class="required">*</i>
 											</label>
@@ -32,36 +39,47 @@
 											</div>
 									</div>
 									</div>
+                </div>
+								<div class="row">
 									<div class="col-md-6"> 
-									<div class="form-group ">
-											<label for="category" class="col-sm-6 control-label">Service Category
+										<div class="form-group ">
+											<label for="category" class="col-sm-6 control-label"> Main Category
 											<i class="required">*</i>
 											</label>
-												<div class="col-sm-12">
-														<select  class="form-control chosen chosen-select-deselect" name="service_category" id="category" data-placeholder="Select Service Category" >
-															<option>Select Service Category</option>
-													<?php foreach($category as $categorys): ?>
-													<option value="<?= $categorys['id']?>"><?= $categorys['name']?></option>
-												<?php endforeach; ?> 
-														</select>
-												</div>
-									</div> 
-                 </div>
-                </div>
+											<div class="col-sm-12">
+												<select class="form-control chosen chosen-select-deselect main_category" name="main_category">
+													<option>Select Main Category</option>
+													<?php foreach($category as $category_row): ?>
+													<option value="<?= $category_row['id']?>"><?= $category_row['name']?></option>
+													<?php endforeach; ?> 
+												</select>
+											</div>
+										</div> 
+									</div>
+									
+									<div class="col-md-6"> 
+										<div class="form-group ">
+											<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
+											<div class="col-sm-12">
+												<select class="form-control chosen chosen-select-deselect service_category" name="service_category" required>
+													<option>Select Main Category First</option>
+												
+												</select>
+											</div>
+										</div> 
+                 	</div>
+
+								</div>
                 <div class="row">
-                
-                <div class="form-group ">
-                      <label for="Description" class="col-sm-2 control-label">Description
-                      </label>
-                        <div class="col-md-12">
-                            <textarea id="description" name="description" rows="5" cols="80" style = "width: 100%;"></textarea>
-                        </div>
-                  </div>  
-                
-                 </div>         
+									<div class="form-group ">
+											<label for="Description" class="col-sm-2 control-label">Description</label>
+											<div class="col-md-12">
+													<textarea id="description" name="description" rows="5" cols="80" style = "width: 100%;"></textarea>
+											</div>
+									</div>  
+                </div>         
                  
-                 <div class="row">       
-                 
+                <div class="row">       
                 <div class="col-md-6">      
                 <div class="form-group ">
                     <label for="service_price" class="col-sm-6 control-label">Service Price
@@ -145,20 +163,18 @@
                   </div>
                   </div>
                   <div class="col-md-4">                              
-                  <div class="form-group ">
-                    <label for="status" class="col-sm-6 control-label">Status 
-                    <i class="required">*</i>
-                    </label>
-                    <div class="col-sm-12">
-                        <select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
-														<option value="" selected hidden>Select Status</option>
-                            <option value="0">Inactive</option>
-                            <option value="1">Active</option>
-                        </select>
-                        <small class="info help-block">
-                        </small>
-                    </div>
-                  </div>
+										<div class="form-group ">
+											<label for="status" class="col-sm-6 control-label">Status <i class="required">*</i></label>
+											<div class="col-sm-12">
+													<select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
+															<option value="" selected hidden>Select Status</option>
+															<option value="0">Inactive</option>
+															<option value="1">Active</option>
+													</select>
+													<small class="info help-block">
+													</small>
+											</div>
+										</div>
                   </div> 
                   </div>   
 									<div class="col-md-4">
@@ -188,3 +204,21 @@
       <!-- /.container-fluid -->
     </section>
  </div> 
+ <script>
+	$(document).ready(function(){
+		$('.main_category').on('change', function(){
+			var main_categoryID = $(this).val();
+			//alert(main_categoryID);
+			
+			$.ajax({
+				type:'GET',
+				url:'<?= base_url("admin/ProductManagement/select_Sub_Category")?>',
+				data: {main_categoryID:main_categoryID},
+				success:function(response){
+					$('.service_category').html(response);
+				}
+			}); 
+			
+		});
+	});
+ </script>

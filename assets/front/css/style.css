@@ -8393,3 +8393,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle.noUi-handle-upper {
     vertical-align: baseline;
     border-radius: .25em
 }
+.cart_btn ul li{
+	display: inline-block;
+	padding-left: 15px;
+}

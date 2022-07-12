@@ -11,10 +11,10 @@
 
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&amp;family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
   <!-- PLUGINS CSS STYLE -->
   <link href="<?= base_url(); ?>/assets/front/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="#" rel="stylesheet" id="bootstrap-rtl">
   <link href="<?= base_url(); ?>/assets/front/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="<?= base_url(); ?>/assets/front/plugins/animate/animate.css" rel="stylesheet">
 
@@ -28,7 +28,6 @@
  
   <!-- CUSTOM CSS -->
   <link href="<?= base_url(); ?>/assets/front/css/style.css" rel="stylesheet">
-  <link href="#" rel="stylesheet" id="rtl_css">
   <link href="<?= base_url(); ?>/assets/front/css/default.css" rel="stylesheet" id="option_color">
 
   <!-- FAVICON -->
@@ -97,12 +96,12 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="index.html"><img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/logo.png" src="<?= base_url(); ?>/assets/front/img/logo.png" alt="logo"></a>
+          <a class="navbar-brand" href="<?= base_url(); ?>/home"><img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/logo.png" src="<?= base_url(); ?>/assets/front/img/logo.png" alt="logo"></a>
   
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<?= base_url(); ?>/home">Home <span class="sr-only">(current)</span></a>
               </li>
   
               <li class="nav-item">
@@ -125,10 +124,14 @@
           </div>
 
           <div class="cart_btn">
-            <a href="cart.html"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span class="badge">0</span></a>
+							<a href="cart.html"><i class="las la-shopping-cart" style="font-size:32px;" aria-hidden="true"></i><span class="badge">0</span></a>					
           </div>
+					<div class="cart_btn p-3" data-toggle="modal" data-target="#myModal">
+							<a href="javascript:void(0)"><i class="las la-user-alt" style="font-size:32px;"></i></a>
+          </div>
+					
           <!-- header search ends-->
         </div>
       </nav>
-      
+			 
     </header>

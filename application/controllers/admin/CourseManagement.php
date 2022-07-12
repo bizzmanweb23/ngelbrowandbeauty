@@ -13,7 +13,6 @@ class CourseManagement extends CI_Controller {
 
         $data['all_courses']=$this->CourseManagement->getAllCourses();
         $this->layout->view('all_course',$data);
-		//$this->load->view('all_course',$data);
     }
 	public function add_Course(){
 
@@ -26,7 +25,8 @@ class CourseManagement extends CI_Controller {
 
 		$data = array(
 			'course_name' => $this->input->post('course_name'),
-			'category_id' => $this->input->post('category_id'),
+			'main_category_id' => $this->input->post('main_category'),
+			'category_id' => $this->input->post('course_category'),
 			'durations' => $this->input->post('durations'),
 			'course_fees' => $this->input->post('course_fees'),
 			'description' => $this->input->post('description'),
@@ -79,6 +79,7 @@ class CourseManagement extends CI_Controller {
 		$id = $this->uri->segment(4);
 		$data['all_courses']=$this->CourseManagement->getEditAllCourses($id);
 		$data['category'] = $this->ServiceCategory->getAllParentCategory();
+		$data['ChildCategory'] = $this->CourseManagement->getAllChildCategory();
 		$data['trainer_name'] = $this->CourseManagement->getAllTrainer_name();
         $this->layout->view('edit_Course',$data);
 	}
@@ -88,7 +89,7 @@ class CourseManagement extends CI_Controller {
 
 		$data = array(
 			'course_name' => $this->input->post('course_name'),
-			'category_id' => $this->input->post('category_id'),
+			'category_id' => $this->input->post('course_category'),
 			'durations' => $this->input->post('durations'),
 			'course_fees' => $this->input->post('course_fees'),
 			'description' => $this->input->post('description'),

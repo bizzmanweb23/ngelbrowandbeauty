@@ -100,7 +100,8 @@ class ServiceCategoryCtl extends CI_Controller {
 		
 		if($result == true)
 			{
-				redirect('admin/ServiceCategoryCtl/all_category');
+				$this->session->set_flashdata('status','Category add successfully! <a href="'. site_url("admin/ServiceCategoryCtl/all_category") . '" title="Back to Student list">Back to list</a>');
+				redirect('admin/ServiceCategoryCtl/add_category');
 			} 
 
   	}
@@ -169,13 +170,10 @@ class ServiceCategoryCtl extends CI_Controller {
 	{
 	  $errorUploadType = "";
 	  $statusMsg = "";
-	  if($_POST!=NULL)
-	  {
-		  if($this->session->has_userdata('id')!=false)
-		  {
-			  if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0)
-			  {
+		if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0)
+			{
 				  $service_name = $this->input->post('service_name');
+				  $main_category = $this->input->post('main_category');
 				  $service_category = $this->input->post('service_category');
 				  $description = $this->input->post('description');
 				  $service_price = $this->input->post('service_price');
@@ -193,7 +191,7 @@ class ServiceCategoryCtl extends CI_Controller {
 					  $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
 					  $_FILES['file']['error']    = $_FILES['files']['error'][$i]; 
 					  $_FILES['file']['size']     = $_FILES['files']['size'][$i]; 
-					  $uploadPath = 'uploads/'; 
+					  $uploadPath = 'uploads/service_img'; 
 					  $config['upload_path'] = $uploadPath; 
 					  $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf|doc|docx'; 
 					  $config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
@@ -208,6 +206,7 @@ class ServiceCategoryCtl extends CI_Controller {
 						  $uploadData[$i]['service_icon'] = $fileData['file_name']; 
 						  //$uploadData[$i]['type']=$fileData['file_type'];
 						  $uploadData[$i]['service_name'] = $service_name;
+						  $uploadData[$i]['main_category_id'] = $main_category;
 						  $uploadData[$i]['service_category'] = $service_category;
 						  $uploadData[$i]['description'] = $description;
 						  $uploadData[$i]['service_price'] = $service_price;
@@ -234,7 +233,8 @@ class ServiceCategoryCtl extends CI_Controller {
 						  $insert = $this->ServiceCategory->insertService($uploadData); 
 						  if($insert==true)
 						  {
-							  redirect('allservice');
+							$this->session->set_flashdata('status','Service Add successfully! <a href="'.site_url("allservice") .'" title="Back to Service list">Back to list</a>');
+							  redirect('admin/ServiceCategoryCtl/add_service');
 						  }
 						  else
 						  {
@@ -250,17 +250,8 @@ class ServiceCategoryCtl extends CI_Controller {
 			  {
 				  echo "Please Select File to Upload";
 			  }
-		  }
-		  else
-		  {
-			  redirect('admin');
-		  }
-	  }
-	  else
-	  {
-		  redirect('admin');
-	  }
   	}
+	
 	public function editService(){
 		if(empty($this->session->has_userdata('id'))){
 		  redirect('admin');
@@ -268,6 +259,7 @@ class ServiceCategoryCtl extends CI_Controller {
 		$serviceId = $this->uri->segment(4);
 		$data['serviceDataEdit'] = $this->ServiceCategory->getServiceDataEdit($serviceId);
 		$data['category'] = $this->ServiceCategory->getAllParentCategory();
+		$data['ChildCategory'] = $this->ServiceCategory->getAllChildCategory();
 		$this->layout->view('edit_service',$data);
    	}
 	public function post_edit_service()
@@ -298,7 +290,7 @@ class ServiceCategoryCtl extends CI_Controller {
 				$_FILES['file']['size']       = $_FILES['servicefiles']['size'];
 
 				// File upload configuration
-				$uploadPath = 'uploads/';
+				$uploadPath = 'uploads/service_img';
 				$config['upload_path'] = $uploadPath;
 				$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
 				$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
@@ -322,6 +314,7 @@ class ServiceCategoryCtl extends CI_Controller {
 			}
 			if($update==true || $result == true)
 				{
+					$this->session->set_flashdata('status','Service Add successfully! <a href="'.site_url("allservice") .'" title="Back to Service list">Back to list</a>');
 					redirect('admin/ServiceCategoryCtl/editService/'.$service_id);
 				}     
 	}
@@ -344,8 +337,8 @@ class ServiceCategoryCtl extends CI_Controller {
 	public function appointment()
     {
 		$data['therapist'] = $this->ServiceCategory->getAllTherapist();
-		$data['service'] = $this->ServiceCategory->getAllServices();
-       	$data['appointment'] = $this->ServiceCategory->getAllTodayAppointment();
+		$data['service'] = $this->ServiceCategory->getAppointmentServices();
+       //	$data['appointment'] = $this->ServiceCategory->getAllTodayAppointment();
 	   	$data['allAppointment'] = $this->ServiceCategory->getAllAppointment();
      
        $this->layout->view('appointment',$data);

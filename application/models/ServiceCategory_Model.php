@@ -109,11 +109,17 @@ class ServiceCategory_Model extends CI_Model
 		$this->db->order_by("nbb_dashboard.start_date", "DESC");
 		return $this->db->get()->result_array();
 	}
+	function getAppointmentServices()
+    {
+        $this->db->select('nbb_service.*');
+        $this->db->from('nbb_service');
+        return $this->db->get()->result_array();
+    }
     function getAllServices()
     {
-        $this->db->select('nbb_service.*,nbb_parentcategory.name as category_name');
+        $this->db->select('nbb_service.*,nbb_child_category.category_name');
         $this->db->from('nbb_service');
-        $this->db->join('nbb_parentcategory','nbb_parentcategory.id = nbb_service.service_category');
+        $this->db->join('nbb_child_category','nbb_child_category.id = nbb_service.service_category');
         return $this->db->get()->result_array();
     }
 	function getAllServicesPackages(){
@@ -122,9 +128,17 @@ class ServiceCategory_Model extends CI_Model
         return $this->db->get()->result_array();
 	}
 	function getServiceDataEdit($id){
-		$this->db->select('*');
+		$this->db->select('nbb_service.*,nbb_parentcategory.name AS parentcategory_name');
 		$this->db->from('nbb_service');
-		$this->db->where('id',$id);
+		$this->db->join('nbb_parentcategory', 'nbb_parentcategory.id = nbb_service.main_category_id', 'LEFT');
+		$this->db->where('nbb_service.id',$id);
+		return $this->db->get()->result_array();
+	}
+	function getAllChildCategory()
+	{
+		$this->db->select('nbb_child_category.category_name as child_category_name,nbb_child_category.id');
+		$this->db->from('nbb_child_category');
+		$this->db->where('nbb_child_category.parent_category_id','1');
 		return $this->db->get()->result_array();
 	}
     function getServiceByID($id){

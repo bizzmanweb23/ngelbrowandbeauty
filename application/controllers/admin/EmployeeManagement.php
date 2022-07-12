@@ -173,14 +173,22 @@ class EmployeeManagement extends CI_Controller {
 			'gender' => $this->input->post('gender'),
 			'mob_no' => $this->input->post('mob_no'),
 			'email' => $this->input->post('email'),
-			'password' => hash('sha512', $this->input->post('password')),
 			'aadhaar_number' => $this->input->post('aadhaar_number'),
 			'pan_number' => $this->input->post('pan_number'),
 			'jobtype' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
-			'designation' => $this->input->post('designation'));
+			'designation' => $this->input->post('designation')
+			);
 			$update = $this->Main->update('id',$emp_id, $emp_data,'nbb_employees');   
-			if($update){
+
+			if($this->input->post('password') != ''){
+				$pass_data = array(
+					'password' => hash('sha512', $this->input->post('password')),
+				);
+				$update_pass = $this->Main->update('id',$emp_id, $pass_data,'nbb_employees');   
+			}
+
+			if($update == true || $update_pass == true){
 				redirect('admin/EmployeeManagement/viewEmployeeDetails/'.$emp_id);
 			}			
 	}

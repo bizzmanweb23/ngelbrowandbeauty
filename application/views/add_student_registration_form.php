@@ -90,7 +90,6 @@
 			<td>
 			Male <input type="radio" name="gender" value="Male">
 			Female <input type="radio" name="gender" value="Female">
-			Others <input type="radio" name="gender" value="Others">
 			</td>
 			</tr>
 			
@@ -184,20 +183,20 @@
 	//for avtar
 	$(document).ready(function() { 
 		var readURL = function(input) {
-					if (input.files && input.files[0]) {
-							var reader = new FileReader();
-							reader.onload = function (e) {
-									$('.profile-pic').attr('src', e.target.result);
-							}
-							reader.readAsDataURL(input.files[0]);
+			if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+							$('.profile-pic').attr('src', e.target.result);
 					}
+					reader.readAsDataURL(input.files[0]);
 			}
-			$(".file-upload").on('change', function(){
-					readURL(this);
-			});
-			$(".profile-pic-upload-button").on('click', function() {
-				$(".file-upload").click();
-			});
+		}
+		$(".file-upload").on('change', function(){
+				readURL(this);
+		});
+		$(".profile-pic-upload-button").on('click', function() {
+			$(".file-upload").click();
+		});
 	});
 </script>
 <style>

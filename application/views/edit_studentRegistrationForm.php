@@ -90,7 +90,6 @@
 			<td>
 			Male <input type="radio" name="gender" value="Male" <?php if($Student_registration['gender'] == 'Male'){ echo 'checked';} ?>>
 			Female <input type="radio" name="gender" value="Female" <?php if($Student_registration['gender'] == 'Female'){ echo 'checked';} ?>>
-			Others <input type="radio" name="gender" value="Others" <?php if($Student_registration['gender'] == 'Others'){ echo 'checked';} ?>>
 			</td>
 			</tr>
 			

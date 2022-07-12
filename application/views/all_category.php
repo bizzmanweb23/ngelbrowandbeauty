@@ -27,8 +27,8 @@
                 <table class="table table-bordered" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
                   <tr>
-                    <th>Parent Category</th>
-                    <th>Category image</th>
+                    <th>Main Category</th>
+                    <th>Sub-Category</th>
                     <th>Category Detail</th>
                     <th>Status</th>
                     <th>Action</th>

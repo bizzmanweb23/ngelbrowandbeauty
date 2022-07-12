@@ -34,23 +34,6 @@
 							</div>
 						</div>
                 	</div>
-					<div class="col-md-6"> 
-						<div class="form-group ">
-							<label for="category" class="col-sm-6 control-label"> Category
-							<i class="required">*</i>
-							</label>
-							<div class="col-sm-12">
-								<select class="form-control chosen chosen-select-deselect" name="product_category" id="product_category" data-placeholder="Select Product Category" >
-									<option>Select Product Category</option>
-									<?php foreach($category as $category_row): ?>
-									<option value="<?= $category_row['id']?>"<?php if($productData['categorie_id'] == $category_row['id']){ echo "Selected";} ?>><?= $category_row['name']?></option>
-									<?php endforeach; ?> 
-								</select>
-							</div>
-						</div> 
-                 	</div>
-                </div>
-				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="image" class="col-sm-6 control-label">Product SKU </label>
@@ -59,13 +42,42 @@
 							</div>
 						</div>
 					</div>
-                 	<div class="col-md-6"> 
+                </div>
+					
+				<!--<div class="col-md-6"> 
+					<div class="form-group ">
+						<label for="category" class="col-sm-6 control-label"> product Code
+						<i class="required">*</i>
+						</label>
+						<div class="col-sm-12">
+							<input type="text" class="form-control" name="product_code" id="product_code" placeholder="Product Code Max Length : 50." value="<?= $productData['product_code'] ?>">
+						</div>
+					</div> 
+				</div>-->
+                
+				<div class="row">
+					<div class="col-md-6"> 
 						<div class="form-group ">
-							<label for="category" class="col-sm-6 control-label"> product Code
+							<label for="category" class="col-sm-6 control-label"> Main Category
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="product_code" id="product_code" placeholder="Product Code Max Length : 50." value="<?= $productData['product_code'] ?>">
+								<input type="text" class="form-control main_category" name="main_category" value="<?= $productData['parentcategory_name']?>" readonly>
+							</div>
+						</div> 
+                 	</div>
+					
+                 	<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select class="form-control chosen chosen-select-deselect product_category" name="product_category" required>
+									<!--<option value="<?= $productData['product_category_id']?>"><?= $productData['child_category_name']?></option>-->
+									<option value="" hidden>Select Sub-Category</option>
+									<?php foreach($ChildCategory as $ChildCategoryRow): ?>
+									<option value="<?= $ChildCategoryRow['id']?>"<?php if($productData['product_category_id'] == $ChildCategoryRow['id']){ echo "Selected";} ?>><?= $ChildCategoryRow['child_category_name']?></option>
+									<?php endforeach; ?> 
+								</select>
 							</div>
 						</div> 
                  	</div>
@@ -113,7 +125,7 @@
 								<select class="form-control chosen chosen-select-deselect" name="supplier_name" required>
 									<option value="" hidden>Select Supplier Name</option>
 									<?php foreach($all_Supplier as $Supplier_row): ?>
-									<option value="<?= $Supplier_row['id']?>"<?php if($productData['supplier_name'] == $Supplier_row['id']){ echo "Selected";} ?>><?= $Supplier_row['supplier_name']?>(<?= $Supplier_row['supplier_code']?>)</option>
+									<option value="<?= $Supplier_row['id']?>"<?php if($productData['supplier_id'] == $Supplier_row['id']){ echo "Selected";} ?>><?= $Supplier_row['supplier_name']?>(<?= $Supplier_row['supplier_code']?>)</option>
 									<?php endforeach; ?> 
 								</select>
 							</div>
@@ -241,5 +253,7 @@
 		}
 		return false;
 		});
+
+		
 	});	
 </script>

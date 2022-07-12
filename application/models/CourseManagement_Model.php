@@ -6,13 +6,15 @@ class CourseManagement_Model extends CI_Model
 {
 	function getAllCourses()
     {
-      $this->db->select('*');
+      $this->db->select('nbb_course.*,nbb_child_category.category_name');
       $this->db->from('nbb_course');
+	  $this->db->join('nbb_child_category','nbb_child_category.id = nbb_course.category_id');
       return $this->db->get()->result_array();
     }
 	function getEditAllCourses($id){
-		$this->db->select('nbb_course.*');
+		$this->db->select('nbb_course.*,nbb_parentcategory.name AS parentcategory_name');
 		$this->db->from('nbb_course');
+		$this->db->join('nbb_parentcategory', 'nbb_parentcategory.id = nbb_course.main_category_id', 'LEFT');
 		$where = array(
 				'nbb_course.id'   => $id
 				);
@@ -25,6 +27,7 @@ class CourseManagement_Model extends CI_Model
 				$data = array(
 					'id' 				=> $id,
 					'course_name' 		=> $row['course_name'],
+					'parentcategory_name' => $row['parentcategory_name'],
 					'category_id' 		=> $row['category_id'],
 					'description' 		=> $row['description'],
 					'durations' 		=> $row['durations'],
@@ -36,6 +39,13 @@ class CourseManagement_Model extends CI_Model
 
 			}
 			return $data;
+	}
+	function getAllChildCategory()
+	{
+		$this->db->select('nbb_child_category.category_name as child_category_name,nbb_child_category.id');
+		$this->db->from('nbb_child_category');
+		$this->db->where('nbb_child_category.parent_category_id','3');
+		return $this->db->get()->result_array();
 	}
 	function getAllStudent_registration()
     {
