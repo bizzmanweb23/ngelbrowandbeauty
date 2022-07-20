@@ -144,7 +144,7 @@
 									<h6 class="mb-0">Job Type</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-									<?= $emp_Details['jobtype'] ?>
+										<?= $emp_Details['jobtype'] ?>
 									</div>
 								</div>
 								<div class="row pt-2">
@@ -157,6 +157,23 @@
 										}else{ ?>
 											<?= date("d-m-Y", strtotime($emp_Details['date_of_joining'])) ?>
 									<?php } ?>
+									
+									</div>
+								</div>
+								<div class="row pt-2">
+									<div class="col-sm-3">
+									<h6 class="mb-0">Pay Structure</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<?php if($emp_Details['payStructure'] == '1'){
+											echo 'Fixed Pay';
+										}if($emp_Details['payStructure'] == '2'){
+											echo 'Manual Fees';
+										}if($emp_Details['payStructure'] == '3'){
+											echo 'Commission Structure';
+										}else{ 
+											echo '';
+										} ?>
 									
 									</div>
 								</div>
@@ -448,8 +465,24 @@
 					<input type="radio" name="jobtype" value="Commission Staff" <?php if($emp_Details['jobtype'] == 'Commission Staff'){ echo 'checked';} ?>>Commission Staff
 					
 				</div>
-				<div class="col-md-3 text-secondary">
+				<div class="col-md-2 text-secondary">
 					<input type="radio" name="jobtype" value="Partnerships" <?php if($emp_Details['jobtype'] == 'Partnerships'){ echo 'checked';} ?>>Partnerships
+				</div>
+				<div class="col-md-3 text-secondary">
+					<input type="radio" name="jobtype" value="FullTime Staff" <?php if($emp_Details['jobtype'] == 'FullTime Staff'){ echo 'checked';} ?>>Full Time Staff  
+				</div>											
+			</div>
+			<div class="row pt-2">
+				<div class="col-md-3">
+					<h6 class="mb-0">Pay Structure</h6>
+				</div>
+				<div class="col-md-9 text-secondary">
+					<select name="payStructure" class="form-control">
+						<option value="" hidden>Select Pay Structure</option>
+						<option value="1" <?php if($emp_Details['payStructure'] == '1'){ echo 'selected';} ?>>Fixed Pay</option>
+						<option value="2" <?php if($emp_Details['payStructure'] == '2'){ echo 'selected';} ?>>Manual Fees</option>
+						<option value="3" <?php if($emp_Details['payStructure'] == '3'){ echo 'selected';} ?>>Commission Structure</option>
+					</select>
 				</div>
 			</div>
 			<div class=" pt-2 text-center">

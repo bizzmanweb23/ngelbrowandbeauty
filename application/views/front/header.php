@@ -30,6 +30,29 @@
   <link href="<?= base_url(); ?>/assets/front/css/style.css" rel="stylesheet">
   <link href="<?= base_url(); ?>/assets/front/css/default.css" rel="stylesheet" id="option_color">
 
+
+		
+<!--===============================================================================================-->
+<!--<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">-->
+<!--===============================================================================================-->
+	<!--<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<!--<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">-->
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<!--<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/css/main.css">-->
+<!--===============================================================================================-->
+
   <!-- FAVICON -->
   <link href="<?= base_url(); ?>/assets/front/img/favicon.png" rel="shortcut icon">
 
@@ -107,8 +130,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Service</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Services</a>
+                <ul class="dropdown-menu">
+                  <li><a href="service.html">Services</a></li>
+                  <li><a href="single-service.html">Service Details</a></li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Shop</a>

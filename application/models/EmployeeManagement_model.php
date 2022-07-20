@@ -27,6 +27,16 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->where('nbb_employees.status', '0');
 		return $this->db->get()->result_array();
 	}
+	function getAllEmployeeAttendance(){
+		$this->db->select('nbb_employees_attendance.emp_id,
+		nbb_employees_attendance.login,
+		nbb_employees_attendance.logout,
+		nbb_employees.first_name,
+		nbb_employees.last_name');
+		$this->db->from('nbb_employees_attendance');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_employees_attendance.emp_id', 'LEFT');
+		return $this->db->get()->result_array();
+	}
 	function getAllemp_designation(){
 		
 		$this->db->select('nbb_roles.*');
@@ -104,6 +114,7 @@ class EmployeeManagement_model extends CI_Model
 				'husband_name' => $row['husband_name'],
 				'gender' => $row['gender'],
 				'designation' => $row['designation'],
+				'payStructure' => $row['payStructure'],
 				'jobtype' => $row['jobtype'],
 				'date_of_joining' => $row['date_of_joining'],
 				'willing_to_relocate' => $row['willing_to_relocate'],
@@ -116,6 +127,7 @@ class EmployeeManagement_model extends CI_Model
 		}
 		return $data;
 	}
+
 	function getAllEmployeeSalary(){
 		$this->db->select('nbb_employee_salary.*,
 		nbb_employees.emp_number,

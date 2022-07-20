@@ -297,12 +297,12 @@
 											<span class="sidenav-normal"> Employee Salary </span>
 										</a>
 									</li>
-									<li class="nav-item">
+									<!--<li class="nav-item">
 										<a class="nav-link" href="<?= base_url(); ?>admin/Pay_Structure/allPay_Structure">
 											<span class="sidenav-mini-icon"> P </span>
 											<span class="sidenav-normal"> Pay Structure </span>
 										</a>
-									</li>
+									</li>-->
 								</ul>
 							</div>
 						</li>

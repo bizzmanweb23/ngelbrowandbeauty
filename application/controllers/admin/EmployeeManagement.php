@@ -41,6 +41,7 @@ class EmployeeManagement extends CI_Controller {
 			'jobtype' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
 			'designation' => $this->input->post('designation'),
+			'payStructure' => $this->input->post('payStructure'),
 			'willing_to_relocate' => $this->input->post('relocate'),
 			'status' => '1');
 
@@ -132,7 +133,8 @@ class EmployeeManagement extends CI_Controller {
 						$insert4 = $this->EmployeeManagement->storeWorkExperience($experience_data);
 					}
 				}
-			redirect('employees');		
+			$this->session->set_flashdata('status','Employee Add successfully! <a href="'.site_url("employees") .'" title="Back to Employee list">Back to list</a>');
+			redirect('admin/employeeManagement/add_employeeDetails');		
 	}
 	public function generateEmpNumber($id)
 	{
@@ -177,7 +179,8 @@ class EmployeeManagement extends CI_Controller {
 			'pan_number' => $this->input->post('pan_number'),
 			'jobtype' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
-			'designation' => $this->input->post('designation')
+			'designation' => $this->input->post('designation'),
+			'payStructure' => $this->input->post('payStructure')
 			);
 			$update = $this->Main->update('id',$emp_id, $emp_data,'nbb_employees');   
 
@@ -221,6 +224,11 @@ class EmployeeManagement extends CI_Controller {
 		$data['lastpay_structure'] = $this->PayStructure->getLastpay_structure();
 		$data['allemployees'] = $this->EmployeeManagement->getAllemployees();
 		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
+		$data['commission_structure_a'] = $this->PayStructure->getAllcommission_structure_a();
+		$data['commission_structure_b'] = $this->PayStructure->getAllcommission_structure_b();
+		$data['commission_structure_c'] = $this->PayStructure->getAllcommission_structure_c();
+		$data['commission_c_partnership'] = $this->PayStructure->getAllcommission_c_partnership();
+		$data['manual_fee'] = $this->PayStructure->getAllmanual_fee();
        	$this->layout->view('add_EmpSalary',$data); 
 	}
 	public function post_add_employeeSalary(){
@@ -388,16 +396,75 @@ class EmployeeManagement extends CI_Controller {
 	
 		$employeeid =  $this->input->post('employeeName');
 		$login_Time =  $this->input->post('login_Time');
+
+		$pass_date = strtotime($login_Time);
+		$total_days = cal_days_in_month(CAL_GREGORIAN, date('m', $pass_date), date('Y', $pass_date));
+		//echo $total_days;exit;
+		//$empname = $this->EmployeeManagement->getEmployeeNameDownload_attendance($employeeid);
+		$empname = $this->EmployeeManagement->getAllemployees();
+		//$emptime = $this->EmployeeManagement->getAllEmployeeAttendance();
 		
-		$empname = $this->EmployeeManagement->getEmployeeNameDownload_attendance($employeeid);
 		
 		$header_fields = array('Employee Name', 'Login', 'Logout', 'Work Hours'); 
 
 		// get data 
 		$empData = $this->EmployeeManagement->getDownload_attendance($employeeid,$login_Time);
 
+		$contain = '<!DOCTYPE html>
+		<html lang="en">
+		<head>
+		  <title>Attendance Records</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <style>
+			table, td, th {
+			border: 1px solid;
+			}
 
-			$delimiter = ","; 
+			table {
+			width: 50%;
+			border-collapse: collapse;
+			}
+		</style>
+		</head>
+		<body><div>
+		<table>
+		  
+			';
+			foreach($empname as $nameRow){
+				$full_name = $nameRow['first_name'].' '.$nameRow['last_name'];
+					
+			$contain .= '<tr>
+			<th>Employee Name</th>
+			<th>'.$full_name.'</th>';
+				
+			$contain .= '</tr>
+			<tr>
+			  <td>Day</td>';
+			  for($i = 1; $i <= $total_days; $i++) { 
+		$contain .=   '<td>'.$i.'</td>';
+			  }
+	$contain .=  
+			'</tr>
+			<tr>
+			  <td>In</td>
+
+			  <td>10.30</td>
+			</tr>
+			<tr>
+			  <td>Out</td>
+			  <td>7.30</td>
+			  
+			  </tr>';
+			
+			}
+		$contain .=  
+			'</table>
+	  </div>';
+	  echo $contain;
+
+
+		/*	$delimiter = ","; 
 			$filename = "attendance_".$empname.'_'. date('Y-m-d') . ".csv"; 
 
 			// $f = fopen("./uploads/products/csv/".$filename, 'w'); 
@@ -426,7 +493,7 @@ class EmployeeManagement extends CI_Controller {
 			rewind($f);
 			header('Content-Type: application/csv; charset=UTF-8');
 			header('Content-Disposition: attachment; filename="' . $filename . '";');
-			fpassthru($f);
+			fpassthru($f);*/
 
 	}
 	public function post_add_empHoliday(){

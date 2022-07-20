@@ -11,10 +11,34 @@ class PayStructure_Model extends CI_Model
 		parent::__construct();
 
 	}
-
 	function getAllpay_structure(){
 		$this->db->select('nbb_pay_structure.*');
 		$this->db->from('nbb_pay_structure');
+		return $this->db->get()->result_array();
+	}
+	function getAllcommission_structure_a(){
+		$this->db->select('nbb_commission_structure_a.*');
+		$this->db->from('nbb_commission_structure_a');
+		return $this->db->get()->result_array();
+	}
+	function getAllcommission_structure_b(){
+		$this->db->select('nbb_commission_structure_b.*');
+		$this->db->from('nbb_commission_structure_b');
+		return $this->db->get()->result_array();
+	}
+	function getAllcommission_structure_c(){
+		$this->db->select('nbb_commission_structure_c.*');
+		$this->db->from('nbb_commission_structure_c');
+		return $this->db->get()->result_array();
+	}
+	function getAllcommission_c_partnership(){
+		$this->db->select('nbb_commission_c_partnership.*');
+		$this->db->from('nbb_commission_c_partnership');
+		return $this->db->get()->result_array();
+	}
+	function getAllmanual_fee(){
+		$this->db->select('nbb_manual_fee.*');
+		$this->db->from('nbb_manual_fee');
 		return $this->db->get()->result_array();
 	}
 	function storeEmpPay_structure($data)
@@ -68,6 +92,104 @@ class PayStructure_Model extends CI_Model
 		}
 		return $pay_structure_data;
 	}*/
+	function getEditmanual_fee($pay_structureId){
+		$this->db->select('nbb_manual_fee.*');
+		$this->db->from('nbb_manual_fee');
+		$this->db->where('nbb_manual_fee.id',$pay_structureId);
+		
+		$pay_structure_query = $this->db->get()->result_array();
+		$pay_structure_data = array();
+
+		foreach($pay_structure_query as $row){				
+
+			$pay_structure_data = array(
+				'id' 			=> $pay_structureId,
+				'type_of_fee' 	=> $row['type_of_fee'],
+				'amount' 		=> $row['amount'],
+				'status' 		=> $row['status'],	
+			);	
+
+		}
+		return $pay_structure_data;
+	}
+	function getEditcommission_structure_a($commission_feeId){
+		$this->db->select('nbb_commission_structure_a.*');
+		$this->db->from('nbb_commission_structure_a');
+		$this->db->where('nbb_commission_structure_a.id',$commission_feeId);
+		
+		$commission_structure_query = $this->db->get()->result_array();
+		$pay_structure_data = array();
+
+		foreach($commission_structure_query as $row){				
+
+			$pay_structure_data = array(
+				'id' 			=> $commission_feeId,
+				'fee_type' 	=> $row['fee_type'],
+				'amount' 		=> $row['amount'],
+			);	
+
+		}
+		return $pay_structure_data;
+	}
+	function getEditcommission_structure_b($commission_feeId){
+		$this->db->select('nbb_commission_structure_b.*');
+		$this->db->from('nbb_commission_structure_b');
+		$this->db->where('nbb_commission_structure_b.id',$commission_feeId);
+		
+		$commission_structure_query = $this->db->get()->result_array();
+		$pay_structure_data = array();
+
+		foreach($commission_structure_query as $row){				
+
+			$pay_structure_data = array(
+				'id' 			=> $commission_feeId,
+				'fee_Type' 	=> $row['fee_Type'],
+				'amount' 		=> $row['amount'],
+			);	
+
+		}
+		return $pay_structure_data;
+	}
+	function getEditcommission_structure_c($commission_feeId){
+
+		$this->db->select('nbb_commission_structure_c.*');
+		$this->db->from('nbb_commission_structure_c');
+		$this->db->where('nbb_commission_structure_c.id',$commission_feeId);
+		
+		$commission_structure_query = $this->db->get()->result_array();
+		$pay_structure_data = array();
+
+		foreach($commission_structure_query as $row){				
+
+			$pay_structure_data = array(
+				'id' 			=> $commission_feeId,
+				'type_of_fee' 	=> $row['type_of_fee'],
+				'amount' 		=> $row['amount'],
+			);	
+
+		}
+		return $pay_structure_data;
+	}
+	function getEditcommission_c_partnership($commission_feeId){
+
+		$this->db->select('nbb_commission_c_partnership.*');
+		$this->db->from('nbb_commission_c_partnership');
+		$this->db->where('nbb_commission_c_partnership.id',$commission_feeId);
+		
+		$commission_structure_query = $this->db->get()->result_array();
+		$pay_structure_data = array();
+
+		foreach($commission_structure_query as $row){				
+
+			$pay_structure_data = array(
+				'id' 			=> $commission_feeId,
+				'type_of_fee' 	=> $row['type_of_fee'],
+				'amount' 		=> $row['amount'],
+			);	
+
+		}
+		return $pay_structure_data;
+	}
 }
 
 ?>

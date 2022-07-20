@@ -19,12 +19,11 @@
 
             <div class="card" style="border-radius: 15px;height: 35rem;">
               <div class="card-header">
-                <!--<a href="<?=base_url('admin/ServiceCategoryCtl/add_category')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add New Service </button></a>-->
 				
 				<form id="add_category" action="<?= base_url('admin/employeeManagement/exportEmpAttendance')?>" method="post" enctype="multipart/form-data">   
 
 					<div class="row">  
-						<div class="col-md-3">                       
+						<!---<div class="col-md-3">                       
 							<div class="form-group ">
 								<label for="status" class="col-sm-6 control-label">Select Employee 
 								<i class="required">*</i>
@@ -38,7 +37,7 @@
 									</select>
 								</div>
 							</div>
-						</div> 					
+						</div> 	-->				
 						<div class="col-md-3">                       
 							<div class="form-group ">
 								<label for="status" class="col-sm-6 control-label">Reporting Month 

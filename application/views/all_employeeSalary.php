@@ -20,7 +20,8 @@
             <div class="card" style="border-radius: 15px">
               <div class="card-header">
 							
-                <a href="<?=base_url('admin/employeeManagement/add_employeeSalary')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Employee Salary </button></a>
+                <a href="<?=base_url('admin/employeeManagement/add_employeeSalary')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Employee Salary </button></a>&nbsp;&nbsp;
+								<a href="<?=base_url('admin/Pay_Structure/allPay_Structure')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Pay Structure </button></a>
 								<h2>Employee's Salary List</h2>
               </div>
               <!-- /.card-header -->

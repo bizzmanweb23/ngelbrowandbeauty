@@ -6,6 +6,13 @@
         <div class="row mb-2">
           <div class="col-sm-6">
 		  <h1>Employee Management</h1>
+		  	<?php $message = $this->session->flashdata('status');
+					if (isset($message)) {
+				?>
+				<div class="alert alert-success">
+					<?= $this->session->flashdata('status') ?>
+				</div>
+			<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -238,12 +245,25 @@
 								<td>
 									<input type="radio" name="jobtype" value="Partnerships ">Partnerships 
 								</td>
+								<td>
+									<input type="radio" name="jobtype" value="FullTime Staff">Full Time Staff  
+								</td>
 							</tr>
 							<tr>
 								<td>Date Of Joining</td>
 								<td>
 									<input type="date" name = "date_of_joining" value="" class="form-control">
 								</td>
+								<td colspan="1">Willing to relocate</td>
+								<td>
+									<input type="radio" name="relocate" value="1"><label>Yes</label>
+								</td>
+								<td>
+									<input type="radio" name="relocate" value="0"><label>No</label>
+								</td>
+								
+							</tr>
+							<tr>
 								<td>Designation</td>
 								<td>
 									<select name="designation" class="form-control">
@@ -253,13 +273,17 @@
 										<?php endforeach; ?> 
 									</select>
 								</td>
-								<td colspan="1">Willing to relocate</td>
+					
+								<td>Pay Structure</td>
 								<td>
-									<input type="radio" name="relocate" value="1"><label>Yes</label>
+									<select name="payStructure" class="form-control">
+										<option value="" hidden>Select Pay Structure</option>
+										<option value="1">Fixed Pay</option>
+										<option value="2">Manual Fees</option>
+										<option value="3">Commission Structure</option>
+									</select>
 								</td>
-								<td>
-									<input type="radio" name="relocate" value="0"><label>No</label>
-								</td>
+								
 							</tr>
 
 							<tr>

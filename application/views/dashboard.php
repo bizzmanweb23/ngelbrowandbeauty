@@ -529,6 +529,7 @@
 	
 		defaultView: 'month',
         //groupByResource: true,
+		initialView: 'timeGridWeek',
         selectable: 'false',
         selectHelper: 'false',
         unselectAuto: 'true',
@@ -635,7 +636,8 @@
         $('#end-time').val(endTime12Format);
 
     },
-    events: <?php echo $event; ?>,
+	events:[{"resourceId":"7","title":"susmita","start":"2022-07-13T10:30:00","end":"2022-07-13T10:30:00","color":"#FFA500"}],
+    //events: <?php echo $event; ?>,
 
 	//eventColor: '#FFA500',
 
