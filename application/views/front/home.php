@@ -1,71 +1,35 @@
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-					
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">Modal Heading</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						
-						<!-- Modal body -->
-						<div class="modal-body">
-							
-									<span class="login100-form-title p-b-48">
-										<img src="<?= base_url(); ?>assets/front/img/logo.png" alt="" class="img-fluid">
-									</span>
-									<form class="login100-form validate-form">
-										<span class="login100-form-title p-b-26">
-											Welcome
-										</span>
-										<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-											<input class="input100" type="text" name="email">
-											<span class="focus-input100" data-placeholder="Email"></span>
-										</div>
+      <!-- Modal Header -->
+      <div class="modal-header text-center">
+        <img src="<?= base_url(); ?>/assets/front/img/logo.png" alt="" class="img-fluid text-center" style="width: 150px; margin: 0 auto;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
 
-										<div class="wrap-input100 validate-input" data-validate="Enter password">
-											<span class="btn-show-pass">
-												<i class="zmdi zmdi-eye"></i>
-											</span>
-											<input class="input100" type="password" name="pass">
-											<span class="focus-input100" data-placeholder="Password"></span>
-										</div>
-
-										<div class="container-login100-form-btn">
-											<div class="wrap-login100-form-btn">
-												<div class="login100-form-bgbtn"></div>
-												<button class="login100-form-btn">
-													Login
-												</button>
-											</div>
-										</div>
-
-										<div class="text-center p-t-115">
-											<span class="txt1">
-												Don’t have an account?
-											</span>
-
-											<a class="txt2" href="#">
-												Sign Up
-											</a>
-										</div>
-									</form>
-
-
-
-
-						</div>
-						
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-						</div>
-						
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!--<h3 class="text-center">Login</h3>-->
+				<nav class="navbar navbar-expand-lg p-0">
+                  
+					<div class="collapse text-center navbar-collapse text-uppercase" id="navbarText">
+						<span class="navbar-text UsefullTab" onclick = "openUsefullTab(event, 'quotationContent')">Login</span>
 					</div>
-				</div>
-			</div>
+					<div class="collapse text-center navbar-collapse text-uppercase" id="navbarText">
+						<span class="navbar-text UsefullTab" onclick = "openUsefullTab(event, 'InvoiceExtraChargesContent')"> 
+							SignUp
+						</span>
+						<div>
+				</nav>
+       <input type="email" name="" id="" class="form-control mb-2" placeholder="Enter Email"> 
+       <input type="password" name="" id="" class="form-control" placeholder="Enter Password">
+       <button class="btn btn-primary btn-block mt-4 mb-5">LOGIN</button>
+      </div>
+
+    </div>
+  </div>
+</div>
       
 <!-- MAIN SLIDER -->
     <section class="main-slider" data-loop="true" data-autoplay="true" data-interval="7000">

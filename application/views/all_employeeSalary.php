@@ -53,7 +53,7 @@
 												<td><?= $employeeSalaryRow['first_name'].' '.$employeeSalaryRow['last_name']?></td>	
                         <td><?= $employeeSalaryRow['designation_name']?></td>
                         <td><?= $employeeSalaryRow['basic_pay']?></td>
-                        <td><?= $employeeSalaryRow['dearness_allowance']?></td>
+                        <td><?= $employeeSalaryRow['commissionPay']?></td>
 												<td><?= $employeeSalaryRow['Provident_fund']?></td>
                         <td><?= $employeeSalaryRow['employees_state_insurance']?></td>
                         <td><?= $employeeSalaryRow['medical_leave_entitlement'] ?></td>

@@ -27,14 +27,12 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->where('nbb_employees.status', '0');
 		return $this->db->get()->result_array();
 	}
-	function getAllEmployeeAttendance(){
+	function getAllEmployeeAttendance($empid){
 		$this->db->select('nbb_employees_attendance.emp_id,
 		nbb_employees_attendance.login,
-		nbb_employees_attendance.logout,
-		nbb_employees.first_name,
-		nbb_employees.last_name');
+		nbb_employees_attendance.logout');
 		$this->db->from('nbb_employees_attendance');
-		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_employees_attendance.emp_id', 'LEFT');
+		$this->db->where('nbb_employees_attendance.emp_id', $empid);
 		return $this->db->get()->result_array();
 	}
 	function getAllemp_designation(){
@@ -133,10 +131,10 @@ class EmployeeManagement_model extends CI_Model
 		nbb_employees.emp_number,
 		nbb_employees.first_name,
 		nbb_employees.last_name,
-		nbb_emp_designation.designation_name');
+		nbb_roles.role_name as designation_name');
 		$this->db->from('nbb_employee_salary');
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_employee_salary.emp_id', 'LEFT');
-		$this->db->join('nbb_emp_designation', 'nbb_emp_designation.id = nbb_employee_salary.dept_id', 'LEFT');
+		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employee_salary.dept_id', 'LEFT');
 		return $this->db->get()->result_array();
 	}
 	function geteditEmployeeSalary($id){

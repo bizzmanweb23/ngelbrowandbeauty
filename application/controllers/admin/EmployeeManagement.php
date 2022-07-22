@@ -236,7 +236,9 @@ class EmployeeManagement extends CI_Controller {
 		$data = array(
 			'emp_id' => $this->input->post('employeeName'),
 			'dept_id' => $this->input->post('designation'),
+			'job_type' => $this->input->post('jobType'),
 			'basic_pay' => $this->input->post('basic_pay'),
+			'commissionPay' => $this->input->post('CommissionPay'),
 			'dearness_allowance' => $this->input->post('dearness_allowance'),
 			'Provident_fund' => $this->input->post('Provident_fund'),
 			'employees_state_insurance' => $this->input->post('employees_state_insurance'),
@@ -257,6 +259,11 @@ class EmployeeManagement extends CI_Controller {
 		$data['lastpay_structure'] = $this->PayStructure->getLastpay_structure();
 		$data['allemployees'] = $this->EmployeeManagement->getAllemployees();
 		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
+		$data['commission_structure_a'] = $this->PayStructure->getAllcommission_structure_a();
+		$data['commission_structure_b'] = $this->PayStructure->getAllcommission_structure_b();
+		$data['commission_structure_c'] = $this->PayStructure->getAllcommission_structure_c();
+		$data['commission_c_partnership'] = $this->PayStructure->getAllcommission_c_partnership();
+		$data['manual_fee'] = $this->PayStructure->getAllmanual_fee();
 		$id = $this->uri->segment(4);	
 		$data['empSalary'] = $this->EmployeeManagement->geteditEmployeeSalary($id);
        	$this->layout->view('edit_EmpSalary',$data); 
@@ -267,6 +274,7 @@ class EmployeeManagement extends CI_Controller {
 		$data = array(
 			'emp_id' => $this->input->post('employeeName'),
 			'dept_id' => $this->input->post('designation'),
+			'job_type' => $this->input->post('jobType'),
 			'basic_pay' => $this->input->post('basic_pay'),
 			'dearness_allowance' => $this->input->post('dearness_allowance'),
 			'Provident_fund' => $this->input->post('Provident_fund'),
@@ -398,6 +406,8 @@ class EmployeeManagement extends CI_Controller {
 		$login_Time =  $this->input->post('login_Time');
 
 		$pass_date = strtotime($login_Time);
+		$month = date('m',$pass_date);
+		$year = date('Y',$pass_date);
 		$total_days = cal_days_in_month(CAL_GREGORIAN, date('m', $pass_date), date('Y', $pass_date));
 		//echo $total_days;exit;
 		//$empname = $this->EmployeeManagement->getEmployeeNameDownload_attendance($employeeid);
@@ -409,6 +419,16 @@ class EmployeeManagement extends CI_Controller {
 
 		// get data 
 		$empData = $this->EmployeeManagement->getDownload_attendance($employeeid,$login_Time);
+
+		$empAttendanceData = [];
+			  $empAttendances = $this->EmployeeManagement->getAllEmployeeAttendance(7);
+			  foreach($empAttendances as $empAttendance){
+				$empAttendanceData['in'][] = date('Y-m-d',strtotime($empAttendance['login']));
+			  }
+
+		//echo '<pre>';
+		//print_r($empAttendanceData['in']);
+		//exit;
 
 		$contain = '<!DOCTYPE html>
 		<html lang="en">
@@ -428,11 +448,13 @@ class EmployeeManagement extends CI_Controller {
 		</style>
 		</head>
 		<body><div>
-		<table>
-		  
-			';
+		<table>';
+			
 			foreach($empname as $nameRow){
+				$in = ''; $out = '';
 				$full_name = $nameRow['first_name'].' '.$nameRow['last_name'];
+				$empid = $nameRow['id'];
+				$empData = $this->EmployeeManagement->getAllEmployeeAttendance($empid);
 					
 			$contain .= '<tr>
 			<th>Employee Name</th>
@@ -441,21 +463,47 @@ class EmployeeManagement extends CI_Controller {
 			$contain .= '</tr>
 			<tr>
 			  <td>Day</td>';
-			  for($i = 1; $i <= $total_days; $i++) { 
+			  $empAttendanceData['in_date'] = $empAttendanceData['in_time'] = [];
+			  $empAttendanceData['out_date'] = $empAttendanceData['out_time'] = [];
+			  $empAttendances = $this->EmployeeManagement->getAllEmployeeAttendance($empid);
+			  foreach($empAttendances as $empAttendance){
+				$empAttendanceData['in_date'][] = date('Y-m-d',strtotime($empAttendance['login']));
+				$empAttendanceData['in_time'][] = date('H:i',strtotime($empAttendance['login']));
+
+				$empAttendanceData['out_date'][] = date('Y-m-d',strtotime($empAttendance['logout']));
+				$empAttendanceData['out_time'][] = date('H:i',strtotime($empAttendance['logout']));
+			  }
+
+			  for($i = 01; $i <= $total_days; $i++) { 
+				$date = date('Y-m-d',strtotime($year.'-'.$month.'-'.$i));
+				foreach($empAttendanceData['in_date'] as $in){
+					if($date ==$in){
+						$in .= '<td>'.$i.'</td>';
+					}else{
+						$in .= '<td></td>';
+					}
+				}
+				
+
+
+				if(in_array($date,$empAttendanceData['out_date'])){
+					$out .= '<td>'.$i.'</td>';
+				}else{
+					$out .= '<td></td>';
+				}
+
 		$contain .=   '<td>'.$i.'</td>';
 			  }
 	$contain .=  
 			'</tr>
 			<tr>
 			  <td>In</td>
+			  '.$in.'
+			</tr><tr>
+			<td>Out</td>
+			'.$out.'
+		  </tr>';
 
-			  <td>10.30</td>
-			</tr>
-			<tr>
-			  <td>Out</td>
-			  <td>7.30</td>
-			  
-			  </tr>';
 			
 			}
 		$contain .=  

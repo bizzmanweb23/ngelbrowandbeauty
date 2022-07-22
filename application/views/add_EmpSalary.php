@@ -75,7 +75,7 @@
 											$manual_id = $manual_feeRow['id'];
 											$manualtype_of_fee = $manual_feeRow['type_of_fee'];
 											$manual_amount = $manual_feeRow['amount']; ?>
-											<input type="checkbox" onclick="chkcontrol(<?= $manual_id ?>)" class="commission" name="commission_structure" value="<?= $manual_amount ?>"><label for="vehicle1"><?= $manualtype_of_fee ?>($<?= $manual_amount ?>)</label>
+											<input type="checkbox" onclick="chkcontrol(<?= $manual_id ?>)" class="commission" name="commission_structure" value="<?= $manual_amount ?>"><label for="vehicle1"><?= $manualtype_of_fee ?>($<?= $manual_amount ?>)</label><br>
 										<?php } ?>
 									</div>
 								</div>
@@ -91,7 +91,7 @@
 											$commission_structure_a_id = $commission_structure_aRow['id'];
 											$structure_aType_of_fee = $commission_structure_aRow['fee_type'];
 											$structure_a_amount = $commission_structure_aRow['amount']; ?>
-											<input type="checkbox" onclick="chkcontrol(<?= $commission_structure_a_id ?>)" class="commission" name="commission_structure" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>($<?= $structure_a_amount ?>)</label>
+											<input type="checkbox" onclick="chkcontrol(<?= $commission_structure_a_id ?>)" class="commission" name="commission_structure" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>($<?= $structure_a_amount ?>)</label><br>
 										<?php } ?>
 									</div>
 								</div>
@@ -104,7 +104,7 @@
 											$commission_structure_b_id = $commission_structure_aRow['id'];
 											$structure_aType_of_fee = $commission_structure_aRow['fee_type'];
 											$structure_a_amount = $commission_structure_aRow['amount']; ?>
-											<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_b_id ?>)" name="commission_structure" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>($<?= $structure_a_amount ?>)</label>
+											<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_b_id ?>)" name="commission_structure" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>($<?= $structure_a_amount ?>)</label><br>
 										<?php } ?>
 									</div>
 								</div>
@@ -117,7 +117,7 @@
 											$commission_structure_c_id = $commission_structure_cRow['id'];
 											$structure_cType_of_fee = $commission_structure_cRow['type_of_fee'];
 											$structure_c_amount = $commission_structure_cRow['amount']; ?>
-											<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_c_id ?>)" name="commission_structure" value="<?= $structure_c_amount ?>"><label for="vehicle1"><?= $structure_cType_of_fee ?>($<?= $structure_c_amount ?>)</label>
+											<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_c_id ?>)" name="commission_structure" value="<?= $structure_c_amount ?>"><label for="vehicle1"><?= $structure_cType_of_fee ?>($<?= $structure_c_amount ?>)</label><br>
 										<?php } ?>
 									</div>
 								</div>
@@ -131,7 +131,7 @@
 											$commission_structure_cpartnership_id = $commission_structure_cRow['id'];
 											$structure_cpartnershipType_of_fee = $commission_structure_cRow['type_of_fee'];
 											$structure_cpartnership_amount = $commission_structure_cRow['amount']; ?>
-											<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_cpartnership_id ?>)" name="commission_structure" value="<?= $structure_cpartnership_amount ?>"><label for="vehicle1"><?= $structure_cpartnershipType_of_fee ?>($<?= $structure_cpartnership_amount ?>)</label>
+											<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_cpartnership_id ?>)" name="commission_structure" value="<?= $structure_cpartnership_amount ?>"><label for="vehicle1"><?= $structure_cpartnershipType_of_fee ?>($<?= $structure_cpartnership_amount ?>)</label><br>
 										<?php } ?>
 									</div>
 								</div>
@@ -140,11 +140,11 @@
 
 						</div>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Commission Pay:</label>
 									<div class="col-md-12">          
-										<input type="text" name="CommissionPay" placeholder="Commission Pay" class="form-control CommissionPay" onkeyup ="calcSalary()">
+										<input type="text" name="CommissionPay" placeholder="Commission Pay" class="form-control CommissionPay">
 									</div>
 								</div>
 							</div>
@@ -279,11 +279,16 @@
 		box-shadow: 5px 5px 5px;
 	}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type = "text/javascript">
     function calcSalary(){
 
-		const basic_pay = parseInt(document.getElementById('basic_pay').value);
+		//const basic_pay = parseInt(document.getElementById('basic_pay').value);
+		let basic_pay = document.getElementById('basic_pay').value;
+		let CommissionPay = $('.CommissionPay').val();
+
+		/*var total = parseFloat(basic_pay) + parseFloat(CommissionPay);
+		$('.basic_pay').val(total);*/
+		
 		const da = document.getElementById("da").value;//   parseInt(document.getElementById('da').value);
 		const pf = document.getElementById("pf").value;
 		const esi = document.getElementById("esi").value;
@@ -302,7 +307,8 @@
 
 		//alert(NetPay);
 		
-		if(!isNaN(basic_pay)) {
+		if(!isNaN()) {
+			document.getElementById('basic_pay').value 
 			document.getElementById('dearness_allowance').value = DA;
 			document.getElementById('Provident_fund').value = PF;
 			document.getElementById('EmployeesStateInsurance').value = EmployeesStateInsurance;
@@ -339,19 +345,18 @@
 		
 
 	});*/
+
 	function chkcontrol(j) {
 		var sum=0;
 		
-		var basicPay = $('.basic_pay').val();
+		//let value = document.getElementById('basic_pay').value;
 		for(var i=0; i < document.payroll.commission_structure.length; i++){
 
 		if(document.payroll.commission_structure[i].checked){
 			sum = sum + parseInt(document.payroll.commission_structure[i].value);
-			//alert(sum);
 
 		}
 		$('.CommissionPay').val(sum);
-
 	}
 	}
 </script>
