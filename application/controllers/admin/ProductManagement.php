@@ -130,13 +130,14 @@ class ProductManagement extends CI_Controller {
 			'supplier_id' => $this->input->post('supplier_name'),
 			'status' =>$this->input->post('status')
 			);
-			$this->db->insert('nbb_product',$product_data); 
+			$result = $this->db->insert('nbb_product',$product_data); 
 			$insert_id = $this->db->insert_id();
 			
 			$this->load->library('upload');
-		//$image = array();
-		$ImageCount = count($_FILES['productfiles']['name']);
-        for($i = 0; $i < $ImageCount; $i++){
+			$image = array();
+			$ImageCount = count($_FILES['productfiles']['name']);
+   
+	  for($i = 0; $i < $ImageCount; $i++){
             $_FILES['file']['name']       = $_FILES['productfiles']['name'][$i];
             $_FILES['file']['type']       = $_FILES['productfiles']['type'][$i];
             $_FILES['file']['tmp_name']   = $_FILES['productfiles']['tmp_name'][$i];
@@ -147,9 +148,6 @@ class ProductManagement extends CI_Controller {
             $uploadPath = 'uploads/product_img/';
             $config['upload_path'] = $uploadPath;
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-			$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-			$config['max_height'] = "";
-			$config['max_width'] = "";
 
             // Load and initialize upload library
             $this->load->library('upload', $config);
@@ -158,15 +156,21 @@ class ProductManagement extends CI_Controller {
             // Upload file to server
             if($this->upload->do_upload('file')){
                 // Uploaded file data
-                $imageData = $this->upload->data();
-                 $uploadImgData[$i]['image'] = $imageData['file_name'];
-				 $uploadImgData[$i]['product_id'] = $insert_id;
+					$imageData = $this->upload->data();
+					$uploadImgData[$i]['image'] = $imageData['file_name'];
+					$uploadImgData[$i]['product_id'] = $insert_id;
             }
-			$insertImg = $this->db->insert('nbb_product_image',$uploadImgData); 
-
         }
-         
-			redirect('product');         
+         if(!empty($uploadImgData)){
+            // Insert files data into the database
+            $insertImg = $this->ProductManagement->insertproduct($uploadImgData);              
+        }
+		if($uploadImgData ==true || $result == true)
+			{
+				$this->session->set_flashdata('status','Product Add successfully! <a href="'.site_url("product") .'">Back to list</a>');
+				redirect('admin/productManagement/add_product/'); 
+			}  
+		        
 		
   	}
 	public function editProduct(){
@@ -238,6 +242,7 @@ class ProductManagement extends CI_Controller {
 		
 		if($insertImg==true || $result == true)
 			{
+				$this->session->set_flashdata('status','Product Update successfully! <a href="'.site_url("product") .'">Back to list</a>');
 				redirect('admin/productManagement/editProduct/'.$product_id);
 			}  
 		

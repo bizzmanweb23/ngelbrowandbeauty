@@ -34,6 +34,7 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->from('nbb_employees_attendance');
 		$this->db->where('nbb_employees_attendance.emp_id', $empid);
 		return $this->db->get()->result_array();
+		
 	}
 	function getAllemp_designation(){
 		

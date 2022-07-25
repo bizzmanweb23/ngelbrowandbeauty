@@ -403,40 +403,31 @@ class EmployeeManagement extends CI_Controller {
 
 	
 		$employeeid =  $this->input->post('employeeName');
-		$login_Time =  $this->input->post('login_Time');
+		$attandance_month =  $this->input->post('attandance_month');
 
-		$pass_date = strtotime($login_Time);
-		$month = date('m',$pass_date);
-		$year = date('Y',$pass_date);
+		$full_month = date('F Y',strtotime($attandance_month));
+
+		$pass_date = strtotime($attandance_month);
+		$month = date('m',strtotime($attandance_month));
+		$year = date('Y',strtotime($attandance_month));
 		$total_days = cal_days_in_month(CAL_GREGORIAN, date('m', $pass_date), date('Y', $pass_date));
 		//echo $total_days;exit;
 		//$empname = $this->EmployeeManagement->getEmployeeNameDownload_attendance($employeeid);
 		$empname = $this->EmployeeManagement->getAllemployees();
 		//$emptime = $this->EmployeeManagement->getAllEmployeeAttendance();
-		
-		
-		$header_fields = array('Employee Name', 'Login', 'Logout', 'Work Hours'); 
 
 		// get data 
-		$empData = $this->EmployeeManagement->getDownload_attendance($employeeid,$login_Time);
+		$empData = $this->EmployeeManagement->getDownload_attendance($employeeid,$attandance_month);
 
-		$empAttendanceData = [];
-			  $empAttendances = $this->EmployeeManagement->getAllEmployeeAttendance(7);
-			  foreach($empAttendances as $empAttendance){
-				$empAttendanceData['in'][] = date('Y-m-d',strtotime($empAttendance['login']));
-			  }
-
-		//echo '<pre>';
-		//print_r($empAttendanceData['in']);
-		//exit;
-
+			
+				
 		$contain = '<!DOCTYPE html>
 		<html lang="en">
 		<head>
-		  <title>Attendance Records</title>
-		  <meta charset="utf-8">
-		  <meta name="viewport" content="width=device-width, initial-scale=1">
-		  <style>
+		<title>Attendance Records</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
 			table, td, th {
 			border: 1px solid;
 			}
@@ -445,103 +436,98 @@ class EmployeeManagement extends CI_Controller {
 			width: 50%;
 			border-collapse: collapse;
 			}
+			.heading{
+				background-color: #b8860b;
+				color: white;
+				padding: 5px;
+				text-align: left;
+				border-radius: 10px;
+				padding-left: 10px;
+			}
 		</style>
 		</head>
 		<body><div>
+		<h1 class="heading" align="center">Employee Attendance '.$full_month.'</h1>
 		<table>';
+		foreach($empname as $nameRow){
 			
-			foreach($empname as $nameRow){
-				$in = ''; $out = '';
-				$full_name = $nameRow['first_name'].' '.$nameRow['last_name'];
-				$empid = $nameRow['id'];
-				$empData = $this->EmployeeManagement->getAllEmployeeAttendance($empid);
-					
-			$contain .= '<tr>
-			<th>Employee Name</th>
-			<th>'.$full_name.'</th>';
+			$full_name = $nameRow['first_name'].' '.$nameRow['last_name'];
+			$empid = $nameRow['id'];
+			$empAttendanceData['login'] = $empAttendanceData['logout'] = $empAttendanceData2 = [];
+			$login = $logout = [];
+			$empAttendances = $this->EmployeeManagement->getAllEmployeeAttendance($empid);
+
+			foreach($empAttendances as $empAttendance){
 				
-			$contain .= '</tr>
+				$login[] = date('Y-m-d',strtotime($empAttendance['login']));
+				$logout[] = date('Y-m-d',strtotime($empAttendance['logout']));
+
+				$empAttendanceData['login'] = [
+					'in_date' => date('Y-m-d',strtotime($empAttendance['login'])),
+					'in_time' => date('H:i',strtotime($empAttendance['login']))
+				];
+
+				$empAttendanceData['logout'] = [
+					'out_date' => date('Y-m-d',strtotime($empAttendance['logout'])),
+					'out_time' => date('H:i',strtotime($empAttendance['logout']))
+				];
+
+				$empAttendanceData2[] = $empAttendanceData;
+
+			}
+		$contain .= '<tr>
+				<th>Employee Name</th>
+				<th>'.$full_name.'</th>';
+		$contain .= '</tr>
 			<tr>
-			  <td>Day</td>';
-			  $empAttendanceData['in_date'] = $empAttendanceData['in_time'] = [];
-			  $empAttendanceData['out_date'] = $empAttendanceData['out_time'] = [];
-			  $empAttendances = $this->EmployeeManagement->getAllEmployeeAttendance($empid);
-			  foreach($empAttendances as $empAttendance){
-				$empAttendanceData['in_date'][] = date('Y-m-d',strtotime($empAttendance['login']));
-				$empAttendanceData['in_time'][] = date('H:i',strtotime($empAttendance['login']));
-
-				$empAttendanceData['out_date'][] = date('Y-m-d',strtotime($empAttendance['logout']));
-				$empAttendanceData['out_time'][] = date('H:i',strtotime($empAttendance['logout']));
-			  }
-
-			  for($i = 01; $i <= $total_days; $i++) { 
-				$date = date('Y-m-d',strtotime($year.'-'.$month.'-'.$i));
-				foreach($empAttendanceData['in_date'] as $in){
-					if($date ==$in){
-						$in .= '<td>'.$i.'</td>';
+				<td>Day</td>';
+				$in = ''; $out = '';
+				for($i = 1; $i <= $total_days; $i++) { 
+					$date = date('Y-m-d',strtotime($year.'-'.$month.'-'.$i));
+					$contain .= '<td>'.$i.'</td>';
+					
+					
+					if(in_array($date,$login)){
+						foreach($empAttendanceData2 as $att){
+							if($att['login']['in_date'] == $date){
+								$in .='<td>'.$att['login']['in_time'].'</td>';
+							}
+						}
 					}else{
-						$in .= '<td></td>';
+						$in .='<td></td>';
+					}
+					
+					if(in_array($date,$logout)){
+						foreach($empAttendanceData2 as $att){
+							if($att['login']['in_date'] == $date){
+								$out .='<td>'.$att['logout']['out_time'].'</td>';
+							}
+						}
+					}else{
+						$out .='<td></td>';
 					}
 				}
-				
-
-
-				if(in_array($date,$empAttendanceData['out_date'])){
-					$out .= '<td>'.$i.'</td>';
-				}else{
-					$out .= '<td></td>';
-				}
-
-		$contain .=   '<td>'.$i.'</td>';
-			  }
-	$contain .=  
-			'</tr>
+		$contain .= '</tr>
 			<tr>
-			  <td>In</td>
-			  '.$in.'
-			</tr><tr>
-			<td>Out</td>
-			'.$out.'
-		  </tr>';
+				<td>In</td>
+				'.$in.'
+			</tr>
 
-			
+			<tr>
+				<td>Out</td>
+				'.$out.'
+			</tr>';
 			}
 		$contain .=  
 			'</table>
-	  </div>';
-	  echo $contain;
-
-
-		/*	$delimiter = ","; 
-			$filename = "attendance_".$empname.'_'. date('Y-m-d') . ".csv"; 
-
-			// $f = fopen("./uploads/products/csv/".$filename, 'w'); 
-			$f = fopen('php://memory', 'w');
-			if ($f === false) {
-				die('Cannot open the file ' . $filename);
-			}
-
-			//$header_fields = array('Order Number', 'Quantity', 'Size'); 
-			fputcsv($f, $header_fields, $delimiter); 
-
-			$attendanceData = array();
-
-				foreach($empData as $empDataRow){ 	
-					$emp_name = $empDataRow['first_name'].' '.$empDataRow['last_name'];
-					$login = $empDataRow['login'];
-					$logout = $empDataRow['logout'];
-					$work_hours = $empDataRow['work_hours'];
-					
-					$attendanceData = array($emp_name, $login, $logout, $work_hours); 
-					//print_r($productData);
-				fputcsv($f, $attendanceData, $delimiter); 
-			} 
-
-
-			rewind($f);
-			header('Content-Type: application/csv; charset=UTF-8');
-			header('Content-Disposition: attachment; filename="' . $filename . '";');
-			fpassthru($f);*/
+		</div>';
+		//echo $contain;
+		$mpdf = new \Mpdf\Mpdf();
+		
+		$mpdf->WriteHTML($contain);
+		//$mpdf->Output();
+		//download it D save F.
+		$mpdf->Output('Attendance_sheet"'.$full_month.'".pdf','D');
 
 	}
 	public function post_add_empHoliday(){
@@ -567,6 +553,7 @@ class EmployeeManagement extends CI_Controller {
 			redirect('admin/employeeManagement/all_holidaysList');
 		}
 	}
+
 	public function post_edit_empHoliday(){
 		
 		$setholidays_Id = $this->input->post('setholidays_Id');

@@ -44,7 +44,7 @@
 								<i class="required">*</i>
 								</label>
 								<div class="col-sm-12">
-									<input type="month" class="form-control" name="login_Time" value="">
+									<input type="month" class="form-control" name="attandance_month" value="">
 									<small class="info help-block">
 									</small>
 								</div>

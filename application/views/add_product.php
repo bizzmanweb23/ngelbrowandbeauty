@@ -6,6 +6,13 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Product</h1>
+			<?php $message = $this->session->flashdata('status');
+					if (isset($message)) {
+				?>
+				<div class="alert alert-success">
+					<?= $this->session->flashdata('status') ?>
+				</div>
+			<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -64,7 +71,6 @@
 							<div class="col-sm-12">
 								<select class="form-control chosen chosen-select-deselect product_category" name="product_category" required>
 									<option>Select Main Category First</option>
-								
 								</select>
 							</div>
 						</div> 

@@ -51,6 +51,7 @@ class ProcurementManagement extends CI_Controller {
 		$data['id'] = $this->session->userdata('id');
 		$supplierId = $this->uri->segment(4);
 		$data['SupplierData'] = $this->ProcurementManagement->getSupplierData($supplierId);
+		$data['product_data'] = $this->OrderManagement->getAllProduct();
         $this->layout->view('supplier_email',$data);
 	}
 
