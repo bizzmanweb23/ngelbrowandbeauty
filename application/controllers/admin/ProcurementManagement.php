@@ -19,7 +19,6 @@ class ProcurementManagement extends CI_Controller {
 
         $data['id'] = $this->session->userdata('id');
         $this->layout->view('add_Supplier',$data);
-
     }
 	public function post_add_Supplier(){
 
@@ -64,7 +63,9 @@ class ProcurementManagement extends CI_Controller {
 		$ProductNameQuantity = $this->input->post('ProductNameQuantity');
 		$supplier_id = $this->input->post('supplier_id');
 		$session_id = $this->session->has_userdata('id');
-
+		$mulproductid = $_POST['productID'];
+		$quantity = $_POST['quantity'];
+		$productname = $_POST['productname'];
 		
 		if($email != ''){
 
@@ -81,7 +82,18 @@ class ProcurementManagement extends CI_Controller {
 					$this->db->where('id' , $supplierOrderId);
 					$this->db->update('nbb_supplier_order', array('order_code'=>$order_code));
 				}
+				for($i=0;$i < count($mulproductid);$i++){
 
+					$allproductID = $mulproductid[$i];
+	
+					$orderdata = array(
+						'supplier_order_id' => $supplierOrderId,
+						'product_id' => $allproductID,
+						'quantity' => $quantity[$i],
+					); 
+					$result2 = $this->Main->insert('nbb_supplier_order_product',$orderdata);
+					
+				}	
 
 			$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -166,7 +178,7 @@ class ProcurementManagement extends CI_Controller {
                             <table width="100%" style="border-spacing: 0;">
                                 <tr>
                                     <td style="padding: 15px;background-color: #f6f6f6;">
-                                    <p style="font-size:18px; font-weight: bold;">Dear '.$supplier_name.'</p>
+                                    <p style="font-size:18px; font-weight: bold;">Hello &nbsp;'.$supplier_name.',</p>
                                     </td>
                                 </tr>
                             </table>
@@ -181,6 +193,34 @@ class ProcurementManagement extends CI_Controller {
 										</td>
 									</tr>
 									<tr>
+										<td style="padding: 10px;">
+											<p style="font-family: poppins; color: #0C1E2F;"><b>Order Product list</b></p> 
+										</td>
+									</tr>
+									<tr>
+										<td style="padding: 10px;">
+											<p style="font-family: poppins; color: #0C1E2F;"><b>Product Name</b></p> 
+										</td>
+										<td style="padding: 10px;">
+											<p style="font-family: poppins; color: #0C1E2F;"><b>Quantity</b></p> 
+										</td>
+									</tr>';
+										for($i=0;$i < count($mulproductid);$i++){
+											$allproductID = $mulproductid[$i];
+											$showQuantity = $quantity[$i];
+											$showProductname = $productname[$i];
+	
+						$message .=	'<tr>
+										<td style="padding: 10px;">
+											<p style="font-family: poppins; color: #0C1E2F;">&nbsp;'.$showProductname.'</p> 
+										</td>
+										<td style="padding: 10px;">
+											<p style="font-family: poppins; color: #0C1E2F;">&nbsp;'.$showQuantity.'</p> 
+										</td>
+										<td></td>
+									</tr>';		
+										}	
+						$message .='<tr>
 										<td>
 											<a href="'.site_url('admin/ProcurementManagement/sendSupplierApprove/'.$supplierOrderId).'">If you want to approve then click this link</a>
 										</td>
@@ -197,8 +237,7 @@ class ProcurementManagement extends CI_Controller {
                 </div>
                 </center>
             </body>
-			</html>
-			';
+			</html>';
 			//echo $message;exit;
 			log_message('Debug', 'PHPMailer class is loaded.');
 			//define('PATH', dirname(__FILE__));
@@ -210,8 +249,8 @@ class ProcurementManagement extends CI_Controller {
 			$mail->SMTPAuth = true;
 			$mail->SMTPSecure = "tls";
 			$mail->Port     = 2525; //465 
-			$mail->Username = "c1cee71ac31846";
-			$mail->Password = "8f639fdb320a89";
+			$mail->Username = "2a791aefbf3911";
+			$mail->Password = "8cc9702ee73b22";
 			$mail->Host     = "smtp.mailtrap.io";//s211.syd1.hostingplatform.net.au
 			$mail->Mailer   = "smtp";
 			$mail->SetFrom("ciprojectbizz@gmail.com", "Ngel brow & beauty");
@@ -230,6 +269,12 @@ class ProcurementManagement extends CI_Controller {
 				redirect('admin/ProcurementManagement/all_supplier');
 				}
 			}
+		}
+	public function view_OrderProductList(){
+
+			$supplierId = $this->uri->segment(4);
+			$data['supplierOrderData'] = $this->ProcurementManagement->getSupplierOrderProduct($supplierId);
+			$this->layout->view('view_SupplierOrderProduct',$data);
 		}
 	public function sendSupplierApprove(){
 

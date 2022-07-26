@@ -55,7 +55,7 @@
                             } ?>
                         </td>
                         <td>
-												
+												<a href="<?= base_url('admin/ProcurementManagement/view_OrderProductList/'.$OrderSupplierRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-list"></i></a>
 							
 												</td>
                       </tr>

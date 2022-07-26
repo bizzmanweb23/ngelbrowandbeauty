@@ -45,14 +45,20 @@
 								</label>
 								<div class="col-sm-12">
 									<input type="month" class="form-control" name="attandance_month" value="">
-									<small class="info help-block">
-									</small>
 								</div>
 							</div>
 						</div>  
-						  
+						<div class="col-md-3">
+							<div class="form-group ">
+								<label for="status" class="col-sm-6 control-label"></label>
+								<div class="col-sm-12">
+									<input type="submit" class="btn btn-primary btn-custom" value="Download" style="width:150px;">
+								</div>
+							</div>                       
+							
+						</div>    
 					</div>
-                    <input type="submit" class="btn btn-primary btn-custom" value="Download" style="width:150px;">
+                   
               	</form>
               </div>
               <!-- /.card-header -->
