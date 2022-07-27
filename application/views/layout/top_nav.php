@@ -11,12 +11,12 @@
 								<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/logout">
 									<i class="fa fa-user me-sm-1"></i>
 							<?php		
-							$role_sql="SELECT nbb_users.first_name FROM nbb_users  where id ='".$this->session->userdata('id')."'" ;
+							/*$role_sql="SELECT nbb_users.first_name FROM nbb_users  where id ='".$this->session->userdata('id')."'" ;
 							$role_query = $this->db->query($role_sql);
 							foreach ($role_query->result_array() as $role_row) 
 							{
 								$role_id = $role_row['role_id'];
-							} ?>
+							}*/?>
 									<span class="d-sm-inline d-none">Admin</span>
 								</a>
             </li>
