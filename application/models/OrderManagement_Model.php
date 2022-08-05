@@ -50,8 +50,79 @@ class OrderManagement_Model extends CI_Model
         $result= $this->db->get()->row();
         return $result;
     }*/
+	function getAllDailySales()
+	{
+		
+		$order_main_sql  = "SELECT nbb_order_main.*,
+		nbb_payment_type.payment_name,
+		nbb_customer.id,
+		nbb_customer.first_name,
+		nbb_customer.last_name,
+		nbb_shipping_address.shipping_contactno,
+		nbb_shipping_address.shipping_address,
+		nbb_shipping_address.shipping_city,
+		nbb_shipping_address.shipping_state,
+		nbb_shipping_address.shipping_postalcode
+		FROM nbb_order_main 
+		LEFT JOIN nbb_customer ON nbb_customer.id = nbb_order_main.user_id 
+		LEFT JOIN nbb_shipping_address ON nbb_shipping_address.user_id = nbb_customer.id
+		LEFT JOIN nbb_payment_type ON nbb_payment_type.id = nbb_order_main.payment_method 
+		WHERE nbb_order_main.type_flag = 'O' AND DATE_FORMAT(nbb_order_main.create_date, '%Y-%m-%d')=  CURDATE()"; 
+		$order_main_query = $this->db->query($order_main_sql);
+		return $filterOrderProduct = $order_main_query->result_array();
+		
+	}
+
+	function searchGetDailySalesData($dailySales_date=''){
+
+		$sql_order_main = "SELECT nbb_order_main.*, DATE_FORMAT(nbb_order_main.create_date, '%Y-%m-%d') Date,
+		nbb_payment_type.payment_name,
+		nbb_customer.id,
+		nbb_customer.first_name,
+		nbb_customer.last_name,
+		nbb_customer.email,
+		nbb_shipping_address.shipping_contactno,
+		nbb_shipping_address.shipping_address,
+		nbb_shipping_address.shipping_city,
+		nbb_shipping_address.shipping_state,
+		nbb_shipping_address.shipping_postalcode
+		FROM nbb_order_main 
+		LEFT JOIN nbb_customer ON nbb_customer.id = nbb_order_main.user_id 
+		LEFT JOIN nbb_shipping_address ON nbb_shipping_address.user_id = nbb_customer.id
+		LEFT JOIN nbb_payment_type ON nbb_payment_type.id = nbb_order_main.payment_method 
+		WHERE nbb_order_main.type_flag = 'O' AND DATE_FORMAT(nbb_order_main.create_date, '%Y-%m-%d') = '$dailySales_date'";
+		
+		$order_main_query = $this->db->query($sql_order_main); 
+		return $result_order_main = $order_main_query->result_array();	
+
+	}
+	function searchGetFromToSalesSalesData($dailySales_date='',$toSalesDate = ''){
+
+		$sql_order_main = "SELECT nbb_order_main.*, DATE_FORMAT(nbb_order_main.create_date, '%Y-%m-%d') Date,
+		nbb_payment_type.payment_name,
+		nbb_customer.id,
+		nbb_customer.first_name,
+		nbb_customer.last_name,
+		nbb_customer.email,
+		nbb_shipping_address.shipping_contactno,
+		nbb_shipping_address.shipping_address,
+		nbb_shipping_address.shipping_city,
+		nbb_shipping_address.shipping_state,
+		nbb_shipping_address.shipping_postalcode
+		FROM nbb_order_main 
+		LEFT JOIN nbb_customer ON nbb_customer.id = nbb_order_main.user_id 
+		LEFT JOIN nbb_shipping_address ON nbb_shipping_address.user_id = nbb_customer.id
+		LEFT JOIN nbb_payment_type ON nbb_payment_type.id = nbb_order_main.payment_method 
+		WHERE nbb_order_main.type_flag = 'O' AND DATE_FORMAT(nbb_order_main.create_date, '%Y-%m-%d') >= '$dailySales_date' AND DATE_FORMAT(nbb_order_main.create_date, '%Y-%m-%d')<='$toSalesDate'";
+		
+		$order_main_query = $this->db->query($sql_order_main); 
+		return $result_order_main = $order_main_query->result_array();	
+
+	}
+
 	function getAllOrderProduct()
 	{
+		
 		$this->db->select('nbb_order_main.*,
 		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
@@ -59,7 +130,10 @@ class OrderManagement_Model extends CI_Model
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
-		$this->db->where('type_flag', 'O');
+		$where = array(
+			'nbb_order_main.type_flag' => 'O'
+		  );
+		$this->db->where($where);
 		return $this->db->get()->result_array();
 	}
 	function getAllCurrentOrder()

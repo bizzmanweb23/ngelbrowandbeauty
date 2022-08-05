@@ -31,7 +31,7 @@
                 <form id="add_promotion" action="<?= base_url('admin/ServiceCategoryCtl/post_edit_service')?>" method="post" enctype="multipart/form-data">
 								<input type="hidden" class="form-control" name="service_id" value="<?= $serviceData['id'];?>">
                 <div class="row">
-                  <div class="col-md-6">   
+                  <div class="col-md-12">   
 									<div class="form-group ">
 											<label for="service_name" class="col-sm-6 control-label">Service Name <i class="required">*</i>
 											</label>
@@ -40,21 +40,7 @@
 											</div>
 									</div>
 									</div>
-									<div class="col-md-6"> 
-									<div class="form-group">
-											<label for="category" class="col-sm-6 control-label">Service Category
-											<i class="required">*</i>
-											</label>
-												<div class="col-sm-12">
-														<select  class="form-control chosen chosen-select-deselect" name="service_category" id="category">
-															<option value="" selected hidden>Select Category</option>
-															<?php foreach($category as $categorys): ?>
-															<option value="<?= $categorys['id']?>" <?php if($categorys['id'] == $serviceData['service_category']){echo "Selected";} ?>><?= $categorys['name']?></option>
-														<?php endforeach; ?> 
-														</select>
-												</div>
-									</div> 
-                 </div>
+									
                 </div>
 
 								<div class="row">
@@ -67,8 +53,7 @@
 													<input type="text" class="form-control main_category" name="main_category" value="<?= $serviceData['parentcategory_name'];?>" readonly>
 												</div>
 											</div> 
-														</div>
-										
+										</div>
 										<div class="col-md-6"> 
 											<div class="form-group ">
 												<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>

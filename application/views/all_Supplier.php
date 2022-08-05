@@ -24,7 +24,7 @@
               <!-- /.card-header -->
               <div class="card-body">
 							<div class="site-table" style="overflow: auto; height: 400px ">
-                <table class="table table-bordered" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+                <table class="table table-bordered supplier_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
                   <tr>
 					        <th>Supplier Code</th>

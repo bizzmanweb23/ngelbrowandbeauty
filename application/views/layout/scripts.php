@@ -20,7 +20,7 @@
 
 
 <!-- DataTables  & Plugins -->
-<script src="<?= base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<!--<script src="<?= base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
@@ -28,7 +28,15 @@
 <script src="<?= base_url(); ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?= base_url(); ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script> 
+<script src="<?= base_url(); ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script> -->
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+
 
 
 <!-- ChartJS -->
@@ -79,4 +87,82 @@
       "responsive": true,
     });
   });
+	$(document).ready(function() {
+		//customer_table
+    $('#customer_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+             'csv', 'excel', 'pdf'
+        ]
+    });
+		//Employee_table
+    $('.Employee_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+             'csv', 'excel', 'pdf'
+        ]
+    });
+		//lead_table
+    $('#lead_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+             'csv', 'excel', 'pdf'
+        ]
+    });
+		//order_table
+		$('#order_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            
+            ]
+    });
+		//currentOrder_table
+		$('#currentOrder_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [ 
+        ]
+    });
+		//complatedOrder_table
+		$('#complatedOrder_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: []
+    });
+		//CanceledOrder_table
+		$('#CanceledOrder_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: []
+    });
+		//supplier_table
+		$('.supplier_table').DataTable( {
+						dom: 'Bfrtip',
+						buttons: [
+						]
+    });
+		//product_table
+		$('.product_table').DataTable( {
+						dom: 'Bfrtip',
+						buttons: ['csv', 'excel', 'pdf']
+    });
+		//service_table
+		$('.service_table').DataTable( {
+						dom: 'Bfrtip',
+						buttons: []
+    });
+		//dailySales_table
+		/*$('.dailySales_table').DataTable({
+						dom: 'Bfrtip',
+						searching: false,
+						buttons: ['csv', 'excel', 'pdf']
+    });*/
+		//salary_table
+		$('.salary_table').DataTable( {
+						dom: 'Bfrtip',
+						buttons: []
+    });
+		//fultimeSalaryTable
+		$('.fultimeSalaryTable').DataTable( {
+						dom: 'Bfrtip',
+						buttons: []
+    });
+});
 </script>

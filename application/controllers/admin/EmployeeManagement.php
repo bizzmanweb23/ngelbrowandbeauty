@@ -6,6 +6,7 @@ class EmployeeManagement extends CI_Controller {
 	public function __construct() {
 
 		parent::__construct();
+
 		//$this->load->library('m_pdf');
 		//$this->db2 = $this->load->database('database2', TRUE);
 	}
@@ -216,7 +217,8 @@ class EmployeeManagement extends CI_Controller {
     }*/
 	public function allEmployeeSalary(){
 
-		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeeSalary();
+		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeeCommissionSalary();
+		$data['EmployeeFultimeSalary'] = $this->EmployeeManagement->getAllEmployeeFultimeSalary();
 		$this->layout->view('all_employeeSalary',$data); 
 	}
 	public function add_employeeSalary(){
@@ -225,8 +227,8 @@ class EmployeeManagement extends CI_Controller {
 		$data['allemployees'] = $this->EmployeeManagement->getAllemployees();
 		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
 		$data['commission_structure_a'] = $this->PayStructure->getAllcommission_structure_a();
-		$data['commission_structure_b'] = $this->PayStructure->getAllcommission_structure_b();
-		$data['commission_structure_c'] = $this->PayStructure->getAllcommission_structure_c();
+		/*$data['commission_structure_b'] = $this->PayStructure->getAllcommission_structure_b();
+		$data['commission_structure_c'] = $this->PayStructure->getAllcommission_structure_c();*/
 		$data['commission_c_partnership'] = $this->PayStructure->getAllcommission_c_partnership();
 		$data['manual_fee'] = $this->PayStructure->getAllmanual_fee();
        	$this->layout->view('add_EmpSalary',$data); 
@@ -238,6 +240,8 @@ class EmployeeManagement extends CI_Controller {
 			'dept_id' => $this->input->post('designation'),
 			'job_type' => $this->input->post('jobType'),
 			'basic_pay' => $this->input->post('basic_pay'),
+			'perfectAttendance' => $this->input->post('perfectAttendance'),
+			'performancebonus' => $this->input->post('performancebonus'),
 			'commissionPay' => $this->input->post('CommissionPay'),
 			'dearness_allowance' => $this->input->post('dearness_allowance'),
 			'Provident_fund' => $this->input->post('Provident_fund'),
@@ -522,12 +526,18 @@ class EmployeeManagement extends CI_Controller {
 			'</table>
 		</div>';
 		//echo $contain;
-		$mpdf = new \Mpdf\Mpdf();
 		
+		$this->load->library('pdf');
+		$file_name = 'AttendanceSheet_'.$full_month;
+		$this->pdf->createPDF($contain, $file_name, true);
+		
+		//$this->pdf->stream('Attendance_sheet"'.$full_month.'".pdf');
+
+		/*$mpdf = new \Mpdf\Mpdf();
 		$mpdf->WriteHTML($contain);
-		//$mpdf->Output();
 		//download it D save F.
-		$mpdf->Output('Attendance_sheet"'.$full_month.'".pdf','D');
+		$mpdf->Output('Attendance_sheet"'.$full_month.'".pdf','D');*/
+
 
 	}
 	public function post_add_empHoliday(){
@@ -612,5 +622,23 @@ class EmployeeManagement extends CI_Controller {
 		   }
 	   }
 	}
+	/*function mypdf(){
+
+
+		$this->load->library('pdf');
+	
+	
+		  $this->pdf->load_view('mypdf');
+		  $this->pdf->render();
+	
+	
+		  $this->pdf->stream("welcome.pdf");
+	   }*/
+	function mypdf()
+    {
+        $this->load->library('pdf');
+        $html = $this->load->view('mypdf', [], true);
+        $this->pdf->createPDF($html, 'mypdf', false);
+    }
 }
 ?>

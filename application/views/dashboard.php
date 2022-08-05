@@ -261,7 +261,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 								<h5>CREATE APPOINTMENT</h5>
-									<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+									<button type="button" class="close close_btn" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
 								</div>
 								
 								<div style="margin: 2px 20px 0px 4px; float: right; display: none" id="remove-block">
@@ -357,7 +357,7 @@
 									<div class="modal-footer">
 										<input type="hidden" value="-1" name="update-event" id="update-event" />
 										<input type="hidden" value="" name="currentView" id="currentView" />
-										<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-default close_btn" data-bs-dismiss="modal">Close</button>
 										<button type="submit" class="btn btn-primary" id="">submit</button>
 									</div>
 								</form>
@@ -636,8 +636,8 @@
         $('#end-time').val(endTime12Format);
 
     },
-	events:[{"resourceId":"7","title":"susmita","start":"2022-07-13T10:30:00","end":"2022-07-13T10:30:00","color":"#FFA500"}],
-    //events: <?php echo $event; ?>,
+	//events:[{"resourceId":"7","title":"susmita","start":"2022-07-13T10:30:00","end":"2022-07-13T10:30:00","color":"#FFA500"}],
+    events: <?php echo $event; ?>,
 
 	//eventColor: '#FFA500',
 
@@ -749,6 +749,11 @@
 	// 	$( "#"+ titleid ).css( "background-color", className );
 	// 	$(".context-menu").hide();
 	// });
+
+	$(".close_btn").click(function(){
+		$("#myModal").modal("hide"); 
+						
+    });
 
 });
 

@@ -218,6 +218,7 @@ class ServiceCategoryCtl extends CI_Controller {
 						  $uploadData[$i]['status'] = $status;
 						  $uploadData[$i]['created_by'] = $this->session->userdata('id');
 						  $uploadData[$i]['created_at'] = date("Y-m-d H:i:s");
+						  $uploadData[$i]['status'] = '1';
 						  
 					  }
 					  else

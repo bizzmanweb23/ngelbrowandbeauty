@@ -27,13 +27,85 @@ class OrderManagement extends CI_Controller {
     }
 	public function all_OrderProduct()
     {
-       
        $data['orderProduct'] = $this->OrderManagement->getAllOrderProduct();
 	   $data['AllCurrentOrder'] = $this->OrderManagement->getAllCurrentOrder();
 	   $data['AllComplatedOrder'] = $this->OrderManagement->getAllComplatedOrder();
 	   $data['AllCanceledOrder'] = $this->OrderManagement->getAllCanceledOrder();
        $this->layout->view('all_orderProduct',$data); 
     }
+	public function viewDailySales()
+    {
+       $data['orderProduct'] = $this->OrderManagement->getAllDailySales();
+       $this->layout->view('all_DailySales',$data); 
+    }
+	public function searchDailySalesDate()
+    {
+
+       $dailySales_date = $_GET['dailySales_date'];
+	   
+		$data['orderProduct'] = $this->OrderManagement->searchGetDailySalesData($dailySales_date); 
+      
+       $this->load->view('dailySalesSearchFile',$data); 
+
+    }
+	public function searchFromToSalesDate()
+    {
+
+       $dailySales_date = $_GET['dailySales_date'];
+	   $toSalesDate = $_GET['toSalesDate'];
+	   
+		$data['orderProduct'] = $this->OrderManagement->searchGetFromToSalesSalesData($dailySales_date,$toSalesDate); 
+      
+       $this->load->view('dailySalesSearchFile',$data); 
+
+    }
+	public function exportdailySales(){
+
+		$dailySalesDate =  $this->input->post('dailySalesDate');
+		$toSalesDate =  $this->input->post('toSalesDate');
+		//$DailySalesData = $this->OrderManagement->searchGetDailySalesData($employeeid);
+		$DailySalesData =  $this->OrderManagement->searchGetFromToSalesSalesData($dailySalesDate,$toSalesDate);
+
+		$delimiter = ","; 
+			$filename = "dailySales_". $dailySalesDate . ".csv"; 
+
+			//$f = fopen("./uploads/Salesdata/".$filename, 'w'); 
+			$f = fopen('php://memory', 'w');
+			if ($f === false) {
+				die('Cannot open the file ' . $filename);
+			}
+
+		$header_fields = array('Order Number', 'First Name', 'Last Name', 'Contact No.' ,'address','City','State','Postal code','Email','Payment Name','Order Date','Delivery Date'); 
+			fputcsv($f, $header_fields, $delimiter); 
+
+			$SalesData = array();
+
+				foreach($DailySalesData as $orderRow){ 	
+					$order_number = $orderRow['order_number'];
+					$first_name = $orderRow['first_name'];
+					$last_name = $orderRow['last_name'];
+					$email = $orderRow['email'];
+					$Date = $orderRow['Date'];
+					$shipping_contactno = $orderRow['shipping_contactno'];
+					$shipping_address = $orderRow['shipping_address'];
+					$shipping_city = $orderRow['shipping_city'];
+					$shipping_state = $orderRow['shipping_state'];
+					$shipping_postalcode = $orderRow['shipping_postalcode'];
+					$payment_name = $orderRow['payment_name'];
+					$delivery_date = $orderRow['delivery_date'];
+					
+					$salesData = array($order_number, $first_name,$last_name, $shipping_contactno,$shipping_address,$shipping_city,$shipping_state,$shipping_postalcode,$email,$payment_name,$Date,$delivery_date); 
+					//print_r($productData);
+				fputcsv($f, $salesData, $delimiter); 
+			} 
+
+
+			rewind($f);
+			header('Content-Type: application/csv; charset=UTF-8');
+			header('Content-Disposition: attachment; filename="' . $filename . '";');
+			fpassthru($f);
+
+	}
 	public function add_orderproduct()
     {
        
@@ -299,6 +371,7 @@ class OrderManagement extends CI_Controller {
 		echo $available_stock;
 
 	}
+
 	public function generateOrderNumber($id)
 	{
 		return 'NBB' . str_pad($id, 4, 0, STR_PAD_LEFT);

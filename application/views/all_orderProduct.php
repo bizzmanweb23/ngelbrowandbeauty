@@ -20,6 +20,7 @@
             <div class="card" style="border-radius: 15px;height: 40rem;">
 				<div class="card-header">
                 	<a href="<?=base_url('admin/OrderManagement/add_orderproduct')?>"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Order </button></a>
+					<a href="<?=base_url('admin/OrderManagement/viewDailySales')?>"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Daily Sales</button></a>
 				</div>
 			<div class="container">
 
@@ -103,7 +104,7 @@
 							<!-- Current Orders Content-->
 							<div class="site-table" style="overflow: auto; height: 400px;">
 								<h4>Current Orders</h4>
-								<table class="table table-bordered" id = "order_table1" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+								<table class="table table-bordered" id = "currentOrder_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
 									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
 									<tr>
 										<th>Order Number </th>
@@ -153,7 +154,7 @@
 							<!-- Complated Orders Content-->
 							<div class="site-table" style="overflow: auto; height: 400px;">
 								<h4>Complated Orders</h4>
-								<table class="table table-bordered" id = "order_table2" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+								<table class="table table-bordered" id = "complatedOrder_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
 									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
 									<tr>
 										<th>Order Number </th>
@@ -204,7 +205,7 @@
 							<!-- Canceled Orders Content-->
 							<div class="site-table" style="overflow: auto; height: 400px;">
 							<h4>Canceled</h4>
-							<table class="table table-bordered" id = "order_table3" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+							<table class="table table-bordered" id = "CanceledOrder_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
 								<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
 								<tr>
 									<th>Order Number </th>
@@ -295,9 +296,9 @@
 	</div>
 </div>
 
-<link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ajax_datatables/css/jquery.dataTables.css"> 
+<!--<link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ajax_datatables/css/jquery.dataTables.css"> 
 <script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery-1.8.2.min.js"></script>
-<script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery.dataTables.min.js"></script>-->
 
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -320,47 +321,7 @@
 		});
 	});
 
-	$(function () {
-		$('#order_table').DataTable({
-		"paging": true,
-		"lengthChange": false,
-		"searching": true,
-		"ordering": false,
-		"info": false,
-		"autoWidth": true,
-		"responsive": true,
-		});
-		$('#order_table1').DataTable({
-		"paging": true,
-		"lengthChange": false,
-		"searching": true,
-		"ordering": false,
-		"info": false,
-		"autoWidth": true,
-		"responsive": true,
-		});
-		$('#order_table2').DataTable({
-		"paging": true,
-		"lengthChange": false,
-		"searching": true,
-		"ordering": false,
-		"info": false,
-		"autoWidth": true,
-		"responsive": true,
-		});
-		$('#order_table3').DataTable({
-		"paging": true,
-		"lengthChange": false,
-		"searching": true,
-		"ordering": false,
-		"info": false,
-		"autoWidth": true,
-		"responsive": true,
-		});
-	});
-
-	/*$(function() {
-	$("#order_table1").dataTable();
-	});*/
+	
 
 </script> 
+

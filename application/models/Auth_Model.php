@@ -133,7 +133,7 @@ class Auth_Model extends CI_Model
       function getAllTherapistH(){
           $this->db->select('nbb_employees.*');
           $this->db->from('nbb_employees');
-          $this->db->where('nbb_employees.designation','1');
+          $this->db->where('nbb_employees.designation','7');
           $this->db->where('nbb_employees.status','1');
           $this->db->order_by('nbb_employees.order_id','ASC');
           //$this->db->join('xin_leave_applications','xin_leave_applications.employee_id = xin_employees.user_id','left');

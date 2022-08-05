@@ -18,7 +18,12 @@
 	}
 
 </style>
+<?php 
+if ($this->session->userdata('id')) {
 
+// code statements My Account
+
+?>
 	<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main" style="background-color: #fff;">
     <div class="sidenav-header text-center mb-5">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -452,7 +457,12 @@
     </div>
     
   </aside>
-  
+  <?php 
+		}else
+		{
+		redirect('admin', 'refresh');
+		}
+  ?>
  
   <!--   Core JS Files   -->
 

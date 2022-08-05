@@ -72,12 +72,15 @@
       <!-- /.container-fluid -->
     </section>
 </div>
-
+<!--
 <link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ajax_datatables/css/jquery.dataTables.css"> 
 <script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery-1.8.2.min.js"></script>
 <script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery.dataTables.min.js"></script>
 <script>
 $(function() {
-$("#customer_table").dataTable();
+$("#customer_table").dataTable({
+	"ordering": false,
 });
-</script> 
+});
+
+</script> -->

@@ -41,7 +41,7 @@
               <div class="card-body">
                 
                     <div class="site-table" style="overflow: auto; height: 350px ">            
-                    <table class="table table-bordered" id = "customer_table">
+                    <table class="table table-bordered" id = "lead_table">
                     <thead style="background-color: #fff; color:#b8860b">
                           <tr>
                             <th>Name</th>
@@ -86,11 +86,13 @@
     </section>
 </div>
 
-<link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ajax_datatables/css/jquery.dataTables.css"> 
+<!--<link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ajax_datatables/css/jquery.dataTables.css"> 
 <script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery-1.8.2.min.js"></script>
 <script type="text/javascript" charset="utf8" src="<?= base_url(); ?>/assets/plugins/ajax_datatables/js/ajax-jquery.dataTables.min.js"></script>
 <script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 $(function() {
 $("#customer_table").dataTable();
 });
-</script> 
+</script>-->

@@ -11,20 +11,59 @@
       <!-- Modal body -->
       <div class="modal-body">
         <!--<h3 class="text-center">Login</h3>-->
-				<nav class="navbar navbar-expand-lg p-0">
-                  
-					<div class="collapse text-center navbar-collapse text-uppercase" id="navbarText">
-						<span class="navbar-text UsefullTab" onclick = "openUsefullTab(event, 'quotationContent')">Login</span>
+				<!-- Nav tabs -->
+					<ul class="nav nav-tabs nav-justified justify-content-center" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" data-toggle="tab" href="#home">LOGIN</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#menu1">SIGNUP</a>
+						</li>
+
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div id="home" class="container tab-pane active"><br>
+							<h3></h3>
+							<div class="row">
+									<div class="col-md-12">
+										<input type="email" name="" id="" class="form-control mb-2" placeholder="Enter Email"> 
+									</div>
+							</div>
+							<div class="row">
+									<div class="col-md-12">
+										<input type="password" name="" id="" class="form-control" placeholder="Enter Password">
+									</div>
+							</div>
+								<button class="btn btn-primary btn-block mt-4 mb-5">LOGIN</button>
+						</div>
+						<div id="menu1" class="container tab-pane fade"><br>
+							<h3></h3>
+								<div class="row">
+									<div class="col-md-6">
+										<input type="email" name="" class="form-control mb-2" placeholder="Enter First Name"> 
+									</div>
+									<div class="col-md-6">
+										<input type="email" name="" class="form-control mb-2" placeholder="Enter Last Name"> 
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<input type="email" name="" id="" class="form-control mb-2" placeholder="Enter Email"> 
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<input type="password" name="" id="" class="form-control" placeholder="Enter Password">
+									</div>
+								</div>
+								
+								<button class="btn btn-primary btn-block mt-4 mb-5">SIGNUP</button>
+						</div>
 					</div>
-					<div class="collapse text-center navbar-collapse text-uppercase" id="navbarText">
-						<span class="navbar-text UsefullTab" onclick = "openUsefullTab(event, 'InvoiceExtraChargesContent')"> 
-							SignUp
-						</span>
-						<div>
-				</nav>
-       <input type="email" name="" id="" class="form-control mb-2" placeholder="Enter Email"> 
-       <input type="password" name="" id="" class="form-control" placeholder="Enter Password">
-       <button class="btn btn-primary btn-block mt-4 mb-5">LOGIN</button>
+
+      
       </div>
 
     </div>
