@@ -60,8 +60,6 @@
 					</div>
                    
               	</form>
-
-				  <a href="<?=base_url('admin/employeeManagement/mypdf')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Pdf  </button></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
