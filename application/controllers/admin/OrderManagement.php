@@ -110,6 +110,7 @@ class OrderManagement extends CI_Controller {
     {
        
 		$data['customer'] = $this->Auth->getAllCustomer();
+		$data['allemployees'] = $this->EmployeeManagement->getAllemployees();
 		$data['product_data'] = $this->OrderManagement->getAllProduct();
        	$this->layout->view('addOrderproduct',$data); 
 
@@ -117,13 +118,15 @@ class OrderManagement extends CI_Controller {
 	public function post_add_orderproduct()
 	{
 
-		$mulproductid = $_POST['productID'];
+		
+
         $data = array(
             'user_id' => $this->input->post('customer_id'),
+			'saler_id' => $this->input->post('saler_id'),
             'delivery_date' => $this->input->post('delivery_date'),
 			'order_status'  => 1,
 			'type_flag' =>  'O'
-		);  
+		); 
 
 			$result = $this->OrderManagement->insertOrder($data);  
 			$orderId = $this->db->insert_id();
@@ -132,27 +135,49 @@ class OrderManagement extends CI_Controller {
 			$this->db->where('id' , $orderId);
 			$this->db->update('nbb_order_main', array('order_number'=>$order_number));
 
-			$quantity = $_POST['quantity'];
-			$product_price = $_POST['product_price'];
-			$totalPrice = $_POST['totalPrice'];
-			$stock_now = $_POST['stock_now'];
+			/*$product_ID=array($this->input->post('productID'),$this->input->post('quantity'),$this->input->post('totalPrice'),$this->input->post('product_price'));
+			print_r($product_ID);exit;
+       
+				foreach($product_ID as $product_arr)
+				{
+					$productid=$product_arr;
 
+					$f=count($productid);
+					
+					for($i=0;$i<$f;$i++)
+					{
+						$arre=[
+							//'phone'=>$phoneNo[$i],
+							'order_id' => $orderId,
+							'product_id' => $productid[$i],
+							'total_quantity' => $this->input->post('quantity')[$i],
+							'total_price' => $this->input->post('totalPrice')[$i],
+							'product_price' => $this->input->post('product_price')[$i],
+								]; 
+							
+							$result2 = $this->db->insert('nbb_order_product',$arre);   
+							$this->db->where('id' , $allproductID);
+							$this->db->update('nbb_product', array('available_stock'=> $this->input->post('stock_now')[$i]));   
+					}
+				}*/
+			$mulproductid = $_POST['productID'];
 			for($i=0;$i < count($mulproductid);$i++){
 				$allproductID = $mulproductid[$i];
-
+				
 				$orderdata = array(
 					'order_id' => $orderId,
 					'product_id' => $allproductID,
-					'total_quantity' => $quantity[$i],
-					'total_price' => $totalPrice[$i],
-					'product_price' => $product_price[$i],
+					'total_quantity' => $this->input->post('quantity')[$i],
+					'total_price' => $this->input->post('totalPrice')[$i],
+					'product_price' => $this->input->post('product_price')[$i],
 				); 
-				$result2 = $this->OrderManagement->insertOrderproduct($orderdata);  
+			 
+				$result2 = $this->db->insert('nbb_order_product',$orderdata);  
 				
 				$this->db->where('id' , $allproductID);
-				$this->db->update('nbb_product', array('available_stock'=> $stock_now[$i]));
+				$this->db->update('nbb_product', array('available_stock'=> $this->input->post('stock_now')[$i]));
 
-			}	
+			}
 
 		if($result2 == true)
 		{
@@ -161,7 +186,7 @@ class OrderManagement extends CI_Controller {
 		else
 		{
 			$errorUploadType = 'Some problem occurred, please try again.';
-		}      
+		}   
     }
 	
 	public function fetchOrderproductData()

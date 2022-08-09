@@ -77,7 +77,7 @@
 							</div>
 						</div>
 						
-						<div class="row Commission_Structure" style="display: None;">	
+						<?php /*<div class="row Commission_Structure" style="display: None;">	
 							<div class="col-md-3">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Commission Structure A:</label>
@@ -86,7 +86,7 @@
 											$commission_structure_a_id = $commission_structure_aRow['id'];
 											$structure_aType_of_fee = $commission_structure_aRow['fee_type'];
 											$structure_a_amount = $commission_structure_aRow['amount']; ?>
-											<input type="radio" onclick="chkcontrol(<?= $commission_structure_a_id ?>)" class="commission_<?= $commission_structure_a_id ?>" name="commission_structure" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>(<?= $structure_a_amount ?>%)</label><br>
+											<input type="radio" onclick="chkcontrol(<?= $commission_structure_a_id ?>)" class="commission_<?= $commission_structure_a_id ?>" name="commission_StructureA" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>(<?= $structure_a_amount ?>%)</label><br>
 										<?php } ?>
 									</div>
 								</div>
@@ -99,12 +99,13 @@
 											$manual_id = $manual_feeRow['id'];
 											$manualtype_of_fee = $manual_feeRow['type_of_fee'];
 											$manual_amount = $manual_feeRow['amount']; ?>
-											<input type="radio" onclick="chkmanual_feecontrol(<?= $manual_id ?>)" class="commission manual_fee_<?= $manual_id ?>" name="commission_structure" value="<?= $manual_amount ?>"><label for="vehicle1"><?= $manualtype_of_fee ?>($<?= $manual_amount ?>)</label><br>
+											<input type="radio" onclick="chkmanual_feecontrol(<?= $manual_id ?>)" class="commission manual_fee_<?= $manual_id ?>" name="manual_Fees" value="<?= $manual_amount ?>"><label for="vehicle1"><?= $manualtype_of_fee ?>($<?= $manual_amount ?>)</label><br>
 										<?php } ?>
 									</div>
 								</div>
 							</div>
-							<?php /*<div class="col-md-3">
+
+							<div class="col-md-3">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Commission Structure B:</label>
 									<div class="col-md-12">          
@@ -129,10 +130,12 @@
 										<?php } ?>
 									</div>
 								</div>
-							</div>*/ ?>
+							</div>
 
-						</div>
-						<div class="row">
+
+						</div> */ ?>
+
+						<?php /*<div class="row">
 							<div class="col-md-3 partnership" style="display: None;">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Commission Structure c (partnership):</label>
@@ -141,12 +144,12 @@
 											$commission_structure_cpartnership_id = $commission_structure_cRow['id'];
 											$structure_cpartnershipType_of_fee = $commission_structure_cRow['type_of_fee'];
 											$structure_cpartnership_amount = $commission_structure_cRow['amount']; ?>
-											<input type="radio" class="partnership_<?= $commission_structure_cpartnership_id ?>" onclick="chkPartnershipcontrol(<?= $commission_structure_cpartnership_id ?>)" name="commission_structure" value="<?= $structure_cpartnership_amount ?>"><label for="vehicle1"><?= $structure_cpartnershipType_of_fee ?>(<?= $structure_cpartnership_amount ?>%)</label><br>
+											<input type="radio" class="partnership_<?= $commission_structure_cpartnership_id ?>" onclick="chkPartnershipcontrol(<?= $commission_structure_cpartnership_id ?>)" name="partnership" value="<?= $structure_cpartnership_amount ?>"><label for="vehicle1"><?= $structure_cpartnershipType_of_fee ?>(<?= $structure_cpartnership_amount ?>%)</label><br>
 										<?php } ?>
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>*/ ?>
 						<!--<div class="row Commission_pay" style="display: None;">
 							<div class="col-md-12">
 								<div class="form-group">
@@ -157,9 +160,9 @@
 								</div>
 							</div>
 						</div>-->
-						<div class="row">
+						<?php /*	 <div class="row">
 
-							<div class="col-md-6 Commission_pay" style="display: None;">
+						 	<div class="col-md-6 Commission_pay" style="display: None;">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Insurance:</label>
 									<div class="col-md-12">          
@@ -224,7 +227,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>  */ ?>
 						<div class="row">
 							<div class="col-md-6 total_earning">
 								<div class="form-group">

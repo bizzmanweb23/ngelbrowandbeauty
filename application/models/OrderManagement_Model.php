@@ -25,6 +25,16 @@ class OrderManagement_Model extends CI_Model
 	{
 		$this->db->select('nbb_product.*');
 		$this->db->from('nbb_product');
+		$where = array(
+			'nbb_product.status' => '1'
+		  );
+		$this->db->where($where);
+		return $this->db->get()->result_array();
+	}
+	function getAllemployees()
+	{
+		$this->db->select('nbb_employees.*');
+		$this->db->from('nbb_employees');
 		return $this->db->get()->result_array();
 	}
 	function orderProductlistingdata($order_id = '')
@@ -126,10 +136,13 @@ class OrderManagement_Model extends CI_Model
 		$this->db->select('nbb_order_main.*,
 		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
-		nbb_customer.last_name');
+		nbb_customer.last_name,
+		nbb_employees.first_name as e_first_name,
+		nbb_employees.last_name as e_last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
 		$where = array(
 			'nbb_order_main.type_flag' => 'O'
 		  );
@@ -141,10 +154,13 @@ class OrderManagement_Model extends CI_Model
 		$this->db->select('nbb_order_main.*,
 		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
-		nbb_customer.last_name');
+		nbb_customer.last_name,
+		nbb_employees.first_name as e_first_name,
+		nbb_employees.last_name as e_last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 1
@@ -157,10 +173,13 @@ class OrderManagement_Model extends CI_Model
 		$this->db->select('nbb_order_main.*,
 		nbb_payment_type.payment_name,
 		nbb_customer.first_name,
-		nbb_customer.last_name');
+		nbb_customer.last_name,
+		nbb_employees.first_name as e_first_name,
+		nbb_employees.last_name as e_last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 2

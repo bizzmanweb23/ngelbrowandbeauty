@@ -25,10 +25,19 @@
 					<div class = "row">
 						<div class="col-md-6">
 							<label for="services" class="col-sm-6 control-label">Customer name<i class="required">*</i></label>
-							<select data-placeholder="Customer Name..." class="chosen-select form-control ml-2" name="customer_id" id="customer_id" style="width: 98%;">
+							<select data-placeholder="Customer Name..." class="chosen-select form-control ml-2" name="customer_id" id="customer_id" style="width: 98%;" require>
 								<option>Select Customer</option>
 								<?php foreach ($customer as $customerRow) : ?>
 									<option value="<?= $customerRow['id'] ?>"><?= $customerRow['first_name'].' '.$customerRow['last_name'] ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label for="services" class="col-sm-6 control-label">Sales Executive Name</label>
+							<select class="chosen-select form-control ml-2" name="saler_id" style="width: 98%;">
+								<option value="" hidden>Select Sales Executive</option>
+								<?php foreach($allemployees as $employeesRow) : ?>
+									<option value="<?= $employeesRow['id'] ?>"><?= $employeesRow['first_name'].' '.$employeesRow['last_name'] ?></option>
 								<?php endforeach; ?>
 							</select>
 						</div>
@@ -45,10 +54,11 @@
 					<div class = "row">
 						<div class="col-md-12">
 							<h4 class="col-md-12 control-label">Products</h4>
-							<?php foreach ($product_data as $product_dataRow) : ?>
+							<?php foreach($product_data as $product_dataRow) : ?>
 								<div class="row">
 									<div class="col-md-3"> 
-										<input type="checkbox" id="productID" name="productID[]" value="<?= $product_dataRow['id'] ?>">  
+										<input type="checkbox" id="productID" name="productID[]" value="<?= $product_dataRow['id'] ?>"> 
+										 
 										<label for="product" class="col-md-6 control-label mt-0"><h5><?= $product_dataRow['name'] ?></h5></label>
 										<label for="product" class="col-md-6 control-label mt-0">Available stock : <?= $product_dataRow['available_stock'] ?></label>
 
@@ -59,7 +69,7 @@
 										<div class="form-group">
 											<label for="Quantity" class="col-sm-6 control-label">Quantity </label>
 											<div class="col-md-4">
-												<input type="number" class="form-control" name="quantity[]" id="quantity_<?= $product_dataRow['id'] ?>" value="" onkeyup="calculate_total_quantity('<?= $product_dataRow['id'] ?>');">
+												<input type="number" class="form-control" name="quantity[]" id="quantity_<?= $product_dataRow['id'] ?>" onkeyup="calculate_total_quantity('<?= $product_dataRow['id'] ?>');">
 											</div>
 										</div>
 									</div>
@@ -68,7 +78,7 @@
 											<label for="age" class="control-label">Product Price</label>
 										</div>
 										<div class="col-md-6">
-											<input type="text" class="form-control" name="product_price[]" id="price_<?= $product_dataRow['id'] ?>" value="<?= $product_dataRow['price'] ?>">
+											<input type="text" class="form-control" name="product_price[]" id="price_<?= $product_dataRow['id'] ?>" value="<?= $product_dataRow['price'] ?>" readonly>
 										</div>
 									</div>
 									<div class="col-md-2">
@@ -76,7 +86,7 @@
 											<label for="age" class="control-label">Total Price</label>
 										</div>
 										<div class="col-md-6">
-											<input type="text" class="form-control" name="totalPrice[]" id="totalPrice_<?= $product_dataRow['id'] ?>" value="" readonly>
+											<input type="text" class="form-control" name="totalPrice[]" id="totalPrice_<?= $product_dataRow['id'] ?>" readonly>
 										</div>
 									</div>
 								</div>

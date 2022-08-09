@@ -219,6 +219,7 @@ class EmployeeManagement extends CI_Controller {
 
 		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeeCommissionSalary();
 		$data['EmployeeFultimeSalary'] = $this->EmployeeManagement->getAllEmployeeFultimeSalary();
+		$data['EmployeepartnershipSalary'] = $this->EmployeeManagement->getAllEmployeepartnershipSalary();
 		$this->layout->view('all_employeeSalary',$data); 
 	}
 	public function add_employeeSalary(){

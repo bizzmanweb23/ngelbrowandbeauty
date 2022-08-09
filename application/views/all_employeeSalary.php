@@ -80,7 +80,7 @@
 															<td><?= $employeeSalaryRow['net_pay'] ?></td>
 															<td><?= $employeeSalaryRow['total_deduction'] ?></td>
 															<td>
-															<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$employeeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
+															<!--<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$employeeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>-->
 															<a href="<?= base_url('admin/employeeManagement/deleteEmployeeSalary/'. $employeeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
 															<!--<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$employeeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-oggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-user-times" aria-hidden="true"></i></a>-->
 														</td>
@@ -118,7 +118,7 @@
 															<td><?= $EmployeeFultimeSalaryRow['perfectAttendance']?></td>
 															<td><?= $EmployeeFultimeSalaryRow['total_earning'] ?></td>
 															<td>
-															<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$EmployeeFultimeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
+															<!--<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$EmployeeFultimeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>-->
 															<a href="<?= base_url('admin/employeeManagement/deleteEmployeeSalary/'. $EmployeeFultimeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
 															<!--<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$EmployeeFultimeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-oggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-user-times" aria-hidden="true"></i></a>-->
 														</td>
@@ -133,7 +133,34 @@
 									<!-- Partnerships-->
 									<div id="menu2" class="container tab-pane fade">
 										<div class="site-table" style = "overflow: auto; height: 400px">
-											
+										<table class="table table-bordered fultimeSalaryTable" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+												<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+												<tr>
+													<th>Employee number </th>
+													<th>Employee Name</th>
+													<th>Designation</th>
+													<th>Basic Pay</th>
+													<th>Total Earning</th>
+													<th>Action</th>
+												</tr>
+												</thead>
+												<tbody>
+													<?php foreach($EmployeepartnershipSalary as $EmployeepartnershipSalaryRow): ?>
+														<tr>
+															<td><?= $EmployeepartnershipSalaryRow['emp_number']?></td>
+															<td><?= $EmployeepartnershipSalaryRow['first_name'].' '.$EmployeepartnershipSalaryRow['last_name']?></td>	
+															<td><?= $EmployeepartnershipSalaryRow['designation_name']?></td>
+															<td><?= $EmployeepartnershipSalaryRow['basic_pay']?></td>
+															<td><?= $EmployeepartnershipSalaryRow['total_earning'] ?></td>
+															<td>
+															<!--<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$EmployeepartnershipSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>-->
+															<a href="<?= base_url('admin/employeeManagement/deleteEmployeeSalary/'. $EmployeepartnershipSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+															<!--<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$EmployeepartnershipSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-oggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-user-times" aria-hidden="true"></i></a>-->
+														</td>
+														</tr>
+													<?php endforeach; ?>
+												</tbody>
+											</table>
 										</div>
 									</div>
 

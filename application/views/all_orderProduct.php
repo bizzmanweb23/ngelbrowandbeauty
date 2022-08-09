@@ -55,6 +55,7 @@
 									<th>Customer Name</th>
 									<th>Order Date</th>
 									<th>Order Status</th>
+									<th>Sales Executive</th>
 									<th>Assign To Delivery</th>
 									<th>Payment Method</th>
 									<th>Action</th>
@@ -83,6 +84,8 @@
 											<?php }else{ ?>
 											<span></span>
 											<?php } ?></td>
+											
+											<td><?= $orderProductRow['e_first_name'].' '.$orderProductRow['e_last_name'] ?></td>
 											<td><a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$orderProductRow['id'])?>" target="_blank" title="Assign To Delivery"><span class = "btn btn-warning" style="box-shadow:none !important; text-transform:uppercase;">Assign To Delivery</span></a></td>
 											<td><?= $orderProductRow['payment_method']?></td>
 											<td>
@@ -111,6 +114,7 @@
 										<th>Customer Name</th>
 										<th>Order Date</th>
 										<th>Order Status</th>
+										<th>Sales Executive</th>
 										<th>Payment Method</th>
 										<th>Action</th>
 									</tr>
@@ -134,6 +138,7 @@
 												<?php }else{
 													echo '';
 												} ?></td>
+												<td><?= $AllCurrentOrdertRow['e_first_name'].' '.$AllCurrentOrdertRow['e_last_name'] ?></td>
 												<td><?= $AllCurrentOrdertRow['payment_method']?></td>
 												<td>
 												<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllCurrentOrdertRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
@@ -161,6 +166,7 @@
 										<th>Customer Name</th>
 										<th>Order Date</th>
 										<th>Order Status</th>
+										<th>Sales Executive</th>
 										<th>Payment Method</th>
 										<th>Action</th>
 									</tr>
@@ -185,6 +191,7 @@
 													echo '';
 												} ?></td>
 											<td>
+											<td><?= $AllComplatedOrderRow['e_first_name'].' '.$AllComplatedOrderRow['e_last_name'] ?></td>
 											<td><?= $AllComplatedOrderRow['payment_method']?></td>
 											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllComplatedOrderRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
 											<a data-order_id="<?=  $order_id; ?>"

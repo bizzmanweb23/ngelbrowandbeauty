@@ -183,9 +183,8 @@
 							</label>
 							<div class="col-sm-12">
 								<select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
-									<option value=""></option>
-									<option value="0">Inactive</option>
 									<option value="1">Active</option>
+									<option value="0">Inactive</option>
 								</select>
 								<small class="info help-block">
 								</small>
