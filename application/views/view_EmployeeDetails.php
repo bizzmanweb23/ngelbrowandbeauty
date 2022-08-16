@@ -149,6 +149,14 @@
 								</div>
 								<div class="row pt-2">
 									<div class="col-sm-3">
+									<h6 class="mb-0">Basic Salary</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										$<?= $emp_Details['basicSalary'] ?>
+									</div>
+								</div>
+								<div class="row pt-2">
+									<div class="col-sm-3">
 									<h6 class="mb-0">Date Of Joining</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
@@ -483,6 +491,14 @@
 						<option value="2" <?php if($emp_Details['payStructure'] == '2'){ echo 'selected';} ?>>Manual Fees</option>
 						<option value="3" <?php if($emp_Details['payStructure'] == '3'){ echo 'selected';} ?>>Commission Structure</option>
 					</select>
+				</div>
+			</div>
+			<div class="row pt-2">
+				<div class="col-md-3">
+					<h6 class="mb-0">Basic Salary</h6>
+				</div>
+				<div class="col-md-9 text-secondary">
+					<input type="text" name="basicSalary" value ="<?= $emp_Details['basicSalary'] ?>" class="form-control">
 				</div>
 			</div>
 			<div class=" pt-2 text-center">

@@ -235,7 +235,7 @@
 					
 					<!-- Other Details -->
 					<div id="other-details">
-					<h3>Other Details</h3>
+					<h3>Job Details</h3>
 						<table width="100%">
 							<tr>
 								<td>Job Type</td>
@@ -250,10 +250,6 @@
 								</td>
 							</tr>
 							<tr>
-								<td>Date Of Joining</td>
-								<td>
-									<input type="date" name = "date_of_joining" value="" class="form-control">
-								</td>
 								<td colspan="1">Willing to relocate</td>
 								<td>
 									<input type="radio" name="relocate" value="1"><label>Yes</label>
@@ -263,6 +259,7 @@
 								</td>
 								
 							</tr>
+
 							<tr>
 								<td>Designation</td>
 								<td>
@@ -273,7 +270,14 @@
 										<?php endforeach; ?> 
 									</select>
 								</td>
+								<td>Date Of Joining</td>
+								<td>
+									<input type="date" name = "date_of_joining" value="" class="form-control">
+								</td>
 					
+							</tr>
+							<tr>
+								
 								<td>Pay Structure</td>
 								<td>
 									<select name="payStructure" class="form-control">
@@ -283,7 +287,10 @@
 										<option value="3">Commission Structure</option>
 									</select>
 								</td>
-								
+								<td>Basic Salary</td>
+								<td>
+									<input type="text" name = "basicSalary" value="" class="form-control">
+								</td>
 							</tr>
 
 							<tr>

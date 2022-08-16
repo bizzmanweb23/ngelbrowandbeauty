@@ -424,9 +424,7 @@
      $("#duration").toggle($("[name=promotion_validity]").index(this)===2);
    })
   })
-  
- </script>  
- <script>
+
       $(".chosen-select").chosen({
   no_results_text: "Oops, nothing found!"
 })

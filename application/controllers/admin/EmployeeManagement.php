@@ -44,6 +44,7 @@ class EmployeeManagement extends CI_Controller {
 			'designation' => $this->input->post('designation'),
 			'payStructure' => $this->input->post('payStructure'),
 			'willing_to_relocate' => $this->input->post('relocate'),
+			'basicSalary' => $this->input->post('basicSalary'),
 			'status' => '1');
 
 				$insert = $this->EmployeeManagement->storeEmployee($data); 
@@ -181,7 +182,8 @@ class EmployeeManagement extends CI_Controller {
 			'jobtype' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
 			'designation' => $this->input->post('designation'),
-			'payStructure' => $this->input->post('payStructure')
+			'payStructure' => $this->input->post('payStructure'),
+			'basicSalary' => $this->input->post('basicSalary'),
 			);
 			$update = $this->Main->update('id',$emp_id, $emp_data,'nbb_employees');   
 
@@ -208,6 +210,7 @@ class EmployeeManagement extends CI_Controller {
 		$data['allemployees'] = $this->EmployeeManagement->getAllArchiveEmployees();
 		$this->layout->view('all_employees',$data); 
 	}
+	
 	/*public function add_Designation()
     {
        
@@ -233,6 +236,14 @@ class EmployeeManagement extends CI_Controller {
 		$data['commission_c_partnership'] = $this->PayStructure->getAllcommission_c_partnership();
 		$data['manual_fee'] = $this->PayStructure->getAllmanual_fee();
        	$this->layout->view('add_EmpSalary',$data); 
+	}
+	public function showCommissionPay()
+	{
+		$salary_Date = $_POST['salary_Date'];
+		$employee_Name = $_POST['employee_Name'];
+
+		$CommissionPay = $this->EmployeeManagement->getshowCommissionPay($salary_Date,$employee_Name);
+		
 	}
 	public function post_add_employeeSalary(){
 
@@ -527,17 +538,15 @@ class EmployeeManagement extends CI_Controller {
 			'</table>
 		</div>';
 		//echo $contain;
-		
-		$this->load->library('pdf');
-		$file_name = 'AttendanceSheet_'.$full_month;
-		$this->pdf->createPDF($contain, $file_name, true);
-		
-		//$this->pdf->stream('Attendance_sheet"'.$full_month.'".pdf');
 
-		/*$mpdf = new \Mpdf\Mpdf();
+		/*$this->load->library('pdf');
+		$file_name = 'AttendanceSheet_'.$full_month;
+		$this->pdf->createPDF($contain, $file_name, true);*/
+		
+		$mpdf = new \Mpdf\Mpdf();
 		$mpdf->WriteHTML($contain);
 		//download it D save F.
-		$mpdf->Output('Attendance_sheet"'.$full_month.'".pdf','D');*/
+		$mpdf->Output('Attendance_sheet"'.$full_month.'".pdf','D');
 
 
 	}

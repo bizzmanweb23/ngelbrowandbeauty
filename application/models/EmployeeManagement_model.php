@@ -114,6 +114,7 @@ class EmployeeManagement_model extends CI_Model
 				'gender' => $row['gender'],
 				'designation' => $row['designation'],
 				'payStructure' => $row['payStructure'],
+				'basicSalary' => $row['basicSalary'],
 				'jobtype' => $row['jobtype'],
 				'date_of_joining' => $row['date_of_joining'],
 				'willing_to_relocate' => $row['willing_to_relocate'],
@@ -126,6 +127,56 @@ class EmployeeManagement_model extends CI_Model
 		}
 		return $data;
 	}
+	function getshowCommissionPay($salary_Date,$employee_Name){
+		$order_product_sql  = "SELECT DATE_FORMAT(nbb_order_main.create_date, '%MM-%Y') as month,
+		sum(nbb_order_product.total_price) as total,
+		nbb_employees.first_name,
+		nbb_employees.last_name,
+		nbb_employees.jobtype,
+		nbb_employees.basicSalary,
+		nbb_roles.role_name
+		FROM nbb_order_product
+		LEFT JOIN nbb_order_main ON nbb_order_main.id = nbb_order_product.order_id 
+		LEFT JOIN nbb_employees ON nbb_employees.id = nbb_order_main.saler_id 
+		LEFT JOIN nbb_roles ON nbb_roles.id = nbb_employees.designation 
+		WHERE nbb_order_main.saler_id = '".$employee_Name."' AND DATE_FORMAT(nbb_order_main.create_date, '%Y-%m') = '".$salary_Date."'"; 
+		$order_product_query = $this->db->query($order_product_sql);
+		$order_product_data = $order_product_query->result_array();
+		$dataArr = array();
+		foreach($order_product_data as $row){
+
+			echo $total = $row['total'];
+
+			
+			$nbb_commission_structure_a_sql  = "SELECT * FROM nbb_commission_structure_a"; 
+			$nbb_commission_structure_a_query = $this->db->query($nbb_commission_structure_a_sql);
+			$commission_structure_a_data = $nbb_commission_structure_a_query->result_array();
+			foreach($commission_structure_a_data as $commission_structure_aRow){
+				$from_range = $commission_structure_aRow['from_range'];
+				if($row['total'] <= $from_range){
+					$total = $row['total'];
+				}else
+					$total = 'test';
+				}
+				$first_name = $row['first_name'];
+				$last_name = $row['last_name'];
+				$jobtype = $row['jobtype'];
+				$role_name = $row['role_name'];
+
+				$dataArr []= array(
+					'total' 			=> $total,
+					'first_name' 		=> $first_name,
+					'last_name'			=> $last_name,
+					'jobtype' 			=> $jobtype,
+					'role_name' 		=> $role_name
+					
+				);
+
+			}
+			//echo json_encode($dataArr);
+
+		}
+
 
 	function getAllEmployeeCommissionSalary(){
 		$this->db->select('nbb_employee_salary.*,
@@ -256,7 +307,7 @@ class EmployeeManagement_model extends CI_Model
 			nbb_employees.last_name
 			FROM nbb_employees_attendance 
 			LEFT JOIN nbb_employees ON nbb_employees.id = nbb_employees_attendance.emp_id
-			WHERE nbb_employees_attendance.emp_id = '".$employeeid."' AND DATE_FORMAT(nbb_employees_attendance.login, '%Y-%m') = '".$login_Time."';";
+			WHERE nbb_employees_attendance.emp_id = '".$employeeid."' AND DATE_FORMAT(nbb_employees_attendance.login, '%Y-%m') = '".$login_Time."'";
 		
 		$query_emp_attendance = $this->db->query($sql_emp_attendance); 
 		return $query_emp_attendance->result_array();	

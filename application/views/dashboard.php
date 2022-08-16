@@ -345,7 +345,40 @@
 															</div>
 														</div> 
 													</div>
-													
+									<?php 
+/*
+									function SplitTime($StartTime, $EndTime, $Duration="60"){
+										$ReturnArray = array ();// Define output
+										$StartTime    = strtotime ($StartTime); //Get Timestamp
+										$EndTime      = strtotime ($EndTime); //Get Timestamp
+
+										$AddMins  = $Duration * 60;
+
+										while ($StartTime <= $EndTime) //Run loop
+										{
+											$ReturnArray[] = date ("G:i", $StartTime);
+											$StartTime += $AddMins; //Endtime check
+										}
+										return $ReturnArray;
+									}
+										$timestamp = time();
+
+											$day = date('D', $timestamp);
+											
+											$appoinmenttime_query=$this->db->query("SELECT * FROM nbb_dashboard WHERE `start_date` = '$day'");
+											foreach ($appoinmenttime_query->result() as $appoinmenttime_row) {
+												$from_time = $appoinmenttime_row->start_time;
+												$to_time = $appoinmenttime_row->end_date;
+												$interval_time= '30';
+												$calculated_time_arr = SplitTime($from_time, $to_time, $interval_time);
+												for ($i=0; $i <count($calculated_time_arr) ; $i++) { 
+													?>
+													<button type="button" class="btn btn-outline-primary mt-2 calendar_time_cls" id="time<?php echo $i ?>" value="<?php echo $calculated_time_arr[$i] ?>" onClick="getTime(this.id);"><?php echo $calculated_time_arr[$i] ?></button>
+													<?php
+
+												}
+											} */
+											?>
 
 												</div>
 

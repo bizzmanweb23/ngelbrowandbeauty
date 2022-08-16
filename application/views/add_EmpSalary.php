@@ -22,15 +22,23 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <form name ="payroll" action="<?= base_url('admin/employeeManagement/post_add_employeeSalary')?>" method="post" enctype="multipart/form-data">
-				<h3>Employee Salary Registration</h3>
+				<h3>Commission Staff Pay</h3>
 					<div id="personal-details">
 
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label class="control-label col-md-12" for="pwd">Select Date:</label>
+									<div class="col-md-12">          
+										<input type="month" name="salaryDate" value="" class="form-control salaryDate">
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Employee Name:</label>
 									<div class="col-md-12">          
-										<select name="employeeName" class="form-control">
+										<select name="employeeName" class="form-control employeeName">
 											<option>Select Employee Name</option>
 											<?php foreach($allemployees as $allemployeesnRow): ?>
 											<option value="<?= $allemployeesnRow['id']?>"><?= $allemployeesnRow['first_name'].' '.$allemployeesnRow['last_name']?></option>
@@ -39,6 +47,9 @@
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="row">
+							
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Designation:</label>
@@ -52,29 +63,33 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Job Type:</label>
 									<div class="col-md-12">          
-										<select name="jobType" class="form-control jobTypeOption">
-											<option value="" hidden>Select Job Type</option>
-											<option value="1">Commission Staff</option>
-											<option value="2">Partnerships</option>
-											<option value="3">Full Time Staff</option>
-										</select>
+										<input type="text" name="jobType" class="form-control jobTypeOption">
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="row">	
 							<div class="col-md-6 BasicPay">
+								<div class="form-group">
+									<label class="control-label col-md-12" for="pwd">Commission Pay:</label>
+									<div class="col-md-12">          
+										<input type="text" name="commission_Pay" class="form-control CommissionPaysum">
+									</div>
+								</div>
+							</div>
+
+						<?php /*<div class="col-md-6 BasicPay">
 								<div class="form-group">
 									<label class="control-label col-md-12" for="pwd">Basic Pay:</label>
 									<div class="col-md-12">          
 										<input type="text" name="basic_pay" placeholder="Basic Pay" class="form-control basicPay fixedpayTotal CommissionPaysum">
 									</div>
 								</div>
-							</div>
+							</div>*/ ?>
 						</div>
 						
 						<?php /*<div class="row Commission_Structure" style="display: None;">	
@@ -452,6 +467,24 @@
 				calculateCommissionPaySum();
 			});
 		});
+
+		$(".salaryDate, .employeeName").on('change', function(){
+			
+			var salaryDate = $('.salaryDate').val();
+			var employeeName = $('.employeeName').val();
+			//alert(salaryDate+employeeName);
+			
+			$.ajax({	
+				type: "POST",	
+				url: "<?= base_url("admin/EmployeeManagement/showCommissionPay")?>",
+				data: { salary_Date: salaryDate, employee_Name: employeeName },
+				success: function(html) {		
+					alert(html);
+				}
+			});
+			
+		});
+
 	});
 
 	function calculateFixedPaySum() {
@@ -466,7 +499,7 @@
 				//alert(sum);
 			}
 		});
-		//.toFixed() method will roundoff the final sum to 2 decimal places
+		
 		$(".total_earning").val(sum.toFixed(2));
 	}
 	function calculateCommissionPaySum() {
@@ -481,9 +514,11 @@
 				//alert(sum);
 			}
 		});
-		//.toFixed() method will roundoff the final sum to 2 decimal places
+		
 		$(".total_earning").val(sum.toFixed(2));
 	}
+
+	
 </script>
 	
 	
