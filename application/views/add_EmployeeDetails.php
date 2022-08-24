@@ -6,13 +6,6 @@
         <div class="row mb-2">
           <div class="col-sm-6">
 		  <h1>Employee Management</h1>
-		  	<?php $message = $this->session->flashdata('status');
-					if (isset($message)) {
-				?>
-				<div class="alert alert-success">
-					<?= $this->session->flashdata('status') ?>
-				</div>
-			<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -243,7 +236,7 @@
 									<input type="radio" name="jobtype" value="Commission Staff" >Commission Staff	
 								</td>
 								<td>
-									<input type="radio" name="jobtype" value="Partnerships ">Partnerships 
+									<input type="radio" name="jobtype" value="Partnerships">Partnerships 
 								</td>
 								<td>
 									<input type="radio" name="jobtype" value="FullTime Staff">Full Time Staff  
@@ -351,7 +344,7 @@
 	<style>
 		
 		.heading{
-			background-color: #b8860b;
+			background-color: #61d3d4;
 			color: white;
 			padding: 5px;
 			text-align: left;

@@ -2071,7 +2071,7 @@ textarea.form-control {
     display: block;
     width: 100%;
     z-index: 100;
-    background-color: #b8860b;
+    background-color: #63d4d6;
     height: 45px
 }
 
@@ -2177,11 +2177,11 @@ textarea.form-control {
     .main-nav .navbar-brand {
         margin-top: 0;
         margin-left: 0;
-        position: absolute;
+        /* position: absolute; */
         z-index: 5551;
-        background-color: #fff;
+        /* background-color: #fff;
         padding: 20px;
-        box-shadow: 0 7px 21px rgba(0, 0, 0, .1)
+        box-shadow: 0 7px 21px rgba(0, 0, 0, .1) */
     }
     .main-nav .navbar-brand img {
         width: auto;
@@ -2196,14 +2196,14 @@ textarea.form-control {
     }
     .main-nav .navbar-brand img {
         width: auto;
-        max-width: 100%
+        max-width: 100px;
     }
 }
 
 .main-nav .navbar-toggler {
     align-self: flex-start;
     padding: 0;
-    background-color: #b8860b;
+    background-color: #63d4d6;
     border: 0;
     cursor: pointer;
     border-radius: 0;
@@ -2245,6 +2245,7 @@ textarea.form-control {
         margin-top: 0;
         box-shadow: none
     }
+ 
 }
 
 .main-nav .dropdown-toggle::after {
@@ -2486,8 +2487,14 @@ textarea.form-control {
         top: 19px;
         right: 15px
     }
-}
 
+}
+@media(max-width:420px) {
+    .cart_btn{
+        top: -25px;
+    }
+
+}
 .main-nav .dropdown-menu li.dropdown .submenu {
     border: 0;
     margin-top: 0;
@@ -4206,10 +4213,19 @@ textarea.form-control {
 
 @media(min-width:768px) {
     .productSection .owl-nav {
-        top: 20px
+        /* top: 20px; */
     }
 }
-
+.owl-prev{
+    position: absolute;
+    bottom: 250px;
+}
+.owl-next{
+    position: absolute;
+    right: -50px !important;
+    bottom: 250px;
+    
+}
 .productSection .owl-nav .owl-prev {
     float: inherit
 }
@@ -8406,4 +8422,14 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle.noUi-handle-upper {
 .modal-header .close{
     padding: 0;
     margin: 0;
+}
+.cart-total-list ul {
+    margin: 0;
+    padding: 0;
+}
+.cart-total-list ul li {
+    list-style-type: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #e3e3e3;
+
 }

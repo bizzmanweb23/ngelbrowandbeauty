@@ -124,7 +124,8 @@ class PayStructure_Model extends CI_Model
 
 			$pay_structure_data = array(
 				'id' 			=> $commission_feeId,
-				'fee_type' 	=> $row['fee_type'],
+				'from_range' 	=> $row['from_range'],
+				'to_range' 		=> $row['to_range'],
 				'amount' 		=> $row['amount'],
 			);	
 
@@ -189,6 +190,32 @@ class PayStructure_Model extends CI_Model
 
 		}
 		return $pay_structure_data;
+	}
+	function getAllcpf(){
+		$this->db->select('nbb_cpf.*');
+		$this->db->from('nbb_cpf');
+		return $this->db->get()->result_array();
+	}
+	function getEditCpf($Id){
+
+		$this->db->select('nbb_cpf.*');
+		$this->db->from('nbb_cpf');
+		$this->db->where('nbb_cpf.id',$Id);
+		
+		$nbb_cpf_query = $this->db->get()->result_array();
+		$cpf_data = array();
+
+		foreach($nbb_cpf_query as $row){				
+
+			$cpf_data = array(
+				'id' 	=> $Id,
+				'year' 	=> $row['year'],
+				'cpf' 	=> $row['cpf'],
+				'status' 	=> $row['status'],
+			);	
+
+		}
+		return $cpf_data;
 	}
 }
 

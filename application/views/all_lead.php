@@ -42,7 +42,7 @@
                 
                     <div class="site-table" style="overflow: auto; height: 350px ">            
                     <table class="table table-bordered" id = "lead_table">
-                    <thead style="background-color: #fff; color:#b8860b">
+                    <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                           <tr>
                             <th>Name</th>
                             <th>Email</th>
@@ -63,9 +63,9 @@
                         <td><?= $allLeadRow['source_name']?></td>
 												<td><a href = "<?= $allLeadRow['source_link'] ?>" target="_blank" class="btn btn-custom">view</a></td>
                         <td> 
-													<a href="<?= base_url('admin/leadManagement/viewleadDetails/'.$allLeadRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="past transaction history" style="color:#b8860b"><i class="fa fa-eye"></i></a>
-													<a href="<?= base_url('admin/leadManagement/edit_lead/'. $allLeadRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-                         	<a href="<?= base_url('admin/leadManagement/delete_lead/'. $allLeadRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+													<a href="<?= base_url('admin/leadManagement/viewleadDetails/'.$allLeadRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="past transaction history" style="color:#61d3d4"><i class="fa fa-eye"></i></a>
+													<a href="<?= base_url('admin/leadManagement/edit_lead/'. $allLeadRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+                         	<a href="<?= base_url('admin/leadManagement/delete_lead/'. $allLeadRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 												</td>
                       </tr>
                     <?php endforeach; ?>

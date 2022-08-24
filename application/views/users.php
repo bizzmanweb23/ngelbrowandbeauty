@@ -35,7 +35,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
-                  <thead style="background-color: #fff; color:#b8860b">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>User Name</th>
                     <th>Email</th>

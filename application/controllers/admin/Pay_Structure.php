@@ -80,8 +80,7 @@ class Pay_Structure extends CI_Controller {
 
 			$result = $this->Main->update('id',$fee_id, $data,'nbb_manual_fee');
 			if($result){
-				$this->session->set_flashdata('status','Fees Add successfully! <a href="'.site_url("admin/pay_Structure/allPay_Structure") .'">Back to list</a>');
-				redirect('admin/pay_Structure/edit_manual_fee/'.$fee_id);
+				redirect('admin/pay_Structure/allPay_Structure');
 			}
 	}
 	public function deletemanual_fee(){
@@ -98,7 +97,8 @@ class Pay_Structure extends CI_Controller {
 	public function post_add_commission_structure_a(){
 
 		$data = array(
-			'fee_type' => $this->input->post('fee_type'),
+			'to_range' => $this->input->post('to_range'),
+			'from_range' => $this->input->post('from_range'),
 			'amount' => $this->input->post('amount'));
 
 			$insert = $this->Main->insert('nbb_commission_structure_a',$data); 
@@ -114,13 +114,13 @@ class Pay_Structure extends CI_Controller {
 	public function post_edit_commission_structure_a(){
 		$fee_id = $this->input->post('fee_id');
 		$data = array(
-			'type_of_fee' => $this->input->post('type_of_fee'),
+			'to_range' => $this->input->post('to_range'),
+			'from_range' => $this->input->post('from_range'),
 			'amount' => $this->input->post('amount'));
 
 			$result = $this->Main->update('id',$fee_id, $data,'nbb_commission_structure_a');
 			if($result){
-				$this->session->set_flashdata('status','Fees Add successfully! <a href="'.site_url("admin/pay_Structure/allPay_Structure") .'">Back to list</a>');
-				redirect('admin/pay_Structure/edit_commission_structure_a/'.$fee_id);
+				redirect('admin/pay_Structure/allPay_Structure');
 			}
 	}
 	public function deletecommission_structure_a(){
@@ -158,8 +158,7 @@ class Pay_Structure extends CI_Controller {
 
 			$result = $this->Main->update('id',$fee_id, $data,'nbb_commission_structure_b');
 			if($result){
-				$this->session->set_flashdata('status','Fees Add successfully! <a href="'.site_url("admin/pay_Structure/allPay_Structure") .'">Back to list</a>');
-				redirect('admin/pay_Structure/edit_commission_structure_b/'.$fee_id);
+				redirect('admin/pay_Structure/allPay_Structure');
 			}
 	}
 	public function deletecommission_structure_b(){
@@ -197,8 +196,7 @@ class Pay_Structure extends CI_Controller {
 
 			$result = $this->Main->update('id',$fee_id, $data,'nbb_commission_structure_c');
 			if($result){
-				$this->session->set_flashdata('status','Fees Add successfully! <a href="'.site_url("admin/pay_Structure/allPay_Structure") .'">Back to list</a>');
-				redirect('admin/pay_Structure/edit_commission_structure_c/'.$fee_id);
+				redirect('admin/pay_Structure/allPay_Structure');
 			}
 	}
 	public function deletecommission_structure_c(){
@@ -236,8 +234,7 @@ class Pay_Structure extends CI_Controller {
 
 			$result = $this->Main->update('id',$fee_id, $data,'nbb_commission_c_partnership');
 			if($result){
-				$this->session->set_flashdata('status','Fees Add successfully! <a href="'.site_url("admin/pay_Structure/allPay_Structure") .'">Back to list</a>');
-				redirect('admin/pay_Structure/edit_commission_structure_c/'.$fee_id);
+				redirect('admin/pay_Structure/allPay_Structure');
 			}
 	}
 	public function deletecommission_c_partnership(){
@@ -251,6 +248,7 @@ class Pay_Structure extends CI_Controller {
 			}
 		}
 	}
+
 	/*public function searchPay_Structure(){
 
 		$payStructureID = $_GET['payStructureID'];
@@ -271,8 +269,57 @@ class Pay_Structure extends CI_Controller {
 
 
 		}
-
 		
 	}*/
+	public function viewCPF(){
+		$data['name'] = $this->session->userdata('name');
+		$data['allcpf'] = $this->PayStructure->getAllcpf();
+       	$this->layout->view('all_cpf',$data); 
+	}
+	public function add_Cpf(){
+		$data['name'] = $this->session->userdata('name');
+       	$this->layout->view('add_cpf',$data); 
+	}
+	public function post_add_cpf(){
+		$data = array(
+		'year' => $this->input->post('getyear'),
+		'cpf' => $this->input->post('cpf_ammount'),
+		'status' => $this->input->post('status'));
+
+		$insert = $this->Main->insert('nbb_cpf',$data); 
+		if($insert){
+			redirect('admin/pay_Structure/viewCPF');
+		}
+	}
+	public function edit_cpf(){
+		$Id = $this->uri->segment(4);
+		$data['allcpf'] = $this->PayStructure->getEditCpf($Id);
+		$this->layout->view('edit_cpf',$data); 
+	}
+	public function post_edit_cpf(){
+		$cpf_id = $this->input->post('cpf_id');
+		$data = array(
+			'year' => $this->input->post('getyear'),
+			'cpf' => $this->input->post('cpf_ammount'),
+			'status' => $this->input->post('status'));
+
+			$result = $this->Main->update('id',$cpf_id, $data,'nbb_cpf');
+			if($result){
+				
+				redirect('admin/pay_Structure/viewCPF');
+			}
+	}
+	public function deleteCpf(){
+		if($this->session->has_userdata('id')!=false)
+		{
+			$Id=$this->uri->segment(4);
+			$result=$this->Main->delete('id',$Id,'nbb_cpf');
+			if($result==true)
+			{
+				redirect('admin/pay_Structure/viewCPF');
+			}
+		}
+	}
+	
 }
 ?>

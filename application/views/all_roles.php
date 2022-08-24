@@ -35,7 +35,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
-                  <thead style="background-color: #fff; color:#b8860b">
+                  <thead style="background-color: #fff; color:#61d3d4">
                   <tr>
                     <th>Role Name</th>
 					<th>Action</th>
@@ -45,7 +45,7 @@
                     <?php foreach($allRoles as $rolesRow): ?>
                       <tr>
                         <td><?= $rolesRow['role_name']?></td>
-						<td><a href="<?= base_url('admin/userManagement/deleteRoles/'. $rolesRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a></td>
+						<td><a href="<?= base_url('admin/userManagement/deleteRoles/'. $rolesRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

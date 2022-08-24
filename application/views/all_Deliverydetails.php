@@ -25,7 +25,7 @@
               <div class="card-body">
                  <div class="site-table" style="overflow: auto; height: 400px ">
                 <table class="table table-bordered" style="overflow: auto; width: 900px; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
 										<th>Customer Name</th>
                     <th>Order Number</th>
@@ -44,7 +44,7 @@
                         <td><?= $delivery_detailsRow['status_name']?>
 												<a data-delivery_Id="<?=  $delivery_detailsRow['id'];?>"
 												data-order_id = "<?= $delivery_detailsRow['order_id'] ?>"
-												 href="javascript:void(0);" class="btn btn-default editdelivery_status" title="Edit" style="color:#b8860b" ><i class="fa fa-edit" aria-hidden="true"></i></a>
+												 href="javascript:void(0);" class="btn btn-default editdelivery_status" title="Edit" style="color:#61d3d4" ><i class="fa fa-edit" aria-hidden="true"></i></a>
 												</td>
 												
                       </tr>

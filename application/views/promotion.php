@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Promotions</h1><small>Register All</small>
+            <h1>Promotions</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -25,7 +25,7 @@
               <div class="card-body">
                  <div class="site-table" style="overflow: auto; height: 250px ">
                 <table class="table table-bordered" style="overflow: auto; width: 800px; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#541728">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>Name</th>
                     <th>Name Mandarin</th>

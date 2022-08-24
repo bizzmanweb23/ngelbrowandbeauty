@@ -28,7 +28,7 @@
 
                  <div class="site-table" style = "overflow: auto; height: 400px">
                 <table class="table table-bordered" id = "salary_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>Package Name </th>
                     <th>Package Detail</th>
@@ -59,9 +59,9 @@
 						<?php } ?>
 						</td>
                         <td>
-							<a data-package_id="<?= $packagesRow['id']; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showAllProduct" class="btn btn-default" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
-							<a href="<?= base_url('admin/OfferAndPackages/edit_packages/'.$packagesRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-							<a href="<?= base_url('admin/OfferAndPackages/deletePackage/'. $packagesRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+							<a data-package_id="<?= $packagesRow['id']; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showAllProduct" class="btn btn-default" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>
+							<a href="<?= base_url('admin/OfferAndPackages/edit_packages/'.$packagesRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+							<a href="<?= base_url('admin/OfferAndPackages/deletePackage/'. $packagesRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 						</td>
                       </tr>
                     <?php endforeach; ?>

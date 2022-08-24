@@ -70,8 +70,8 @@ class CourseManagement extends CI_Controller {
 				} 
 
 			if($insert ==  true || $update == true){
-				$this->session->set_flashdata('status','Course updated successfully! <a href="'. site_url("admin/courseManagement/all_courses") . '" title="Back to course list">Back to list</a>');
-				redirect('admin/courseManagement/add_Course');
+				
+				redirect('admin/courseManagement/all_courses');
 			}	
 	}
 	public function editCourse(){
@@ -131,8 +131,7 @@ class CourseManagement extends CI_Controller {
 			$update=$this->Main->update('id',$course_id, $uploadImgData,'nbb_course');         
 		} 
 			if($result ==  true || $update == true){
-				$this->session->set_flashdata('status','Course updated successfully! <a href="'. site_url("admin/courseManagement/all_courses") . '" title="Back to course list">Back to list</a>');
-				redirect('admin/courseManagement/editCourse/'.$course_id);
+				redirect('admin/courseManagement/all_courses');
 			}	
 	}
 
@@ -234,8 +233,7 @@ class CourseManagement extends CI_Controller {
 				} 
 
 			if($insert == true || $update == true){
-				$this->session->set_flashdata('status','Student register successfully! <a href="'. site_url("studentRegistrationForm") . '" title="Back to Student list">Back to list</a>');
-				redirect('admin/courseManagement/add_studentRegistrationForm');
+				redirect('studentRegistrationForm');
 			}	
 					
 	}
@@ -293,8 +291,7 @@ class CourseManagement extends CI_Controller {
 				} 
 
 			if($insert == true || $update == true){
-				$this->session->set_flashdata('status','Student register successfully! <a href="'. site_url("studentRegistrationForm") . '" title="Back to Student list">Back to list</a>');
-				redirect('admin/courseManagement/edit_studentRegistrationForm/'.$student_id);
+				redirect('studentRegistrationForm');
 			}	
 					
 	}

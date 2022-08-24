@@ -37,7 +37,7 @@ if ($this->session->userdata('id')) {
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link  active" href="<?= base_url(); ?>admin/welcome/dashboard">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Home </title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -52,7 +52,7 @@ if ($this->session->userdata('id')) {
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Dashboard</span>
+            <span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Dashboard</span>
           </a>
         </li>
 
@@ -80,10 +80,10 @@ if ($this->session->userdata('id')) {
 		<?php if( $menuname == 'Service & Appointment'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples4" class="nav-link collapsed" aria-controls="pagesExamples4" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="far fa-calendar-check"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Service & Appointment</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Service & Appointment</span>
 					</a>
 					<div class="collapse" id="pagesExamples4" style="">
 						<ul class="nav ms-4 ps-3">
@@ -112,10 +112,10 @@ if ($this->session->userdata('id')) {
 				<?php }if( $menuname == 'Category Management'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples8" class="nav-link collapsed" aria-controls="pagesExamples8" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="far fa-calendar-check"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Category Management</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Category Management</span>
 					</a>
 					<div class="collapse" id="pagesExamples8" style="">
 						<ul class="nav ms-4 ps-3">
@@ -138,10 +138,10 @@ if ($this->session->userdata('id')) {
 				<?php } if( $menuname == 'Product Management'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesTabs2" class="nav-link collapsed" aria-controls="pagesTabs2" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="fas fa-box-open"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Product Management</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Product Management</span>
 					</a>
 					<div class="collapse" id="pagesTabs2" style="">
 						<ul class="nav ms-4 ps-3">
@@ -163,10 +163,10 @@ if ($this->session->userdata('id')) {
 				<?php } if( $menuname == 'Order Management'){ ?>
 				<li class="nav-item">
 					<a data-bs-toggle="collapse" href="#pagesExamples1" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="far fa-handshake"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Order Management</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Order Management</span>
 					</a>
 					<div class="collapse" id="pagesExamples1" style="">
 						<ul class="nav ms-4 ps-3">
@@ -194,19 +194,19 @@ if ($this->session->userdata('id')) {
 				<?php } if( $menuname == 'Delivery Management'){ ?>
 				<li class="nav-item">
 					<a class="nav-link  " href="<?= base_url(); ?>admin/OrderManagement/all_DeliveryDetails">
-						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="fa fa-user"></i>
 						</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Delivery Management</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Delivery Management</span>
 					</a>
 				</li> 
 				<?php } if( $menuname == 'Offer & Packages'){ ?>
 				<li class="nav-item">
 					<a data-bs-toggle="collapse" href="#pagesExamples7" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="far fa-handshake"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Offer & Packages</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Offer & Packages</span>
 					</a>
 					<div class="collapse" id="pagesExamples7" style="">
 						<ul class="nav ms-4 ps-3">
@@ -234,10 +234,10 @@ if ($this->session->userdata('id')) {
 				<?php } if( $menuname == 'Procurement Module'){ ?>
 				<li class="nav-item">
 					<a data-bs-toggle="collapse" href="#pagesExamples9" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="far fa-handshake"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Procurement Module</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Procurement Module</span>
 					</a>
 					<div class="collapse" id="pagesExamples9" style="">
 						<ul class="nav ms-4 ps-3">
@@ -265,16 +265,16 @@ if ($this->session->userdata('id')) {
 				<?php } if( $menuname == 'Human Resource'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples2" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 					<i class="fas fa-users"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Human Resource</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Human Resource</span>
 					</a>
 					<div class="collapse" id="pagesExamples2">
 						<ul class="nav ms-4 ps-3" style="list-style-type: none !important;" >
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#pagesExamples5" class="nav-link collapsed" aria-controls="pagesExamples5" role="button" aria-expanded="false">
-								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Employee Management</span>
+								<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Employee Management</span>
 							</a>
 							<div class="collapse" id="pagesExamples5">
 								<ul class="nav ms-2 ps-1">
@@ -314,7 +314,7 @@ if ($this->session->userdata('id')) {
 		
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#pagesExamples6" class="nav-link collapsed" aria-controls="pagesExamples6" role="button" aria-expanded="false">
-								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Leave Management</span>
+								<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Leave Management</span>
 							</a>
 							<div class="collapse" id="pagesExamples6">
 								<ul class="nav ms-2 ps-1">
@@ -336,7 +336,7 @@ if ($this->session->userdata('id')) {
 						
 						<li class="nav-item">
 							<a class="nav-link " href="<?= base_url(); ?>admin/employeeManagement/allAttendance">
-								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Employee Attendance</span>
+								<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Employee Attendance</span>
 							</a>
 						</li> 
 
@@ -347,10 +347,10 @@ if ($this->session->userdata('id')) {
 				<?php } if( $menuname == 'Admin User'){ ?>
 				<li class="nav-item" >
 					<a data-bs-toggle="collapse" href="#pagesExamples3" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 					<i class="far fa-user"></i>
 					</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Admin User </span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Admin User </span>
 					</a>
 					<div class="collapse" id="pagesExamples3" style="">
 						<ul class="nav ms-4 ps-3">
@@ -367,10 +367,10 @@ if ($this->session->userdata('id')) {
 						
 					<li class="nav-item">
 					<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/customer">
-						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="fa fa-user"></i>
 						</div>
-						<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Customer Management</span>
+						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Customer Management</span>
 					</a>
 					</li> 
 
@@ -378,18 +378,18 @@ if ($this->session->userdata('id')) {
                      
 					<?php /*	<li class="nav-item">
 						 <a class="nav-link" href="<?= base_url(); ?>admin/CourseManagement/all_courses">
-							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 							 <i class="fa fa-book-open"></i>
 							 </div>
-							 <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Course Management</span>
+							 <span class="nav-link-text ms-1" style="color:#61d3d4; font-weight:bold; font-zise:14px !important;">Course Management</span>
 						 </a>
 						</li> */ ?>
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#pagesExamples10" class="nav-link collapsed" aria-controls="pagesExamples10" role="button" aria-expanded="false">
-							<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+							<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 								<i class="far fa-handshake"></i>
 							</div>
-								<span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Course Management</span>
+								<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Course Management</span>
 							</a>
 							<div class="collapse" id="pagesExamples10" style="">
 								<ul class="nav ms-4 ps-3">
@@ -418,10 +418,10 @@ if ($this->session->userdata('id')) {
                      
 						 <li class="nav-item">
 							 <a data-bs-toggle="collapse" href="#pagesExamples11" class="nav-link collapsed" aria-controls="pagesExamples11" role="button" aria-expanded="false">
-							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#b8860b !important;">
+							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 								 <i class="far fa-handshake"></i>
 							 </div>
-								 <span class="nav-link-text ms-1" style="color:#b8860b; font-weight:bold; font-zise:14px !important;">Lead Management</span>
+								 <span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Lead Management</span>
 							 </a>
 							 <div class="collapse" id="pagesExamples11" style="">
 								 <ul class="nav ms-4 ps-3">

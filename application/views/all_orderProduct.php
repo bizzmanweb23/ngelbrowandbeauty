@@ -49,7 +49,7 @@
 						<div class="site-table" style = "overflow: auto;height: 400px;">
 						<h4>All Orders</h4>
 							<table class="table table-bordered" id = "order_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-								<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+								<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 								<tr>
 									<th>Order Number </th>
 									<th>Customer Name</th>
@@ -89,11 +89,11 @@
 											<td><a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$orderProductRow['id'])?>" target="_blank" title="Assign To Delivery"><span class = "btn btn-warning" style="box-shadow:none !important; text-transform:uppercase;">Assign To Delivery</span></a></td>
 											<td><?= $orderProductRow['payment_method']?></td>
 											<td>
-											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$orderProductRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
+											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$orderProductRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-eye"></i></a>-->
 											<a data-order_id="<?=  $order_id; ?>"
-												 href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#b8860b" ><i class="fa fa-eye"></i></a>
+												 href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#61d3d4" ><i class="fa fa-eye"></i></a>
 
-												<!--<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$orderProductRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#b8860b"><i class="fas fa-shipping-fast"></i></a>-->
+												<!--<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$orderProductRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#61d3d4"><i class="fas fa-shipping-fast"></i></a>-->
 											</td>					
 									</tr>
 									<?php endforeach; ?>
@@ -108,7 +108,7 @@
 							<div class="site-table" style="overflow: auto; height: 400px;">
 								<h4>Current Orders</h4>
 								<table class="table table-bordered" id = "currentOrder_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
 										<th>Order Number </th>
 										<th>Customer Name</th>
@@ -141,11 +141,11 @@
 												<td><?= $AllCurrentOrdertRow['e_first_name'].' '.$AllCurrentOrdertRow['e_last_name'] ?></td>
 												<td><?= $AllCurrentOrdertRow['payment_method']?></td>
 												<td>
-												<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllCurrentOrdertRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
+												<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllCurrentOrdertRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-eye"></i></a>-->
 												<a data-order_id="<?=  $order_id; ?>"
-													href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#b8860b" ><i class="fa fa-eye"></i></a>
+													href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#61d3d4" ><i class="fa fa-eye"></i></a>
 
-													<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$AllCurrentOrdertRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#b8860b"><i class="fas fa-shipping-fast"></i></a>
+													<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$AllCurrentOrdertRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#61d3d4"><i class="fas fa-shipping-fast"></i></a>
 												</td>			
 											</tr>
 										<?php endforeach; ?>
@@ -160,7 +160,7 @@
 							<div class="site-table" style="overflow: auto; height: 400px;">
 								<h4>Complated Orders</h4>
 								<table class="table table-bordered" id = "complatedOrder_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
 										<th>Order Number </th>
 										<th>Customer Name</th>
@@ -193,11 +193,11 @@
 											<td>
 											<td><?= $AllComplatedOrderRow['e_first_name'].' '.$AllComplatedOrderRow['e_last_name'] ?></td>
 											<td><?= $AllComplatedOrderRow['payment_method']?></td>
-											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllComplatedOrderRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
+											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllComplatedOrderRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-eye"></i></a>-->
 											<a data-order_id="<?=  $order_id; ?>"
-												 href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#b8860b" ><i class="fa fa-eye"></i></a>
+												 href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#61d3d4" ><i class="fa fa-eye"></i></a>
 
-												<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$AllComplatedOrderRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#b8860b"><i class="fas fa-shipping-fast"></i></a>
+												<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$AllComplatedOrderRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#61d3d4"><i class="fas fa-shipping-fast"></i></a>
 											</td>	
 										</tr>
 										<?php endforeach; ?>
@@ -213,7 +213,7 @@
 							<div class="site-table" style="overflow: auto; height: 400px;">
 							<h4>Canceled</h4>
 							<table class="table table-bordered" id = "CanceledOrder_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-								<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+								<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 								<tr>
 									<th>Order Number </th>
 									<th>Customer Name</th>
@@ -242,11 +242,11 @@
 													echo '';
 												} ?></td>
 											<td>
-											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllCanceledOrderRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>-->
+											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$AllCanceledOrderRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-eye"></i></a>-->
 											<a data-order_id="<?=  $order_id; ?>"
-												 href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#b8860b" ><i class="fa fa-eye"></i></a>
+												 href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#61d3d4" ><i class="fa fa-eye"></i></a>
 
-												<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$AllCanceledOrderRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#b8860b"><i class="fas fa-shipping-fast"></i></a>
+												<a href="<?= base_url('admin/OrderManagement/editDeliveryDetails/'.$AllCanceledOrderRow['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Assign To Delivery" style="color:#61d3d4"><i class="fas fa-shipping-fast"></i></a>
 											</td>	
 										</tr>
 									<?php endforeach; ?>

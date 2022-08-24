@@ -26,7 +26,7 @@
               <div class="card-body">
                  <div class="site-table" style="overflow: auto; height: 400px ">
                 <table class="table table-bordered Employee_table" style="overflow: auto; width: 800px; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>Employee number </th>
                     <th>Employee Name</th>
@@ -56,8 +56,8 @@
 												<td><?= $employeesRow['jobtype'] ?></td>
                         <td>
 													
-													<a href="<?= base_url('admin/EmployeeManagement/viewEmployeeDetails/'.$employeesRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
-													<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$employeesRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+													<a href="<?= base_url('admin/EmployeeManagement/viewEmployeeDetails/'.$employeesRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>
+													<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$employeesRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-user-times" aria-hidden="true"></i></a>
 												</td>
                       </tr>
                     <?php endforeach; ?>

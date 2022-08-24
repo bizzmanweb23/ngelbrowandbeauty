@@ -6,13 +6,6 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Add New Service</h1>
-						<?php $message = $this->session->flashdata('status');
-								if (isset($message)) {
-							?>
-							<div class="alert alert-success">
-								<?= $this->session->flashdata('status') ?>
-							</div>
-						<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 

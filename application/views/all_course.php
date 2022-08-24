@@ -25,7 +25,7 @@
               <div class="card-body">
 			  <div class="site-table" style="overflow: auto; height: 400px ">
 					<table class="table table-bordered" style="overflow: auto; width: 900px; height: 250px; text-align: center;">
-					<thead style="background-color:#fff; color:#b8860b;position: sticky;top: 0;">
+					<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 					<tr>
 						<th>Course Name</th>
 						<th>Category</th>

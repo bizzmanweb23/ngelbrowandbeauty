@@ -6,13 +6,6 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Product</h1>
-			<?php $message = $this->session->flashdata('status');
-					if (isset($message)) {
-				?>
-				<div class="alert alert-success">
-					<?= $this->session->flashdata('status') ?>
-				</div>
-			<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -88,19 +81,80 @@
 						</div> 
                  	</div>
                 </div> 
-                        
-                <div class="form-group ">
-                    <label for="Description" class="col-md-12 control-label">Description</label>
-					<div class="col-md-12">
-						<textarea id="description" name="description" rows="5" cols="80" style="width: 100%"><?= $productData['description'] ?></textarea>
+
+				<div class="row">
+					<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="Description" class="col-md-12 control-label">Description</label>
+							<div class="col-md-12">
+								<textarea id="description" name="description" rows="5" cols="80" style="width: 100%"><?= $productData['description'] ?></textarea>
+							</div>
+                		</div>  			
+					</div>
+					<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="Description" class="col-md-12 control-label">Short Description</label>
+							<div class="col-md-12">
+								<textarea id="shortDescription" name="shortDescription" rows="5" cols="80" style="width: 100%"><?= $productData['short_description'] ?></textarea>
+							</div>
+						</div>  
+					</div>
+				</div>
+				<div class="row">       
+					<div class="col-md-4">      
+						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Brand Name
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="number" class="form-control" name="brand_name" placeholder="Enter Brand Name" value="<?= $productData['brand_name'] ?>" required>
+							</div>
+						</div>        
+					</div> 
+					<div class="col-md-4">      
+						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Colour
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="colour" required placeholder="Enter colour" value="<?= $productData['colour'] ?>">
+							</div>
+						</div>        
+					</div> 
+					<div class="col-md-4">                       
+						<div class="form-group ">
+							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
+							<div class="col-sm-12">
+								<input type="number" class="form-control" name="types" required placeholder="Enter Types" value="<?= $productData['types'] ?>">
+								<select  class="form-control chosen chosen-select" name="types" data-placeholder="Select Types" >
+									<option value="" hidden>Select Types</option>
+									<option value="1" <?php if($productData['types'] == '1'){?>selected <?php } ?>>Discount</option>
+									<option value="2" <?php if($productData['types'] == '2'){?>selected <?php } ?>>Non discounted product</option>
+								</select>
+							</div>
+						</div>
 					</div>
                 </div>  
-				<div class="form-group ">
-                    <label for="Description" class="col-md-12 control-label">Short Description</label>
-					<div class="col-md-12">
-						<textarea id="shortDescription" name="shortDescription" rows="5" cols="80" style="width: 100%"><?= $productData['short_description'] ?></textarea>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="therapist_commission" class="col-sm-6 control-label">Curlness </label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="curlness" placeholder="Enter curlness" value="<?= $productData['curlness'] ?>">
+							</div>
+						</div>                                
 					</div>
-                </div>  
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="therapist_commission" class="col-sm-6 control-label">Thickness </label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="thickness" placeholder="Enter thickness" value="<?= $productData['thickness'] ?>">
+							</div>
+						</div>                                
+					</div>
+				</div> 
+
                 <div class="row">       
 					<div class="col-md-6">      
 						<div class="form-group ">
@@ -114,8 +168,7 @@
 					</div> 
 					<div class="col-md-6">      
 						<div class="form-group ">
-							<label for="service_price" class="col-sm-6 control-label">Product Weight
-							<i class="required">*</i>
+							<label for="service_price" class="col-sm-6 control-label">UOM (Volume - ML / Length - MM)<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
 								<input type="text" class="form-control" name="product_weight" id="product_weight" placeholder="Product Weight Max Length : 50." value="<?= $productData['weight'] ?>">

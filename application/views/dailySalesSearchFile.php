@@ -29,7 +29,7 @@
 			<td><?= $orderProductRow['payment_method']?></td>
 			<td>
 			
-				<a data-order_id="<?=  $order_id; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#b8860b" ><i class="fa fa-eye"></i></a>
+				<a data-order_id="<?=  $order_id; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#61d3d4" ><i class="fa fa-eye"></i></a>
 			</td>					
 	</tr>
 	<?php endforeach; ?>

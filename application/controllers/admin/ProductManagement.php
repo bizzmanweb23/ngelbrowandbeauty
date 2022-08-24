@@ -113,6 +113,7 @@ class ProductManagement extends CI_Controller {
 	  $statusMsg = "";
 
 		$product_data = array(
+			'supplier_id' => $this->input->post('supplier_name'),
 			'categorie_id' => $this->input->post('main_category'),
 			'product_category_id' => $this->input->post('product_category'),
 			'sku' => $this->input->post('product_sku'),
@@ -127,7 +128,11 @@ class ProductManagement extends CI_Controller {
 			'available_stock' => $this->input->post('stock'),
 			'mfg_date' => $this->input->post('mfg_date'),
 			'expiry_date' => $this->input->post('expiry_date'),
-			'supplier_id' => $this->input->post('supplier_name'),
+			'brand_name' => $this->input->post('brand_name'),
+			'colour' => $this->input->post('colour'),
+			'types' => $this->input->post('types'),
+			'curlness' => $this->input->post('curlness'),
+			'thickness' => $this->input->post('thickness'),
 			'status' =>$this->input->post('status')
 			);
 			$result = $this->db->insert('nbb_product',$product_data); 
@@ -167,8 +172,7 @@ class ProductManagement extends CI_Controller {
         }
 		if($uploadImgData ==true || $result == true)
 			{
-				$this->session->set_flashdata('status','Product Add successfully! <a href="'.site_url("product") .'">Back to list</a>');
-				redirect('admin/productManagement/add_product/'); 
+				redirect('product'); 
 			}  
 		        
 		
@@ -203,6 +207,11 @@ class ProductManagement extends CI_Controller {
 			'mfg_date' => $this->input->post('mfg_date'),
 			'expiry_date' => $this->input->post('expiry_date'),
 			'supplier_id' => $this->input->post('supplier_name'),
+			'brand_name' => $this->input->post('brand_name'),
+			'colour' => $this->input->post('colour'),
+			'types' => $this->input->post('types'),
+			'curlness' => $this->input->post('curlness'),
+			'thickness' => $this->input->post('thickness'),
 			'status' =>$this->input->post('status')
 			);
 			$result=$this->Main->update('id',$product_id, $product_data,'nbb_product');
@@ -242,8 +251,7 @@ class ProductManagement extends CI_Controller {
 		
 		if($insertImg==true || $result == true)
 			{
-				$this->session->set_flashdata('status','Product Update successfully! <a href="'.site_url("product") .'">Back to list</a>');
-				redirect('admin/productManagement/editProduct/'.$product_id);
+				redirect('product');
 			}  
 		
   	}

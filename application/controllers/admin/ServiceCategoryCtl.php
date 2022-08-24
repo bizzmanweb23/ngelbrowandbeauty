@@ -54,9 +54,8 @@ class ServiceCategoryCtl extends CI_Controller {
 		$result = $this->Main->update('id',$category_id, $Category_data,'nbb_parentcategory');
 		if($result == true)
 			{
-				$this->session->set_flashdata('status','Category updated successfully! <a href="'. site_url("admin/ServiceCategoryCtl/all_parentCategory") . '" title="Back to product list">Back to list</a>');
 
-				redirect('admin/ServiceCategoryCtl/edit_parentCategory/'.$category_id);
+				redirect('admin/ServiceCategoryCtl/all_parentCategory');
 			} 
 	}
 	public function deleteParentCategory()
@@ -100,8 +99,7 @@ class ServiceCategoryCtl extends CI_Controller {
 		
 		if($result == true)
 			{
-				$this->session->set_flashdata('status','Category add successfully! <a href="'. site_url("admin/ServiceCategoryCtl/all_category") . '" title="Back to Student list">Back to list</a>');
-				redirect('admin/ServiceCategoryCtl/add_category');
+				redirect('admin/ServiceCategoryCtl/all_category');
 			} 
 
   	}
@@ -130,8 +128,8 @@ class ServiceCategoryCtl extends CI_Controller {
 			
 		if($result == true)
 			{
-				$this->session->set_flashdata('status','Category updated successfully! <a href="'. site_url("admin/ServiceCategoryCtl/add_category") . '" title="Back to product list">Back to list</a>');
-				redirect('admin/ServiceCategoryCtl/edit_category/'.$servicecategory_id);
+				
+				redirect('admin/ServiceCategoryCtl/add_category');
 			}  
 	}
   	public function deleteCategory()
@@ -234,8 +232,7 @@ class ServiceCategoryCtl extends CI_Controller {
 						  $insert = $this->ServiceCategory->insertService($uploadData); 
 						  if($insert==true)
 						  {
-							$this->session->set_flashdata('status','Service Add successfully! <a href="'.site_url("allservice") .'" title="Back to Service list">Back to list</a>');
-							  redirect('admin/ServiceCategoryCtl/add_service');
+							  redirect('allservice');
 						  }
 						  else
 						  {
@@ -315,8 +312,7 @@ class ServiceCategoryCtl extends CI_Controller {
 			}
 			if($update==true || $result == true)
 				{
-					$this->session->set_flashdata('status','Service Add successfully! <a href="'.site_url("allservice") .'" title="Back to Service list">Back to list</a>');
-					redirect('admin/ServiceCategoryCtl/editService/'.$service_id);
+					redirect('allservice');
 				}     
 	}
 	public function deleteService()

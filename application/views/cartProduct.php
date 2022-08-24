@@ -25,7 +25,7 @@
     
 								<div class="site-table" style="overflow: auto; height: 250px ">            
                   <table class="table table-bordered" id = "example2">
-                    <thead style="background-color: #fff; color:#b8860b">
+                    <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                       <tr>
 												<th>Order Number </th>
 												<th>Customer Name</th>
@@ -46,7 +46,7 @@
 											</td>
                         <td><?= $cartProductRow['create_date']?></td>
                         <td>
-                          <a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$cartProductRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-eye"></i></a>
+                          <a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$cartProductRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-eye"></i></a>
                       </td>
                     </tr>
                     <?php endforeach; ?>

@@ -61,7 +61,7 @@
                       <tr>
                         <td><?= $rolePermissionRow['role_name']?></td>
 												<td><?= $rolePermissionRow['menuname']?></td>
-												<td><a href="<?= base_url('admin/userManagement/deleteRolePermission/'. $rolePermissionRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a></td>
+												<td><a href="<?= base_url('admin/userManagement/deleteRolePermission/'. $rolePermissionRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

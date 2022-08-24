@@ -25,10 +25,11 @@
                 
                     <div class="site-table" style="overflow: auto; height: 350px ">            
                     <table class="table table-bordered" id = "customer_table">
-                    <thead style="background-color: #fff; color:#b8860b">
+                    <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                           <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
+														<th>Referral Code</th>
                             <th>DOB</th>
                             <th>Age</th>
                             <th>Email</th>
@@ -43,6 +44,7 @@
                       <tr>
                         <td><?= $customers['first_name']?></td>
                         <td><?= $customers['last_name']?></td>
+												<td><?= $customers['referreduser_id']?></td>
                         <td><?= $customers['dob']?></td>
                         <td><?= $customers['age']?></td>
                         <td><?= $customers['email']?></td>
@@ -50,9 +52,9 @@
                         <td><?= $customers['address']?></td>
                         <td><?= $customers['created_at']?></td>
                         <td> 
-													<a href="<?= base_url('admin/welcome/viewPastTransaction/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="past transaction history" style="color:#b8860b"><i class="fa fa-eye"></i></a>
-													<a href="<?= base_url('admin/welcome/editCustomer/'. $customers['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-                         	<a href="<?= base_url('admin/welcome/deleteCustomer/'. $customers['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+													<a href="<?= base_url('admin/welcome/viewPastTransaction/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="past transaction history" style="color:#61d3d4"><i class="fa fa-eye"></i></a>
+													<a href="<?= base_url('admin/welcome/editCustomer/'. $customers['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+                         	<a href="<?= base_url('admin/welcome/deleteCustomer/'. $customers['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 												</td>
                       </tr>
                     <?php endforeach; ?>

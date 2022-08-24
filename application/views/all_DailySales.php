@@ -56,7 +56,7 @@
 							</div>
 						</form>
 							<table class="table table-bordered dailySales_table" style="overflow: auto; width: 100%; height: 300px; text-align: center;">
-								<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+								<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 								<tr>
 									<th>Order Number </th>
 									<th>Customer Name</th>
@@ -104,7 +104,7 @@
 											<td><?= $orderProductRow['payment_method']?></td>
 											<td>
 											
-												<a data-order_id="<?=  $order_id; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#b8860b" ><i class="fa fa-eye"></i></a>
+												<a data-order_id="<?=  $order_id; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#61d3d4" ><i class="fa fa-eye"></i></a>
 											</td>					
 									</tr>
 									<?php endforeach; ?>

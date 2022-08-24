@@ -26,7 +26,7 @@
                 
                     <div class="site-table" style="overflow: auto; height: 250px ">            
                       <table class="table table-bordered" style="overflow: auto; width: 800px; height: 250px; text-align: center;">
-                    <thead style="background-color: #fff; color:#541728">
+                    <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                           <tr>
                             <th>User Id</th>
                             <?php if($this->session->userdata('branch_id')==null) {?>

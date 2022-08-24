@@ -89,9 +89,8 @@ class LeadManagement extends CI_Controller {
 					$errorUploadType = 'Some problem occurred, please try again.';
 				}                   
 		if($insert == true){
-			$this->session->set_flashdata('status','Lead updated successfully! <a href="'. site_url("leads") . '">Back To Lead list</a>');
-
-			redirect('admin/leadManagement/add_lead');   
+			
+			redirect('leads');   
 		}	
 		              
     }
@@ -160,9 +159,8 @@ class LeadManagement extends CI_Controller {
 					} 
                 
 		if($update == true || $update2 == true){
-			$this->session->set_flashdata('status','Lead updated successfully! <a href="'. site_url("leads") . '">Back To Lead list</a>');
-
-			redirect('admin/leadManagement/add_lead');   
+			
+			redirect('leads');   
 		}	
 		              
     }

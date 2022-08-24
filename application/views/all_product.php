@@ -28,17 +28,19 @@
               <div class="card-body">
                 <div class="site-table" style="overflow: auto; height: 400px ">
                 <table class="table table-bordered product_table" style="overflow: auto; width: 800px; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>SKU</th>
                     <th>Product Name</th>
                     <th>Category</th>
+					<th>Brand Name</th>
                     <th>Price</th>
-					<th>Weight</th>
-					<th>MFG Date</th>
-					<th>Expiry Date</th>
+					<th>Colour</th>
+					<th>UOM</th>
                     <th>Total Stock</th>
 					<th>Available stock</th>
+					<th>MFG Date</th>
+					<th>Expiry Date</th>
 					<th>Bar Code</th>
                     <th>Short Description</th>
                     <th>Supplier Name</th>
@@ -64,8 +66,12 @@
 						
 						</td>
                         <td><?= $productRow['category_name']?></td>
+						<td><?= $productRow['brand_name']?></td>
                         <td><?= $productRow['price']?></td>
+						<td><?= $productRow['colour']?></td>
                         <td><?= $productRow['weight']?></td>
+                        <td><?= $productRow['stock'] ?></td>
+						<td><?= $productRow['available_stock'] ?><a data-product_Id="<?=  $productRow['id'];?>" data-p_stock = "<?= $productRow['available_stock'] ?>" href="javascript:void(0);" class="px-2 editStock_status" title="Update Stock" style="color:#b8860b" ><i class="fa fa-edit" aria-hidden="true"></i></a></td>
 						<td><?= $productRow['mfg_date']?></td>
 						<td><?php if($productRow['expiry_date'] < $date_now){?>
 							<span style="color:red;font-weight: bold;" data-toggle="tooltip" data-placement="top" title="Product is expired!"><?= $productRow['expiry_date']?></span>
@@ -73,8 +79,6 @@
 								<?= $productRow['expiry_date']?>
 							<?php	} ?>
 						</td>
-                        <td><?= $productRow['stock'] ?></td>
-						<td><?= $productRow['available_stock'] ?><a data-product_Id="<?=  $productRow['id'];?>" data-p_stock = "<?= $productRow['available_stock'] ?>" href="javascript:void(0);" class="px-2 editStock_status" title="Update Stock" style="color:#b8860b" ><i class="fa fa-edit" aria-hidden="true"></i></a></td>
 						<td><?php if($productRow['barcode'] == ''){ ?>
 							<a href="<?php echo site_url("admin/ProductManagement/set_barcode"); ?>?product_id=<?= $productRow['id'] ?>&sku_code=<?= $productRow['sku'] ?>"> <button type="button" class="btn btn-secondary">Bar Code Generate</button></a>
 						<?php }else{ ?>
@@ -94,9 +98,9 @@
 							echo 'Inactive';
 						} ?></td>
                         <td>
-							<a data-productID="<?= $productRow['id']; ?>" href="javascript:void(0);" class="btn btn-default barCodeScannModal" title="Bar Code Scann" onclick="on_camera()" style="color:#b8860b"><i class="fa fa-camera"></i></a>
-							<a href="<?= base_url('admin/productManagement/editProduct/'.$productRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-							<a href="<?= base_url('admin/productManagement/deleteProduct/'.$productRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+							<a data-productID="<?= $productRow['id']; ?>" href="javascript:void(0);" class="btn btn-default barCodeScannModal" title="Bar Code Scann" onclick="on_camera()" style="color:#61d3d4"><i class="fa fa-camera"></i></a>
+							<a href="<?= base_url('admin/productManagement/editProduct/'.$productRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+							<a href="<?= base_url('admin/productManagement/deleteProduct/'.$productRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 						</td>
                       </tr>
                     <?php endforeach; ?>

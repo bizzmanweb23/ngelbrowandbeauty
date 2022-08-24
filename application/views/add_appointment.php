@@ -1,5 +1,3 @@
-
-
 <style>
   .visits input:checked~.visit-rsn {
     background-color: #b88609 !important;

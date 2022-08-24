@@ -6,13 +6,6 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Product</h1>
-			<?php $message = $this->session->flashdata('status');
-					if (isset($message)) {
-				?>
-				<div class="alert alert-success">
-					<?= $this->session->flashdata('status') ?>
-				</div>
-			<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -76,19 +69,27 @@
 						</div> 
                  	</div>
                 </div> 
-                         
-				<div class="form-group ">
-                    <label for="Description" class="col-sm-2 control-label">Short Description</label>
-					<div class="col-md-12">
-						<textarea id="shortDescription" name="shortDescription" rows="4" cols="80" style = "width: 100%;"></textarea>
+                   
+				
+				<div class="row">
+					<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="Description" class="col-md-6 control-label">Short Description</label>
+							<div class="col-md-12">
+								<textarea id="shortDescription" name="shortDescription" rows="5" cols="80" style = "width: 100%;"></textarea>
+							</div>
+						</div>				
 					</div>
-                </div>  
-				<div class="form-group ">
-                    <label for="Description" class="col-sm-2 control-label">Description</label>
-					<div class="col-md-12">
-						<textarea id="description" name="description" rows="5" cols="80" style = "width: 100%;"></textarea>
+					<div class="col-md-6"> 
+						<div class="form-group ">
+							<label for="Description" class="col-sm-2 control-label">Description</label>
+							<div class="col-md-12">
+								<textarea id="description" name="description" rows="5" cols="80" style = "width: 100%;"></textarea>
+							</div>
+						</div>  
 					</div>
-                </div>  
+				</div>
+				
                 <div class="row">       
 					<div class="col-md-4">      
 						<div class="form-group ">
@@ -96,17 +97,16 @@
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="product_price" placeholder="Product Price Max" value="" required>
+								<input type="text" class="form-control" name="product_price" placeholder="Enter Product Price" value="" required>
 							</div>
 						</div>        
 					</div> 
 					<div class="col-md-4">      
 						<div class="form-group ">
-							<label for="service_price" class="col-sm-6 control-label">Product Weight
-							<i class="required">*</i>
+							<label for="service_price" class="col-md-12 control-label">UOM (Volume - ML / Length - MM) <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="product_weight" required placeholder="Product Price" value="">
+								<input type="text" class="form-control" name="product_weight" required placeholder="Enter Product Price" value="">
 							</div>
 						</div>        
 					</div> 
@@ -114,11 +114,65 @@
 						<div class="form-group ">
 							<label for="stock" class="col-sm-6 control-label">Stock <i class="required">*</i></label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="stock" required placeholder="Numder Of Product Available In Store" value="">
+								<input type="text" class="form-control" name="stock" required placeholder="Numder Of Product Available In Store" value="">
 							</div>
 						</div>
 					</div>
                 </div>   
+
+				<div class="row">       
+					<div class="col-md-4">      
+						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Brand Name
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="brand_name" placeholder="Enter Brand Name" value="" required>
+							</div>
+						</div>        
+					</div> 
+					<div class="col-md-4">      
+						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Colour
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="colour" required placeholder="Enter colour" value="">
+							</div>
+						</div>        
+					</div> 
+					<div class="col-md-4">                       
+						<div class="form-group ">
+							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select  class="form-control chosen chosen-select" name="types" data-placeholder="Select Types" >
+									<option value="" hidden>Select Types</option>
+									<option value="1">Discount</option>
+									<option value="2">Non discounted product</option>
+								</select>
+							</div>
+						</div>
+					</div>
+                </div>  
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="therapist_commission" class="col-sm-6 control-label">Curlness </label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="curlness" placeholder="Enter curlness" value="">
+							</div>
+						</div>                                
+					</div>
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="therapist_commission" class="col-sm-6 control-label">Thickness </label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="thickness" placeholder="Enter thickness" value="">
+							</div>
+						</div>                                
+					</div>
+				</div> 
+
                	<div class="row">
 					<div class="col-md-6">
 						<div class="form-group ">
@@ -171,8 +225,6 @@
 							<div class="col-sm-12">
 								<div id="image"></div>
 								<input type="file" name="productfiles[]" multiple required="">
-								<small class="info help-block">
-								</small>
 							</div>
 						</div>
 					</div>
@@ -183,11 +235,11 @@
 							</label>
 							<div class="col-sm-12">
 								<select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
+									<option value="" hidden>Select Status</option>
 									<option value="1">Active</option>
 									<option value="0">Inactive</option>
 								</select>
-								<small class="info help-block">
-								</small>
+								
 							</div>
 						</div>
                   	</div>  

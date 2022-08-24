@@ -88,6 +88,11 @@
 	width: 100% !important;
 	height: 45px !important;
 }
+
+.fc-month-view .formModal
+{
+display:none;	
+}
 </style>    
 
 <div class="container">
@@ -576,11 +581,17 @@
 		
         resources: <?php echo $cal; ?>,
 		//timeFormat: "H(:mm)",
+
 		
         select:function(start, end, jsEvent, view, resource) {
-			
-        $('#myModal').modal('show');
-        $('#thera_id').val(resource.id);
+
+		var thera_id = $('#thera_id').val(resource.id);
+		if(thera_id != ''){
+			$('#myModal').modal('show');
+		}else{
+			('#myModal').modal('hide');
+		}
+        
         var dt = new Date();
         var hours   = start.format('hh');
         var minutes = start.format('mm');
@@ -625,9 +636,14 @@
       },
       dayClick: function(date, jsEvent, view, resourceObj) {
 		
-		$('#myModal').modal('show');
-        $('#start-date').val(date)
-        $('#thera_id').val(resourceObj.id);
+        var thera_id = $('#thera_id').val(resourceObj.id);
+		if(thera_id != ''){
+			$('#myModal').modal('show');
+		}else{
+			('#myModal').modal('hide');
+		}
+		//$('#myModal').modal('show');
+        $('#start-date').val(date);
         var dt = new Date();
 
         var hours   = dt.getHours();
@@ -659,7 +675,7 @@
         var curDate = yyyy+'-'+mm+'-'+dd+' '+hours+':'+minutes;
         var curDateInput = yyyy+'-'+mm+'-'+dd;
 
-        $('#start-date').val(curDateInput);
+    	$('#start-date').val(curDateInput);
         $('#end-date').val(curDateInput);
 
         var startTime12Format = formatTimeStr(hours+':'+minutes);
@@ -668,7 +684,10 @@
         $('#start-time').val(startTime12Format);
         $('#end-time').val(endTime12Format);
 
+
     },
+
+	
 	//events:[{"resourceId":"7","title":"susmita","start":"2022-07-13T10:30:00","end":"2022-07-13T10:30:00","color":"#FFA500"}],
     events: <?php echo $event; ?>,
 

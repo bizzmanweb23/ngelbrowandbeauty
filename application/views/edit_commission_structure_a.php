@@ -6,13 +6,6 @@
         <div class="row mb-2">
           <div class="col-sm-6">
 		  <h1>Payroll Management</h1>
-		  	<?php $message = $this->session->flashdata('status');
-					if (isset($message)) {
-				?>
-				<div class="alert alert-success">
-					<?= $this->session->flashdata('status') ?>
-				</div>
-			<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -33,9 +26,15 @@
 					<input type="hidden" class="form-control" name="fee_id" value="<?= $allpay_structure['id']; ?>">
 					<div class="col-md-6">   
 						<div class="form-group">
-							<label for="email" class="col-md-12 control-label">Type of Manual Fee</label>
+							<label for="email" class="col-md-12 control-label">From range</label>
 							<div class="col-md-12">
-								<input type="text" class="form-control" name="type_of_fee" id="type_of_fee" value="<?= $allpay_structure['fee_type']; ?>">
+								<input type="text" class="form-control" name="from_range" id="type_of_fee" value="<?= $allpay_structure['from_range']; ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="email" class="col-md-12 control-label">To range</label>
+							<div class="col-md-12">
+								<input type="text" class="form-control" name="to_range" id="type_of_fee" value="<?= $allpay_structure['to_range']; ?>">
 							</div>
 						</div>
 					</div>

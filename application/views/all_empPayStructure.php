@@ -33,7 +33,7 @@
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs pt-3" role="tablist">
 							<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#home" style="color:#b8860b">Manual Fee</a>
+							<a class="nav-link active" data-toggle="tab" href="#home" style="color:#b8860b">Workman ship</a>
 							</li>
 							<li class="nav-item">
 							<a class="nav-link" data-toggle="tab" href="#menu1" style="color:#b8860b">Commission Structure A</a>
@@ -59,7 +59,7 @@
 							
 
 							<table class="table table-bordered" id = "order_table2" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
 										<th>Type Of Manual Fee</th>
 										<th>Amount</th>
@@ -76,8 +76,8 @@
 											<td>$<?= $manual_feeRow['amount']?></td>
 											<?php } ?>
 											<td>
-												<a href="<?= base_url('admin/pay_Structure/edit_manual_fee/'.$manual_feeID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-												<a href="<?= base_url('admin/pay_Structure/deletemanual_fee/'. $manual_feeID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/edit_manual_fee/'.$manual_feeID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/deletemanual_fee/'. $manual_feeID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 											</td>	
 										</tr>
 										<?php endforeach; ?>
@@ -92,9 +92,9 @@
 							
 
 							<table class="table table-bordered" id = "order_table2" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
-										<th>Type Of Fee</th>
+										<th>Pay Range</th>
 										<th>Amount</th>
 										<th>Action</th>
 									</tr>
@@ -104,7 +104,7 @@
 											$commission_structure_aID =   $commission_feeaRow['id'];
 										?>
 										<tr>
-											<td><?= $commission_feeaRow['fee_type']?></td>
+											<td><?= $commission_feeaRow['from_range']?> - <?= $commission_feeaRow['to_range']?></td>
 											<?php if($commission_feeaRow['amount'] != ''){ ?>	
 											<td><?= $commission_feeaRow['amount']?>%</td>
 											<?php } ?>
@@ -124,7 +124,7 @@
 							
 
 							<table class="table table-bordered" id = "order_table2" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
 										<th>Type Of Fee</th>
 										<th>Amount</th>
@@ -156,7 +156,7 @@
 							
 
 							<table class="table table-bordered" id = "order_table2" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
 										<th>Type Of Fee</th>
 										<th>Amount</th>
@@ -188,7 +188,7 @@
 							
 
 							<table class="table table-bordered" id = "order_table2" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-									<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
 										<th>Type Of Fee</th>
 										<th>Amount</th>
@@ -324,15 +324,23 @@
         <div class="modal-body">
 			<form id="" action="<?= base_url('admin/pay_Structure/post_add_commission_structure_a') ?>" method="post" enctype="multipart/form-data">
 				<div class="row">
-					<div class="col-md-6">   
+					<div class="col-md-3">   
 						<div class="form-group">
 							<label for="email" class="col-md-12 control-label">Type of Fee</label>
 							<div class="col-md-12">
-								<input type="text" class="form-control" name="fee_type" placeholder="Type of Fee" value="">
+							<input type="text" class="form-control" name="from_range" id="type_of_fee" value="">
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-3">   
+						<div class="form-group">
+							<label for="email" class="col-md-12 control-label">Type of Fee</label>
+							<div class="col-md-12">
+							<input type="text" class="form-control" name="to_range" id="type_of_fee" value="">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
 						<div class="form-group">
 							<label for="contact" class="col-sm-6 control-label">Amount</label>
 							<div class="col-md-12">

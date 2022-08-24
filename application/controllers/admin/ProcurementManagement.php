@@ -34,6 +34,26 @@ class ProcurementManagement extends CI_Controller {
 				redirect('admin/ProcurementManagement/all_supplier');
 			}	
 	}
+	public function edit_Supplier(){
+		$id = $this->uri->segment(4);
+		$data['editSupplier'] = $this->ProcurementManagement->getEditSupplier($id);
+		$this->layout->view('edit_supplier',$data); 
+	}
+	public function post_edit_Supplier(){
+
+		$supplierId = $this->input->post('supplierId');
+		$data = array(
+			'supplier_code' => $this->input->post('supplier_code'),
+			'supplier_name' => $this->input->post('supplier_name'),
+			'email' => $this->input->post('email'),
+			'supplier_address' => $this->input->post('supplier_address'),
+			'status' => $this->input->post('status'));
+
+			$result = $this->Main->update('id',$supplierId, $data,'nbb_supplier');
+			if($result){
+				redirect('admin/ProcurementManagement/all_supplier');
+			}
+	}
 	public function deleteSupplier(){
 		if($this->session->has_userdata('id')!=false)
 	   	{
@@ -318,6 +338,7 @@ class ProcurementManagement extends CI_Controller {
 		}
 		echo $order_details;
 	}
+	
 	public function generateOrderNumber($id)
 		{
 			return 'NBBO' . str_pad($id, 4, 0, STR_PAD_LEFT);

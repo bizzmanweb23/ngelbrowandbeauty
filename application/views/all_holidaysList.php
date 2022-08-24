@@ -55,7 +55,7 @@
 			  	
                  <div class="site-table" style="overflow: auto; height: 400px ">
                 <table class="table table-bordered" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
 					<th>Year</th>
                     <th>Date</th>
@@ -76,8 +76,8 @@
 								data-year="<?=  $emp_holidaysRow['year'];?>"
 								data-date="<?=  $emp_holidaysRow['date'];?>" 
 								data-day="<?=  $emp_holidaysRow['day'];?>"
-								data-holidays ="<?=  $emp_holidaysRow['holidays'];?>" href="javascript:void(0);" class="btn btn-default editholidays_data" title="Edit" style="color:#b8860b" ><i class="fa fa-edit" aria-hidden="true"></i></a>
-								<a href="<?= base_url('admin/employeeManagement/deleteEmpHoliday/'. $emp_holidaysRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+								data-holidays ="<?=  $emp_holidaysRow['holidays'];?>" href="javascript:void(0);" class="btn btn-default editholidays_data" title="Edit" style="color:#61d3d4" ><i class="fa fa-edit" aria-hidden="true"></i></a>
+								<a href="<?= base_url('admin/employeeManagement/deleteEmpHoliday/'. $emp_holidaysRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 							</td>
                       </tr>
                     <?php endforeach; ?>

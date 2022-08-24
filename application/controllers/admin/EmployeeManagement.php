@@ -135,8 +135,7 @@ class EmployeeManagement extends CI_Controller {
 						$insert4 = $this->EmployeeManagement->storeWorkExperience($experience_data);
 					}
 				}
-			$this->session->set_flashdata('status','Employee Add successfully! <a href="'.site_url("employees") .'" title="Back to Employee list">Back to list</a>');
-			redirect('admin/employeeManagement/add_employeeDetails');		
+			redirect('employees');		
 	}
 	public function generateEmpNumber($id)
 	{
@@ -245,6 +244,14 @@ class EmployeeManagement extends CI_Controller {
 		$CommissionPay = $this->EmployeeManagement->getshowCommissionPay($salary_Date,$employee_Name);
 		
 	}
+	public function showfulltimePay()
+	{
+		$salary_Date = $_POST['salary_Date'];
+		$employee_Name = $_POST['employee_Name'];
+		
+		$fulltimePay = $this->EmployeeManagement->getshowfulltimePay($salary_Date,$employee_Name);
+		
+	}
 	public function post_add_employeeSalary(){
 
 		$data = array(
@@ -306,7 +313,22 @@ class EmployeeManagement extends CI_Controller {
 				redirect('admin/employeeManagement/edit_employeeSalary/'.$empSalaryid);
 			}
 	}
+	public function post_add_fullTimeSalary(){
+		$data = array(
+			'emp_id' => $this->input->post('fullTimeemployeeName'),
+			'dept_id' => $this->input->post('fullTimeempDesignation'),
+			'basic_pay' => $this->input->post('fullTimeBasicSalary'),
+			'commissionPay' => $this->input->post('fullTimecommission_Pay'),
+			'perfectAttendance' => $this->input->post('fullTimePerfectAttendance'),
+			'total_earning' => $this->input->post('fullTimetotal_earning'),
+			'job_type' => 'FullTime Staff',
+			'status' => '1');
 
+			$insert = $this->Main->insert('nbb_employee_salary',$data); 
+			if($insert){
+				redirect('admin/employeeManagement/allEmployeeSalary');
+			}
+	}
 	public function allLeaveList(){
 
 		$data['name'] = $this->session->userdata('name');
@@ -444,14 +466,22 @@ class EmployeeManagement extends CI_Controller {
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
-			table, td, th {
-			border: 1px solid;
+			table,th, td {
+				border: 1px solid black;
 			}
-
+			
 			table {
-			width: 50%;
+				
 			border-collapse: collapse;
+	
 			}
+			table td {
+				border-width: 1px 1px 0 0;
+				width: 30px;
+				overflow: hidden;
+				text-align: center;
+			}
+			
 			.heading{
 				background-color: #b8860b;
 				color: white;
@@ -460,6 +490,7 @@ class EmployeeManagement extends CI_Controller {
 				border-radius: 10px;
 				padding-left: 10px;
 			}
+			
 		</style>
 		</head>
 		<body><div>
@@ -491,12 +522,11 @@ class EmployeeManagement extends CI_Controller {
 				$empAttendanceData2[] = $empAttendanceData;
 
 			}
-		$contain .= '<tr>
-				<th>Employee Name</th>
-				<th>'.$full_name.'</th>';
+			$contain .= '<tr>
+			<th colspan="32">Employee Name -: '.$full_name.'</th>';
 		$contain .= '</tr>
 			<tr>
-				<td>Day</td>';
+				<td style="width: 40px;">Day</td>';
 				$in = ''; $out = '';
 				for($i = 1; $i <= $total_days; $i++) { 
 					$date = date('Y-m-d',strtotime($year.'-'.$month.'-'.$i));

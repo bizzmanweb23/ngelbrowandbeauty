@@ -25,7 +25,7 @@
               <div class="card-body">
 							<div class="site-table" style="overflow: auto; height: 400px ">
                 <table class="table table-bordered supplier_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
 					        <th>Supplier Code</th>
                   <th>Supplier Name</th>
@@ -43,9 +43,9 @@
                         <td><?= $supplierRow['supplier_address']?></td>
                         <td>
 
-													<a href="<?= base_url('admin/ProcurementManagement/deleteSupplier/'. $supplierRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
-													<a href="<?= base_url('admin/ProcurementManagement/sendEmailSupplier/'. $supplierRow['id'])?>" class="btn btn-default" title="Email" style="color:#b8860b"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-													
+													<a href="<?= base_url('admin/ProcurementManagement/edit_Supplier/'.$supplierRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+													<a href="<?= base_url('admin/ProcurementManagement/deleteSupplier/'. $supplierRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
+													<a href="<?= base_url('admin/ProcurementManagement/sendEmailSupplier/'. $supplierRow['id'])?>" class="btn btn-default" title="Email" style="color:#61d3d4"><i class="fa fa-envelope" aria-hidden="true"></i></a>
 
 												</td>
                       </tr>

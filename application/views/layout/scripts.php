@@ -1,5 +1,6 @@
 
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!--<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>-->
+<script src="<?= base_url(); ?>assets/js/core/fontawesome.js"></script>
 <script src="<?= base_url(); ?>assets/js/core/popper.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/core/bootstrap.min.js"></script>
 
@@ -161,6 +162,11 @@
     });
 		//fultimeSalaryTable
 		$('.fultimeSalaryTable').DataTable( {
+						dom: 'Bfrtip',
+						buttons: []
+    });
+		//cpf_table
+		$('.cpf_table').DataTable( {
 						dom: 'Bfrtip',
 						buttons: []
     });

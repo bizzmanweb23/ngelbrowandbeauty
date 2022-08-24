@@ -24,7 +24,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+                  <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>ID</th>
                     <th>Category Name</th>
@@ -36,8 +36,8 @@
                       <tr>
                         <td><?= $productCategoryrow['id']?></td>
                         <td><?= $productCategoryrow['name']?></td>
-                        <td><a href="<?= base_url('admin/productManagement/editproductCategory/'. $productCategoryrow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-                         <a href="<?= base_url('admin/productManagement/deleteProductCategory/'. $productCategoryrow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="<?= base_url('admin/productManagement/editproductCategory/'. $productCategoryrow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+                         <a href="<?= base_url('admin/productManagement/deleteProductCategory/'. $productCategoryrow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

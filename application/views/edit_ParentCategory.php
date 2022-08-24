@@ -6,13 +6,6 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             <h1> Category Management</h1>
-						<?php $message = $this->session->flashdata('status');
-							if (isset($message)) {
-						?>
-						<div class="alert alert-secondary">
-							<?= $this->session->flashdata('status') ?>
-						</div>
-						<?php } ?>
           </div>
         </div>
       </div><!-- /.container-fluid --> 

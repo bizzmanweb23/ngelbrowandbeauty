@@ -453,6 +453,7 @@ class Welcome extends CI_Controller {
     
     public function post_add_customer(){
 		//extract($_POST);
+	
 		$data = array(
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('last_name'),
@@ -472,6 +473,18 @@ class Welcome extends CI_Controller {
 
 				$insert = $this->Auth->storeCustomer($data); 
 				$insert_id = $this->db->insert_id();
+				if($insert==true)
+				{
+					$ref_number= rand();
+					$this->db->where('id' , $insert_id);
+					$this->db->update('nbb_customer', array('referreduser_id'=>$ref_number));
+				}
+				
+
+				//$ref_number = $this->generatecustomerNumber();			
+				/*$this->db->where('id' , $insert_id);
+				$this->db->update('nbb_customer', array('referreduser_id'=>$ref_number));*/
+
 				if($insert==true)
 				{
 					$this->load->library('upload');
@@ -611,7 +624,12 @@ class Welcome extends CI_Controller {
         $data=$this->Auth->getCustomerByID($this->input->get('contact'));
         echo json_encode($data);
     }
-
+	/*public function generatecustomerNumber()
+	{
+		
+		return $str;
+	}*/
+	
     public function logout(){
 	    $this->session->sess_destroy();
 	    redirect('welcome');
