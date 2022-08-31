@@ -133,6 +133,7 @@ class ProductManagement extends CI_Controller {
 			'types' => $this->input->post('types'),
 			'curlness' => $this->input->post('curlness'),
 			'thickness' => $this->input->post('thickness'),
+			'light_medical_beauty' => $this->input->post('light_medical_beauty'),
 			'status' =>$this->input->post('status')
 			);
 			$result = $this->db->insert('nbb_product',$product_data); 
@@ -212,6 +213,7 @@ class ProductManagement extends CI_Controller {
 			'types' => $this->input->post('types'),
 			'curlness' => $this->input->post('curlness'),
 			'thickness' => $this->input->post('thickness'),
+			'light_medical_beauty' => $this->input->post('light_medical_beauty'),
 			'status' =>$this->input->post('status')
 			);
 			$result=$this->Main->update('id',$product_id, $product_data,'nbb_product');

@@ -6,7 +6,7 @@ class Welcome extends CI_Controller {
 	public function __construct() {
 
 		parent::__construct();
-
+		$this->load->helper('string');
 		//$this->db2 = $this->load->database('database2', TRUE);
 
 	}
@@ -475,15 +475,12 @@ class Welcome extends CI_Controller {
 				$insert_id = $this->db->insert_id();
 				if($insert==true)
 				{
-					$ref_number= rand();
+					$ref_number = 'NBB'. random_string('alnum',5);
+
 					$this->db->where('id' , $insert_id);
 					$this->db->update('nbb_customer', array('referreduser_id'=>$ref_number));
 				}
 				
-
-				//$ref_number = $this->generatecustomerNumber();			
-				/*$this->db->where('id' , $insert_id);
-				$this->db->update('nbb_customer', array('referreduser_id'=>$ref_number));*/
 
 				if($insert==true)
 				{

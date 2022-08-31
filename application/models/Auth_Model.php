@@ -5,12 +5,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Auth_Model extends CI_Model
 {
 	
+
+	function frontlogin($data)
+	{
+		$this->db->select('*');
+		$this->db->from('nbb_customer');
+		$this->db->where('email', $data['email']);
+		$this->db->where('contact', $data['email']);
+		$this->db->where('password', $data['password']);
+
+		$query=$this->db->get();
+		if($query->num_rows()==1)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}	
+	}
 	function login($data)
 	{
 		$this->db->select('*');
 		$this->db->from('nbb_users');
 		$this->db->where('email', $data['email']);
 		$this->db->where('password', $data['password']);
+
 		$query=$this->db->get();
 		if($query->num_rows()==1)
 		{

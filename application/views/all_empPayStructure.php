@@ -33,29 +33,32 @@
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs pt-3" role="tablist">
 							<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#home" style="color:#b8860b">Workman ship</a>
+							<a class="nav-link active" data-toggle="tab" href="#home" style="color:#61d3d4">Workman ship</a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#menu1" style="color:#b8860b">Commission Structure A</a>
+							<a class="nav-link" data-toggle="tab" href="#menu1" style="color:#61d3d4">Full Time Stuff Commission</a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#menu2" style="color:#b8860b">Commission Structure B</a>
+							<a class="nav-link" data-toggle="tab" href="#menu2" style="color:#61d3d4">CPF</a>
+							</li>
+							<?php /* <li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#menu2" style="color:#61d3d4">Commission Structure B</a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#menu3" style="color:#b8860b">Commission Structure C </a>
+							<a class="nav-link" data-toggle="tab" href="#menu3" style="color:#61d3d4">Commission Structure C </a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#menu4" style="color:#b8860b">Commission Structure C(Partnerships)</a>
-							</li>
+							<a class="nav-link" data-toggle="tab" href="#menu4" style="color:#61d3d4">Commission Structure C(Partnerships)</a>
+							</li>*/ ?>
 						</ul>
 
 							<!-- Tab panes -->
-							<div class="tab-content">
+						<div class="tab-content">
 
 							<div id="home" class="tab-pane active">
-							<div class="pt-2">
-								<button type="button" class="btn btn-primary btn-custom" data-toggle="modal" data-target="#myManualFee">Add Manual Fee</button>
-							</div>
+								<div class="pt-2">
+									<button type="button" class="btn btn-primary btn-custom" data-toggle="modal" data-target="#myManualFee">Add Manual Fee</button>
+								</div>
 							
 
 							<table class="table table-bordered" id = "order_table2" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
@@ -109,14 +112,56 @@
 											<td><?= $commission_feeaRow['amount']?>%</td>
 											<?php } ?>
 											<td>
-												<a href="<?= base_url('admin/pay_Structure/edit_commission_structure_a/'.$commission_structure_aID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-												<a href="<?= base_url('admin/pay_Structure/deletecommission_structure_a/'. $commission_structure_aID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/edit_commission_structure_a/'.$commission_structure_aID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/deletecommission_structure_a/'. $commission_structure_aID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 											</td>	
 										</tr>
 										<?php endforeach; ?>
 									</tbody>
 								</table>
 							</div>
+
+							<div id="menu2" class="container tab-pane fade">
+								<div class="pt-2">
+									<button type="button" class="btn btn-primary btn-custom" data-toggle="modal" data-target="#mycpf">Add CPF</button>
+								</div>
+							
+
+								<table class="table table-bordered cpf_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
+									<tr>
+										<th>Year </th>
+										<th>CPF</th>
+										<th>Status</th>
+										<th>Action</th>
+									</tr>
+									</thead>
+									<tbody>
+										<?php foreach($allcpf as $allcpfRow): ?>
+										<tr>
+											<td><?= $allcpfRow['year']?></td>
+											<td><?php if($allcpfRow['status'] == 1){  
+												echo $allcpfRow['cpf'].'%';
+											}else{
+												} ?>
+											</td>
+											<td><?php if($allcpfRow['status'] == 1){ ?>
+													Active
+												<?php }else{ ?>
+														Inactive
+												<?php } ?>
+											</td>
+											<td>
+												<a href="<?= base_url('admin/Pay_Structure/edit_cpf/'.$allcpfRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+												<a href="<?= base_url('admin/Pay_Structure/deleteCpf/'. $allcpfRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
+											</td>
+										</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
+							</div>
+
+							<?php /*
 							<div id="menu2" class="container tab-pane fade">
 								<div class="pt-2">
 									<button type="button" class="btn btn-primary btn-custom" data-toggle="modal" data-target="#mycommission_structure_b">Add Fee</button>
@@ -141,8 +186,8 @@
 											<td><?= $commission_feebRow['amount']?>%</td>
 											<?php } ?>
 											<td>
-												<a href="<?= base_url('admin/pay_Structure/edit_commission_structure_b/'.$commission_feebID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-												<a href="<?= base_url('admin/pay_Structure/deletecommission_structure_b/'. $commission_feebID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/edit_commission_structure_b/'.$commission_feebID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/deletecommission_structure_b/'. $commission_feebID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 											</td>	
 										</tr>
 										<?php endforeach; ?>
@@ -173,8 +218,8 @@
 											<td>$<?= $commission_feeCRow['amount']?></td>
 											<?php } ?>
 											<td>
-												<a href="<?= base_url('admin/pay_Structure/edit_commission_structure_c/'.$commission_structureCID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-												<a href="<?= base_url('admin/pay_Structure/deletecommission_structure_c/'. $commission_structureCID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/edit_commission_structure_c/'.$commission_structureCID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/deletecommission_structure_c/'. $commission_structureCID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 											</td>	
 										</tr>
 										<?php endforeach; ?>
@@ -205,8 +250,8 @@
 											<td>$<?= $commission_c_partnerCRow['amount']?></td>
 											<?php } ?>
 											<td>
-												<a href="<?= base_url('admin/pay_Structure/edit_commission_c_partnership/'.$commission_c_partnershipID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-												<a href="<?= base_url('admin/pay_Structure/deletecommission_c_partnership/'. $commission_c_partnershipID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/edit_commission_c_partnership/'.$commission_c_partnershipID)?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+												<a href="<?= base_url('admin/pay_Structure/deletecommission_c_partnership/'. $commission_c_partnershipID)?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 											</td>	
 										</tr>
 										<?php endforeach; ?>
@@ -215,37 +260,8 @@
 
 							</div>
 						</div>
-					</div>
+					</div>*/ ?>
 
-                <?php /*<table class="table table-bordered" id = "salary_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
-                  <thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
-                  <tr>
-										<th>Year</th>
-										<th>Commission</th>
-										<th>Central Provident Fund</th>
-										<th>Insurance</th>
-										<th>Medical Leave Entitlement</th>
-										<th>Medical Allowance</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach($allpay_structure as $allpay_structureRow): ?>
-                      <tr>
-												<td><?= $allpay_structureRow['year']?></td>
-                        <td><?= $allpay_structureRow['dearness_Allowance']?></td>
-												<td><?= $allpay_structureRow['provident_Fund']?></td>
-                        <td><?= $allpay_structureRow['ESI']?></td>
-                        <td><?= $allpay_structureRow['medical_leave_entitlement'] ?></td>
-												<td><?= $allpay_structureRow['medical_Allowance'] ?></td>
-                        <td>
-												<!--<a href="<?= base_url('admin/pay_Structure/edit_empPay_Structure/'.$allpay_structureRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>-->
-												<a href="<?= base_url('admin/pay_Structure/deleteEmpPay_Structurey/'. $allpay_structureRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
-											</td>
-                      </tr>
-                    <?php endforeach; ?>
-                  </tbody>
-                </table>*/ ?>
               </div>
               </div>
               <!-- /.card-body -->
@@ -363,6 +379,74 @@
       </div>
     </div>
   </div>
+
+  <!-- CPF Modal -->
+ <div class="modal" id="mycpf">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">CPF</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+		<form id="add_category" action="<?= base_url('admin/Pay_Structure/post_add_cpf')?>" method="post" enctype="multipart/form-data">
+                <div class="row">
+					<div class="col-md-6">             
+						<div class="form-group ">
+							<label for="name" class="col-sm-6 control-label">Year <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<select name = "getyear" class="form-control getyear">
+									<option value = "">Select Year</option>
+									<?php  $lasttenYear = (int)date("Y")- 35;
+										$curyear = (int)date("Y");
+										for($i=$lasttenYear; $i<= $curyear; $i++){ ?>
+										<option value="<?php echo $i;?>"><?php echo $i;?></option>  
+									<?php } ?>
+								</select>
+							</div>
+						</div>
+                	</div>
+                  <div class="col-md-6">             
+						<div class="form-group ">
+							<label for="name" class="col-sm-6 control-label">CPF Ammount <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="cpf_ammount" placeholder="CPF Ammount" value="">
+							</div>
+						</div>
+                	</div>
+                </div>
+                                                       
+                <div class="row">
+					<div class="col-md-6">                       
+						<div class="form-group ">
+						<label for="status" class="col-sm-6 control-label">Status 
+						<i class="required">*</i>
+						</label>
+						<div class="col-sm-12">
+							<select  class="form-control chosen chosen-select" name="status">
+								<option value="" hidden>Select Status</option>
+								<option value="1">Active</option>
+								<option value="0">Inactive</option>
+							</select>
+						</div>
+					</div>
+                </div> 
+								   
+                </div> 
+                    <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:150px;">
+              </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- End CPF -->
 
 
   <!-- The commission_structure_b Modal -->

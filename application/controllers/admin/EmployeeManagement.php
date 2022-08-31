@@ -139,7 +139,7 @@ class EmployeeManagement extends CI_Controller {
 	}
 	public function generateEmpNumber($id)
 	{
-		return 'NBBE' . str_pad($id, 4, 0, STR_PAD_LEFT);
+		return 'NBB' . str_pad($id, 4, 0, STR_PAD_LEFT);
 	}
 	public function viewEmployeeDetails(){
 		$data['name'] = $this->session->userdata('name');

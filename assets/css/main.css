@@ -365,8 +365,8 @@ iframe {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: rgb(184,134,11);
-background: linear-gradient(63deg, rgba(184,134,11,1) 3%, rgba(187,158,86,1) 93%);
+  background: rgb(4, 237, 214);
+background: linear-gradient(63deg, rgb(4, 237, 214) 3%, rgb(4, 237, 214) 93%);
   top: 0;
   left: -100%;
 

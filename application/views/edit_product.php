@@ -125,16 +125,36 @@
 						<div class="form-group ">
 							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="types" required placeholder="Enter Types" value="<?= $productData['types'] ?>">
 								<select  class="form-control chosen chosen-select" name="types" data-placeholder="Select Types" >
 									<option value="" hidden>Select Types</option>
-									<option value="1" <?php if($productData['types'] == '1'){?>selected <?php } ?>>Discount</option>
+									<option value="1" <?php if($productData['types'] == '1'){?>selected <?php } ?>>Discounted</option>
 									<option value="2" <?php if($productData['types'] == '2'){?>selected <?php } ?>>Non discounted product</option>
 								</select>
 							</div>
 						</div>
 					</div>
                 </div>  
+				
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="checkbox" name="light_medical_beauty" value="1">
+							<label for="customCheckbox"> Light Medical Beauty Product </label>        
+						</div>                      
+					</div> 
+					<?php if($productData['types'] == '1'){?>
+					<div class="col-md-6 discountAmount">      
+						<div class="form-group">
+							<label for="Discount" class="col-sm-6 control-label">Discount Amount</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="discountAmount" placeholder="Enter colour" value="">
+							</div>
+						</div>        
+					</div> 
+					<?php }else{ ?>
+
+					<?php } ?>
+				</div> 
 				
 				<div class="row">
 					<div class="col-md-6">
@@ -313,6 +333,14 @@
 		return false;
 		});
 
-		
+		$(".types").change(function(){
+			if(this.value == '1') {
+				$(".discountAmount").show();
+			}
+			if(this.value == '2') {
+				$(".discountAmount").hide(); 
+			}
+		});
+
 	});	
 </script>

@@ -172,8 +172,8 @@
 
 .owl-nav {
     width: 100%;
-    position: absolute;
-    top: 50%;
+    /* position: absolute;
+    top: 50%; */
     margin-top: -25px;
     right: 0;
     opacity: 0;

@@ -71,7 +71,7 @@
 						<td><?= $productRow['colour']?></td>
                         <td><?= $productRow['weight']?></td>
                         <td><?= $productRow['stock'] ?></td>
-						<td><?= $productRow['available_stock'] ?><a data-product_Id="<?=  $productRow['id'];?>" data-p_stock = "<?= $productRow['available_stock'] ?>" href="javascript:void(0);" class="px-2 editStock_status" title="Update Stock" style="color:#b8860b" ><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+						<td><?= $productRow['available_stock'] ?><a data-product_Id="<?=  $productRow['id'];?>" data-p_stock = "<?= $productRow['available_stock'] ?>" href="javascript:void(0);" class="px-2 editStock_status" title="Update Stock" style="color:#61d3d4" ><i class="fa fa-edit" aria-hidden="true"></i></a></td>
 						<td><?= $productRow['mfg_date']?></td>
 						<td><?php if($productRow['expiry_date'] < $date_now){?>
 							<span style="color:red;font-weight: bold;" data-toggle="tooltip" data-placement="top" title="Product is expired!"><?= $productRow['expiry_date']?></span>

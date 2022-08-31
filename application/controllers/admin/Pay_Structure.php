@@ -12,6 +12,7 @@ class Pay_Structure extends CI_Controller {
 	public function allPay_Structure(){
 
 		//$data['allpay_structure'] = $this->PayStructure->getAllpay_structure();
+		$data['allcpf'] = $this->PayStructure->getAllcpf();
 		$data['commission_structure_a'] = $this->PayStructure->getAllcommission_structure_a();
 		$data['commission_structure_b'] = $this->PayStructure->getAllcommission_structure_b();
 		$data['commission_structure_c'] = $this->PayStructure->getAllcommission_structure_c();
@@ -288,7 +289,7 @@ class Pay_Structure extends CI_Controller {
 
 		$insert = $this->Main->insert('nbb_cpf',$data); 
 		if($insert){
-			redirect('admin/pay_Structure/viewCPF');
+			redirect('admin/pay_Structure/allPay_Structure');
 		}
 	}
 	public function edit_cpf(){
@@ -306,7 +307,7 @@ class Pay_Structure extends CI_Controller {
 			$result = $this->Main->update('id',$cpf_id, $data,'nbb_cpf');
 			if($result){
 				
-				redirect('admin/pay_Structure/viewCPF');
+				redirect('admin/pay_Structure/allPay_Structure');
 			}
 	}
 	public function deleteCpf(){

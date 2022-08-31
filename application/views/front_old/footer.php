@@ -23,11 +23,11 @@
               </div>
               <div class="useLink">
                 <ul class="list-unstyled">
-                  <li><a href="<?php echo base_url('services') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Service</a></li>
-                  <li><a href="<?php echo base_url('about') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>About </a></li>
-                  <li><a href="<?php echo base_url('products') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Products</a></li>
-                  <li><a href="<?php echo base_url('courses') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Course</a></li>
-                  <li><a href="<?php echo base_url('contactus') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Social Media</a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Service</a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right" aria-hidden="true"></i>About </a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Products</a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Course</a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Social Media</a></li>
                 </ul>
               </div>
             </div>
@@ -81,8 +81,8 @@
 
               <div class="footerText">
                 <p>Sign up for our mailing list to get latest updates and offers.</p>
-                <form method="post" action="<?php echo base_url('contact/email') ?>" class="input-group">
-                  <input type="text" name="contact-email" class="form-control" required="" placeholder="Email address" aria-describedby="basic-addon21">
+                <form class="input-group">
+                  <input type="text" class="form-control" required="" placeholder="Email address" aria-describedby="basic-addon21">
                   <button type="submit" class="input-group-addon" id="basic-addon21">Send</button>
                 </form>
               </div>
@@ -143,30 +143,28 @@
     </section>
   </div>
 
+
+  <!-- JAVASCRIPTS -->
+  <script src="<?= base_url(); ?>/assets/front/plugins/jquery/jquery.min.js"></script>
+  <script src="<?= base_url(); ?>/assets/front/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src='<?= base_url(); ?>/assets/front/plugins/selectbox/jquery.selectbox-0.1.3.min.js'></script>
+  <script src='<?= base_url(); ?>/assets/front/plugins/owl-carousel/owl.carousel.min.js'></script>
+  <script src='<?= base_url(); ?>/assets/front/plugins/isotope/isotope.min.js'></script>
+  <script src='<?= base_url(); ?>/assets/front/plugins/fancybox/jquery.fancybox.min.js'></script>
+  
+  <script src='<?= base_url(); ?>/assets/front/plugins/isotope/isotope-triger.min.js'></script>
+  <script src='<?= base_url(); ?>/assets/front/plugins/datepicker/bootstrap-datepicker.min.js'></script>
+  
+  <script src="<?= base_url(); ?>/assets/front/plugins/lazyestload/lazyestload.js"></script>
+  
+  
+  <script src="<?= base_url(); ?>/assets/front/plugins/smoothscroll/SmoothScroll.js"></script>
+  
+  
+  <script src="<?= base_url(); ?>/assets/front/js/custom.js"></script>
+
   <script>
-    $(function(){
-      
-      $('.login-btn').click(function(){
-        $form = $('#login-form').serialize();
-       
-        $.ajax({
-          url : '<?php echo base_url() ?>/front/login',
-          method : 'POST',
-          data : $form,
-          success : function(data){
-            alert(data);
-          },
-          error : function(data){
-            alert(data);
-          }
-        });
-
-
-      });
-      $('.signup-btn').click(function(){
-        alert();
-      });
-    });
   	//paste this code under head tag or in a seperate js file.
   	// Wait for window load
   	$(window).load(function() {
@@ -193,7 +191,8 @@
 })
   </script>
 
-
+<link href="<?= base_url(); ?>/assets/front/options/optionswitch.css" rel="stylesheet">
+<script src="<?= base_url(); ?>/assets/front/options/optionswitcher.js"></script>
 </body>
 
 </html>

@@ -31,7 +31,7 @@
                   <tr>
                     <th>Year </th>
                     <th>CPF</th>
-					<th>Status</th>
+										<th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -39,11 +39,11 @@
                     <?php foreach($allcpf as $allcpfRow): ?>
                       <tr>
                         <td><?= $allcpfRow['year']?></td>
-						<td><?php if($allcpfRow['status'] == 1){  
-							echo $allcpfRow['cpf'].'%';
-						}else{
-							} ?>
-						</td>
+												<td><?php if($allcpfRow['status'] == 1){  
+													echo $allcpfRow['cpf'].'%';
+												}else{
+													} ?>
+												</td>
                         <td><?php if($allcpfRow['status'] == 1){ ?>
 								Active
 							<?php }else{ ?>

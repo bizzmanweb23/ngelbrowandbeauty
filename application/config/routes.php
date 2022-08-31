@@ -50,7 +50,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 //$route['default_controller'] = 'login';
+$route['login'] = 'front/Home/login';
+$route['signup'] = 'front/Home/register';
 $route['home'] = 'front/Home/all_home';
+$route['about'] = 'front/Home/about';
+$route['products'] = 'front/Home/products';
+$route['courses'] = 'front/Home/courses';
+$route['services'] = 'front/Home/services';
+$route['services-list'] = 'front/Home/services_details';
+$route['checkout'] = 'front/Home/checkout';
+$route['contactus'] = 'front/Home/contact_us';
+$route['contact/form'] =  'front/home/contact_form';
+$route['contact/email'] =  'front/home/contact_email';
+$route['get-services-list/(:any)'] =  'front/Home/setvices_list/$i';
+
+$route['front/login'] = 'front/home/login';
+$route['front/signup'] = 'front/home/signup'; 
 
 $route['hrms'] = 'hrms/Login';
 $route['empdashboard'] = 'hrms/welcome/empdashboard';
@@ -59,6 +74,7 @@ $route['dashboard'] = 'admin/welcome/dashboard';
 $route['welcome'] = 'admin/welcome';
 /*$route['branch'] = 'admin/welcome/branch';
 $route['branch/login'] = 'branch/login';*/
+$route['employee/commission'] = 'admin/comissionController/comission';
 $route['branch/dashboard'] = 'admin/welcome/dashboard';
 $route['users'] = 'admin/welcome/users';
 $route['promotion'] = 'admin/welcome/promotion';

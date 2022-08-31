@@ -132,7 +132,7 @@
 						</div>        
 					</div> 
 					<div class="col-md-4">      
-						<div class="form-group ">
+						<div class="form-group">
 							<label for="service_price" class="col-sm-6 control-label">Colour
 							<i class="required">*</i>
 							</label>
@@ -145,15 +145,31 @@
 						<div class="form-group ">
 							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
 							<div class="col-sm-12">
-								<select  class="form-control chosen chosen-select" name="types" data-placeholder="Select Types" >
+								<select  class="form-control chosen chosen-select types" name="types" data-placeholder="Select Types" >
 									<option value="" hidden>Select Types</option>
-									<option value="1">Discount</option>
+									<option value="1">Discounted</option>
 									<option value="2">Non discounted product</option>
 								</select>
 							</div>
 						</div>
 					</div>
-                </div>  
+                </div> 
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="checkbox" name="light_medical_beauty" value="1">
+							<label for="customCheckbox"> Light Medical Beauty Product</label>        
+						</div>                      
+					</div> 
+					<div class="col-md-6 discountAmount" style="display: none;">      
+						<div class="form-group">
+							<label for="Discount" class="col-sm-6 control-label">Discount Amount</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="discountAmount" placeholder="Enter colour" value="">
+							</div>
+						</div>        
+					</div> 
+				</div> 
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group ">
@@ -277,6 +293,16 @@
 				}
 			}); 
 			
+		});
+
+
+	$(".types").change(function(){
+		if(this.value == '1') {
+			$(".discountAmount").show();
+		}
+		if(this.value == '2') {
+			$(".discountAmount").hide(); 
+		}
 		});
 	});
  </script>
