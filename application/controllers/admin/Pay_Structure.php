@@ -283,9 +283,13 @@ class Pay_Structure extends CI_Controller {
 	}
 	public function post_add_cpf(){
 		$data = array(
-		'year' => $this->input->post('getyear'),
-		'cpf' => $this->input->post('cpf_ammount'),
-		'status' => $this->input->post('status'));
+			'year' => $this->input->post('getyear'),
+			'age' => $this->input->post('cpf_age'),
+			'total_wages' => $this->input->post('total_wages'),
+			'employer_cpf' => $this->input->post('employer_cpf'),
+			'employee_cpf' => $this->input->post('employee_cpf'),
+			'status' => $this->input->post('status')
+		);
 
 		$insert = $this->Main->insert('nbb_cpf',$data); 
 		if($insert){
@@ -301,7 +305,10 @@ class Pay_Structure extends CI_Controller {
 		$cpf_id = $this->input->post('cpf_id');
 		$data = array(
 			'year' => $this->input->post('getyear'),
-			'cpf' => $this->input->post('cpf_ammount'),
+			'age' => $this->input->post('cpf_age'),
+			'total_wages' => $this->input->post('total_wages'),
+			'employer_cpf' => $this->input->post('employer_cpf'),
+			'employee_cpf' => $this->input->post('employee_cpf'),
 			'status' => $this->input->post('status'));
 
 			$result = $this->Main->update('id',$cpf_id, $data,'nbb_cpf');

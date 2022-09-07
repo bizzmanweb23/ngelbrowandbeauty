@@ -1,5 +1,6 @@
 
 <!-- FORM AREA SECTION -->
+<?= $referal_code; ?>
 <section class="clearfix formArea">
       <div class="container">
 			<script type="text/javascript">
@@ -36,9 +37,9 @@
 					          <input class="form-control password" type="password" name="password" value="" placeholder="Enter Password" />
                   </div>
 					         
-					        <div class="form-group">
-						        <input class="form-control confirm_password" type="password" name="confirm_password" value="" placeholder="Confirm Password" />
-                  </div>
+					<div class="form-group">
+						<input class="form-control confirm_password" type="password" name="confirm_password" value="" placeholder="Confirm Password" />
+                  	</div>
                   <span class="CheckPasswordMatch"></span>
                   
                   <button type="submit" class="btn btn-primary btn-block">Sign UP</button>

@@ -19,6 +19,7 @@ class EmployeeManagement extends CI_Controller {
     {
        
 		$data['name'] = $this->session->userdata('name');
+		$data['empjobType'] = $this->EmployeeManagement->getAllemp_jobType();
 		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
 		$data['allRoles']=$this->UserManagement->getAllRoles();
        	$this->layout->view('add_EmployeeDetails',$data); 
@@ -39,7 +40,7 @@ class EmployeeManagement extends CI_Controller {
 			'password' => hash('sha512', $this->input->post('password')),
 			'aadhaar_number' => $this->input->post('aadhar_number'),
 			'pan_number' => $this->input->post('pan_number'),
-			'jobtype' => $this->input->post('jobtype'),
+			'job_type_id' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
 			'designation' => $this->input->post('designation'),
 			'payStructure' => $this->input->post('payStructure'),
@@ -143,6 +144,7 @@ class EmployeeManagement extends CI_Controller {
 	}
 	public function viewEmployeeDetails(){
 		$data['name'] = $this->session->userdata('name');
+		$data['empjobType'] = $this->EmployeeManagement->getAllemp_jobType();
 		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
 		$empId = $this->uri->segment(4);
 		$data['emp_Details'] = $this->EmployeeManagement->getAllemp_Details($empId);
@@ -178,7 +180,7 @@ class EmployeeManagement extends CI_Controller {
 			'email' => $this->input->post('email'),
 			'aadhaar_number' => $this->input->post('aadhaar_number'),
 			'pan_number' => $this->input->post('pan_number'),
-			'jobtype' => $this->input->post('jobtype'),
+			'job_type_id' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
 			'designation' => $this->input->post('designation'),
 			'payStructure' => $this->input->post('payStructure'),

@@ -147,5 +147,7 @@ $autoload['model'] = array('Auth_Model'=>'Auth',
 'CourseManagement_Model'=>'CourseManagement',
 'LeadManagement_model'=>'LeadManagement',
 'front/AuthFront_Model'=>'AuthFront',
+'front/Header_Model'=>'Header',
+'front/Home_model'=>'Home',
 
 );

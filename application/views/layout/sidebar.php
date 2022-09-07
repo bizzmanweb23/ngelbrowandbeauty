@@ -28,7 +28,7 @@ if ($this->session->userdata('id')) {
     <div class="sidenav-header text-center mb-5">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="" target="_blank">
-        <img src="<?= base_url(); ?>/assets/img/LOGO.png" class="navbar-brand-img" alt="main_logo" style="width:220px;">
+        <img src="<?= base_url(); ?>assets/img/LOGO.png" class="navbar-brand-img" alt="main_logo" style="width:100px;">
         
       </a>
     </div>

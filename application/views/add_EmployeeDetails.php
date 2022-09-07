@@ -233,13 +233,12 @@
 							<tr>
 								<td>Job Type</td>
 								<td>
-									<input type="radio" name="jobtype" value="Commission Staff" >Commission Staff	
-								</td>
-								<td>
-									<input type="radio" name="jobtype" value="Partnerships">Partnerships 
-								</td>
-								<td>
-									<input type="radio" name="jobtype" value="FullTime Staff">Full Time Staff  
+									<select name="jobtype" class="form-control">
+										<option>Select Job Type</option>
+										<?php foreach($empjobType as $empjobTypeRow): ?>
+										<option value="<?= $empjobTypeRow['id']?>"><?= $empjobTypeRow['type_name']?></option>
+										<?php endforeach; ?> 
+									</select>
 								</td>
 							</tr>
 							<tr>

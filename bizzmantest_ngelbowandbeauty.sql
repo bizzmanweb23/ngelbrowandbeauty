@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2022 at 03:50 PM
+-- Generation Time: Sep 07, 2022 at 04:22 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -114,9 +114,11 @@ INSERT INTO `nbb_appointment` (`id`, `customer_id`, `customer_number`, `customer
 CREATE TABLE `nbb_billing_address` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `billing_firstname` varchar(200) DEFAULT NULL,
   `billing_lastname` varchar(200) DEFAULT NULL,
   `billing_contactno` int(11) DEFAULT NULL,
+  `billing_country` varchar(200) DEFAULT NULL,
   `billing_address` text DEFAULT NULL,
   `billing_postal_code` int(11) DEFAULT NULL,
   `billing_city` text DEFAULT NULL,
@@ -127,8 +129,8 @@ CREATE TABLE `nbb_billing_address` (
 -- Dumping data for table `nbb_billing_address`
 --
 
-INSERT INTO `nbb_billing_address` (`id`, `user_id`, `billing_firstname`, `billing_lastname`, `billing_contactno`, `billing_address`, `billing_postal_code`, `billing_city`, `billing_state`) VALUES
-(1, 1, 'susmita', 'ojha', NULL, 'fgf ghjh hg h', 700102, 'kolkata', 1);
+INSERT INTO `nbb_billing_address` (`id`, `user_id`, `created_at`, `billing_firstname`, `billing_lastname`, `billing_contactno`, `billing_country`, `billing_address`, `billing_postal_code`, `billing_city`, `billing_state`) VALUES
+(1, 1, '2022-09-07 12:29:47', 'susmita', 'ojha', 1234567892, '', 'fgf ghjh hg h,ghv', 700102, 'kolkata', 2);
 
 -- --------------------------------------------------------
 
@@ -174,18 +176,44 @@ CREATE TABLE `nbb_child_category` (
 --
 
 INSERT INTO `nbb_child_category` (`id`, `parent_category_id`, `category_name`, `category_details`, `status`, `created_by`, `created_at`) VALUES
-(1, 1, 'Skin Management', '', 1, NULL, '2022-07-25 06:45:12'),
-(2, 1, 'Light Medical Skin Management', '', 1, NULL, '2022-07-25 06:45:38'),
-(3, 1, 'Additional Care', '', 1, NULL, '2022-07-25 06:46:04'),
-(4, 1, 'Semi Permanent Lips Series', '', 1, NULL, '2022-07-25 06:46:36'),
-(5, 1, 'Semi Permanent Eyeliner Series', '', 1, NULL, '2022-07-25 06:47:05'),
-(6, 1, 'Semi Permanent Eyebrows Series ', '', 1, NULL, '2022-07-25 06:47:22'),
-(7, 1, 'Eye Lash Extension Series', '', 1, NULL, '2022-07-25 06:47:47'),
-(8, 2, 'Tools', '', 1, NULL, '2022-07-25 06:48:13'),
-(9, 2, 'Lips Colour', '', 1, NULL, '2022-07-25 06:48:44'),
-(10, 2, 'Eye Lash', '', 1, NULL, '2022-07-25 06:49:10'),
-(11, 3, 'Basic Course', '', 1, NULL, '2022-07-25 06:49:37'),
-(12, 3, 'Advance Course', '', 1, NULL, '2022-07-25 06:49:53');
+(1, 1, 'Skin Management', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:37:55'),
+(2, 1, 'Light Medical Skin Management', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(3, 1, 'Additional Care', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(4, 1, 'Semi Permanent Lips Series', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(5, 1, 'Semi Permanent Eyeliner Series', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(6, 1, 'Semi Permanent Eyebrows Series ', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(7, 1, 'Eye Lash Extension Series', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(8, 2, 'Tools', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(9, 2, 'Lips Colour', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(10, 2, 'Eye Lash', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(11, 3, 'Basic Course', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10'),
+(12, 3, 'Advance Course', 'Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetu', 1, NULL, '2022-08-18 07:39:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nbb_commission`
+--
+
+CREATE TABLE `nbb_commission` (
+  `commission_id` int(50) NOT NULL,
+  `emp_id` int(50) DEFAULT NULL,
+  `comission_from` varchar(200) DEFAULT NULL,
+  `comission_to` varchar(200) DEFAULT NULL,
+  `rate` varchar(200) DEFAULT NULL,
+  `job_type` int(50) DEFAULT NULL,
+  `status` int(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nbb_commission`
+--
+
+INSERT INTO `nbb_commission` (`commission_id`, `emp_id`, `comission_from`, `comission_to`, `rate`, `job_type`, `status`) VALUES
+(1, 1, '5000', '6999', '5', NULL, NULL),
+(2, 3, '8000', '11999', '8', NULL, NULL),
+(3, 5, '12000', '15999', '10', NULL, NULL),
+(4, 7, '16000', '19999', '12', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -247,7 +275,7 @@ CREATE TABLE `nbb_commission_structure_b` (
 --
 
 INSERT INTO `nbb_commission_structure_b` (`id`, `fee_Type`, `amount`, `status`) VALUES
-(1, '10000', 200, NULL);
+(1, 'Sale above $10000', 200, NULL);
 
 -- --------------------------------------------------------
 
@@ -268,6 +296,58 @@ CREATE TABLE `nbb_commission_structure_c` (
 
 INSERT INTO `nbb_commission_structure_c` (`id`, `type_of_fee`, `amount`, `status`) VALUES
 (2, 'Sales Figure $12000 - $15999', 10, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nbb_contact`
+--
+
+CREATE TABLE `nbb_contact` (
+  `id` int(20) NOT NULL,
+  `customer_name` varchar(50) DEFAULT NULL,
+  `customer_email` varchar(30) DEFAULT NULL,
+  `customer_phone` varchar(20) DEFAULT NULL,
+  `customer_message` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nbb_contact`
+--
+
+INSERT INTO `nbb_contact` (`id`, `customer_name`, `customer_email`, `customer_phone`, `customer_message`) VALUES
+(1, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', '\"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...\"'),
+(2, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', 'qsasasas'),
+(3, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', 'asasasas'),
+(4, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', 'wewewewe'),
+(5, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', 'wewewewe'),
+(6, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', 'wwdsdsds'),
+(7, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', 'wwdsdsds'),
+(8, 'Ong Jian Sheng, Jeffery', 'jedd@sgml.com.sg', 'jedd@sgml.com.sg', 'dfdfdfdf'),
+(9, 'Ong Jian Sheng, Jeffery', 'jedd@sgml.com.sg', 'jedd@sgml.com.sg', 'dfdfdfdf'),
+(10, 'Tan Li Sen', 'lisen@sgml.com.sg', 'lisen@sgml.com.sg', 'xxcxcxcx');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nbb_contact_email`
+--
+
+CREATE TABLE `nbb_contact_email` (
+  `id` int(20) NOT NULL,
+  `contact_email` varchar(50) DEFAULT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nbb_contact_email`
+--
+
+INSERT INTO `nbb_contact_email` (`id`, `contact_email`, `date`) VALUES
+(1, '1232@mail.com', '2022-08-20'),
+(2, '2@mail.com', '2022-08-20'),
+(3, '2@mail.com', '2022-08-23'),
+(4, '1232@mail.com', '2022-08-23');
 
 -- --------------------------------------------------------
 
@@ -329,11 +409,37 @@ INSERT INTO `nbb_course` (`id`, `course_name`, `course_image`, `category_id`, `t
 --
 
 CREATE TABLE `nbb_cpf` (
-  `id` int(11) DEFAULT NULL,
-  `year` int(11) NOT NULL,
-  `cpf` int(11) DEFAULT NULL,
+  `id` int(10) NOT NULL,
+  `emp_id` int(10) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `salary_from` varchar(30) DEFAULT NULL,
+  `salary_to` int(30) DEFAULT NULL,
+  `emp_cpf` int(20) DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nbb_cpf`
+--
+
+INSERT INTO `nbb_cpf` (`id`, `emp_id`, `age`, `year`, `salary_from`, `salary_to`, `emp_cpf`, `status`) VALUES
+(1, 1, 50, 2022, '50', 500, 17, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nbb_credit_wallet`
+--
+
+CREATE TABLE `nbb_credit_wallet` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `points` decimal(20,5) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -343,36 +449,58 @@ CREATE TABLE `nbb_cpf` (
 
 CREATE TABLE `nbb_customer` (
   `id` int(11) NOT NULL,
-  `referreduser_id` bigint(50) DEFAULT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `dob` date NOT NULL,
-  `age` int(3) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `referreduser_id` varchar(255) DEFAULT NULL,
+  `referred_by` varchar(255) DEFAULT NULL,
+  `otp` varchar(200) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `age` int(3) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `contact` varchar(12) NOT NULL,
+  `contact` varchar(12) DEFAULT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
-  `address` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `created_by` int(11) NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
   `medical_information` text DEFAULT NULL,
   `transactional_records` text DEFAULT NULL,
   `skin_conditions` int(11) DEFAULT NULL,
   `membership` int(11) DEFAULT NULL,
   `reference_name` int(11) DEFAULT NULL,
-  `status` tinyint(3) NOT NULL
+  `status` tinyint(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nbb_customer`
 --
 
-INSERT INTO `nbb_customer` (`id`, `referreduser_id`, `first_name`, `last_name`, `dob`, `age`, `email`, `password`, `contact`, `profile_picture`, `address`, `created_at`, `created_by`, `medical_information`, `transactional_records`, `skin_conditions`, `membership`, `reference_name`, `status`) VALUES
-(1, NULL, 'susmita', 'ojha', '1996-02-28', 25, 'fddgdf@gmail.com', NULL, '9903230346', 'whatsapp-profile-pics1.jpg', 'test demo', '2022-02-19 08:00:42', 1, '', '', 1, 0, 1, 1),
-(2, NULL, 'test', 'demo', '1990-08-25', 31, 'riyaojha2013@gmail.com', NULL, '8017692049', 'Facial_Oils.jpg', 'kestopur,kolkata', '2022-02-19 08:59:07', 1, '', '', 0, 1, 0, 0),
-(7, NULL, 'will', 'Smith', '2007-07-13', 14, 'susmita@gmail.com', NULL, '12354567', NULL, 'gvjgv', '2022-03-02 08:26:11', 1, NULL, NULL, NULL, NULL, NULL, 0),
-(14, 570468543, 'asif', 'test', '2015-12-27', 6, 'asiftest@gmail.com', NULL, '7894561237', '3b1f703c0934e3d03bb6f96f4300f038.jpg', '', '2022-08-22 12:26:31', 1, '', '', 0, 0, 0, 0),
-(16, 2002363354, 'aaaa', 'demo', '2017-01-02', 5, 'susmita@gmail.com', NULL, '7894561237', '615L4NeZkwS__SL1001_.jpg', '', '2022-08-24 15:17:24', 1, '', '', 2, 1, 2, 1);
+INSERT INTO `nbb_customer` (`id`, `referreduser_id`, `referred_by`, `otp`, `first_name`, `last_name`, `dob`, `age`, `email`, `password`, `contact`, `profile_picture`, `address`, `created_at`, `created_by`, `medical_information`, `transactional_records`, `skin_conditions`, `membership`, `reference_name`, `status`) VALUES
+(1, 'NBB0h3SJ', NULL, 'dBjv', 'Susmita', 'test', '0000-00-00', 0, 'ciprojectbizz@gmail.com', '9c6dcc6aac9e7ca2452d4ff75142e350', '9903230346', 'start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec5.png', NULL, '2022-09-07 11:59:13', 1, '', '', 0, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nbb_daily_sales`
+--
+
+CREATE TABLE `nbb_daily_sales` (
+  `sales_id` int(20) NOT NULL,
+  `emp_id` varchar(20) DEFAULT NULL,
+  `sales_amount` varchar(50) DEFAULT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `status` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nbb_daily_sales`
+--
+
+INSERT INTO `nbb_daily_sales` (`sales_id`, `emp_id`, `sales_amount`, `date`, `status`) VALUES
+(1, '1', '10000', '2022-08-30', 1),
+(2, '3', '20000', '2022-08-30', 1),
+(3, '5', '19000', '2022-08-30', NULL),
+(4, '7', '42310', '2022-08-30', NULL);
 
 -- --------------------------------------------------------
 
@@ -400,17 +528,17 @@ CREATE TABLE `nbb_dashboard` (
 --
 
 INSERT INTO `nbb_dashboard` (`id`, `therapist_id`, `customer_number`, `customer_name`, `services`, `start_date`, `start_time`, `end_date`, `end_time`, `created_by`, `amount`, `status`) VALUES
-(1, 7, '12345', 'test', '3', '2022-08-17', '10:30:00', '2022-08-17', '11:30:00', 1, '30', 0),
-(2, 5, '12345678', 'susmita', '3', '2022-08-03', '10:00:00', '2022-08-03', '11:00:00', 1, '30', 0),
-(3, 6, '521', 'naboneeta', '4,5', '2022-08-17', '11:30:00', '2022-08-17', '13:30:00', 7, '60', 0),
-(4, 7, '12354567', 'will Smith', '6', '2022-08-30', '09:00:00', '2022-08-27', '09:30:00', 1, '500', 2),
-(5, 7, '100000', 'naboneeta', '5', '2022-08-15', '11:00:00', '2022-08-15', '12:30:00', 1, '30', 1),
-(6, 6, '2000', 'sumi', '4', '2022-08-17', '10:30:00', '2022-08-17', '11:00:00', 1, '30', 1),
-(8, 6, '123456789', 'boni', '3', '2022-08-29', '09:00:00', '2022-08-29', '10:00:00', 1, '30', 0),
-(9, 6, '123456789', 'gfnb', '3', '2022-08-30', '09:00:00', '2022-08-30', '10:00:00', 1, '30', 3),
-(10, 6, '8546', 'susmita', '4', '2022-08-05', '11:30:00', '2022-08-05', '12:00:00', 1, '30', 0),
-(11, 7, '100000', 'test', '3,4', '2022-08-07', '11:00:00', '2022-08-07', '12:30:00', 1, '60', 0),
-(12, 7, '100000', 'susmita', '4', '2022-08-28', '11:30:00', '2022-08-28', '12:00:00', 1, '30', 0);
+(1, 7, '12345', 'test', '3', '2022-09-17', '10:30:00', '2022-08-17', '11:30:00', 1, '30', 0),
+(2, 5, '12345678', 'susmita', '3', '2022-09-03', '10:00:00', '2022-08-03', '11:00:00', 1, '30', 0),
+(3, 6, '521', 'naboneeta', '4,5', '2022-09-17', '11:30:00', '2022-08-17', '13:30:00', 7, '60', 0),
+(4, 7, '12354567', 'will Smith', '6', '2022-09-30', '09:00:00', '2022-08-27', '09:30:00', 1, '500', 2),
+(5, 7, '100000', 'naboneeta', '5', '2022-09-15', '11:00:00', '2022-08-15', '12:30:00', 1, '30', 1),
+(6, 6, '2000', 'sumi', '4', '2022-09-17', '10:30:00', '2022-08-17', '11:00:00', 1, '30', 1),
+(8, 6, '123456789', 'boni', '3', '2022-09-29', '09:00:00', '2022-08-29', '10:00:00', 1, '30', 0),
+(9, 6, '123456789', 'gfnb', '3', '2022-09-30', '09:00:00', '2022-08-30', '10:00:00', 1, '30', 3),
+(10, 6, '8546', 'susmita', '4', '2022-09-05', '11:30:00', '2022-08-05', '12:00:00', 1, '30', 0),
+(11, 7, '100000', 'test', '3,4', '2022-09-07', '11:00:00', '2022-08-07', '12:30:00', 1, '60', 0),
+(12, 7, '100000', 'susmita', '4', '2022-09-28', '11:30:00', '2022-08-28', '12:00:00', 1, '30', 0);
 
 -- --------------------------------------------------------
 
@@ -471,7 +599,7 @@ INSERT INTO `nbb_delivery_status` (`id`, `status_name`) VALUES
 CREATE TABLE `nbb_employees` (
   `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` varchar(50) DEFAULT NULL,
   `emp_number` varchar(255) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
@@ -489,8 +617,12 @@ CREATE TABLE `nbb_employees` (
   `marital_status` tinyint(3) DEFAULT NULL,
   `designation` int(11) DEFAULT NULL,
   `payStructure` tinyint(3) DEFAULT NULL,
-  `jobtype` varchar(50) DEFAULT NULL,
+  `sales_amount` varchar(50) DEFAULT NULL,
+  `service_amount` int(11) DEFAULT NULL,
+  `job_type` int(10) DEFAULT NULL,
+  `job_type_id` int(50) DEFAULT NULL,
   `basicSalary` int(11) DEFAULT NULL,
+  `commission` varchar(25) DEFAULT NULL,
   `date_of_joining` date NOT NULL,
   `willing_to_relocate` tinyint(3) DEFAULT NULL,
   `available_leave` int(11) DEFAULT 13,
@@ -503,13 +635,11 @@ CREATE TABLE `nbb_employees` (
 -- Dumping data for table `nbb_employees`
 --
 
-INSERT INTO `nbb_employees` (`id`, `order_id`, `date`, `emp_number`, `first_name`, `last_name`, `employee_photo`, `aadhaar_number`, `pan_number`, `date_of_birth`, `mob_no`, `email`, `password`, `father_name`, `mother_name`, `husband_name`, `gender`, `marital_status`, `designation`, `payStructure`, `jobtype`, `basicSalary`, `date_of_joining`, `willing_to_relocate`, `available_leave`, `yearly_leave`, `create_date`, `status`) VALUES
-(4, 126, '2022-08-22', 'NBB0004', 'susmita', 'ojha', 'download.jpg', 123456789, 'gh123', '1992-08-25', '9903230347', 'susmita@gmail.com', NULL, 'p ojha', 'a ojha', '', 'Female', NULL, 2, NULL, 'full_time', 4000, '0000-00-00', 1, 13, 13, '2022-08-24 13:47:18', 1),
-(5, 129, '2022-08-23', 'NBBE0005', 'test', 'demo', 'start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png', 1225478963, 'gh1232', '1992-11-19', '123456789', 'susmita@gmail.com', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', 'p ojha', 'a ojha', '', 'Female', NULL, 1, 3, 'Commission Staff', NULL, '0000-00-00', 1, 13, 13, '2022-08-23 11:23:30', 1),
-(6, 130, '2022-08-24', 'NBBE0006', 'firstemp', 'fgfg', NULL, 98745621, 'hjg15487', '2011-02-28', '', 'firstemp123@gmail.com', '63eec8b8bc9acaa0493e909c1362967f5e28f60fd0d5d109c1083b15e6dd4fbf2c1b52680a34b93470974e692695fc75977aab5a5470fc44e1efa4d5068053c1', 'cbc', 'vbvcb', '', 'Female', NULL, 7, 0, NULL, NULL, '0000-00-00', 1, 13, 13, '2022-08-24 10:32:52', 1),
-(7, 128, '2022-08-23', 'NBBE0007', 'susmita ojha', '', 'herbal-products-third-party-manufacturers-500x500.jpg', 0, '', '0000-00-00', '', 'ciprojectbizz@gmail.com', '04e4d384d09f40e03b1136936377135989f0c766edda2543a799c43b00a715e70f886e4aae5388d2069fa278b300ace3b02d9e343883a153f9d3425074156e5c', '', '', '', 'Female', NULL, 7, NULL, 'full_time', NULL, '2022-03-17', 1, 5, 13, '2022-08-23 10:47:42', 0),
-(10, 125, '2022-08-24', 'NBBE0010', 'test bizz', '', NULL, 0, '', '0000-00-00', '', 'ciprojectbizz@gmail.com', '44ce70fd9bf8c294e9c491c89fb05125eaebd16a5553fe402a040200c0c5d901fe8e93db33eef39148169a285a74be1f68d614366f06ce9d3aa6160ad98981d8', '', '', '', NULL, NULL, 7, 0, NULL, NULL, '0000-00-00', NULL, 13, 13, '2022-08-24 10:32:52', 1),
-(11, 127, '2022-08-23', 'NBBE0011', 'Sudipto', 'bizzman', NULL, 0, 'jugh453', '2022-06-29', '5469654', 'admin1234@gmail.com', '44ce70fd9bf8c294e9c491c89fb05125eaebd16a5553fe402a040200c0c5d901fe8e93db33eef39148169a285a74be1f68d614366f06ce9d3aa6160ad98981d8', '', '', '', 'Male', NULL, 8, NULL, 'full_time', 5000, '2022-06-30', 1, 13, 13, '2022-08-24 16:09:48', 1);
+INSERT INTO `nbb_employees` (`id`, `order_id`, `date`, `emp_number`, `first_name`, `last_name`, `employee_photo`, `aadhaar_number`, `pan_number`, `date_of_birth`, `mob_no`, `email`, `password`, `father_name`, `mother_name`, `husband_name`, `gender`, `marital_status`, `designation`, `payStructure`, `sales_amount`, `service_amount`, `job_type`, `job_type_id`, `basicSalary`, `commission`, `date_of_joining`, `willing_to_relocate`, `available_leave`, `yearly_leave`, `create_date`, `status`) VALUES
+(1, 144, '2022-09-07', 'NBB0004', 'susmita', 'ojha', 'download.jpg', 123456789, 'gh123', '1992-08-25', '9903230347', 'susmita@gmail.com', NULL, 'p ojha', 'a ojha', '', 'Female', NULL, 1, NULL, '50000', 100, 1, 1, 1500, '6000', '0000-00-00', 1, 13, 13, '2022-09-07 13:36:33', 1),
+(3, 142, '2022-09-06', 'NBBE0006', 'firstname', 'lastname', NULL, 98745621, 'hjg15487', '2011-02-28', '', 'firstemp123@gmail.com', '63eec8b8bc9acaa0493e909c1362967f5e28f60fd0d5d109c1083b15e6dd4fbf2c1b52680a34b93470974e692695fc75977aab5a5470fc44e1efa4d5068053c1', 'cbc', 'vbvcb', '', 'Female', NULL, 3, 0, '17000', 300, 3, 3, 2000, '7000', '0000-00-00', 1, 13, 13, '2022-09-07 12:58:10', 1),
+(5, 141, '2022-09-07', 'NBBE0005', 'test', 'demo', 'start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png', 1225478963, 'gh1232', '1992-11-19', '123456789', 'susmita@gmail.com', 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e', 'p ojha', 'a ojha', '', 'Female', NULL, 7, 3, '20000', 500, 2, 2, 3000, '10000', '0000-00-00', 1, 13, 13, '2022-09-07 13:36:33', 1),
+(7, 143, '2022-09-07', 'NBBE0010', 'test bizz', '', NULL, 0, '', '0000-00-00', '', 'ciprojectbizz@gmail.com', '44ce70fd9bf8c294e9c491c89fb05125eaebd16a5553fe402a040200c0c5d901fe8e93db33eef39148169a285a74be1f68d614366f06ce9d3aa6160ad98981d8', '', '', '', NULL, NULL, 5, 0, '50000', 700, 1, 4, 1000, '11000', '0000-00-00', NULL, 13, 13, '2022-09-07 12:58:16', 1);
 
 -- --------------------------------------------------------
 
@@ -530,14 +660,14 @@ CREATE TABLE `nbb_employees_attendance` (
 --
 
 INSERT INTO `nbb_employees_attendance` (`id`, `emp_id`, `login`, `logout`, `work_hours`) VALUES
-(2, 4, '2022-08-21 10:00:00', '2022-07-21 10:00:00', '5.95'),
+(2, 7, '2022-07-21 10:00:00', '2022-07-21 10:00:00', '5.95'),
 (5, 7, '2022-07-22 21:16:22', '2022-07-22 21:16:22', ''),
-(6, 10, '2022-07-24 16:44:50', '2022-07-24 21:44:50', ''),
-(7, 10, '2022-07-25 15:44:50', '2022-07-25 21:44:50', ''),
+(6, 1, '2022-07-24 16:44:50', '2022-07-24 21:44:50', ''),
+(7, 1, '2022-07-25 15:44:50', '2022-07-25 21:44:50', ''),
 (8, 7, '2022-07-25 13:14:00', '2022-07-25 18:20:00', '5.1'),
-(9, 11, '2022-07-11 09:54:51', '2022-07-11 15:54:51', ''),
-(10, 4, '2022-08-14 09:41:00', '2022-07-14 16:36:00', '6.92'),
-(11, 4, '2022-08-21 10:14:00', '2022-07-21 20:41:00', '10.45');
+(9, 3, '2022-07-11 09:54:51', '2022-07-11 15:54:51', ''),
+(10, 5, '2022-07-14 09:41:00', '2022-07-14 16:36:00', '6.92'),
+(11, 5, '2022-07-21 10:14:00', '2022-07-21 20:41:00', '10.45');
 
 -- --------------------------------------------------------
 
@@ -605,7 +735,7 @@ CREATE TABLE `nbb_employee_salary` (
   `id` int(11) NOT NULL,
   `emp_id` int(11) DEFAULT NULL,
   `dept_id` int(11) DEFAULT NULL,
-  `job_type` varchar(50) DEFAULT NULL,
+  `job_type` tinyint(3) DEFAULT NULL,
   `basic_pay` float(10,2) DEFAULT NULL,
   `perfectAttendance` int(11) DEFAULT NULL,
   `performancebonus` int(11) DEFAULT NULL,
@@ -627,7 +757,9 @@ CREATE TABLE `nbb_employee_salary` (
 --
 
 INSERT INTO `nbb_employee_salary` (`id`, `emp_id`, `dept_id`, `job_type`, `basic_pay`, `perfectAttendance`, `performancebonus`, `commissionPay`, `dearness_allowance`, `Provident_fund`, `employees_state_insurance`, `house_rent_allowance`, `medical_allowance`, `medical_leave_entitlement`, `total_earning`, `total_deduction`, `net_pay`, `status`) VALUES
-(1, 4, 2, 'FullTime Staff', 4000.00, 100, NULL, 200, NULL, NULL, NULL, NULL, NULL, NULL, 4300.00, NULL, NULL, 1);
+(1, 1, 7, 1, 5000.00, NULL, NULL, 12, NULL, 1100.00, 550.00, NULL, 250.00, 250.00, 7000.00, 1000.00, 6160.00, 1),
+(2, 3, 4, 3, 7000.00, 100, 100, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 5200.00, 0.00, 0.00, 1),
+(3, 7, 6, 3, 500.00, 200, 120, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 820.00, NULL, 0.00, 1);
 
 -- --------------------------------------------------------
 
@@ -704,6 +836,21 @@ INSERT INTO `nbb_emp_holidays` (`id`, `year`, `date`, `day`, `holidays`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nbb_expense_wallet`
+--
+
+CREATE TABLE `nbb_expense_wallet` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `balance` decimal(20,5) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nbb_feedback`
 --
 
@@ -762,6 +909,29 @@ CREATE TABLE `nbb_invoice_file` (
   `create_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` tinyint(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nbb_job_type`
+--
+
+CREATE TABLE `nbb_job_type` (
+  `id` int(50) NOT NULL,
+  `type_name` varchar(100) DEFAULT NULL,
+  `rate` bigint(20) DEFAULT NULL,
+  `status` int(50) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nbb_job_type`
+--
+
+INSERT INTO `nbb_job_type` (`id`, `type_name`, `rate`, `status`) VALUES
+(1, 'Commission Staff', NULL, 1),
+(2, 'Partnership Staff', NULL, 1),
+(3, 'Full Time Staff', NULL, 1),
+(4, 'Workmanship', 17, 1);
 
 -- --------------------------------------------------------
 
@@ -1012,7 +1182,9 @@ CREATE TABLE `nbb_product` (
   `categorie_id` int(11) DEFAULT NULL,
   `product_category_id` int(11) DEFAULT NULL,
   `sku` varchar(50) DEFAULT NULL,
+  `brand_name` varchar(200) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
+  `colour` varchar(200) DEFAULT NULL,
   `product_code` varchar(50) DEFAULT NULL,
   `supplier_id` int(11) DEFAULT NULL,
   `barcode` varchar(255) DEFAULT NULL,
@@ -1026,11 +1198,10 @@ CREATE TABLE `nbb_product` (
   `price` int(11) DEFAULT NULL,
   `mfg_date` date DEFAULT NULL,
   `expiry_date` date DEFAULT NULL,
-  `brand_name` varchar(255) DEFAULT NULL,
-  `colour` varchar(255) DEFAULT NULL,
   `types` tinyint(3) DEFAULT NULL,
-  `curlness` varchar(100) DEFAULT NULL,
-  `thickness` varchar(100) DEFAULT NULL,
+  `light_medical_beauty` tinyint(3) DEFAULT NULL,
+  `curlness` varchar(50) DEFAULT NULL,
+  `thickness` varchar(50) DEFAULT NULL,
   `status` tinyint(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1038,10 +1209,13 @@ CREATE TABLE `nbb_product` (
 -- Dumping data for table `nbb_product`
 --
 
-INSERT INTO `nbb_product` (`id`, `categorie_id`, `product_category_id`, `sku`, `name`, `product_code`, `supplier_id`, `barcode`, `description`, `short_description`, `date`, `tags`, `stock`, `available_stock`, `weight`, `price`, `mfg_date`, `expiry_date`, `brand_name`, `colour`, `types`, `curlness`, `thickness`, `status`) VALUES
-(1, 2, 8, 'ng-n-014', 'Needles', NULL, 2, NULL, '', '', '2022-08-13 14:19:13', '', NULL, 14, '50', 18, '2022-07-20', '2024-02-25', NULL, NULL, NULL, NULL, NULL, 1),
-(2, 2, 8, 'ng-cb-22', 'Cotton Buds', NULL, 2, NULL, '', '', '2022-08-13 14:19:13', '', NULL, 10, '10', 10, '2022-07-06', '2024-06-26', NULL, NULL, NULL, NULL, NULL, 1),
-(3, 2, 10, 'dfdsf', 'eyelash', NULL, 3, NULL, 'fgfbf', 'vcvcxv', '2022-08-22 18:54:23', '', 12, 12, '1mm', 11, '2022-08-09', '2024-06-22', 'test', 'black', 1, '12', '1.2', 1);
+INSERT INTO `nbb_product` (`id`, `categorie_id`, `product_category_id`, `sku`, `brand_name`, `name`, `colour`, `product_code`, `supplier_id`, `barcode`, `description`, `short_description`, `date`, `tags`, `stock`, `available_stock`, `weight`, `price`, `mfg_date`, `expiry_date`, `types`, `light_medical_beauty`, `curlness`, `thickness`, `status`) VALUES
+(1, 2, 8, 'ng-n-014', NULL, 'Needles', NULL, NULL, 2, 'ng-n-014_2022-08-16.png', '', '', '2022-08-16 18:42:33', '', NULL, 14, '50', 18, '2022-07-20', '2024-02-25', NULL, NULL, NULL, NULL, 1),
+(2, 2, 8, 'ng-cb-22', NULL, 'Cotton Buds', NULL, NULL, 2, 'ng-cb-22_2022-08-16.png', '', '', '2022-08-16 18:41:38', '', NULL, 10, '10', 10, '2022-07-06', '2024-06-26', NULL, NULL, NULL, NULL, 1),
+(3, 2, 8, 'pencil-10', 'test', 'Pencil', 'black', NULL, 3, NULL, '', '', '2022-09-05 12:51:45', '', 15, 15, '1mm', 50, '2022-08-03', '2024-11-13', 2, NULL, '12', '1.2', 1),
+(4, 2, 9, 'red147', 'demo', 'Red', 'red', NULL, 3, NULL, '', '', '2022-09-05 12:58:23', '', 20, 20, '10', 50, '2022-09-01', '2024-11-20', 2, NULL, '', '', 1),
+(5, 2, 9, 'redrose22', 'test', 'Rose Red', 'Rose Red', NULL, 3, NULL, '', '', '2022-09-05 13:25:55', '', 20, 20, '10', 11, '2022-09-01', '2024-11-13', 2, NULL, '', '', 1),
+(6, 2, 9, 'Orange-33', 'test', 'Orange ', 'Orange', NULL, 3, NULL, '', '', '2022-09-05 13:27:43', '', 30, 30, '10', 50, '2022-08-31', '2024-10-05', 2, 1, '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1087,7 +1261,10 @@ INSERT INTO `nbb_product_image` (`id`, `product_id`, `image`, `status`) VALUES
 (3, 2, 'bamboo-cotton-earbuds-pack-of-80-500x500.jpg', NULL),
 (4, 2, '22f6c476-4675-4fb0-863a-2d51c5f74251-cotton.jpg', NULL),
 (5, 2, 'bamboo-cotton-earbuds-pack-of-80-500x500.jpg', NULL),
-(6, 3, '20200913120520-2020-09-13service_category120508.jpg', NULL);
+(6, 3, 'Rimmel_Eyebrow_Pencil.jpg', NULL),
+(7, 4, 'images1.jpg', NULL),
+(8, 5, '3b1f703c0934e3d03bb6f96f4300f0382.jpg', NULL),
+(9, 6, 'f4857ce4e0a422c785cb859f8b3d67691.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -1243,10 +1420,12 @@ INSERT INTO `nbb_service_packages` (`id`, `package_id`, `service_id`) VALUES
 CREATE TABLE `nbb_shipping_address` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp(),
   `shipping_firstname` varchar(200) DEFAULT NULL,
   `shipping_lastname` varchar(200) DEFAULT NULL,
   `shipping_contactno` varchar(200) DEFAULT NULL,
   `shipping_address` text DEFAULT NULL,
+  `shipping_country` varchar(200) DEFAULT NULL,
   `shipping_city` varchar(200) DEFAULT NULL,
   `shipping_state` int(11) DEFAULT NULL,
   `shipping_postalcode` int(11) DEFAULT NULL
@@ -1256,8 +1435,8 @@ CREATE TABLE `nbb_shipping_address` (
 -- Dumping data for table `nbb_shipping_address`
 --
 
-INSERT INTO `nbb_shipping_address` (`id`, `user_id`, `shipping_firstname`, `shipping_lastname`, `shipping_contactno`, `shipping_address`, `shipping_city`, `shipping_state`, `shipping_postalcode`) VALUES
-(1, 1, 'susmita', 'ojha', '12345678', 'bvnvn iuo jjghj n b', 'kolkata', 1, 700102);
+INSERT INTO `nbb_shipping_address` (`id`, `user_id`, `created_at`, `shipping_firstname`, `shipping_lastname`, `shipping_contactno`, `shipping_address`, `shipping_country`, `shipping_city`, `shipping_state`, `shipping_postalcode`) VALUES
+(1, 1, '2022-09-07', 'susmita', 'ojha', '12345678', 'bvnvn iuo jjghj n b', NULL, 'kolkata', 1, 700102);
 
 -- --------------------------------------------------------
 
@@ -1383,16 +1562,39 @@ INSERT INTO `nbb_therapists` (`id`, `name`, `age`, `gender`, `service_id`, `chec
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nbb_type`
+--
+
+CREATE TABLE `nbb_type` (
+  `id` int(10) NOT NULL,
+  `emp_id` int(10) DEFAULT NULL,
+  `type` varchar(25) DEFAULT NULL,
+  `rate` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nbb_type`
+--
+
+INSERT INTO `nbb_type` (`id`, `emp_id`, `type`, `rate`) VALUES
+(1, 1, 'workmanship', 5),
+(2, 3, 'workmanship', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nbb_users`
 --
 
 CREATE TABLE `nbb_users` (
   `id` int(11) NOT NULL,
-  `role_id` int(11) DEFAULT NULL,
+  `code` varchar(200) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT 1,
+  `role_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1400,11 +1602,11 @@ CREATE TABLE `nbb_users` (
 -- Dumping data for table `nbb_users`
 --
 
-INSERT INTO `nbb_users` (`id`, `role_id`, `email`, `password`, `first_name`, `status`, `created_at`) VALUES
-(1, 1, 'admin1234@gmail.com', '44ce70fd9bf8c294e9c491c89fb05125eaebd16a5553fe402a040200c0c5d901fe8e93db33eef39148169a285a74be1f68d614366f06ce9d3aa6160ad98981d8', 'admin', 1, '2022-05-31 15:26:31'),
-(2, 4, 'supplier1234@gmail.com', 'f100506a937cd227692f1c0b19df1035f4886f5c75a7d513dd816dad1b744232030f0f6f0d371f6e82becbaf4f819b2688488bd98f1bda26757328a4025a87cf', 'susmita ojha', 1, '2022-05-31 13:38:56'),
-(3, 2, 'susmita@gmail.com', '3b320c3c48b60d32f44e46981dd51afe8a4b132b804a8081ac56495b03c186e69d6ae3680d01836b394c3b90505d56535b078136e8b4d165a09d5fc57e3b7dc3', 'susmita ojha', 1, '2022-06-03 11:48:52'),
-(4, 6, 'test@gmail.com', '5d3ecdd08e15ad61466ea727fc19b9d6c2b8fa44e4e227d57895fc7f74ece26a09679fd4ea8ff422981e0adfbcccdcb68b879c31857e8f1d89a0d764cf1bedf9', 'test', 1, '2022-06-03 11:51:21');
+INSERT INTO `nbb_users` (`id`, `code`, `first_name`, `last_name`, `email`, `password`, `status`, `role_id`, `created_at`) VALUES
+(1, NULL, 'admin', NULL, 'admin1234@gmail.com', '44ce70fd9bf8c294e9c491c89fb05125eaebd16a5553fe402a040200c0c5d901fe8e93db33eef39148169a285a74be1f68d614366f06ce9d3aa6160ad98981d8', 1, 1, '2022-05-31 15:26:31'),
+(2, NULL, 'susmita ojha', NULL, 'supplier1234@gmail.com', 'f100506a937cd227692f1c0b19df1035f4886f5c75a7d513dd816dad1b744232030f0f6f0d371f6e82becbaf4f819b2688488bd98f1bda26757328a4025a87cf', 1, 4, '2022-05-31 13:38:56'),
+(3, NULL, 'susmita ojha', NULL, 'susmita@gmail.com', '3b320c3c48b60d32f44e46981dd51afe8a4b132b804a8081ac56495b03c186e69d6ae3680d01836b394c3b90505d56535b078136e8b4d165a09d5fc57e3b7dc3', 1, 2, '2022-06-03 11:48:52'),
+(4, NULL, 'test', NULL, 'test@gmail.com', '5d3ecdd08e15ad61466ea727fc19b9d6c2b8fa44e4e227d57895fc7f74ece26a09679fd4ea8ff422981e0adfbcccdcb68b879c31857e8f1d89a0d764cf1bedf9', 1, 6, '2022-06-03 11:51:21');
 
 -- --------------------------------------------------------
 
@@ -1468,6 +1670,12 @@ ALTER TABLE `nbb_child_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nbb_commission`
+--
+ALTER TABLE `nbb_commission`
+  ADD PRIMARY KEY (`commission_id`);
+
+--
 -- Indexes for table `nbb_commission_c_partnership`
 --
 ALTER TABLE `nbb_commission_c_partnership`
@@ -1492,6 +1700,18 @@ ALTER TABLE `nbb_commission_structure_c`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nbb_contact`
+--
+ALTER TABLE `nbb_contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nbb_contact_email`
+--
+ALTER TABLE `nbb_contact_email`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `nbb_coupons`
 --
 ALTER TABLE `nbb_coupons`
@@ -1504,10 +1724,28 @@ ALTER TABLE `nbb_course`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nbb_cpf`
+--
+ALTER TABLE `nbb_cpf`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nbb_credit_wallet`
+--
+ALTER TABLE `nbb_credit_wallet`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `nbb_customer`
 --
 ALTER TABLE `nbb_customer`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nbb_daily_sales`
+--
+ALTER TABLE `nbb_daily_sales`
+  ADD PRIMARY KEY (`sales_id`);
 
 --
 -- Indexes for table `nbb_dashboard`
@@ -1576,6 +1814,12 @@ ALTER TABLE `nbb_emp_holidays`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nbb_expense_wallet`
+--
+ALTER TABLE `nbb_expense_wallet`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `nbb_feedback`
 --
 ALTER TABLE `nbb_feedback`
@@ -1591,6 +1835,12 @@ ALTER TABLE `nbb_here_about_us`
 -- Indexes for table `nbb_invoice_file`
 --
 ALTER TABLE `nbb_invoice_file`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nbb_job_type`
+--
+ALTER TABLE `nbb_job_type`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1732,6 +1982,12 @@ ALTER TABLE `nbb_therapists`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nbb_type`
+--
+ALTER TABLE `nbb_type`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `nbb_users`
 --
 ALTER TABLE `nbb_users`
@@ -1778,6 +2034,12 @@ ALTER TABLE `nbb_child_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `nbb_commission`
+--
+ALTER TABLE `nbb_commission`
+  MODIFY `commission_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `nbb_commission_c_partnership`
 --
 ALTER TABLE `nbb_commission_c_partnership`
@@ -1802,6 +2064,18 @@ ALTER TABLE `nbb_commission_structure_c`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `nbb_contact`
+--
+ALTER TABLE `nbb_contact`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `nbb_contact_email`
+--
+ALTER TABLE `nbb_contact_email`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `nbb_coupons`
 --
 ALTER TABLE `nbb_coupons`
@@ -1814,10 +2088,28 @@ ALTER TABLE `nbb_course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `nbb_cpf`
+--
+ALTER TABLE `nbb_cpf`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `nbb_credit_wallet`
+--
+ALTER TABLE `nbb_credit_wallet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `nbb_customer`
 --
 ALTER TABLE `nbb_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `nbb_daily_sales`
+--
+ALTER TABLE `nbb_daily_sales`
+  MODIFY `sales_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nbb_dashboard`
@@ -1865,7 +2157,7 @@ ALTER TABLE `nbb_employee_leave`
 -- AUTO_INCREMENT for table `nbb_employee_salary`
 --
 ALTER TABLE `nbb_employee_salary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `nbb_emp_designation`
@@ -1886,6 +2178,12 @@ ALTER TABLE `nbb_emp_holidays`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `nbb_expense_wallet`
+--
+ALTER TABLE `nbb_expense_wallet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `nbb_feedback`
 --
 ALTER TABLE `nbb_feedback`
@@ -1902,6 +2200,12 @@ ALTER TABLE `nbb_here_about_us`
 --
 ALTER TABLE `nbb_invoice_file`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nbb_job_type`
+--
+ALTER TABLE `nbb_job_type`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nbb_lead`
@@ -1961,7 +2265,7 @@ ALTER TABLE `nbb_permission`
 -- AUTO_INCREMENT for table `nbb_product`
 --
 ALTER TABLE `nbb_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `nbb_product_category`
@@ -1973,7 +2277,7 @@ ALTER TABLE `nbb_product_category`
 -- AUTO_INCREMENT for table `nbb_product_image`
 --
 ALTER TABLE `nbb_product_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `nbb_register_student`
@@ -2042,10 +2346,16 @@ ALTER TABLE `nbb_therapists`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `nbb_type`
+--
+ALTER TABLE `nbb_type`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `nbb_users`
 --
 ALTER TABLE `nbb_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `nbb_work_experience`

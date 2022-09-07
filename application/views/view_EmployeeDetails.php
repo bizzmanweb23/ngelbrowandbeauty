@@ -131,7 +131,7 @@
 									<h6 class="mb-0">Date Of Birth</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-									<?php if($emp_Details['date_of_birth'] == 0000-00-00){
+									<?php if($emp_Details['date_of_birth'] == '0000-00-00'){
 											echo '';
 										}else{ ?>
 											<?= date("d-m-Y", strtotime($emp_Details['date_of_birth'])) ?>
@@ -160,7 +160,7 @@
 									<h6 class="mb-0">Date Of Joining</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<?php if($emp_Details['date_of_joining'] == 0000-00-00){
+										<?php if($emp_Details['date_of_joining'] == '0000-00-00'){
 											echo '';
 										}else{ ?>
 											<?= date("d-m-Y", strtotime($emp_Details['date_of_joining'])) ?>
@@ -469,15 +469,14 @@
 				<div class="col-md-3">
 					<h6 class="mb-0">Job Type</h6>
 				</div>
-				<div class="col-md-4 text-secondary">
-					<input type="radio" name="jobtype" value="Commission Staff" <?php if($emp_Details['jobtype'] == 'Commission Staff'){ echo 'checked';} ?>>Commission Staff
+				<div class="col-md-9 text-secondary">
+					<select name="jobtype" class="form-control">
+						<option>Select Job Type</option>
+						<?php foreach($empjobType as $empjobTypeRow): ?>
+						<option value="<?= $empjobTypeRow['id']?>" <?php if($emp_Details['jobtype'] == $empjobTypeRow['id']){ echo 'selected';} ?>><?= $empjobTypeRow['type_name']?></option>
+						<?php endforeach; ?> 
+					</select>
 					
-				</div>
-				<div class="col-md-2 text-secondary">
-					<input type="radio" name="jobtype" value="Partnerships" <?php if($emp_Details['jobtype'] == 'Partnerships'){ echo 'checked';} ?>>Partnerships
-				</div>
-				<div class="col-md-3 text-secondary">
-					<input type="radio" name="jobtype" value="FullTime Staff" <?php if($emp_Details['jobtype'] == 'FullTime Staff'){ echo 'checked';} ?>>Full Time Staff  
 				</div>											
 			</div>
 			<div class="row pt-2">

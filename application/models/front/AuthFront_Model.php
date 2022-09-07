@@ -8,13 +8,6 @@ class AuthFront_Model extends CI_Model
 
 	function logindata($data)
 	{
-		/*$this->db->select('*');
-		$this->db->from('nbb_customer');
-		$this->db->where('email', $data['email'])->or_where("contact",$data['contact']);
-		//$this->db->where('contact', $data['email']);
-		$this->db->where('password', $data['password']);
-
-		$query=$this->db->get();*/
 		$query = $this->db->query("SELECT * FROM nbb_customer WHERE password='".$data['password']."' AND email = '".$data['email']."' OR contact='".$data['contact']."'");
 		//print_r($query);exit;
 		if($query->num_rows() == 1)
@@ -25,6 +18,25 @@ class AuthFront_Model extends CI_Model
 		{
 			return false;
 		}	
+	}
+	function getOtpdata($otp)
+	{
+		//$query = $this->db->query("SELECT * FROM nbb_customer WHERE otp = '".$otp."'");
+		$this->db->select('nbb_customer.otp,nbb_customer.email,nbb_customer.referreduser_id,');
+		$this->db->from('nbb_customer');
+		$this->db->where('nbb_customer.otp', $otp);
+		//return $this->db->get()->result_array();
+		$customer_query = $this->db->get()->result_array();
+		$data = array();			
+
+		foreach($customer_query as $row){	
+			$data = array(
+				'otpData' => $row['otp'],
+				'email' => $row['email'],
+				'referreduser_id' => $row['referreduser_id'],
+			);
+		}
+		return $data;
 	}
 
 }

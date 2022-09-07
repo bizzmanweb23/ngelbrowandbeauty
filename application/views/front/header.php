@@ -21,12 +21,13 @@
   <script src='<?= base_url(); ?>/assets/front/plugins/datepicker/bootstrap-datepicker.min.js'></script> 
   <script src="<?= base_url(); ?>/assets/front/plugins/lazyestload/lazyestload.js"></script> 
   <script src="<?= base_url(); ?>/assets/front/plugins/smoothscroll/SmoothScroll.js"></script> 
+	<script src='<?= base_url(); ?>/assets/front/plugins/no-ui-slider/nouislider.min.js'></script>
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   <script src="<?= base_url(); ?>/assets/front/js/custom.js"></script>
-  <link href="<?= base_url(); ?>/assets/front/options/optionswitch.css" rel="stylesheet">
-<script src="<?= base_url(); ?>/assets/front/options/optionswitcher.js"></script>
-
+	<script src="<?= base_url(); ?>/assets/front/options/optionswitcher.js"></script>
+  <script src='<?= base_url(); ?>/assets/front/plugins/fancybox/fancyMorph.js'></script>
 
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&amp;family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
@@ -40,17 +41,15 @@
   <link href='<?= base_url(); ?>/assets/front/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'> 
   <link href='<?= base_url(); ?>/assets/front/plugins/isotope/isotope.min.css' rel='stylesheet'>
   <link href='<?= base_url(); ?>/assets/front/plugins/datepicker/datepicker.min.css' rel='stylesheet'> 
+	<link href='<?= base_url(); ?>/assets/front/plugins/no-ui-slider/nouislider.min.css' rel='stylesheet'>
+	<link href="<?= base_url(); ?>/assets/front/options/optionswitch.css" rel="stylesheet">
+
   <!-- CUSTOM CSS -->
   <link href="<?= base_url(); ?>/assets/front/css/style.css" rel="stylesheet">
   <link href="<?= base_url(); ?>/assets/front/css/default.css" rel="stylesheet" id="option_color">
   <link href="<?= base_url(); ?>/assets/front/css/owl.carousel.min.css" rel="stylesheet" >
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-		
-<!--===============================================================================================-->
-<!--<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">-->
-<!--===============================================================================================-->
-	<!--<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
@@ -123,7 +122,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="<?= base_url(); ?>/home"><img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/logo.png" src="<?= base_url(); ?>assets/front/img/logo.png" alt="logo"></a>
+          <a class="navbar-brand" href="<?= base_url(); ?>/home"><img class="" data-src="<?= base_url(); ?>/assets/front/img/logo.png" src="<?= base_url(); ?>assets/front/img/logo.png" alt="logo"></a>
   
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
@@ -137,19 +136,53 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Services</a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?php echo base_url('services') ?>">Services</a></li>
-                  <li><a href="<?php echo base_url('services-list') ?>">Service Details</a></li>
+									<?php foreach($allchild_category as $allchild_category_row): ?>
+										<li><a href="<?php echo base_url('services/'.$allchild_category_row['id']) ?>"><?= $allchild_category_row['category_name'];?></a></li>
+									<?php	endforeach; ?>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('products') ?>">Products</a>
+							<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Product</a>
+                <ul class="dropdown-menu">
+									<?php foreach($allProduct_category as $product_category_row): ?>
+										<li><a href="<?php echo base_url('products/'.$product_category_row['id']) ?>"><?= $product_category_row['category_name'];?></a></li>
+									<?php	endforeach; ?>
+                  
+                </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('courses') ?>">Course</a>
+							<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Course</a>
+                <ul class="dropdown-menu">
+									<?php foreach($allcourse_category as $course_category_row): ?>
+										<li><a href="<?php echo base_url('courses') ?>"><?= $course_category_row['category_name'];?></a></li>
+									<?php	endforeach; ?>
+                  
+                </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('contactus') ?>">Contact us</a>
               </li>
+							<?php if($this->session->userdata('id')>0){ 
+
+								$user_id=$this->session->userdata('id');
+
+								?>
+
+									<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)"><i class="las la-user" style="font-size:32px;"></i></a>
+											<ul class="dropdown-menu">
+													<li><a href="<?php echo base_url('logout') ?>">Logout</a></li>
+													<li><a href="<?php echo base_url('myProfile') ?>">My Profile</a></li>
+													<li><a href="<?php echo base_url('referdToFriend') ?>">Referred to Friend</a></li>
+											</ul>
+										</li>
+
+								<?php }else{?>
+
+								<div class="cart_btn p-5">
+									<a href="<?php echo base_url('login') ?>"><i class="las la-user-alt" style="font-size:32px;"></i></a>
+								</div>
+								<?php } ?>
            
             </ul>
           </div>
@@ -160,9 +193,6 @@
 					<!--<div class="cart_btn p-3" data-toggle="modal" data-target="#myModal">
 							<a href="javascript:void(0)"><i class="las la-user-alt" style="font-size:32px;"></i></a>
           </div>-->
-					<div class="cart_btn p-3">
-							<a href="<?php echo base_url('login') ?>"><i class="las la-user-alt" style="font-size:32px;"></i></a>
-          </div>
 					
           <!-- header search ends-->
         </div>

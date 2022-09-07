@@ -209,8 +209,12 @@ class PayStructure_Model extends CI_Model
 
 			$cpf_data = array(
 				'id' 	=> $Id,
+				'age' 	=> $row['age'],
 				'year' 	=> $row['year'],
-				'cpf' 	=> $row['cpf'],
+				'salary_from' 	=> $row['salary_from'],
+				'salary_to' 	=> $row['salary_to'],
+				//'employer_cpf' 	=> $row['employer_cpf'],
+				'emp_cpf' 	=> $row['emp_cpf'],
 				'status' 	=> $row['status'],
 			);	
 

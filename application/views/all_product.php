@@ -85,7 +85,7 @@
 							<img src="<?= base_url('uploads/barcode/'.$productRow['barcode'])?>" width="70" height="40">
 							<?php } ?>
 						</td>
-                        <td><?= $productRow['short_description']?></td>
+                        <td><?= substr($productRow['short_description'],0,50); ?></td>
 						<td><?php if($productRow['supplier_id']){ ?>
 							<?= $productRow['supplier_name']?>(<?= $productRow['supplier_code']?>)
 						<?php }else{}?>

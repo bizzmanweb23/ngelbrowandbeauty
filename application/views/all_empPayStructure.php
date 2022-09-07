@@ -131,7 +131,10 @@
 									<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 									<tr>
 										<th>Year </th>
-										<th>CPF</th>
+										<th>Age</th>
+										<th>Start Range</th>
+										<th>End Range</th>
+										<th>Employee CPF</th>
 										<th>Status</th>
 										<th>Action</th>
 									</tr>
@@ -140,8 +143,11 @@
 										<?php foreach($allcpf as $allcpfRow): ?>
 										<tr>
 											<td><?= $allcpfRow['year']?></td>
-											<td><?php if($allcpfRow['status'] == 1){  
-												echo $allcpfRow['cpf'].'%';
+											<td><?= $allcpfRow['age']?></td>
+											<td><?= $allcpfRow['salary_from']?></td>
+											<td><?= $allcpfRow['salary_to']?></td>
+											<td><?php if($allcpfRow['emp_cpf'] != ''){  
+												echo $allcpfRow['emp_cpf'].'%';
 											}else{
 												} ?>
 											</td>
@@ -309,6 +315,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col-md-6">  
 						
@@ -411,34 +418,74 @@
 							</div>
 						</div>
                 	</div>
-                  <div class="col-md-6">             
+                  	<div class="col-md-6">             
 						<div class="form-group ">
-							<label for="name" class="col-sm-6 control-label">CPF Ammount <i class="required">*</i>
+							<label for="name" class="col-sm-6 control-label">Age <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="cpf_ammount" placeholder="CPF Ammount" value="">
+								<input type="text" class="form-control" name="cpf_age" placeholder="CPF Age" value="">
 							</div>
 						</div>
                 	</div>
                 </div>
+				<div class="row">
+					<div class="col-md-6">             
+						<div class="form-group">
+							<label for="name" class="col-sm-6 control-label">Start Range <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="salary_from" placeholder="Start Range" value="">
+							</div>
+						</div>
+                	</div>
+					<div class="col-md-6">             
+						<div class="form-group">
+							<label for="name" class="col-sm-6 control-label">End Range <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="salary_to" placeholder="End Range" value="">
+							</div>
+						</div>
+                	</div>	
+                </div>
                                                        
                 <div class="row">
+					<!--<div class="col-md-6">             
+						<div class="form-group">
+							<label for="name" class="col-md-12 control-label">Employer CPF <i class="required">*</i></label>
+							<div class="col-md-12">
+								<input type="text" class="form-control" name="employer_cpf" placeholder="Employer CPF" value="">
+							</div>
+						</div>
+                	</div>-->
 					<div class="col-md-6">                       
 						<div class="form-group ">
-						<label for="status" class="col-sm-6 control-label">Status 
-						<i class="required">*</i>
-						</label>
-						<div class="col-sm-12">
-							<select  class="form-control chosen chosen-select" name="status">
-								<option value="" hidden>Select Status</option>
-								<option value="1">Active</option>
-								<option value="0">Inactive</option>
-							</select>
+							<label for="status" class="col-sm-6 control-label">Status 
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<select  class="form-control chosen chosen-select" name="status">
+									<option value="" hidden>Select Status</option>
+									<option value="1">Active</option>
+									<option value="0">Inactive</option>
+								</select>
+							</div>
 						</div>
-					</div>
+                	</div> 
+					<div class="col-md-6">             
+						<div class="form-group ">
+							<div class="col-md-12">
+								<label for="name" class="col-md-12 control-label">Employee CPF <i class="required">*</i></label>
+							</div>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="employee_cpf" placeholder="Employee CPF" value="">
+							</div>
+						</div>
+                	</div>		   
                 </div> 
-								   
-                </div> 
+				<div class="row">
+					
+				</div>
                     <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:150px;">
               </form>
         </div>

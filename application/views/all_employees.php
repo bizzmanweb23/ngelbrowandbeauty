@@ -53,7 +53,7 @@
 												<td><?= $employeesRow['email']?></td>
                         <td><?= $employeesRow['gender']?></td>
                         <td><?= $employeesRow['designation_name'] ?></td>
-												<td><?= $employeesRow['jobtype'] ?></td>
+												<td><?= $employeesRow['job_type'] ?></td>
                         <td>
 													
 													<a href="<?= base_url('admin/EmployeeManagement/viewEmployeeDetails/'.$employeesRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>

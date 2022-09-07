@@ -52,20 +52,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['default_controller'] = 'login';
 $route['login'] = 'front/Home/login';
 $route['signup'] = 'front/Home/register';
+$route['ReferredRegister/(:any)'] = 'front/Home/ReferdRegister/$i';
+$route['logout'] = 'front/Home/logout';
 $route['home'] = 'front/Home/all_home';
 $route['about'] = 'front/Home/about';
-$route['products'] = 'front/Home/products';
+$route['myProfile'] = 'front/Home/my_profile';
+$route['referdToFriend'] = 'front/Home/ReferdToFriend';
+$route['products/(:any)'] = 'front/Home/products/$i';
 $route['courses'] = 'front/Home/courses';
-$route['services'] = 'front/Home/services';
+$route['services/(:any)'] = 'front/Home/services/$i';
+//$route['main'] = 'front/Home';
 $route['services-list'] = 'front/Home/services_details';
 $route['checkout'] = 'front/Home/checkout';
 $route['contactus'] = 'front/Home/contact_us';
 $route['contact/form'] =  'front/home/contact_form';
 $route['contact/email'] =  'front/home/contact_email';
+$route['otpVerify'] =  'front/home/otpadd';
 $route['get-services-list/(:any)'] =  'front/Home/setvices_list/$i';
+$route['uniqueEmail'] =  'front/home/duplicateEmailCheck';
+$route['uniqueContact'] =  'front/home/duplicateCoctactCheck';
 
-$route['front/login'] = 'front/home/login';
+
+$route['front/login'] = 'front/home/post_login';
 $route['front/signup'] = 'front/home/signup'; 
+$route['front/customer_edited'] = 'front/home/post_edit_customer'; 
+$route['front/referalCode'] = 'front/home/sentReferalMail'; 
+
 
 $route['hrms'] = 'hrms/Login';
 $route['empdashboard'] = 'hrms/welcome/empdashboard';
@@ -74,7 +86,10 @@ $route['dashboard'] = 'admin/welcome/dashboard';
 $route['welcome'] = 'admin/welcome';
 /*$route['branch'] = 'admin/welcome/branch';
 $route['branch/login'] = 'branch/login';*/
+
+
 $route['employee/commission'] = 'admin/comissionController/comission';
+$route['employee/attendance/counter'] = 'admin/comissionController/attendance_sum';
 $route['branch/dashboard'] = 'admin/welcome/dashboard';
 $route['users'] = 'admin/welcome/users';
 $route['promotion'] = 'admin/welcome/promotion';
@@ -98,5 +113,6 @@ $route['package_list'] = 'admin/welcome/package_list';
 $route['getServiceByID'] = 'admin/welcome/getServiceByID';
 $route['getCustomerByID'] = 'admin/welcome/getCustomerByID';
 $route['getAppointmentById']= 'admin/welcome/find';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

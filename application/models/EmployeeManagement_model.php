@@ -13,9 +13,11 @@ class EmployeeManagement_model extends CI_Model
 	}
 	function getAllemployees(){
 		$this->db->select('nbb_employees.*,
-		nbb_roles.role_name AS designation_name');
+		nbb_roles.role_name AS designation_name,
+		nbb_job_type.type_name as job_type');
 		$this->db->from('nbb_employees');
 		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employees.designation', 'LEFT');
+		$this->db->join('nbb_job_type', 'nbb_job_type.id = nbb_employees.job_type_id', 'LEFT');
 		$this->db->where('nbb_employees.status', '1');
 		return $this->db->get()->result_array();
 	}
@@ -40,6 +42,12 @@ class EmployeeManagement_model extends CI_Model
 		
 		$this->db->select('nbb_roles.*');
 		$this->db->from('nbb_roles');
+		return $this->db->get()->result_array();
+	}
+	function getAllemp_jobType(){
+		
+		$this->db->select('nbb_job_type.*');
+		$this->db->from('nbb_job_type');
 		return $this->db->get()->result_array();
 		
 	}
@@ -80,6 +88,7 @@ class EmployeeManagement_model extends CI_Model
     }
 	function getAllemp_Details($id){
 		$this->db->select('nbb_employees.*,
+		nbb_job_type.type_name as jobtype,
 		nbb_roles.role_name,
 		nbb_employee_address.full_address,
 		nbb_employee_address.land_mark,
@@ -89,6 +98,7 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->from('nbb_employees');
 		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employees.designation', 'LEFT');
 		$this->db->join('nbb_employee_address', 'nbb_employee_address.emp_id = nbb_employees.id', 'LEFT');
+		$this->db->join('nbb_job_type', 'nbb_job_type.id = nbb_employees.job_type_id', 'LEFT');
 		$this->db->where('nbb_employees.id', $id);
 		//return $this->db->get()->result_array();
 		$employees_query = $this->db->get()->result_array();
