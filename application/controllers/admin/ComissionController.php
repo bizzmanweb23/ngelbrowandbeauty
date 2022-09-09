@@ -26,11 +26,10 @@ class comissionController extends CI_Controller {
 		$this->db->select('*');
 		$this->db->from('nbb_employees emp');
 		$this->db->join('nbb_employee_salary s','s.emp_id =  emp.id');
-		$this->db->join('nbb_emp_designation dsg' , 'dsg.id = emp.designation');
 		$this->db->join('nbb_commission c', 'c.emp_id = emp.id');
 		$this->db->join('nbb_employees_attendance att','att.emp_id = emp.id');
 		$this->db->join('nbb_cpf','nbb_cpf.emp_id = emp.id');
-		$this->db->join('nbb_roles','nbb_roles.emp_id = emp.id');
+		$this->db->join('nbb_roles','nbb_roles.id = emp.designation');
 		$this->db->where('emp.id',$id);
 		$data = $this->db->get()->result();
 		echo json_encode($data);

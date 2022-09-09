@@ -1,6 +1,6 @@
 
 <!-- FORM AREA SECTION -->
-<?= $referal_code; ?>
+<?php $referredId = $this->uri->segment(2); ?>
 <section class="clearfix formArea">
       <div class="container">
 			<script type="text/javascript">
@@ -15,7 +15,7 @@
             <div class="panel panel-default formPart">
               <div class="panel-heading patternbg">Create an <span>account</span></div>
               <div class="panel-body">
-			    <form method="post" action="<?php echo base_url() ?>/front/signup" class="registerform">
+			    <form method="post" action="<?php echo base_url() ?>/front/referredSignup" class="registerform">
 		
                   <div class="form-group">
 					          <input class="form-control" type="text" name="first_name" value="" placeholder="Enter First Name" require/>
@@ -32,16 +32,20 @@
                   <div class="form-group">
 					          <input class="form-control usercontact" type="text" name="contact" value="" placeholder="Enter Mobile Number" require/>
                   </div>
-									<span class="CheckContactMatch"></span> 
+					<span class="CheckContactMatch"></span> 
                   <div class="form-group">
-					          <input class="form-control password" type="password" name="password" value="" placeholder="Enter Password" />
+					    <input class="form-control password" type="password" name="password" value="" placeholder="Enter Password" />
                   </div>
 					         
 					<div class="form-group">
 						<input class="form-control confirm_password" type="password" name="confirm_password" value="" placeholder="Confirm Password" />
                   	</div>
-                  <span class="CheckPasswordMatch"></span>
-                  
+                  	<span class="CheckPasswordMatch"></span>
+					
+					  <div class="form-group">
+						<input class="form-control" type="text" name="referred_by" value="<?= $referredId; ?>" readonly require/>
+                  	</div>
+
                   <button type="submit" class="btn btn-primary btn-block">Sign UP</button>
                 </form>
               </div>
@@ -109,7 +113,7 @@
 
 		$('.registerform').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
-            var url = "<?php echo base_url() ?>/front/signup";
+            var url = "<?php echo base_url() ?>/front/referredSignup";
 
             $.ajax({
                 type: "POST",

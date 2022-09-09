@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['default_controller'] = 'login';
 $route['login'] = 'front/Home/login';
 $route['signup'] = 'front/Home/register';
-$route['ReferredRegister/(:any)'] = 'front/Home/ReferdRegister/$i';
+$route['ReferredRegister/(:any)'] = 'front/Home/registerReferal/$i';
 $route['logout'] = 'front/Home/logout';
 $route['home'] = 'front/Home/all_home';
 $route['about'] = 'front/Home/about';
@@ -75,8 +75,10 @@ $route['uniqueContact'] =  'front/home/duplicateCoctactCheck';
 
 $route['front/login'] = 'front/home/post_login';
 $route['front/signup'] = 'front/home/signup'; 
+$route['front/referredSignup'] = 'front/home/referredsignup'; 
 $route['front/customer_edited'] = 'front/home/post_edit_customer'; 
 $route['front/referalCode'] = 'front/home/sentReferalMail'; 
+
 
 
 $route['hrms'] = 'hrms/Login';

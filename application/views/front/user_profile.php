@@ -104,7 +104,7 @@
 														<div class="form-group">
 															<label class="col-md-6 col-xl-6 control-label">Password</label>
 															<div class="col-md-6 col-xl-10">
-															<input type="password" class="form-control"  placeholder="Enter Old Password">
+															<input type="password" class="form-control" name="password" value="" placeholder="Enter Old Password">
 															</div>
 														</div>
 													</div>
@@ -112,7 +112,7 @@
 															<div class="form-group">
 																<label class="col-md-6 col-xl-6 control-label">New Password</label>
 																<div class="col-md-6 col-xl-10">
-																	<input type="password" class="form-control" name = "new_password" placeholder="Enter New Password">
+																	<input type="password" class="form-control" name = "new_password" value="" placeholder="Enter New Password">
 																</div>
 															</div>
 													</div>
