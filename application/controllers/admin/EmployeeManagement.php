@@ -33,6 +33,7 @@ class EmployeeManagement extends CI_Controller {
 			'father_name' => $this->input->post('father_name'),
 			'mother_name' => $this->input->post('mother_name'),
 			'date_of_birth' => $this->input->post('dob'),
+			'age' => $this->input->post('age'),
 			'husband_name' => $this->input->post('husband_name'),
 			'gender' => $this->input->post('gender'),
 			'mob_no' => $this->input->post('mobile_number'),
@@ -174,6 +175,7 @@ class EmployeeManagement extends CI_Controller {
 			'father_name' => $this->input->post('father_name'),
 			'mother_name' => $this->input->post('mother_name'),
 			'date_of_birth' => $this->input->post('date_of_birth'),
+			'age' => $this->input->post('age'),
 			'husband_name' => $this->input->post('husband_name'),
 			'gender' => $this->input->post('gender'),
 			'mob_no' => $this->input->post('mob_no'),
@@ -222,8 +224,8 @@ class EmployeeManagement extends CI_Controller {
 	public function allEmployeeSalary(){
 
 		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeeCommissionSalary();
-		$data['EmployeeFultimeSalary'] = $this->EmployeeManagement->getAllEmployeeFultimeSalary();
-		$data['EmployeepartnershipSalary'] = $this->EmployeeManagement->getAllEmployeepartnershipSalary();
+		//$data['EmployeeFultimeSalary'] = $this->EmployeeManagement->getAllEmployeeFultimeSalary();
+		//$data['EmployeepartnershipSalary'] = $this->EmployeeManagement->getAllEmployeepartnershipSalary();
 		$this->layout->view('all_employeeSalary',$data); 
 	}
 	public function add_employeeSalary(){
@@ -256,22 +258,34 @@ class EmployeeManagement extends CI_Controller {
 	}
 	public function post_add_employeeSalary(){
 
+		$salaryDate = $this->input->post('fullTimesalaryDate');
+		$employeeName = $this->input->post('fullTimeemployeeName');
+		$designation = $this->input->post('designation');
+		$basic_salary = $this->input->post('basic_salary');
+		$cpf = $this->input->post('cpf');
+		$sales_Amount = $this->input->post('fullTimesales_Amount');
+		$commission_Pay = $this->input->post('fullTimecommission_Pay');
+		$attendance_hours = $this->input->post('attendance_hours');
+		$perfectAttendance = $this->input->post('fullTimePerfectAttendance');
+		$service_amount = $this->input->post('service_amount');
+		$service_bonus = $this->input->post('service_bonus');
+		$sales_bonus = $this->input->post('sales_bonus');
+		$total_earnings = $this->input->post('total_earnings');
+
 		$data = array(
-			'emp_id' => $this->input->post('employeeName'),
-			'dept_id' => $this->input->post('designation'),
-			'job_type' => $this->input->post('jobType'),
-			'basic_pay' => $this->input->post('basic_pay'),
-			'perfectAttendance' => $this->input->post('perfectAttendance'),
-			'performancebonus' => $this->input->post('performancebonus'),
-			'commissionPay' => $this->input->post('CommissionPay'),
-			'dearness_allowance' => $this->input->post('dearness_allowance'),
-			'Provident_fund' => $this->input->post('Provident_fund'),
-			'employees_state_insurance' => $this->input->post('employees_state_insurance'),
-			'medical_allowance' => $this->input->post('medical_allowance'),
-			'medical_leave_entitlement' => $this->input->post('medical_leave_entitlement'),
-			'total_earning' => $this->input->post('total_earning'),
-			'total_deduction' => $this->input->post('total_deduction'),
-			'net_pay' => $this->input->post('net_pay'),
+			'year' => $salaryDate,
+			'emp_id' => $employeeName,
+			'dept_id' => $designation,
+			'basic_pay' => $basic_salary,
+			'cpf' => $cpf,
+			'sales_Amount' => $sales_Amount,
+			'commission_Pay' => $commission_Pay,
+			'attendance_hours' => $attendance_hours,
+			'perfectAttendance' => $perfectAttendance,
+			'service_amount' => $service_amount,
+			'service_bonus' => $service_bonus,
+			'sales_bonus' => $sales_bonus,
+			'total_earnings' => $total_earnings,
 			'status' => '1');
 
 			$insert = $this->EmployeeManagement->storeEmployeesalary($data); 
@@ -296,19 +310,35 @@ class EmployeeManagement extends CI_Controller {
 	public function post_edit_employeeSalary(){
 		
 		$empSalaryid = $this->input->post('empSalaryid');
+		$salaryDate = $this->input->post('fullTimesalaryDate');
+		$employeeName = $this->input->post('fullTimeemployeeName');
+		$designation = $this->input->post('designation');
+		$basic_salary = $this->input->post('basic_salary');
+		$cpf = $this->input->post('cpf');
+		$sales_Amount = $this->input->post('fullTimesales_Amount');
+		$commission_Pay = $this->input->post('fullTimecommission_Pay');
+		$attendance_hours = $this->input->post('attendance_hours');
+		$perfectAttendance = $this->input->post('fullTimePerfectAttendance');
+		$service_amount = $this->input->post('service_amount');
+		$service_bonus = $this->input->post('service_bonus');
+		$sales_bonus = $this->input->post('sales_bonus');
+		$total_earnings = $this->input->post('total_earnings');
+
 		$data = array(
-			'emp_id' => $this->input->post('employeeName'),
-			'dept_id' => $this->input->post('designation'),
-			'job_type' => $this->input->post('jobType'),
-			'basic_pay' => $this->input->post('basic_pay'),
-			'dearness_allowance' => $this->input->post('dearness_allowance'),
-			'Provident_fund' => $this->input->post('Provident_fund'),
-			'employees_state_insurance' => $this->input->post('employees_state_insurance'),
-			'medical_allowance' => $this->input->post('medical_allowance'),
-			'medical_leave_entitlement' => $this->input->post('medical_leave_entitlement'),
-			'total_earning' => $this->input->post('total_earning'),
-			'total_deduction' => $this->input->post('total_deduction'),
-			'net_pay' => $this->input->post('net_pay'));
+			'year' => $salaryDate,
+			'emp_id' => $employeeName,
+			'dept_id' => $designation,
+			'basic_pay' => $basic_salary,
+			'cpf' => $cpf,
+			'sales_Amount' => $sales_Amount,
+			'commission_Pay' => $commission_Pay,
+			'attendance_hours' => $attendance_hours,
+			'perfectAttendance' => $perfectAttendance,
+			'service_amount' => $service_amount,
+			'service_bonus' => $service_bonus,
+			'sales_bonus' => $sales_bonus,
+			'total_earnings' => $total_earnings,
+			'status' => '1');
 
 			$update = $this->Main->update('id',$empSalaryid, $data,'nbb_employee_salary');    
 			if($update){

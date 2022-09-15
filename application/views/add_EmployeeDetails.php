@@ -72,15 +72,19 @@
 								<td>
 									<input type="text" name="mother_name" placeholder="Mother's Name" value ="" class="form-control">
 								</td>
+								<td>Husband Name</td>
+								<td>
+									<input type="text" name="husband_name" placeholder="Husband Name" value =""class="form-control">
+								</td>
 							</tr>
 							<tr>
 								<td>Date of Birth</td>
 								<td>
-									<input type="date" name="dob" value =""class="form-control">
+									<input type="date" class="form-control" name="dob" id="dob" placeholder="Input Date of Birth" value="">
 								</td>
-								<td>Husband Name</td>
+								<td>Date of Birth</td>
 								<td>
-									<input type="text" name="husband_name" placeholder="Husband Name" value =""class="form-control">
+									<input type="text" class="form-control" name="age" id="age"  value="" readonly>
 								</td>
 							</tr>
 							<tr>
@@ -313,6 +317,17 @@
  </div> 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
+
+		$("#dob").change(function() {
+			var dob = $('#dob').val();
+			//console.log(dob);
+			if(dob != ''){
+				dob = new Date(dob);
+				var today = new Date();
+				var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+				$('#age').val(age);
+				}  
+		})
 		$('.AddMoreQualification').click(function() {
 		  var qualification_text =' <br><div class="row"><div class="col-md-3"><input type="text" name="qualification[]" class="form-control" value=""></div><div class="col-md-3"><input type="text" class="form-control" name="institute_university[]" value=""></div><div class="col-md-3"><input type="text" class="form-control" name="year_of_passing[]" value=""></div><div class="col-md-3"><input type="text" class="form-control" name="marks[]" value=""></div></div>';
 		  $('.showAddMoreQualification').append(qualification_text);

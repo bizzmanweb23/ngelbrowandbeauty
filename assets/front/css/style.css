@@ -920,7 +920,7 @@ textarea.form-control {
 }
 
 .formPart .form-control {
-    padding-left: 10px
+    padding-left: 38px
 }
 
 .formPart i.fa {
@@ -1444,7 +1444,7 @@ textarea.form-control {
 
 @media(min-width:768px) {
     .tabCommon .nav-tabs li a {
-        width: 131px;
+        width: 100%;
         padding: 12px 0;
         font-size: 14px
     }
@@ -1543,7 +1543,8 @@ textarea.form-control {
 }
 
 .tabCommon.tabThree .nav-tabs>li {
-    margin-bottom: -1px
+    margin-bottom: -1px;
+    padding: 0 5px;
 }
 
 .tabCommon.singleTab .nav-tabs {
@@ -8432,4 +8433,20 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle.noUi-handle-upper {
     padding: 10px 0;
     border-bottom: 1px solid #e3e3e3;
 
+}
+.main-slider .owl-next{
+    position: absolute;
+    right: 0 !important;
+    
+}
+.wallet-balance{
+    max-width: 500px;
+    background-color: #63d4d6;
+    padding: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+.wallet-balance a, p{
+    color: #fff;
 }

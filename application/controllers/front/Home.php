@@ -114,7 +114,7 @@ class Home extends CI_Controller {
             $result = $this->Main->insert('nbb_customer',$data);
 			$insert_id = $this->db->insert_id();
 
-			if($email != ''){
+			if($email){
 	
 				$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<html xmlns="http://www.w3.org/1999/xhtml">
@@ -381,8 +381,8 @@ class Home extends CI_Controller {
 			
 			</html>';
 				//echo $message;exit;
-				log_message('Debug', 'PHPMailer class is loaded.');
-				//define('PATH', dirname(__FILE__));
+			/*	log_message('Debug', 'PHPMailer class is loaded.');
+				
 				require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
 				require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
 				$mail = new PHPMailer();
@@ -406,8 +406,30 @@ class Home extends CI_Controller {
 						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
 					} else {
 						$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
-					}
+					}*/
+
+					//$msg = "First line of text\nSecond line of text";
+
+					// use wordwrap() if lines are longer than 70 characters
+					//$msg = wordwrap($message,70);
+					// send email
+					//mail("ciprojectbizz@gmail.com","N'gel brow & beauty confirmation",$msg);
+
+					$to = $email;
+					$subject = "N'gel brow & beauty confirmation";
+					$txt = $message;
+					$headers = "From: test@yopmail.com";
+
+					$retval = mail($to,$subject,$txt,$headers);
+         
+						if( $retval == true ) {
+							$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+						}else {
+							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+						}
+					
 				}
+				
 				
         }
 		echo json_encode($data);
@@ -810,6 +832,7 @@ class Home extends CI_Controller {
 	public function my_profile(){ 
 		$user_id=$this->session->userdata('id');
 		$data['alluser'] = $this->Header->getAlluserData($user_id);
+		$data['allMembership'] = $this->Home->getmembership();
 		$data['allState'] = $this->Home->getstate();
 		
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();

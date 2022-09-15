@@ -115,6 +115,7 @@ class EmployeeManagement_model extends CI_Model
 				'aadhaar_number' => $row['aadhaar_number'],
 				'pan_number' => $row['pan_number'],
 				'date_of_birth' => $row['date_of_birth'],
+				'age' => $row['age'],
 				'mob_no' => $row['mob_no'],
 				'email' => $row['email'],
 				'password' => $row['password'],
@@ -305,13 +306,9 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->select('nbb_employee_salary.*,
 		nbb_employees.emp_number,
 		nbb_employees.first_name,
-		nbb_employees.last_name,
-		nbb_roles.role_name as designation_name');
+		nbb_employees.last_name');
 		$this->db->from('nbb_employee_salary');
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_employee_salary.emp_id', 'LEFT');
-		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employee_salary.dept_id', 'LEFT');
-		$multiClause = array('nbb_employee_salary.job_type' => 1 );
-		$this->db->where($multiClause);
 		return $this->db->get()->result_array();
 	}
 	function getAllEmployeeFultimeSalary(){

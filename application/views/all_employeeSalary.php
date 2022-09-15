@@ -43,24 +43,30 @@
 													<th>Employee Name</th>
 													<th>Designation</th>
 													<th>Basic Pay</th>
-													<th>Commission Pay</th>
+													<th>CPF</th>
+													<th>Sales Commission</th>
+													<th>Sales Bonus</th>
 													<th>Perfect Attendance</th>
+													<th>Service Bonus </th>
 													<th>Total Earning</th>
 													<th>Action</th>
 												</tr>
 												</thead>
 												<tbody>
-													<?php foreach($EmployeeFultimeSalary as $EmployeeFultimeSalaryRow): ?>
+													<?php foreach($employeeSalary as $EmployeeFultimeSalaryRow): ?>
 														<tr>
 															<td><?= $EmployeeFultimeSalaryRow['emp_number']?></td>
 															<td><?= $EmployeeFultimeSalaryRow['first_name'].' '.$EmployeeFultimeSalaryRow['last_name']?></td>	
-															<td><?= $EmployeeFultimeSalaryRow['designation_name']?></td>
+															<td><?= $EmployeeFultimeSalaryRow['dept_id']?></td>
 															<td><?= $EmployeeFultimeSalaryRow['basic_pay']?></td>
-															<td><?= $EmployeeFultimeSalaryRow['commissionPay']?></td>
-															<td><?= $EmployeeFultimeSalaryRow['perfectAttendance']?></td>
-															<td><?= $EmployeeFultimeSalaryRow['total_earning'] ?></td>
+															<td><?= $EmployeeFultimeSalaryRow['cpf']?></td>
+															<td><?= $EmployeeFultimeSalaryRow['commission_Pay']?></td>
+															<td><?= $EmployeeFultimeSalaryRow['sales_bonus'] ?></td>
+															<td><?= $EmployeeFultimeSalaryRow['perfectAttendance'] ?></td>
+															<td><?= $EmployeeFultimeSalaryRow['service_bonus'] ?></td>
+															<td><?= $EmployeeFultimeSalaryRow['total_earnings'] ?></td>
 															<td>
-															<!--<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$EmployeeFultimeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>-->
+															<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$EmployeeFultimeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
 															<a href="<?= base_url('admin/employeeManagement/deleteEmployeeSalary/'. $EmployeeFultimeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 															<!--<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$EmployeeFultimeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-oggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-user-times" aria-hidden="true"></i></a>-->
 														</td>

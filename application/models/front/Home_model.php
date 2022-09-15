@@ -10,6 +10,12 @@ class Home_model extends CI_Model
 		$this->db->from("nbb_state");
 		return $this->db->get()->result_array();
 	}
+	function getmembership(){
+
+		$this->db->select("nbb_membership.*");
+		$this->db->from("nbb_membership");
+		return $this->db->get()->result_array();
+	}
 	function getAllcustomerReferalCode($id){
 		$this->db->select('nbb_customer.referreduser_id');
 		$this->db->from('nbb_customer');

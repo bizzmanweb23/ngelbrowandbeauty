@@ -22,6 +22,8 @@
   <script src="<?= base_url(); ?>/assets/front/plugins/lazyestload/lazyestload.js"></script> 
   <script src="<?= base_url(); ?>/assets/front/plugins/smoothscroll/SmoothScroll.js"></script> 
 	<script src='<?= base_url(); ?>/assets/front/plugins/no-ui-slider/nouislider.min.js'></script>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
@@ -174,6 +176,7 @@
 													<li><a href="<?php echo base_url('logout') ?>">Logout</a></li>
 													<li><a href="<?php echo base_url('myProfile') ?>">My Profile</a></li>
 													<li><a href="<?php echo base_url('referdToFriend') ?>">Referred to Friend</a></li>
+													<li><a href="<?php echo base_url() ?>wallet" target="_blank">Wallet</a></li>
 											</ul>
 										</li>
 

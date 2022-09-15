@@ -67,7 +67,7 @@
 								<label for="age" class="col-sm-6 control-label">Age
 								</label>
 								<div class="col-sm-12">
-										<input type="text" class="form-control" name="age" id="age"  value="" readonly>
+									<input type="text" class="form-control" name="age" id="age"  value="" readonly>
 								</div>
 							</div>
 						</div>

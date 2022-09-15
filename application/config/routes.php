@@ -71,6 +71,7 @@ $route['otpVerify'] =  'front/home/otpadd';
 $route['get-services-list/(:any)'] =  'front/Home/setvices_list/$i';
 $route['uniqueEmail'] =  'front/home/duplicateEmailCheck';
 $route['uniqueContact'] =  'front/home/duplicateCoctactCheck';
+$route['wallet'] =  'front/User/wallet';
 
 
 $route['front/login'] = 'front/home/post_login';
@@ -90,7 +91,7 @@ $route['welcome'] = 'admin/welcome';
 $route['branch/login'] = 'branch/login';*/
 
 
-$route['employee/commission'] = 'admin/comissionController/comission';
+$route['add_employeeSalary'] = 'admin/employeeManagement/post_add_employeeSalary';
 $route['employee/attendance/counter'] = 'admin/comissionController/attendance_sum';
 $route['branch/dashboard'] = 'admin/welcome/dashboard';
 $route['users'] = 'admin/welcome/users';

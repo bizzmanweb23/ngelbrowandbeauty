@@ -25,224 +25,140 @@
 				<h3>Employee Salary Edit</h3>
 					<div id="personal-details">
 						<?php foreach($empSalary as $empSalaryRow){ ?>
+
 							<input type="hidden" name="empSalaryid" value ="<?= $empSalaryRow['id'] ?>" class="form-control">
 
-							<div id="personal-details">
-
-								<div class="row">
-									<div class="col-md-6">
+							<div class="row">
+									<div class="col">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Employee Name:</label>
-											<div class="col-md-12">          
-												<select name="employeeName" class="form-control">
+											<label class="control-label  " for="pwd">Select Month:</label>
+											<div class="col-md-12">
+												<input type="month" name="fullTimesalaryDate" value="<?= $empSalaryRow['year'] ?>" class="form-control fullTimesalaryDate">
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-group">
+											<label class="control-label " for="pwd">Employee Name:</label>
+											<div class=" ">
+												<select name="fullTimeemployeeName" class="form-control fullTimeemployeeName">
 													<option>Select Employee Name</option>
 													<?php foreach($allemployees as $allemployeesnRow): ?>
-													<option value="<?= $allemployeesnRow['id']?>"<?php if($allemployeesnRow['id'] == $empSalaryRow['emp_id']){echo 'Selected';}?>><?= $allemployeesnRow['first_name'].' '.$allemployeesnRow['last_name']?></option>
-													<?php endforeach; ?> 
+													<option value="<?= $allemployeesnRow['id']?>" <?php if($allemployeesnRow['id'] == $empSalaryRow['emp_id']){echo 'Selected';}?>><?= $allemployeesnRow['first_name'].' '.$allemployeesnRow['last_name'] ;?></option>
+													<?php endforeach; ?>
 												</select>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Designation:</label>
-											<div class="col-md-12">          
-											<select name="designation" class="form-control">
-												<option>Select Designation</option>
-												<?php foreach($empDesignation as $empDesignationRow): ?>
-												<option value="<?= $empDesignationRow['id']?>"<?php if($empDesignationRow['id'] == $empSalaryRow['dept_id']){echo 'Selected';}?>><?= $empDesignationRow['role_name']?></option>
-												<?php endforeach; ?> 
-											</select>
+											<label class="control-label" for="">Desingnation</label>
+											<div class=" ">
+												<input type="text" name="designation" class="form-control designation" value="<?= $empSalaryRow['dept_id'] ?>" readonly>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Job Type:</label>
-											<div class="col-md-12">          
-												<select name="jobType" class="form-control">
-													<option value="" hidden>Select Job Type</option>
-													<option value="1" <?php if($empSalaryRow['job_type'] == '1'){echo 'Selected';}?>>Commission Staff</option>
-													<option value="2" <?php if($empSalaryRow['job_type'] == '2'){echo 'Selected';}?>>Partnerships</option>
-													<option value="3" <?php if($empSalaryRow['job_type'] == '3'){echo 'Selected';}?>>Full Time Staff</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Manual Fees:</label>
-											<div class="col-md-12">          
-												<?php foreach($manual_fee as $manual_feeRow){ 
-													$manual_id = $manual_feeRow['id'];
-													$manualtype_of_fee = $manual_feeRow['type_of_fee'];
-													$manual_amount = $manual_feeRow['amount']; ?>
-													<input type="checkbox" onclick="chkcontrol(<?= $manual_id ?>)" class="commission" name="commission_structure" value="<?= $manual_amount ?>"><label for="vehicle1"><?= $manualtype_of_fee ?>($<?= $manual_amount ?>)</label><br>
-												<?php } ?>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Commission Structure A:</label>
-											<div class="col-md-12">          
-												<?php foreach($commission_structure_a as $commission_structure_aRow){ 
-													$commission_structure_a_id = $commission_structure_aRow['id'];
-													$structure_aType_of_fee = $commission_structure_aRow['fee_type'];
-													$structure_a_amount = $commission_structure_aRow['amount']; ?>
-													<input type="checkbox" onclick="chkcontrol(<?= $commission_structure_a_id ?>)" class="commission" name="commission_structure" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>($<?= $structure_a_amount ?>)</label><br>
-												<?php } ?>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Commission Structure B:</label>
-											<div class="col-md-12">          
-												<?php foreach($commission_structure_b as $commission_structure_bRow){ 
-													$commission_structure_b_id = $commission_structure_aRow['id'];
-													$structure_aType_of_fee = $commission_structure_aRow['fee_type'];
-													$structure_a_amount = $commission_structure_aRow['amount']; ?>
-													<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_b_id ?>)" name="commission_structure" value="<?= $structure_a_amount ?>"><label for="vehicle1"><?= $structure_aType_of_fee ?>($<?= $structure_a_amount ?>)</label><br>
-												<?php } ?>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Commission Structure c:</label>
-											<div class="col-md-12">          
-												<?php foreach($commission_structure_c as $commission_structure_cRow){ 
-													$commission_structure_c_id = $commission_structure_cRow['id'];
-													$structure_cType_of_fee = $commission_structure_cRow['type_of_fee'];
-													$structure_c_amount = $commission_structure_cRow['amount']; ?>
-													<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_c_id ?>)" name="commission_structure" value="<?= $structure_c_amount ?>"><label for="vehicle1"><?= $structure_cType_of_fee ?>($<?= $structure_c_amount ?>)</label><br>
-												<?php } ?>
-											</div>
-										</div>
-									</div>
 
-									<div class="col-md-3">
+								<div class="row">
+									<div class="col-md-6">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Commission Structure c (partnership):</label>
-											<div class="col-md-12">          
-												<?php foreach($commission_c_partnership as $commission_structure_cRow){ 
-													$commission_structure_cpartnership_id = $commission_structure_cRow['id'];
-													$structure_cpartnershipType_of_fee = $commission_structure_cRow['type_of_fee'];
-													$structure_cpartnership_amount = $commission_structure_cRow['amount']; ?>
-													<input type="checkbox" class="commission" onclick="chkcontrol(<?= $commission_structure_cpartnership_id ?>)" name="commission_structure" value="<?= $structure_cpartnership_amount ?>"><label for="vehicle1"><?= $structure_cpartnershipType_of_fee ?>($<?= $structure_cpartnership_amount ?>)</label><br>
-												<?php } ?>
+											<label class="control-label col-md-12" for="pwd">Basic Salary $ :</label>
+											<div class="col-md-12">
+												<input type="text" name="basic_salary" value="<?= $empSalaryRow['basic_pay'] ?>" placeholder="Basic Salary" class="form-control basic-salary CommissionPaysum" readonly>
 											</div>
 										</div>
 									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Cpf $ :</label>
+											<div class="col-md-12">
+												<input type="text" name="cpf" value="<?= $empSalaryRow['cpf'] ?>" placeholder="Cpf" class="form-control cpf CommissionPaysum" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Sales Amount $ :</label>
+											<div class="col-md-12">
+												<input type="text" name="fullTimesales_Amount" value="<?= $empSalaryRow['sales_Amount'] ?>" placeholder="Sales Amount" class="form-control sales-amount" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Sales Commission $ :</label>
+											<div class="col-md-12">
+												<input type="text" name="fullTimecommission_Pay" value="<?= $empSalaryRow['commission_Pay'] ?>"  placeholder="Sales Commission Pay" class="form-control commission-pay CommissionPaysum" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Attendance Hours :</label>
+											<div class="col-md-12">
+												<input type="text" name="attendance_hours" value="<?= $empSalaryRow['attendance_hours'] ?>" placeholder="Perfect attendance" class="form-control attendance-hours" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Perfect attendance bonus $ :</label>
+											<div class="col-md-12">
+												<input name="fullTimePerfectAttendance"  value="<?= $empSalaryRow['perfectAttendance'] ?>" placeholder="Perfect attendance bonus" class="form-control attendance-bonus CommissionPaysum" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
 
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Service Amount $ :</label>
+											<div class="col-md-12">
+												<input name="service_amount" placeholder="" value="<?= $empSalaryRow['service_amount'] ?>" class="form-control service-amount" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label label col-md-12" for="pwd" >Service Bonus % :</label>
+											<div class="col-md-12">
+												<input type="text" name="service_bonus" placeholder="Service Bonus" value="<?= $empSalaryRow['service_bonus'] ?>"  class="form-control workmanship CommissionPaysum" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+								<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Sales Bonus $ :</label>
+											<div class="col-md-12">
+												<input type="text" name="sales_bonus" placeholder="Sales Bonus"  value="<?= $empSalaryRow['sales_bonus'] ?>" class="form-control sales-bonus CommissionPaysum" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label col-md-12" for="pwd">Total Earning $ :</label>
+											<div class="col-md-12">
+												<input name="total_earnings" placeholder="Total Earning" value="<?= $empSalaryRow['total_earnings'] ?>" class="form-control total-earnings" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
 
-								</div>
-								<div class="row">
-									<div class="col-md-12">
+								<div class="container-fluid">
+									<div class="text-right ">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Commission Pay:</label>
-											<div class="col-md-12">          
-												<input type="text" name="CommissionPay" value="<?= $empSalaryRow['commissionPay'] ?>" class="form-control CommissionPay">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Basic Pay:</label>
-											<div class="col-md-12">          
-												<input type="text" name="basic_pay" id = "basic_pay" class="form-control basic_pay" value="<?= $empSalaryRow['basic_pay'] ?>" onkeyup ="calcSalary()">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Insurance:</label>
-											<div class="col-md-12">          
-												<input type="text" name="employees_state_insurance" value ="<?= $empSalaryRow['employees_state_insurance'] ?>" class="form-control" id="EmployeesStateInsurance">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Central Provident Fund:</label>
-											<div class="col-md-12">          
-												<input type="text" name="Provident_fund" value ="<?= $empSalaryRow['Provident_fund'] ?>" class="form-control" id = "Provident_fund">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Medical Allowance:</label>
-											<div class="col-md-12">          
-												<input type="text" name="medical_allowance" value="<?= $empSalaryRow['medical_allowance'] ?>" class="form-control" id = "medical_allowance">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Medical Leave Entitlement:</label>
-											<div class="col-md-12">          
-												<input type="text" name="medical_leave_entitlement" value="<?= $empSalaryRow['medical_leave_entitlement'] ?>" class="form-control" id = "medical_leave_entitlement">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Net Pay:</label>
-											<div class="col-md-12">          
-												<input type="text" name="net_pay" value="<?= $empSalaryRow['net_pay'] ?>" class="form-control" id="net_pay">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Total Earning:</label>
-											<div class="col-md-12">          
-												<input type="text" name="total_earning" value="<?= $empSalaryRow['total_earning'] ?>" class="form-control" id="total_earning">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Total Deduction:</label>
-											<div class="col-md-12">          
-												<input type="text" name="total_deduction" value="<?= $empSalaryRow['total_deduction'] ?>" class="form-control" id="total_deduction" >
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="form-group">
-											<div class="col-md-12">          
-												<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 130px;">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="col-md-12">          
+												<input type="submit" class="btn btn-primary btn-custom" value="submit">
 												<input type="Reset" value="Reset" class="btn btn-primary btn-custom">
-											</div>
 										</div>
 									</div>
-								</div>
-
-
 								</div>	
 						
 						<?php } ?>
@@ -286,53 +202,151 @@
 		box-shadow: 5px 5px 5px;
 	}
 </style>
+
 <script type = "text/javascript">
-    function calcSalary(){
+$(document).ready(function(){
 
-		const basic_pay = parseInt(document.getElementById('basic_pay').value);
-		const da = document.getElementById("da").value;//   parseInt(document.getElementById('da').value);
-		const pf = document.getElementById("pf").value;
-		const esi = document.getElementById("esi").value;
-		const ma = document.getElementById("ma").value;
-		const mle = document.getElementById("mle").value;
-		//alert(da);
+function exeFunction(){
 
-		const DA = basic_pay * da;
-		//const HRA = basic_pay * 0.5;
-		const MA = basic_pay * ma;
-		const MLE = basic_pay * mle;
-		const GrandPay = basic_pay + DA;
-		const PF = GrandPay * pf;
-		const EmployeesStateInsurance = GrandPay * esi;
-		const Deduction = EmployeesStateInsurance + PF;
-		const NetPay = GrandPay - Deduction;
+	function get_attendance_bonus($id,$salaryDate){
+		var sum = 0;
+			$.ajax({
+				url : "<?php echo base_url('employee/attendance/counter'); ?>",
+				type : "post",
+				data : {data: $id , salaryDate:$salaryDate},
+				dataType: 'json',
+				success : function(data){
 
-		//alert(NetPay);
+					for (var i = 0; i < data.length; i++) {
+						sum += parseFloat(data[i].work_hours);
 
-		if(!isNaN(basic_pay)) {
-			document.getElementById('dearness_allowance').value = DA;
-			document.getElementById('Provident_fund').value = PF;
-			document.getElementById('EmployeesStateInsurance').value = EmployeesStateInsurance;
-			document.getElementById('medical_allowance').value = MA;
-			document.getElementById('medical_leave_entitlement').value = MLE;
-			document.getElementById('total_earning').value = GrandPay;
-			document.getElementById('net_pay').value = NetPay;
-			document.getElementById('total_deduction').value = Deduction;
-		}
+					}
+					if(sum == 208 || sum >= 208){
+							$('.attendance-hours').val(sum);
+							$('.attendance-bonus').val(parseInt(100));
+					}
+					if(sum <= 208){
+							$('.attendance-hours').val(sum);
+							$('.attendance-bonus').val(0);
+					}
+
+
+				}
+			});
 	}
-	function chkcontrol(j) {
-		var sum=0;
+	function get_therapist_bonus($id,$salaryDate){
+		var sum = 0;
+		var serviceAdded = 0;
+			$.ajax({
+				url : "<?php echo base_url('admin/comissionController/dashboard_sum'); ?>",
+				type : "post",
+				data : {data: $id , salaryDate:$salaryDate},
+				dataType: 'json',
+				success : function(data){
+
+					for (var i = 0; i < data.length; i++) {
+						sum += parseFloat(data[i].amount);
+						
+
+					}
+					//alert(sum);
+					if(sum >= 99){
+						//alert(sum);
+						serviceAdded = parseFloat(sum * 5/100);
+						//console.log(serviceAdded);
+							$('.service-amount').val(sum);
+							$('.workmanship').val(parseInt(serviceAdded));
+					}
+					if(sum <= 99){
+							$('.service-amount').val(sum);
+							$('.workmanship').val(0);
+					}
+
+
+				}
+		});
+	}
+	function get_CommissionPay_bonus($id,$salaryDate){
+		var sum = 0;
+		var serviceAdded = 0;
+		$.ajax({	
+				type: "POST",	
+				url: "<?= base_url("admin/comissionController/getshowCommissionPay")?>",
+				data: {data: $id , salaryDate:$salaryDate},
+				dataType: "JSON",
+				success:function(data){	
+					//alert(data);
+
+					$.each(data, function (key, val) {
+						//alert(val.basicSalary);
+						$(".sales-amount").val(val.total);
+						$(".commission-pay").val(val.commission);
+						$(".sales-bonus").val(val.totalbonus);
+					});
+					
+				}
+			});
+	}
+
+	$(".fullTimesalaryDate, .fullTimeemployeeName").on('change', function(e){
+			e.preventDefault();
+			//$empId = $(this).val();
+			$salaryDate = $('.fullTimesalaryDate').val();
+			$empId = $('.fullTimeemployeeName').val();
+			
+			get_attendance_bonus($empId,$salaryDate);
+			get_therapist_bonus($empId,$salaryDate);
+			get_CommissionPay_bonus($empId,$salaryDate);
+			
+			$.ajax({
+			url : "<?php echo base_url('admin/comissionController/empCommission'); ?>",
+			type: "post",
+			data : {data: $empId, salaryDate: $salaryDate},
+			dataType: 'json',
+			success : function(data)
+			{
+				$.each(data, function (key, val) {
+					//alert(val.basicSalary);
+					$(".designation").val(val.role_name);
+					$(".basic-salary").val(val.empbasicSalary);
+					$(".cpf").val(val.CPFtotal);
+				});
+				
+			}
+			
+		});
+		var totalEarnings = 0;
+		var attBonus = 0;
+		var workmanship  = 0;
+		var salesBonus = 0;
+		var commission_added = 0;
+		var basicSalary = 0;
+		var cpfAdded = 0;
+			attBonus = $('.attendance-bonus').val();
+			workmanship  = $('.workmanship').val();
+			salesBonus = $('.sales-bonus').val();
+			commission_added = $('.commission-pay').val();
+			basicSalary = $('.basic-salary').val();
+			cpfAdded = $(".cpf").val();
+			
+			totalEarnings = parseFloat(commission_added)+parseFloat(workmanship)+parseFloat(salesBonus)+parseFloat(attBonus)+parseFloat(basicSalary)+parseFloat(cpfAdded);
+
+			//console.log(totalEarnings);
+			
+				$('.total-earnings').val(totalEarnings);
+			
+				
+				//$('.total-earnings').val(0);
+			
+	});
+
+	
+}
 		
-		let value = document.getElementById('basic_pay').value;
-		for(var i=0; i < document.payroll.commission_structure.length; i++){
 
-		if(document.payroll.commission_structure[i].checked){
-			sum = sum + parseInt(document.payroll.commission_structure[i].value);
+	setInterval( exeFunction , 500);
+});
 
-		}
-		$('.CommissionPay').val(sum);
-	}
-	}
 </script>
 	
 	
