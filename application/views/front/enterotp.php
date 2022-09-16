@@ -3,13 +3,16 @@
 	<div class="container">
 	<?php $message = $this->session->flashdata('msg');
 		if(isset($message) && $message != '') { ?>
-		<script>
+		<!--script>
 			toastr.success('<?php echo $this->session->flashdata('msg'); ?>');
-		</script>
+		</script-->
+		
+		<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?php echo $this->session->flashdata('msg'); ?></div>
 	<?php }else{ ?>
-		<script>
+		<!--script>
 			toastr.success('Verify OTP');
-		</script>
+		</script-->
+		<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Verify OTP</div>
 	<?php } ?>
 		
 	<div class="row justify-content-center">

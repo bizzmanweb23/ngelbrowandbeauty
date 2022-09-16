@@ -1,79 +1,39 @@
 <!-- HEADER -->
     
     <!-- PAGE TITLE SECTION -->
-     <section class="clearfix pageTitleArea" style="background-image: url(assets/front/img/blog/pageTitle-bg02.jpg);">
+     <section class="clearfix pageTitleArea" style="background-image: url(assets/front/img/blog/CoursesBanner.png);">
         <div class="container">
-          <div class="pageTitle">
-              <h1>Courses</h1>
-          </div>
+          
         </div>
     </section>
 <!-- CHECK OUT SECTION -->
-      <section class="container-fluid clearfix padding blog blog-fullwidth text">
+    <section class="container-fluid clearfix padding blog blog-fullwidth text">
       <div class="container">
         <div class="row">
+				<?php foreach($allcourse as $course_row): ?>
           <div class="col-md-4">
             <div class="blogPost">
-              <img src="<?= base_url() ?>/assets/front/img/blog/blog-content.jpg" data-src="img/blog/blog-content.jpg" alt="Image Blog" class="img-responsive lazyestload">
-              <h2><a href="blog-single-fullwidth.html">The standard Lorem Ipsum passage</a></h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-              <a href="javascript:void(0)" class="btn btn-primary first-btn px-2" data-toggle="modal" data-target="#appoinmentModal">Enroll now</a>
+              <img src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" data-src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" class="img-responsive">
+              <h3><?= $course_row['course_name'] ?></h3>
+              <p style="color: #000;"><?= $course_row['description'] ?></p>
+							<div class="row">
+								<div class="col-md-6">
+										<p style="color: #000;"><?php if($course_row['course_fees'] != ''){ ?><h3>$<?= $course_row['course_fees'] ?></h3><?php }else{} ?></p>
+								</div>
+								<div class="col-md-6 text-right">
+										<p style="color: #000;"><h3><?= $course_row['durations'] ?></h3></p>
+								</div>
+							</div>
+              <a href="<?= base_url(); ?>enrollCourse/<?= $course_row['id'] ?>" class="btn btn-primary first-btn px-2">Enroll now</a>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="blogPost">
-              <img src="img/blog/blog-content02.jpg" data-src="img/blog/blog-content02.jpg" alt="Image Blog" class="img-responsive lazyestload">
-              <h2><a href="blog-single-fullwidth.html">The standard Lorem Ipsum passage</a></h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-              <ul class="list-inline">
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-heart" aria-hidden="true"></i> 21 Likes</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-comments-o" aria-hidden="true"></i> 5 Comments</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="blogPost">
-              <img src="img/blog/blog-content03.jpg" data-src="img/blog/blog-content03.jpg" alt="Image Blog" class="img-responsive lazyestload">
-              <h2><a href="blog-single-fullwidth.html">The standard Lorem Ipsum passage</a></h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-              <ul class="list-inline">
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-heart" aria-hidden="true"></i> 21 Likes</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-comments-o" aria-hidden="true"></i> 5 Comments</a></li>
-              </ul>
-            </div>
-          </div>
+          <?php	endforeach; ?>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="blogPost">
-              <img src="img/blog/blog-content04.jpg" data-src="img/blog/blog-content04.jpg" alt="Image Blog" class="img-responsive lazyestload">
-              <h2><a href="blog-single-fullwidth.html">The standard Lorem Ipsum passage</a></h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-              <ul class="list-inline">
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-heart" aria-hidden="true"></i> 21 Likes</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-comments-o" aria-hidden="true"></i> 5 Comments</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="blogPost">
-              <img src="img/blog/blog-content05.jpg" data-src="img/blog/blog-content05.jpg" alt="Image Blog" class="img-responsive lazyestload">
-              <h2><a href="blog-single-fullwidth.html">The standard Lorem Ipsum passage</a></h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-              <ul class="list-inline">
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-heart" aria-hidden="true"></i> 21 Likes</a></li>
-                <li><a href="blog-single-fullwidth.html"><i class="fa fa-comments-o" aria-hidden="true"></i> 5 Comments</a></li>
-              </ul>
-            </div>
-          </div>
-        </div> 
+
+       
           
 
-       <div class=" ">
+       <!--<div class=" ">
           <div class="paginationCommon paginationOne ">
           <nav aria-label="Page navigation">
             <ul class="pagination">
@@ -95,15 +55,15 @@
             </ul>
           </nav>
         </div>
-       </div>
+       </div>-->
 
 
       </div>
     </section>
+
 <!--enroll modal-->
-<div id="appoinmentModal" class="modal fade modalCommon" role="dialog" tabindex="-1">
+<!--<div id="appoinmentModal" class="modal fade modalCommon" role="dialog" tabindex="-1">
   <div class="modal-dialog">
-    <!-- MODAL CONTENT-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -112,7 +72,6 @@
       <div class="modal-body">
       <div id="appointment-alert" class="my-alert"></div>
       <form action="#" method="post" id="appoinmentModalForm">
-          <!--Response Holder-->
           <div class="form-group categoryTitle">
             <h5>Personal Information</h5>
           </div>
@@ -235,6 +194,6 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
 

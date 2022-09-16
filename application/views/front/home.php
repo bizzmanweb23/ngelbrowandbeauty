@@ -1,5 +1,3 @@
- 
-      
 <!-- MAIN SLIDER -->
 <?php $id = $this->session->userdata('id');?>
     <section class="main-slider" data-loop="true" data-autoplay="true" data-interval="7000">
@@ -87,114 +85,39 @@
         <div class="row">
           <div class="col-12">
             <div class="tabbable tabTop">
-              <ul class="nav nav-tabs">
-                <li><a href="#hair" data-toggle="tab" class="active"><span>Hair</span></a></li>
-                <li><a href="#makeup" data-toggle="tab"><span>Makeup</span></a></li>
-                <li><a href="#facial" data-toggle="tab"><span>Facial</span></a></li>
-                <li><a href="#massage" data-toggle="tab"><span>Massage</span></a></li>
-                <li><a href="#nail" data-toggle="tab"><span>Nail</span></a></li>
-                <li><a href="#waxing" data-toggle="tab"><span>Waxing</span></a></li>
-              </ul>
               
               <div class="tab-content">
                 <div class="tab-pane active" id="hair">
                   <div class="tabbable tabs-left">
                     <div class="row">
-                      <div class="col-md-5 col-lg-4">
+                      <div class="col-md-5 col-lg-4" style="height: 500px; overflow-y:scroll;">
                         <ul class="nav nav-tabs">
-                          <li><a href="#braidstwist" data-toggle="tab" class="active">Braids & Twist <span>$25</span></a></li>
-                          <li><a href="#haircolor" data-toggle="tab">Hair Color <span>$40</span></a></li>
-                          <li><a href="#hairextension" data-toggle="tab">Hair Extension<span>$19</span></a></li>
-                          <li><a href="#correctivecolor" data-toggle="tab">Corrective Color<span>$13</span></a></li>
-                          <li><a href="#haircut" data-toggle="tab">Hair Cut<span>$48</span></a></li>
-                          <li><a href="#partialfoil" data-toggle="tab">Partial Foil<span>$10</span></a></li>
-                          <li><a href="#extensionpertrack" data-toggle="tab">Extension Per Track<span>$40</span></a></li>
+													<?php foreach($allservices as $allservices_row): ?>
+														<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?> <span>$<?= $allservices_row['service_price'] ?></span></a></li>
+													<?php	endforeach; ?>  
                         </ul>
                       </div>
 
                       <div class="col-md-7 col-lg-8">
                         <div class="tab-content">
-                          <div class="tab-pane active" id="braidstwist">
-                            <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive lazyestload">
-                              <h3>Braids & Twist</h3>
-                              <h4>$25.00 Per Head</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                              <a href="javascript:void(0)" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">make An Appoinment</a>
-                            </div>
-                          </div>
+													<div class="activeService">
+															<?php foreach($activeServices as $servicesImg_row): 
+																$id = $servicesImg_row['id']; ?>
+																<div class="tab-pane" id="braidstwist_<?= $id; ?>">
+																	<div class="varietyContent">
+																		<img src="<?= base_url(); ?>/uploads/service_img/<?= $servicesImg_row['service_icon'] ?>" data-src="<?= base_url(); ?>/uploads/service_img/<?= $servicesImg_row['service_icon'] ?>" alt="Image Variety" class="img-responsive">
+																		<h3><?= $servicesImg_row['service_name'] ?></h3>
+																		<h4>$<?= $servicesImg_row['service_price'] ?> Per Head</h4>
+																		<p><?= $servicesImg_row['description'] ?></p>
+																		<a href="javascript:void(0)" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">make An Appoinment</a>
+																	</div>	
+																
+															</div>
+														<?php	endforeach; ?>
+													</div>
 
-                          <div class="tab-pane" id="haircolor">
-                            <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
-                              <h3>Hair Color</h3>
-                              <h4>$40.00 Per Head</h4>
-                              <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                              <a href="#" class="btn btn-primary first-btn">make An Appoinment</a>
-                            </div>
-                          </div>
+													<div class="displayService"></div>
 
-                          <div class="tab-pane" id="hairextension">
-                            <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive lazyestload">
-                              <h3>Hair Extension</h3>
-                              <h4>$19.00 Per Head</h4>
-                              <p>Amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                              <a href="#" class="btn btn-primary first-btn">make An Appoinment</a>
-                            </div>
-                          </div>
-
-                          <div class="tab-pane" id="correctivecolor">
-                            <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive lazyestload">
-                              <h3>Corrective Color</h3>
-                              <h4>$13.00 Per Head</h4>
-                              <p>Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                              <a href="#" class="btn btn-primary first-btn">make An Appoinment</a>
-                            </div>
-                          </div>
-
-                          <div class="tab-pane" id="haircut">
-                            <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive lazyestload">
-                              <h3>Hair Cut</h3>
-                              <h4>$48.00 Per Head</h4>
-                              <p>Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                              <a href="#" class="btn btn-primary first-btn">make An Appoinment</a>
-                            </div>
-                          </div>
-
-                          <div class="tab-pane" id="partialfoil">
-                            <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive lazyestload">
-                              <h3>Partial Foil</h3>
-                              <h4>$10.00 Per Head</h4>
-                              <p>Sed do eiusmod
-                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                              <a href="#" class="btn btn-primary first-btn">make An Appoinment</a>
-                            </div>
-                          </div>
-
-                          <div class="tab-pane" id="extensionpertrack">
-                            <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
-                              <h3>Extension Per Track</h3>
-                              <h4>$40.00 Per Head</h4>
-                              <p>Voluptate velit esse
-                              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                              <a href="#" class="btn btn-primary first-btn">make An Appoinment</a>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -220,7 +143,7 @@
                         <div class="tab-content">
                           <div class="tab-pane active" id="braidstwist1">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Braids & Twist</h3>
                               <h4>$25.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -230,7 +153,7 @@
     
                           <div class="tab-pane" id="haircolor1">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Color</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -244,7 +167,7 @@
     
                           <div class="tab-pane" id="hairextension1">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Extension</h3>
                               <h4>$19.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -254,7 +177,7 @@
     
                           <div class="tab-pane" id="correctivecolor1">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Corrective Color</h3>
                               <h4>$13.00 Per Head</h4>
                               <p>Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -267,7 +190,7 @@
     
                           <div class="tab-pane" id="haircut1">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Cut</h3>
                               <h4>$48.00 Per Head</h4>
                               <p>Et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -277,7 +200,7 @@
     
                           <div class="tab-pane" id="partialfoil1">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Partial Foil</h3>
                               <h4>$10.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -287,7 +210,7 @@
     
                           <div class="tab-pane" id="extensionpertrack1">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Extension Per Track</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -324,7 +247,7 @@
                         <div class="tab-content">
                           <div class="tab-pane active" id="braidstwist2">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Braids & Twist</h3>
                               <h4>$25.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -334,7 +257,7 @@
     
                           <div class="tab-pane" id="haircolor11">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Color</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -344,7 +267,7 @@
     
                           <div class="tab-pane" id="hairextension11">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Extension</h3>
                               <h4>$19.00 Per Head</h4>
                               <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -354,7 +277,7 @@
     
                           <div class="tab-pane" id="correctivecolor11">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Cut</h3>
                               <h4>$48.00 Per Head</h4>
                               <p>Nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -364,7 +287,7 @@
     
                           <div class="tab-pane" id="haircut11">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Cut</h3>
                               <h4>$48.00 Per Head</h4>
                               <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -374,7 +297,7 @@
     
                           <div class="tab-pane" id="partialfoil11">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Partial Foil</h3>
                               <h4>$10.00 Per Head</h4>
                               <p>Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -384,7 +307,7 @@
     
                           <div class="tab-pane" id="extensionpertrack11">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Extension Per Track</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -416,7 +339,7 @@
                         <div class="tab-content">
                           <div class="tab-pane active" id="braidstwist3">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Braids & Twist</h3>
                               <h4>$25.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -426,7 +349,7 @@
 
                           <div class="tab-pane" id="haircolor112">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Color</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -436,7 +359,7 @@
 
                           <div class="tab-pane" id="hairextension112">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Extension</h3>
                               <h4>$19.00 Per Head</h4>
                               <p>Et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -446,7 +369,7 @@
 
                           <div class="tab-pane" id="correctivecolor112">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Corrective Color</h3>
                               <h4>$13.00 Per Head</h4>
                               <p>Labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -456,7 +379,7 @@
 
                           <div class="tab-pane" id="haircut112">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Cut</h3>
                               <h4>$48.00 Per Head</h4>
                               <p>Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -466,7 +389,7 @@
 
                           <div class="tab-pane" id="partialfoil112">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Partial Foil</h3>
                               <h4>$10.00 Per Head</h4>
                               <p>Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -476,7 +399,7 @@
 
                           <div class="tab-pane" id="extensionpertrack112">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Extension Per Track</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -513,7 +436,7 @@
                         <div class="tab-content">
                           <div class="tab-pane active" id="braidstwist4">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Braids & Twist</h3>
                               <h4>$25.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -523,7 +446,7 @@
     
                           <div class="tab-pane" id="haircolor113">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Color</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -533,7 +456,7 @@
     
                           <div class="tab-pane" id="hairextension113">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Extension</h3>
                               <h4>$19.00 Per Head</h4>
                               <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -543,7 +466,7 @@
     
                           <div class="tab-pane" id="correctivecolor113">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Corrective Color</h3>
                               <h4>$13.00 Per Head</h4>
                               <p>Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -553,7 +476,7 @@
     
                           <div class="tab-pane" id="haircut113">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Cut</h3>
                               <h4>$48.00 Per Head</h4>
                               <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -563,7 +486,7 @@
     
                           <div class="tab-pane" id="partialfoil113">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Partial Foil</h3>
                               <h4>$10.00 Per Head</h4>
                               <p>Bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -573,7 +496,7 @@
     
                           <div class="tab-pane" id="extensionpertrack113">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Extension Per Track</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Gna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -605,7 +528,7 @@
                         <div class="tab-content">
                           <div class="tab-pane active" id="braidstwist5">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Braids & Twist</h3>
                               <h4>$25.00 Per Head</h4>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -615,7 +538,7 @@
     
                           <div class="tab-pane" id="haircolor114">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Color</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -625,7 +548,7 @@
     
                           <div class="tab-pane" id="hairextension114">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-2.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Extension</h3>
                               <h4>$19.00 Per Head</h4>
                               <p>Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -635,7 +558,7 @@
     
                           <div class="tab-pane" id="correctivecolor114">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-3.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Corrective Color</h3>
                               <h4>$13.00 Per Head</h4>
                               <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -645,7 +568,7 @@
     
                           <div class="tab-pane" id="haircut114">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-4.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Hair Cut</h3>
                               <h4>$48.00 Per Head</h4>
                               <p>Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -655,7 +578,7 @@
     
                           <div class="tab-pane" id="partialfoil114">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-5.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Partial Foil</h3>
                               <h4>$10.00 Per Head</h4>
                               <p>Rem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -665,7 +588,7 @@
     
                           <div class="tab-pane" id="extensionpertrack114">
                             <div class="varietyContent">
-                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive lazyestload">
+                              <img src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/variety-6.jpg" alt="Image Variety" class="img-responsive">
                               <h3>Extension Per Track</h3>
                               <h4>$40.00 Per Head</h4>
                               <p>Bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
@@ -1116,5 +1039,20 @@
   </div>
 </div>
 
+<script>
+	function showServiceDetails(i){
+		var i;
+		//alert(i);
+		$.ajax({	
+					type: "POST",	
+					url: "<?= base_url("front/home/fetchSearchService")?>",
+					data: { serviceid: i },
+					success: function(html) {		
+						$(".activeService").hide();
+						$(".displayService").html(html);
+					}
+			});
 
+	}
+</script>
 

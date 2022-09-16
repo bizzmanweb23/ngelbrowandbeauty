@@ -59,7 +59,7 @@ $route['about'] = 'front/Home/about';
 $route['myProfile'] = 'front/Home/my_profile';
 $route['referdToFriend'] = 'front/Home/ReferdToFriend';
 $route['products/(:any)'] = 'front/Home/products/$i';
-$route['courses'] = 'front/Home/courses';
+//$route['courses'] = 'front/Home/courses';
 $route['services/(:any)'] = 'front/Home/services/$i';
 //$route['main'] = 'front/Home';
 $route['services-list'] = 'front/Home/services_details';
@@ -72,11 +72,14 @@ $route['get-services-list/(:any)'] =  'front/Home/setvices_list/$i';
 $route['uniqueEmail'] =  'front/home/duplicateEmailCheck';
 $route['uniqueContact'] =  'front/home/duplicateCoctactCheck';
 $route['wallet'] =  'front/User/wallet';
+$route['courses'] =  'front/Courses/allcourses';
+$route['enrollCourse/(:any)'] =  'front/Courses/enroll_course/$i';
 
 
 $route['front/login'] = 'front/home/post_login';
 $route['front/signup'] = 'front/home/signup'; 
 $route['front/referredSignup'] = 'front/home/referredsignup'; 
+$route['course/add_student'] = 'front/Courses/post_add_student'; 
 $route['front/customer_edited'] = 'front/home/post_edit_customer'; 
 $route['front/referalCode'] = 'front/home/sentReferalMail'; 
 

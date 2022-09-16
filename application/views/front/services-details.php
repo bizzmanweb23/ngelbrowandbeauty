@@ -83,13 +83,7 @@
                       <div class="col-md-5 col-lg-4">
                         <ul class="nav nav-tabs">
                             <?php foreach($services as $row) {?>
-                          <li><a href="#braidstwist" data-toggle="tab" class="active"><?php echo $row['category_name']; ?> <span>$25<!-- </span></a></li>
-                          <li><a href="#haircolor" data-toggle="tab">Hair Color <span>$40</span></a></li>
-                          <li><a href="#hairextension" data-toggle="tab">Hair Extension<span>$19</span></a></li>
-                          <li><a href="#correctivecolor" data-toggle="tab">Corrective Color<span>$13</span></a></li>
-                          <li><a href="#haircut" data-toggle="tab">Hair Cut<span>$48</span></a></li>
-                          <li><a href="#partialfoil" data-toggle="tab">Partial Foil<span>$10</span></a></li>
-                          <li><a href="#extensionpertrack" data-toggle="tab">Extension Per Track<span>$40</span></a></li> -->
+                          <li><a href="#braidstwist" data-toggle="tab" class="active"><?php echo $row['category_name']; ?> <span>$25</span></a></li>
                            <?php }?> 
                         </ul>
                       </div>

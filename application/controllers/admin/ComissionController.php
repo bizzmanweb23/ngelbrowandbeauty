@@ -27,13 +27,6 @@ class comissionController extends CI_Controller {
 		$date =  date('Y',strtotime($salaryDate));
 		//$date = date_format($salaryDate,"Y");
 
-		/*$this->db->select('*');
-		$this->db->from('nbb_employees emp');
-		$this->db->join('nbb_cpf','nbb_cpf.emp_id = emp.id');
-		$this->db->join('nbb_roles','nbb_roles.id = emp.designation');
-		$this->db->where('emp.id',$id);
-		$data = $this->db->get()->result();*/
-
 		$nbb_employees_sql  = "SELECT
 			nbb_employees.first_name,
 			nbb_employees.last_name,

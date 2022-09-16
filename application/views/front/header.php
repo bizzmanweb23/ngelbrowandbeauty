@@ -173,10 +173,11 @@
 									<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)"><i class="las la-user" style="font-size:32px;"></i></a>
 											<ul class="dropdown-menu">
-													<li><a href="<?php echo base_url('logout') ?>">Logout</a></li>
+													
 													<li><a href="<?php echo base_url('myProfile') ?>">My Profile</a></li>
 													<li><a href="<?php echo base_url('referdToFriend') ?>">Referred to Friend</a></li>
 													<li><a href="<?php echo base_url() ?>wallet" target="_blank">Wallet</a></li>
+													<li><a href="<?php echo base_url('logout') ?>">Logout</a></li>
 											</ul>
 										</li>
 

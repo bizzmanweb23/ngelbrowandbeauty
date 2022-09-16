@@ -149,5 +149,6 @@ $autoload['model'] = array('Auth_Model'=>'Auth',
 'front/AuthFront_Model'=>'AuthFront',
 'front/Header_Model'=>'Header',
 'front/Home_model'=>'Home',
+'front/Course_Model'=>'Course',
 
 );

@@ -29,7 +29,7 @@
                   <button type="submit" class="btn btn-primary btn-block">Log In</button>
 									<div class="row my-2">
 										<div class="col-md-12">
-											<p>Don't have an account? <a href="<?php echo base_url('signup') ?>">Sign UP </a></p>
+											<h6>Don't have an account? <a href="<?php echo base_url('signup') ?>">Sign UP </a></h6>
 										</div>
 									</div>
                 </form>

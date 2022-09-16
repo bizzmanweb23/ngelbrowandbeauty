@@ -96,286 +96,49 @@ class Home extends CI_Controller {
 			$data = array('success' => true, 'msg'=> 'Form has been not submitted Please fillup properly.');
         } else {
             $email = $this->input->post('email');
-			$ref_number = 'NBB'.random_string('alnum',5);
-			$otp_number = random_string('alnum',4);
-
-            $data = array(
-                'first_name'    => $this->input->post('first_name'),
-                'last_name'     => $this->input->post('last_name'),
-                'email'      => $email,
-                'contact'      => $this->input->post('contact'),
-                'password'      => md5($this->input->post('password')),
-				'referreduser_id'=>$ref_number,
-				'otp' => $otp_number,
-				'status' => '0'
-            );
-
-            //Table Insert
-            $result = $this->Main->insert('nbb_customer',$data);
-			$insert_id = $this->db->insert_id();
-
+			
 			if($email){
-	
+				$ref_number = 'NBB'.random_string('alnum',5);
+				$otp_number = random_string('alnum',4);
+
+				$data = array(
+					'first_name'    => $this->input->post('first_name'),
+					'last_name'     => $this->input->post('last_name'),
+					'email'      => $email,
+					'contact'      => $this->input->post('contact'),
+					'password'      => md5($this->input->post('password')),
+					'referreduser_id'=>$ref_number,
+					'otp' => $otp_number,
+					'status' => '0'
+				);
+
+				//Table Insert
+				$result = $this->Main->insert('nbb_customer',$data);
+				$insert_id = $this->db->insert_id();
+
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 				$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<html xmlns="http://www.w3.org/1999/xhtml">
 				<head>
 				<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 				<meta content="width=device-width, initial-scale=1" name="viewport">
-			 
-			  <style type="text/css">
-				  body{
-					width:100% !important;
-				  }
-				  body{
-					-webkit-text-size-adjust:none;
-				  }
-				  body{
-					margin:0;
-					padding:0;
-				  }
-				  img{
-					border:0;
-					height:auto;
-					line-height:100%;
-					outline:none;
-					text-decoration:none;
-				  }
-				  table td{
-					border-collapse:collapse;
-				  }
-				  #backgroundTable{
-					height:100% !important;
-					margin:0;
-					padding:0;
-					width:100% !important;
-				  }
-				
-				  body,#backgroundTable{
-					background-color:#FAFAFA;
-				  }
-			   
-				  #templateContainer{
-					border:1px none #DDDDDD;
-				  }
-				
-				  #templatePreheader{
-					background-color:#FAFAFA;
-				  }
-				
-				  .preheaderContent div{
-					color:#505050;
-					font-family:Arial;
-					font-size:10px;
-					line-height:100%;
-					text-align:left;
-				  }
-				
-				  .preheaderContent div a:link,.preheaderContent div a:visited,.preheaderContent div a .yshortcuts {
-					color:#336699;
-					font-weight:normal;
-					text-decoration:underline;
-				  }
-				  .preheaderContent img{
-					display:inline;
-					height:auto;
-					margin-bottom:10px;
-					max-width:280px;
-				  }
-				
-				  #templateHeader{
-					background-color:#FFFFFF;
-					border-bottom:0;
-				  }
-				
-				  .headerContent{
-					color:#202020;
-					font-family:Arial;
-					font-size:34px;
-					font-weight:bold;
-					line-height:100%;
-					padding:0;
-					text-align:left;
-					vertical-align:middle;
-					background-color: #FAFAFA;
-					padding-bottom: 14px;
-				  }
-				
-				  .headerContent a:link,.headerContent a:visited,.headerContent a .yshortcuts {
-					color:#336699;
-					font-weight:normal;
-					text-decoration:underline;
-				  }
-				  #headerImage{
-					height:auto;
-					max-width:400px !important;
-				  }
-				
-				  #templateContainer,.bodyContent{
-					background-color:#FFFFFF;
-				  }
-			   
-				  .bodyContent div{
-					color:#505050;
-					font-family:Arial;
-					font-size:14px;
-					line-height:150%;
-					text-align:left;
-				  }
-				
-				  .bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts {
-					color:#336699;
-					font-weight:normal;
-					text-decoration:underline;
-				  }
-				  .bodyContent img{
-					display:inline;
-					height:auto;
-					margin-bottom:10px;
-					max-width:280px;
-				  }
-				
-				  #monkeyRewards img{
-					display:inline;
-					height:auto;
-					max-width:280px;
-				  }
-			  
-				.buttonText {
-				  color: #4A90E2;
-				  text-decoration: none;
-				  font-weight: normal;
-				  display: block;
-				  border: 2px solid #585858;
-				  padding: 10px 80px;
-				  font-family: Arial;
-				}
-			  
-				#supportSection, .supportContent {
-				  background-color: white;
-				  font-family: arial;
-				  font-size: 12px;
-				  border-top: 1px solid #e4e4e4;
-				}
-			  
-				.bodyContent table {
-				  padding-bottom: 10px;
-				}
-			  
-				.headerContent.centeredWithBackground {
-				  background-color: #F4EEE2;
-				  text-align: center;
-				  padding-top: 20px;
-				  padding-bottom: 20px;
-				}
-					
-				 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-						h1 {
-							font-size: 40px !important;
-						}
-						
-						.content {
-							font-size: 22px !important;
-						}
-						
-						.bodyContent p {
-							font-size: 22px !important;
-						}
-						
-						.buttonText {
-							font-size: 22px !important;
-						}
-						
-						p {
-							
-							font-size: 16px !important;    
-						}
-						
-						.mainContainer {
-							padding-bottom: 0 !important;   
-						}
-					}
-			  </style>
 			</head>
 			
 			<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="width:100% ;-webkit-text-size-adjust:none;margin:0;padding:0;background-color:#FAFAFA;">
 			  <center>
-				<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable" style="height:100% ;margin:0;padding:0;width:100% ;background-color:#FAFAFA;">
-				  <tr>
-					<td align="center" valign="top" style="border-collapse:collapse;">
-					  
-					  <table border="0" cellpadding="10" cellspacing="0" width="450" id="templatePreheader" style="background-color:#FAFAFA;">
-						<tr>
-						  <td valign="top" class="preheaderContent" style="border-collapse:collapse;">
-							
-							<table border="0" cellpadding="10" cellspacing="0" width="100%">
-							  <tr>
-								<td valign="top" style="border-collapse:collapse;">
-								</td>
-							  </tr>
-							</table>
+					<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+					<div style="margin:50px auto;width:70%;padding:20px 0">
+						<div style="border-bottom:1px solid #eee">
+						<a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">N`gel brow & beauty</a>
+						</div>
+						<p style="font-size:1.1em">Hi,</p>
+						<p>Thank you for choosing Our Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes <h4 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;">324457</h4></p>
 						
-						  </td>
-						</tr>
-					  </table>
-					 
-					  <table border="0" cellpadding="0" cellspacing="0" width="450" id="templateContainer" style="border:1px none #DDDDDD;background-color:#FFFFFF;">
-						<tr>
-						  <td align="center" valign="top" style="border-collapse:collapse;">
-							
-							<table border="0" cellpadding="0" cellspacing="0" width="450" id="templateHeader" style="background-color:#FFFFFF;border-bottom:0;">
-							  <tr>
-								<td class="headerContent centeredWithBackground" style="border-collapse:collapse;color:#202020;font-family:Arial;font-size:34px;font-weight:bold;line-height:100%;padding:0;text-align:center;vertical-align:middle;background-color:#F4EEE2;padding-bottom:20px;padding-top:20px;">
-								  
-								  <img width="130" src="'.site_url('/assets/img/LOGO.png').'" style="width:130px;max-width:130px;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;" id="headerImage campaign-icon">
+						<a href = "'.site_url('otpVerify').'" style= "text-decoration: none;"><h2 style="background: #63d4d6;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">Verify Now</h2></a>
 						
-								</td>
-							  </tr>
-							</table>
-						  </td>
-						</tr>
-						<tr>
-						  <td align="center" valign="top" style="border-collapse:collapse;">
-							
-							<table border="0" cellpadding="0" cellspacing="0" width="450" id="templateBody">
-							  <tr>
-								<td valign="top" class="bodyContent" style="border-collapse:collapse;background-color:#FFFFFF;">
-								
-								  <table border="0" cellpadding="20" cellspacing="0" width="100%" style="padding-bottom:10px;">
-									<tr>
-									  <td valign="top" style="padding-bottom:1rem;border-collapse:collapse;" class="mainContainer">
-										<div style="text-align:center;color:#505050;font-family:Arial;font-size:14px;line-height:150%;">
-										  <h1 class="h1" style="color:#202020;display:block;font-family:Arial;font-size:24px;font-weight:bold;line-height:100%;margin-top:20px;margin-right:0;margin-bottom:20px;margin-left:0;text-align:center;">Verify Your Email</h1>
-			
-										  <p>Please click the button below to verify your email And enter this OTP.&nbsp;&nbsp;<b>'.$otp_number.'</b></p>
-										</div>
-									  </td>
-									</tr>
-									<tr>
-									  <td align="center" style="border-collapse:collapse;">
-										<table border="0" cellpadding="0" cellspacing="0" style="padding-bottom:10px;">
-										  <tbody>
-											<tr align="center">
-											  <td align="center" valign="middle" style="border-collapse:collapse;">
-												<a class="buttonText" href="'.site_url('otpVerify').'" target="_blank" style="color: #4A90E2;text-decoration: none;font-weight: normal;display: block;border: 2px solid #585858;padding: 10px 80px;font-family: Arial;">Verify</a>
-											  </td>
-											</tr>
-										  </tbody>
-										</table>
-									  </td>
-									</tr>
-								  </table>
-								</td>
-							  </tr>
-							</table>
-							
-						  </td>
-						</tr>
-						
-					  </table>
-					  <br>
-					</td>
-				  </tr>
-				</table>
+					</div>
+					</div>
 			  </center>
 			</body>
 			
@@ -486,7 +249,8 @@ class Home extends CI_Controller {
 				$this->db->update('nbb_customer', array('status'=> '1'));
 
 				if($getemail != ''){
-	
+					$headers = "MIME-Version: 1.0" . "\r\n";
+					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 					$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 					"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"><meta content="width=device-width, initial-scale=1" name="viewport"><title>PropTech Kenya Welcome Email</title>
@@ -640,9 +404,10 @@ class Home extends CI_Controller {
 					</tr>
 					</tbody></table>
 					</body></html>';
+
 					//echo $message;exit;
-					log_message('Debug', 'PHPMailer class is loaded.');
-					//define('PATH', dirname(__FILE__));
+					/*log_message('Debug', 'PHPMailer class is loaded.');
+					
 					require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
 					require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
 					$mail = new PHPMailer();
@@ -666,9 +431,21 @@ class Home extends CI_Controller {
 							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
 						} else {
 							$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
-						}
+						}*/
+
+						$to = $getemail;
+						$subject = "N'gel brow & beauty confirmation";
+						$txt = $message;
+
+						$retval = mail($to,$subject,$txt,$headers);
+         
+					if( $retval) {
+						redirect('login');
+					}else {
+						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
 					}
-					redirect('login');
+				}
+					//redirect('login');
 			}else{
 				$this->session->set_flashdata('msg','Enter Proper OTP'); 
 				redirect('otpVerify');
@@ -676,12 +453,15 @@ class Home extends CI_Controller {
 
 	}
 	public function all_home(){ 
-       
+
+		$data['allservices'] = $this->Home->getAllservicesList();
+		$data['activeServices'] = $this->Home->getactiveServices();
+
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
 		$this->load->view('front/header',$datahader);
-        $this->load->view('front/home');
+        $this->load->view('front/home',$data);
 		$this->load->view('front/footer');
 		 
     }
@@ -711,6 +491,7 @@ class Home extends CI_Controller {
 		$this->load->view('front/footer');
 		 
     }
+	
 	public function fetchSearchService(){
 		$serviceId = $_POST['serviceid'];
 		//echo $serviceId;exit;
@@ -768,16 +549,7 @@ class Home extends CI_Controller {
 		$this->load->view('front/footer');
 		 
     }  
-    public function courses(){
-    	 
-		$datahader['allchild_category'] = $this->Header->getAllchild_category();
-		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
-		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-		$this->load->view('front/header',$datahader);
-        $this->load->view('front/courses');
-		$this->load->view('front/footer');
-		 
-    }
+   
     public function contact_us(){ 
      
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();

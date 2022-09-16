@@ -15,7 +15,7 @@
             <div class="panel panel-default formPart">
               <div class="panel-heading patternbg">Create an <span>account</span></div>
               <div class="panel-body">
-			    <form method="post" action="<?php echo base_url() ?>/front/referredSignup" class="registerform">
+			    <form action="<?php echo base_url() ?>/front/referredSignup" class="registerform"  method="post" enctype="multipart/form-data">
 		
                   <div class="form-group">
 					          <input class="form-control" type="text" name="first_name" value="" placeholder="Enter First Name" require/>
@@ -132,6 +132,5 @@
         }
     });
 
-	
 
   </script>

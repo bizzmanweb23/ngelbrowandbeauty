@@ -30,6 +30,18 @@ class Home_model extends CI_Model
 		}
 		return $data;
 	}
-	
+	function getAllservicesList(){
+		$this->db->select('nbb_service.*');
+		$this->db->from('nbb_service');
+		$this->db->where('nbb_service.status', '1'); 
+		return $result = $this->db->get()->result_array(); 	
+	}
+	function getactiveServices(){
+		$this->db->select('nbb_service.*');
+		$this->db->from('nbb_service');
+		$this->db->where('nbb_service.status', '1');
+		$this->db->limit(1);  
+		return $result = $this->db->get()->result_array(); 	
+	}
 }
 ?>

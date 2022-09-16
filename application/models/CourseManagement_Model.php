@@ -6,9 +6,12 @@ class CourseManagement_Model extends CI_Model
 {
 	function getAllCourses()
     {
-      $this->db->select('nbb_course.*,nbb_child_category.category_name');
+      $this->db->select('nbb_course.*,
+	  nbb_child_category.category_name,
+	  nbb_parentcategory.name as parentcategory_name');
       $this->db->from('nbb_course');
 	  $this->db->join('nbb_child_category','nbb_child_category.id = nbb_course.category_id');
+	  $this->db->join('nbb_parentcategory','nbb_parentcategory.id = nbb_course.main_category_id');
       return $this->db->get()->result_array();
     }
 	function getEditAllCourses($id){

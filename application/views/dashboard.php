@@ -647,12 +647,6 @@ display:none;
         $('#start-date').val(date);
         var dt = new Date();
 
-		if (resourceObj) {
-			// Clicked on the entire day
-			$('#calendar').fullCalendar('changeView', 'agendaDay')
-			.fullCalendar('gotoDate', date.getFullYear(), date.getMonth(), date.getDate());
-		}
-
         var hours   = dt.getHours();
         var minutes = dt.getMinutes();
         if(minutes > 30) minutes = 30;
