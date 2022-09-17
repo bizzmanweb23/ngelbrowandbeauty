@@ -60,7 +60,7 @@
 
 
 <!-- OFFERS SECTION -->
-    <section class="clearfix offersSection patternbg">
+    <!--<section class="clearfix offersSection patternbg">
       <div class="container">
         <div class="row">
           <div class="col-sm-3 col-xs-12">
@@ -101,7 +101,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
 
 <!-- PRICING 4 COL SECTION -->
     <section class="clearfix pricingSection">
@@ -111,12 +111,13 @@
         </div>
 
         <div class="row">
+
           <div class="col-md-4">
             <div class="priceTableWrapper">
               <div class="priceImage">
-                <img src="img/home/pricing-1.jpg" data-src="img/home/pricing-1.jpg" alt="Image Price" class="img-responsive lazyestload">
+                <img src="<?= base_url(); ?>/uploads/service_img/ao.jpg" data-src="<?= base_url(); ?>/uploads/service_img/ao.jpg" alt="Image Price" class="img-responsive">
                 <div class="maskImage">
-                  <h3>Spa Light</h3>
+                  <h3>Hydration Skin Care</h3>
                 </div>
                 <div class="priceTag">
                   <h4>$59</h4>
@@ -126,11 +127,11 @@
               <div class="priceInfo">
                 <ul class="list-unstyled">
                   <li>Body Hand and Foot Massage</li>
-                  <li>Nail Cutting And Styling</li>
-                  <li>Spa Therapy</li>
-                  <li>Hair Coloring</li>
+                  <li>Lip Blush</li>
+                  <li>6D Microblading Brows</li>
+                  <li>Natural Classic</li>
                 </ul>
-                <a href="cart.html" class="btn btn-primary first-btn">Buy Now</a>
+                <a href="javascript:void(0)" class="btn btn-primary first-btn">Buy Now</a>
               </div>
             </div>
           </div>
@@ -138,9 +139,9 @@
           <div class="col-md-4">
             <div class="priceTableWrapper">
               <div class="priceImage">
-                <img src="img/home/pricing-2.jpg" data-src="img/home/pricing-2.jpg" alt="Image Price" class="img-responsive lazyestload">
+                <img src="<?= base_url(); ?>/uploads/service_img/h.jpg" data-src="<?= base_url(); ?>/uploads/service_img/h.jpg" alt="Image Price" class="img-responsive">
                 <div class="maskImage">
-                  <h3>oil massage</h3>
+                  <h3>Peel Deep Cleansing</h3>
                 </div>
                 <div class="priceTag">
                   <h4>$79</h4>
@@ -149,12 +150,12 @@
 
               <div class="priceInfo">
                 <ul class="list-unstyled">
-                  <li>Body Hand and Foot Massage</li>
-                  <li>Nail Cutting And Styling</li>
-                  <li>Spa Therapy</li>
-                  <li>Hair Coloring</li>
+                  <li>Gua Sha (Face , Eyes, Neck )</li>
+                  <li>Lash Mix</li>
+                  <li>Pores Therapy</li>
+                  <li>Mites Removal</li>
                 </ul>
-                <a href="cart.html" class="btn btn-primary first-btn">Buy Now</a>
+                <a href="javascript:void(0)" class="btn btn-primary first-btn">Buy Now</a>
               </div>
             </div>
           </div>
@@ -162,9 +163,9 @@
           <div class="col-md-4">
             <div class="priceTableWrapper">
               <div class="priceImage">
-                <img src="img/home/pricing-3.jpg" data-src="img/home/pricing-3.jpg" alt="Image Price" class="img-responsive lazyestload">
+                <img src="<?= base_url(); ?>/uploads/service_img/y.jpg" data-src="<?= base_url(); ?>/uploads/service_img/y.jpg" alt="Image Price" class="img-responsive">
                 <div class="maskImage">
-                  <h3>Spa & Beauty</h3>
+                  <h3>Acne Care</h3>
                 </div>
                 <div class="priceTag">
                   <h4>$85</h4>
@@ -173,12 +174,12 @@
 
               <div class="priceInfo">
                 <ul class="list-unstyled">
-                  <li>Body Hand and Foot Massage</li>
-                  <li>Nail Cutting And Styling</li>
-                  <li>Spa Therapy</li>
-                  <li>Hair Coloring</li>
+                  <li>Tightening Care</li>
+                  <li>V-shape face lifting</li>
+                  <li>Fine Eyeliner</li>
+                  <li>IPL</li>
                 </ul>
-                <a href="cart.html" class="btn btn-primary first-btn">Buy Now</a>
+                <a href="javascript:void(0)" class="btn btn-primary first-btn">Buy Now</a>
               </div>
             </div>
           </div>

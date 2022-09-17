@@ -40,7 +40,7 @@
                         <td><?= $OrderSupplierRow['order_code']?></td>
                         <td><?= $OrderSupplierRow['supplier_name']?></td>
                         <td><?php if($OrderSupplierRow['order_details'] != ''){ ?>
-													<?= substr($OrderSupplierRow['order_details'],0,50) ?>...<a data-OrderSupplierid="<?=  $OrderSupplierRow['id'];?>" href="javascript:void(0);" class="btn btn-default OrderSupplierDetails" title="View" style="color:#b8860b"><i class="fa fa-eye" aria-hidden="true"></i></a>
+													<?= substr($OrderSupplierRow['order_details'],0,50) ?>...<a data-OrderSupplierid="<?=  $OrderSupplierRow['id'];?>" href="javascript:void(0);" class="btn btn-default OrderSupplierDetails" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>
 													<?php }else{ ?>
 
 													<?php } ?>

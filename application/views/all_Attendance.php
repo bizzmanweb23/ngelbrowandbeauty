@@ -91,9 +91,9 @@
 							</td>
 							<td><?= $employee_AttendanceRow['work_hours']?></td>
 						<!--	<td>
-								<a data-emp_id="<?= $employee_AttendanceRow['emp_id'];?>"	data-attendance_id = "<?= $employee_AttendanceRow['id'] ?>"	href="javascript:void(0);" class="btn btn-default editLogOut" title="Edit" style="color:#b8860b" ><i class="fa fa-edit" aria-hidden="true"></i></a>
-								<a href="<?= base_url('admin/employeeManagement/edit_employeeLeave/'.$employee_leaveRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#b8860b"><i class="fa fa-edit"></i></a>
-								<a href="<?= base_url('hrms/employeeManagement/deleteEmployeeLeave/'. $employee_leaveRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#b8860b"><i class="fa fa-trash"></i></a>
+								<a data-emp_id="<?= $employee_AttendanceRow['emp_id'];?>"	data-attendance_id = "<?= $employee_AttendanceRow['id'] ?>"	href="javascript:void(0);" class="btn btn-default editLogOut" title="Edit" style="color:#61d3d4" ><i class="fa fa-edit" aria-hidden="true"></i></a>
+								<a href="<?= base_url('admin/employeeManagement/edit_employeeLeave/'.$employee_leaveRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+								<a href="<?= base_url('hrms/employeeManagement/deleteEmployeeLeave/'. $employee_leaveRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 							</td>-->
 							</tr>
 							<?php endforeach; ?>

@@ -188,7 +188,7 @@
 <style>
 		
 	.heading{
-		background-color: #b8860b;
+		background-color: #61d3d4;
 		color: white;
 		padding: 5px;
 		text-align: left;

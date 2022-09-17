@@ -74,5 +74,13 @@ class Header_Model extends CI_Model
 		$this->db->where('nbb_customer.id', $id);
 		return $this->db->get()->result_array();
 	}
+
+	function getPackageServices(){
+		
+		$this->db->select("nbb_packages.*");
+		$this->db->from("nbb_packages");
+		return $this->db->get()->result_array();
+
+	}
 }
 ?>

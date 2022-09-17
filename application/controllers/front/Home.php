@@ -481,6 +481,7 @@ class Home extends CI_Controller {
 		//echo $serviceId;exit;
 		$data['allservices'] = $this->Header->getAllservicesList($serviceId);
 		$data['activeServices'] = $this->Header->getactiveServices($serviceId);
+		$data['packageServices'] = $this->Header->getPackageServices();
 
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();

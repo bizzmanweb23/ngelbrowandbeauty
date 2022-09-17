@@ -49,7 +49,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
-                  <thead style="background-color: #fff; color:#b8860b">
+                  <thead style="background-color: #000000; color:#61d3d4">
                   <tr>
                     <th>Role Name</th>
 										<th>Permission Name</th>

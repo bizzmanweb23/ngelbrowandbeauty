@@ -11,11 +11,11 @@
     </section>
 
 	<nav class="nav nav-tabs" id="myTab" role="tablist">
-		<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#order" role="tab" aria-controls="nav-home" aria-selected="true" style="color:#b8860b">Product Info</a>
-		<a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#product" role="tab" aria-controls="nav-home" aria-selected="true" style="color:#b8860b">Delivary Address</a>
-		<?php /* <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#factory" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:#b8860b">Factory Order</a>*/ ?>
-		<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#delivery" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:#b8860b">Delivery Status</a>
-		<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#customer" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:#b8860b">Customer Info</a>
+		<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#order" role="tab" aria-controls="nav-home" aria-selected="true" style="color:#61d3d4">Product Info</a>
+		<a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#product" role="tab" aria-controls="nav-home" aria-selected="true" style="color:#61d3d4">Delivary Address</a>
+		<?php /* <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#factory" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:#61d3d4">Factory Order</a>*/ ?>
+		<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#delivery" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:#61d3d4">Delivery Status</a>
+		<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#customer" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:#61d3d4">Customer Info</a>
 	</nav>
 	<br>
 	<div class="tab-content" id="nav-tabContent" style="margin: auto 3rem;">

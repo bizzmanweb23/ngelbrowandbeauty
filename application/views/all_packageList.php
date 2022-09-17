@@ -94,7 +94,7 @@
 					
 				</ul>
 					<!--table class="table table-bordered" style="overflow: auto; width: 100%; height: 150px; text-align: center;">
-						<thead style="background-color: #fff; color:#b8860b;position: sticky;top: 0;">
+						<thead style="background-color: #fff; color:#61d3d4;position: sticky;top: 0;">
 						<tr>
 							<th>All Package Product</th>
 						</tr>
@@ -117,7 +117,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
 	.product_style{
-		background-color: #b8860b;
+		background-color: #61d3d4;
 		color: white;
 		padding: 5px;
 		text-align: left;
