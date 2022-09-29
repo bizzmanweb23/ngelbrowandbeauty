@@ -21,7 +21,7 @@
               
               <!-- /.card-header -->
               <div class="card-body">
-                <form id="add_customer" action="<?= base_url('admin/welcome/post_add_customer')?>" method="post" enctype="multipart/form-data">
+                <form id="add_customer" action="<?= base_url('admin/CustomerManagement/post_add_customer')?>" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="circle">
 							<img class="profile-pic img_profile" src="/uploads/profile/" width="150">
@@ -150,14 +150,7 @@
 							</div>
 						</div>
 					</div>     
-
-					<div class="form-group">
-						<label for="address" class="col-md-12 control-label">Address
-						</label>
-						<div class="col-md-12">
-							<textarea id="address" name="address" rows="5" cols="80" style = "width: 100%;"></textarea>
-						</div>
-					</div>  
+  
 					<div class="form-group">
 						<label for="address" class="col-md-12 control-label">Medical Information
 						</label>
@@ -171,7 +164,108 @@
 						<div class="col-md-12">
 							<textarea name="transactional_records" rows="5" cols="80" style = "width: 100%;"></textarea>
 						</div>
-                  	</div> 
+                  	</div>
+
+					<!-- Shipping Address --> 
+					  <h3 class="heading" align="center">Shipping Address</h3>
+
+					  	<div class="form-group">
+
+							<label for="full_name" class="col-sm-6 col-form-label">First Name</label>
+
+							<div class="col-sm-6">
+
+							<input type="text" name = "shipping_firstname" class="form-control" placeholder="First Name">
+							</div>
+						</div>
+
+						<div class="form-group">
+
+						<label for="full_name" class="col-sm-6 col-form-label">Last Name</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shipping_lastname" class="form-control" placeholder="Last Name">
+						</div>
+						</div>
+
+					<div class="form-group">
+
+						<label for="contact_number" class="col-sm-6 col-form-label">contact number</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shipping_contactno" class="form-control" placeholder="Contact Number">
+						</div>
+					</div>
+					
+
+					<div class="form-group">
+
+						<label for="address" class="col-sm-6 col-form-label">Address</label>
+
+						<div class="col-sm-6">
+							<textarea id="address" name="shipping_address" rows="5" cols="80" style = "width: 100%;"></textarea>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+
+						<label for="suburb" class="col-sm-6 col-form-label">Country</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shipping_country" class="form-control" placeholder="Country">
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<label for="suburb" class="col-sm-6 col-form-label">Hse / Blk No.</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shipping_hse_blk_no" class="form-control" placeholder="Hse / Blk No.">
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<label for="suburb" class="col-sm-6 col-form-label">Unit No.</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shippingunit_no" class="form-control" placeholder="Unit No.">
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<label for="suburb" class="col-sm-6 col-form-label">Building / Street Name</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shipping_street" class="form-control" placeholder="Building / Street Name">
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<label for="postcode" class="col-sm-6 col-form-label">postcode</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shipping_postalcode" class="form-control" placeholder="Postcode">
+						</div>
+					</div>
+
+
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label text-secondary font-italic billing_shipping_different" for="exampleCheck1" style="margin-left:20px;">Billing details Same as Shipping details</label>
+					</div>
+
 									    
                   	<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
               </form>
@@ -189,6 +283,16 @@
  </div> 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <style>
+	.heading{
+		background-color: #61d3d4;
+		color: white;
+		padding: 5px;
+		text-align: left;
+		border-radius: 10px;
+		padding-left: 10px;
+	}		
+ </style>
 <script>
     $("#dob").change(function() {
     var dob = $('#dob').val();

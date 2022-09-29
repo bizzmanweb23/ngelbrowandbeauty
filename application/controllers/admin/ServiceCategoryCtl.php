@@ -537,9 +537,9 @@ class ServiceCategoryCtl extends CI_Controller {
                 redirect('alltherapists');
             }
         }
-     }
+    }
 
-	 public function customer()
+	public function customer()
 	 {
 	
 		$data['customer'] = $this->Auth->getAllCustomer();

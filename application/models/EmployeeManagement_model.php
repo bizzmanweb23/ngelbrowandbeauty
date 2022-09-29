@@ -124,6 +124,7 @@ class EmployeeManagement_model extends CI_Model
 				'husband_name' => $row['husband_name'],
 				'gender' => $row['gender'],
 				'designation' => $row['designation'],
+				'therapist_color' => $row['therapist_color'],
 				'payStructure' => $row['payStructure'],
 				'basicSalary' => $row['basicSalary'],
 				'jobtype' => $row['jobtype'],

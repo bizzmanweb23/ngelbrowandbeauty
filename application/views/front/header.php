@@ -11,66 +11,83 @@
 
 	
    <!-- JAVASCRIPTS -->
-   <script src="<?= base_url(); ?>/assets/front/plugins/jquery/jquery.min.js"></script>
-  <script src="<?= base_url(); ?>/assets/front/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> 
-  <script src='<?= base_url(); ?>/assets/front/plugins/selectbox/jquery.selectbox-0.1.3.min.js'></script>
-  <script src='<?= base_url(); ?>/assets/front/plugins/owl-carousel/owl.carousel.min.js'></script>
-  <script src='<?= base_url(); ?>/assets/front/plugins/isotope/isotope.min.js'></script>
-  <script src='<?= base_url(); ?>/assets/front/plugins/fancybox/jquery.fancybox.min.js'></script> 
-  <script src='<?= base_url(); ?>/assets/front/plugins/isotope/isotope-triger.min.js'></script>
-  <script src='<?= base_url(); ?>/assets/front/plugins/datepicker/bootstrap-datepicker.min.js'></script> 
-  <script src="<?= base_url(); ?>/assets/front/plugins/lazyestload/lazyestload.js"></script> 
-  <script src="<?= base_url(); ?>/assets/front/plugins/smoothscroll/SmoothScroll.js"></script> 
-	<script src='<?= base_url(); ?>/assets/front/plugins/no-ui-slider/nouislider.min.js'></script>
+  <script src="<?= base_url(); ?>assets/front/plugins/jquery/jquery.min.js"></script>
+  <script src="<?= base_url(); ?>assets/front/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> 
+  <script src='<?= base_url(); ?>assets/front/plugins/selectbox/jquery.selectbox-0.1.3.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/owl-carousel/owl.carousel.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/isotope/isotope.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/fancybox/jquery.fancybox.min.js'></script> 
+  <script src='<?= base_url(); ?>assets/front/plugins/isotope/isotope-triger.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/datepicker/bootstrap-datepicker.min.js'></script> 
+  <script src="<?= base_url(); ?>assets/front/plugins/lazyestload/lazyestload.js"></script> 
+  <script src="<?= base_url(); ?>assets/front/plugins/smoothscroll/SmoothScroll.js"></script> 
+	<script src='<?= base_url(); ?>assets/front/plugins/no-ui-slider/nouislider.min.js'></script>
 
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
-  <script src="<?= base_url(); ?>/assets/front/js/custom.js"></script>
-	<script src="<?= base_url(); ?>/assets/front/options/optionswitcher.js"></script>
-  <script src='<?= base_url(); ?>/assets/front/plugins/fancybox/fancyMorph.js'></script>
+  <script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
+	<script src="<?= base_url(); ?>assets/front/options/optionswitcher.js"></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/fancybox/fancyMorph.js'></script>
 
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&amp;family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> 
   <!-- PLUGINS CSS STYLE -->
-  <link href="<?= base_url(); ?>/assets/front/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url(); ?>/assets/front/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="<?= base_url(); ?>/assets/front/plugins/animate/animate.css" rel="stylesheet"> 
-  <link href='<?= base_url(); ?>/assets/front/plugins/selectbox/select_option1.css' rel='stylesheet'>
-  <link href='<?= base_url(); ?>/assets/front/plugins/owl-carousel/owl.carousel.min.css' rel='stylesheet' media='screen'>
-  <link href='<?= base_url(); ?>/assets/front/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'> 
-  <link href='<?= base_url(); ?>/assets/front/plugins/isotope/isotope.min.css' rel='stylesheet'>
-  <link href='<?= base_url(); ?>/assets/front/plugins/datepicker/datepicker.min.css' rel='stylesheet'> 
-	<link href='<?= base_url(); ?>/assets/front/plugins/no-ui-slider/nouislider.min.css' rel='stylesheet'>
-	<link href="<?= base_url(); ?>/assets/front/options/optionswitch.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/front/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/front/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/front/plugins/animate/animate.css" rel="stylesheet"> 
+  <link href='<?= base_url(); ?>assets/front/plugins/selectbox/select_option1.css' rel='stylesheet'>
+  <link href='<?= base_url(); ?>assets/front/plugins/owl-carousel/owl.carousel.min.css' rel='stylesheet' media='screen'>
+  <link href='<?= base_url(); ?>assets/front/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'> 
+  <link href='<?= base_url(); ?>assets/front/plugins/isotope/isotope.min.css' rel='stylesheet'>
+  <link href='<?= base_url(); ?>assets/front/plugins/datepicker/datepicker.min.css' rel='stylesheet'> 
+	<link href='<?= base_url(); ?>assets/front/plugins/no-ui-slider/nouislider.min.css' rel='stylesheet'>
+	<link href="<?= base_url(); ?>assets/front/options/optionswitch.css" rel="stylesheet">
 
   <!-- CUSTOM CSS -->
-  <link href="<?= base_url(); ?>/assets/front/css/style.css" rel="stylesheet">
-  <link href="<?= base_url(); ?>/assets/front/css/default.css" rel="stylesheet" id="option_color">
-  <link href="<?= base_url(); ?>/assets/front/css/owl.carousel.min.css" rel="stylesheet" >
+  <link href="<?= base_url(); ?>assets/front/css/style.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/front/css/default.css" rel="stylesheet" id="option_color">
+  <link href="<?= base_url(); ?>assets/front/css/owl.carousel.min.css" rel="stylesheet" >
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/front/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<!--<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">-->
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/front/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/front/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/front/vendor/select2/select2.min.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/front/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<!--<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/css/main.css">-->
 <!--===============================================================================================-->
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!--<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,zh-CN'}, 'google_translate_element');
+}
+
+
+/*function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en', includedLanguages: 'en,zh-CN', autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}*/
+
+        
+</script>
 
   <!-- FAVICON -->
-  <link href="<?= base_url(); ?>/assets/front/img/favicon.png" rel="shortcut icon">
+  <link href="<?= base_url(); ?>assets/front/img/favicon.png" rel="shortcut icon">
 
   <style>
     .no-js #loader {
@@ -106,10 +123,15 @@
       <div class="top-info-bar">
         <div class="container">
           <div class="top-bar-right">
-            <ul class="list-inline">
-              <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> info@yourdomain.com</a></li>
-              <li><span><i class="fa fa-phone" aria-hidden="true"></i>+1 234 567 8900</span></li>
-            </ul>
+						<div class="row">
+								<div class="col-md-10">
+								<a href="javascript:void(0)"><i class="fa fa-envelope" aria-hidden="true"></i> info@yourdomain.com</a>
+								</div>
+								<div class="col-md-2">
+								<div id="google_translate_element"></div>
+								</div>
+							</div>
+							
           </div>
         </div>
       </div>
@@ -129,7 +151,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<?= base_url(); ?>home">Home <span class="sr-only">(current)</span></a>
               </li>
   
               <li class="nav-item">
@@ -174,10 +196,12 @@
 											<a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)"><i class="las la-user" style="font-size:32px;"></i></a>
 											<ul class="dropdown-menu">
 													
-													<li><a href="<?php echo base_url('myProfile') ?>">My Profile</a></li>
-													<li><a href="<?php echo base_url('referdToFriend') ?>">Referred to Friend</a></li>
-													<li><a href="<?php echo base_url() ?>wallet" target="_blank">Wallet</a></li>
-													<li><a href="<?php echo base_url('logout') ?>">Logout</a></li>
+													<li><a href="<?php echo base_url('myProfile') ?>"><span style="font-size: 13px;">My Profile</span></a></li>
+													<li><a href="<?php echo base_url('referdToFriend') ?>"><span style="font-size: 13px;">Referred to Friend</span></a></li>
+													<li><a href="<?php echo base_url('cartList') ?>"><span style="font-size: 13px;">Cart List</span></a></li>
+													<li><a href="<?php echo base_url('wishList') ?>"><span style="font-size: 13px;">WishList</span></a></li>
+													<li><a href="<?php echo base_url() ?>wallet" target="_blank"><span style="font-size: 13px;">Wallet</span></a></li>
+													<li><a href="<?php echo base_url('logout') ?>"><span style="font-size: 12px;">Logout</span></a></li>
 											</ul>
 										</li>
 
@@ -192,7 +216,7 @@
           </div>
 
           <div class="cart_btn">
-							<a href="cart.html"><i class="las la-shopping-cart" style="font-size:32px;" aria-hidden="true"></i><span class="badge">0</span></a>					
+							<a href="<?php echo base_url('cartList') ?>"><i class="las la-shopping-cart" style="font-size:32px;" aria-hidden="true"></i><span class="badge">0</span></a>					
           </div>
 					<!--<div class="cart_btn p-3" data-toggle="modal" data-target="#myModal">
 							<a href="javascript:void(0)"><i class="las la-user-alt" style="font-size:32px;"></i></a>

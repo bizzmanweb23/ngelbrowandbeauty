@@ -244,6 +244,10 @@
 										<?php endforeach; ?> 
 									</select>
 								</td>
+								<td>Date Of Joining</td>
+								<td>
+									<input type="date" name = "date_of_joining" value="" class="form-control">
+								</td>
 							</tr>
 							<tr>
 								<td colspan="1">Willing to relocate</td>
@@ -257,23 +261,6 @@
 							</tr>
 
 							<tr>
-								<td>Designation</td>
-								<td>
-									<select name="designation" class="form-control">
-										<option>Select Designation</option>
-										<?php foreach($empDesignation as $empDesignationRow): ?>
-										<option value="<?= $empDesignationRow['id']?>"><?= $empDesignationRow['role_name']?></option>
-										<?php endforeach; ?> 
-									</select>
-								</td>
-								<td>Date Of Joining</td>
-								<td>
-									<input type="date" name = "date_of_joining" value="" class="form-control">
-								</td>
-					
-							</tr>
-							<tr>
-								
 								<td>Pay Structure</td>
 								<td>
 									<select name="payStructure" class="form-control">
@@ -287,6 +274,23 @@
 								<td>
 									<input type="text" name = "basicSalary" value="" class="form-control">
 								</td>
+							</tr>
+							<tr>
+								<td>Designation</td>
+								<td>
+									<select name="designation" class="form-control choiceDesignation">
+										<option>Select Designation</option>
+										<?php foreach($empDesignation as $empDesignationRow): ?>
+										<option value="<?= $empDesignationRow['id']?>"><?= $empDesignationRow['role_name']?></option>
+										<?php endforeach; ?> 
+									</select>
+								</td>
+								<td class="showColorBox" style="display: none;">Therapist color</td>
+								<td class="showColorBox" style="display: none;">
+									
+									<input type="color" name = "therapist_color" value="" class="form-control">
+								</td>
+					
 							</tr>
 
 							<tr>
@@ -353,11 +357,20 @@
 			$(".profile-pic-upload-button").on('click', function() {
 				$(".file-upload").click();
 			});
+
+			$(".choiceDesignation").change(function(){
+				if (this.value == '7') {
+					$(".showColorBox").show();
+				}else{
+					$(".showColorBox").hide();
+				}
+			});
 	});
+	
 	</script>
 	<style>
-		
-		.heading{
+   
+	.heading{
 			background-color: #61d3d4;
 			color: white;
 			padding: 5px;

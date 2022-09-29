@@ -146,8 +146,9 @@ class Welcome extends CI_Controller {
                 $end = $events['end_date'];
                 $endTime = $events['end_time'];
 				$ev_status = $events['status'];
+				$color = $events['therapist_color'];
 
-				if($ev_status == 1){
+				/*if($ev_status == 1){
 					$color = '#A020F0';
 				}
 				elseif($ev_status == 2){
@@ -158,7 +159,7 @@ class Welcome extends CI_Controller {
 				}
 				else{
 					$color = '#FFA500';
-				}
+				}*/
 
                 $data2[] = 
                 [
@@ -437,159 +438,9 @@ class Welcome extends CI_Controller {
     public function customer()
     {
        $data['customer'] = $this->Auth->getAllCustomer();
+	   $data['allstate'] = $this->CustomerManagement->getAllstate();
        $this->layout->view('customers',$data); 
     }
-    
-    public function add_customer(){
-       if(empty($this->session->has_userdata('id'))){
-        redirect('admin');
-      	}
-		$data['AdminUser'] = $this->Auth->getAllAdminUser();
-       	$data['name'] = $this->session->userdata('name');
-
-       	$this->layout->view('add_customer',$data);
-    
-    }
-    
-    public function post_add_customer(){
-		//extract($_POST);
-	
-		$data = array(
-			'first_name' => $this->input->post('first_name'),
-			'last_name' => $this->input->post('last_name'),
-			'dob' => $this->input->post('dob'),
-			'age' => $this->input->post('age'),
-			'email' => $this->input->post('email'),
-			'contact' => $this->input->post('contact'),
-			'address' => $this->input->post('address'),
-			'medical_information' => $this->input->post('medical_information'),
-			'transactional_records' => $this->input->post('transactional_records'),
-			'skin_conditions' => $this->input->post('skin_conditions'),
-			'reference_name' => $this->input->post('reference_name'),
-			'membership' => $this->input->post('membership'),
-			'status' => $this->input->post('status'),
-			'created_by' => $this->session->userdata('id'),
-			'created_at' => date("Y-m-d H:i:s"));
-
-				$insert = $this->Auth->storeCustomer($data); 
-				$insert_id = $this->db->insert_id();
-				if($insert==true)
-				{
-					$ref_number = 'NBB'. random_string('alnum',5);
-
-					$this->db->where('id' , $insert_id);
-					$this->db->update('nbb_customer', array('referreduser_id'=>$ref_number));
-				}
-				
-
-				if($insert==true)
-				{
-					$this->load->library('upload');
-					if($_FILES['profile_picture']['name'] != '')
-					{
-		
-						$_FILES['file']['name']       = $_FILES['profile_picture']['name'];
-						$_FILES['file']['type']       = $_FILES['profile_picture']['type'];
-						$_FILES['file']['tmp_name']   = $_FILES['profile_picture']['tmp_name'];
-						$_FILES['file']['error']      = $_FILES['profile_picture']['error'];
-						$_FILES['file']['size']       = $_FILES['profile_picture']['size'];
-		
-						// File upload configuration
-						$uploadPath = 'uploads/profile_img/';
-						$config['upload_path'] = $uploadPath;
-						$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
-						$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-						$config['max_height'] = "";
-						$config['max_width'] = "";
-		
-						// Load and initialize upload library
-						$this->load->library('upload', $config);
-						$this->upload->initialize($config);
-		
-						// Upload file to server
-						if($this->upload->do_upload('file')){
-							// Uploaded file data
-							$imageData = $this->upload->data();
-							$uploadImgData['profile_picture'] = $imageData['file_name'];
-						}
-						$update=$this->Main->update('id',$insert_id, $uploadImgData,'nbb_customer');         
-					} 
-
-				}
-				else
-				{
-					$errorUploadType = 'Some problem occurred, please try again.';
-				}                   
-			
-		redirect('customer');                 
-    }
-	public function editCustomer(){
-		if(empty($this->session->has_userdata('id'))){
-		  redirect('admin');
-		}
-		$customerId = $this->uri->segment(4);
-		$data['AdminUser'] = $this->Auth->getAllAdminUser();
-		$data['customerDataForEdit'] = $this->Auth->getCustomerData($customerId);
-		$this->layout->view('edit_Customer',$data);
-   	}
-   public function post_edit_customer(){
-	if(empty($this->session->has_userdata('id'))){
-	  redirect('admin');
-	}
-		$customerid = $this->input->post('customerid');
-		$data = array(
-			'first_name' => $this->input->post('first_name'),
-			'last_name' => $this->input->post('last_name'),
-			'dob' => $this->input->post('dob'),
-			'age' => $this->input->post('age'),
-			'email' => $this->input->post('email'),
-			'contact' => $this->input->post('contact'),
-			'address' => $this->input->post('address'),
-			'medical_information' => $this->input->post('medical_information'),
-			'transactional_records' => $this->input->post('transactional_records'),
-			'skin_conditions' => $this->input->post('skin_conditions'),
-			'reference_name' => $this->input->post('reference_name'),
-			'membership' => $this->input->post('membership'),
-			'status' => $this->input->post('status')
-
-		);
-		  $result=$this->Main->update('id',$customerid, $data,'nbb_customer');
-
-		  $this->load->library('upload');
-			if($_FILES['profile_picture']['name'] != '')
-			{
-
-				$_FILES['file']['name']       = $_FILES['profile_picture']['name'];
-				$_FILES['file']['type']       = $_FILES['profile_picture']['type'];
-				$_FILES['file']['tmp_name']   = $_FILES['profile_picture']['tmp_name'];
-				$_FILES['file']['error']      = $_FILES['profile_picture']['error'];
-				$_FILES['file']['size']       = $_FILES['profile_picture']['size'];
-
-				// File upload configuration
-				$uploadPath = 'uploads/profile_img/';
-				$config['upload_path'] = $uploadPath;
-				$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
-				$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-				$config['max_height'] = "";
-				$config['max_width'] = "";
-
-				// Load and initialize upload library
-				$this->load->library('upload', $config);
-				$this->upload->initialize($config);
-
-				// Upload file to server
-				if($this->upload->do_upload('file')){
-					// Uploaded file data
-					$imageData = $this->upload->data();
-					$uploadImgData['profile_picture'] = $imageData['file_name'];
-				}
-				if(!empty($uploadImgData)){
-					$update=$this->Main->update('id',$customerid, $uploadImgData,'nbb_customer');         
-				}
-			} 
-		 
-			redirect('admin/welcome/editCustomer/'. $customerid);
-	} 
 
 	public function viewPastTransaction()
     {
@@ -600,33 +451,34 @@ class Welcome extends CI_Controller {
 	   $data['AllCanceledOrder'] = $this->OrderManagement->getEveryCustomerCanceledOrder($customerId);
        $this->layout->view('all_orderProduct',$data); 
     }
-
-	public function deleteCustomer()
-    {
-        if($this->session->has_userdata('id')!=false)
-        {
-            $customerId=$this->uri->segment(4);
-            $result=$this->Main->delete('id',$customerId,'nbb_customer');
-            if($result==true)
-            {
-                redirect('customer');
-            }
-            else
-            {
-                redirect('customer');
-            }
-        }
-    } 
     public function getCustomerByID(){
         $data=$this->Auth->getCustomerByID($this->input->get('contact'));
         echo json_encode($data);
     }
-	/*public function generatecustomerNumber()
-	{
-		
-		return $str;
-	}*/
+	public function all_CreditWallet()
+    {
+		$customerId = $this->uri->segment(4);
+       	$data['creditWallet'] = $this->Auth->getCreditWallet($customerId);
+       	$this->layout->view('all_CreditWallet',$data); 
+    }
+	public function all_ExpenseWallet()
+    {
+		$customerId = $this->uri->segment(4);
+       	$data['expenseWallet'] = $this->Auth->getExpenseWallet($customerId);
+       	$this->layout->view('all_ExpenseWallet',$data); 
+    }
+	function all_paymenthistory(){
+		$customerId = $this->uri->segment(4);
+       	$data['paymenthistory'] = $this->Auth->getpaymenthistory($customerId);
+       	$this->layout->view('all_paymenthistory',$data); 
+	}
+	function all_referredby(){
+		$customerId = $this->uri->segment(4);
+       	$data['customerUser'] = $this->Auth->getreferredby($customerId);
+       	$this->layout->view('all_referredby',$data); 
+	}
 	
+
     public function logout(){
 	    $this->session->sess_destroy();
 	    redirect('welcome');

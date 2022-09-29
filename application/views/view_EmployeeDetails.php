@@ -23,7 +23,7 @@
 										<h4><?= $emp_Details['first_name'].' '.$emp_Details['last_name'] ?></h4>
 										<p class="text-secondary mb-1"><?= $emp_Details['designation_name'] ?></p>
 										<p class="text-muted font-size-sm"><?= $emp_Details['emp_number'] ?></p>
-										<p class="text-muted font-size-sm"><?= $emp_Details['pan_number'] ?></p>
+										
 										</div>
 									</div>
 								</div>
@@ -67,7 +67,15 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col-sm-3">
-									<h6 class="mb-0">Aadhaar Number</h6>
+									<h6 class="mb-0">Passport No.</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+									<?= $emp_Details['pan_number'] ?>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-3">
+									<h6 class="mb-0">ID No.</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
 									<?= $emp_Details['aadhaar_number'] ?>
@@ -473,7 +481,7 @@
 					<h6 class="mb-0">Designation</h6>
 				</div>
 				<div class="col-md-9 text-secondary">
-					<select name="designation" class="form-control">
+					<select name="designation" class="form-control choiceDesignation">
 						<option hidden>Select Designation</option>
 						<?php foreach($empDesignation as $empDesignationRow): ?>
 						<option value="<?= $empDesignationRow['id']?>" <?php if($emp_Details['designation'] == $empDesignationRow['id']){ echo 'selected';} ?>><?= $empDesignationRow['role_name']?></option>
@@ -481,6 +489,17 @@
 					</select>
 				</div>
 			</div>
+			<div class="showColorBox" style="<?php if($emp_Details['designation'] == 7){ ?> display: block; <?php }else{ ?> display: none; <?php } ?>">
+				<div class="row pt-2">
+					<div class="col-md-3">
+						<h6 class="mb-0">Therapist color</h6>
+					</div>
+					<div class="col-md-9 text-secondary">
+						<input type="color" name="therapist_color" value="<?= $emp_Details['therapist_color'] ?>" class="form-control">
+					</div>
+				</div>
+			</div>
+			
 			<div class="row pt-2">
 				<div class="col-md-3">
 					<h6 class="mb-0">Job Type</h6>
@@ -557,7 +576,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-	 $("#dob").change(function() {
+	$("#dob").change(function() {
     var dob = $('#dob').val();
     //console.log(dob);
     if(dob != ''){
@@ -565,7 +584,7 @@
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
         $('#age').val(age);
-		}  
+	}  
   })
 $(document).ready(function(){
 	$(".editAddressDetails").click(function(){
@@ -581,6 +600,14 @@ $(document).ready(function(){
 	$(".close_btn").click(function(){
 		$("#editPersonalDeatilsModel").modal("hide"); 				
     });
+
+	$(".choiceDesignation").change(function(){
+		if (this.value == '7') {
+			$(".showColorBox").show();
+		}else{
+			$(".showColorBox").hide();
+		}
+	});
 
 });
 </script>

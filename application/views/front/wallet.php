@@ -1,14 +1,3 @@
-
-<!-- PAGE TITLE SECTION -->
-    <section class="clearfix pageTitleArea" style="background-image: url(img/blog/pageTitle-bg.jpg);">
-        <div class="container">
-	        <div class="pageTitle">
-	            <h1>Wallet</h1>
-	        </div>
-        </div>
-    </section>
-
-
 <div class="container">
     <div class="row mt-5 mb-5">
         <div class="col-md-6">
@@ -29,9 +18,8 @@
 
     <div class="tabCommon tabThree">
         <ul class="nav nav-tabs">
-          <li><a class="active" data-toggle="tab" href="#WH">Wallet History</a></li>
+          <li><a class="active" data-toggle="tab" href="#WH">Expense Wallet</a></li>
           <li><a data-toggle="tab" href="#CW">Credit Wallet</a></li>
-          <li><a data-toggle="tab" href="#LWH">Loyalty Wallet Hisotry</a></li>
           <li><a data-toggle="tab" href="#PH">Payment History</a></li>
         </ul>
 
@@ -40,24 +28,21 @@
             <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Name</th>
+										<th>Amount</th>
                     <th>Payment Type</th>
-                    <th>Amount</th>
-                    <th>Screenshot</th>
                     <th>Status</th>
                     <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
+									<?php foreach($expense_wallet as $expense_walletRow): ?>
                   <tr>
-                    <td>John</td>
-                    <td>Cash</td>
-                    <td>$152.00</td>
-                    <td>File</td>
-                    <td>Pending</td>
-                    <td>04.12.2021</td>
+                    <td><?= $expense_walletRow['balance']; ?></td>
+                    <td><?= $expense_walletRow['payment_type']; ?></td>
+                    <td>$<?= $expense_walletRow['status']; ?></td>
+                    <td><?= $expense_walletRow['created_at']; ?></td>
                   </tr>
-                  
+                  <?php endforeach; ?>
                 </tbody>
               </table>
         </div>
@@ -66,20 +51,19 @@
             <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Username</th>
-                    <th>Amount</th>
+                    <th>Referral Balance</th>
                     <th>Status</th>
                     <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
+								<?php foreach($credit_wallet as $credit_walletRow): ?>
                   <tr>
-                    <td>John</td>    
-                    <td>$152.00</td>
-                    <td>Pending</td>
-                    <td>04.12.2021</td>
+                    <td><?= $credit_walletRow['referral_balance']; ?></td>
+                    <td><?= $credit_walletRow['status']; ?></td>
+                    <td>$<?= $credit_walletRow['created_at']; ?></td>
                   </tr>
-                  
+                  <?php endforeach; ?>
                 </tbody>
               </table>    
         </div>

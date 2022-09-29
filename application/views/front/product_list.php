@@ -1,8 +1,9 @@
 <!-- PRODUCT SECTION -->
     <section class="container-fluid clearfix productArea">
+			<div class="messages"></div>
       <div class="container">
         <div class="row">
-
+				
           <div class="col-sm-3 col-xs-12">
             
 
@@ -21,6 +22,7 @@
                 <span class="price-value" id="upper-value"></span>
               </div>
             </div>
+
           </div>
         
 
@@ -31,260 +33,47 @@
               <div class="col-md-6 col-lg-4">
                 <div class="produtSingle">
                   <div class="produtImage">
+										<?php if($servicesImg_row['p_image'] == ''){ ?>
+											<img src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" data-src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" alt="Image Product" class="img-responsive">
+										<?php	}else{ ?>
                     <img src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" data-src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" alt="Image Product" class="img-responsive">
+										<?php } ?>
+										<div class="productMask">
+                      <ul class="list-inline productOption">
+                        <li class="favourite-icon">
+                         
+													<?php $user_id = $this->session->userdata('id');  
+													$orderTotal_sql = "SELECT nbb_wishlist.* 
+													FROM nbb_wishlist 
+													WHERE nbb_wishlist.product_id = '".$servicesImg_row['id']."' AND nbb_wishlist.userId = '".$user_id."'";  
+														$orderTotal_query = $this->db->query($orderTotal_sql); 
+														$orderTotal_num = $orderTotal_query->num_rows();
+														if($orderTotal_num > 0){ ?>
+																<a class="icon wishList" href="javascript:void(0)"><i class="fa fa-heart" style='color: #c90003' aria-hidden="true"></i></a>
+																
+														<?php }else{ ?>
+															<a class="icon addwishList" href="javascript:void(0)" data-product_id="<?=  $servicesImg_row['id']; ?>"><i class="fa fa-heart wishList_<?=  $servicesImg_row['id']; ?>" aria-hidden="true" ></i></a>
+														<?php } ?>
+                            
+                          
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                   <div class="productCaption">
                     <h2><a href="single-product.html"><?= $servicesImg_row['name'] ?></a></h2>
-                    <?php if($servicesImg_row['name'] != ''){ ?>
-											<h3>$<?= $servicesImg_row['price'] ?></h3>
-										<?php }else{} ?>
-                    <a href="#" class="btn btn-primary btn-block mt-2">View Details</a>
+											<h3>$<?php if($servicesImg_row['discounted_price'] == ''){ ?>
+													<?= $servicesImg_row['price'] ?>
+											<?php }else{ ?>
+												<?= $servicesImg_row['discounted_price'] ?>
+											<?php } ?>
+												</h3>
+                    <a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" class="btn btn-primary btn-block mt-2">View Details</a>
                   </div>
                  
                 </div>
               </div>
 							<?php	endforeach; ?>
-              <!--<div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-2.jpg" data-src="img/products/product-2.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                  
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-3.jpg" data-src="img/products/product-3.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-4.jpg" data-src="img/products/product-4.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-5.jpg" data-src="img/products/product-5.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-6.jpg" data-src="img/products/product-6.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-7.jpg" data-src="img/products/product-7.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-8.jpg" data-src="img/products/product-8.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4">
-                <div class="produtSingle">
-                  <div class="produtImage">
-                    <img src="img/products/product-9.jpg" data-src="img/products/product-9.jpg" alt="Image Product" class="img-responsive lazyestload">
-                    <div class="productMask">
-                      <ul class="list-inline productOption">
-                        <li class="favourite-icon">
-                          <a class="icon" href="javascript:void(0)">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                          </a>
-                        </li>
-
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-
-                        <li>
-                          <a href="javascript:void(0)" data-morphing id="morphing" data-src="#morphing-content">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="productCaption">
-                    <h2><a href="single-product.html">Handmade Soap</a></h2>
-                    <h3>$19</h3>
-                    <a href="#" class="btn btn-primary btn-block mt-2">Add to cart</a>
-                  </div>
-                </div>
-              </div>-->
-
 
             </div>
             
@@ -316,3 +105,27 @@
 		    </div>
       </div>
     </section>
+<script>
+		$(document).ready(function(){
+			$(".addwishList").on('click', function(e){
+					var product_id = $(this).attr('data-product_id');
+					//alert(product_id);
+					var url = "<?php echo base_url() ?>front/Product/post_add_wishList";
+						$('.wishList_'+product_id).css('color', '#c90003');
+
+					$.ajax({
+						type : 'POST',
+						url : url, 
+						data :  {productId:product_id}, 
+						success : function(data){
+              //$(".wishList").find('.fa-heart').css('color', '#c90003');
+							/*$('.wishList').hide();
+							var alertBox = '<i class="fa fa-heart" style="color: #c90003" aria-hidden="true"></i>';
+							$('.wishListlogo').html(alertBox);*/
+							
+						}
+					});
+				});
+			});
+</script>
+		

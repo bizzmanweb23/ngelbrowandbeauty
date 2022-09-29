@@ -43,5 +43,14 @@ class Home_model extends CI_Model
 		$this->db->limit(1);  
 		return $result = $this->db->get()->result_array(); 	
 	}
+	function getShipping_address($user_id){
+		$this->db->select('nbb_shipping_address.*,
+		nbb_state.name AS stateName');
+		$this->db->from('nbb_shipping_address');
+		$this->db->where('nbb_shipping_address.user_id', $user_id);
+		$this->db->join('nbb_state', 'nbb_state.id = nbb_shipping_address.shipping_state', 'LEFT');
+		$this->db->limit(1);  
+		return $result = $this->db->get()->result_array(); 	
+	}
 }
 ?>

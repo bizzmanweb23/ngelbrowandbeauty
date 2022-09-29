@@ -26,7 +26,7 @@
 
                 <form id="add_package" action="<?= base_url('admin/courseManagement/post_add_student')?>" method="post" enctype="multipart/form-data">
 			
-			<table cellpadding = "10">
+			<table cellpadding = "10" style="width: 80%;">
 			<tr>
 				<td>Photo</td>
 				<td>
@@ -41,96 +41,117 @@
 					</div>
 				</td>
 			</tr>
-			<!----- First Name ---------------------------------------------------------->
+			
 			<tr>
-			<td>FIRST NAME</td>
-			<td><input type="text" class="form-control" name="first_name" placeholder="Enter First Name" value="">(max 50 characters a-z and A-Z)
+			<td>First Name</td>
+			<td><input type="text" class="form-control" name="first_name" placeholder="Enter First Name" value="">
 			</td>
 			</tr>
 			
-			<!----- Last Name ---------------------------------------------------------->
+			
 			<tr>
-			<td>LAST NAME</td>
-			<td><input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" value="">(max 50 characters a-z and A-Z)
+			<td>Last Name</td>
+			<td><input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" value="">
 			</td>
 			</tr>
 			
-			<!----- Date Of Birth -------------------------------------------------------->
+			
 			<tr>
-			<td>DATE OF BIRTH</td>
+			<td>Date Of Birth</td>
 			<td>
 				<input type="date" class="form-control" name="dob" value="">
 			</td>
 			</tr>
 			
-			<!----- Email Id ---------------------------------------------------------->
+			
 			<tr>
-			<td>EMAIL ID</td>
+			<td>Email ID</td>
 			<td><input type="email" class="form-control" name="email" placeholder="Enter Email" value=""></td>
 			</tr>
 			
-			<!----- Mobile Number ---------------------------------------------------------->
+			
 			<tr>
-			<td>MOBILE NUMBER</td>
+			<td>Mobile Number</td>
 			<td>
 			<input type="text" class="form-control" name="mobile_number" placeholder="Enter Mobile Number" value="">
 			</td>
 			</tr>
 			
-			<!----- Gender ----------------------------------------------------------->
+			
 			<tr>
-			<td>GENDER</td>
+			<td>Gender</td>
 			<td>
 			Male <input type="radio" name="gender" value="Male">
 			Female <input type="radio" name="gender" value="Female">
 			</td>
 			</tr>
 			
-			<!----- Address ---------------------------------------------------------->
+			
 			<tr>
-			<td>ADDRESS <br /><br /><br /></td>
+			<td>Address <br /><br /><br /></td>
 			<td><textarea name="address" class="form-control" rows="4" cols="30"></textarea></td>
 			</tr>
 			
-			<!----- City ---------------------------------------------------------->
+			
 			<tr>
-			<td>CITY</td>
+			<td>City</td>
 			<td><input type="text" class="form-control" name="city" placeholder="Enter City" value="">
 			</td>
 			</tr>
 			
-			<!----- Pin Code ---------------------------------------------------------->
+			
 			<tr>
-			<td>PIN CODE</td>
+			<td>Pin Code</td>
 			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="">
 			
 			</td>
 			</tr>
-			
-			<!----- State ---------------------------------------------------------->
+
 			<tr>
-			<td>STATE</td>
+			<td>Hse / Blk No.</td>
+			<td><input type="text" class="form-control" name="hse_blk_no" placeholder="Enter Hse / Blk No." value="">
+			
+			</td>
+			</tr>
+
+			<tr>
+			<td>Unit No.</td>
+			<td><input type="text" class="form-control" name="unit_no" placeholder="Enter Unit No." value="">
+			
+			</td>
+			</tr>
+
+			<tr>
+			<td>Building / Street Name</td>
+			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Pin Code" value="">
+			
+			</td>
+			</tr>
+			
+			
+			<tr>
+			<td>State</td>
 			<td><input type="text" class="form-control" name="state" placeholder="Enter State" value="">
 			
 			</td>
 			</tr>
 			
-			<!----- Country ---------------------------------------------------------->
+			
 			<tr>
-			<td>COUNTRY</td>
+			<td>Country</td>
 			<td><input type="text" class="form-control" name="country" placeholder="Enter Country" value=""></td>
 			</tr>
 			
-			<!----- Qualification---------------------------------------------------------->
+			
 			<tr>
-			<td>Last school/university attended</td>
+			<td>Last School/University Attended</td>
 			
 			<td>
 			<input type="text" class="form-control" name="last_university" placeholder="Enter Last school/university" value="">
 			</td>
 			</tr>
 			
-			<!----- Course ---------------------------------------------------------->
+			
 			<tr>
 			<td>Course Applied For</td>
 			<td>

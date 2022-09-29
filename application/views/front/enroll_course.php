@@ -113,6 +113,7 @@
 														</div><br>
 															<div class="clearfix"></div>
 															<div class="form-group">
+																<label>Course Fee</label>
 																<input type="text" name="appointment-form-full-name" class="form-control" placeholder="Course Fees" value="<?= $courseData['course_fees']; ?>" readonly>
 															</div>
 															<div class="form-group">
@@ -123,13 +124,16 @@
 																		<?php endforeach; ?> 
 																	</select>
 															</div>
-															<ol>
+															<div class="col-md-12">
+																<ol>
 																	<li>Please be on time and do not be late for class without any valid reason(s).</li>
 																	<li>Kindly inform your lecturer beforehand to seek for leave if you are unable to attend class.</li>
 																	<li>We are not responsible to rearrange for any absent classes without any valid reason(s).</li>
 																	<li>Please keep your official receipt as an acknowledgement reference for your course payment.</li>
 																	<li>There will be no refund or return of any registration fees and the seat will only be reserved for three months for any student unable to attend the course in schedule.</li>
-															</ol>
+																</ol>
+															</div>
+															
 					
 										<div class="form-group">
 											<button type="button" id="appointment-submit-btn" class="btn btn-primary first-btn courseform">Submit Now</button>

@@ -118,8 +118,6 @@ class OrderManagement extends CI_Controller {
 	public function post_add_orderproduct()
 	{
 
-		
-
         $data = array(
             'user_id' => $this->input->post('customer_id'),
 			'saler_id' => $this->input->post('saler_id'),
@@ -135,31 +133,7 @@ class OrderManagement extends CI_Controller {
 			$this->db->where('id' , $orderId);
 			$this->db->update('nbb_order_main', array('order_number'=>$order_number));
 
-			/*$product_ID=array($this->input->post('productID'),$this->input->post('quantity'),$this->input->post('totalPrice'),$this->input->post('product_price'));
-			print_r($product_ID);exit;
-       
-				foreach($product_ID as $product_arr)
-				{
-					$productid=$product_arr;
-
-					$f=count($productid);
-					
-					for($i=0;$i<$f;$i++)
-					{
-						$arre=[
-							//'phone'=>$phoneNo[$i],
-							'order_id' => $orderId,
-							'product_id' => $productid[$i],
-							'total_quantity' => $this->input->post('quantity')[$i],
-							'total_price' => $this->input->post('totalPrice')[$i],
-							'product_price' => $this->input->post('product_price')[$i],
-								]; 
-							
-							$result2 = $this->db->insert('nbb_order_product',$arre);   
-							$this->db->where('id' , $allproductID);
-							$this->db->update('nbb_product', array('available_stock'=> $this->input->post('stock_now')[$i]));   
-					}
-				}*/
+			
 			$mulproductid = $_POST['productID'];
 			for($i=0;$i < count($mulproductid);$i++){
 				$allproductID = $mulproductid[$i];
@@ -396,6 +370,11 @@ class OrderManagement extends CI_Controller {
 		echo $available_stock;
 
 	}
+	public function all_Wishlist()
+    {
+       $data['Wishlist'] = $this->OrderManagement->getAllWishlist();
+       $this->layout->view('all_wishlistProduct',$data); 
+    }
 
 	public function generateOrderNumber($id)
 	{

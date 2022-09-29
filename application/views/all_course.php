@@ -60,7 +60,9 @@
 							<td><?= $courseRow['foc_items']?></td>
 							<td><?= $courseRow['type_of_cert']?></td>
 							<td>
-
+								<a href="<?= base_url('admin/courseManagement/showCoursePdf')?>?course_Id=<?php echo $courseRow['id']; ?>" class="btn btn-default" title="pdf">
+									<img src="<?= base_url('uploads/pdf_download.png')?>" class="rounded" width="30" height="30">
+								</a>
 								<a href="<?= base_url('admin/courseManagement/editCourse/'. $courseRow['id'])?>" class="btn btn-default" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
 								<a href="<?= base_url('admin/courseManagement/deleteCourse/'. $courseRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 								

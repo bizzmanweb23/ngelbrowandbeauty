@@ -170,5 +170,9 @@
 						dom: 'Bfrtip',
 						buttons: []
     });
+		$('.payment_table').DataTable( {
+						dom: 'Bfrtip',
+						buttons: []
+    });
 });
 </script>

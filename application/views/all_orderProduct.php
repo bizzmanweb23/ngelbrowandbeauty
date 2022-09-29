@@ -27,16 +27,16 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs pt-3" role="tablist">
 					<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" href="#home" style="color:#b8860b">All Order</a>
+					<a class="nav-link active" data-toggle="tab" href="#home" style="color:#61d3d4">All Order</a>
 					</li>
 					<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#menu1" style="color:#b8860b">Current Order</a>
+					<a class="nav-link" data-toggle="tab" href="#menu1" style="color:#61d3d4">Current Order</a>
 					</li>
 					<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#menu2" style="color:#b8860b">Completed Order</a>
+					<a class="nav-link" data-toggle="tab" href="#menu2" style="color:#61d3d4">Completed Order</a>
 					</li>
 					<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#menu3" style="color:#b8860b">Canceled</a>
+					<a class="nav-link" data-toggle="tab" href="#menu3" style="color:#61d3d4">Canceled</a>
 					</li>
 				</ul>
 

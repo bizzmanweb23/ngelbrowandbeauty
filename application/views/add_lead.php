@@ -150,7 +150,34 @@
 						<div class="col-md-12">
 							<textarea id="address" name="address" rows="5" cols="80" style = "width: 100%;"></textarea>
 						</div>
-					</div>  
+					</div> 
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group ">
+								<label for="contact" class="col-sm-6 control-label">Hse/ Blk No.</label>
+								<div class="col-sm-12">
+									<input type="text" class="form-control" name="hse_blk_no" placeholder="Hse Blk No." value="">
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="contact" class="col-sm-6 control-label">Unit No.</label>
+								<div class="col-sm-12">
+									<input type="text" class="form-control" name="unit_no" placeholder="Unit No." value="">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="contact" class="col-sm-6 control-label">Building Street Name</label>
+								<div class="col-sm-12">
+									<input type="text" class="form-control" name="building_street_name" placeholder="Building Street Name" value="">
+								</div>
+							</div>
+						</div>
+					</div> 
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group ">
@@ -160,6 +187,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="contact" class="col-sm-6 control-label">State</label>

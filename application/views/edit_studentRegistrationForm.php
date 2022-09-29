@@ -26,7 +26,7 @@
 
                 <form id="add_package" action="<?= base_url('admin/courseManagement/post_edit_student')?>" method="post" enctype="multipart/form-data">
 				<input type="hidden" class="form-control" name="student_id" value = "<?= $Student_registration['id'];?>">
-			<table cellpadding = "10">
+			<table cellpadding = "10" style="width: 80%;">
 			<tr>
 				<td>Photo</td>
 				<td>
@@ -103,6 +103,27 @@
 			<tr>
 			<td>PIN CODE</td>
 			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="<?= $Student_registration['pin_code'];?>">
+			</td>
+			</tr>
+
+			<tr>
+			<td>Hse / Blk No.</td>
+			<td><input type="text" class="form-control" name="hse_blk_no" placeholder="Enter Hse / Blk No." value="<?= $Student_registration['hse_blk_no'];?>">
+			
+			</td>
+			</tr>
+
+			<tr>
+			<td>Unit No.</td>
+			<td><input type="text" class="form-control" name="unit_no" placeholder="Enter Unit No." value="<?= $Student_registration['unit_no'];?>">
+			
+			</td>
+			</tr>
+
+			<tr>
+			<td>Building / Street Name</td>
+			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Pin Code" value="<?= $Student_registration['building_streetName'];?>">
+			
 			</td>
 			</tr>
 			

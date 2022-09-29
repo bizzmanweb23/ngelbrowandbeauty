@@ -58,7 +58,7 @@ $route['home'] = 'front/Home/all_home';
 $route['about'] = 'front/Home/about';
 $route['myProfile'] = 'front/Home/my_profile';
 $route['referdToFriend'] = 'front/Home/ReferdToFriend';
-$route['products/(:any)'] = 'front/Home/products/$i';
+$route['products/(:any)'] = 'front/Product/products/$i';
 //$route['courses'] = 'front/Home/courses';
 $route['services/(:any)'] = 'front/Home/services/$i';
 //$route['main'] = 'front/Home';
@@ -72,8 +72,14 @@ $route['get-services-list/(:any)'] =  'front/Home/setvices_list/$i';
 $route['uniqueEmail'] =  'front/home/duplicateEmailCheck';
 $route['uniqueContact'] =  'front/home/duplicateCoctactCheck';
 $route['wallet'] =  'front/User/wallet';
+$route['wishList'] =  'front/product/wishList';
 $route['courses'] =  'front/Courses/allcourses';
+$route['cartList'] =  'front/product/cartListView';
+$route['productOrder'] =  'front/product/productCheckOut';
+$route['orderComplete'] =  'front/product/productcompleteorder';
+$route['deleteorderProduct/(:any)'] =  'front/product/deleteorderProduct/$i';
 $route['enrollCourse/(:any)'] =  'front/Courses/enroll_course/$i';
+$route['productDetails/(:any)'] =  'front/product/productDetailsView/$i';
 
 
 $route['front/login'] = 'front/home/post_login';
@@ -82,6 +88,7 @@ $route['front/referredSignup'] = 'front/home/referredsignup';
 $route['course/add_student'] = 'front/Courses/post_add_student'; 
 $route['front/customer_edited'] = 'front/home/post_edit_customer'; 
 $route['front/referalCode'] = 'front/home/sentReferalMail'; 
+$route['add_to_cart'] = 'front/Product/post_add_tocart'; 
 
 
 
@@ -95,7 +102,7 @@ $route['branch/login'] = 'branch/login';*/
 
 
 $route['add_employeeSalary'] = 'admin/employeeManagement/post_add_employeeSalary';
-$route['employee/attendance/counter'] = 'admin/comissionController/attendance_sum';
+//$route['employee/attendance/counter'] = 'admin/comissionController/attendance_sum';
 $route['branch/dashboard'] = 'admin/welcome/dashboard';
 $route['users'] = 'admin/welcome/users';
 $route['promotion'] = 'admin/welcome/promotion';

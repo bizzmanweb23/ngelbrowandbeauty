@@ -52,9 +52,9 @@ class comissionController extends CI_Controller {
 				WHERE nbb_cpf.year = '".$date."'"; 
 				$nbb_cpf_query = $this->db->query($nbb_cpf_sql);
 				$nbb_cpf_data = $nbb_cpf_query->result_array();
+
 				foreach($nbb_cpf_data as $nbb_cpf_dataRow){
 					$cpfage = $nbb_cpf_dataRow['start_age'];
-					$cpfyear = $nbb_cpf_dataRow['year'];
 					$salary_from = $nbb_cpf_dataRow['salary_from'];
 					$salary_to = $nbb_cpf_dataRow['salary_to'];
 					$emp_cpf = $nbb_cpf_dataRow['emp_cpf'];
@@ -73,31 +73,61 @@ class comissionController extends CI_Controller {
 	
 				}
 		echo json_encode($dataArr);
-
+		//return json_encode($dataArr);
 	}
 	public function attendance_sum()
 	{
 		$id = $this->input->post('data');
 		$salaryDate = $this->input->post('salaryDate');
-		$employees_attendance_sql = "SELECT nbb_employees_attendance.*, nbb_employees.*, DATE_FORMAT(nbb_employees_attendance.login, '%MM-%Y') as month
-		FROM nbb_employees
-		LEFT JOIN nbb_employees_attendance ON nbb_employees_attendance.emp_id = nbb_employees.id 
-		WHERE nbb_employees.id = '".$id."' AND DATE_FORMAT(nbb_employees_attendance.login, '%Y-%m') = '".$salaryDate."'";
+		$employees_attendance_sql = "SELECT SUM(nbb_employees_attendance.work_hours) AS total_hours,
+		DATE_FORMAT(nbb_employees_attendance.login, '%MM-%Y') as month
+		FROM nbb_employees_attendance
+		WHERE nbb_employees_attendance.emp_id = '".$id."' AND DATE_FORMAT(nbb_employees_attendance.login, '%Y-%m') = '".$salaryDate."'";
 		$employees_attendance_query = $this->db->query($employees_attendance_sql);
 		$employees_attendance_data = $employees_attendance_query->result_array();
-		echo json_encode($employees_attendance_data);
+
+		$dataArr = array();
+		foreach($employees_attendance_data as $row){
+				$total_hours = round($row['total_hours']);
+				if($total_hours >= '208'){
+					$attendance_bonus = 100;
+				}else{
+					$attendance_bonus = 0;
+				}
+			$dataArr []= array(
+				'total_hours' 		=> $total_hours,
+				'attendance_bonus' 		=> $attendance_bonus,
+			);
+		}
+		echo json_encode($dataArr);
 	}
 	public function dashboard_sum()
 	{
 		$id = $this->input->post('data');
 		$salaryDate = $this->input->post('salaryDate');
-		$employees_dashboard_sql = "SELECT nbb_dashboard.*, nbb_employees.*, DATE_FORMAT(nbb_dashboard.start_date, '%MM-%Y') as month
-		FROM nbb_employees
-		LEFT JOIN nbb_dashboard ON nbb_dashboard.therapist_id = nbb_employees.id 
-		WHERE nbb_employees.id = '".$id."' AND DATE_FORMAT(nbb_dashboard.start_date, '%Y-%m') = '".$salaryDate."'";
+		$employees_dashboard_sql = "SELECT SUM(nbb_dashboard.amount) AS totalAmount,
+		DATE_FORMAT(nbb_dashboard.start_date, '%MM-%Y') as month
+		FROM nbb_dashboard
+		WHERE nbb_dashboard.therapist_id = '".$id."' AND DATE_FORMAT(nbb_dashboard.start_date, '%Y-%m') = '".$salaryDate."'";
+		
 		$employees_dashboard_query = $this->db->query($employees_dashboard_sql);
 		$employees_dashboard_data = $employees_dashboard_query->result_array();
-		echo json_encode($employees_dashboard_data);
+
+		$dataArr = array();
+		foreach($employees_dashboard_data as $row){
+				$total_amount = round($row['totalAmount']);
+				if($total_amount >= '99'){
+					$service_bonus = ($total_amount * 5)/100;
+				}else{
+					$service_bonus = 0;
+				}
+			$dataArr []= array(
+				'service_bonus' 		=> $service_bonus,
+				'total_amount' 		=> $total_amount,
+			);
+		}
+
+		echo json_encode($dataArr);
 	}
 	function getshowCommissionPay(){
 
@@ -111,6 +141,7 @@ class comissionController extends CI_Controller {
 		LEFT JOIN nbb_order_main ON nbb_order_main.id = nbb_order_product.order_id 
 		LEFT JOIN nbb_employees ON nbb_employees.id = nbb_order_main.saler_id 
 		WHERE nbb_employees.id = '".$id."' AND DATE_FORMAT(nbb_order_main.create_date, '%Y-%m') = '".$salaryDate."'"; 
+
 		$order_product_query = $this->db->query($order_product_sql);
 		$order_product_data = $order_product_query->result_array();
 		$dataArr = array();
@@ -118,14 +149,13 @@ class comissionController extends CI_Controller {
 
 			$total = $row['total'];
 
-			
-				if($total >= '10000'){
-					$totalbonus = '200';
-				}elseif($total >= '20000'){
-					$totalbonus = '200';
-				}else{
-					$totalbonus = '0';
-				}
+			if($total >= '1000'){
+				$totalbonus = '200';
+			}elseif($total >= '2000'){
+				$totalbonus = '200';
+			}else{
+				$totalbonus = '0';
+			}
 			
 			$commission_structure_sql  = "SELECT * FROM nbb_commission_structure_a"; 
 			$commission_structure_query = $this->db->query($commission_structure_sql);
@@ -133,7 +163,8 @@ class comissionController extends CI_Controller {
 			foreach($commission_structure_data as $commission_structureRow){
 				$from_range = $commission_structureRow['from_range'];
 				$commission_amount = $commission_structureRow['amount'];
-				if($row['total'] >= $from_range){
+
+				if($total >= $from_range){
 					$totalCommission = round(($commission_amount * $row['total']) / 100);
 				}else
 					$totalCommission = '0';
@@ -174,6 +205,16 @@ class comissionController extends CI_Controller {
 		$result['data'] = $data->result_array(); 
 		echo json_encode($result);
 
+	}
+	public function totalearnings(){
+		$id = $this->input->post('data');
+		$salaryDate = $this->input->post('salaryDate');
+		$empCommission = $this->empCommission();
+
+		/*for($empCommission as $expense)
+		{
+			
+		}*/
 	}
 }
 ?>

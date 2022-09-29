@@ -17,8 +17,9 @@
 						<?php } */ ?>
                 	<div class="orderBox patternbg">Profile</div>
 
-								<?php foreach($alluser as $user_row): ?>
-								<form class="form-horizontal" action="<?php echo base_url() ?>/front/customer_edited" method="post" enctype="multipart/form-data">
+								
+							<form class="form-horizontal" action="<?php echo base_url() ?>/front/customer_edited" method="post" enctype="multipart/form-data">
+							<?php foreach($alluser as $user_row){ ?>
 								<input type="hidden" class="form-control" name="user_id" value="<?= $user_id; ?>">
                 <div class="profile">
                   <div class="row">
@@ -144,12 +145,12 @@
 										</div>
 									</div>
 									<div class="col-md-6">
-											<div class="form-group">
-												<label class="col-md-6 col-xl-6 control-label">Last Name</label>
-												<div class="col-md-6 col-xl-10">
-												<input type="text" class="form-control" value="<?= $user_row['billing_lastname'] ?>" name="billing_lastname" placeholder="Enter Your Address">
-												</div>
+										<div class="form-group">
+											<label class="col-md-6 col-xl-6 control-label">Last Name</label>
+											<div class="col-md-6 col-xl-10">
+											<input type="text" class="form-control" value="<?= $user_row['billing_lastname'] ?>" name="billing_lastname" placeholder="Enter Your Address">
 											</div>
+										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -174,19 +175,19 @@
 								<div class="row">
 									<div class="col-md-6">   
 										<div class="form-group ">
-											<label for="dob" class="col-md-6 col-xl-6 control-label">Country 
+											<label for="dob" class="col-md-6 col-xl-6 control-label">Hse / Blk No.  
 											</label>
 											<div class="col-md-6 col-xl-10">
-												<input type="text" class="form-control" name="billing_country" placeholder="Enter Billing Country" value="<?= $user_row['billing_country'] ?>">
+												<input type="text" class="form-control" name="billing_hse_blk_no" placeholder="Enter Hse / Blk No." value="<?= $user_row['billing_hse_blk_no'] ?>">
 											</div>
 										</div>
 									</div>
 									<div class="col-md-6">   
 										<div class="form-group ">
-											<label for="dob" class="col-md-6 col-xl-6 control-label">City 
+											<label for="dob" class="col-md-6 col-xl-6 control-label">Unit No. 
 											</label>
 											<div class="col-md-6 col-xl-10">
-												<input type="text" class="form-control" name="billing_city" placeholder="Enter Billing City" value="<?= $user_row['billing_city'] ?>">
+												<input type="text" class="form-control" name="billing_unit_no" placeholder="Enter Billing City" value="<?= $user_row['billing_unit_no'] ?>">
 											</div>
 										</div>
 									</div>
@@ -195,39 +196,151 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group ">
-											<label for="age" class="col-md-6 col-xl-6 control-label">State
+											<label for="dob" class="col-md-6 col-xl-6 control-label">Building / Street Name
 											</label>
 											<div class="col-md-6 col-xl-10">
-												<select class="form-control" name="bill_state">
-													<option value="" hidden>Select Billing State</option>
-													<?php foreach($allState as $allState_row) {  ?>
-													<option value="<?= $allState_row['id'] ?>"<?php if($allState_row['id'] == $user_row['billing_state']){ echo 'selected';} ?>><?= $allState_row['name'] ?></option>
-													<?php } ?>
-												</select>
+												<input type="text" class="form-control" name="billing_street" placeholder="Enter Billing Street" value="<?= $user_row['billing_street'] ?>">
 											</div>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group ">
-											<label for="age" class="col-md-6 col-xl-6 control-label">Pin-Code</label>
+											<label for="age" class="col-md-6 col-xl-6 control-label">Country</label>
+											<div class="col-md-6 col-xl-10">
+												<input type="text" class="form-control" name="billing_country" placeholder="Enter Billing Pin Code" value="<?= $user_row['billing_country'] ?>">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group ">
+											<label for="age" class="col-md-6 col-xl-6 control-label">Postal Code</label>
 											<div class="col-md-6 col-xl-10">
 												<input type="text" class="form-control" name="billing_postal_code" placeholder="Enter Billing Pin Code" value="<?= $user_row['billing_postal_code'] ?>">
 											</div>
 										</div>
 									</div>
 								</div>
-		
-								<div class="form-group row justify-content-md-end">
-									<div class="col-lg-offset-10 col-xl-2 col-offset-9 col-md-3">
-										<button type="submit" class="btn btn-primary btn-block">SAVE INFO</button>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group form-check">
+											<input type="checkbox" class="form-check-input" name="billing_shipping_same" id="exampleCheck1">
+											<label class="form-check-label text-secondary font-italic billing_shipping_different" for="exampleCheck1" style="margin-left:20px;">Shipping details different as billing details</label>
+										</div>
 									</div>
 								</div>
+								
 							</div>
 						</div>
-										
+
+						<div class="shipping_address" style="display: none;">
+						<div class="orderBox patternbg">Shipping Address</div>
+							<div class="row">
+
+								<div class="col-md-12 col-xl-10">
+									<div class="row">
+										<div class="col-md-6">   
+											<div class="form-group">
+												<label class="col-md-6 col-xl-6 control-label">First Name</label>
+												<div class="col-md-6 col-xl-10">
+												<input type="text" class="form-control" value="<?= $user_row['shipping_firstname'] ?>" name="shipping_firstname" placeholder="Enter Shipping first Name">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-6 col-xl-6 control-label">Last Name</label>
+													<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" value="<?= $user_row['shipping_lastname'] ?>" name="shipping_lastname" placeholder="Enter Shipping Your Address">
+													</div>
+												</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">   
+											<div class="form-group">
+												<label class="col-md-6 col-xl-6 control-label">Contact No.</label>
+												<div class="col-md-6 col-xl-10">
+												<input type="text" class="form-control" value="<?= $user_row['shipping_contactno'] ?>" name="shipping_contactno" placeholder="Enter Shipping Contact No.">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-6 col-xl-6 control-label">Address</label>
+													<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" value="<?= $user_row['shipping_address'] ?>" name="shipping_address" placeholder="Enter Shipping Address">
+													</div>
+												</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">   
+											<div class="form-group ">
+												<label for="dob" class="col-md-6 col-xl-6 control-label">Hse / Blk No.  
+												</label>
+												<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" name="shipping_hse_blk_no" placeholder="Enter Hse / Blk No." value="<?= $user_row['shipping_hse_blk_no'] ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">   
+											<div class="form-group ">
+												<label for="dob" class="col-md-6 col-xl-6 control-label">Unit No. 
+												</label>
+												<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" name="shippingunit_no" placeholder="Enter Shipping City" value="<?= $user_row['shippingunit_no'] ?>">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group ">
+												<label for="dob" class="col-md-6 col-xl-6 control-label">Building / Street Name
+												</label>
+												<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" name="shipping_street" placeholder="Enter Shipping Street" value="<?= $user_row['shipping_street'] ?>">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group ">
+												<label for="age" class="col-md-6 col-xl-6 control-label">Country</label>
+												<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" name="shipping_country" placeholder="Enter Shipping Pin Code" value="<?= $user_row['shipping_country'] ?>">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group ">
+												<label for="age" class="col-md-6 col-xl-6 control-label">Postal Code</label>
+												<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" name="billing_postal_code" placeholder="Enter Shipping Pin Code" value="<?= $user_row['billing_postal_code'] ?>">
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div>	
+						</div>
+
+
+							<div class="form-group row justify-content-md-end">
+								<div class="col-lg-offset-10 col-xl-2 col-offset-9 col-md-3">
+									<button type="submit" class="btn btn-primary btn-block">SAVE INFO</button>
+								</div>
+							</div>
+							<?php } ?>
                   			</form>
                 
-								<?php	endforeach; ?>
+								
 						</div>
 					</div>
 				</div>
@@ -288,6 +401,17 @@
 				});
 			}
 		});
+
+		$(function () {
+        $("#exampleCheck1").click(function () {
+            if ($(this).is(":checked")) {
+                $(".shipping_address").show();
+            }else {
+                $(".shipping_address").hide();
+                
+            }
+        });
+    });
 	});		
 
 </script>

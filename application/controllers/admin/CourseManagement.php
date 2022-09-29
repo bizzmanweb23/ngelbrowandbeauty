@@ -32,12 +32,20 @@ class CourseManagement extends CI_Controller {
 			'description' => $this->input->post('description'),
 			'type_of_cert' => $this->input->post('type_of_cert'),
 			'foc_items' => $this->input->post('foc_items'),
-			'trainer_id' => $this->input->post('trainer_id')
+			'trainer_id' => $this->input->post('trainer_id'),
+			'hse_blk_no' => $this->input->post('hse_blk_no'),
+			'unit_no' => $this->input->post('unit_no'),
+			'building_streetName' => $this->input->post('building_streetName')
 		);
 
 			$insert = $this->Main->insert('nbb_course',$data); 
-
 			$insert_id = $this->db->insert_id();
+
+
+			$order_number = $this->generateStudentNumber($insert_id);			
+			$this->db->where('id' , $insert_id);
+			$this->db->update('nbb_course', array('course_code'=>$order_number));
+
 				$this->load->library('upload');
 				if($_FILES['course_image']['name'] != '')
 				{
@@ -95,7 +103,10 @@ class CourseManagement extends CI_Controller {
 			'description' => $this->input->post('description'),
 			'type_of_cert' => $this->input->post('type_of_cert'),
 			'foc_items' => $this->input->post('foc_items'),
-			'trainer_id' => $this->input->post('trainer_id')
+			'trainer_id' => $this->input->post('trainer_id'),
+			'hse_blk_no' => $this->input->post('hse_blk_no'),
+			'unit_no' => $this->input->post('unit_no'),
+			'building_streetName' => $this->input->post('building_streetName')
 		);
 
 		$result=$this->Main->update('id',$course_id, $data,'nbb_course'); 
@@ -318,9 +329,22 @@ class CourseManagement extends CI_Controller {
 		{
 			redirect('studentRegistrationForm');
 		}
-	   
 		
 	}
+
+	public function showCoursePdf()
+    {
+		$course_Id = $_GET['course_Id'];
+        $data["courseData"]=$this->CourseManagement->getpdfAllCourses($course_Id);
+
+		$mpdf = new \Mpdf\Mpdf();
+		
+		$html=$this->load->view('GenerateCoursePdfView',$data,true);
+		$mpdf->WriteHTML($html);
+		//$mpdf->Output('CourseDetails"'.$course_Id.'".pdf','D');
+		$mpdf->Output();
+		
+    }
 
 	public function generateStudentNumber($id)
 	{

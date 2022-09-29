@@ -143,7 +143,7 @@
 										<?php foreach($allcpf as $allcpfRow): ?>
 										<tr>
 											<td><?= $allcpfRow['year']?></td>
-											<td><?= $allcpfRow['age']?></td>
+											<td><?= $allcpfRow['start_age'].'-'.$allcpfRow['end_age'] ?></td>
 											<td><?= $allcpfRow['salary_from']?></td>
 											<td><?= $allcpfRow['salary_to']?></td>
 											<td><?php if($allcpfRow['emp_cpf'] != ''){  

@@ -115,7 +115,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	h4{
-			background-color: #b8860b;
+			background-color: #61d3d4;
 			color: white;
 			padding: 5px;
 			text-align: left;

@@ -1,11 +1,9 @@
 <?php 
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth_Model extends CI_Model
 {
 	
-
 	function frontlogin($data)
 	{
 		$this->db->select('*');
@@ -112,9 +110,21 @@ class Auth_Model extends CI_Model
         return $this->db->get()->result_array();
     }
 	function getCustomerData($id){
-        $this->db->select('*');
+        $this->db->select('nbb_customer.*,
+		nbb_shipping_address.shipping_firstname,
+		nbb_shipping_address.shipping_lastname,
+		nbb_shipping_address.shipping_contactno,
+		nbb_shipping_address.shipping_address,
+		nbb_shipping_address.shipping_country,
+		nbb_shipping_address.shipping_city,
+		nbb_shipping_address.shipping_state,
+		nbb_shipping_address.shipping_hse_blk_no,
+		nbb_shipping_address.shippingunit_no,
+		nbb_shipping_address.shipping_street,
+		nbb_shipping_address.shipping_postalcode');
         $this->db->from('nbb_customer');
-        $this->db->where('id',$id);
+		$this->db->join('nbb_shipping_address','nbb_shipping_address.user_id = nbb_customer.id','LEFT');
+        $this->db->where('nbb_customer.id',$id);
         return $this->db->get()->result_array();
     }
     function getTimeSlot($interval, $start_time, $end_time)
@@ -161,9 +171,9 @@ class Auth_Model extends CI_Model
       }
       function getAllEvent()
       {
-          $this->db->select('nbb_dashboard.*');
+          $this->db->select('nbb_dashboard.*,nbb_employees.therapist_color');
           $this->db->from('nbb_dashboard');
-          $this->db->join('nbb_employees','nbb_employees.id = nbb_dashboard.therapist_id');
+          $this->db->join('nbb_employees','nbb_employees.id = nbb_dashboard.therapist_id','LEFT');
           return $this->db->get()->result_array();
       } 
       function getAllServices($id=null)
@@ -190,15 +200,53 @@ class Auth_Model extends CI_Model
           $insert = $this->db->insert('nbb_dashboard',$data); 
           return true;
       }
-      function insertDur($data){
-          $insert = $this->db->insert('nbb_check_therapist',$data); 
-          return true;
-       }
-      function getServiceByID($id){
-          $this->db->select('*');
-          $this->db->from('nbb_service');
-          $this->db->where('id',$id);
-          $result= $this->db->get()->row();
-          return $result;
+    function insertDur($data){
+		$insert = $this->db->insert('nbb_check_therapist',$data); 
+		return true;
+    }
+    function getServiceByID($id){
+		$this->db->select('*');
+		$this->db->from('nbb_service');
+		$this->db->where('id',$id);
+		$result= $this->db->get()->row();
+		return $result;
       }
+	function getCreditWallet($id){
+		$this->db->select('nbb_credit_wallet.*,
+		nbb_customer.first_name,
+		nbb_customer.last_name,
+		nbb_customer.referreduser_id');
+		$this->db->from('nbb_credit_wallet');
+		$this->db->join('nbb_customer','nbb_customer.id = nbb_credit_wallet.user_id','LEFT');
+		$this->db->where('nbb_credit_wallet.user_id',$id);
+		return $this->db->get()->result_array();
+	}
+	function getExpenseWallet($id){
+		$this->db->select('nbb_expense_wallet.*,
+		nbb_customer.first_name,
+		nbb_customer.last_name,
+		nbb_customer.referreduser_id');
+		$this->db->from('nbb_expense_wallet');
+		$this->db->join('nbb_customer','nbb_customer.id = nbb_expense_wallet.user_id','LEFT');
+		$this->db->where('nbb_expense_wallet.user_id',$id);
+		return $this->db->get()->result_array();
+	}
+	function getpaymenthistory($id){
+		$this->db->select('nbb_order_payments.*,
+		nbb_customer.first_name,
+		nbb_customer.last_name,
+		nbb_order_main.order_number,
+		nbb_customer.referreduser_id');
+		$this->db->from('nbb_order_payments');
+		$this->db->join('nbb_customer','nbb_customer.id = nbb_order_payments.user_id','LEFT');
+		$this->db->join('nbb_order_main','nbb_order_main.id = nbb_order_payments.order_id','LEFT');
+		$this->db->where('nbb_order_payments.user_id',$id);
+		return $this->db->get()->result_array();
+	}
+	function getreferredby($referred_by){
+		$this->db->select('nbb_customer.*');
+        $this->db->from('nbb_customer');
+        $this->db->where('nbb_customer.referred_by',$referred_by);
+        return $this->db->get()->result_array();
+	}
 }

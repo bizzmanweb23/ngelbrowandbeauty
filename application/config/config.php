@@ -29,6 +29,7 @@ $config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
 $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 
 //$config['base_url'] = 'http://localhost/ngelbrowandbeauty/';
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -389,6 +390,7 @@ $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
+
 
 /*
 |--------------------------------------------------------------------------

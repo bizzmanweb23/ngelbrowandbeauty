@@ -315,6 +315,12 @@ body.bodyColor.wrapper {
     .aboutInfo h2{
         letter-spacing: 0px !important;
     }
+	.top-info-bar{
+        height: 80px !important;
+    }
+    .top-info-bar select{
+        width: 300px;
+    }
 }
 
 @media(min-width:768px) {
@@ -2197,7 +2203,7 @@ textarea.form-control {
     }
     .main-nav .navbar-brand img {
         width: auto;
-        max-width: 100px;
+        max-width: 130px;
     }
 }
 
@@ -2281,6 +2287,7 @@ textarea.form-control {
     background: #fff;
     padding: 5px 0 10px;
     border-top: 1px solid #e7e7e7
+
 }
 
 @media(min-width:768px) {

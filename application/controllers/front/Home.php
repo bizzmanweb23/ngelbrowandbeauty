@@ -69,6 +69,7 @@ class Home extends CI_Controller {
 					'email' => $check->email,
 					);
 				// print_r($user);exit;
+				$this->session->sess_expiration = '14400';
 				$this->session->set_userdata($user);
 	
 				redirect('home');
@@ -387,8 +388,7 @@ class Home extends CI_Controller {
 					<table bgcolor="#fff" cellpadding="0" cellspacing="0" class="force-full-width" style="margin: 0 auto; margin-bottom: 5px:">
 					<tbody>
 					<tr>
-					<td class="" style="color:#444;
-										">
+					<td class="" style="color:#444;">
 					<p>The password was auto-generated, however feel free to change it 
 					  
 						<a href="" style="text-decoration: underline;">
@@ -533,23 +533,7 @@ class Home extends CI_Controller {
         $this->load->view('front/services-details', $data);
 		$this->load->view('front/footer');
 
-    }*/
-
-    public function products(){ 
-		$serviceId = $this->uri->segment(2);
-		//echo $serviceId;exit;
-		$data['allproducts'] = $this->Header->getAllproductList($serviceId);
-
-		$datahader['allchild_category'] = $this->Header->getAllchild_category();
-		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
-		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
-		$this->load->view('front/header',$datahader);
-		/*$this->load->view('front/login-signup-model', $this->get_roles());*/
-        $this->load->view('front/product_list',$data);
-		$this->load->view('front/footer');
-		 
-    }  
+    }*/ 
    
     public function contact_us(){ 
      
@@ -641,24 +625,71 @@ class Home extends CI_Controller {
 					$update =$this->Main->update('id',$user_id, $data2,'nbb_customer');
 			}
 
-
 			$billing_data = array(
+				'user_id'  => $user_id,
 				'billing_firstname' => $this->input->post('billing_firstname'),
 				'billing_lastname' => $this->input->post('billing_lastname'),
 				'billing_contactno' => $this->input->post('billing_contactno'),
 				'billing_address' => $this->input->post('billing_address'),
-				'billing_city' => $this->input->post('billing_city'),
-				'billing_state' => $this->input->post('bill_state'),
+				'billing_hse_blk_no' => $this->input->post('billing_hse_blk_no'),
+				'billing_unit_no' => $this->input->post('billing_unit_no'),
+				'billing_street' => $this->input->post('billing_street'),
 				'billing_postal_code' => $this->input->post('billing_postal_code'),
-				'billing_country' => $this->input->post('billing_country'),
+				'billing_country' => $this->input->post('billing_country')
 				);
+
+				//print_r($billing_data);exit;
 			$billing_address_query = $this->db->query("SELECT * FROM nbb_billing_address WHERE nbb_billing_address.user_id = '".$user_id."'");
 			$billing_address_rownum = $billing_address_query->num_rows();
 	
 			if($billing_address_rownum > 0){
-				$this->Main->update('id',$user_id, $billing_data,'nbb_billing_address');  
+				$this->Main->update('user_id',$user_id, $billing_data,'nbb_billing_address');  
 			}else{
 				$this->db->insert('nbb_billing_address', $billing_data);
+			}
+
+			$shipping_address_query = $this->db->query("SELECT * FROM nbb_shipping_address WHERE nbb_shipping_address.user_id = '".$user_id."'");
+			$shipping_address_rownum = $shipping_address_query->num_rows();
+
+			if($this->input->post('billing_shipping_same') == ''){
+				$shipping_data = array(
+					'user_id' => $user_id,
+					'shipping_firstname' => $this->input->post('billing_firstname'),
+					'shipping_lastname' => $this->input->post('billing_lastname'),
+					'shipping_contactno' => $this->input->post('billing_contactno'),
+					'shipping_address' => $this->input->post('billing_address'),
+					'shipping_country' => $this->input->post('billing_country'),
+					'shipping_hse_blk_no' => $this->input->post('billing_hse_blk_no'),
+					'shippingunit_no' => $this->input->post('billing_unit_no'),
+					'shipping_street' => $this->input->post('billing_street'),
+					'shipping_postalcode' => $this->input->post('billing_postal_code'),
+				);
+	
+				if($shipping_address_rownum > 0){
+					$this->Main->update('user_id',$user_id, $shipping_data,'nbb_shipping_address');  
+				}else{
+					$this->db->insert('nbb_shipping_address', $shipping_data);
+				}
+				
+			}else{
+				$shipping_data = array(
+					'user_id' => $user_id,
+					'shipping_firstname' => $this->input->post('shipping_firstname'),
+					'shipping_lastname' => $this->input->post('shipping_lastname'),
+					'shipping_contactno' => $this->input->post('shipping_contactno'),
+					'shipping_address' => $this->input->post('shipping_address'),
+					'shipping_country' => $this->input->post('shipping_country'),
+					'shipping_hse_blk_no' => $this->input->post('shipping_hse_blk_no'),
+					'shippingunit_no' => $this->input->post('shippingunit_no'),
+					'shipping_street' => $this->input->post('shipping_street'),
+					'shipping_postalcode' => $this->input->post('billing_postal_code'),
+				);
+	
+				if($shipping_address_rownum > 0){
+					$this->Main->update('user_id',$user_id, $shipping_data,'nbb_shipping_address');  
+				}else{
+					$this->db->insert('nbb_shipping_address', $shipping_data);
+				}
 			}
 				
 				
@@ -717,6 +748,9 @@ class Home extends CI_Controller {
 		$getemail = $this->input->post('email');
 
 				if($getemail != ''){
+
+					$headers = "MIME-Version: 1.0" . "\r\n";
+					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 	
 					$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<html xmlns="http://www.w3.org/1999/xhtml">
@@ -729,7 +763,7 @@ class Home extends CI_Controller {
 						<a href="'.$referalLink.'" target="_blank">'.$referalLink.'</a>
 					</body>
 					</html>';
-					log_message('Debug', 'PHPMailer class is loaded.');
+					/*log_message('Debug', 'PHPMailer class is loaded.');
 					require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
 					require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
 					$mail = new PHPMailer();
@@ -753,6 +787,19 @@ class Home extends CI_Controller {
 							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
 						} else {
 							$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+						}*/
+
+						$to = $getemail;
+						$subject = "N'gel brow & beauty confirmation";
+						$txt = $message;
+						$headers = "From: test@yopmail.com";
+
+						$retval = mail($to,$subject,$txt,$headers);
+ 
+						if( $retval == true ) {
+							$data = array('success' => true, 'msg'=> 'Mail send successfully.');
+						}else {
+							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
 						}
 					}
 					redirect('referdToFriend');
@@ -805,274 +852,36 @@ class Home extends CI_Controller {
 		   $insert_id = $this->db->insert_id();
 
 		   if($email != ''){
-   
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 			   $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			   <html xmlns="http://www.w3.org/1999/xhtml">
 			   <head>
 			   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 			   <meta content="width=device-width, initial-scale=1" name="viewport">
 			
-			 <style type="text/css">
-				 body{
-				   width:100% !important;
-				 }
-				 body{
-				   -webkit-text-size-adjust:none;
-				 }
-				 body{
-				   margin:0;
-				   padding:0;
-				 }
-				 img{
-				   border:0;
-				   height:auto;
-				   line-height:100%;
-				   outline:none;
-				   text-decoration:none;
-				 }
-				 table td{
-				   border-collapse:collapse;
-				 }
-				 #backgroundTable{
-				   height:100% !important;
-				   margin:0;
-				   padding:0;
-				   width:100% !important;
-				 }
-			   
-				 body,#backgroundTable{
-				   background-color:#FAFAFA;
-				 }
-			  
-				 #templateContainer{
-				   border:1px none #DDDDDD;
-				 }
-			   
-				 #templatePreheader{
-				   background-color:#FAFAFA;
-				 }
-			   
-				 .preheaderContent div{
-				   color:#505050;
-				   font-family:Arial;
-				   font-size:10px;
-				   line-height:100%;
-				   text-align:left;
-				 }
-			   
-				 .preheaderContent div a:link,.preheaderContent div a:visited,.preheaderContent div a .yshortcuts {
-				   color:#336699;
-				   font-weight:normal;
-				   text-decoration:underline;
-				 }
-				 .preheaderContent img{
-				   display:inline;
-				   height:auto;
-				   margin-bottom:10px;
-				   max-width:280px;
-				 }
-			   
-				 #templateHeader{
-				   background-color:#FFFFFF;
-				   border-bottom:0;
-				 }
-			   
-				 .headerContent{
-				   color:#202020;
-				   font-family:Arial;
-				   font-size:34px;
-				   font-weight:bold;
-				   line-height:100%;
-				   padding:0;
-				   text-align:left;
-				   vertical-align:middle;
-				   background-color: #FAFAFA;
-				   padding-bottom: 14px;
-				 }
-			   
-				 .headerContent a:link,.headerContent a:visited,.headerContent a .yshortcuts {
-				   color:#336699;
-				   font-weight:normal;
-				   text-decoration:underline;
-				 }
-				 #headerImage{
-				   height:auto;
-				   max-width:400px !important;
-				 }
-			   
-				 #templateContainer,.bodyContent{
-				   background-color:#FFFFFF;
-				 }
-			  
-				 .bodyContent div{
-				   color:#505050;
-				   font-family:Arial;
-				   font-size:14px;
-				   line-height:150%;
-				   text-align:left;
-				 }
-			   
-				 .bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts {
-				   color:#336699;
-				   font-weight:normal;
-				   text-decoration:underline;
-				 }
-				 .bodyContent img{
-				   display:inline;
-				   height:auto;
-				   margin-bottom:10px;
-				   max-width:280px;
-				 }
-			   
-				 #monkeyRewards img{
-				   display:inline;
-				   height:auto;
-				   max-width:280px;
-				 }
-			 
-			   .buttonText {
-				 color: #4A90E2;
-				 text-decoration: none;
-				 font-weight: normal;
-				 display: block;
-				 border: 2px solid #585858;
-				 padding: 10px 80px;
-				 font-family: Arial;
-			   }
-			 
-			   #supportSection, .supportContent {
-				 background-color: white;
-				 font-family: arial;
-				 font-size: 12px;
-				 border-top: 1px solid #e4e4e4;
-			   }
-			 
-			   .bodyContent table {
-				 padding-bottom: 10px;
-			   }
-			 
-			   .headerContent.centeredWithBackground {
-				 background-color: #F4EEE2;
-				 text-align: center;
-				 padding-top: 20px;
-				 padding-bottom: 20px;
-			   }
-				   
-				@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-					   h1 {
-						   font-size: 40px !important;
-					   }
-					   
-					   .content {
-						   font-size: 22px !important;
-					   }
-					   
-					   .bodyContent p {
-						   font-size: 22px !important;
-					   }
-					   
-					   .buttonText {
-						   font-size: 22px !important;
-					   }
-					   
-					   p {
-						   
-						   font-size: 16px !important;    
-					   }
-					   
-					   .mainContainer {
-						   padding-bottom: 0 !important;   
-					   }
-				   }
-			 </style>
 		   </head>
 		   
 		   <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="width:100% ;-webkit-text-size-adjust:none;margin:0;padding:0;background-color:#FAFAFA;">
 			 <center>
-			   <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable" style="height:100% ;margin:0;padding:0;width:100% ;background-color:#FAFAFA;">
-				 <tr>
-				   <td align="center" valign="top" style="border-collapse:collapse;">
-					 
-					 <table border="0" cellpadding="10" cellspacing="0" width="450" id="templatePreheader" style="background-color:#FAFAFA;">
-					   <tr>
-						 <td valign="top" class="preheaderContent" style="border-collapse:collapse;">
-						   
-						   <table border="0" cellpadding="10" cellspacing="0" width="100%">
-							 <tr>
-							   <td valign="top" style="border-collapse:collapse;">
-							   </td>
-							 </tr>
-						   </table>
-					   
-						 </td>
-					   </tr>
-					 </table>
-					
-					 <table border="0" cellpadding="0" cellspacing="0" width="450" id="templateContainer" style="border:1px none #DDDDDD;background-color:#FFFFFF;">
-					   <tr>
-						 <td align="center" valign="top" style="border-collapse:collapse;">
-						   
-						   <table border="0" cellpadding="0" cellspacing="0" width="450" id="templateHeader" style="background-color:#FFFFFF;border-bottom:0;">
-							 <tr>
-							   <td class="headerContent centeredWithBackground" style="border-collapse:collapse;color:#202020;font-family:Arial;font-size:34px;font-weight:bold;line-height:100%;padding:0;text-align:center;vertical-align:middle;background-color:#F4EEE2;padding-bottom:20px;padding-top:20px;">
-								 
-								 <img width="130" src="'.site_url('/assets/img/LOGO.png').'" style="width:130px;max-width:130px;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;" id="headerImage campaign-icon">
-					   
-							   </td>
-							 </tr>
-						   </table>
-						 </td>
-					   </tr>
-					   <tr>
-						 <td align="center" valign="top" style="border-collapse:collapse;">
-						   
-						   <table border="0" cellpadding="0" cellspacing="0" width="450" id="templateBody">
-							 <tr>
-							   <td valign="top" class="bodyContent" style="border-collapse:collapse;background-color:#FFFFFF;">
-							   
-								 <table border="0" cellpadding="20" cellspacing="0" width="100%" style="padding-bottom:10px;">
-								   <tr>
-									 <td valign="top" style="padding-bottom:1rem;border-collapse:collapse;" class="mainContainer">
-									   <div style="text-align:center;color:#505050;font-family:Arial;font-size:14px;line-height:150%;">
-										 <h1 class="h1" style="color:#202020;display:block;font-family:Arial;font-size:24px;font-weight:bold;line-height:100%;margin-top:20px;margin-right:0;margin-bottom:20px;margin-left:0;text-align:center;">Verify Your Email</h1>
-		   
-										 <p>Please click the button below to verify your email And enter this OTP.&nbsp;&nbsp;<b>'.$otp_number.'</b></p>
-									   </div>
-									 </td>
-								   </tr>
-								   <tr>
-									 <td align="center" style="border-collapse:collapse;">
-									   <table border="0" cellpadding="0" cellspacing="0" style="padding-bottom:10px;">
-										 <tbody>
-										   <tr align="center">
-											 <td align="center" valign="middle" style="border-collapse:collapse;">
-											   <a class="buttonText" href="'.site_url('otpVerify').'" target="_blank" style="color: #4A90E2;text-decoration: none;font-weight: normal;display: block;border: 2px solid #585858;padding: 10px 80px;font-family: Arial;">Verify</a>
-											 </td>
-										   </tr>
-										 </tbody>
-									   </table>
-									 </td>
-								   </tr>
-								 </table>
-							   </td>
-							 </tr>
-						   </table>
-						   
-						 </td>
-					   </tr>
-					   
-					 </table>
-					 <br>
-				   </td>
-				 </tr>
-			   </table>
+			 <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+			 <div style="margin:50px auto;width:70%;padding:20px 0">
+			   <div style="border-bottom:1px solid #eee">
+				 <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">N`gel brow & beauty</a>
+			   </div>
+			   <p style="font-size:1.1em">Hi,</p>
+			   <p>Thank you for choosing Our Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes <h4 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;">'.$otp_number.'</h4></p>
+			   
+			   <a href = "'.site_url('otpVerify').'" style= "text-decoration: none;"><h2 style="background: #63d4d6;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">Verify Now</h2></a>
+			   
+			 </div>
+		   </div>
 			 </center>
 		   </body>
 		   
 		   </html>';
-			   //echo $message;exit;
-			   log_message('Debug', 'PHPMailer class is loaded.');
-			   //define('PATH', dirname(__FILE__));
+			   
+			   /*log_message('Debug', 'PHPMailer class is loaded.');
 			   require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
 			   require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
 			   $mail = new PHPMailer();
@@ -1096,11 +905,27 @@ class Home extends CI_Controller {
 					   $data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
 				   } else {
 					   $data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
-				   }
+				   }*/
+
+				   $to = $email;
+				   $subject = "N'gel brow & beauty confirmation";
+				   $txt = $message;
+				   $headers = "From: test@yopmail.com";
+	   
+				   $retval = mail($to,$subject,$txt,$headers);
+		
+					   if( $retval == true ) {
+						   $data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+					   }else {
+						   $data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+					   }
+					   
 			   }
 			   
 	   }
 	   echo json_encode($data);
    }
+
+
 }
 ?>

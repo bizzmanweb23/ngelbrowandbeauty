@@ -27,6 +27,7 @@ class EmployeeManagement extends CI_Controller {
     }
 	public function post_add_emp_details(){
 
+	
 		$data = array(
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('last_name'),
@@ -44,6 +45,7 @@ class EmployeeManagement extends CI_Controller {
 			'job_type_id' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
 			'designation' => $this->input->post('designation'),
+			'therapist_color' => $this->input->post('therapist_color'),
 			'payStructure' => $this->input->post('payStructure'),
 			'willing_to_relocate' => $this->input->post('relocate'),
 			'basicSalary' => $this->input->post('basicSalary'),
@@ -185,6 +187,7 @@ class EmployeeManagement extends CI_Controller {
 			'job_type_id' => $this->input->post('jobtype'),
 			'date_of_joining' => $this->input->post('date_of_joining'),
 			'designation' => $this->input->post('designation'),
+			'therapist_color' => $this->input->post('therapist_color'),
 			'payStructure' => $this->input->post('payStructure'),
 			'basicSalary' => $this->input->post('basicSalary'),
 			);
@@ -515,7 +518,7 @@ class EmployeeManagement extends CI_Controller {
 			}
 			
 			.heading{
-				background-color: #b8860b;
+				background-color: #61d3d4;
 				color: white;
 				padding: 5px;
 				text-align: left;

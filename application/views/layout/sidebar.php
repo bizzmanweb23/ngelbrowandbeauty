@@ -182,6 +182,12 @@ if ($this->session->userdata('id')) {
 									<span class="sidenav-normal"> Cart Details </span>
 								</a>
 							</li>
+							<li class="nav-item ">
+							<a class="nav-link  " href="<?= base_url(); ?>admin/OrderManagement/all_Wishlist">
+									<span class="sidenav-mini-icon"> W </span>
+									<span class="sidenav-normal"> Wishlist </span>
+							</a>
+							</li>
 							<?php /* <li class="nav-item ">
 								<a class="nav-link  " href="<?= base_url(); ?>admin/OrderManagement/all_DeliveryDetails">
 									<span class="sidenav-mini-icon"> D </span>
@@ -191,6 +197,25 @@ if ($this->session->userdata('id')) {
 						</ul>
 					</div>
 				</li>  
+				<?php } if( $menuname == 'POS Management'){ ?>
+						<li class="nav-item">
+								<a data-bs-toggle="collapse" href="#pagesExamples13" class="nav-link collapsed" aria-controls="pagesExamples13" role="button" aria-expanded="false">
+								<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;"><i class="far fa-handshake"></i>
+								</div>
+									<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">POS Management</span>
+								</a>
+								<div class="collapse" id="pagesExamples13" style="">
+									<ul class="nav ms-4 ps-3">
+										<li class="nav-item ">
+											<a class="nav-link  " href="<?= base_url(); ?>admin/POS_management/create_pos">
+												<span class="sidenav-mini-icon"> C </span>
+												<span class="sidenav-normal"> POS Sheet </span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li> 
+		
 				<?php } if( $menuname == 'Delivery Management'){ ?>
 				<li class="nav-item">
 					<a class="nav-link  " href="<?= base_url(); ?>admin/OrderManagement/all_DeliveryDetails">
@@ -365,25 +390,46 @@ if ($this->session->userdata('id')) {
 				</li>
 				<?php } if( $menuname == 'Customer Management'){ ?>
 						
-					<li class="nav-item">
+				<?php /*	<li class="nav-item">
 					<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/customer">
 						<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
 						<i class="fa fa-user"></i>
 						</div>
 						<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Customer Management</span>
 					</a>
-					</li> 
+					</li> */ ?>
+					<li class="nav-item">
+							<a data-bs-toggle="collapse" href="#pagesExamples12" class="nav-link collapsed" aria-controls="pagesExamples12" role="button" aria-expanded="false">
+							<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;"><i class="far fa-handshake"></i>
+							</div>
+								<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Customer Management</span>
+							</a>
+							<div class="collapse" id="pagesExamples12" style="">
+								<ul class="nav ms-4 ps-3">
+									<li class="nav-item ">
+									<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/customer">
+											<span class="sidenav-mini-icon"> C </span>
+											<span class="sidenav-normal"> Customers </span>
+									</a>
+									</li>
+									<?php /*<li class="nav-item ">
+									<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/all_CreditWallet">
+											<span class="sidenav-mini-icon"> C </span>
+											<span class="sidenav-normal"> Credit Wallet </span>
+										</a>
+									</li>
+									<li class="nav-item ">
+										<a class="nav-link  " href="<?= base_url(); ?>admin/welcome/all_ExpenseWallet">
+											<span class="sidenav-mini-icon"> E </span>
+											<span class="sidenav-normal"> Expense Wallet </span>
+										</a>
+									</li> */ ?>
+								</ul>
+							</div>
+						</li> 
 
 					<?php } if( $menuname == 'Course Management'){ ?>
                      
-					<?php /*	<li class="nav-item">
-						 <a class="nav-link" href="<?= base_url(); ?>admin/CourseManagement/all_courses">
-							 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
-							 <i class="fa fa-book-open"></i>
-							 </div>
-							 <span class="nav-link-text ms-1" style="color:#61d3d4; font-weight:bold; font-zise:14px !important;">Course Management</span>
-						 </a>
-						</li> */ ?>
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#pagesExamples10" class="nav-link collapsed" aria-controls="pagesExamples10" role="button" aria-expanded="false">
 							<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
@@ -401,7 +447,7 @@ if ($this->session->userdata('id')) {
 									</li>
 									<li class="nav-item ">
 									<a class="nav-link  " href="<?= base_url(); ?>admin/CourseManagement/all_studentRegistrationForm">
-											<span class="sidenav-mini-icon"> C </span>
+											<span class="sidenav-mini-icon"> S </span>
 											<span class="sidenav-normal"> Students </span>
 										</a>
 									</li>

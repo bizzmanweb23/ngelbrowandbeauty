@@ -34,7 +34,8 @@
                     <th>Product Name</th>
                     <th>Category</th>
 					<th>Brand Name</th>
-                    <th>Price</th>
+					<th>Price</th>
+					<th>Discounted Price</th>
 					<th>Colour</th>
 					<th>UOM</th>
                     <th>Total Stock</th>
@@ -68,6 +69,7 @@
                         <td><?= $productRow['category_name']?></td>
 						<td><?= $productRow['brand_name']?></td>
                         <td><?= $productRow['price']?></td>
+						<td><?= $productRow['discounted_price']?></td>
 						<td><?= $productRow['colour']?></td>
                         <td><?= $productRow['weight']?></td>
                         <td><?= $productRow['stock'] ?></td>

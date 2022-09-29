@@ -218,6 +218,23 @@ class OrderManagement_Model extends CI_Model
         $this->db->from('nbb_delivery_status');
         return $this->db->get()->result_array();
     }
+	function getAllWishlist()
+	{
+		
+		$this->db->select('nbb_wishlist.*,
+		nbb_customer.first_name,
+		nbb_customer.last_name,
+		nbb_product.name AS p_name,
+		nbb_product.price');
+		$this->db->from('nbb_wishlist');
+		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_wishlist.userId', 'LEFT');
+		$this->db->join('nbb_product', 'nbb_product.id = nbb_wishlist.product_id', 'LEFT');
+		/*$where = array(
+			'nbb_order_main.type_flag' => 'O'
+		  );
+		$this->db->where($where);*/
+		return $this->db->get()->result_array();
+	}
 	function getAllOrderDetails($order_id)
 	{
 		$this->db->select('nbb_order_product.*,
@@ -377,10 +394,13 @@ class OrderManagement_Model extends CI_Model
 	function getEveryCustomerOrderProduct($id)
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_employees.first_name AS e_first_name,
+		nbb_employees.last_name AS e_last_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
 		$where = array(
 			'nbb_order_main.type_flag' => 'O',
 			'nbb_order_main.user_id'   => $id
@@ -391,10 +411,13 @@ class OrderManagement_Model extends CI_Model
 	function getEveryCustomerCurrentOrder($id)
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_employees.first_name AS e_first_name,
+		nbb_employees.last_name AS e_last_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 1,
@@ -406,10 +429,13 @@ class OrderManagement_Model extends CI_Model
 	function getEveryCustomerComplatedOrder($id)
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_employees.first_name AS e_first_name,
+		nbb_employees.last_name AS e_last_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 2,
@@ -421,10 +447,13 @@ class OrderManagement_Model extends CI_Model
 	function getEveryCustomerCanceledOrder($id)
 	{
 		$this->db->select('nbb_order_main.*,
+		nbb_employees.first_name AS e_first_name,
+		nbb_employees.last_name AS e_last_name,
 		nbb_customer.first_name,
 		nbb_customer.last_name');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
 		$where = array(
 			'type_flag' => 'O',
 			'order_status'   => 3,

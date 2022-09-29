@@ -255,7 +255,7 @@ display:none;
 							</span>
 							</h2>
 
-								<div id='calendar' style="width: 1200px;"></div>
+							<div id='calendar' style="width: 1200px;"></div>
 								
 						</div>
 							

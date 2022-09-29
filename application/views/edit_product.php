@@ -30,7 +30,7 @@
 							<label for="service_name" class="col-sm-6 control-label">Product Name <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="product_name" id="product_name" placeholder="Product Name Max Length : 150." value="<?= $productData['name'] ?>">
+								<input type="text" class="form-control" name="product_name" id="product_name" placeholder="Product Name Max Length : 150." value="<?= $productData['name'] ?>" require>
 							</div>
 						</div>
                 	</div>
@@ -38,22 +38,11 @@
 						<div class="form-group ">
 							<label for="image" class="col-sm-6 control-label">Product SKU </label>
 							<div class="col-sm-12">
-							<input type="text" class="form-control" name="product_sku" id="product_sku" placeholder="Product SKU Max Length : 50." value="<?= $productData['sku'] ?>">
+							<input type="text" class="form-control" name="product_sku" id="product_sku" placeholder="Product SKU Max Length : 50." value="<?= $productData['sku'] ?>" require>
 							</div>
 						</div>
 					</div>
                 </div>
-					
-				<!--<div class="col-md-6"> 
-					<div class="form-group ">
-						<label for="category" class="col-sm-6 control-label"> product Code
-						<i class="required">*</i>
-						</label>
-						<div class="col-sm-12">
-							<input type="text" class="form-control" name="product_code" id="product_code" placeholder="Product Code Max Length : 50." value="<?= $productData['product_code'] ?>">
-						</div>
-					</div> 
-				</div>-->
                 
 				<div class="row">
 					<div class="col-md-6"> 
@@ -100,6 +89,70 @@
 						</div>  
 					</div>
 				</div>
+
+				<div class="row">
+					<div class="col-md-3">      
+						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Product Price
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control product_price" name="product_price" placeholder="Enter Product Price" value="<?= $productData['price'] ?>" required>
+							</div>
+						</div>        
+					</div>
+					<div class="col-md-3">                       
+						<div class="form-group ">
+							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select  class="form-control chosen chosen-select types" name="types">
+									<option value="" hidden>Select Types</option>
+									<option value="1" <?php if($productData['types'] == '1'){?>selected <?php } ?>>Discounted</option>
+									<option value="2" <?php if($productData['types'] == '2'){?>selected <?php } ?>>Non discounted product</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<?php if($productData['types'] == '1'){?>
+					<div class="col-md-3 discountpart">      
+						<div class="form-group">
+							<div class="col-md-12">
+								<label for="Discount" class="control-label">Discount Percentage:</label>
+							</div>
+							<div class="col-md-12">
+								<input type="text" class="form-control discountPercentage" name="discountPercentage" placeholder="Enter Discount" value="<?= $productData['discountPercentage'] ?>">
+							</div>
+						</div>        
+					</div> 
+					<div class="col-md-3 discountpart">      
+						<div class="form-group">
+							<label for="Discount" class="col-md-6 control-label">Discounted Price:</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control discounted_price" name="discounted_price" value="<?= $productData['discounted_price'] ?>" readonly>
+							</div>
+						</div>        
+					</div> 
+					<?php } ?>
+					<div class="col-md-3 discountAmount" style="display: none;">      
+						<div class="form-group">
+							<div class="col-md-12">
+								<label for="Discount" class="control-label">Discount Percentage:</label>
+							</div>
+							<div class="col-md-12">
+								<input type="text" class="form-control discountPercentage" name="discountPercentage" placeholder="Enter Discount" value="<?= $productData['discountPercentage'] ?>">
+							</div>
+						</div>        
+					</div> 
+					<div class="col-md-3 discountAmount" style="display: none;">      
+						<div class="form-group">
+							<label for="Discount" class="col-md-6 control-label">Discounted Price:</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control discounted_price" name="discounted_price" value="<?= $productData['discounted_price'] ?>" readonly>
+							</div>
+						</div>        
+					</div>
+				</div>
+
 				<div class="row">       
 					<div class="col-md-4">      
 						<div class="form-group ">
@@ -107,7 +160,7 @@
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="brand_name" placeholder="Enter Brand Name" value="<?= $productData['brand_name'] ?>" required>
+								<input type="text" class="form-control" name="brand_name" placeholder="Enter Brand Name" value="<?= $productData['brand_name'] ?>" required>
 							</div>
 						</div>        
 					</div> 
@@ -121,40 +174,13 @@
 							</div>
 						</div>        
 					</div> 
-					<div class="col-md-4">                       
-						<div class="form-group ">
-							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
-							<div class="col-sm-12">
-								<select  class="form-control chosen chosen-select" name="types" data-placeholder="Select Types" >
-									<option value="" hidden>Select Types</option>
-									<option value="1" <?php if($productData['types'] == '1'){?>selected <?php } ?>>Discounted</option>
-									<option value="2" <?php if($productData['types'] == '2'){?>selected <?php } ?>>Non discounted product</option>
-								</select>
-							</div>
-						</div>
-					</div>
-                </div>  
-				
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
+					<div class="col-md-4">
+						<div class="form-group form-check">
 							<input type="checkbox" name="light_medical_beauty" value="1">
 							<label for="customCheckbox"> Light Medical Beauty Product </label>        
 						</div>                      
 					</div> 
-					<?php if($productData['types'] == '1'){?>
-					<div class="col-md-6 discountAmount">      
-						<div class="form-group">
-							<label for="Discount" class="col-sm-6 control-label">Discount Amount</label>
-							<div class="col-sm-12">
-								<input type="text" class="form-control" name="discountAmount" placeholder="Enter colour" value="">
-							</div>
-						</div>        
-					</div> 
-					<?php }else{ ?>
-
-					<?php } ?>
-				</div> 
+                </div>  
 				
 				<div class="row">
 					<div class="col-md-6">
@@ -175,23 +201,23 @@
 					</div>
 				</div> 
 
-                <div class="row">       
-					<div class="col-md-6">      
-						<div class="form-group ">
-							<label for="service_price" class="col-sm-6 control-label">Product Price
-							<i class="required">*</i>
-							</label>
-							<div class="col-sm-12">
-								<input type="number" class="form-control" name="product_price" id="product_price" placeholder="Product Price Max Length : 50." value="<?= $productData['price'] ?>" required>
-							</div>
-						</div>        
-					</div> 
+                <div class="row">        
 					<div class="col-md-6">      
 						<div class="form-group ">
 							<label for="service_price" class="col-sm-6 control-label">UOM (Volume - ML / Length - MM)<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
 								<input type="text" class="form-control" name="product_weight" id="product_weight" placeholder="Product Weight Max Length : 50." value="<?= $productData['weight'] ?>">
+							</div>
+						</div>        
+					</div>
+					<div class="col-md-6">      
+						<div class="form-group">
+							<label for="service_price" class="col-sm-6 control-label">Rating
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="number" class="form-control" name="rating" placeholder="Enter rating" value="<?= $productData['rating'] ?>">
 							</div>
 						</div>        
 					</div> 
@@ -336,10 +362,21 @@
 		$(".types").change(function(){
 			if(this.value == '1') {
 				$(".discountAmount").show();
+				$(".discountpart").hide();
 			}
 			if(this.value == '2') {
 				$(".discountAmount").hide(); 
+				$(".discountpart").hide();
 			}
+		});
+		$('.discountPercentage').on('keyup', function(){
+			var discountPercentage = $(this).val();
+			var product_price = $('.product_price').val();
+			//alert(product_price);
+			var pricePercentage = (product_price * discountPercentage)/100;
+			var discountPrice = product_price - pricePercentage;
+
+			$(".discounted_price").val(discountPrice); 
 		});
 
 	});	
