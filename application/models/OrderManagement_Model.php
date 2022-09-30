@@ -70,8 +70,9 @@ class OrderManagement_Model extends CI_Model
 		nbb_customer.last_name,
 		nbb_shipping_address.shipping_contactno,
 		nbb_shipping_address.shipping_address,
-		nbb_shipping_address.shipping_city,
-		nbb_shipping_address.shipping_state,
+		nbb_shipping_address.shipping_hse_blk_no,
+		nbb_shipping_address.shippingunit_no,
+		nbb_shipping_address.shipping_street,
 		nbb_shipping_address.shipping_postalcode
 		FROM nbb_order_main 
 		LEFT JOIN nbb_customer ON nbb_customer.id = nbb_order_main.user_id 
@@ -93,8 +94,9 @@ class OrderManagement_Model extends CI_Model
 		nbb_customer.email,
 		nbb_shipping_address.shipping_contactno,
 		nbb_shipping_address.shipping_address,
-		nbb_shipping_address.shipping_city,
-		nbb_shipping_address.shipping_state,
+		nbb_shipping_address.shipping_hse_blk_no,
+		nbb_shipping_address.shippingunit_no,
+		nbb_shipping_address.shipping_street,
 		nbb_shipping_address.shipping_postalcode
 		FROM nbb_order_main 
 		LEFT JOIN nbb_customer ON nbb_customer.id = nbb_order_main.user_id 
@@ -116,8 +118,9 @@ class OrderManagement_Model extends CI_Model
 		nbb_customer.email,
 		nbb_shipping_address.shipping_contactno,
 		nbb_shipping_address.shipping_address,
-		nbb_shipping_address.shipping_city,
-		nbb_shipping_address.shipping_state,
+		nbb_shipping_address.shipping_hse_blk_no,
+		nbb_shipping_address.shippingunit_no,
+		nbb_shipping_address.shipping_street,
 		nbb_shipping_address.shipping_postalcode
 		FROM nbb_order_main 
 		LEFT JOIN nbb_customer ON nbb_customer.id = nbb_order_main.user_id 
@@ -306,14 +309,17 @@ class OrderManagement_Model extends CI_Model
 				'billing_contactno' 	=> $row['billing_contactno'],
 				'billing_address' 		=> $row['billing_address'],
 				'billing_postal_code' 	=> $row['billing_postal_code'],
-				'billing_city' 			=> $row['billing_city'],
-				'billing_state' 		=> $row['billing_state'],
+				'billing_hse_blk_no' 	=> $row['billing_hse_blk_no'],
+				'billing_unit_no' 		=> $row['billing_unit_no'],
+				'billing_country'       => $row['billing_country'],
+				'billing_street'       => $row['billing_street'],
 				'shipping_firstname' 	=> $row['shipping_firstname'],
 				'shipping_lastname' 	=> $row['shipping_lastname'],
 				'shipping_contactno' 	=> $row['shipping_contactno'],
 				'shipping_address' 		=> $row['shipping_address'],
-				'shipping_city' 		=> $row['shipping_city'],
-				'shipping_state' 		=> $row['shipping_state'],
+				'shipping_hse_blk_no' 	=> $row['shipping_hse_blk_no'],
+				'shippingunit_no' 		=> $row['shippingunit_no'],
+				'shipping_street' 		=> $row['shipping_street'],
 				'shipping_postalcode'	=> $row['shipping_postalcode'],
 				'courier' 				=> $row['courier'],
 				'courier_price' 		=> $row['courier_price'],

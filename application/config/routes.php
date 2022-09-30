@@ -73,6 +73,7 @@ $route['uniqueEmail'] =  'front/home/duplicateEmailCheck';
 $route['uniqueContact'] =  'front/home/duplicateCoctactCheck';
 $route['wallet'] =  'front/User/wallet';
 $route['wishList'] =  'front/product/wishList';
+$route['orderlist'] =  'front/product/orderlist';
 $route['courses'] =  'front/Courses/allcourses';
 $route['cartList'] =  'front/product/cartListView';
 $route['productOrder'] =  'front/product/productCheckOut';

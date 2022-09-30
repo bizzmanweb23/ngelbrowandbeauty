@@ -198,7 +198,7 @@ function googleTranslateElementInit() {
 													
 													<li><a href="<?php echo base_url('myProfile') ?>"><span style="font-size: 13px;">My Profile</span></a></li>
 													<li><a href="<?php echo base_url('referdToFriend') ?>"><span style="font-size: 13px;">Referred to Friend</span></a></li>
-													<li><a href="<?php echo base_url('cartList') ?>"><span style="font-size: 13px;">Cart List</span></a></li>
+													<li><a href="<?php echo base_url('orderlist') ?>"><span style="font-size: 13px;">Order List</span></a></li>
 													<li><a href="<?php echo base_url('wishList') ?>"><span style="font-size: 13px;">WishList</span></a></li>
 													<li><a href="<?php echo base_url() ?>wallet" target="_blank"><span style="font-size: 13px;">Wallet</span></a></li>
 													<li><a href="<?php echo base_url('logout') ?>"><span style="font-size: 12px;">Logout</span></a></li>
@@ -216,7 +216,19 @@ function googleTranslateElementInit() {
           </div>
 
           <div class="cart_btn">
-							<a href="<?php echo base_url('cartList') ?>"><i class="las la-shopping-cart" style="font-size:32px;" aria-hidden="true"></i><span class="badge">0</span></a>					
+						
+							<a href="<?php echo base_url('cartList') ?>"><i class="las la-shopping-cart" style="font-size:32px;" aria-hidden="true"></i><span class="badge">
+
+							<?php if($this->session->userdata('id')>0){ 
+								 
+								 $order_main_query = $this->db->query("SELECT * FROM nbb_order_product LEFT JOIN nbb_order_main ON nbb_order_main.id = nbb_order_product.order_id WHERE nbb_order_main.user_id = '".$user_id."' AND nbb_order_main.type_flag = 'C'");
+							$order_main_rownum = $order_main_query->num_rows();  
+							echo $order_main_rownum;
+							?> 
+							<?php }else{
+								
+								}?></span>
+							</a>					
           </div>
 					<!--<div class="cart_btn p-3" data-toggle="modal" data-target="#myModal">
 							<a href="javascript:void(0)"><i class="las la-user-alt" style="font-size:32px;"></i></a>

@@ -114,10 +114,10 @@ class ProcurementManagement extends CI_Controller {
 					$result2 = $this->Main->insert('nbb_supplier_order_product',$orderdata);
 					
 				}	
-				$headers = "MIME-Version: 1.0" . "\r\n";
-				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$message = '
-				<html>
+
+			$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+				<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
 				<head>
                 <meta charset="UTF-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -258,19 +258,36 @@ class ProcurementManagement extends CI_Controller {
                 </center>
             </body>
 			</html>';
-			$to = $email;
-			$subject = "N'gel brow & beauty confirmation";
-			$txt = $message;
+			//echo $message;exit;
+			log_message('Debug', 'PHPMailer class is loaded.');
+			//define('PATH', dirname(__FILE__));
+			require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
+			require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
+			$mail = new PHPMailer();
+			$mail->IsSMTP();
+			$mail->SMTPDebug = 0;
+			$mail->SMTPAuth = true;
+			$mail->SMTPSecure = "tls";
+			$mail->Port     = 2525; //465 
+			$mail->Username = "2a791aefbf3911";
+			$mail->Password = "8cc9702ee73b22";
+			$mail->Host     = "smtp.mailtrap.io";//s211.syd1.hostingplatform.net.au
+			$mail->Mailer   = "smtp";
+			$mail->SetFrom("ciprojectbizz@gmail.com", "Ngel brow & beauty");
+			$mail->AddAddress($email);	
+			$mail->AddAddress("ciprojectbizz@gmail.com");
+			$mail->Subject = '[Re:#'.$order_code.']'.' '.$mail_subject;
+			$mail->WordWrap   = 80;
+			$mail->MsgHTML($message);
+			
+				if(!$mail->Send()) {
 
-			$retval = mail($to,$subject,$txt,$headers);
- 
-				if( $retval == true ) {
-					echo $data['successmsg'] = "<p class='success'>Mail Sent Successfully.</p>";
+				echo $data['successmsg'] = "<p class='error'>Problem in Sending Mail.</p>";
+
+				} else {
+				echo $data['successmsg'] = "<p class='success'>Mail Sent Successfully.</p>";
 				redirect('admin/ProcurementManagement/all_supplier');
-				}else {
-					echo $data['successmsg'] = "<p class='error'>Problem in Sending Mail.</p>";
 				}
-				
 			}
 		}
 	public function view_OrderProductList(){

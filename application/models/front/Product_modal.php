@@ -75,6 +75,7 @@ class Product_modal extends CI_Model
 		$order_main_query = $this->db->query($order_main_sql); 
 		return $order_main_query->result_array();	
 	}
+
 	function getcartProducttotalPrice($user_id){
 
 		$orderTotal_sql = "SELECT SUM(nbb_order_product.total_price) AS total_price,
@@ -95,6 +96,42 @@ class Product_modal extends CI_Model
 			
 		}
 		return $data;
+	}
+	function getAllorderlist($user_id){
+
+		$order_main_sql = "SELECT nbb_order_main.*
+		FROM nbb_order_main 
+		WHERE nbb_order_main.user_id = '".$user_id."' AND nbb_order_main.type_flag = 'o'";
+		$order_main_query = $this->db->query($order_main_sql); 
+		return $order_main_query->result_array();	
+	}
+	function getshipping_address($user_id){
+
+		$shipping_address_sql = "SELECT nbb_shipping_address.*
+		FROM nbb_shipping_address 
+		WHERE nbb_shipping_address.user_id = '".$user_id."'";
+		$shipping_address_query = $this->db->query($shipping_address_sql); 
+		return $shipping_address_query->result_array();	
+	}
+	function productlistFilterdata($catId,$fromPriceRange,$toPriceRange){
+		$where = '';
+			/*$limit_per_page = 12;
+			$limit = '';*/
+		
+			
+			$minusToPriceRange = $toPriceRange - 1;
+			if($fromPriceRange != '' || $toPriceRange != ''){
+				$where .= " AND nbb_product.price >= '".$fromPriceRange."' AND nbb_product.price <= '".$minusToPriceRange."'";
+			}
+
+		
+			$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
+			FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
+			FROM nbb_product 
+			WHERE nbb_product.product_category_id = '".$catId."'".$where;
+			$product_query = $this->db->query($all_product_sql);
+			return $product_data = $product_query->result_array();
+				 
 	}
 }
 ?>

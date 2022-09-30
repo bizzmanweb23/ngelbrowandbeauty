@@ -1,3 +1,9 @@
+<section class="clearfix pageTitleArea lipsbanner" style="background-image: url(../assets/front/img/blog/All_Product.png);">
+        <div class="container">
+          
+        </div>
+</section>
+
 <!-- PRODUCT SECTION -->
     <section class="container-fluid clearfix productArea">
 			<div class="messages"></div>
@@ -12,8 +18,17 @@
             <div class="panel panel-default productSideBar mb-0">
               <div class="panel-heading">Filter by Price</div>
             </div>
-
-            <div class="price-range mb-4 px-3" id="price-range">
+						<div class="range-slider mt-1">
+							<span>
+								<input type="number" value="1" min="0" max="50" name = "fromPriceRange" class = "fromPriceRange categoryPriceSlider" readonly/>-
+								<input type="number" value="50" min="0" max="50" name = "toPriceRange" class = "toPriceRange categoryPriceSlider" readonly/>
+							</span>
+							<input value="1" min="0" max="500" step="1" type="range" class = "priceSlider categoryPriceSlider"/>
+							<input value="500" min="0" max="500" step="1" type="range" class = "priceSlider categoryPriceSlider"/>
+						</div>
+						<?php $catId = $this->uri->segment(2); ?>
+						<input type="hidden" class="catId" name="catId" value="<?= $catId; ?>">
+            <!--<div class="price-range mb-4 px-3" id="price-range">
               <div class="mb-4" id="slider-non-linear-step"></div>
               <div class="price-range-content">
                 <span class="price-text">Price:</span>
@@ -21,14 +36,16 @@
                 <strong class="price-icon">-</strong>
                 <span class="price-value" id="upper-value"></span>
               </div>
-            </div>
+							
+            </div>-->
+						
 
           </div>
         
 
         	<div class="col-sm-9 col-xs-12">
 
-            <div class="row">
+            <div class="row allfilterdata">
 						<?php foreach($allproducts as $servicesImg_row): ?>
               <div class="col-md-6 col-lg-4">
                 <div class="produtSingle">
@@ -61,14 +78,14 @@
                     </div>
                   </div>
                   <div class="productCaption">
-                    <h2><a href="single-product.html"><?= $servicesImg_row['name'] ?></a></h2>
+                    <h2><a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank"><?= $servicesImg_row['name'] ?></a></h2>
 											<h3>$<?php if($servicesImg_row['discounted_price'] == ''){ ?>
 													<?= $servicesImg_row['price'] ?>
 											<?php }else{ ?>
 												<?= $servicesImg_row['discounted_price'] ?>
 											<?php } ?>
 												</h3>
-                    <a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" class="btn btn-primary btn-block mt-2">View Details</a>
+                    <a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank" class="btn btn-primary btn-block mt-2">View Details</a>
                   </div>
                  
                 </div>
@@ -126,6 +143,202 @@
 						}
 					});
 				});
+
+				$(".categoryPriceSlider").on("keyup change", function(e){	
+					var catId = $('.catId').val();
+					var fromPriceRange = $('.fromPriceRange').val();
+	  			var toPriceRange = $('.toPriceRange').val();
+					//alert(catId);
+
+					var url = "<?php echo base_url() ?>front/Product/get_product_filter";
+					
+					$.ajax({
+						type : 'POST',
+						url : url, 
+						data :  {catId:catId,fromPriceRange:fromPriceRange,toPriceRange:toPriceRange}, 
+						success : function(result){
+              $(".allfilterdata").html(result);
+						}
+					});
+
+				});
 			});
-</script>
+
+
+		(function() {
+
+var parent = document.querySelector(".range-slider");
+if(!parent) return;
+
+var
+	rangeS = parent.querySelectorAll("input[type=range]"),
+	numberS = parent.querySelectorAll("input[type=number]");
+
+rangeS.forEach(function(el) {
+	el.oninput = function() {
+		var slide1 = parseFloat(rangeS[0].value),
+				slide2 = parseFloat(rangeS[1].value);
+
+		if (slide1 > slide2) {
+			[slide1, slide2] = [slide2, slide1];
+			// var tmp = slide2;
+			// slide2 = slide1;
+			// slide1 = tmp;
+		}
+
+		numberS[0].value = slide1;
+		numberS[1].value = slide2;
+	}
+});
+
+numberS.forEach(function(el) {
+	el.oninput = function() {
+		var number1 = parseFloat(numberS[0].value),
+				number2 = parseFloat(numberS[1].value);
 		
+		if (number1 > number2) {
+			var tmp = number1;
+			numberS[0].value = number2;
+			numberS[1].value = tmp;
+		}
+
+		rangeS[0].value = number1;
+		rangeS[1].value = number2;
+
+	}
+});
+
+})();
+</script>
+	<style>
+.range-slider {
+	width: 250px;
+	margin: auto;
+	text-align: center;
+	position: relative;
+	height: 6em;
+}
+
+.range-slider svg,
+.range-slider input[type=range] {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+input[type=number] {
+	border: 1px solid #ddd;
+	text-align: center;
+	font-size: 1.6em;
+	-moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type=number]:invalid,
+input[type=number]:out-of-range {
+	border: 2px solid #ff6347;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	width: 100%;
+}
+
+input[type=range]:focus {
+	outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #2497e3;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: #2497e3;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+	background: #2497e3;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 5px;
+	cursor: pointer;
+	animate: 0.2s;
+	background: #2497e3;
+	border-radius: 1px;
+	box-shadow: none;
+	border: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	z-index: 2;
+	position: relative;
+	box-shadow: 0px 0px 0px #000;
+	border: 1px solid #2497e3;
+	height: 18px;
+	width: 18px;
+	border-radius: 25px;
+	background: #a1d0ff;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -7px;
+}
+
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 5px;
+	cursor: pointer;
+	animate: 0.2s;
+	background: #2497e3;
+	border-radius: 1px;
+	box-shadow: none;
+	border: 0;
+}
+
+input[type=range]::-moz-range-thumb {
+	z-index: 2;
+	position: relative;
+	box-shadow: 0px 0px 0px #000;
+	border: 1px solid #2497e3;
+	height: 18px;
+	width: 18px;
+	border-radius: 25px;
+	background: #a1d0ff;
+	cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 5px;
+	cursor: pointer;
+	animate: 0.2s;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+
+input[type=range]::-ms-fill-lower,
+input[type=range]::-ms-fill-upper {
+	background: #2497e3;
+	border-radius: 1px;
+	box-shadow: none;
+	border: 0;
+}
+
+input[type=range]::-ms-thumb {
+	z-index: 2;
+	position: relative;
+	box-shadow: 0px 0px 0px #000;
+	border: 1px solid #2497e3;
+	height: 18px;
+	width: 18px;
+	border-radius: 25px;
+	background: #a1d0ff;
+	cursor: pointer;
+}
+	</style>	

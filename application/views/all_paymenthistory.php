@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Payment</h1>
+            <h1>Transaction History</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -25,8 +25,8 @@
                 <table class="table table-bordered payment_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
-                    <th>Customer Name </th>
-                    <th>Customer Code</th>
+                    <th>Invoice No.</th>
+                    <th>Order No.</th>
 										<th>Amount</th>
 										<th>Payment date</th>
                   </tr>
@@ -34,8 +34,8 @@
                   <tbody>
                     <?php foreach($paymenthistory as $paymenthistoryRow): ?>
                       <tr>
-                        <td><?= $paymenthistoryRow['first_name'] .' '.$paymenthistoryRow['last_name']?></td>
-												<td><?= $paymenthistoryRow['referreduser_id'] ?></td>	
+                        <td><?= $paymenthistoryRow['invoice_id']?></td>
+												<td><?= $paymenthistoryRow['order_id'] ?></td>	
                         <td><?= $paymenthistoryRow['amount']?></td>
                         <td><?= date("d-m-Y", strtotime($paymenthistoryRow['payment_date'])) ?></td>
 											

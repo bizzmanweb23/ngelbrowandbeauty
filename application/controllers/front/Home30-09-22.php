@@ -83,91 +83,117 @@ class Home extends CI_Controller {
 	public function logout(){
 	    $this->session->sess_destroy();
 	    redirect('home');
-   	} 
-
-	
-	
+   	}    
 	public function signup(){
+		 //Validation Rules
+		 $this->form_validation->set_rules('first_name','First Name','trim|required');
+		 $this->form_validation->set_rules('last_name','Last Name','trim|required');
+		 $this->form_validation->set_rules('email','Email','trim|required|valid_email');
+		 $this->form_validation->set_rules('contact','Contact','trim|required|min_length[10]');
+		 $this->form_validation->set_rules('password', 'Password', 'required');
+		 $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
+ 
+		if($this->form_validation->run() == FALSE){
+			$data = array('success' => true, 'msg'=> 'Form has been not submitted Please fillup properly.');
+        } else {
+            $email = $this->input->post('email');
 			
-		
-		//Validation Rules
-		$this->form_validation->set_rules('first_name','First Name','trim|required');
-		$this->form_validation->set_rules('last_name','Last Name','trim|required');
-		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
-		$this->form_validation->set_rules('contact','Contact','trim|required|min_length[10]');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
+			if($email){
+				$ref_number = 'NBB'.random_string('alnum',5);
+				$otp_number = random_string('alnum',4);
 
-	if($this->form_validation->run() == FALSE){
-		$data = array('success' => true, 'msg'=> 'Form has been not submitted Please fillup properly.');
-	} else {
-		$email = $this->input->post('email');
-		
-		if($email){
-			$ref_number = 'NBB'.random_string('alnum',5);
-			$otp_number = random_string('alnum',4);
+				$data = array(
+					'first_name'    => $this->input->post('first_name'),
+					'last_name'     => $this->input->post('last_name'),
+					'email'      => $email,
+					'contact'      => $this->input->post('contact'),
+					'password'      => md5($this->input->post('password')),
+					'referreduser_id'=>$ref_number,
+					'otp' => $otp_number,
+					'status' => '0'
+				);
 
-			$data = array(
-				'first_name'    => $this->input->post('first_name'),
-				'last_name'     => $this->input->post('last_name'),
-				'email'      => $email,
-				'contact'      => $this->input->post('contact'),
-				'password'      => md5($this->input->post('password')),
-				'referreduser_id'=>$ref_number,
-				'otp' => $otp_number,
-				'status' => '0'
-			);
+				//Table Insert
+				$result = $this->Main->insert('nbb_customer',$data);
+				$insert_id = $this->db->insert_id();
 
-			//Table Insert
-			$result = $this->Main->insert('nbb_customer',$data);
-			$insert_id = $this->db->insert_id();
-
-			$headers = "MIME-Version: 1.0" . "\r\n";
-			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+				$message = '<html">
+				<head>
+			</head>
 			
-			$message = '<html>';
-			$message .= '<head> 
-			<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-			<meta content="width=device-width, initial-scale=1" name="viewport">
-			</head>'; 
-			$message .= '<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="width:100% ;-webkit-text-size-adjust:none;margin:0;padding:0;background-color:#FAFAFA;">
-					<center>
-						<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
-						<div style="margin:50px auto;width:70%;padding:20px 0">
-							<div style="border-bottom:1px solid #eee">
-							<a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">N`gel brow & beauty</a>
-							</div>
-							<p style="font-size:1.1em">Hi,</p>
-							<p>Thank you for choosing Our Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes <h4 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;">'.$otp_number.'</h4></p>
-							
-							<a href = "'.site_url('otpVerify').'" style= "text-decoration: none;"><h2 style="background: #63d4d6;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">Verify Now</h2></a>
-							
+			<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="width:100% ;-webkit-text-size-adjust:none;margin:0;padding:0;background-color:#FAFAFA;">
+			  <center>
+					<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+					<div style="margin:50px auto;width:70%;padding:20px 0">
+						<div style="border-bottom:1px solid #eee">
+						<a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">N`gel brow & beauty</a>
 						</div>
-						</div>
-					</center>
-				</body>'; 
-			$message .= '</html>';
-		
-		
-
-				$to = $email;
-				$subject = "N'gel brow & beauty confirmation";
-				$txt = $message;
+						<p style="font-size:1.1em">Hi,</p>
+						<p>Thank you for choosing Our Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes <h4 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;">'.$otp_number.'</h4></p>
+						
+						<a href = "'.site_url('otpVerify').'" style= "text-decoration: none;"><h2 style="background: #63d4d6;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">Verify Now</h2></a>
+						
+					</div>
+					</div>
+			  </center>
+			</body>
+			
+			</html>';
+				//echo $message;exit;
+			/*	log_message('Debug', 'PHPMailer class is loaded.');
 				
-
-				$retval = mail($to,$subject,$txt,$headers);
-		
-					if($retval) {
-						$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
-					}else {
+				require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
+				require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
+				$mail = new PHPMailer();
+				$mail->IsSMTP();
+				$mail->SMTPDebug = 0;
+				$mail->SMTPAuth = true;
+				$mail->SMTPSecure = "tls";
+				$mail->Port     = 2525; //465 
+				$mail->Username = "2a791aefbf3911";
+				$mail->Password = "8cc9702ee73b22";
+				$mail->Host     = "smtp.mailtrap.io";//s211.syd1.hostingplatform.net.au
+				$mail->Mailer   = "smtp";
+				$mail->SetFrom("ciprojectbizz@gmail.com", "Ngel brow & beauty");
+				$mail->AddAddress($email);	
+				$mail->AddAddress("ciprojectbizz@gmail.com");
+				$mail->Subject = "N'gel brow & beauty confirmation";
+				$mail->WordWrap   = 80;
+				$mail->MsgHTML($message);
+				
+					if(!$mail->Send()) {
 						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
-					}
+					} else {
+						$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+					}*/
+
+					//$msg = "First line of text\nSecond line of text";
+
+					// use wordwrap() if lines are longer than 70 characters
+					//$msg = wordwrap($message,70);
+					// send email
+					//mail("ciprojectbizz@gmail.com","N'gel brow & beauty confirmation",$msg);
+
+					$to = $email;
+					$subject = "N'gel brow & beauty confirmation";
+					$txt = $message;
+					$headers .= "From: ciprojectbizz@gmail.com";
+
+					$retval = mail($to,$subject,$txt,$headers);
+         
+						if($retval) {
+							$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+						}else {
+							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+						}
+					
+				}
 				
-			}
-			
-			
-	}
-	echo json_encode($data);
+				
+        }
+		echo json_encode($data);
 	}
 	public function duplicateEmailCheck(){
 		
@@ -374,13 +400,40 @@ class Home extends CI_Controller {
 					</tbody></table>
 					</body></html>';
 
-				$to = $getemail;
-				$subject = "N'gel brow & beauty confirmation";
-				$txt = $message;
-				
+					//echo $message;exit;
+					/*log_message('Debug', 'PHPMailer class is loaded.');
+					
+					require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
+					require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
+					$mail = new PHPMailer();
+					$mail->IsSMTP();
+					$mail->SMTPDebug = 0;
+					$mail->SMTPAuth = true;
+					$mail->SMTPSecure = "tls";
+					$mail->Port     = 2525; //465 
+					$mail->Username = "2a791aefbf3911";
+					$mail->Password = "8cc9702ee73b22";
+					$mail->Host     = "smtp.mailtrap.io";//s211.syd1.hostingplatform.net.au
+					$mail->Mailer   = "smtp";
+					$mail->SetFrom("ciprojectbizz@gmail.com", "Ngel brow & beauty");
+					$mail->AddAddress($email);	
+					$mail->AddAddress("ciprojectbizz@gmail.com");
+					$mail->Subject = "N'gel brow & beauty confirmation";
+					$mail->WordWrap   = 80;
+					$mail->MsgHTML($message);
+					
+						if(!$mail->Send()) {
+							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+						} else {
+							$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+						}*/
 
-				$retval = mail($to,$subject,$txt,$headers);
-		
+						$to = $getemail;
+						$subject = "N'gel brow & beauty confirmation";
+						$txt = $message;
+
+						$retval = mail($to,$subject,$txt,$headers);
+         
 					if( $retval) {
 						redirect('login');
 					}else {
@@ -702,19 +755,44 @@ class Home extends CI_Controller {
 						<a href="'.$referalLink.'" target="_blank">'.$referalLink.'</a>
 					</body>
 					</html>';
+					/*log_message('Debug', 'PHPMailer class is loaded.');
+					require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
+					require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
+					$mail = new PHPMailer();
+					$mail->IsSMTP();
+					$mail->SMTPDebug = 0;
+					$mail->SMTPAuth = true;
+					$mail->SMTPSecure = "tls";
+					$mail->Port     = 2525; //465 
+					$mail->Username = "2a791aefbf3911";
+					$mail->Password = "8cc9702ee73b22";
+					$mail->Host     = "smtp.mailtrap.io";//s211.syd1.hostingplatform.net.au
+					$mail->Mailer   = "smtp";
+					$mail->SetFrom("ciprojectbizz@gmail.com", "Ngel brow & beauty");
+					$mail->AddAddress($getemail);	
+					$mail->AddAddress("ciprojectbizz@gmail.com");
+					$mail->Subject = "N'gel brow & beauty";
+					$mail->WordWrap   = 80;
+					$mail->MsgHTML($message);
+					
+						if(!$mail->Send()) {
+							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+						} else {
+							$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+						}*/
 
-					$to = $getemail;
-					$subject = "N'gel brow & beauty Referred";
-					$txt = $message;
+						$to = $getemail;
+						$subject = "N'gel brow & beauty confirmation";
+						$txt = $message;
+						$headers .= "From: test@yopmail.com";
 
-					$retval = mail($to,$subject,$txt,$headers);
-
-					if( $retval) {
-						redirect('login');
-					}else {
-						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
-					}
-						
+						$retval = mail($to,$subject,$txt,$headers);
+ 
+						if( $retval == true ) {
+							$data = array('success' => true, 'msg'=> 'Mail send successfully.');
+						}else {
+							$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+						}
 					}
 					redirect('referdToFriend');
 
@@ -789,11 +867,36 @@ class Home extends CI_Controller {
 		   
 		   </html>';
 			   
-			  
+			   /*log_message('Debug', 'PHPMailer class is loaded.');
+			   require_once(APPPATH.'libraries/phpmailer/class.phpmailer.php');
+			   require_once(APPPATH.'libraries/phpmailer/class.smtp.php');
+			   $mail = new PHPMailer();
+			   $mail->IsSMTP();
+			   $mail->SMTPDebug = 0;
+			   $mail->SMTPAuth = true;
+			   $mail->SMTPSecure = "tls";
+			   $mail->Port     = 2525; //465 
+			   $mail->Username = "2a791aefbf3911";
+			   $mail->Password = "8cc9702ee73b22";
+			   $mail->Host     = "smtp.mailtrap.io";//s211.syd1.hostingplatform.net.au
+			   $mail->Mailer   = "smtp";
+			   $mail->SetFrom("ciprojectbizz@gmail.com", "Ngel brow & beauty");
+			   $mail->AddAddress($email);	
+			   $mail->AddAddress("ciprojectbizz@gmail.com");
+			   $mail->Subject = "N'gel brow & beauty confirmation";
+			   $mail->WordWrap   = 80;
+			   $mail->MsgHTML($message);
+			   
+				   if(!$mail->Send()) {
+					   $data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+				   } else {
+					   $data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+				   }*/
 
 				   $to = $email;
 				   $subject = "N'gel brow & beauty confirmation";
 				   $txt = $message;
+				   $headers .= "From: test@yopmail.com";
 	   
 				   $retval = mail($to,$subject,$txt,$headers);
 		

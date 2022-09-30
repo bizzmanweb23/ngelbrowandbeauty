@@ -1,7 +1,7 @@
 <!-- HEADER -->
     
     <!-- PAGE TITLE SECTION -->
-     <section class="clearfix pageTitleArea" style="background-image: url(assets/front/img/blog/CoursesBanner.png);">
+     <section class="clearfix pageTitleArea" style="background-image: url(assets/front/img/blog/Course.png);">
         <div class="container">
           
         </div>

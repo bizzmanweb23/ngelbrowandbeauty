@@ -44,13 +44,23 @@ class Home_model extends CI_Model
 		return $result = $this->db->get()->result_array(); 	
 	}
 	function getShipping_address($user_id){
-		$this->db->select('nbb_shipping_address.*,
-		nbb_state.name AS stateName');
+		$this->db->select('nbb_shipping_address.*');
 		$this->db->from('nbb_shipping_address');
 		$this->db->where('nbb_shipping_address.user_id', $user_id);
-		$this->db->join('nbb_state', 'nbb_state.id = nbb_shipping_address.shipping_state', 'LEFT');
 		$this->db->limit(1);  
 		return $result = $this->db->get()->result_array(); 	
+	}
+	function getHomeproductList(){
+		
+		$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
+		FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
+		FROM nbb_product 
+		WHERE nbb_product.status = 1
+		ORDER BY nbb_product.id DESC
+		LIMIT 30";
+		$product_query = $this->db->query($all_product_sql);
+		return $product_data = $product_query->result_array();
+
 	}
 }
 ?>

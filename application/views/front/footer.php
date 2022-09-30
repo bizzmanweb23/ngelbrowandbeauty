@@ -38,37 +38,37 @@
               <div class="footerGallery row">
                 <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0">
                   <a href="gallery-v2.html">
-                    <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-1.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-1.jpg" alt="gallery-img">
+                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-1.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-1.jpg" alt="gallery-img">
                   </a>
                 </div>
 
                 <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0">
                   <a href="gallery-v2.html">
-                    <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-2.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-2.jpg" alt="gallery-img">
+                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-2.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-2.jpg" alt="gallery-img">
                   </a>
                 </div>
 
                 <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0">
                   <a href="gallery-v2.html">
-                    <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-3.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-3.jpg" alt="gallery-img">
+                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/gallery-6.jpg" src="<?= base_url(); ?>/assets/front/img/home/gallery-6.jpg" alt="gallery-img">
                   </a>
                 </div>
 
                 <div class="col-4 col-md-6 col-lg-4">
                   <a href="gallery-v2.html">
-                    <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-4.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-4.jpg" alt="gallery-img">
+                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/gallery-8.jpg" src="<?= base_url(); ?>/assets/front/img/home/gallery-8.jpg" alt="gallery-img">
                   </a>
                 </div>
 
                 <div class="col-4 col-md-6 col-lg-4">
                   <a href="gallery-v2.html">
-                    <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-5.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-5.jpg" alt="gallery-img">
+                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/pricing-1.jpg" src="<?= base_url(); ?>/assets/front/img/home/pricing-1.jpg" alt="gallery-img">
                   </a>
                 </div>
 
                 <div class="col-4 col-md-6 col-lg-4">
                   <a href="gallery-v2.html">
-                    <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-6.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-6.jpg" alt="gallery-img">
+                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/offer-2.jpg" src="<?= base_url(); ?>/assets/front/img/home/offer-2.jpg" alt="gallery-img">
                   </a>
                 </div>
               </div>

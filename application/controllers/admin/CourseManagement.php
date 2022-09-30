@@ -32,10 +32,7 @@ class CourseManagement extends CI_Controller {
 			'description' => $this->input->post('description'),
 			'type_of_cert' => $this->input->post('type_of_cert'),
 			'foc_items' => $this->input->post('foc_items'),
-			'trainer_id' => $this->input->post('trainer_id'),
-			'hse_blk_no' => $this->input->post('hse_blk_no'),
-			'unit_no' => $this->input->post('unit_no'),
-			'building_streetName' => $this->input->post('building_streetName')
+			'trainer_id' => $this->input->post('trainer_id')
 		);
 
 			$insert = $this->Main->insert('nbb_course',$data); 
@@ -103,10 +100,7 @@ class CourseManagement extends CI_Controller {
 			'description' => $this->input->post('description'),
 			'type_of_cert' => $this->input->post('type_of_cert'),
 			'foc_items' => $this->input->post('foc_items'),
-			'trainer_id' => $this->input->post('trainer_id'),
-			'hse_blk_no' => $this->input->post('hse_blk_no'),
-			'unit_no' => $this->input->post('unit_no'),
-			'building_streetName' => $this->input->post('building_streetName')
+			'trainer_id' => $this->input->post('trainer_id')
 		);
 
 		$result=$this->Main->update('id',$course_id, $data,'nbb_course'); 

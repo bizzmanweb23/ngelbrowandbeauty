@@ -1,4 +1,3 @@
-
 <div class="content-wrapper" style="margin-left: 270px;">
 	<section class="content-header">
       <div class="container-fluid">
@@ -130,18 +129,26 @@
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-4">
-													<label for="draftStatus" class="col-form-label">City :</label>
+													<label for="draftStatus" class="col-form-label">Hse / Blk No.</label>
 												</div>
 												<div class="col-sm-4">
-													<p><?= $OrderDetails['shipping_city'] ?></p>
+													<p><?= $OrderDetails['shipping_hse_blk_no'] ?></p>
 												</div>
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-4">
-													<label for="draftStatus" class="col-form-label">State :</label>
+													<label for="draftStatus" class="col-form-label">Unit No.</label>
 												</div>
 												<div class="col-sm-4">
-													<p><?= $OrderDetails['shipping_state'] ?></p>
+													<p><?= $OrderDetails['shippingunit_no'] ?></p>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-4">
+													<label for="draftStatus" class="col-form-label">Building / Street Name</label>
+												</div>
+												<div class="col-sm-4">
+													<p><?= $OrderDetails['shipping_street'] ?></p>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -193,18 +200,26 @@
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-4">
-													<label for="draftStatus" class="col-form-label">City :</label>
+													<label for="draftStatus" class="col-form-label">Hse / Blk No.</label>
 												</div>
 												<div class="col-sm-4">
-													<p><?= $OrderDetails['billing_city'] ?></p>
+													<p><?= $OrderDetails['billing_hse_blk_no'] ?></p>
 												</div>
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-4">
-													<label for="draftStatus" class="col-form-label">State :</label>
+													<label for="draftStatus" class="col-form-label">Unit No.</label>
 												</div>
 												<div class="col-sm-4">
-													<p><?= $OrderDetails['billing_state'] ?></p>
+													<p><?= $OrderDetails['billing_unit_no'] ?></p>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-4">
+													<label for="draftStatus" class="col-form-label">Building / Street Name</label>
+												</div>
+												<div class="col-sm-4">
+													<p><?= $OrderDetails['billing_unit_no'] ?></p>
 												</div>
 											</div>
 											<div class="form-group row">

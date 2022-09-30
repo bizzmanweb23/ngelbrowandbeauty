@@ -804,7 +804,9 @@ button {
     padding: 105px 0;
     background-repeat: no-repeat
 }
-
+.lipsbanner{
+background-image: url(../assets/front/img/blog/CoursesBanner.png);
+}
 .pageTitle h1 {
     margin: 0;
     text-align: center;

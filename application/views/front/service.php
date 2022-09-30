@@ -3,7 +3,7 @@
     <section class="clearfix varietySection">
       <div class="container">
         <div class="secotionTitle">
-          <h2><span>Discover</span>variety of spa</h2>
+          <h2><span>Discover</span>variety of services</h2>
         </div>
         <div class="row">
           <div class="col-12">

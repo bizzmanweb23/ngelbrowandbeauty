@@ -13,9 +13,9 @@ class Product extends CI_Controller {
 		//$this->db2 = $this->load->database('database2', TRUE);
 	}
 	public function products(){ 
-		$serviceId = $this->uri->segment(2);
+		$productId = $this->uri->segment(2);
 		//echo $serviceId;exit;
-		$data['allproducts'] = $this->Header->getAllproductList($serviceId);
+		$data['allproducts'] = $this->Header->getAllproductList($productId);
 
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
@@ -124,16 +124,24 @@ class Product extends CI_Controller {
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
 
 		$this->load->view('front/header',$datahader);
-        $this->load->view('front/orderlist', $data);
+        $this->load->view('front/currentOrder', $data);
 		$this->load->view('front/footer');
 	}
+	
 	public function productcompleteorder(){
 
 		//$Id = $this->uri->segment(2);
 		$Id = $this->input->post('order_id');
 		$total_price = $this->input->post('total_price');
+		$referral_balance = 0;
+		$order_number = $this->generateOrderNumber($Id);
+		$mainorderdata = array(
+			'type_flag'=> 'O',
+			'order_system' => 'application',
+			'order_number' => $order_number
+		); 
 		$this->db->where('id' , $Id);
-		$this->db->update('nbb_order_main', array('type_flag'=> 'O'));
+		$this->db->update('nbb_order_main', $mainorderdata);
 
 		$user_id = $this->session->userdata('id');  
         $referred_by_qry = $this->db->query("SELECT nbb_customer.id,nbb_customer.referred_by 
@@ -144,7 +152,6 @@ class Product extends CI_Controller {
 		$referred_by = '';			
 		foreach($referred_by_data as $row){	
 			$referred_by = $row['referred_by'];	
-			//echo 'test';
 		}
 
 		$referred_userid_qry = $this->db->query("SELECT nbb_customer.id
@@ -168,7 +175,7 @@ class Product extends CI_Controller {
 				$referral_val = $credit_walletrow['referral_balance'];	
 				 
 			}
-			
+
 			if($total_price > '680' && $total_price < '2000'){
 				$referral_balance = ($total_price * 10) / 100;
 			}elseif($total_price > '2000' && $total_price < '3500'){
@@ -179,21 +186,28 @@ class Product extends CI_Controller {
 				$referral_balance = ($total_price * 40) / 100;
 			}
 			$totalRefval = $referral_val + $referral_balance;
-		$orderdata = array(
-			'user_id' => $referred_uid,
-			'referral_balance' => $totalRefval
-		); 
-		if($credit_wallet_rownum > 0){
+			$orderdata = array(
+				'user_id' => $referred_uid,
+				'referral_balance' => $totalRefval
+			); 
+			if($credit_wallet_rownum > 0){
 
-			$this->db->where('user_id', $referred_uid);
-			$this->db->update('nbb_credit_wallet', $orderdata);
-		}else{
-			$this->db->insert('nbb_credit_wallet', $orderdata);
-		}
+				$this->db->where('user_id', $referred_uid);
+				$this->db->update('nbb_credit_wallet', $orderdata);
+			}else{
+				$this->db->insert('nbb_credit_wallet', $orderdata);
+			}
 			
 		}
 
+		$data = array(
+			'total_price' 	=> $total_price,
+			'order_number' => $order_number,
+			'shipping_address' => $this->Product->getshipping_address($user_id)
+		); 
 
+
+        $this->load->view('front/order_confirmation', $data);
 
 	}
 
@@ -244,10 +258,7 @@ class Product extends CI_Controller {
 		$user_id = $this->session->userdata('id'); 
 		$product_id = $_GET['product_id'];
 		$price = $_GET['price'];
-		/*echo $product_id = $this->input->post('product_id');
-		echo $price = $this->input->post('price');exit;*/
         $select_exist_quote_qry = $this->db->query("SELECT nbb_order_main.id FROM nbb_order_main WHERE nbb_order_main.type_flag ='C' and nbb_order_main.user_id = '$user_id' LIMIT 1");
-		//echo 'text';
         $order_id ="";
 
         if($select_exist_quote_qry->num_rows() >0){
@@ -299,6 +310,34 @@ class Product extends CI_Controller {
 		redirect('wishList');
             
     }
+	public function orderlist(){ 
+		$user_id=$this->session->userdata('id');
+		$data['allorders'] = $this->Product->getAllorderlist($user_id);
+
+		$datahader['allchild_category'] = $this->Header->getAllchild_category();
+		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
+		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
+		$this->load->view('front/header',$datahader);
+        $this->load->view('front/orderList',$data);
+		$this->load->view('front/footer');
+		 
+    } 
+	function get_product_filter(){
+		$catId = $_POST['catId'];
+		$fromPriceRange = $_POST['fromPriceRange'];
+		$toPriceRange = $_POST['toPriceRange'];
+
+		$filter_productlist = $this->Product->productlistFilterdata($catId,$fromPriceRange,$toPriceRange);
+
+		$data = array(
+			'allproducts' 	=> $filter_productlist,	
+		);
+		 
+		
+			$this->load->view('front/searchFilterData', $data);
+	}
+
 	public function generateOrderNumber($id)
 	{
 		return 'NBB' . str_pad($id, 4, 0, STR_PAD_LEFT);
