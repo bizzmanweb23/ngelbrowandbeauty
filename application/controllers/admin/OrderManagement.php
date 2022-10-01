@@ -222,6 +222,7 @@ class OrderManagement extends CI_Controller {
 	{
 
 		$order_id = $this->input->post('order_id');
+		$product_id = $this->input->post('product_id');
 		$this->db->select('*');
 		$this->db->where('order_id',$order_id);
 		$query = $this->db->get('nbb_delivery_details');
@@ -245,7 +246,7 @@ class OrderManagement extends CI_Controller {
 		}    
 		if($result == true)
 		{
-			return redirect('admin/OrderManagement/viewOrderDetails/'.$order_id);
+			return redirect('admin/OrderManagement/viewOrderDetails/'.$product_id);
 		}
 		else
 		{
