@@ -134,7 +134,6 @@ class CustomerManagement extends CI_Controller {
 		 }
 		 $customerId = $this->uri->segment(4);
 		 $data['AdminUser'] = $this->Auth->getAllAdminUser();
-		 $data['allstate'] = $this->CustomerManagement->getAllstate();
 		 $data['customerDataForEdit'] = $this->Auth->getCustomerData($customerId);
 		 $this->layout->view('edit_Customer',$data);
 		}
@@ -249,5 +248,18 @@ class CustomerManagement extends CI_Controller {
             }
         }
     } 
+	public function showCustomerPdf()
+    {
+		$customer_Id = $_GET['customer_Id'];
+        $data["CustomerData"]=$this->CustomerManagement->getpdfAllcustomerData($customer_Id);
+
+		$mpdf = new \Mpdf\Mpdf();
+		
+		$html=$this->load->view('GenerateCustomerPdfView',$data,true);
+		$mpdf->WriteHTML($html);
+		//$mpdf->Output('CourseDetails"'.$course_Id.'".pdf','D');
+		$mpdf->Output();
+		
+    }
 }
 ?>

@@ -250,7 +250,8 @@
 							<div id="collapseThree" class="collapse show">
 								<div class="card-body">
 									<form action="<?= base_url('admin/OrderManagement/post_add_delivery')?>" method="post" enctype="multipart/form-data">
-										<input type="hidden" class="form-control" name="order_id" value="<?= $OrderDetails['id'] ?>">
+										<input type="text" class="form-control" name="order_id" value="<?= $OrderDetails['order_id'] ?>">
+										<input type="text" class="form-control" name="order_id" value="<?= $OrderDetails['id'] ?>">
 										<div class="form-group row">
 											<div class="col-sm-4">
 												<label for="draftStatus" class="col-form-label">Courier Partner</label>

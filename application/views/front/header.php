@@ -10,26 +10,6 @@
   <title>N'gel brow & beauty</title>
 
 	
-   <!-- JAVASCRIPTS -->
-  <script src="<?= base_url(); ?>assets/front/plugins/jquery/jquery.min.js"></script>
-  <script src="<?= base_url(); ?>assets/front/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> 
-  <script src='<?= base_url(); ?>assets/front/plugins/selectbox/jquery.selectbox-0.1.3.min.js'></script>
-  <script src='<?= base_url(); ?>assets/front/plugins/owl-carousel/owl.carousel.min.js'></script>
-  <script src='<?= base_url(); ?>assets/front/plugins/isotope/isotope.min.js'></script>
-  <script src='<?= base_url(); ?>assets/front/plugins/fancybox/jquery.fancybox.min.js'></script> 
-  <script src='<?= base_url(); ?>assets/front/plugins/isotope/isotope-triger.min.js'></script>
-  <script src='<?= base_url(); ?>assets/front/plugins/datepicker/bootstrap-datepicker.min.js'></script> 
-  <script src="<?= base_url(); ?>assets/front/plugins/lazyestload/lazyestload.js"></script> 
-  <script src="<?= base_url(); ?>assets/front/plugins/smoothscroll/SmoothScroll.js"></script> 
-	<script src='<?= base_url(); ?>assets/front/plugins/no-ui-slider/nouislider.min.js'></script>
-
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
-  <script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
-	<script src="<?= base_url(); ?>assets/front/options/optionswitcher.js"></script>
-  <script src='<?= base_url(); ?>assets/front/plugins/fancybox/fancyMorph.js'></script>
 
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&amp;family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
@@ -68,6 +48,28 @@
 	<!--<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/front/css/main.css">-->
 <!--===============================================================================================-->
+
+   <!-- JAVASCRIPTS -->
+	 <script src="<?= base_url(); ?>assets/front/plugins/jquery/jquery.min.js"></script>
+  <script src="<?= base_url(); ?>assets/front/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> 
+  <script src='<?= base_url(); ?>assets/front/plugins/selectbox/jquery.selectbox-0.1.3.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/owl-carousel/owl.carousel.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/isotope/isotope.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/fancybox/jquery.fancybox.min.js'></script> 
+  <script src='<?= base_url(); ?>assets/front/plugins/isotope/isotope-triger.min.js'></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/datepicker/bootstrap-datepicker.min.js'></script> 
+  <script src="<?= base_url(); ?>assets/front/plugins/lazyestload/lazyestload.js"></script> 
+  <script src="<?= base_url(); ?>assets/front/plugins/smoothscroll/SmoothScroll.js"></script> 
+	<script src='<?= base_url(); ?>assets/front/plugins/no-ui-slider/nouislider.min.js'></script>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <script src="<?= base_url(); ?>assets/front/js/custom.js"></script>
+	<script src="<?= base_url(); ?>assets/front/options/optionswitcher.js"></script>
+  <script src='<?= base_url(); ?>assets/front/plugins/fancybox/fancyMorph.js'></script>
+	
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <!--<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 <script type="text/javascript">

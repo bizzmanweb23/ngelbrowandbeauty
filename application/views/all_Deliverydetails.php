@@ -38,9 +38,9 @@
                     <?php foreach($delivery_details as $delivery_detailsRow): ?>
                       <tr>
 												<td><?= $delivery_detailsRow['first_name'].' '.$delivery_detailsRow['last_name'] ?></td>
-                        <td><?= $delivery_detailsRow['order_id']?></td>
+                        <td><?= $delivery_detailsRow['order_number']?></td>
 												<td><?= $delivery_detailsRow['deliveryBoyfirst_name'].' '.$delivery_detailsRow['deliveryBoylast_name'] ?></td>
-												<td><?= 'Land mark: '.$delivery_detailsRow['shipping_address'].',City: '.$delivery_detailsRow['shipping_city'].',State: '.$delivery_detailsRow['state_name'].',PIN Code: '.$delivery_detailsRow['shipping_postalcode'] ?></td>
+												<td><?= 'Address: '.$delivery_detailsRow['shipping_address'].',Hse / Blk No: '.$delivery_detailsRow['shipping_hse_blk_no'].',Unit No: '.$delivery_detailsRow['shippingunit_no'].',Building/Street Name: '.$delivery_detailsRow['shipping_street'].',Country: '.$delivery_detailsRow['shipping_country'].',PIN Code: '.$delivery_detailsRow['shipping_postalcode'] ?></td>
                         <td><?= $delivery_detailsRow['status_name']?>
 												<a data-delivery_Id="<?=  $delivery_detailsRow['id'];?>"
 												data-order_id = "<?= $delivery_detailsRow['order_id'] ?>"

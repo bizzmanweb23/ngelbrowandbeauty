@@ -238,9 +238,10 @@ class OrderManagement_Model extends CI_Model
 		$this->db->where($where);*/
 		return $this->db->get()->result_array();
 	}
-	function getAllOrderDetails($order_id)
+	function getAllOrderDetails($order_id,$product_id)
 	{
 		$this->db->select('nbb_order_product.*,
+		nbb_order_product.id as pid,
 		nbb_order_main.order_number,
 		nbb_order_main.user_id,
 		nbb_order_main.order_status,
@@ -267,7 +268,8 @@ class OrderManagement_Model extends CI_Model
 		$this->db->join('nbb_delivery_details', 'nbb_delivery_details.order_id = nbb_order_main.id', 'LEFT');
 		$where = array(
 			'nbb_order_main.type_flag' => 'O',
-			'nbb_order_main.id'   => $order_id
+			'nbb_order_main.id'   => $order_id,
+			'nbb_order_product.id'   => $product_id
 		  );
 		$this->db->where($where);
 		$order_product_query = $this->db->get()->result_array();
@@ -277,7 +279,7 @@ class OrderManagement_Model extends CI_Model
 
 			$data = array(
 				'order_id' 				=> $order_id,
-				'id' 					=> $row['id'],
+				'id' 					=> $row['pid'],
 				'order_code' 			=> $row['order_number'],
 				'product_name' 			=> $row['product_name'],
 				'short_description' 	=> $row['short_description'],
@@ -359,17 +361,17 @@ class OrderManagement_Model extends CI_Model
 		nbb_employees.first_name as deliveryBoyfirst_name,
 		nbb_employees.last_name as deliveryBoylast_name,
 		nbb_shipping_address.shipping_address,
-		nbb_shipping_address.shipping_city,
+		nbb_shipping_address.shipping_country,
 		nbb_shipping_address.shipping_postalcode,
-		nbb_shipping_address.shipping_state,
-		nbb_state.name as state_name');
+		nbb_shipping_address.shipping_hse_blk_no,
+		nbb_shipping_address.shippingunit_no,
+		nbb_shipping_address.shipping_street');
         $this->db->from('nbb_delivery_details');
 		$this->db->join('nbb_order_main', 'nbb_order_main.id = nbb_delivery_details.order_id', 'LEFT');
 		$this->db->join('nbb_delivery_status', 'nbb_delivery_status.id = nbb_delivery_details.delivery_status', 'LEFT');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_delivery_details.courier', 'LEFT');
 		$this->db->join('nbb_shipping_address', 'nbb_shipping_address.user_id = nbb_order_main.user_id', 'LEFT');
-		$this->db->join('nbb_state', 'nbb_state.id = nbb_shipping_address.shipping_state', 'LEFT');
         return $this->db->get()->result_array();
     }
 	function getAllDeliveryDetailsEdit($id)

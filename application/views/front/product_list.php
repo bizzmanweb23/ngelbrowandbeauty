@@ -289,28 +289,6 @@ input[type=range]::-webkit-slider-thumb {
 	margin-top: -7px;
 }
 
-input[type=range]::-moz-range-track {
-	width: 100%;
-	height: 5px;
-	cursor: pointer;
-	animate: 0.2s;
-	background: #2497e3;
-	border-radius: 1px;
-	box-shadow: none;
-	border: 0;
-}
-
-input[type=range]::-moz-range-thumb {
-	z-index: 2;
-	position: relative;
-	box-shadow: 0px 0px 0px #000;
-	border: 1px solid #2497e3;
-	height: 18px;
-	width: 18px;
-	border-radius: 25px;
-	background: #a1d0ff;
-	cursor: pointer;
-}
 
 input[type=range]::-ms-track {
 	width: 100%;

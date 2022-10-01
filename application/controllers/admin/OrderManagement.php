@@ -212,8 +212,9 @@ class OrderManagement extends CI_Controller {
 		$data['name'] = $this->session->userdata('name');
 		$data['deliveryPartner'] = $this->OrderManagement->getDeliveryPartner();
 		$data['customer_order_status'] = $this->OrderManagement->getCustomerOrderStatus();
-		$order_id = $this->uri->segment(4);
-		$data['OrderDetails'] = $this->OrderManagement->getAllOrderDetails($order_id);
+		$order_product_id = $this->uri->segment(4);
+		$order_id = $this->uri->segment(5);
+		$data['OrderDetails'] = $this->OrderManagement->getAllOrderDetails($order_id,$order_product_id);
 
 		$this->layout->view('viewOrderDetails_page',$data);
 	}
@@ -375,7 +376,20 @@ class OrderManagement extends CI_Controller {
        $data['Wishlist'] = $this->OrderManagement->getAllWishlist();
        $this->layout->view('all_wishlistProduct',$data); 
     }
+	public function showorderPdf()
+    {
+		/*$customer_Id = $_GET['customer_Id'];
+        $data["CustomerData"]=$this->CustomerManagement->getpdfAllcustomerData($customer_Id);
 
+		$mpdf = new \Mpdf\Mpdf();
+		
+		$html=$this->load->view('GenerateCustomerPdfView',$data,true);
+		$mpdf->WriteHTML($html);
+		//$mpdf->Output('CourseDetails"'.$course_Id.'".pdf','D');
+		$mpdf->Output();*/
+		$this->layout->view('GenerateOrderPdfView'); 
+		
+    }
 	public function generateOrderNumber($id)
 	{
 		return 'NBB' . str_pad($id, 4, 0, STR_PAD_LEFT);

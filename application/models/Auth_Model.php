@@ -116,8 +116,6 @@ class Auth_Model extends CI_Model
 		nbb_shipping_address.shipping_contactno,
 		nbb_shipping_address.shipping_address,
 		nbb_shipping_address.shipping_country,
-		nbb_shipping_address.shipping_city,
-		nbb_shipping_address.shipping_state,
 		nbb_shipping_address.shipping_hse_blk_no,
 		nbb_shipping_address.shippingunit_no,
 		nbb_shipping_address.shipping_street,
