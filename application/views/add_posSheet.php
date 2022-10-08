@@ -26,7 +26,7 @@
 
 						<div class="col-md-4">
 							<label for="services" class="col-sm-6 control-label">Customer Number:<i class="required">*</i></label>
-							<input type="text" class="form-control customerNumber" name="customer_id" value="" onkeyup="get_customer();" placeholder="Customer Number...">
+							<input type="text" class="form-control customerNumber" name="customer_number" value="" onkeyup="get_customer();" placeholder="Customer Number...">
 						</div>
 						
 						<div class="col-md-4">
@@ -57,6 +57,7 @@
 					<div class = "row mt-3">
 						<div class="col-md-12">
 							<h4 class="col-md-12 control-label">Products</h4>
+
 								<div class="clone_wrapper">
 
 								<div class="row">
@@ -102,11 +103,11 @@
 
 							<div class="row">
 								<div class="col-md-4 col-xs-2">
-									<span id="clone_button" class="btn btn-primary">Add More Product</span>
+									<span class="btn btn-primary clone_button">Add More Product</span>
 								</div>
 							</div>
 						</div>
-						<center><input type="submit" class="btn btn-primary btn-custom" value="Generate Invoice" style="width: 250px;"></center>
+						<input type="submit" class="btn btn-primary btn-custom" value="Generate Invoice" style="width: 250px;">
 					</div>
 				</form>
 				</div>
@@ -123,10 +124,6 @@
  </div> 
 
   <!-- this link for multiple selection-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	h4{
 			background-color: #61d3d4;
@@ -138,16 +135,7 @@
 		}
 </style>
 <script>
-	$(".chosen-select").chosen({
-		no_results_text: "Oops, nothing found!"
-	});
-	var count = 1;
-	$('#clone_button').click(function() {
-		count++;
-		  var clonetext=' <div class="row"><div class="col-md-3"><label for="Quantity" class="col-sm-6 control-label">Product</label><select class="form-control product_name_'+count+'" name="productID[]" onchange="showProductPrice('+count+');"><option value="" hidden>Please select Product</option><?php foreach($product_data as $product_dataRow) { ?><option value="<?= $product_dataRow['id'] ?>"><?= $product_dataRow['name'] ?></option><?php } ?></select></div><div class="col-md-3"><div class="col-md-6"><label for="age" class="control-label">Product Price</label></div><div class="col-md-6"><input type="text" class="form-control" name="product_price[]" id="price_'+count+'" value=""></div></div><div class="col-md-3"><div class="form-group"><label for="Quantity" class="col-sm-6 control-label">Quantity </label><div class="col-md-4"><input type="number" class="form-control" name="quantity[]" id="quantity_'+count+'" onkeyup ="calculate_total_quantity('+count+');"></div></div></div><div class="col-md-2"><div class="col-md-6"><label for="age" class="control-label">Total Price</label></div><div class="col-md-6"><input type="text" class="form-control" name="totalPrice[]" id="totalPrice_'+count+'" readonly></div></div></div>';
-		  $('.clone_wrapper').append(clonetext);
-		});
-
+	
 	function calculate_total_quantity(product_id) {
 		
 
@@ -179,6 +167,7 @@
 					$(".customer_fname").val(val.first_name);
 					$(".customer_lname").val(val.last_name);
 					$(".customer_address").val(val.shipping_address);
+					
 				});
 			}
 		});
@@ -199,5 +188,13 @@
 			}
 		});
 	}
-	
+
+	$(document).ready(function(){
+	var count = 1;
+	$('.clone_button').click(function() {
+		count++;
+		  var clonetext = '<div class="row"><div class="col-md-3"><label for="Quantity" class="col-sm-6 control-label">Product</label><select class="form-control product_name_'+count+'" name="productID[]" onchange="showProductPrice('+count+');"><option value="" hidden>Please select Product</option><?php foreach($product_data as $product_dataRow) { ?><option value="<?= $product_dataRow['id'] ?>"><?= $product_dataRow['name'] ?></option><?php } ?></select></div><div class="col-md-3"><div class="col-md-6"><label for="age" class="control-label">Product Price</label></div><div class="col-md-6"><input type="text" class="form-control" name="product_price[]" id="price_'+count+'" value=""></div></div><div class="col-md-3"><div class="form-group"><label for="Quantity" class="col-sm-6 control-label">Quantity </label><div class="col-md-4"><input type="number" class="form-control" name="quantity[]" id="quantity_'+count+'" onkeyup ="calculate_total_quantity('+count+');"></div></div></div><div class="col-md-2"><div class="col-md-6"><label for="age" class="control-label">Total Price</label></div><div class="col-md-6"><input type="text" class="form-control" name="totalPrice[]" id="totalPrice_'+count+'" readonly></div></div></div>';
+		  $('.clone_wrapper').append(clonetext);
+		});
+	});
  </script> 

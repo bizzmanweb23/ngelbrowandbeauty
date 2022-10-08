@@ -55,7 +55,7 @@
 													<a href="<?= base_url('admin/welcome/all_referredby/'.$customers['referreduser_id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Payment History" style="color:#00000">View</a></td>
                         <td> 
 
-													<a href="<?= base_url('admin/CustomerManagement/showCustomerPdf')?>?customer_Id=<?php echo $customers['id']; ?>" class="btn btn-default" title="pdf"><img src="<?= base_url('uploads/pdf_download.png')?>" class="rounded" width="30" height="30">
+													<a href="<?= base_url('admin/CustomerManagement/showCustomerPdf')?>?customer_Id=<?php echo $customers['id']; ?>" class="btn btn-default" title="pdf" target="_blank"><img src="<?= base_url('uploads/pdf_download.png')?>" class="rounded" width="30" height="30">
 													</a>
 
 													<a href="<?= base_url('admin/CustomerManagement/editCustomer/'. $customers['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>

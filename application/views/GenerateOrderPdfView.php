@@ -2,121 +2,92 @@
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
 		<tr class="top_rw">
-		   <td colspan="2">
+		   <td colspan="3">
 		      <h2 style="margin-bottom: 0px;"> Order Details </h2>
-			  <span style=""> Number: 27B00032991LQ354 Date: 21-11-2018 </span>
+			  <span style=""> Order Number: <?= $orderData['order_number'] ?> Date: <?= date("d-m-Y", strtotime($orderData['create_date'])); ?> </span>
 		   </td>
 		    <td  style="width:30%; margin-right: 10px;">
-		        PaytmMall Order Id: 6580083283
+		        <!--PaytmMall Order Id: 6580083283-->
 		   </td>
 		</tr>
             <tr class="top">
-                <td colspan="3">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td>
-							<b> Sold By: Nova Enterprises </b> <br>
-                                Delhivery Pvt. Ltd. Plot No. A5 Indian Corporation <br>
-Warehouse Park Village Dive-anjur, Bhiwandi, Off <br>
-Nh-3, Near Mankoli Naka, District Thane, Pin Code :
-421302 <br>
-Mumbai, Maharashtra - 421302 <br>
-PAN: AALFN0535C <br>
-GSTIN: 27AALFN0535C1ZK <br>
+							<b>N'gel Brow & Beauty </b> <br>
+							5 HARPER ROAD , #02-01 <br>SINGAPORE 369673
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr class="information">
-                  <td colspan="3">
+                  <td colspan="4">
                     <table>
                         <tr>
-                            <td colspan="2">
-							<b> Shipping Address: w3learnpoint </b> <br>
-                                Kokar, Ranchi <br>
-                                +0651-908-090-009<br>
-                                info@w3learnpoint.com<br>
-								www.w3learnpoint.com
+                            <td colspan="3">
+							<b> Shipping Address: </b> <br>
+                                <?= $shippingData['shipping_firstname'].' '.$shippingData['shipping_lastname'];?> <br>
+								<?= $shippingData['shipping_contactno'];?><br>
+								<?= $shippingData['shipping_address'];?>,<?= $shippingData['shipping_hse_blk_no'];?>,<?= $shippingData['shippingunit_no'];?>,<?= $shippingData['shipping_street'];?>,<?= $shippingData['shipping_postalcode'];?><br>
+                                <?= $shippingData['shipping_country'];?><br>
+								
                             </td>
-                            <td> <b> Billing Address: w3learnpoint </b><br>
-                                Acme Corp.<br>
-                                John Doe<br>
-                                john@example.com
+                            <td> <b> Billing Address:</b><br>
+							<?= $billingData['billing_firstname'].' '.$billingData['billing_lastname'];?> <br>
+								<?= $billingData['billing_contactno'];?><br>
+								<?= $billingData['billing_address'];?>,<?= $billingData['billing_hse_blk_no'];?>,<?= $billingData['billing_unit_no'];?>,<?= $billingData['billing_street'];?>,<?= $billingData['billing_postal_code'];?><br>
+                                <?= $billingData['billing_country'];?><br>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-                            <td colspan="3">
-            <table cellspacing="0px" cellpadding="2px">
-            <tr class="heading">
-                <td style="width:25%;">
-                    ITEM
-                </td>
-				<td style="width:10%; text-align:center;">
-                    QTY.
-                </td>
-                <td style="width:10%; text-align:right;">
-                    PRICE (INR)
-                </td>
-				 <td style="width:15%; text-align:right;">
-                   TAX RATE & TYPE
-                </td>
-				 <td style="width:15%; text-align:right;">
-                    TAX AMOUNT (INR)
-                </td>
-				 <td style="width:15%; text-align:right;">
-                   TOTAL AMOUNT (INR)
-                </td>
-            </tr>
-			<tr class="item">
-               <td style="width:25%;">
-                    Johnson's Baby Skincare Wipes 80s
-Pack Of 2 Rs. 60 Off
-HSN Code :4818
-novajj079
-                </td>
-				<td style="width:10%; text-align:center;">
-                    2
-                </td>
-                <td style="width:10%; text-align:right;">
-                    322.03
-                </td>
-				 <td style="width:15%; text-align:right;">
-                   18% IGST
-                </td>
-				 <td style="width:15%; text-align:right;">
-                    57.97
-                </td>
-				 <td style="width:15%; text-align:right;">
-                    380
-                </td>
-            </tr>
-			<tr class="item">
-               <td style="width:25%;"> <b> Grand Total </b> </td>
-				<td style="width:10%; text-align:center;">
-                    2
-                </td>
-                <td style="width:10%; text-align:right;">
-                    322.03
-                </td>
-				 <td style="width:15%; text-align:right;">
-                </td>
-				 <td style="width:15%; text-align:right;">
-                    57.97
-                </td>
-				 <td style="width:15%; text-align:right;">
-                    380
-                </td>
-            </tr>
-            </td>
-			</table>
+			<tr>
+				<td colspan="4">
+				<table cellspacing="0px" cellpadding="2px">
+					<tr class="heading">
+						<td style="width:25%; text-align:left;">
+							ITEM
+						</td>
+						<td style="width:10%; text-align:left;">
+							QTY.
+						</td>
+						<td style="width:10%; text-align:left;">
+							PRICE
+						</td>
+						<td style="width:15%; text-align:left;">
+						TOTAL AMOUNT
+						</td>
+					</tr>
+					<?php foreach($productlistingdata as $productlistingRow){ ?>
+						<tr class="item">
+							<td style="width:25%;text-align:left;">
+								<?= $productlistingRow['product_name']; ?>
+							</td>
+							<td style="width:10%; text-align:left;">
+								<?= $productlistingRow['total_quantity']; ?>
+							</td>
+							<td style="width:10%; text-align:left;">
+								<?= $productlistingRow['product_price']; ?>
+							</td>
+							<td style="width:15%; text-align:left;">
+								<?= $productlistingRow['total_price']; ?>
+							</td>
+						</tr>
+					<?php } ?>
+					</table>
+				</td>
+			</tr>
             <tr class="total">
-                  <td colspan="3" align="right">  Total Amount in Words :  <b> Three Hundred Eighty Rupees Only </b> </td>
+                  <td colspan="4" align="right">  Grand Total :  <b> <?= $producttotalPrice['total_price'] ?> </b> </td>
+            </tr>
+			<tr class="total">
+                  <td colspan="4" align="right">  Delivery Charge :  <b> </b> </td>
             </tr>
 			<tr>
-			   <td colspan="3">
+			   <td colspan="4">
 			     <table cellspacing="0px" cellpadding="2px">
 				    <tr>
 			            <td width="50%">
@@ -128,19 +99,6 @@ goods sold are intended for end user consumption and not for resale.
 						<td>
 						 * This is a computer generated invoice and does not
 						  require a physical signature
-						</td>
-			        </tr>
-					 <tr>
-			            <td width="50%">
-						</td>
-						<td>
-						 	<b> Authorized Signature </b>
-							<br>
-							<br>
-							...................................
-							<br>
-							<br>
-							<br>
 						</td>
 			        </tr>
 			     </table>
@@ -185,7 +143,7 @@ goods sold are intended for end user consumption and not for resale.
         color: #333;
     }
     .invoice-box table tr.information table td {
-        padding-bottom: 40px;
+        padding-bottom: 50px;
     }
     .invoice-box table tr.heading td {
         background: #eee;
@@ -206,27 +164,5 @@ goods sold are intended for end user consumption and not for resale.
         border-top: 2px solid #eee;
         font-weight: bold;
     }
-    @media only screen and (max-width: 600px) {
-        .invoice-box table tr.top table td {
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
-        .invoice-box table tr.information table td {
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
-    }
-    /** RTL **/
-    .rtl {
-        direction: rtl;
-        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-    }
-    .rtl table {
-        text-align: right;
-    }
-    .rtl table tr td:nth-child(2) {
-        text-align: left;
-    }
+   
 </style>

@@ -7,7 +7,7 @@
 			<h3><?= $servicesImg_row['service_name'] ?></h3>
 			<h4>$<?= $servicesImg_row['service_price'] ?> Per Head</h4>
 			<p><?= $servicesImg_row['description'] ?></p>
-			<a href="javascript:void(0)" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">make An Appoinment</a>
+			
 		</div>	
 														
     </div>

@@ -11,7 +11,7 @@
               
               
               <div class="tab-content">
-                <div class="tab-pane active" id="hair">
+                <div class="tab-pane active">
                   <div class="tabbable tabs-left">
                     <div class="row">
                       <div class="col-md-5 col-lg-4">
@@ -34,7 +34,7 @@
 																		<h3><?= $servicesImg_row['service_name'] ?></h3>
 																		<h4>$<?= $servicesImg_row['service_price'] ?> Per Head</h4>
 																		<p><?= $servicesImg_row['description'] ?></p>
-																		<a href="javascript:void(0)" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">make An Appoinment</a>
+																		
 																	</div>	
 																
 															</div>
@@ -43,16 +43,23 @@
 													
 												<div class="displayService"></div>
                          
-                        </div>
+                        </div>												
                       </div>
                     </div>
                   </div>
                 </div>
 
-              
-
               </div>
-            </div>
+ 						</div>
+
+						<div class="row">
+							<div class="col-md-12 col-lg-12">
+									<div class="d-flex justify-content-center">
+										<a href="<?= base_url('appointmentBooking')?>" class="btn btn-primary first-btn px-2" target="_blank">make An Appoinment</a>
+									</div>
+							</div>
+						</div>
+           
           </div>
         </div>
       </div>

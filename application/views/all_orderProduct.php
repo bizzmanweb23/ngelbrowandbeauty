@@ -94,7 +94,7 @@
 											<td>
 											<!--<a href="<?= base_url('admin/OrderManagement/viewOrderDetails/'.$orderProductRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-eye"></i></a>-->
 											
-											<a href="<?= base_url('admin/OrderManagement/showorderPdf')?>?order_Id=<?php echo $orderProductRow['id']; ?>" class="btn btn-default" title="pdf"><img src="<?= base_url('uploads/pdf_download.png')?>" class="rounded" width="30" height="30"></a>
+											<a href="<?= base_url('admin/OrderManagement/showorderPdf')?>?order_Id=<?php echo $orderProductRow['id']; ?>" class="btn btn-default" title="Download pdf" target="_blank"><img src="<?= base_url('uploads/pdf_download.png')?>" class="rounded" width="30" height="30"></a>
 
 											<a data-order_id="<?=  $order_id; ?>" href="javascript:void(0);" data-toggle="modal" data-target="#showOrderProduct" class="btn btn-default" title="Edit" style="color:#61d3d4" ><i class="fa fa-eye"></i></a>
 

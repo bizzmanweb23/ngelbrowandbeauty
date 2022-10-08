@@ -1,6 +1,6 @@
 <section class="clearfix pageTitleArea lipsbanner" style="background-image: url(../assets/front/img/blog/All_Product.png);">
         <div class="container">
-          
+		<h1>Products<h1>
         </div>
 </section>
 
@@ -18,7 +18,8 @@
             <div class="panel panel-default productSideBar mb-0">
               <div class="panel-heading">Filter by Price</div>
             </div>
-						<div class="range-slider mt-1">
+						<div class="range-slider mt-2">
+						
 							<span>
 								<input type="number" value="1" min="0" max="50" name = "fromPriceRange" class = "fromPriceRange categoryPriceSlider" readonly/>-
 								<input type="number" value="50" min="0" max="50" name = "toPriceRange" class = "toPriceRange categoryPriceSlider" readonly/>
@@ -209,6 +210,7 @@ numberS.forEach(function(el) {
 });
 
 })();
+
 </script>
 	<style>
 .range-slider {
@@ -216,7 +218,7 @@ numberS.forEach(function(el) {
 	margin: auto;
 	text-align: center;
 	position: relative;
-	height: 6em;
+	height: 3em;
 }
 
 .range-slider svg,
@@ -229,7 +231,7 @@ numberS.forEach(function(el) {
 input[type=number] {
 	border: 1px solid #ddd;
 	text-align: center;
-	font-size: 1.6em;
+	font-size: 1.3em;
 	-moz-appearance: textfield;
 }
 

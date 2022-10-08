@@ -147,10 +147,11 @@ $autoload['model'] = array('Auth_Model'=>'Auth',
 'ProcurementManagement_Model'=>'ProcurementManagement',
 'CourseManagement_Model'=>'CourseManagement',
 'LeadManagement_model'=>'LeadManagement',
+
 'front/AuthFront_Model'=>'AuthFront',
 'front/Header_Model'=>'Header',
 'front/Home_model'=>'Home',
 'front/Course_Model'=>'Course',
 'front/Product_modal'=>'Product',
-
+'front/Services_Model'=>'Services',
 );

@@ -64,6 +64,8 @@ $route['services/(:any)'] = 'front/Home/services/$i';
 //$route['main'] = 'front/Home';
 $route['services-list'] = 'front/Home/services_details';
 $route['checkout'] = 'front/Home/checkout';
+$route['appointmentBooking'] = 'front/Service/appointment';
+$route['appointmentbookingSlot'] = 'front/Service/bookingSlot';
 $route['contactus'] = 'front/Home/contact_us';
 $route['contact/form'] =  'front/home/contact_form';
 $route['contact/email'] =  'front/home/contact_email';
@@ -97,11 +99,11 @@ $route['hrms'] = 'hrms/Login';
 $route['empdashboard'] = 'hrms/welcome/empdashboard';
 $route['admin'] = 'admin/welcome/index';
 $route['dashboard'] = 'admin/welcome/dashboard';
-$route['welcome'] = 'admin/welcome';
+
 /*$route['branch'] = 'admin/welcome/branch';
 $route['branch/login'] = 'branch/login';*/
 
-
+$route['welcome'] = 'admin/welcome';
 $route['add_employeeSalary'] = 'admin/employeeManagement/post_add_employeeSalary';
 //$route['employee/attendance/counter'] = 'admin/comissionController/attendance_sum';
 $route['branch/dashboard'] = 'admin/welcome/dashboard';

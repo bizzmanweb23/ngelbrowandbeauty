@@ -54,6 +54,9 @@
 .fc-unthemed td.fc-today {
     background: #fff !important;
 }
+.fc-toolbar {
+    text-transform: capitalize;
+}
 /* Context menu */
 .context-menu{
     display: none;
@@ -284,7 +287,7 @@ display:none;
 													<div class="row">
 														<div class="col-md-6">
 															<div class="form-group">
-																<label for="customer_num" class="col-sm-6 control-label">Customer Number</label>
+																<label for="customer_num" class="col-sm-6 control-label">Customer Mobile No.</label>
 																<input type="text" class="form-control" id="customer_num" name="customer_num" placeholder="Customer Number" pattern="[0-9]+"/>
 															</div>
 														</div>
@@ -693,9 +696,10 @@ display:none;
     events: <?php echo $event; ?>,
 
 	//eventColor: '#FFA500',
+	
 
     });
-
+	
     //$('#calendar table>thead tr th').addClass('context-menu-one box menu-1');
     //$('#calendar table table>tbody tr td:nth-child(2)').addClass('context-menu-one box menu-1');
    

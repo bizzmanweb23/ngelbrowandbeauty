@@ -379,16 +379,22 @@ class OrderManagement extends CI_Controller {
     }
 	public function showorderPdf()
     {
-		/*$customer_Id = $_GET['customer_Id'];
-        $data["CustomerData"]=$this->CustomerManagement->getpdfAllcustomerData($customer_Id);
-
+		$order_Id = $_GET['order_Id'];
+        $data["orderData"]=$this->OrderManagement->getpdfAllcustomerData($order_Id);
+		$get_userID = $this->OrderManagement->getpdfAllcustomerData($order_Id);
+		$user_id = $get_userID['user_id'];
+		$data["shippingData"]=$this->OrderManagement->getshippingData($user_id);
+		$data["billingData"]=$this->OrderManagement->getbillingData($user_id);
+		$data["productlistingdata"]=$this->OrderManagement->orderProductlistingdata($order_Id);
+		$data["producttotalPrice"]=$this->OrderManagement->getProducttotalPrice($order_Id);
+		
 		$mpdf = new \Mpdf\Mpdf();
 		
-		$html=$this->load->view('GenerateCustomerPdfView',$data,true);
+		$html=$this->load->view('GenerateOrderPdfView',$data,true);
 		$mpdf->WriteHTML($html);
 		//$mpdf->Output('CourseDetails"'.$course_Id.'".pdf','D');
-		$mpdf->Output();*/
-		$this->layout->view('GenerateOrderPdfView'); 
+		$mpdf->Output();
+		//$this->layout->view('GenerateOrderPdfView',$data); 
 		
     }
 	public function generateOrderNumber($id)

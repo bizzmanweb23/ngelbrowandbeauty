@@ -124,7 +124,6 @@ class Product_modal extends CI_Model
 				$where .= " AND nbb_product.price >= '".$fromPriceRange."' AND nbb_product.price <= '".$minusToPriceRange."'";
 			}
 
-		
 			$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
 			FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
 			FROM nbb_product 

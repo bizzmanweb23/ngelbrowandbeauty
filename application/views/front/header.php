@@ -30,6 +30,10 @@
   <link href="<?= base_url(); ?>assets/front/css/style.css" rel="stylesheet">
   <link href="<?= base_url(); ?>assets/front/css/default.css" rel="stylesheet" id="option_color">
   <link href="<?= base_url(); ?>assets/front/css/owl.carousel.min.css" rel="stylesheet" >
+	<!-- this is for appointment css-->
+	
+	<!--link href="<?= base_url(); ?>assets/front/appointment/all.min.css" rel="stylesheet" type="text/css"-->
+	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!--===============================================================================================-->

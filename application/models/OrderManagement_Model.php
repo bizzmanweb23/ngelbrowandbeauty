@@ -40,6 +40,7 @@ class OrderManagement_Model extends CI_Model
 	function orderProductlistingdata($order_id = '')
 	{
 		$order_product_sql  = "SELECT nbb_order_product.*, 
+				nbb_product.sku,
 				nbb_product.name AS product_name,
 				nbb_product.weight AS product_weight
 				FROM nbb_order_product 
@@ -469,6 +470,92 @@ class OrderManagement_Model extends CI_Model
 		);
 		$this->db->where($where);
 		return $this->db->get()->result_array();
+	}
+	function getpdfAllcustomerData($id){
+        $this->db->select('nbb_order_main.*');
+        $this->db->from('nbb_order_main');
+        $this->db->where('nbb_order_main.id',$id);
+        $customer_result = $this->db->get()->result_array();
+		$data = array();
+		foreach($customer_result as $row){				
+
+			$data = array(
+				'id' 				=> $id,
+				'order_number' 		=> $row['order_number'],
+				'user_id' 	=> $row['user_id'],
+				'create_date' => $row['create_date'],
+			);	
+
+		}
+		return $data;
+    }
+	
+	function getshippingData($id){
+
+		$this->db->select('nbb_shipping_address.*');
+        $this->db->from('nbb_shipping_address');
+        $this->db->where('nbb_shipping_address.user_id',$id);
+        $customer_result = $this->db->get()->result_array();
+		$data = array();
+		foreach($customer_result as $row){				
+
+			$data = array(
+				'shipping_firstname' 		=> $row['shipping_firstname'],
+				'shipping_lastname' 		=> $row['shipping_lastname'],
+				'shipping_contactno' 		=> $row['shipping_contactno'],
+				'shipping_address' 		=> $row['shipping_address'],
+				'shipping_country' 		=> $row['shipping_country'],
+				'shipping_hse_blk_no' 		=> $row['shipping_hse_blk_no'],
+				'shippingunit_no' 		=> $row['shippingunit_no'],
+				'shipping_street' 		=> $row['shipping_street'],
+				'shipping_postalcode' 		=> $row['shipping_postalcode'],
+				
+			);	
+
+		}
+		return $data;
+	}
+	function getbillingData($id){
+
+		$this->db->select('nbb_billing_address.*');
+        $this->db->from('nbb_billing_address');
+        $this->db->where('nbb_billing_address.user_id',$id);
+        $customer_result = $this->db->get()->result_array();
+		$data = array();
+		foreach($customer_result as $row){				
+
+			$data = array(
+				'billing_firstname' 		=> $row['billing_firstname'],
+				'billing_lastname' 		=> $row['billing_lastname'],
+				'billing_contactno' 		=> $row['billing_contactno'],
+				'billing_country' 		=> $row['billing_country'],
+				'billing_address' 		=> $row['billing_address'],
+				'billing_postal_code' 		=> $row['billing_postal_code'],
+				'billing_hse_blk_no' 		=> $row['billing_hse_blk_no'],
+				'billing_unit_no' 		=> $row['billing_unit_no'],
+				'billing_street' 		=> $row['billing_street'],
+				
+			);	
+
+		}
+		return $data;
+	}
+	function getProducttotalPrice($order_id){
+
+		$orderTotal_sql = "SELECT SUM(nbb_order_product.total_price) AS total_price
+			FROM nbb_order_product
+			WHERE nbb_order_product.order_id = '".$order_id."'";
+		$orderTotal_query = $this->db->query($orderTotal_sql); 
+		$orderTotal_result = $orderTotal_query->result_array();	
+		$data = array();			
+
+		foreach($orderTotal_result as $row){	
+			$data = array(
+				'total_price' 		=> $row['total_price'],
+			);	
+			
+		}
+		return $data;
 	}
 
 }

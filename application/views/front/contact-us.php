@@ -1,7 +1,7 @@
 <!-- PAGE TITLE SECTION -->
 		<section class="clearfix pageTitleArea lipsbanner" style="background-image: url(assets/front/img/blog/contactUs.png);">
         <div class="container">
-          
+				<h1>Contact us<h1>
         </div>
 </section>
 <!-- CHECK OUT SECTION -->
