@@ -40,7 +40,7 @@ class Header_Model extends CI_Model
 		$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
 		FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
 		FROM nbb_product 
-		WHERE nbb_product.product_category_id = '".$id."'";
+		WHERE nbb_product.product_category_id = '".$id."' AND nbb_product.status = 1 ";
 		$product_query = $this->db->query($all_product_sql);
 		return $product_data = $product_query->result_array();
 

@@ -54,7 +54,19 @@
 							<textarea id="details" name="details" rows="5" cols="80" placeholder=" Max Length : 255." style = "width: 100%;"><?= $customerRow['category_details'];?></textarea>
 				</div>
             </div>                                       
-			<div class="row">     
+			<div class="row"> 
+			<div class="col-md-6">
+											<div class="form-group ">
+												<label for="image" class="col-sm-6 control-label">Category Image
+												</label>
+													<div class="col-sm-12">
+															<div id="image"></div>
+															<input type="file" name="product_cat_image">
+															<small class="info help-block">
+															</small>
+													</div>
+											</div>
+										</div>      
 				<div class="col-md-6">                       
 					<div class="form-group ">
 						<label for="status" class="col-sm-6 control-label">Status 

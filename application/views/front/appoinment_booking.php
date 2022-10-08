@@ -47,9 +47,7 @@
 														<input type="button" name="submit" value="Search" class="btn btn-primary first-btn h-60 px-2 Search">
 													</div>
 												</div>
-											</div>
-                                             
-                                             
+											</div>  
                                          
                                        </div>
                                     </div>

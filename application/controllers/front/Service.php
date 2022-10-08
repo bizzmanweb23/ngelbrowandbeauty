@@ -16,8 +16,9 @@ class Service extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
+		$serviceId = $this->uri->segment(2);
 		$datahader['allTharapist'] = $this->Services->getAllTharapist();
+		$datahader['allService'] = $this->Services->getpdfAllService($serviceId);
 
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/appoinment_booking');

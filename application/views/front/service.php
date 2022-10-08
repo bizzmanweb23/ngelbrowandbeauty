@@ -36,7 +36,11 @@
 																		<p><?= $servicesImg_row['description'] ?></p>
 																		
 																	</div>	
-																
+																	
+																	<div class="d-flex justify-content-center">
+																		<a href="<?= base_url('appointmentBooking/'.$id)?>" class="btn btn-primary first-btn px-2" target="_blank">make An Appoinment</a>
+																	</div>
+																	
 															</div>
 														<?php	endforeach; ?>
 													</div>
@@ -53,11 +57,8 @@
  						</div>
 
 						<div class="row">
-							<div class="col-md-12 col-lg-12">
-									<div class="d-flex justify-content-center">
-										<a href="<?= base_url('appointmentBooking')?>" class="btn btn-primary first-btn px-2" target="_blank">make An Appoinment</a>
-									</div>
-							</div>
+						<div class="col-md-12 col-lg-12">
+						</div>
 						</div>
            
           </div>

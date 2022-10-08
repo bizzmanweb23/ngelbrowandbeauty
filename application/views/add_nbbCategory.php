@@ -47,6 +47,7 @@
 										</div>
                 	</div>
                 </div>
+								 
                   <div class="form-group ">
                     <label for="category" class="col-md-12 control-label">Category Detail
                     <i class="required">*</i>
@@ -57,6 +58,18 @@
                   </div>
                                                        
                   <div class="row">
+										<div class="col-md-6">
+											<div class="form-group ">
+												<label for="image" class="col-sm-6 control-label">Category Image
+												</label>
+													<div class="col-sm-12">
+															<div id="image"></div>
+															<input type="file" name="product_cat_image">
+															<small class="info help-block">
+															</small>
+													</div>
+											</div>
+										</div>   
 											<div class="col-md-6">                       
 												<div class="form-group ">
 													<label for="status" class="col-sm-6 control-label">Status 

@@ -7,7 +7,9 @@
 			<h3><?= $servicesImg_row['service_name'] ?></h3>
 			<h4>$<?= $servicesImg_row['service_price'] ?> Per Head</h4>
 			<p><?= $servicesImg_row['description'] ?></p>
-			
+			<div class="d-flex justify-content-center">
+				<a href="<?= base_url('appointmentBooking/'.$id)?>" class="btn btn-primary first-btn px-2" target="_blank">make An Appoinment</a>
+			</div>
 		</div>	
 														
     </div>

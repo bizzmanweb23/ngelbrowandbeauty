@@ -11,7 +11,6 @@ class Services_Model extends CI_Model
 	}
 	function getBookingAvailable($date,$therapist)
     {
-		//echo $all_product_sql = "SELECT * From nbb_dashboard WHERE nbb_dashboard.start_date = '".$date."' AND nbb_dashboard.therapist_id = '".$therapist."'";
       $this->db->select('*');
       $this->db->from('nbb_dashboard');
       $this->db->where('nbb_dashboard.start_date',$date);
@@ -38,6 +37,25 @@ class Services_Model extends CI_Model
 				}
 			}
 			return $time;
-		 }
+		}
+	function getpdfAllService($id){
+
+		$this->db->select('nbb_service.service_name');
+		$this->db->from('nbb_service');
+		$where = array(
+				'nbb_service.id'   => $id
+				);
+		$this->db->where($where);
+		$service_query = $this->db->get()->result_array();
+			$data = array();			
+
+			foreach($service_query as $row){				
+
+				$data = array(
+					'service_name' 		=> $row['service_name'],
+				);	
+			}
+			return $data;
+	}
 }
 ?>

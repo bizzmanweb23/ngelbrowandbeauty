@@ -154,11 +154,11 @@ class Auth_Model extends CI_Model
         $this->db->from('nbb_check_therapist');
         return $this->db->get()->result_array();  
       }
-       function checkOrderAsc($query){
+    function checkOrderAsc($query){
           $query = $this->db->query($query);
           return $query->result_array();
       }
-      function getAllTherapistH(){
+    function getAllTherapistH(){
           $this->db->select('nbb_employees.*');
           $this->db->from('nbb_employees');
           $this->db->where('nbb_employees.designation','7');
