@@ -420,10 +420,11 @@ class Home extends CI_Controller {
     }
     public function services(){
    	 
-		$serviceId = $this->uri->segment(2);
+		$catServiceId = $this->uri->segment(2);
 		//echo $serviceId;exit;
-		$data['allservices'] = $this->Header->getAllservicesList($serviceId);
-		$data['activeServices'] = $this->Header->getactiveServices($serviceId);
+		$data['allservices'] = $this->Header->getAllservicesList($catServiceId);
+		$data['activeServices'] = $this->Header->getactiveServices($catServiceId);
+		$datahader['catagoryName'] = $this->Services->getchild_categoryName($catServiceId);
 		$data['packageServices'] = $this->Header->getPackageServices();
 
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();

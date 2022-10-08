@@ -29,6 +29,7 @@
                   <tr>
                     <th>Main Category</th>
                     <th>Sub-Category</th>
+										<th>Image</th>
                     <th>Category Detail</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -39,6 +40,12 @@
                       <tr>
 												<td><?= $categories['parent_name']?></td>
                         <td><?= $categories['category_name']?></td>
+												<td><?php if($categories['product_cat_image'] == ''){ ?>
+
+												<?php }else{ ?>
+													<img src="<?= base_url(); ?>/uploads/category_image/<?= $categories['product_cat_image'] ?>" width="60" height="60">
+												<?php } ?>
+													</td>
                         <td><?php if($categories['category_details'] != ''){ ?>
 													<?= substr($categories['category_details'],0,50); ?>...
 												<?php }else{} ?>

@@ -8,13 +8,20 @@
         <div class="row">
           <div class="col-12">
             <div class="tabbable tabTop">
-              
+							<div class="card mb-3">
+								<div class="card-header font-weight-bold" style="background-color: #63d4d6;">
+								<div class="font-weight-bold text-center" style="color: #fff;font-size: 25px;"><?= $catagoryName['category_name']; ?></div>
+								</div>
+							</div>
               
               <div class="tab-content">
                 <div class="tab-pane active">
                   <div class="tabbable tabs-left">
                     <div class="row">
+											
                       <div class="col-md-5 col-lg-4">
+											<!--<h4 class="card-title font-weight-bold" style="color: #63d4d6;"><?= $serviceName['service_name']; ?></h4>-->
+											
                         <ul class="nav nav-tabs">
 													<?php foreach($allservices as $allservices_row): ?>
                           	<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?> <span>$<?= $allservices_row['service_price'] ?></span></a></li>

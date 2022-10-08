@@ -10,12 +10,22 @@
                         <div class="card-body">
 								<form class=""> 
                            <div class="profile-box">
-						   <h4 class="card-title">Schedule Timings</h4>
+
+
+						  
 							<div class="row">
 								<div class="col-sm-6 col-12 avail-time">
 									<div class="mb-3">
 										<div class="schedule-calendar-col justify-content-start">
-											
+											<div class="row">
+												<div class="col-md-4">
+													<h4 class="font-weight-bold" >Service:</h4>
+												</div>
+												<div class="col-md-5">
+													<h4 class="card-title font-weight-bold" style="color: #63d4d6;"><?= $serviceName['service_name']; ?></h4>
+												</div>
+											</div>
+										<h4 class="card-title  mt-3">Schedule Timings</h4>
 											<div class="row">
 												<div class="col-md-5">
 													<div class="mr-3">
@@ -83,18 +93,12 @@
 <script>
 
 $(document).ready(function(){
-	//$('.schedule_date,.therapist_name').change(function() { 
 	$('.Search').click(function() {
 		
     var therapistId = $('.therapist_name').val();
     var date = $('.schedule_date').val();
-    //var selectedDate = new Date(date);
-	//alert(date);
     var now = new Date();
-   /*if (selectedDate < now) {
-    alert("Date must be in the future");
-    return false;
-   }*/
+   
     //alert(duration);
     $.ajax({
       url: "<?= base_url("appointmentbookingSlot") ?>",
@@ -105,13 +109,11 @@ $(document).ready(function(){
       },
       dataType: "json",
       success: function(data) {
-       
-        //$('.all_slots').html('');
 
 		  $(".all_slots").empty();
 
         $.each(data.availabletimelist, function(n, currentElem) {
-          //var result = data.availabletimelist[0];
+
           var inputdisable = '';
           $.each(data.bookslot, function(n, currentElem1) {
 				let path = currentElem1['start_time'];

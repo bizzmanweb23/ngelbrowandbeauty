@@ -38,7 +38,7 @@ class Services_Model extends CI_Model
 			}
 			return $time;
 		}
-	function getpdfAllService($id){
+	function getServicename($id){
 
 		$this->db->select('nbb_service.service_name');
 		$this->db->from('nbb_service');
@@ -53,6 +53,24 @@ class Services_Model extends CI_Model
 
 				$data = array(
 					'service_name' 		=> $row['service_name'],
+				);	
+			}
+			return $data;
+	}
+	function getchild_categoryName($id){
+		$this->db->select('nbb_child_category.category_name');
+		$this->db->from('nbb_child_category');
+		$where = array(
+			'nbb_child_category.id'   => $id,
+			);
+		$this->db->where($where);
+		$category_query = $this->db->get()->result_array();
+		$data = array();			
+
+			foreach($category_query as $row){				
+
+				$data = array(
+					'category_name' 		=> $row['category_name'],
 				);	
 			}
 			return $data;
