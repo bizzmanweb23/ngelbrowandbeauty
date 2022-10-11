@@ -204,7 +204,8 @@ function googleTranslateElementInit() {
 													
 													<li><a href="<?php echo base_url('myProfile') ?>"><span style="font-size: 13px;">My Profile</span></a></li>
 													<li><a href="<?php echo base_url('referdToFriend') ?>"><span style="font-size: 13px;">Referred to Friend</span></a></li>
-													<li><a href="<?php echo base_url('orderlist') ?>"><span style="font-size: 13px;">Order List</span></a></li>
+													<li><a href="<?php echo base_url('orderlist') ?>"><span style="font-size: 13px;">My Order</span></a></li>
+													<li><a href="<?php echo base_url('appointmentList') ?>"><span style="font-size: 13px;">My Appoinment</span></a></li>
 													<li><a href="<?php echo base_url('wishList') ?>"><span style="font-size: 13px;">WishList</span></a></li>
 													<li><a href="<?php echo base_url() ?>wallet" target="_blank"><span style="font-size: 13px;">Wallet</span></a></li>
 													<li><a href="<?php echo base_url('logout') ?>"><span style="font-size: 12px;">Logout</span></a></li>

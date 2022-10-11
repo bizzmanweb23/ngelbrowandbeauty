@@ -40,7 +40,9 @@ class Services_Model extends CI_Model
 		}
 	function getServicename($id){
 
-		$this->db->select('nbb_service.service_name');
+		$this->db->select('nbb_service.id as service_id,
+		nbb_service.service_name,
+		nbb_service.service_price');
 		$this->db->from('nbb_service');
 		$where = array(
 				'nbb_service.id'   => $id
@@ -52,7 +54,9 @@ class Services_Model extends CI_Model
 			foreach($service_query as $row){				
 
 				$data = array(
+					'service_id' 		=> $row['service_id'],
 					'service_name' 		=> $row['service_name'],
+					'service_price' 	=> $row['service_price'],
 				);	
 			}
 			return $data;
@@ -74,6 +78,19 @@ class Services_Model extends CI_Model
 				);	
 			}
 			return $data;
+	}
+	function getallappoinment($user_id){
+
+		$this->db->select('nbb_dashboard.*,
+		nbb_service.service_name,
+		nbb_service.service_price,
+		nbb_employees.first_name,
+		nbb_employees.last_name');
+		$this->db->from('nbb_dashboard');
+		$this->db->where('nbb_dashboard.user_id',$user_id);
+		$this->db->join('nbb_service', 'nbb_service.id = nbb_dashboard.services', 'LEFT');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_dashboard.therapist_id', 'LEFT');
+		return $this->db->get()->result_array();
 	}
 }
 ?>

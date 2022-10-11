@@ -5,8 +5,8 @@
           <div class="row">
             <div class="col-12">
               <div class="innerWrapper">
-                <div class="orderBox  patternbg">
-                  All Order
+                <div class="orderBox patternbg">
+                  My Orders
                 </div>
 
                 <div class="table-responsive">

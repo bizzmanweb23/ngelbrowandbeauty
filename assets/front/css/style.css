@@ -415,7 +415,7 @@ body.bodyColor .navbar-sticky {
     font-weight: 700;
     border: 0;
     text-transform: uppercase;
-    background-color: transparent;
+    /*background-color: transparent;*/
     border-radius: 0;
     letter-spacing: 1px
 }
