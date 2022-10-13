@@ -126,13 +126,13 @@
   <!-- this link for multiple selection-->
 <style>
 	h4{
-			background-color: #61d3d4;
-			color: white;
-			padding: 5px;
-			text-align: left;
-			border-radius: 5px;
-			padding-left: 5px;
-		}
+		background-color: #61d3d4;
+		color: white;
+		padding: 5px;
+		text-align: left;
+		border-radius: 5px;
+		padding-left: 5px;
+	}
 </style>
 <script>
 	

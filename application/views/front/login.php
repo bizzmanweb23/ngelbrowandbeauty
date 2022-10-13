@@ -1,6 +1,5 @@
 
 <!-- FORM AREA SECTION -->
-
     <section class="clearfix formArea">
       <div class="container">
         <div class="row justify-content-center">
@@ -15,15 +14,14 @@
                   </div>
 
                   <div class="form-group">
-                    <!--<i class="fa fa-lock" aria-hidden="true"></i>-->
-                    <input type="password" class="form-control" name="password" id="pwd" placeholder="Enter Password" required>
+									<input type="password" class="form-control input100" name="password" id="logPwd" placeholder="Enter Password" required>
+										<span class="fa fa-fw fa-eye field-icon" onclick="showPassword()"></span>
+						
                   </div>
 
                   <div class="checkbox form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck0">
-                    <label class="form-check-label" for="defaultCheck0">
-                      Remember me
-                    </label>
+                    <label class="form-check-label" for="defaultCheck0">Remember me</label>
                   </div>
 
                   <button type="submit" class="btn btn-primary btn-block">Log In</button>
@@ -41,3 +39,24 @@
         </div>
       </div>
     </section>
+<style>
+	.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+
+</style>
+<script>
+
+function showPassword() {
+  var passwordVal = document.getElementById("logPwd");
+  if (passwordVal.type === "password") {
+    passwordVal.type = "text";
+  } else {
+    passwordVal.type = "password";
+  }
+}
+</script>

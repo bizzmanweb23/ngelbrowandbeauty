@@ -67,7 +67,7 @@
 										<div class="form-group">
 											<label class="control-label" for="">Desingnation</label>
 											<div class=" ">
-												<input type="text" name="designation" class="form-control designation">
+												<input type="text" name="designation" class="form-control designation" readonly>
 											</div>
 										</div>
 									</div>
@@ -86,7 +86,7 @@
 										<div class="form-group">
 											<label class="control-label col-md-12" for="pwd">Cpf $ :</label>
 											<div class="col-md-12">
-												<input type="text" name="cpf" placeholder="Cpf" class="form-control cpf">
+												<input type="text" name="cpf" placeholder="Cpf" class="form-control cpf" readonly>
 											</div>
 										</div>
 									</div>
@@ -96,7 +96,7 @@
 										<div class="form-group">
 											<label class="control-label col-md-12" for="pwd">Sales Amount $ :</label>
 											<div class="col-md-12">
-												<input type="text" name="fullTimesales_Amount" placeholder="Sales Amount" class="form-control sales_amount">
+												<input type="text" name="fullTimesales_Amount" placeholder="Sales Amount" class="form-control sales_amount" readonly>
 											</div>
 										</div>
 									</div>
@@ -104,7 +104,7 @@
 										<div class="form-group">
 											<label class="control-label col-md-12" for="pwd">Sales Commission $ :</label>
 											<div class="col-md-12">
-												<input type="text" name="fullTimecommission_Pay" placeholder="Sales Commission Pay" class="form-control commission_pay">
+												<input type="text" name="fullTimecommission_Pay" placeholder="Sales Commission Pay" class="form-control commission_pay" readonly>
 											</div>
 										</div>
 									</div>
@@ -114,7 +114,7 @@
 										<div class="form-group">
 											<label class="control-label col-md-12" for="pwd">Attendance Hours :</label>
 											<div class="col-md-12">
-												<input type="text" name="attendance_hours" placeholder="Perfect attendance" class="form-control attendance-hours">
+												<input type="text" name="attendance_hours" placeholder="Perfect attendance" class="form-control attendance-hours" readonly>
 											</div>
 										</div>
 									</div>
@@ -122,7 +122,7 @@
 										<div class="form-group">
 											<label class="control-label col-md-12" for="pwd">Perfect attendance bonus $ :</label>
 											<div class="col-md-12">
-												<input name="fullTimePerfectAttendance" placeholder="Perfect attendance bonus" class="form-control attendance-bonus">
+												<input name="fullTimePerfectAttendance" placeholder="Perfect attendance bonus" class="form-control attendance-bonus" readonly>
 											</div>
 										</div>
 									</div>
@@ -160,6 +160,7 @@
 											<label class="control-label col-md-12" for="pwd">Total Earning $ :</label>
 											<div class="col-md-12">
 												<input name="total_earnings" placeholder="Total Earning" class="form-control total-earnings" readonly>
+												
 											</div>
 										</div>
 									</div>
@@ -194,39 +195,18 @@ $(document).ready(function(){
 			//$empId = $(this).val();
 			var salaryDate = $('.fullTimesalaryDate').val();
 			var empId = $('.fullTimeemployeeName').val();
-			//alert(salaryDate + ' ' + empId);
+			//alert(empId);
 
 			get_empsalarycpf(salaryDate,empId);
 			get_CommissionPay_bonus(salaryDate,empId);
 			get_attendance_bonus(salaryDate,empId);
 			get_therapist_bonus(salaryDate,empId);
-			//get_totalearnings(salaryDate,empId);
-
-			
+			get_totalearnings(salaryDate,empId);	
 		
 	});
-});
 
-function get_empsalarycpf(salaryDate,empId){
-	//alert(salaryDate + ' ' + empId);
 
-	$.ajax({	
-		type: "POST",	
-		url: "<?= base_url("admin/comissionController/empCommission")?>",
-		data: {data: empId , salaryDate: salaryDate},
-		dataType: "JSON",
-		success:function(data){	
-			//alert(data);
-			$.each(data, function (key, val) {
-				//console.log('test');
-				$(".designation").val(val.role_name);
-				$(".basic-salary").val(val.empbasicSalary);
-				$(".cpf").val(val.CPFtotal);
-			});
-		}
-	});
 
-}
 function get_CommissionPay_bonus(salaryDate,empId){
 
 	$.ajax({	
@@ -288,8 +268,9 @@ function get_therapist_bonus(salaryDate,empId){
 
 		});
 }
-/*function get_totalearnings(salaryDate,empId){
-	var totalEarnings = 0;
+function get_totalearnings(salaryDate,empId){
+	//alert(empId);
+	/*var totalEarnings = 0;
 			var attBonus = 0;
 			var workmanship  = 0;
 			var salesBonus = 0;
@@ -317,6 +298,41 @@ function get_therapist_bonus(salaryDate,empId){
 			}else{
 				
 				$('.total-earnings').val(basicSalary);
+			}*/
+
+			$.ajax({
+			url : "<?php echo base_url('admin/comissionController/totalearnings'); ?>",
+			type : "post",
+			data : {data: empId , salaryDate:salaryDate},
+			dataType: 'json',
+			success : function(data){
+				//alert(data);
+				$('.total-earnings').val(data);
 			}
-}*/
+
+		});
+}
+
+function get_empsalarycpf(salaryDate,empId){
+	//alert(empId);
+
+	$.ajax({	
+		type: "POST",	
+		url: "<?= base_url("admin/comissionController/empCommission")?>",
+		data: {data: empId , salaryDate: salaryDate},
+		dataType: "JSON",
+		success:function(data){	
+			//alert(data);
+			$.each(data, function (key, val) {
+				//console.log('test');
+				//alert(val.empbasicSalary);
+				$(".designation").val(val.role_name);
+				$(".basic-salary").val(val.empbasicSalary);
+				$(".cpf").val(val.CPFtotal);
+			});
+		}
+	});
+
+}
+});
 </script>

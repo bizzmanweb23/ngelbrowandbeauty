@@ -16,30 +16,29 @@
               <div class="panel-body">
 			    <form method="post" action="<?php echo base_url() ?>/front/signup" class="registerform">
 		
-                  <div class="form-group">
-					          <input class="form-control" type="text" name="first_name" value="" placeholder="Enter First Name" require/>
-                  </div>
+					<div class="form-group">
+						<input class="form-control" type="text" name="first_name" value="" placeholder="Enter First Name" required/>
+					</div>
 					      
-                  <div class="form-group">
-					          <input class="form-control" type="text" name="last_name" value="" placeholder="Enter Last Name" require/>
-                  </div>
+					<div class="form-group">
+						<input class="form-control" type="text" name="last_name" value="" placeholder="Enter Last Name" required/>
+					</div>
                 
-                  <div class="form-group">
-                    <input class="form-control useremail" type="email" name="email" value="" placeholder="Enter Email" require/>
-                  </div>
-					        <span class="CheckEmailMatch"></span> 
-                  <div class="form-group">
-					          <input class="form-control usercontact" type="text" name="contact" value="" placeholder="Enter Mobile Number" require/>
-                  </div>
-									<span class="CheckContactMatch"></span> 
-                  <div class="form-group">
-					          <input class="form-control password" type="password" name="password" value="" placeholder="Enter Password" />
-                  </div>
-					         
-					        <div class="form-group">
-						        <input class="form-control confirm_password" type="password" name="confirm_password" value="" placeholder="Confirm Password" />
-                  </div>
-                  <span class="CheckPasswordMatch"></span>
+					<div class="form-group">
+						<input class="form-control useremail" type="email" name="email" value="" placeholder="Enter Email" required/>
+					</div>
+					<span class="CheckEmailMatch"></span> 
+					<div class="form-group">
+						<input class="form-control usercontact" type="text" name="contact" value="" placeholder="Enter Mobile Number" required/>
+					</div>
+					<span class="CheckContactMatch"></span> 
+					<div class="form-group">
+						<input class="form-control password" type="password" name="password" value="" placeholder="Enter Password" required />
+					</div>        
+					<div class="form-group">
+						<input class="form-control confirm_password" type="password" name="confirm_password" value="" placeholder="Confirm Password" required/>
+                  	</div>
+                  	<span class="CheckPasswordMatch"></span>
                   
                   <button type="submit" class="btn btn-primary btn-block">Sign UP</button>
                 </form>
@@ -51,7 +50,7 @@
     </section>
 	<script>
     $(document).ready(function() {
-      $(".confirm_password").on('keyup', function() {
+      	$(".confirm_password").on('keyup', function() {
 
         var password = $(".password").val();
         var confirmPassword = $(".confirm_password").val();
@@ -59,54 +58,53 @@
         if (password != confirmPassword)
           $(".CheckPasswordMatch").html("Password does not match !").css("color", "red");
         else
-          $(".CheckPasswordMatch").html("Password match !").css("color", "green");
-      });
+			$(".CheckPasswordMatch").html("Password match !").css("color", "green");
+		});
 
+		$(".useremail").keyup(function(e){
+			e.preventDefault();
+				var userEmail = $(this).val();
 
-			$(".useremail").keyup(function(e){
-				e.preventDefault();
-					var userEmail = $(this).val();
-
-					$.ajax({
-						url: "<?= base_url("uniqueEmail")?>",
-						type: 'GET',
-						data: {email: userEmail},
-						success: function(response) {
-							if(response > 0)
-							{
-								//alert("Enter Duplicate SRN");
-								$(".CheckEmailMatch").html("Email already exists.You enter anther Email!").css("color", "red");
-							}else{
-								$(".CheckEmailMatch").html("");
-							}
+				$.ajax({
+					url: "<?= base_url("uniqueEmail")?>",
+					type: 'GET',
+					data: {email: userEmail},
+					success: function(response) {
+						if(response > 0)
+						{
+							//alert("Enter Duplicate SRN");
+							$(".CheckEmailMatch").html("Email already exists.You enter anther Email!").css("color", "red");
+						}else{
+							$(".CheckEmailMatch").html("");
 						}
-					});
-			});
+					}
+				});
+		});
 
-			$(".usercontact").keyup(function(e){
-				e.preventDefault();
-					var usercontact = $(this).val();
+		$(".usercontact").keyup(function(e){
+			e.preventDefault();
+				var usercontact = $(this).val();
 
-					$.ajax({
-						url: "<?= base_url("uniqueContact")?>",
-						type: 'GET',
-						data: {contact: usercontact},
-						success: function(response) {
-							if(response > 0)
-							{
-								//alert("Enter Duplicate SRN");
-								$(".CheckContactMatch").html("Mobile number already exists.You enter anther Number!").css("color", "red");
-							}else{
-								$(".CheckContactMatch").html("");
-							}
+				$.ajax({
+					url: "<?= base_url("uniqueContact")?>",
+					type: 'GET',
+					data: {contact: usercontact},
+					success: function(response) {
+						if(response > 0)
+						{
+							//alert("Enter Duplicate SRN");
+							$(".CheckContactMatch").html("Mobile number already exists.You enter anther Number!").css("color", "red");
+						}else{
+							$(".CheckContactMatch").html("");
 						}
-					});
-			});
+					}
+				});
+		});
 
 
     });
 
-		$('.registerform').on('submit', function (e) {
+	$('.registerform').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
             var url = "<?php echo base_url() ?>/front/signup";
 
@@ -126,7 +124,5 @@
             return false;
         }
     });
-
-	
 
   </script>

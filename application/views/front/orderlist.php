@@ -62,7 +62,7 @@
 												
 												
 												</td>
-                        <td><a href="javascript:void(0)" class="btn btn-default">View</a></td>
+                        <td><a href="<?= base_url(); ?>orderSummary/<?= $allorders_row['id']; ?>" class="btn btn-default">View Summary</a></td>
                       </tr>
 											<?php	endforeach; ?>
                      
@@ -70,8 +70,8 @@
                   </table>
                 </div>
               </div>
+							
             </div>
           </div>
         </div>
       </section>
-

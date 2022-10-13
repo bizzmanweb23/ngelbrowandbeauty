@@ -66,7 +66,7 @@
 															<td><?= $EmployeeFultimeSalaryRow['service_bonus'] ?></td>
 															<td><?= $EmployeeFultimeSalaryRow['total_earnings'] ?></td>
 															<td>
-															<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$EmployeeFultimeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+															<!--<a href="<?= base_url('admin/employeeManagement/edit_employeeSalary/'.$EmployeeFultimeSalaryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>-->
 															<a href="<?= base_url('admin/employeeManagement/deleteEmployeeSalary/'. $EmployeeFultimeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 															<!--<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$EmployeeFultimeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-oggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-user-times" aria-hidden="true"></i></a>-->
 														</td>

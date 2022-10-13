@@ -4,26 +4,27 @@
         <div class="row">
           <div class="col-md-6">
             <div class="singleIamge">
-              <img src="<?= base_url(); ?>/uploads/product_img/<?= $productDetails['p_image']; ?>" alt="Image Single Product" class="img-responsive">
-            </div>
-			<!--<div class="image-gallery">
+              <?php /*<img src="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>" alt="Image Single Product" class="img-responsive"> */ ?>
+			  <div class="image-gallery">
                 <aside class="thumbnails">
-                  <a href="#" class="selected thumbnail" data-big="img/products/product-1.jpg">
-                    <div class="thumbnail-image" style="background-image: url(img/products/product-1.jpg)"></div>
+                  <a href="#" class="selected thumbnail" data-big="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>">
+                    <div class="thumbnail-image"><img src="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>" class="img-responsive"></div>
                   </a>
-                  <a href="#" class="thumbnail" data-big="img/products/product-2.jpg">
-                    <div class="thumbnail-image" style="background-image: url(img/products/product-2.jpg)"></div>
+                  <!--<a href="#" class="thumbnail" data-big="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>">
+                    <div class="thumbnail-image"><img src="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>" width="60" height="50"></div>
                   </a>
-                  <a href="#" class="thumbnail" data-big="img/products/product-3.jpg">
-                    <div class="thumbnail-image" style="background-image: url(img/products/product-3.jpg)"></div>
+                  <a href="#" class="thumbnail" data-big="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>">
+                    <div class="thumbnail-image"><img src="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>" width="60" height="50"></div>
                   </a>
-                  <a href="#" class="thumbnail" data-big="img/products/product-4.jpg">
-                    <div class="thumbnail-image" style="background-image: url(img/products/product-4.jpg)"></div>
-                  </a>
+                  <a href="#" class="thumbnail" data-big="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>">
+                    <div class="thumbnail-image"><img src="<?= base_url(); ?>uploads/product_img/<?= $productDetails['p_image']; ?>" width="60" height="50"></div>
+                  </a>-->
                 </aside>
               
-                <main class="primary" style="background-image: url('img/products/product-1.jpg');"></main>
-            </div>-->
+                <main class="primary" style="background-image: url('../uploads/product_img/'<?= $productDetails['p_image']; ?>);"></main>
+            </div>
+            </div>
+			
           </div>
 
 			<form name ="payroll" action="<?= base_url('add_to_cart')?>" method="post" enctype="multipart/form-data">

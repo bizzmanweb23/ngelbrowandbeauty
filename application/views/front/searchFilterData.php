@@ -1,3 +1,4 @@
+<input type = 'hidden' id = 'ajax_pagination_total_value' value = "<?php echo $pagination_productdetails; ?>">
 <?php foreach($allproducts as $servicesImg_row): ?>
 		<div class="col-md-6 col-lg-4">
 		<div class="produtSingle">

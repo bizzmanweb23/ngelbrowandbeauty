@@ -47,31 +47,31 @@
         	<div class="col-sm-9 col-xs-12">
 
             <div class="row allfilterdata">
-						<?php foreach($allproducts as $servicesImg_row): ?>
+				<?php foreach($allproducts as $productImg_row): ?>
               <div class="col-md-6 col-lg-4">
                 <div class="produtSingle">
                   <div class="produtImage">
-										<?php if($servicesImg_row['p_image'] == ''){ ?>
-											<img src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" data-src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" alt="Image Product" class="img-responsive">
-										<?php	}else{ ?>
-                    <img src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" data-src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" alt="Image Product" class="img-responsive">
+						<?php if($productImg_row['p_image'] == ''){ ?>
+							<img src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" data-src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" alt="Image Product" class="img-responsive">
+						<?php	}else{ ?>
+                    <img src="<?= base_url(); ?>/uploads/product_img/<?= $productImg_row['p_image'] ?>" data-src="<?= base_url(); ?>/uploads/product_img/<?= $productImg_row['p_image'] ?>" alt="Image Product" class="img-responsive">
 										<?php } ?>
 										<div class="productMask">
                       <ul class="list-inline productOption">
                         <li class="favourite-icon">
                          
-													<?php $user_id = $this->session->userdata('id');  
-													$orderTotal_sql = "SELECT nbb_wishlist.* 
-													FROM nbb_wishlist 
-													WHERE nbb_wishlist.product_id = '".$servicesImg_row['id']."' AND nbb_wishlist.userId = '".$user_id."'";  
-														$orderTotal_query = $this->db->query($orderTotal_sql); 
-														$orderTotal_num = $orderTotal_query->num_rows();
-														if($orderTotal_num > 0){ ?>
-																<a class="icon wishList" href="javascript:void(0)"><i class="fa fa-heart" style='color: #c90003' aria-hidden="true"></i></a>
-																
-														<?php }else{ ?>
-															<a class="icon addwishList" href="javascript:void(0)" data-product_id="<?=  $servicesImg_row['id']; ?>"><i class="fa fa-heart wishList_<?=  $servicesImg_row['id']; ?>" aria-hidden="true" ></i></a>
-														<?php } ?>
+							<?php $user_id = $this->session->userdata('id');  
+							$orderTotal_sql = "SELECT nbb_wishlist.* 
+							FROM nbb_wishlist 
+							WHERE nbb_wishlist.product_id = '".$productImg_row['id']."' AND nbb_wishlist.userId = '".$user_id."'";  
+								$orderTotal_query = $this->db->query($orderTotal_sql); 
+								$orderTotal_num = $orderTotal_query->num_rows();
+								if($orderTotal_num > 0){ ?>
+										<a class="icon wishList" href="javascript:void(0)"><i class="fa fa-heart" style='color: #c90003' aria-hidden="true"></i></a>
+										
+								<?php }else{ ?>
+									<a class="icon addwishList" href="javascript:void(0)" data-product_id="<?=  $productImg_row['id']; ?>"><i class="fa fa-heart wishList_<?=  $productImg_row['id']; ?>" aria-hidden="true" ></i></a>
+								<?php } ?>
                             
                           
                         </li>
@@ -79,14 +79,14 @@
                     </div>
                   </div>
                   <div class="productCaption">
-                    <h2><a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank"><?= $servicesImg_row['name'] ?></a></h2>
-											<h3>$<?php if($servicesImg_row['discounted_price'] == ''){ ?>
-													<?= $servicesImg_row['price'] ?>
-											<?php }else{ ?>
-												<?= $servicesImg_row['discounted_price'] ?>
-											<?php } ?>
-												</h3>
-                    <a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank" class="btn btn-primary btn-block mt-2">View Details</a>
+                    <h2><a href="<?= base_url(); ?>productDetails/<?= $productImg_row['id'] ?>" target="_blank"><?= $productImg_row['name'] ?></a></h2>
+						<h3>$<?php if($productImg_row['discounted_price'] == ''){ ?>
+								<?= $productImg_row['price'] ?>
+						<?php }else{ ?>
+							<?= $productImg_row['discounted_price'] ?>
+						<?php } ?>
+							</h3>
+                    <a href="<?= base_url(); ?>productDetails/<?= $productImg_row['id'] ?>" target="_blank" class="btn btn-primary btn-block mt-2">View Details</a>
                   </div>
                  
                 </div>
@@ -94,26 +94,33 @@
 							<?php	endforeach; ?>
 
             </div>
-            
+
+            <input type="hidden" class="catId" name="catId" value="<?= $catId = $this->uri->segment(2); ?>">
+			
             <div class="paginationCommon productPagination">
               <nav aria-label="Page navigation">
+			 
                 <ul class="pagination">
+				<?php if(!empty($total_pages) && $total_pages >1){ ?>
                   <li>
                     <a href="javascript:void(0)" aria-label="Previous">
                       <span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
                     </a>
                   </li>
-                  <li class="active"><a href="javascript:void(0)">1</a></li>
-                  <li><a href="javascript:void(0)">2</a></li>
-                  <li><a href="javascript:void(0)">3</a></li>
-                  <li><a href="javascript:void(0)">4</a></li>
-                  <li><a href="javascript:void(0)">5</a></li>
+				  <?php for($i=1; $i<=$total_pages; $i++){
+					if($i == 1){ ?>
+                  <li class="active page_link pageitem"><a href="javascript:void(0)" data-pageid="<?php echo $i;?>" onclick="showpagination(<?php echo $i;?>);"><?= $i; ?></a></li>
+				  <?php }else{ ?>
+					<li class="page_link pageitem"><a href="javascript:void(0)" data-pageid="<?php echo $i;?>" onclick="showpagination(<?php echo $i;?>);"><?= $i; ?></a></li>
+				  <?php } } ?>
                   <li>
                     <a href="javascript:void(0)" aria-label="Next">
                       <span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
                     </a>
                   </li>
+				  <?php } ?>	
                 </ul>
+				
               </nav>
             </div>
         
@@ -211,8 +218,27 @@ numberS.forEach(function(el) {
 
 })();
 
+function showpagination(page){
+	
+   var category_id = $(".catId").val();	
+   //alert(page);
+ 
+   var url = "<?php echo base_url() ?>front/Product/pagination_product_filter";
+   $.ajax({
+	 url: url,
+	 type: "POST",
+	 data:  {page:page,categoryId:category_id},
+	 success: function(dataResult){
+	   $(".allfilterdata").html(dataResult);
+	   $(".pageitem").removeClass("active");
+	   $("#"+page).addClass("active");
+	   
+	 }
+   });
+ }
+
 </script>
-	<style>
+<style>
 .range-slider {
 	width: 250px;
 	margin: auto;
@@ -321,4 +347,4 @@ input[type=range]::-ms-thumb {
 	background: #a1d0ff;
 	cursor: pointer;
 }
-	</style>	
+</style>	

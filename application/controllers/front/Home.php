@@ -53,6 +53,7 @@ class Home extends CI_Controller {
 			} elseif (filter_var($name, FILTER_VALIDATE_EMAIL)) {
 				$emailfield = $this->input->post('email');
 			}
+			
 			$data = array(
 				'email' => $emailfield,
 				'contact' => $numberfield,
@@ -83,12 +84,9 @@ class Home extends CI_Controller {
 	public function logout(){
 	    $this->session->sess_destroy();
 	    redirect('home');
-   	} 
-
+   	}
 	
-	
-	public function signup(){
-			
+	public function signup(){		
 		
 		//Validation Rules
 		$this->form_validation->set_rules('first_name','First Name','trim|required');
@@ -148,8 +146,6 @@ class Home extends CI_Controller {
 				</body>'; 
 			$message .= '</html>';
 		
-		
-
 				$to = $email;
 				$subject = "N'gel brow & beauty confirmation";
 				$txt = $message;
@@ -157,11 +153,11 @@ class Home extends CI_Controller {
 
 				$retval = mail($to,$subject,$txt,$headers);
 		
-					if($retval) {
-						$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
-					}else {
-						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
-					}
+				if($retval) {
+					$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+				}else {
+					$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+				}
 				
 			}
 			
@@ -208,26 +204,46 @@ class Home extends CI_Controller {
 	function add_post_otp(){
 
 		$otp = $this->input->post('otp');
+		//echo $otp;
 			$getotp = '';
 			$getemail = '';
 			$getreferreduser_id = '';
 			$get_productID = $this->AuthFront->getOtpdata($otp);
 			$getotp = $get_productID['otpData'];
 			$getemail = $get_productID['email'];
+			$getpassword = $get_productID['password']; 
+			$getcontact = $get_productID['contact']; 
 			$getreferreduser_id = $get_productID['referreduser_id'];
 
 			if($getotp == $otp){
-				$this->db->where('otp' , $otp);
-				$this->db->update('nbb_customer', array('status'=> '1'));
 
+				$data = array(
+					'email' => $getemail,
+					'contact' => $getcontact,
+					'password' => md5($getpassword),
+					);
+		
+					$check = $this->AuthFront->logindata($data);
+					if($check == true){
+		
+						$user = array(
+						'id' => $check->id,
+						'email' => $check->email,
+						);
+					// print_r($user);exit;
+					$this->session->sess_expiration = '14400';
+					$this->session->set_userdata($user);
+
+					$this->db->where('otp' , $otp);
+					$this->db->update('nbb_customer', array('status'=> '1'));
+					
+				}
 				if($getemail != ''){
 					$headers = "MIME-Version: 1.0" . "\r\n";
 					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 					$message = '<html>
 					<style type="text/css">
 					  @import url(https://fonts.googleapis.com/css?family=Nunito);
-					
-					  /* Take care of image borders and formatting */
 					
 					  img {
 						max-width: 600px;
@@ -250,8 +266,6 @@ class Home extends CI_Controller {
 					  a img {
 						border: none;
 					  }
-					
-					  /* General styling */
 					
 					  td, h1, h2, h3  {
 						font-family: Helvetica, Arial, sans-serif;
@@ -289,23 +303,7 @@ class Home extends CI_Controller {
 					  width: 100% !important;
 					 }
 					
-					
-					  </style><style media="screen" type="text/css">
-						  @media screen {
-							td, h1, h2, h3 {
-							  font-family: "Nunito", "Helvetica Neue", "Arial", "sans-serif" !important;
-							}
-						  }
-					  </style><style media="only screen and (max-width: 480px)" type="text/css">
-						/* Mobile styles */
-						@media only screen and (max-width: 480px) {
-					
-						  table[class="w320"] {
-							width: 320px !important;
-						  }
-						}
-					  </style>
-					  <style type="text/css"></style>
+					</style>
 					  
 					  </head>
 					  <body bgcolor="#fff" class="body" style="padding:20px; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none">
@@ -377,17 +375,16 @@ class Home extends CI_Controller {
 				$to = $getemail;
 				$subject = "N'gel brow & beauty confirmation";
 				$txt = $message;
-				
-
 				$retval = mail($to,$subject,$txt,$headers);
 		
-					if( $retval) {
-						redirect('login');
+					/*if( $retval) {
+						redirect('home');
 					}else {
 						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
-					}
+					}*/
 				}
-					//redirect('login');
+				
+				redirect('home');
 			}else{
 				$this->session->set_flashdata('msg','Enter Proper OTP'); 
 				redirect('otpVerify');
@@ -690,34 +687,36 @@ class Home extends CI_Controller {
 
 		$referalLink = $this->input->post('referalLink');
 		$getemail = $this->input->post('email');
+		$referalCode = $this->input->post('referalCode'); 
 
-				if($getemail != ''){
+			if($getemail != ''){
 
-					$headers = "MIME-Version: 1.0" . "\r\n";
-					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-					$message = '<html>
-					<head>
-					</head>
-					<body bgcolor="#fff" class="body" style="padding:20px; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none">
-						<h2>Registration link for N`gel brow & beauty</h2>
-						<a href="'.$referalLink.'" target="_blank">'.$referalLink.'</a>
-					</body>
-					</html>';
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+				$message = '<html>
+				<head>
+				</head>
+				<body bgcolor="#fff" class="body" style="padding:20px; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none">
+					<h2>Registration link for N`gel brow & beauty</h2>
+					<a href="'.$referalLink.'" target="_blank">'.$referalLink.'</a>
+					<h4>Referal Code:-&nbsp;'.$referalCode.'</h4>
+				</body>
+				</html>';
 
-					$to = $getemail;
-					$subject = "N'gel brow & beauty Referred";
-					$txt = $message;
+				$to = $getemail;
+				$subject = "N'gel brow & beauty Referred";
+				$txt = $message;
 
-					$retval = mail($to,$subject,$txt,$headers);
+				$retval = mail($to,$subject,$txt,$headers);
 
-					if( $retval) {
-						redirect('login');
-					}else {
-						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
-					}
-						
-					}
-					redirect('referdToFriend');
+				if( $retval) {
+					redirect('home');
+				}else {
+					$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+				}
+					
+			}
+					
 
 	}
 	public function registerReferal(){ 

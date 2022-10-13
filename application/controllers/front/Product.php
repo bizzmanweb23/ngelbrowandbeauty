@@ -12,10 +12,18 @@ class Product extends CI_Controller {
 		//$this->load->library('m_pdf');
 		//$this->db2 = $this->load->database('database2', TRUE);
 	}
+	
 	public function products(){ 
-		$productId = $this->uri->segment(2);
+		$catId = $this->uri->segment(2);
 		//echo $serviceId;exit;
-		$data['allproducts'] = $this->Header->getAllproductList($productId);
+		$products_rownum = '';
+		$data['allproducts'] = $this->Product->getAllproductList($catId);
+		$allproductrow_num = $this->Product->getAllproductrow_num($catId);
+		//echo $allproductrow_num;
+		$showing_limit = 3;
+		$total_pages = ceil($allproductrow_num / $showing_limit); 
+		
+		$data['total_pages'] = $total_pages;
 
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
@@ -60,19 +68,20 @@ class Product extends CI_Controller {
         $select_exist_quote_qry = $this->db->query("SELECT nbb_order_main.id FROM nbb_order_main WHERE nbb_order_main.type_flag ='C' and nbb_order_main.user_id = '$user_id' LIMIT 1");
 		//echo 'text';
         $order_id ="";
+		$product_id = $this->input->post('product_id');
+		$quantity = $this->input->post('quantity');
 
-        if($select_exist_quote_qry->num_rows() >0){
+       	if($select_exist_quote_qry->num_rows() >0){
         	foreach ($select_exist_quote_qry->result() as $select_exist_quote_result) {
         		$order_id = $select_exist_quote_result->id;
         	}
 			$orderdata = array(
 				'order_id' => $order_id,
-				'product_id' => $this->input->post('product_id'),
-				'total_quantity' => $this->input->post('quantity'),
+				'product_id' => $product_id,
+				'total_quantity' => $quantity,
 				'total_price' => $this->input->post('totalPrice'),
 				'product_price' => $this->input->post('product_price'),
 			); 
-		 
 			$result2 = $this->db->insert('nbb_order_product',$orderdata);  
         }else{
 			$data = array(
@@ -81,7 +90,6 @@ class Product extends CI_Controller {
 				'order_status'  => 1,
 				'type_flag' =>  'C'
 			); 
-	
 			$result = $this->OrderManagement->insertOrder($data);  
 			$orderId = $this->db->insert_id();
 
@@ -91,15 +99,14 @@ class Product extends CI_Controller {
 
 			$orderdata = array(
 				'order_id' => $orderId,
-				'product_id' => $this->input->post('product_id'),
-				'total_quantity' => $this->input->post('quantity'),
+				'product_id' => $product_id,
+				'total_quantity' => $quantity,
 				'total_price' => $this->input->post('totalPrice'),
 				'product_price' => $this->input->post('product_price'),
 			); 
-			
 			$result2 = $this->db->insert('nbb_order_product',$orderdata);  
-
 		}
+
 		redirect('cartList');
 
 	}
@@ -134,6 +141,7 @@ class Product extends CI_Controller {
 		$Id = $this->input->post('order_id');
 		$total_price = $this->input->post('total_price');
 		$referral_balance = 0;
+
 		$order_number = $this->generateOrderNumber($Id);
 		$mainorderdata = array(
 			'type_flag'=> 'O',
@@ -199,6 +207,14 @@ class Product extends CI_Controller {
 			}
 			
 		}
+		/*
+		$producttotalPrice = $this->Product->getproductDetails($product_id);
+		$available_stock = $producttotalPrice['available_stock'];
+		$cal_stock = $producttotalPrice['available_stock'] - $quantity;
+
+		$this->db->where('id' , $product_id);
+		$this->db->update('nbb_product', array('available_stock'=>$cal_stock));*/
+
 
 		$data = array(
 			'total_price' 	=> $total_price,
@@ -323,21 +339,74 @@ class Product extends CI_Controller {
 		$this->load->view('front/footer');
 		 
     } 
+	public function orderSummary(){ 
+		$user_id=$this->session->userdata('id');
+		$orderId = $this->uri->segment(2);
+		$data['orderDateNumber'] = $this->Product->getAllorderDateNumber($orderId);
+		$data['orderProductDate'] = $this->Product->orderProductlistingdata($orderId);
+		$data['producttotalPrice'] = $this->Product->getProducttotalPrice($orderId);
+		$data['orderDeliveryDetails'] = $this->Product->getDelivery_details($orderId);
+		$data['billingAddress'] = $this->Product->getBilling_address($user_id);
+		$data['shippingAddress'] = $this->Product->getorderShipping_address($user_id);
+
+		$datahader['allchild_category'] = $this->Header->getAllchild_category();
+		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
+		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
+		$this->load->view('front/header',$datahader);
+        $this->load->view('front/order_summary',$data);
+		$this->load->view('front/footer');
+		 
+    }
+	public function showInvoice()
+    {
+		$order_Id = $_GET['order_Id'];
+        $data["invoiceData"]=$this->OrderManagement->showInvoiceDetails($order_Id);
+
+		$mpdf = new \Mpdf\Mpdf();
+		
+		$html=$this->load->view('GeneratePdfView',$data,true);
+		$mpdf->WriteHTML($html);
+		$mpdf->Output();
+		$mpdf->Output('invoice_"'.$order_Id.'".pdf','D');
+		/*$html=$this->load->view('GeneratePdfView',$data,true);
+		$this->m_pdf->pdf->WriteHTML($html);
+		//download it D save F.
+		$this->m_pdf->pdf->Output('invoice_"'.$order_Id.'".pdf','D');*/
+    }
 	function get_product_filter(){
 		$catId = $_POST['catId'];
 		$fromPriceRange = $_POST['fromPriceRange'];
 		$toPriceRange = $_POST['toPriceRange'];
+		$page_num = '';
 
-		$filter_productlist = $this->Product->productlistFilterdata($catId,$fromPriceRange,$toPriceRange);
-
+		$filter_productlist = $this->Product->productlistFilterdata($catId,$fromPriceRange,$toPriceRange,$page_num);
+		$pagination_productdetails = $this->Product->paginationproductlistingdata($catId,$page_num);
 		$data = array(
 			'allproducts' 	=> $filter_productlist,	
+			'pagination_productdetails'		=> $pagination_productdetails		
 		);
 		 
-		
 			$this->load->view('front/searchFilterData', $data);
 	}
+	public function pagination_product_filter()
+	{
+		$catId = $_POST['categoryId'];
+		$fromPriceRange = 0;
+		$toPriceRange = 0;
+		$page_num = $_POST['page']; 
 
+		$filter_productlist = $this->Product->productlistFilterdata($catId,$fromPriceRange,$toPriceRange,$page_num);
+		$pagination_productdetails = $this->Product->paginationproductlistingdata($catId,$page_num);
+		
+		$data = array(
+			'allproducts' 	=> $filter_productlist,	
+			'pagination_productdetails'		=> $pagination_productdetails		
+		);
+
+		$this->load->view('front/searchFilterData', $data);
+	
+	}
 	public function generateOrderNumber($id)
 	{
 		return 'NBB' . str_pad($id, 4, 0, STR_PAD_LEFT);

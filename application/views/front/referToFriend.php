@@ -19,6 +19,7 @@
                           
                           <div class="col-md-8 col-xl-10">
                             <input type="text" class="form-control" id="referalLink" name="referalLink" readonly value="<?= base_url(); ?>ReferredRegister/<?= $userReferal['referreduser_id'];?>" placeholder="">
+														<input type="hidden" class="form-control" name="referalCode" readonly value="<?= $userReferal['referreduser_id'];?>">
                           </div>
                           	<div class="col-md-2">
                             	<button class="btn btn-primary" onclick="copyreferalCode()">COPY</button>

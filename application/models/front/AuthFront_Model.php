@@ -22,7 +22,11 @@ class AuthFront_Model extends CI_Model
 	function getOtpdata($otp)
 	{
 		//$query = $this->db->query("SELECT * FROM nbb_customer WHERE otp = '".$otp."'");
-		$this->db->select('nbb_customer.otp,nbb_customer.email,nbb_customer.referreduser_id,');
+		$this->db->select('nbb_customer.otp,
+		nbb_customer.email,
+		nbb_customer.referreduser_id,
+		nbb_customer.password,
+		nbb_customer.contact');
 		$this->db->from('nbb_customer');
 		$this->db->where('nbb_customer.otp', $otp);
 		//return $this->db->get()->result_array();
@@ -34,6 +38,8 @@ class AuthFront_Model extends CI_Model
 				'otpData' => $row['otp'],
 				'email' => $row['email'],
 				'referreduser_id' => $row['referreduser_id'],
+				'password' => $row['password'],
+				'contact' => $row['contact'],
 			);
 		}
 		return $data;

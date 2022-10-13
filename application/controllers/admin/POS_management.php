@@ -24,7 +24,8 @@ class POS_management extends CI_Controller {
 		$customer_fname = $this->input->post('customer_fname');
 		$customer_lname = $this->input->post('customer_lname');
 		$customer_address = $this->input->post('customer_address');
-		
+		$stock = '';
+		$cal_stock = '';
 
         $data = array(
             'customer_phone' => $customer_phone,
@@ -54,8 +55,19 @@ class POS_management extends CI_Controller {
 					'total_price' => $this->input->post('totalPrice')[$i],
 					'product_price' => $this->input->post('product_price')[$i],
 				); 
-			 
-				$result2 = $this->db->insert('nbb_order_product',$orderdata);  
+				$result2 = $this->db->insert('nbb_order_product',$orderdata); 
+
+				$stock_query = $this->db->query("SELECT nbb_product.stock FROM nbb_product WHERE nbb_product.id = '".$allproductID."'");
+				$stock_data = $stock_query->result_array();
+				foreach($stock_data as $stock_row){
+					$stock = $stock_row['stock'];
+					$cal_stock = $stock - $this->input->post('totalPrice')[$i];
+
+					$this->db->where('id' , $allproductID);
+					$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+
+				}
+				
 			
 			}
 			//$order_product_data = $this->OrderManagement->orderProductlistingdata($orderId);
@@ -66,181 +78,7 @@ class POS_management extends CI_Controller {
 		$data["customer_lname"]= $customer_lname;
 		$data["customer_phone"]= $customer_phone;
 		$data["order_number"]= $order_number;
-			/*$contain ='<div class="invoice-box">
-				<table cellpadding="0" cellspacing="0">
-				<tr class="top_rw">
-				   <td colspan="3">
-					  <h2 style="margin-bottom: 0px;"> N`gel brow & Beauty Invoice</h2>
-					  <span style=""> Order Number: '.$order_number.' Date: '.$now.' </span>
-				   </td>
-					<td  style="width:30%; margin-right: 10px;">
-						<!--PaytmMall Order Id: 6580083283-->
-				   </td>
-				</tr>
-					<tr class="top">
-						<td colspan="4">
-							<table>
-								<tr>
-									<td>
-									<b>N`gel Brow & Beauty </b> <br>
-									5 HARPER ROAD , #02-01 <br>SINGAPORE 369673
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr class="information">
-						  <td colspan="4">
-							<table>
-								<tr>
-									<td> <b> Billing Address:</b><br>
-									'.$customer_fname.' '.$customer_lname.'<br>'.$customer_address.'<br>
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="4">
-						<table cellspacing="0px" cellpadding="2px">
-							<tr class="heading">
-								<td style="width:15%; text-align:left;">
-									PRODUCT SKU
-								</td>
-								<td style="width:25%; text-align:left;">
-									ITEM
-								</td>
-								<td style="width:10%; text-align:left;">
-									QTY.
-								</td>
-								<td style="width:10%; text-align:left;">
-									PRICE
-								</td>
-								<td style="width:15%; text-align:left;">
-								TOTAL AMOUNT
-								</td>
-							</tr>';
-								$order_product_data = $this->OrderManagement->orderProductlistingdata($orderId);
-								$sku = '';
-									$pName = '';
-									$total_quantity = '';
-									$product_price = '';
-									$total_price = '';
-								foreach($order_product_data as $order_product_row){
-									$sku = $order_product_row['sku'];
-									$pName = $order_product_row['name'];
-									$total_quantity = $order_product_row['total_quantity'];
-									$product_price = $order_product_row['product_price'];
-									$total_price = $order_product_row['total_price'];
-						$contain .='<tr class="item">
-									<td style="width:15%;text-align:left;">'
-									.$sku.	
-									'</td>
-									<td style="width:25%;text-align:left;">'
-										.$pName.
-									'</td>
-									<td style="width:10%; text-align:left;">'
-										.$total_quantity.
-									'</td>
-									<td style="width:10%; text-align:left;">'
-										.$product_price.	
-									'</td>
-									<td style="width:15%; text-align:left;">'
-										.$total_price.
-									'</td>
-								</tr>';
-							}
-			$contain .='</table>
-						</td>
-					</tr>
-					<tr class="total">';
-					$total_priceval = $this->OrderManagement->getProducttotalPrice($orderId);
-					$total_price = $total_priceval['total_price'];
-			$contain .= '<td colspan="4" align="right">  Grand Total :  <b> '.$total_price.' </b> </td>
-					</tr>
-					<tr class="total">
-						  <td colspan="4" align="right">  GST :  <b> </b> </td>
-					</tr>
-					<tr>
-					   <td colspan="4">
-						 <table cellspacing="0px" cellpadding="2px">
-							<tr>
-								<td width="50%">
-								<b> Declaration: </b> <br>
-		We declare that this invoice shows the actual price of the goods
-		described above and that all particulars are true and correct. The
-		goods sold are intended for end user consumption and not for resale.
-								</td>
-								<td>
-								 * This is a computer generated invoice and does not
-								  require a physical signature
-								</td>
-							</tr>
-						 </table>
-					   </td>
-					</tr>
-				</table>
-			</div>
-		<style>
-			.top_rw{ background-color:#f4f4f4; }
-			.td_w{ }
-			button{ padding:5px 10px; font-size:14px;}
-			.invoice-box {
-				max-width: 890px;
-				margin: auto;
-				padding:10px;
-				border: 1px solid #eee;
-				box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-				font-size: 14px;
-				line-height: 24px;
-				font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-				color: #555;
-			}
-			.invoice-box table {
-				width: 100%;
-				line-height: inherit;
-				text-align: left;
-				border-bottom: solid 1px #ccc;
-			}
-			.invoice-box table td {
-				padding: 5px;
-				vertical-align:middle;
-			}
-			.invoice-box table tr td:nth-child(2) {
-				text-align: right;
-			}
-			.invoice-box table tr.top table td {
-				padding-bottom: 20px;
-			}
-			.invoice-box table tr.top table td.title {
-				font-size: 45px;
-				line-height: 45px;
-				color: #333;
-			}
-			.invoice-box table tr.information table td {
-				padding-bottom: 50px;
-			}
-			.invoice-box table tr.heading td {
-				background: #eee;
-				border-bottom: 1px solid #ddd;
-				font-weight: bold;
-				font-size:12px;
-			}
-			.invoice-box table tr.details td {
-				padding-bottom: 20px;
-			}
-			.invoice-box table tr.item td{
-				border-bottom: 1px solid #eee;
-			}
-			.invoice-box table tr.item.last td {
-				border-bottom: none;
-			}
-			.invoice-box table tr.total td:nth-child(2) {
-				border-top: 2px solid #eee;
-				font-weight: bold;
-			}  
-		</style>';*/
-		//echo $contain;exit;
+			
 
 		if($result2 == true)
 		{
@@ -248,12 +86,9 @@ class POS_management extends CI_Controller {
 			$html=$this->load->view('GeneratePOSbill',$data,true);
 			$mpdf->WriteHTML($html);
 			$mpdf->Output('billSheet"'.$customer_fname.'_'.$customer_lname.'".pdf','D');
+
 			return redirect('admin/OrderManagement/all_OrderProduct');
-		}
-		else
-		{
-			$errorUploadType = 'Some problem occurred, please try again.';
-		}   
+		} 
     }
 
 	public function customerdetails()

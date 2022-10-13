@@ -352,20 +352,42 @@ class ApiController extends CI_Controller
 //===PRODUCT LIST ======//
     public function get_product_list()
     {
-        $id =  $this->input->get('userid');
-
-        $this->db->select('id , emp_id as user_id, product_category_id, name, product_image, available_stock,weight,price,rating,discount_price,discount_percent');
-        $this->db->from('nbb_product');
-         $this->db->where('id',$id);
-
-        $result = $this->db->get();
-        $rows = $result->num_rows();
-
-        $product = $result->result_array();
-        for($i=0 ; $i<count($product); $i++){
-            $product[$i]['product_image'] = $this->url.'uploads/product_img/'.$product[$i]['product_image'];
+        $id =  $this->input->get('categoryid');
+        if($id == ''){
+            $id = 10;
         }
 
+       /* $this->db->select('nbb_product.id as id ,nbb_product.status as prod_status,categorie_id , name,discountPercentage, discounted_price,price,available_stock,rating,description');
+        $this->db->select('nbb_product_image.image as image, nbb_product_image.status as imgstatus, name');
+        $this->db->from('nbb_product');
+        $this->db->join('nbb_product_image','nbb_product_image.product_id = nbb_product.id');
+        $this->db->where(array('nbb_product.categorie_id'=>2,'nbb_product.product_category_id'=> $id));
+        
+        $this->db->where('nbb_product.status',1);*/
+		
+		$all_product_sql = "SELECT nbb_product.*, (SELECT nbb_product_image.image 
+		FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
+		FROM nbb_product 
+		WHERE nbb_product.categorie_id = 2 AND nbb_product.product_category_id = '".$id."' AND nbb_product.status = 1";
+		$result = $this->db->query($all_product_sql);
+		
+        //$result = $this->db->get();
+		$rows = $result->num_rows();
+
+
+        $product = $result->result_array();
+         for($i=0 ; $i<count($product); $i++){
+            if($product[$i]['p_image'] == 'null'){
+                $product[$i]['p_image'] = 'no image found';
+            }
+            else {
+             
+                    $product[$i]['p_image'] = $this->url.'uploads/product_img/'.$product[$i]['p_image'];
+                
+                
+            }
+
+        }
         if($rows){
             echo json_encode([
                     'responsecode'=>$this->responseCode,
