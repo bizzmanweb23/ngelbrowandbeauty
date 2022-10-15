@@ -70,6 +70,7 @@
 												<option value="<?= $product_dataRow['id'] ?>"><?= $product_dataRow['name'] ?></option>
 											<?php } ?>					
 										</select>
+										<div class="product_stock_1"></div>
 
 									</div>
 									<div class="col-md-3">
@@ -182,8 +183,11 @@
 			data: {Id: productID },
 			dataType: "JSON",
 			success:function(data){	
-
-				document.getElementById('price_'+product_id).value = data
+				$.each(data, function (key, val) {
+				$("#price_"+product_id).val(val.p_price);
+				$(".product_stock_"+product_id).html('Available Stock:-'+val.available_stock);
+			});
+				
 				
 			}
 		});
@@ -193,7 +197,7 @@
 	var count = 1;
 	$('.clone_button').click(function() {
 		count++;
-		  var clonetext = '<div class="row"><div class="col-md-3"><label for="Quantity" class="col-sm-6 control-label">Product</label><select class="form-control product_name_'+count+'" name="productID[]" onchange="showProductPrice('+count+');"><option value="" hidden>Please select Product</option><?php foreach($product_data as $product_dataRow) { ?><option value="<?= $product_dataRow['id'] ?>"><?= $product_dataRow['name'] ?></option><?php } ?></select></div><div class="col-md-3"><div class="col-md-6"><label for="age" class="control-label">Product Price</label></div><div class="col-md-6"><input type="text" class="form-control" name="product_price[]" id="price_'+count+'" value=""></div></div><div class="col-md-3"><div class="form-group"><label for="Quantity" class="col-sm-6 control-label">Quantity </label><div class="col-md-4"><input type="number" class="form-control" name="quantity[]" id="quantity_'+count+'" onkeyup ="calculate_total_quantity('+count+');"></div></div></div><div class="col-md-2"><div class="col-md-6"><label for="age" class="control-label">Total Price</label></div><div class="col-md-6"><input type="text" class="form-control" name="totalPrice[]" id="totalPrice_'+count+'" readonly></div></div></div>';
+		  var clonetext = '<div class="row"><div class="col-md-3"><select class="form-control product_name_'+count+'" name="productID[]" onchange="showProductPrice('+count+');"><option value="" hidden>Please select Product</option><?php foreach($product_data as $product_dataRow) { ?><option value="<?= $product_dataRow['id'] ?>"><?= $product_dataRow['name'] ?></option><?php } ?></select><div class="product_stock_'+count+'"></div></div><div class="col-md-3"><div class="col-md-6"></div><div class="col-md-6"><input type="text" class="form-control" name="product_price[]" id="price_'+count+'" value=""></div></div><div class="col-md-3"><div class="form-group"><div class="col-md-4"><input type="number" class="form-control" name="quantity[]" id="quantity_'+count+'" onkeyup ="calculate_total_quantity('+count+');"></div></div></div><div class="col-md-2"><div class="col-md-6"></div><div class="col-md-6"><input type="text" class="form-control" name="totalPrice[]" id="totalPrice_'+count+'" readonly></div></div></div>';
 		  $('.clone_wrapper').append(clonetext);
 		});
 	});

@@ -53,7 +53,7 @@
 							<label for="email" class="col-sm-6 control-label">Email <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="email" autocomplete="off" placeholder="Email" value="" required>
+								<input type="email" class="form-control" name="email" autocomplete="off" placeholder="Email" value="" required>
 							</div>
 						</div> 
 					</div>

@@ -147,6 +147,7 @@ $autoload['model'] = array('Auth_Model'=>'Auth',
 'ProcurementManagement_Model'=>'ProcurementManagement',
 'CourseManagement_Model'=>'CourseManagement',
 'LeadManagement_model'=>'LeadManagement',
+'POS_Model'=>'POS',
 
 'front/AuthFront_Model'=>'AuthFront',
 'front/Header_Model'=>'Header',

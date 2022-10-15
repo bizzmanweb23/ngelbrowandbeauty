@@ -57,6 +57,7 @@ class Product_modal extends CI_Model
 			return $data;
 
 	}
+	
 	function getSingleproduct($id){
 		
 		$all_product_sql = "SELECT nbb_product_image.image AS p_image 

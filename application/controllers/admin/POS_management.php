@@ -57,18 +57,21 @@ class POS_management extends CI_Controller {
 				); 
 				$result2 = $this->db->insert('nbb_order_product',$orderdata); 
 
-				$stock_query = $this->db->query("SELECT nbb_product.stock FROM nbb_product WHERE nbb_product.id = '".$allproductID."'");
-				$stock_data = $stock_query->result_array();
-				foreach($stock_data as $stock_row){
-					$stock = $stock_row['stock'];
-					$cal_stock = $stock - $this->input->post('totalPrice')[$i];
+				$orderProductDate = $this->POS->orderProductlistingdata($orderId);
+		
+				foreach($orderProductDate as $orderProductrow){	
+					$product_id = $orderProductrow['product_id'];	
+					$alltotal_quantity = $orderProductrow['total_quantity'];	
 
-					$this->db->where('id' , $allproductID);
-					$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+				$producttotalPrice = $this->POS->getproductDetails($product_id);
+				$available_stock = $producttotalPrice['available_stock'];
+				$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
 
+				$this->db->where('id' , $product_id);
+				$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+					
 				}
 				
-			
 			}
 			//$order_product_data = $this->OrderManagement->orderProductlistingdata($orderId);
 		$data["productlistingdata"]=$this->OrderManagement->orderProductlistingdata($orderId);
@@ -128,7 +131,7 @@ class POS_management extends CI_Controller {
 	{
 		$id = $this->input->post('Id');
 		
-		$product_sql  = "SELECT nbb_product.price,nbb_product.discounted_price
+		$product_sql  = "SELECT nbb_product.price,nbb_product.discounted_price,nbb_product.available_stock
 			FROM nbb_product
 			WHERE nbb_product.id = '".$id."'"; 
 			$product_query = $this->db->query($product_sql);
@@ -136,17 +139,24 @@ class POS_management extends CI_Controller {
 			$p_price = '';
 			$discounted_price = '';
 			$price = '';
+			$dataArr = array();
 			foreach($product_data as $row){
 				$discounted_price = $row['discounted_price'];
 				$price = $row['price'];
+				$available_stock = $row['available_stock'];
 
 				if($discounted_price != ''){
 					$p_price = $discounted_price;
 				}else if($price != ''){
 					$p_price = $price;
 				}
+
+				$dataArr []= array(
+					'available_stock' 		=> $available_stock,
+					'p_price' 		=> $p_price,
+				);
 			}
-		echo $p_price;
+		echo json_encode($dataArr);
 
 	}
 

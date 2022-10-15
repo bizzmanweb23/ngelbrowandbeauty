@@ -33,7 +33,8 @@
 											</div>
 											<div class="col-md-6">
 												<div class="form-group ">
-													<select multiple class="chosen-select form-control" data-live-search="true" name="menuname[]" style="height: 45px !important;">
+													<select multiple class="selectpicker form-control" data-live-search="true" name="menuname[]" style="height: 45px !important;">
+															<!--<option value="" selected disabled hidden>  </option>-->
 															<?php foreach($allPermission as $permissionRow): ?>
 															<option value="<?= $permissionRow['id']?>"><?= $permissionRow['menuname']?></option>
 															<?php endforeach; ?>  
@@ -80,10 +81,24 @@
     </section>
 </div> 
 
-<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+<!--<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+
+
 <script>
-	$(".chosen-select").chosen({
+	$('select').selectpicker(
+		{  
+			liveSearchPlaceholder: 'Search Module',
+			noneSelectedText: 'Select Module'
+		}
+	);
+
+	/*$(".chosen-select").chosen({
 	no_results_text: "Oops, nothing found!"
-	})
+	});*/ 
 </script>

@@ -10,6 +10,10 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.5/dist/fullcalendar.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@1.10.4/dist/scheduler.min.js'></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 
 <style>
 
@@ -303,7 +307,8 @@ display:none;
 														<label for="services" class="col-sm-6 control-label">Services 
 														</label>
 														<div class="col-sm-12">
-														<select data-placeholder="" multiple class="chosen-select form-control" name="service[]" id="services" style="height: 45px !important;">
+														<select multiple data-live-search="true" class="selectpicker form-control" name="service[]" id="services" style="height: 45px !important;">
+															<option value="" disabled> Select Services </option>
 															<?php foreach($service as $services): ?>
 															<option value="<?= $services['id']?>"><?= $services['service_name']?></option>
 														<?php endforeach; ?> 
@@ -418,6 +423,14 @@ display:none;
 
 </div>
 <script>
+
+	$('select').selectpicker(
+		{  
+			liveSearchPlaceholder: 'Search service',
+			noneSelectedText: 'Select Services'
+		}
+	);
+
     // format time displayed
     function formatTimeStr(dateStr) {
         return dateStr;

@@ -106,6 +106,14 @@ class Product extends CI_Controller {
 			); 
 			$result2 = $this->db->insert('nbb_order_product',$orderdata);  
 		}
+		/*
+		$producttotalPrice = $this->Product->getproductDetails($product_id);
+		$available_stock = $producttotalPrice['available_stock'];
+		$cal_stock = $producttotalPrice['available_stock'] - $quantity;
+
+		$this->db->where('id' , $product_id);
+		$this->db->update('nbb_product', array('available_stock'=>$cal_stock));*/
+
 
 		redirect('cartList');
 
@@ -207,20 +215,26 @@ class Product extends CI_Controller {
 			}
 			
 		}
-		/*
+		$orderProductDate = $this->Product->orderProductlistingdata($Id);
+		
+		foreach($orderProductDate as $orderProductrow){	
+			$product_id = $orderProductrow['product_id'];	
+			$alltotal_quantity = $orderProductrow['total_quantity'];	
+
 		$producttotalPrice = $this->Product->getproductDetails($product_id);
 		$available_stock = $producttotalPrice['available_stock'];
-		$cal_stock = $producttotalPrice['available_stock'] - $quantity;
+		$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
 
 		$this->db->where('id' , $product_id);
-		$this->db->update('nbb_product', array('available_stock'=>$cal_stock));*/
-
-
+		$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+			 
+		}
+		
 		$data = array(
 			'total_price' 	=> $total_price,
 			'order_number' => $order_number,
 			'shipping_address' => $this->Product->getshipping_address($user_id)
-		); 
+		);
 
 
         $this->load->view('front/order_confirmation', $data);

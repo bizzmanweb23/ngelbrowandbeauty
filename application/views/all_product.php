@@ -21,7 +21,8 @@
 
             <div class="card" style="border-radius: 15px">
               <div class="card-header">
-								
+					
+			  	<a href="<?=base_url('admin/ProductManagement/add_product')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add New Product </button></a>
                 <a href="<?=base_url('admin/ProductManagement/add_product')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add New Product </button></a>
               </div>
               <!-- /.card-header -->
@@ -38,7 +39,6 @@
 					<th>Discounted Price</th>
 					<th>Colour</th>
 					<th>UOM</th>
-                    <th>Total Stock</th>
 					<th>Available stock</th>
 					<th>MFG Date</th>
 					<th>Expiry Date</th>
@@ -72,7 +72,6 @@
 						<td><?= $productRow['discounted_price']?></td>
 						<td><?= $productRow['colour']?></td>
                         <td><?= $productRow['weight']?></td>
-                        <td><?= $productRow['stock'] ?></td>
 						<td><?= $productRow['available_stock'] ?><a data-product_Id="<?=  $productRow['id'];?>" data-p_stock = "<?= $productRow['available_stock'] ?>" href="javascript:void(0);" class="px-2 editStock_status" title="Update Stock" style="color:#61d3d4" ><i class="fa fa-edit" aria-hidden="true"></i></a></td>
 						<td><?= $productRow['mfg_date']?></td>
 						<td><?php if($productRow['expiry_date'] < $date_now){?>
