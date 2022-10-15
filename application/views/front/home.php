@@ -102,9 +102,16 @@
 																		<h3><?= $servicesImg_row['service_name'] ?></h3>
 																		<h4>$<?= $servicesImg_row['service_price'] ?> Per Head</h4>
 																		<p><?= $servicesImg_row['description'] ?></p>
-																		<a href="javascript:void(0)" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">make An Appoinment</a>
+
+																		<!--<a href="javascript:void(0)" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">make An Appoinment</a>-->
 																	</div>	
-																
+																	<div class="d-flex justify-content-center">
+																		<?php if($this->session->userdata('id')>0){ ?>
+																			<a href="<?= base_url('appointmentBooking/'.$id)?>" class="btn btn-primary first-btn px-2" target="_blank">make An Appoinment</a>
+																		<?php }else{ ?>
+																			<a href="javascript:void(0)" onclick="return swal('Please Login First')" class="btn btn-primary first-btn px-2">make An Appoinment</a>
+																		<?php } ?>
+																	</div>
 															</div>
 														<?php	endforeach; ?>
 													</div>
@@ -478,4 +485,6 @@
 
 	}
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
 
