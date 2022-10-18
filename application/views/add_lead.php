@@ -144,13 +144,6 @@
 						</div>
 					</div> 
 					
-					<div class="form-group">
-						<label for="address" class="col-md-12 control-label">Address
-						</label>
-						<div class="col-md-12">
-							<textarea id="address" name="address" rows="5" cols="80" style = "width: 100%;"></textarea>
-						</div>
-					</div> 
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group ">
@@ -179,23 +172,14 @@
 						</div>
 					</div> 
 					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group ">
-								<label for="contact" class="col-sm-6 control-label">City</label>
-								<div class="col-sm-12">
-									<input type="text" class="form-control" name="city" placeholder="City" value="">
-								</div>
-							</div>
+						
+						<div class="form-group">
+						<label for="address" class="col-md-12 control-label">Address 1
+						</label>
+						<div class="col-md-12">
+							<input type="text" name="address" value="" class="form-control" placeholder="Address 1">
 						</div>
-
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="contact" class="col-sm-6 control-label">State</label>
-								<div class="col-sm-12">
-									<input type="text" class="form-control" name="state" placeholder="State" value="">
-								</div>
-							</div>
-						</div>
+					</div> 
 					</div>
 					<div class="row">
 						<div class="col-md-6">
@@ -208,9 +192,9 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="contact" class="col-sm-6 control-label">zip Code</label>
+								<label for="contact" class="col-sm-6 control-label">Postal Code</label>
 								<div class="col-sm-12">
-									<input type="text" class="form-control" name="zip_code" placeholder="ZIP code" value="">
+									<input type="text" class="form-control" name="zip_code" placeholder="Enter Postal Code" value="">
 								</div>
 							</div>
 						</div>

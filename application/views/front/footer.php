@@ -1,6 +1,6 @@
 
     <!-- FOOTER -->
-    <footer style="background-image: url(img/home/footer-bg.jpg);">
+    <footer style="background-image: url(assets/front/img/footer-bg.jpg);">
       <!-- BACK TO TOP BUTTON -->
       <a href="#pageTop" class="backToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
       <!-- FOOTER INFO -->
@@ -10,10 +10,10 @@
             <div class="col-sm-3 col-xs-12">
               <div class="footerText">
                 <a href="index.html" class="footerLogo">
-              <img src="img/logo.png" alt="" class="img-fluid">
+              <img src="<?= base_url(); ?>assets/front/img/logo.png" class="img-fluid" style = "max-width: 150px;">
 
                 </a>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa officia.Lorem ipsum dolor sit amet.</p>
+                <p>Established in 2017，N’GEL has been consistently providing customized Semi-permanent Makeup and Aesthetic Beauty Skin management to all our dear customers.</p>
                 
               </div>
             </div>
@@ -23,11 +23,9 @@
               </div>
               <div class="useLink">
                 <ul class="list-unstyled">
-                  <li><a href="<?php echo base_url('services') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Service</a></li>
-                  <li><a href="<?php echo base_url('about') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>About </a></li>
-                  <li><a href="<?php echo base_url('products') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Products</a></li>
-                  <li><a href="<?php echo base_url('courses') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Course</a></li>
-                  <li><a href="<?php echo base_url('contactus') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Social Media</a></li>
+								<?php foreach($allchild_category as $allchild_category_row): ?>
+										<li><a href="<?php echo base_url('services/'.$allchild_category_row['id']) ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i><?= $allchild_category_row['category_name'];?></a></li>
+									<?php	endforeach; ?>
                 </ul>
               </div>
             </div>
@@ -76,15 +74,16 @@
 
             <div class="col-sm-3 col-xs-12">
               <div class="footerInfoTitle">
-                <h4>Newsletters</h4>
+                <h4>Contact Us</h4>
               </div>
 
-              <div class="footerText">
-                <p>Sign up for our mailing list to get latest updates and offers.</p>
-                <form method="post" action="<?php echo base_url('contact/email') ?>" class="input-group">
-                  <input type="text" name="contact-email" class="form-control" required="" placeholder="Email address" aria-describedby="basic-addon21">
-                  <button type="submit" class="input-group-addon" id="basic-addon21">Send</button>
-                </form>
+              <div class="useLink">
+							<ul class="list-unstyled">
+                <li><i class="fa fa-map-marker" aria-hidden="true"></i> 5 HARPER ROAD , #02-01 SINGAPORE 369673 </li>
+                <li><i class="fa fa-phone" aria-hidden="true"></i> +55 654 545 122</li>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i> info@example.com</li>
+              </ul>
+                
               </div>
             </div>
           </div>

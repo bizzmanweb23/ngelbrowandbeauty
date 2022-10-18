@@ -7,6 +7,7 @@ class ProductManagement extends CI_Controller {
 
 		parent::__construct();
 		$this->load->library('Zend');
+		$this->load->library('Csvimport');
 		//$this->db2 = $this->load->database('database2', TRUE);
 
 	}
@@ -31,18 +32,18 @@ class ProductManagement extends CI_Controller {
 			'name' => $this->input->post('name'),
 			'status' => $this->input->post('status'));
 
-			if(!empty($data))
+		if(!empty($data))
+		{
+			$insert = $this->ProductManagement->insert_productCategory($data); 
+			if($insert==true)
 			{
-				$insert = $this->ProductManagement->insert_productCategory($data); 
-				if($insert==true)
-				{
-					redirect('productcategory');
-				}
-				else
-				{
-					$errorUploadType = 'Some problem occurred, please try again.';
-				}                   
-			}      
+				redirect('productcategory');
+			}
+			else
+			{
+				$errorUploadType = 'Some problem occurred, please try again.';
+			}                   
+		}      
 					  
 	}
 	public function editproductCategory(){
@@ -263,6 +264,70 @@ class ProductManagement extends CI_Controller {
 			}  
 		
   	}
+
+	public function bulk_import(){
+		$data['name'] = $this->session->userdata('name');
+		//$data['category'] = $this->ProductManagement->getAllProductCategory();
+		$data['allcategory'] = $this->ProductManagement->getAllChildCategory();
+		
+		$this->layout->view('bulk_import',$data);
+	}
+	public function import_csv() {
+        
+        //Check file is uploaded in tmp folder
+        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+            //validate whether uploaded file is a csv file
+            $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
+            $mime = get_mime_by_extension($_FILES['file']['name']);
+            $fileArr = explode('.', $_FILES['file']['name']);
+            $ext = end($fileArr);
+            if (($ext == 'csv') && in_array($mime, $csvMimes)) {
+                $file = $_FILES['file']['tmp_name'];
+                $csvData = $this->csvimport->get_array($file);
+                $headerArr = array("product_name", "sku", "main_category_id", "sub_category_id","weight","price","mfg_date","expiry_date","available_stock");
+                if (!empty($csvData)) {
+                    //Validate CSV headers
+                    $csvHeaders = array_keys($csvData[0]);
+                    $headerMatched = 1;
+                    foreach ($headerArr as $header) {
+                        if (!in_array(trim($header), $csvHeaders)) {
+                            $headerMatched = 0;
+                        }
+                    }
+                    if ($headerMatched == 0) {
+                        $this->session->set_flashdata("error_msg", "CSV headers are not matched.");
+                        redirect('leads');
+                    } else {
+                        foreach ($csvData as $row) {
+                            $lead_data = array(
+								'name' 			=> $row['product_name'],
+								'sku' 			=> $row['sku'],
+								'categorie_id' 	=> $row['main_category_id'],
+								'product_category_id' => $row['sub_category_id'],
+								'weight' 		=> $row['weight'],
+								'price' 		=> $row['price'],
+								'mfg_date' 		=> $row['mfg_date'],
+								'expiry_date' 	=> $row['expiry_date'],
+								'available_stock' => $row['available_stock'],
+								'status'   =>  '1',
+							);
+                            $table_name = "nbb_lead";
+                            $this->Main->insert($table_name, $lead_data);
+                        }
+                        $this->session->set_flashdata("success_msg", "CSV File imported successfully.");
+                        redirect('leads');
+                    }
+                }
+            } else {
+                $this->session->set_flashdata("error_msg", "Please select CSV file only.");
+                redirect('leads');
+            }
+        } else {
+            $this->session->set_flashdata("error_msg", "Please select a CSV file to upload.");
+            redirect('leads');
+        }
+    }
+
 	public function updateStack_status()
 	  	{
 		  if(empty($this->session->has_userdata('id'))){

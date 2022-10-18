@@ -54,7 +54,7 @@
 										<div class="form-group ">
 											<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
 											<div class="col-sm-12">
-												<select class="form-control chosen chosen-select-deselect service_category" name="service_category" required>
+												<select class="form-control service_category" name="service_category" required>
 													<option>Select Main Category First</option>
 												
 												</select>
@@ -159,8 +159,8 @@
 										<div class="form-group ">
 											<label for="status" class="col-sm-6 control-label">Status <i class="required">*</i></label>
 											<div class="col-sm-12">
-													<select  class="form-control chosen chosen-select" name="status" id="status" data-placeholder="Select Status" >
-															<option value="" selected hidden>Select Status</option>
+													<select  class="form-control" name="status" id="status" data-placeholder="Select Status" >
+															<option value="" hidden>Select Status</option>
 															<option value="0">Inactive</option>
 															<option value="1">Active</option>
 													</select>

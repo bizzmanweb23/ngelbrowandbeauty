@@ -2205,7 +2205,7 @@ textarea.form-control {
     }
     .main-nav .navbar-brand img {
         width: auto;
-        max-width: 130px;
+        max-width: 160px;
     }
 }
 
@@ -3047,7 +3047,8 @@ textarea.form-control {
 
 @media(min-width:768px) {
     .cart_btn {
-        right: 0
+        right: 0;
+		top: -10px;
     }
 }
 
@@ -3492,7 +3493,7 @@ textarea.form-control {
     .aboutInner {
         width: 50%;
         float: right;
-        height: 650px;
+        height: 770px;
         padding: 120px 0 0;
         background-color: #fff
     }
@@ -3598,7 +3599,7 @@ textarea.form-control {
 }
 
 .aboutInfo h2 {
-    letter-spacing: 10px;
+    letter-spacing: 8px;
     font-size: 20px;
     color: #222
 }

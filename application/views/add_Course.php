@@ -28,7 +28,7 @@
 							<label for="package_name" class="col-sm-6 control-label">Course Name <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="course_name" placeholder="Enter Course Name" value="">
+								<input type="text" class="form-control" name="course_name" placeholder="Enter Course Name" value="" required>
 							</div>
 						</div>      
 					</div>
@@ -55,7 +55,7 @@
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select class="form-control chosen chosen-select-deselect main_category" name="main_category" required>
+								<select class="form-control main_category" name="main_category" required>
 									<option>Select Main Category</option>
 									<?php foreach($category as $category_row): ?>
 									<option value="<?= $category_row['id']?>"><?= $category_row['name']?></option>
@@ -69,7 +69,7 @@
 						<div class="form-group ">
 							<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
 							<div class="col-sm-12">
-								<select class="form-control chosen chosen-select-deselect course_category" name="course_category" required>
+								<select class="form-control course_category" name="course_category" required>
 									<option>Select Main Category First</option>
 								
 								</select>
@@ -84,7 +84,7 @@
 							<label for="package_detail" class="col-sm-6 control-label">Durations<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="durations" placeholder="Enter Duration" value="">
+								<input type="text" class="form-control" name="durations" placeholder="Enter Duration" value="" required>
 							</div>
 						</div>     
                 	</div> 
@@ -93,7 +93,7 @@
 							<label for="package_price" class="col-sm-6 control-label">Course Fees<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="course_fees" placeholder="Enter Course Fees" value="">
+								<input type="text" class="form-control" name="course_fees" placeholder="Enter Course Fees" value="" required>
 							</div>
 						</div> 
 					</div>
@@ -185,12 +185,8 @@
       <!-- /.container-fluid -->
     </section>
  </div> 
- <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+ 
 <script>
-	$(".chosen-select").chosen({
-	no_results_text: "Oops, nothing found!"
-	})
 
 	$(document).ready(function(){
 		$('.main_category').on('change', function(){

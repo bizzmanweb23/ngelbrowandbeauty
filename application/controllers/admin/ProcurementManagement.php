@@ -25,6 +25,7 @@ class ProcurementManagement extends CI_Controller {
 		$data = array(
 			'supplier_code' => $this->input->post('supplier_code'),
 			'supplier_name' => $this->input->post('supplier_name'),
+			'contact_no'    => $this->input->post('contact_no'),
 			'email' => $this->input->post('email'),
 			'supplier_address' => $this->input->post('supplier_address'),
 			'status' => $this->input->post('status'));
@@ -45,6 +46,7 @@ class ProcurementManagement extends CI_Controller {
 		$data = array(
 			'supplier_code' => $this->input->post('supplier_code'),
 			'supplier_name' => $this->input->post('supplier_name'),
+			'contact_no'    => $this->input->post('contact_no'),
 			'email' => $this->input->post('email'),
 			'supplier_address' => $this->input->post('supplier_address'),
 			'status' => $this->input->post('status'));

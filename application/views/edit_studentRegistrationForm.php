@@ -86,26 +86,6 @@
 			</td>
 			</tr>
 			
-			<!----- Address ---------------------------------------------------------->
-			<tr>
-			<td>ADDRESS <br /><br /><br /></td>
-			<td><textarea name="address" class="form-control" rows="4" cols="30"><?= $Student_registration['address'];?></textarea></td>
-			</tr>
-			
-			<!----- City ---------------------------------------------------------->
-			<tr>
-			<td>CITY</td>
-			<td><input type="text" class="form-control" name="city" placeholder="Enter City" value="<?= $Student_registration['city'];?>">
-			</td>
-			</tr>
-			
-			<!----- Pin Code ---------------------------------------------------------->
-			<tr>
-			<td>PIN CODE</td>
-			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="<?= $Student_registration['pin_code'];?>">
-			</td>
-			</tr>
-
 			<tr>
 			<td>Hse / Blk No.</td>
 			<td><input type="text" class="form-control" name="hse_blk_no" placeholder="Enter Hse / Blk No." value="<?= $Student_registration['hse_blk_no'];?>">
@@ -127,10 +107,11 @@
 			</td>
 			</tr>
 			
-			<!----- State ---------------------------------------------------------->
+			<!----- Address ---------------------------------------------------------->
 			<tr>
-			<td>STATE</td>
-			<td><input type="text" class="form-control" name="state" placeholder="Enter State" value="<?= $Student_registration['state'];?>">
+			<td>ADDRESS 1<br /><br /><br /></td>
+			<td>
+			<input type="text" class="form-control" name="address" placeholder="Enter Country" value="<?= $Student_registration['address'];?>">
 			</td>
 			</tr>
 			
@@ -139,6 +120,14 @@
 			<td>COUNTRY</td>
 			<td><input type="text" class="form-control" name="country" placeholder="Enter Country" value="<?= $Student_registration['country'];?>"></td>
 			</tr>
+
+			<!----- Pin Code ---------------------------------------------------------->
+			<tr>
+			<td>POSTAL CODE</td>
+			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="<?= $Student_registration['pin_code'];?>">
+			</td>
+			</tr>
+
 			
 			<!----- Qualification---------------------------------------------------------->
 			<tr>

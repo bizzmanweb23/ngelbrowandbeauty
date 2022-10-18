@@ -165,7 +165,7 @@
                                                         <p><?php foreach($shipping_address as $shipping_addressRow){?>
 															<?= $shipping_addressRow['shipping_firstname'].' '.$shipping_addressRow['shipping_lastname']; ?><br>
 															<?= $shipping_addressRow['shipping_contactno']; ?><br>
-															<?= $shipping_addressRow['shipping_address']; ?>,<?= $shipping_addressRow['shipping_hse_blk_no']; ?>,<?= $shipping_addressRow['shippingunit_no']; ?>,<?= $shipping_addressRow['shipping_street']; ?>,<?= $shipping_addressRow['shipping_postalcode']; ?>
+															<?= $shipping_addressRow['shipping_hse_blk_no']; ?>,<?= $shipping_addressRow['shippingunit_no']; ?>,<?= $shipping_addressRow['shipping_street']; ?>,<?= $shipping_addressRow['shipping_address']; ?>,<?= $shipping_addressRow['shipping_postalcode']; ?>
 															<br> <?= $shipping_addressRow['shipping_country']; ?>
 															<?php } ?>
 														</p>

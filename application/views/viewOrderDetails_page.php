@@ -121,14 +121,6 @@
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-4">
-													<label for="draftStatus" class="col-form-label">Address :</label>
-												</div>
-												<div class="col-sm-4">
-													<p><?= $OrderDetails['shipping_address'] ?></p>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-sm-4">
 													<label for="draftStatus" class="col-form-label">Hse / Blk No.</label>
 												</div>
 												<div class="col-sm-4">
@@ -149,6 +141,14 @@
 												</div>
 												<div class="col-sm-4">
 													<p><?= $OrderDetails['shipping_street'] ?></p>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-4">
+													<label for="draftStatus" class="col-form-label">Address 1:</label>
+												</div>
+												<div class="col-sm-4">
+													<p><?= $OrderDetails['shipping_address'] ?></p>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -192,14 +192,6 @@
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-4">
-													<label for="draftStatus" class="col-form-label">Address :</label>
-												</div>
-												<div class="col-sm-4">
-													<p><?= $OrderDetails['billing_address'] ?></p>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-sm-4">
 													<label for="draftStatus" class="col-form-label">Hse / Blk No.</label>
 												</div>
 												<div class="col-sm-4">
@@ -220,6 +212,14 @@
 												</div>
 												<div class="col-sm-4">
 													<p><?= $OrderDetails['billing_unit_no'] ?></p>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-4">
+													<label for="draftStatus" class="col-form-label">Address 1:</label>
+												</div>
+												<div class="col-sm-4">
+													<p><?= $OrderDetails['billing_address'] ?></p>
 												</div>
 											</div>
 											<div class="form-group row">

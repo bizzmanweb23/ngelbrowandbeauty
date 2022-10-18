@@ -24,7 +24,7 @@
                 <form id="add_package" action="<?= base_url('admin/procurementManagement/post_edit_Supplier')?>" method="post" enctype="multipart/form-data">
                 <div class="row">
 					<input type="hidden" class="form-control" name="supplierId" value="<?= $editSupplier['id']; ?>">
-					<div class="col-md-12">   
+					<div class="col-md-6">   
 						<div class="form-group ">
 							<label for="package_name" class="col-sm-6 control-label">Supplier Code <i class="required">*</i>
 							</label>
@@ -33,10 +33,7 @@
 							</div>
 						</div>      
 					</div>
-                </div>  
-                
-                <div class="row">
-                  	<div class="col-md-6">   
+					<div class="col-md-6">   
 						<div class="form-group ">
 							<label for="package_detail" class="col-sm-6 control-label">Supplier Name<i class="required">*</i>
 							</label>
@@ -45,6 +42,18 @@
 							</div>
 						</div>     
                 	</div> 
+                </div>  
+                
+                <div class="row">
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="package_price" class="col-sm-6 control-label">Contact No.<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="email" class="form-control" name="contact_no" placeholder="Enter Contact No." value="<?= $editSupplier['contact_no']; ?>">
+							</div>
+						</div> 
+					</div>
 					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="package_price" class="col-sm-6 control-label">Email<i class="required">*</i>

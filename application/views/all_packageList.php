@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Offer & Package Management</h1>
+            <h1>Package Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -21,7 +21,7 @@
               <div class="card-header">
 							
                 <a href="<?=base_url('admin/OfferAndPackages/add_packageproduct')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Package </button></a>
-				<h2>Packages List</h2>
+				<h4>Packages List</h4>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -31,10 +31,11 @@
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>Package Name </th>
-                    <th>Package Detail</th>
+                    <th>Detail</th>
 					<th>Price</th>
-					<th>Package Credits</th>
-					<th>Number Of Product</th>
+					<th>No Of Session</th>
+					<th>No Of Session</th>
+					<th>FOC Items</th>
 					<th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -45,7 +46,8 @@
                         <td><?= $packagesRow['package_name']?></td>
 						<td><?= $packagesRow['package_detail'] ?></td>	
                         <td>$<?= $packagesRow['package_price']?></td>
-                        <td><?= $packagesRow['package_credits']?></td>
+                        <td><?= $packagesRow['no_ofSession']?></td>
+						<td><?= $packagesRow['foc_items']?></td>
 						<td>
 							<?php $packages_product_sql = "SELECT * FROM nbb_service_packages WHERE nbb_service_packages.package_id = '".$packagesRow['id']."'";
 							$order_product_query = $this->db->query($packages_product_sql);

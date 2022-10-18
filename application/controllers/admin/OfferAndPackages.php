@@ -22,6 +22,7 @@ class OfferAndPackages extends CI_Controller {
 	public function add_packageproduct()
     {
 		$data['name'] = $this->session->userdata('name');
+		$data['category'] = $this->ServiceCategory->getAllParentCategory();
 		$data['serviceName'] = $this->ServiceCategory->getAllServicesPackages();
        	$this->layout->view('add_Packages',$data); 
     }
@@ -29,9 +30,13 @@ class OfferAndPackages extends CI_Controller {
 
 		$data = array(
 			'package_name' => $this->input->post('package_name'),
+			'category' => $this->input->post('main_category'),
+			'sub_category' => $this->input->post('service_category'),
 			'package_detail' => $this->input->post('package_detail'),
 			'package_price' => $this->input->post('package_price'),
 			'package_credits' => $this->input->post('package_credits'),
+			'no_ofSession' => $this->input->post('no_ofSession'),
+			'foc_items' => $this->input->post('foc_items'),
 			'status' => $this->input->post('status'));
 
 			$insert = $this->Main->insert('nbb_packages',$data); 
@@ -49,6 +54,36 @@ class OfferAndPackages extends CI_Controller {
 				$insert2 = $this->Main->insert('nbb_service_packages',$productName_data);
 			}
 		}
+			
+			$this->load->library('upload');
+				if($_FILES['packageFiles']['name'] != '')
+				{
+					$_FILES['file']['name']       = $_FILES['packageFiles']['name'];
+					$_FILES['file']['type']       = $_FILES['packageFiles']['type'];
+					$_FILES['file']['tmp_name']   = $_FILES['packageFiles']['tmp_name'];
+					$_FILES['file']['error']      = $_FILES['packageFiles']['error'];
+					$_FILES['file']['size']       = $_FILES['packageFiles']['size'];
+	
+					// File upload configuration
+					$uploadPath = 'uploads/package_img/';
+					$config['upload_path'] = $uploadPath;
+					$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+					$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+					$config['max_height'] = "";
+					$config['max_width'] = "";
+	
+					// Load and initialize upload library
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+	
+					// Upload file to server
+					if($this->upload->do_upload('file')){
+						// Uploaded file data
+						$imageData = $this->upload->data();
+						$uploadImgData['packageFiles'] = $imageData['file_name'];
+					}
+					$this->Main->update('id',$insert_id, $uploadImgData,'nbb_packages');         
+				} 
 		if($insert || $insert2){
 			redirect('admin/offerAndPackages/package_list');
 		}
@@ -71,6 +106,7 @@ class OfferAndPackages extends CI_Controller {
 		$data['name'] = $this->session->userdata('name');
 		$allservice_id = array();
 		$id = $this->uri->segment(4);	
+		$data['ChildCategory'] = $this->ServiceCategory->getAllChildCategory();
 		$data['productPackages'] = $this->OfferAndPackages->geteditPackages($id);
 		
 		$data['AllPackageProductName'] = $this->OfferAndPackages->getAllPackageProductName($id);
@@ -91,9 +127,12 @@ class OfferAndPackages extends CI_Controller {
 		$package_id = $this->input->post('package_id');
 		$data = array(
 			'package_name' => $this->input->post('package_name'),
+			'sub_category' => $this->input->post('service_category'),
 			'package_detail' => $this->input->post('package_detail'),
 			'package_price' => $this->input->post('package_price'),
 			'package_credits' => $this->input->post('package_credits'),
+			'no_ofSession' => $this->input->post('no_ofSession'),
+			'foc_items' => $this->input->post('foc_items'),
 			'status' => $this->input->post('status'));
 
 			$update = $this->Main->update('id',$package_id, $data,'nbb_packages');    
@@ -113,6 +152,37 @@ class OfferAndPackages extends CI_Controller {
 				$insert2 = $this->Main->insert('nbb_service_packages',$productName_data);
 			}
 		}
+
+		$this->load->library('upload');
+		if($_FILES['packageFiles']['name'] != '')
+		{
+			$_FILES['file']['name']       = $_FILES['packageFiles']['name'];
+			$_FILES['file']['type']       = $_FILES['packageFiles']['type'];
+			$_FILES['file']['tmp_name']   = $_FILES['packageFiles']['tmp_name'];
+			$_FILES['file']['error']      = $_FILES['packageFiles']['error'];
+			$_FILES['file']['size']       = $_FILES['packageFiles']['size'];
+
+			// File upload configuration
+			$uploadPath = 'uploads/package_img/';
+			$config['upload_path'] = $uploadPath;
+			$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+			$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+			$config['max_height'] = "";
+			$config['max_width'] = "";
+
+			// Load and initialize upload library
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			// Upload file to server
+			if($this->upload->do_upload('file')){
+				// Uploaded file data
+				$imageData = $this->upload->data();
+				$uploadImgData['packageFiles'] = $imageData['file_name'];
+			}
+			$this->Main->update('id',$package_id, $uploadImgData,'nbb_packages');         
+		}
+
 		if($update || $insert2){
 			redirect('admin/offerAndPackages/edit_packages/'.$package_id);
 		}

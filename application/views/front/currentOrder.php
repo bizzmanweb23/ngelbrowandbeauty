@@ -32,37 +32,7 @@
                       </div>
                     </div>
   
-                    <div class="row">
-											<div class="col-md-5">
-												<label class="control-label text-md-right" for="number">Address:</label>
-											</div>
-											<div class="col-md-6">
-												<p style="color: #000;"><?= $shippingAddressRow['shipping_address'] ?></p>
-											</div>
-                      
-												
-                      <!--<div class="dateSelect col-md-7">
-                        <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                          <input type="text" class="form-control" placeholder="MM/DD/YYYY">
-                          <div class="input-group-addon">
-                            <span class="fa fa-calendar"></span>
-                          </div>
-                        </div>
-                      </div>-->
-
-                    </div>
-  
-                    <div class="row">
-											<div class="col-md-5">
-												<label class="control-label text-md-right" for="cvcnumber">Country:</label>
-											</div>
-                      
-                      <div class="col-md-6">
-                        <!--<input type="text" class="form-control" id="cvcnumber" placeholder="CVC">
-                        <i class="fa fa-question-circle helpText" aria-hidden="true"></i>-->
-												<p style="color: #000;"><?= $shippingAddressRow['shipping_country'] ?></p>
-                      </div>
-                    </div>
+                    
   
                     <div class="row">
 											<div class="col-md-5">
@@ -91,6 +61,38 @@
                       
                       <div class="countrySelect col-md-6">
 												<p style="color: #000;"><?= $shippingAddressRow['shipping_street'] ?></p>
+                      </div>
+                    </div>
+
+										<div class="row">
+											<div class="col-md-5">
+												<label class="control-label text-md-right" for="number">Address 1:</label>
+											</div>
+											<div class="col-md-6">
+												<p style="color: #000;"><?= $shippingAddressRow['shipping_address'] ?></p>
+											</div>
+                      
+												
+                      <!--<div class="dateSelect col-md-7">
+                        <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+                          <input type="text" class="form-control" placeholder="MM/DD/YYYY">
+                          <div class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </div>
+                        </div>
+                      </div>-->
+
+                    </div>
+
+										<div class="row">
+											<div class="col-md-5">
+												<label class="control-label text-md-right" for="cvcnumber">Country:</label>
+											</div>
+                      
+                      <div class="col-md-6">
+                        <!--<input type="text" class="form-control" id="cvcnumber" placeholder="CVC">
+                        <i class="fa fa-question-circle helpText" aria-hidden="true"></i>-->
+												<p style="color: #000;"><?= $shippingAddressRow['shipping_country'] ?></p>
                       </div>
                     </div>
   

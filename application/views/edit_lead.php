@@ -145,13 +145,7 @@
 						</div>
 					</div>  
 					
-					<div class="form-group">
-						<label for="address" class="col-md-12 control-label">Address
-						</label>
-						<div class="col-md-12">
-							<textarea id="address" name="address" rows="5" cols="80" style = "width: 100%;"><?= $leadData['address'] ?></textarea>
-						</div>
-					</div> 
+					
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group ">
@@ -180,22 +174,13 @@
 						</div>
 					</div>  
 					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group ">
-								<label for="contact" class="col-sm-6 control-label">City</label>
-								<div class="col-sm-12">
-									<input type="text" class="form-control" name="city" value="<?= $leadData['city'] ?>">
-								</div>
-							</div>
+					<div class="form-group">
+						<label for="address" class="col-md-12 control-label">Address 1</label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="address" placeholder="Address 1" value="<?= $leadData['address'] ?>">
 						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="contact" class="col-sm-6 control-label">State</label>
-								<div class="col-sm-12">
-									<input type="text" class="form-control" name="state" value="<?= $leadData['state'] ?>">
-								</div>
-							</div>
-						</div>
+					</div> 
+					
 					</div>
 					<div class="row">
 						<div class="col-md-6">
@@ -208,9 +193,9 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="contact" class="col-sm-6 control-label">zip Code</label>
+								<label for="contact" class="col-sm-6 control-label">Postal Code</label>
 								<div class="col-sm-12">
-									<input type="text" class="form-control" name="zip_code" placeholder="ZIP code" value="<?= $leadData['zip_code'] ?>">
+									<input type="text" class="form-control" name="zip_code" placeholder="Enter Postal Code" value="<?= $leadData['zip_code'] ?>">
 								</div>
 							</div>
 						</div>
@@ -218,7 +203,7 @@
 					<div class="form-group">
 						<label for="address" class="col-md-12 control-label">Comment</label>
 						<div class="col-md-12">
-							<textarea name="comment" rows="5" cols="80" style = "width: 100%;"><?= $leadData['comment'] ?></textarea>
+							<input type="text" class="form-control" name="comment" placeholder="Comment" value="<?= $leadData['comment'] ?>">
 						</div>
 					</div> 
 									    

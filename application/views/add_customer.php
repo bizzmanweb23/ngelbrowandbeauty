@@ -198,27 +198,6 @@
 						<input type="text" name = "shipping_contactno" class="form-control" placeholder="Contact Number">
 						</div>
 					</div>
-					
-
-					<div class="form-group">
-
-						<label for="address" class="col-sm-6 col-form-label">Address</label>
-
-						<div class="col-sm-6">
-							<textarea id="address" name="shipping_address" rows="5" cols="80" style = "width: 100%;"></textarea>
-						</div>
-					</div>
-
-
-					<div class="form-group">
-
-						<label for="suburb" class="col-sm-6 col-form-label">Country</label>
-
-						<div class="col-sm-6">
-
-						<input type="text" name = "shipping_country" class="form-control" placeholder="Country">
-						</div>
-					</div>
 
 					<div class="form-group">
 
@@ -252,7 +231,27 @@
 
 					<div class="form-group">
 
-						<label for="postcode" class="col-sm-6 col-form-label">postcode</label>
+						<label for="address" class="col-sm-6 col-form-label">Address 1</label>
+
+						<div class="col-sm-6">
+							<input type="text" name = "shipping_address" class="form-control" placeholder="Address 1">
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<label for="suburb" class="col-sm-6 col-form-label">Country</label>
+
+						<div class="col-sm-6">
+
+						<input type="text" name = "shipping_country" class="form-control" placeholder="Country">
+						</div>
+					</div>
+
+
+					<div class="form-group">
+
+						<label for="postcode" class="col-sm-6 col-form-label">Postal Code</label>
 
 						<div class="col-sm-6">
 

@@ -134,7 +134,7 @@ function googleTranslateElementInit() {
 								<a href="javascript:void(0)"><i class="fa fa-envelope" aria-hidden="true"></i> info@yourdomain.com</a>
 								</div>
 								<div class="col-md-2">
-								<div id="google_translate_element"></div>
+								<div id="google_translate_element" style="margin-top: 10px;"></div>
 								</div>
 							</div>
 							

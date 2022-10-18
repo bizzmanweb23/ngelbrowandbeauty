@@ -28,7 +28,8 @@
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
 					        <th>Supplier Code</th>
-                  <th>Supplier Name</th>
+                  <th> Name</th>
+									<th> Contact No. </th>
                   <th>Email</th>
                   <th>Supplier Address</th>
                   <th>Action</th>
@@ -39,6 +40,7 @@
                       <tr>
                         <td><?= $supplierRow['supplier_code']?></td>
                         <td><?= $supplierRow['supplier_name']?></td>
+												<td><?= $supplierRow['contact_no']?></td>
                         <td><?= $supplierRow['email']?></td>
                         <td><?= $supplierRow['supplier_address']?></td>
                         <td>

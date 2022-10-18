@@ -44,14 +44,14 @@
 			
 			<tr>
 			<td>First Name</td>
-			<td><input type="text" class="form-control" name="first_name" placeholder="Enter First Name" value="">
+			<td><input type="text" class="form-control" name="first_name" placeholder="Enter First Name" value="" required>
 			</td>
 			</tr>
 			
 			
 			<tr>
 			<td>Last Name</td>
-			<td><input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" value="">
+			<td><input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" value="" required>
 			</td>
 			</tr>
 			
@@ -66,14 +66,14 @@
 			
 			<tr>
 			<td>Email ID</td>
-			<td><input type="email" class="form-control" name="email" placeholder="Enter Email" value=""></td>
+			<td><input type="email" class="form-control" name="email" placeholder="Enter Email" value="" required></td>
 			</tr>
 			
 			
 			<tr>
 			<td>Mobile Number</td>
 			<td>
-			<input type="text" class="form-control" name="mobile_number" placeholder="Enter Mobile Number" value="">
+			<input type="text" class="form-control" name="mobile_number" placeholder="Enter Mobile Number" value="" required>
 			</td>
 			</tr>
 			
@@ -87,26 +87,6 @@
 			</tr>
 			
 			
-			<tr>
-			<td>Address <br /><br /><br /></td>
-			<td><textarea name="address" class="form-control" rows="4" cols="30"></textarea></td>
-			</tr>
-			
-			
-			<tr>
-			<td>City</td>
-			<td><input type="text" class="form-control" name="city" placeholder="Enter City" value="">
-			</td>
-			</tr>
-			
-			
-			<tr>
-			<td>Pin Code</td>
-			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="">
-			
-			</td>
-			</tr>
-
 			<tr>
 			<td>Hse / Blk No.</td>
 			<td><input type="text" class="form-control" name="hse_blk_no" placeholder="Enter Hse / Blk No." value="">
@@ -123,17 +103,16 @@
 
 			<tr>
 			<td>Building / Street Name</td>
-			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Pin Code" value="">
+			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Building / Street Name" value="">
 			
 			</td>
 			</tr>
 			
 			
 			<tr>
-			<td>State</td>
-			<td><input type="text" class="form-control" name="state" placeholder="Enter State" value="">
-			
-			</td>
+			<td>Address 1 <br /><br /><br /></td>
+			<td><input type="text" class="form-control" name="address" placeholder="Enter Address 1" value="">
+				</td>
 			</tr>
 			
 			
@@ -142,6 +121,13 @@
 			<td><input type="text" class="form-control" name="country" placeholder="Enter Country" value=""></td>
 			</tr>
 			
+			<tr>
+			<td>Postal Code</td>
+			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="">
+			
+			</td>
+			</tr>
+
 			
 			<tr>
 			<td>Last School/University Attended</td>
@@ -236,13 +222,20 @@
 			display: none;
 		}	
 	.circle {
-		top: 10px;
+		/*top: 10px;
 		background-color:#C8C8C8;
 		overflow: hidden;
 		border-radius: 4px;
   		padding: 5px;
 		width: 100px;
-    	height: 100px;
+    	height: 100px;*/
+
+		border-radius: 1000px !important;
+		overflow: hidden;
+		width: 122px;
+		height: 122px;
+		top: 10px;
+		background-color: #C8C8C8;
 	}
 	.img_profile {
 		max-width: 100%;

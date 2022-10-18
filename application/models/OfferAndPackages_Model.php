@@ -11,8 +11,9 @@ class OfferAndPackages_Model extends CI_Model
 			return $this->db->get()->result_array();
 		}
 		function geteditPackages($id){
-			$this->db->select('nbb_packages.*');
+			$this->db->select('nbb_packages.*,nbb_parentcategory.name as parentcategory_name');
 			$this->db->from('nbb_packages');
+			$this->db->join('nbb_parentcategory', 'nbb_parentcategory.id = nbb_packages.category', 'LEFT');
 			$this->db->where('nbb_packages.id', $id);
 			return $this->db->get()->result_array();
 		}

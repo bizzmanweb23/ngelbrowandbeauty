@@ -250,7 +250,7 @@ if ($this->session->userdata('id')) {
 						<li class="nav-item ">
 						<a class="nav-link  " href="<?= base_url(); ?>admin/offerAndPackages/coupons_list">
 							<span class="sidenav-mini-icon"> O </span>
-							<span class="sidenav-normal"> Offers </span>
+							<span class="sidenav-normal"> Offer </span>
 							</a>
 						</li>
 						</ul>

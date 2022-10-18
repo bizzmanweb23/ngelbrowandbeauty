@@ -162,17 +162,6 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6">
-											<div class="form-group">
-												<label class="col-md-6 col-xl-6 control-label">Address</label>
-												<div class="col-md-6 col-xl-10">
-												<input type="text" class="form-control" value="<?= $user_row['billing_address'] ?>" name="billing_address" placeholder="Enter Billing Address">
-												</div>
-											</div>
-									</div>
-								</div>
-
-								<div class="row">
 									<div class="col-md-6">   
 										<div class="form-group ">
 											<label for="dob" class="col-md-6 col-xl-6 control-label">Hse / Blk No.  
@@ -182,6 +171,10 @@
 											</div>
 										</div>
 									</div>
+								</div>
+
+								<div class="row">
+									
 									<div class="col-md-6">   
 										<div class="form-group ">
 											<label for="dob" class="col-md-6 col-xl-6 control-label">Unit No. 
@@ -191,9 +184,6 @@
 											</div>
 										</div>
 									</div>
-								</div>
-
-								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group ">
 											<label for="dob" class="col-md-6 col-xl-6 control-label">Building / Street Name
@@ -203,6 +193,19 @@
 											</div>
 										</div>
 									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group ">
+											<label for="dob" class="col-md-6 col-xl-6 control-label">Address 1
+											</label>
+											<div class="col-md-6 col-xl-10">
+												<input type="text" class="form-control" name="billing_street" placeholder="Enter Billing Street" value="<?= $user_row['billing_address'] ?>">
+											</div>
+										</div>
+									</div>
+									
 									<div class="col-md-6">
 										<div class="form-group ">
 											<label for="age" class="col-md-6 col-xl-6 control-label">Country</label>
@@ -266,17 +269,6 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-md-6">
-												<div class="form-group">
-													<label class="col-md-6 col-xl-6 control-label">Address</label>
-													<div class="col-md-6 col-xl-10">
-													<input type="text" class="form-control" value="<?= $user_row['shipping_address'] ?>" name="shipping_address" placeholder="Enter Shipping Address">
-													</div>
-												</div>
-										</div>
-									</div>
-
-									<div class="row">
 										<div class="col-md-6">   
 											<div class="form-group ">
 												<label for="dob" class="col-md-6 col-xl-6 control-label">Hse / Blk No.  
@@ -286,6 +278,10 @@
 												</div>
 											</div>
 										</div>
+									</div>
+
+									<div class="row">
+										
 										<div class="col-md-6">   
 											<div class="form-group ">
 												<label for="dob" class="col-md-6 col-xl-6 control-label">Unit No. 
@@ -295,9 +291,6 @@
 												</div>
 											</div>
 										</div>
-									</div>
-
-									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group ">
 												<label for="dob" class="col-md-6 col-xl-6 control-label">Building / Street Name
@@ -306,6 +299,18 @@
 													<input type="text" class="form-control" name="shipping_street" placeholder="Enter Shipping Street" value="<?= $user_row['shipping_street'] ?>">
 												</div>
 											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										
+										<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-6 col-xl-6 control-label">Address</label>
+													<div class="col-md-6 col-xl-10">
+													<input type="text" class="form-control" value="<?= $user_row['shipping_address'] ?>" name="shipping_address" placeholder="Enter Shipping Address">
+													</div>
+												</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group ">

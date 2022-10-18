@@ -53,7 +53,12 @@
                     <input type="text" class="form-control" placeholder="Apply Coupon Code" aria-describedby="basic-addon221" required>
                     <button type="submit" class="input-group-addon" id="basic-addon221">Submit</button>
                   </div> */ ?>
-                  <a href="<?= base_url(); ?>productOrder" class="btn btn-primary btn-block">Checkout</a>
+									<?php if($producttotalPrice['total_price'] == ''){ ?>
+										
+									<?php }else{ ?>
+											<a href="<?= base_url(); ?>productOrder" class="btn btn-primary btn-block">Checkout</a>
+									<?php } ?>
+                  
                 </div>
               </div>
             </form>

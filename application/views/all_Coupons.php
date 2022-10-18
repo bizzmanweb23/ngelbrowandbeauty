@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Offer & Package Management</h1>
+            <h1>Offer Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -20,8 +20,8 @@
             <div class="card" style="border-radius: 15px">
               <div class="card-header">
 							
-                <a href="<?=base_url('admin/OfferAndPackages/add_Coupon')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Coupon </button></a>
-								<h2>Packages List</h2>
+                <a href="<?=base_url('admin/OfferAndPackages/add_Coupon')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Offer </button></a>
+								<h4>Offer List</h4>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -30,7 +30,7 @@
                 <table class="table table-bordered" id = "salary_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
-                    <th>Coupon Code </th>
+                    <th>Offer Code </th>
                     <th>Description</th>
 										<th>Banner Icon</th>
 										<th>Discount</th>

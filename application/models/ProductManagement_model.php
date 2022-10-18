@@ -8,7 +8,6 @@ class ProductManagement_model extends CI_Model
 		{
 			$this->db->select('nbb_child_category.*');
 			$this->db->from('nbb_child_category');
-
 			return $this->db->get()->result_array();
 		}
 	function insert_productCategory($data = array())

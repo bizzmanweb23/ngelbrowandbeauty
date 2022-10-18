@@ -118,18 +118,16 @@ class CourseManagement_Model extends CI_Model
 					'email' 		=> $register_studentRow['email'],
 					'mobile_number' 		=> $register_studentRow['mobile_number'],
 					'gender' 		=> $register_studentRow['gender'],
+					'hse_blk_no' 		=> $register_studentRow['hse_blk_no'],
+					'unit_no' 			=> $register_studentRow['unit_no'],
+					'building_streetName'=> $register_studentRow['building_streetName'],
 					'address' 		=> $register_studentRow['address'],
-					'city' 		=> $register_studentRow['city'],
 					'pin_code' 		=> $register_studentRow['pin_code'],
-					'state' 		=> $register_studentRow['state'],
 					'country' 		=> $register_studentRow['country'],
 					'last_university' 		=> $register_studentRow['last_university'],
 					'course_name' 		=> $register_studentRow['course_name'],
 					'course_id' 		=> $register_studentRow['course_id'],
 					'status' 		=> $register_studentRow['status'],
-					'hse_blk_no' 		=> $register_studentRow['hse_blk_no'],
-					'unit_no' 			=> $register_studentRow['unit_no'],
-					'building_streetName'=> $register_studentRow['building_streetName'],
 
 				);	
 

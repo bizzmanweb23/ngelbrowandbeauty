@@ -37,23 +37,27 @@
 									</div>
 									<ul class="list-group list-group-flush">
 									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-										<h6 class="mb-0">Full Address</h6>
+										<h6 class="mb-0">Hse / Blk No.</h6>
+										<span class="text-secondary"><?= $Student_registration['hse_blk_no'] ?></span>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+										<h6 class="mb-0">Unit No.</h6>
+										<span class="text-secondary"><?= $Student_registration['unit_no'] ?></span>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+										<h6 class="mb-0">Building / Street Name</h6>
+										<span class="text-secondary"><?= $Student_registration['building_streetName'] ?></span>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+										<h6 class="mb-0">Address 1 </h6>
 										<span class="text-secondary"><?= $Student_registration['address'] ?></span>
 									</li>
 									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-										<h6 class="mb-0">City</h6>
-										<span class="text-secondary"><?= $Student_registration['city'] ?></span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-										<h6 class="mb-0">State</h6>
-										<span class="text-secondary"><?= $Student_registration['state'] ?></span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-										<h6 class="mb-0">Country</h6>
+										<h6 class="mb-0">Country </h6>
 										<span class="text-secondary"><?= $Student_registration['country'] ?></span>
 									</li>
 									<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-										<h6 class="mb-0">Pincode</h6>
+										<h6 class="mb-0">Postal Code </h6>
 										<span class="text-secondary"><?= $Student_registration['pin_code'] ?></span>
 									</li>
 									</ul>
@@ -116,7 +120,7 @@
 									<h6 class="mb-0">Date Of Birth</h6>
 									</div>
 									<div class="col-sm-6 text-secondary">
-									<?php if($Student_registration['dob'] == 0000-00-00){
+									<?php if($Student_registration['dob'] == '0000-00-00'){
 											echo '';
 										}else{ ?>
 											<?= date("d-m-Y", strtotime($Student_registration['dob'])) ?>

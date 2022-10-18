@@ -23,7 +23,7 @@
               <div class="card-header">
 					
 			  	<a href="<?=base_url('admin/ProductManagement/add_product')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add New Product </button></a>
-                <a href="<?=base_url('admin/ProductManagement/add_product')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add New Product </button></a>
+                <a href="<?=base_url('admin/ProductManagement/bulk_import')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Bulk Import </button></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

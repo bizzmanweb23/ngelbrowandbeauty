@@ -19,7 +19,7 @@
 
             <div class="card" style="border-radius: 15px;height: 40rem;">
 				<div class="card-header">
-                	<a href="<?=base_url('admin/OrderManagement/add_orderproduct')?>"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Add Order </button></a>
+                	<a href="<?=base_url('admin/OrderManagement/add_orderproduct')?>"><button type="button" class="btn btn-primary btn-custom ml-2" style=" float: right;">Add Order </button></a>
 					<a href="<?=base_url('admin/OrderManagement/viewDailySales')?>"><button type="button" class="btn btn-primary btn-custom" style=" float: right;">Daily Sales</button></a>
 				</div>
 			<div class="container">

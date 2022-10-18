@@ -26,9 +26,10 @@ class ProcurementManagement_Model extends CI_Model
 
 				$data = array(
 					'id' 				=> $supplierId,
-					'supplier_code' 			=> $row['supplier_code'],
-					'supplier_name' 			=> $row['supplier_name'],
-					'email' 	=> $row['email'],
+					'supplier_code' 	=> $row['supplier_code'],
+					'supplier_name' 	=> $row['supplier_name'],
+					'contact_no' 		=> $row['contact_no'],
+					'email' 			=> $row['email'],
 				);	
 
 			}
@@ -94,6 +95,7 @@ class ProcurementManagement_Model extends CI_Model
 				'supplier_code' 	=> $row['supplier_code'],
 				'supplier_name' 	=> $row['supplier_name'],
 				'email' 			=> $row['email'],
+				'contact_no' 		=> $row['contact_no'],
 				'supplier_address' 	=> $row['supplier_address'],
 				'status' 			=> $row['status'],
 			);	

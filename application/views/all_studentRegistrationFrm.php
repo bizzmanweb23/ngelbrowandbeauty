@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Course Management</h1>
+            <h1>Student Management</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -34,7 +34,6 @@
 										<th>E-mail</th>
                     <th>Contact No.</th>
                     <th>Gender</th>
-										<th>Address</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -48,7 +47,6 @@
 													<td><?= $Student_registrationRow['email']?></td>
 													<td><?= $Student_registrationRow['mobile_number']?></td>
 													<td><?= $Student_registrationRow['gender']?></td>
-													<td><?= $Student_registrationRow['address']?></td>
                         <td>
 													<?php /*
 													<a href="<?= base_url('admin/courseManagement/empArchive/'.$allCoursesRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-user-times" aria-hidden="true"></i></a>*/ ?>
