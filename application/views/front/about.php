@@ -4,7 +4,7 @@
           <h1>About Us</h1>
         </div>
 </section>
-<section class="container-fluid mt-5" >
+<section class="container-fluid mt-2 patternbg" >
         <div class="">
           <div class="row">
             <div class="col-sm-5 col-xs-12 text-center">
@@ -12,7 +12,7 @@
                 <img class="img-fluid mt-5 pt-3 mx-auto" data-src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" alt="Image About">
               </div>
             </div>
-            <div class="col-sm-7 col-xs-12">
+            <div class="col-sm-7 col-xs-12 mt-4">
              
                 <h2 style="text-transform: capitalize;"> N'gel brow & beauty</h2>
                 <p style="color: #000;">Established in 2017，N’GEL has been consistently providing customized Semi-permanent Makeup and Aesthetic Beauty Skin management to all our dear customers.
@@ -36,55 +36,161 @@
         </div>
     </section>
 
-	<!--<section class="clearfix productSection">
+		<!--section class="clearfix pageTitleArea lipsbanner" style="background-image: url(assets/front/img/blog/ourHistory.png);">
+        <div class="container">
+          <h1>Our history</h1>
+        </div>
+		</section-->
+
+		<section class="clearfix ">
   <div class="container">
     <div class="secotionTitle">
-      <h2><span>Natural </span>Our Products</h2>
+      <h2>N'gel brow Profile</h2>
+    </div>
+
+    <div class="row">
+      <!--<div class="col-md-12">-->
+            <div class="col-md-3">
+                <div class="certificateImage">
+                  <img src="<?= base_url(); ?>assets/front/img/award/award1.jpg" data-src="<?= base_url(); ?>assets/front/img/award/award1.jpg" alt="Image Product" class="img-responsive">
+                </div>
+               
+              </div>
+            <div class="col-md-3">
+                <div class="certificateImage">
+                  <img src="<?= base_url(); ?>assets/front/img/award/award2.jpg" data-src="<?= base_url(); ?>assets/front/img/award/award2.jpg" alt="Image Product" class="img-responsive">
+                  
+                </div>
+                
+              </div>
+            <div class="col-md-3">
+                <div class="certificateImage">
+								<img src="<?= base_url(); ?>assets/front/img/award/award3.jpg" data-src="<?= base_url(); ?>assets/front/img/award/award3.jpg" alt="Image Product" class="img-responsive">
+                  
+                </div>
+               
+              </div>
+            <div class="col-md-3">
+                <div class="certificateImage">
+								<img src="<?= base_url(); ?>assets/front/img/award/award4.jpg" data-src="<?= base_url(); ?>assets/front/img/award/award4.jpg" alt="Image Product" class="img-responsive">
+                
+                </div>
+               
+              </div>
+        
+      <!--</div>-->
+    </div>
+  </div>
+</section>
+  
+
+		<section class="clearfix productSection">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2>AWARDS & CERTIFICATION</h2>
     </div>
 
     <div class="row">
       <div class="col-12">
         <div class="owl-carousel owl-theme">
-				<?php foreach($allproducts as $servicesImg_row): ?>
             <div class="item">
-							<div class="produtSingle">
-                <div class="produtImage">
-								<?php if($servicesImg_row['p_image'] == ''){ ?>
-											<img src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" data-src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" alt="Image Product" class="img-responsive">
-										<?php	}else{ ?>
-                    <img src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" data-src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" alt="Image Product" class="img-responsive">
-										<?php } ?>
-              
-                  <div class="productMask">
-                    <ul class="list-inline productOption">
-                      <li class="favourite-icon">
-                        <a class="icon" href="javascript:void(0)">
-                          <i class="fa fa-heart" aria-hidden="true"></i>
-                        </a>
-                      </li>
-
-                    </ul>
-                  </div>
+                <div class="certificateImage">
+                  <img src="<?= base_url(); ?>assets/front/img/certificates/certificate1.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate1.jpg" alt="Image Product" class="img-responsive">
                 </div>
-                <div class="productCaption">
-                  <h2><a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank"><?= $servicesImg_row['name'] ?></a></h2>
-                  <h3>$<?php if($servicesImg_row['discounted_price'] == ''){ ?>
-													<?= $servicesImg_row['price'] ?>
-											<?php }else{ ?>
-												<?= $servicesImg_row['discounted_price'] ?>
-											<?php } ?></h3>
-                </div>
+               
               </div>
-						</div>
-            <?php	endforeach; ?>
-            
-            
+            <div class="item">
+                <div class="certificateImage">
+                  <img src="<?= base_url(); ?>assets/front/img/certificates/certificate2.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate2.jpg" alt="Image Product" class="img-responsive">
+                  
+                </div>
+                
+              </div>
+            <div class="item">
+                <div class="certificateImage">
+								<img src="<?= base_url(); ?>assets/front/img/certificates/certificate3.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate3.jpg" alt="Image Product" class="img-responsive">
+                  
+                </div>
+               
+              </div>
+            <div class="item">
+                <div class="certificateImage">
+								<img src="<?= base_url(); ?>assets/front/img/certificates/certificate4.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate4.jpg" alt="Image Product" class="img-responsive">
+                
+                </div>
+               
+              </div>
+            	<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate5.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate5.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate6.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate6.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate7.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate7.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate8.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate8.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate9.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate9.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate10.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate10.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate11.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate11.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate12.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate12.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate13.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate13.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate14.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate14.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
+							<div class="item">
+                <div class="certificateImage">
+									<img src="<?= base_url(); ?>assets/front/img/certificates/certificate15.jpg" data-src="<?= base_url(); ?>assets/front/img/certificates/certificate15.jpg" alt="Image Product" class="img-responsive">
+              	</div>
+               
+              </div>
             
         </div>
         
       </div>
     </div>
   </div>
-</section>-->
-
+</section>
   
