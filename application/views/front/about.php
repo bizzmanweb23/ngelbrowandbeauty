@@ -36,4 +36,55 @@
         </div>
     </section>
 
+	<!--<section class="clearfix productSection">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2><span>Natural </span>Our Products</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="owl-carousel owl-theme">
+				<?php foreach($allproducts as $servicesImg_row): ?>
+            <div class="item">
+							<div class="produtSingle">
+                <div class="produtImage">
+								<?php if($servicesImg_row['p_image'] == ''){ ?>
+											<img src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" data-src="<?= base_url(); ?>/uploads/product_img/demo-product.jpg" alt="Image Product" class="img-responsive">
+										<?php	}else{ ?>
+                    <img src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" data-src="<?= base_url(); ?>/uploads/product_img/<?= $servicesImg_row['p_image'] ?>" alt="Image Product" class="img-responsive">
+										<?php } ?>
+              
+                  <div class="productMask">
+                    <ul class="list-inline productOption">
+                      <li class="favourite-icon">
+                        <a class="icon" href="javascript:void(0)">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+                <div class="productCaption">
+                  <h2><a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank"><?= $servicesImg_row['name'] ?></a></h2>
+                  <h3>$<?php if($servicesImg_row['discounted_price'] == ''){ ?>
+													<?= $servicesImg_row['price'] ?>
+											<?php }else{ ?>
+												<?= $servicesImg_row['discounted_price'] ?>
+											<?php } ?></h3>
+                </div>
+              </div>
+						</div>
+            <?php	endforeach; ?>
+            
+            
+            
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>-->
+
   

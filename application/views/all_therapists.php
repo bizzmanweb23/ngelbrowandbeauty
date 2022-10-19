@@ -52,7 +52,7 @@
 												<td><?= $therapistRow['email']?></td>
                         <td><?= $therapistRow['gender']?></td>
                         <td><?= $therapistRow['designation_name'] ?></td>
-												<td><?= $therapistRow['jobtype'] ?></td>
+												<td><?= $therapistRow['job_type'] ?></td>
                         <td>
 													<a href="<?= base_url('admin/EmployeeManagement/viewEmployeeDetails/'.$therapistRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>
 													<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$therapistRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-user-times" aria-hidden="true"></i></a>

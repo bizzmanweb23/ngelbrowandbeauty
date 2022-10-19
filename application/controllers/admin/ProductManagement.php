@@ -299,7 +299,7 @@ class ProductManagement extends CI_Controller {
                         redirect('leads');
                     } else {
                         foreach ($csvData as $row) {
-                            $lead_data = array(
+                            $product_data = array(
 								'name' 			=> $row['product_name'],
 								'sku' 			=> $row['sku'],
 								'categorie_id' 	=> $row['main_category_id'],
@@ -311,20 +311,20 @@ class ProductManagement extends CI_Controller {
 								'available_stock' => $row['available_stock'],
 								'status'   =>  '1',
 							);
-                            $table_name = "nbb_lead";
-                            $this->Main->insert($table_name, $lead_data);
+                            $table_name = "nbb_product";
+                            $this->Main->insert($table_name, $product_data);
                         }
                         $this->session->set_flashdata("success_msg", "CSV File imported successfully.");
-                        redirect('leads');
+                        redirect('product');
                     }
                 }
             } else {
                 $this->session->set_flashdata("error_msg", "Please select CSV file only.");
-                redirect('leads');
+                redirect('product');
             }
         } else {
             $this->session->set_flashdata("error_msg", "Please select a CSV file to upload.");
-            redirect('leads');
+            redirect('product');
         }
     }
 

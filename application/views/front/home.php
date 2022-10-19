@@ -46,7 +46,7 @@
     </section>
 
 <!-- ABOUT SECTION -->
-    <section class="container-fluid mt-5" >
+    <!--section class="container-fluid mt-5" >
         <div class="">
           <div class="row">
             <div class="col-sm-5 col-xs-12 text-center">
@@ -76,6 +76,31 @@
             </div>
           </div>
         </div>
+    </section-->
+
+		<!-- ABOUT SECTION -->
+    <section class="container-fluid clearfix  patternbg" >
+      <div class="aboutInner">
+        <div class="sepcialContainer">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12 rightPadding">
+              <div class="imagebox ">
+                <img class="img-responsive" data-src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" alt="Image About">
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="aboutInfo">
+							<h2 style="text-transform: capitalize;"> N'gel brow & beauty</h2>
+                <h3>Established in 2017，N’GEL has been consistently providing customized Semi-permanent Makeup and Aesthetic Beauty Skin management to all our dear customers.</h3>
+                <p style="color: #000;">Led by Vivian Kang, Chief Instructor of the International Semi-permanent Makeup Tutor Group, whom also won the first place in the South Korea Semi-Permanent Makeup
+								Competition. We ensure you that every member of N’GEL is certified by the British International ITEC, fully qualified to offer you the most professional services. 
+								</p>
+								<a href="<?= base_url('about')?>" class="btn btn-primary first-btn px-2" target="_blank">More Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
 
@@ -93,12 +118,14 @@
                 <div class="tab-pane active" id="hair">
                   <div class="tabbable tabs-left">
                     <div class="row">
-                      <div class="col-md-5 col-lg-4" style="height: 500px; overflow-y:scroll;">
-                        <ul class="nav nav-tabs">
-													<?php foreach($allservices as $allservices_row): ?>
-														<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?> <span>$<?= $allservices_row['service_price'] ?></span></a></li>
-													<?php	endforeach; ?>  
-                        </ul>
+                      <div class="col-md-5 col-lg-4 scrollbar" id="style-5">
+												
+														<ul class="nav nav-tabs force-overflow">
+															<?php foreach($allservices as $allservices_row): ?>
+																<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?> <span>$<?= $allservices_row['service_price'] ?></span></a></li>
+															<?php	endforeach; ?>  
+														</ul>
+													
                       </div>
 
                       <div class="col-md-7 col-lg-8">
@@ -111,7 +138,7 @@
 																		<img src="<?= base_url(); ?>/uploads/service_img/<?= $servicesImg_row['service_icon'] ?>" data-src="<?= base_url(); ?>/uploads/service_img/<?= $servicesImg_row['service_icon'] ?>" alt="Image Variety" class="img-responsive">
 																		<h3><?= $servicesImg_row['service_name'] ?></h3>
 																		<h4>$<?= $servicesImg_row['service_price'] ?> Per Head</h4>
-																		<p><?= $servicesImg_row['description'] ?></p>
+																		<p style="color: #000;"><?= $servicesImg_row['description'] ?></p>
 
 																		<!--<a href="javascript:void(0)" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">make An Appoinment</a>-->
 																	</div>	
@@ -124,11 +151,16 @@
 																	</div>
 															</div>
 														<?php	endforeach; ?>
+														
+														</div>	
+
+											
 													</div>
 
 													<div class="displayService"></div>
 
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -147,6 +179,7 @@
 
 
 <!-- PRODUCT SECTION -->
+
 <!-- PARTNER LOGO SECTION -->
 <section class="clearfix productSection">
   <div class="container">
@@ -189,7 +222,6 @@
               </div>
 						</div>
             <?php	endforeach; ?>
-            
             
             
         </div>
@@ -498,3 +530,40 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
 
+<style>
+.scrollbar
+{
+	
+	background: #fff;
+	overflow-y: scroll;
+	height: 500px;
+}
+
+/*.force-overflow
+{
+	min-height: 450px;
+}*/
+
+#style-5::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #FBFCFC;
+}
+
+#style-5::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #FBFCFC;
+}
+
+#style-5::-webkit-scrollbar-thumb
+{
+	background-color: #63d4d6;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)), 
+					   color-stop(.5, transparent), to(transparent));
+}
+
+
+</style>

@@ -32,11 +32,11 @@
 						<input type="hidden" class="form-control" name="product_id" value="<?= $productDetails['id'] ?>">
 						<input type="hidden" class="form-control stock" name="stock" value="<?= $productDetails['stock'] ?>">
 						<input type="hidden" class="form-control" name="product_price" value="<?= $productDetails['price'] ?>">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="singleProductInfo">
 									<div class="row">
 										<div class="col-md-12">
-										<h2><?= $productDetails['pname'] ?>(<?= $productDetails['sku'] ?>)</h2>
+										<h2 class="font-weight-bold"><?= $productDetails['pname'] ?>(<?= $productDetails['sku'] ?>)</h2>
 										</div>
 									</div>
 									<div class="row">
@@ -76,7 +76,7 @@
 										</div>
 									</div>
 									<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-3">
 										<div class="form-group mt-0">
 										<label class="font-weight-bold">Quantity:</label>
 										
@@ -87,7 +87,7 @@
 											<?php } ?>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<div class="form-group">
 										<label class="font-weight-bold">Total price:</label>
 										<?php if($productDetails['discounted_price'] != ''){ ?>	
@@ -101,11 +101,29 @@
 									</div>
 									
 									<div class="row">
-									<div class="col-md-4">
-										<div class="finalCart">
-											<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Add to cart</button>
+										<div class="col-md-6">
+											<div class="finalCart">
+												<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Add to cart</button>
+											</div>
 										</div>
-									</div>
+										<div class="col-md-6">
+										<div class="finalCart">
+										<?php $user_id = $this->session->userdata('id');  
+											$orderTotal_sql = "SELECT nbb_wishlist.* 
+											FROM nbb_wishlist 
+											WHERE nbb_wishlist.product_id = '".$productDetails['id']."' AND nbb_wishlist.userId = '".$user_id."'";  
+												$orderTotal_query = $this->db->query($orderTotal_sql); 
+												$orderTotal_num = $orderTotal_query->num_rows();
+												if($orderTotal_num > 0){ ?>
+														<!--<button class="btn btn-primary icon wishList"><i class="fa fa-heart" style='color: #c90003' aria-hidden="true"></i></button>-->
+														<a class="btn btn-primary" style="font-size:24px;color:#fff;"><i class="fa fa-heart-o"  aria-hidden="true"></i></a>
+														
+												<?php }else{ ?>
+													<!--<a class="icon addwishList" href="javascript:void(0)" data-product_id="<?=  $productDetails['id']; ?>"><i class="fa fa-heart wishList_<?=  $productDetails['id']; ?>" aria-hidden="true" ></i></a>-->
+													<a class="btn btn-primary" style="font-size:24px;color:#fff;"><i class="fa fa-heart-o"  aria-hidden="true"></i></a>
+												<?php } ?>
+										</div>
+										</div>
 									</div>
 									
 

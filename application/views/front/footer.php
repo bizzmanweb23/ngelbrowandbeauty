@@ -34,41 +34,34 @@
                 <h4>Courses</h4>
               </div>
               <div class="footerGallery row">
-                <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0">
-                  <a href="gallery-v2.html">
-                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-1.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-1.jpg" alt="gallery-img">
-                  </a>
-                </div>
+								<div class="row">
+									<div class="col-6 col-md-6 col-lg-6 mb-3 mb-md-0">
+										<a href="gallery-v2.html">
+											<img class="" data-src="<?= base_url(); ?>/assets/front/img/home/course2.jpg" src="<?= base_url(); ?>/assets/front/img/home/course2.jpg" alt="gallery-img">
+										</a>
+									</div>
 
-                <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0">
-                  <a href="gallery-v2.html">
-                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-2.jpg" src="<?= base_url(); ?>/assets/front/img/home/footer-gallery-2.jpg" alt="gallery-img">
-                  </a>
-                </div>
+									<div class="col-6 col-md-6 col-lg-6 mb-3 mb-md-0">
+										<a href="gallery-v2.html">
+											<img class="" data-src="<?= base_url(); ?>/assets/front/img/home/course3.jpg" src="<?= base_url(); ?>/assets/front/img/home/course3.jpg" alt="gallery-img">
+										</a>
+									</div>
+								</div>
+                <div class="row pt-2">
+									<div class="col-6 col-md-6 col-lg-6 mb-3 mb-md-0">
+										<a href="gallery-v2.html">
+											<img class="" data-src="<?= base_url(); ?>/assets/front/img/home/course4.jpg" src="<?= base_url(); ?>/assets/front/img/home/course4.jpg" alt="gallery-img">
+										</a>
+									</div>
 
-                <div class="col-4 col-md-6 col-lg-4 mb-3 mb-md-0">
-                  <a href="gallery-v2.html">
-                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/gallery-6.jpg" src="<?= base_url(); ?>/assets/front/img/home/gallery-6.jpg" alt="gallery-img">
-                  </a>
-                </div>
+									<div class="col-6 col-md-6 col-lg-6 mb-3 mb-md-0">
+										<a href="gallery-v2.html">
+											<img class="" data-src="<?= base_url(); ?>/assets/front/img/home/course1.jpg" src="<?= base_url(); ?>/assets/front/img/home/course1.jpg" alt="gallery-img">
+										</a>
+									</div>
+								</div>
 
-                <div class="col-4 col-md-6 col-lg-4">
-                  <a href="gallery-v2.html">
-                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/gallery-8.jpg" src="<?= base_url(); ?>/assets/front/img/home/gallery-8.jpg" alt="gallery-img">
-                  </a>
-                </div>
-
-                <div class="col-4 col-md-6 col-lg-4">
-                  <a href="gallery-v2.html">
-                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/pricing-1.jpg" src="<?= base_url(); ?>/assets/front/img/home/pricing-1.jpg" alt="gallery-img">
-                  </a>
-                </div>
-
-                <div class="col-4 col-md-6 col-lg-4">
-                  <a href="gallery-v2.html">
-                    <img class="" data-src="<?= base_url(); ?>/assets/front/img/home/offer-2.jpg" src="<?= base_url(); ?>/assets/front/img/home/offer-2.jpg" alt="gallery-img">
-                  </a>
-                </div>
+               
               </div>
             </div>
 

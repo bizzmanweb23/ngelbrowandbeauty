@@ -151,7 +151,8 @@
 			</tr>
 			<tr>
 				<td>
-				<input type="checkbox" name="terms_conditons" value="1"> I accept the terms & conditons
+					<input type="checkbox" name="terms_conditons" value="1" required oninvalid="this.setCustomValidity('You must agree to our terms and conditions.')"
+               oninput="this.setCustomValidity('')"> I accept the terms & conditons
 				</td>
 			</tr>
 			
