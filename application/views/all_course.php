@@ -34,7 +34,9 @@
 						<th>Fees</th>
 						<th>Description</th>
 						<th>FOC Items</th>
+						<th>Free Lesson</th>
 						<th>Type Of Cert</th>
+						<th>Recomandation Fill</th>
 						<th>Action</th>
 					</tr>
 					</thead>
@@ -58,7 +60,14 @@
 							
 						
 							<td><?= $courseRow['foc_items']?></td>
+							<td><?php if($courseRow['free_lesson'] == 1){ ?>
+								Yes
+							<?php } else{ ?>
+								No
+							<?php }?>
+							</td>
 							<td><?= $courseRow['type_of_cert']?></td>
+							<td><?= $courseRow['recomandation_fill']?></td>
 							<td>
 								<a href="<?= base_url('admin/courseManagement/showCoursePdf')?>?course_Id=<?php echo $courseRow['id']; ?>" class="btn btn-default" title="pdf">
 									<img src="<?= base_url('uploads/pdf_download.png')?>" class="rounded" width="30" height="30">

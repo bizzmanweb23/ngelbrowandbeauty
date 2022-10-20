@@ -34,8 +34,8 @@
                     <th>Detail</th>
 					<th>Price</th>
 					<th>No Of Session</th>
-					<th>No Of Session</th>
 					<th>FOC Items</th>
+					<th>No Of Services</th>
 					<th>Status</th>
                     <th>Action</th>
                   </tr>

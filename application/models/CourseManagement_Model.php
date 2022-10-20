@@ -38,6 +38,8 @@ class CourseManagement_Model extends CI_Model
 					'foc_items' 		=> $row['foc_items'],
 					'type_of_cert' 		=> $row['type_of_cert'],
 					'trainer_id' 		=> $row['trainer_id'],
+					'free_lesson' 		=> $row['free_lesson'],
+					'recomandation_fill' => $row['recomandation_fill'],
 					
 				);	
 
@@ -76,6 +78,8 @@ class CourseManagement_Model extends CI_Model
 					'course_fees' 		=> $row['course_fees'],
 					'foc_items' 		=> $row['foc_items'],
 					'type_of_cert' 		=> $row['type_of_cert'],
+					'free_lesson' 		=> $row['free_lesson'],
+					'recomandation_fill' => $row['recomandation_fill'],
 					'trainer_id' 		=> $row['trainer_id'],
 				);	
 

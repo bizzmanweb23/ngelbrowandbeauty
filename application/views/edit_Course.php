@@ -117,11 +117,28 @@
 						</div> 
 					</div>
 					<div class="col-md-6">
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="free_lesson" value="1" <?php if($all_courses['free_lesson'] == 1){?> checked <?php } ?>>
+							<label for="customCheckbox"> Free Lesson</label>        
+						</div>                      
+					</div> 
+				</div> 
+				<div class="row">
+					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="package_status" class="col-sm-6 control-label">Type Of Cert <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
 								<input type="text" class="form-control" name="type_of_cert" placeholder="Enter Type Of Cert" value="<?= $all_courses['type_of_cert']?>">
+							</div>
+						</div> 
+					</div>
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="package_status" class="col-sm-6 control-label">Recomandation Fill
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="recomandation_fill" placeholder="Enter Recomandation Fill" value="<?= $all_courses['recomandation_fill']?>">
 							</div>
 						</div> 
 					</div>

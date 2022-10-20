@@ -5,7 +5,7 @@
         
 
         <!-- Slide One -->
-        <div class="slide slideResize slide1" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/EyeBrow.png);">
+        <div class="slide slideResize slide1" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/SkincareBanner.jpg);">
           <div class="container">
             <div class="slide-inner2 common-inner">
 							<!--img src="<?= base_url(); ?>assets/front/img/slider-logo.png" class="img-fluid" style = "max-width: 150px;mix-blend-mode:color;">-->
@@ -85,7 +85,7 @@
           <div class="row">
             <div class="col-sm-6 col-xs-12 rightPadding">
               <div class="imagebox ">
-                <img class="img-responsive" data-src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" alt="Image About">
+                <img class="img-responsive" data-src="<?= base_url(); ?>/assets/front/img/home/AboutUsLeftPoster.jpg" src="<?= base_url(); ?>/assets/front/img/home/AboutUsLeftPoster.jpg" alt="Image About">
               </div>
             </div>
             <div class="col-sm-6 col-xs-12">
@@ -108,7 +108,7 @@
     <section class="clearfix varietySection">
       <div class="container">
         <div class="secotionTitle">
-          <h2><span>Discover</span>variety of spa</h2>
+          <h2><span>Discover</span>variety of Services</h2>
         </div>
         <div class="row">
           <div class="col-12">

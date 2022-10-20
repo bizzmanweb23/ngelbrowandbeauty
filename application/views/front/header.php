@@ -180,7 +180,10 @@ function googleTranslateElementInit() {
                   
                 </ul>
               </li>
-							<li class="nav-item dropdown">
+							<li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url('courses') ?>">Course</a>
+              </li>
+							<?php /*<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Course</a>
                 <ul class="dropdown-menu">
 									<?php foreach($allcourse_category as $course_category_row): ?>
@@ -188,7 +191,7 @@ function googleTranslateElementInit() {
 									<?php	endforeach; ?>
                   
                 </ul>
-              </li>
+              </li>*/ ?>
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('contactus') ?>">Contact us</a>
               </li>

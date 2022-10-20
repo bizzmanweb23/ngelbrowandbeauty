@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-sm-5 col-xs-12 text-center">
               <div class=" ">
-                <img class="img-fluid mt-5 pt-3 mx-auto" data-src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" src="<?= base_url(); ?>/assets/front/img/home/home-about.jpg" alt="Image About">
+                <img class="img-fluid mt-5 pt-3 mx-auto" data-src="<?= base_url(); ?>/assets/front/img/home/AboutUsLeftPoster.jpg" src="<?= base_url(); ?>/assets/front/img/home/AboutUsLeftPoster.jpg" alt="Image About">
               </div>
             </div>
             <div class="col-sm-7 col-xs-12 mt-4">

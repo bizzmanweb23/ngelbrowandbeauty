@@ -187,7 +187,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_firstname" class="form-control" value="<?= $customerData['shipping_firstname']?>" placeholder="First Name">
+						<input type="text" name = "shipping_firstname" class="form-control" value="<?= $customerData['shipping_firstname']?>" placeholder="Enter First Name">
 						</div>
 						</div>
 
@@ -197,7 +197,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_lastname" value="<?= $customerData['shipping_lastname']?>" class="form-control" placeholder="Last Name">
+						<input type="text" name = "shipping_lastname" value="<?= $customerData['shipping_lastname']?>" class="form-control" placeholder="Enter Last Name">
 						</div>
 						</div>
 
@@ -207,7 +207,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_contactno" value="<?= $customerData['shipping_contactno']?>" class="form-control" placeholder="Contact Number">
+						<input type="text" name = "shipping_contactno" value="<?= $customerData['shipping_contactno']?>" class="form-control" placeholder="Enter Contact Number">
 						</div>
 						</div>
 
@@ -218,7 +218,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_hse_blk_no" value="<?= $customerData['shipping_hse_blk_no']?>" class="form-control" placeholder="Hse / Blk No.">
+						<input type="text" name = "shipping_hse_blk_no" value="<?= $customerData['shipping_hse_blk_no']?>" class="form-control" placeholder="Enter Hse / Blk No.">
 						</div>
 						</div>
 
@@ -228,7 +228,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shippingunit_no" value="<?= $customerData['shipping_hse_blk_no']?>" class="form-control" placeholder="Unit No.">
+						<input type="text" name = "shippingunit_no" value="<?= $customerData['shipping_hse_blk_no']?>" class="form-control" placeholder="Enter Unit No.">
 						</div>
 						</div>
 
@@ -238,14 +238,14 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_street" value="<?= $customerData['shipping_street']?>" class="form-control" placeholder="Building / Street Name">
+						<input type="text" name = "shipping_street" value="<?= $customerData['shipping_street']?>" class="form-control" placeholder="Enter Building / Street Name">
 						</div>
 						</div>
 
 						<div class="form-group">
 							<label for="address" class="col-sm-6 col-form-label">Address 1</label>
 							<div class="col-sm-6">
-								<input type="text" name="shipping_address" value="<?= $customerData['shipping_address']?>" class="form-control" placeholder="Address 1">
+								<input type="text" name="shipping_address" value="<?= $customerData['shipping_address']?>" class="form-control" placeholder="Enter Address 1">
 							</div>
 						</div>
 
@@ -255,7 +255,7 @@
 							<label for="suburb" class="col-sm-6 col-form-label">Country</label>
 
 							<div class="col-sm-6">
-								<input type="text" name = "shipping_country" value="<?= $customerData['shipping_country']?>" class="form-control" placeholder="Country">
+								<input type="text" name = "shipping_country" value="<?= $customerData['shipping_country']?>" class="form-control" placeholder="Enter Country">
 							</div>
 						</div>
 
@@ -265,7 +265,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_postalcode" class="form-control" value="<?= $customerData['shipping_postalcode']?>"  placeholder="Postcode">
+						<input type="text" name = "shipping_postalcode" class="form-control" value="<?= $customerData['shipping_postalcode']?>"  placeholder="Enter Postal Code">
 						</div>
 						</div>
                       

@@ -102,7 +102,7 @@
 
 			<tr>
 			<td>Building / Street Name</td>
-			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Pin Code" value="<?= $Student_registration['building_streetName'];?>">
+			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Building / Street Name" value="<?= $Student_registration['building_streetName'];?>">
 			
 			</td>
 			</tr>
@@ -111,7 +111,7 @@
 			<tr>
 			<td>ADDRESS 1<br /><br /><br /></td>
 			<td>
-			<input type="text" class="form-control" name="address" placeholder="Enter Country" value="<?= $Student_registration['address'];?>">
+			<input type="text" class="form-control" name="address" placeholder="Enter Address 1" value="<?= $Student_registration['address'];?>">
 			</td>
 			</tr>
 			
@@ -124,7 +124,7 @@
 			<!----- Pin Code ---------------------------------------------------------->
 			<tr>
 			<td>POSTAL CODE</td>
-			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="<?= $Student_registration['pin_code'];?>">
+			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Postal Code" value="<?= $Student_registration['pin_code'];?>">
 			</td>
 			</tr>
 

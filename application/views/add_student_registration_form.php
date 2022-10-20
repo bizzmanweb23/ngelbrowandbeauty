@@ -123,7 +123,7 @@
 			
 			<tr>
 			<td>Postal Code</td>
-			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" value="">
+			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Postal Code" value="">
 			
 			</td>
 			</tr>
