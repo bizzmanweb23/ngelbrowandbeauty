@@ -85,6 +85,7 @@ $route['productOrder'] =  'front/product/productCheckOut';
 $route['orderComplete'] =  'front/product/productcompleteorder';
 $route['deleteorderProduct/(:any)'] =  'front/product/deleteorderProduct/$i';
 $route['enrollCourse/(:any)'] =  'front/Courses/enroll_course/$i';
+$route['courseDetails/(:any)'] =  'front/Courses/course_details/$i';
 $route['productDetails/(:any)'] =  'front/product/productDetailsView/$i';
 
 

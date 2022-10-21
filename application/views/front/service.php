@@ -125,10 +125,10 @@
     </section>-->
 
 <!-- PRICING 4 COL SECTION -->
-    <section class="clearfix pricingSection">
+    <!--section class="clearfix pricingSection">
       <div class="container">
         <div class="secotionTitle">
-          <h2><span>Style 1 </span>Services Pricing</h2>
+          <h2>Services Pricing</h2>
         </div>
 
         <div class="row">
@@ -206,7 +206,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section-->
 
 
 <!-- APPOINMENT MODAL -->

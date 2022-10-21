@@ -15,16 +15,19 @@
             <div class="blogPost">
               <img src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" data-src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" class="img-responsive">
               <h3><?= $course_row['course_name'] ?></h3>
-              <p style="color: #000;"><?= $course_row['description'] ?></p>
+							<?php $description = substr($course_row['description'],0,200); ?>
+              <p style="color: #000;"><?php if($course_row['description'] != ''){ ?>
+								<?= $description; ?>...
+							<?php }else{} ?>
+							</p>
 							<div class="row">
 								<div class="col-md-6">
-										<p style="color: #000;"><?php if($course_row['course_fees'] != ''){ ?><h3>$<?= $course_row['course_fees'] ?></h3><?php }else{} ?></p>
+										<p style="color: #000;"><?php if($course_row['course_fees'] != ''){ ?><h2 class="align-middle" style="color: #63d4d6;">$<?= $course_row['course_fees'] ?></h2><?php }else{} ?></p>
 								</div>
-								<div class="col-md-6 text-right">
-										<p style="color: #000;"><h3><?= $course_row['durations'] ?></h3></p>
-								</div>
+
 							</div>
-              <a href="<?= base_url(); ?>enrollCourse/<?= $course_row['id'] ?>" class="btn btn-primary first-btn px-2">Enroll now</a>
+              <!--<a href="<?= base_url(); ?>enrollCourse/<?= $course_row['id'] ?>" class="btn btn-primary first-btn px-2">Enroll now</a>-->
+							<a href="<?= base_url(); ?>courseDetails/<?= $course_row['id'] ?>" class="btn btn-primary first-btn px-2">Course Details</a>
             </div>
           </div>
           <?php	endforeach; ?>

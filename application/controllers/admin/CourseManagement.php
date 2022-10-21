@@ -33,6 +33,7 @@ class CourseManagement extends CI_Controller {
 			'type_of_cert' => $this->input->post('type_of_cert'),
 			'foc_items' => $this->input->post('foc_items'),
 			'free_lesson' => $this->input->post('free_lesson'),
+			'terms_conditonsDetails' => $this->input->post('terms_conditonsDetails'),
 			'recomandation_fill' => $this->input->post('recomandation_fill'),
 			'trainer_id' => $this->input->post('trainer_id')
 		);
@@ -103,6 +104,7 @@ class CourseManagement extends CI_Controller {
 			'type_of_cert' => $this->input->post('type_of_cert'),
 			'foc_items' => $this->input->post('foc_items'),
 			'free_lesson' => $this->input->post('free_lesson'),
+			'terms_conditonsDetails' => $this->input->post('terms_conditonsDetails'),
 			'recomandation_fill' => $this->input->post('recomandation_fill'),
 			'trainer_id' => $this->input->post('trainer_id')
 		);

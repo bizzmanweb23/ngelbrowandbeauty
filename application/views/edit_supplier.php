@@ -50,7 +50,7 @@
 							<label for="package_price" class="col-sm-6 control-label">Contact No.<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="email" class="form-control" name="contact_no" placeholder="Enter Contact No." value="<?= $editSupplier['contact_no']; ?>">
+								<input type="text" class="form-control" name="contact_no" placeholder="Enter Contact No." value="<?= $editSupplier['contact_no']; ?>">
 							</div>
 						</div> 
 					</div>

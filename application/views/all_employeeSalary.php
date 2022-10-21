@@ -19,11 +19,12 @@
 
             <div class="card" style="border-radius: 15px">
               <div class="card-header">
-				<div class="row">
-					<div class="col-md-1">
-						<a href="<?=base_url('admin/employeeManagement/add_employeeSalary')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom">Payroll </button></a>
+			  <div class="row">
+				<div class="col-1">
+						<a href="<?=base_url('admin/employeeManagement/add_employeeSalary')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom  ">Payroll </button></a>
 					</div>
-					<div class="col-md-2">
+					&nbsp;
+					<div class="col-2">
 						<a href="<?=base_url('admin/Pay_Structure/allPay_Structure')?>" target="_blank"><button type="button" class="btn btn-primary btn-custom">Pay Structure </button></a>
 					</div>
 			  	</div>			

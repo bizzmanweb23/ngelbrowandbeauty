@@ -38,7 +38,7 @@
 								<label for="first_name" class="col-sm-6 control-label">First Name 
 								</label>
 								<div class="col-sm-12">
-										<input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name Max Length : 100." value="">
+									<input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name Max Length : 100." value="" required>
 								</div>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 								<label for="last_name" class="col-sm-6 control-label">Last Name
 								</label>
 								<div class="col-sm-12">
-									<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name Max Length : 100." value="">
+									<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name Max Length : 100." value="" required>
 								</div>
 							</div>
 						</div>
@@ -175,7 +175,7 @@
 
 							<div class="col-sm-6">
 
-							<input type="text" name = "shipping_firstname" class="form-control" placeholder="Enter First Name">
+							<input type="text" name = "shipping_firstname" class="form-control" placeholder="Enter First Name" required>
 							</div>
 						</div>
 
@@ -185,7 +185,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_lastname" class="form-control" placeholder="Enter Last Name">
+						<input type="text" name = "shipping_lastname" class="form-control" placeholder="Enter Last Name" required>
 						</div>
 						</div>
 
@@ -195,7 +195,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_contactno" class="form-control" placeholder="Enter Contact Number">
+						<input type="text" name = "shipping_contactno" class="form-control" placeholder="Enter Contact Number" required>
 						</div>
 					</div>
 
@@ -205,7 +205,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_hse_blk_no" class="form-control" placeholder="Enter Hse / Blk No.">
+						<input type="text" name = "shipping_hse_blk_no" class="form-control" placeholder="Enter Hse / Blk No." required>
 						</div>
 					</div>
 
@@ -215,7 +215,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shippingunit_no" class="form-control" placeholder="Enter Unit No.">
+						<input type="text" name = "shippingunit_no" class="form-control" placeholder="Enter Unit No." required>
 						</div>
 					</div>
 
@@ -225,7 +225,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_street" class="form-control" placeholder="Enter Building / Street Name">
+						<input type="text" name = "shipping_street" class="form-control" placeholder="Enter Building / Street Name" required>
 						</div>
 					</div>
 
@@ -244,7 +244,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_country" class="form-control" placeholder="Enter Country">
+						<input type="text" name = "shipping_country" class="form-control" placeholder="Enter Country" required>
 						</div>
 					</div>
 
@@ -255,7 +255,7 @@
 
 						<div class="col-sm-6">
 
-						<input type="text" name = "shipping_postalcode" class="form-control" placeholder="Enter Postal Code">
+						<input type="text" name = "shipping_postalcode" class="form-control" placeholder="Enter Postal Code" required>
 						</div>
 					</div>
 

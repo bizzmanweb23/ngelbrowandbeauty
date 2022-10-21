@@ -116,12 +116,16 @@
 							</div>
 						</div> 
 					</div>
+					
 					<div class="col-md-6">
-						<div class="form-group form-check">
-							<input type="checkbox" class="form-check-input" name="free_lesson" value="1" <?php if($all_courses['free_lesson'] == 1){?> checked <?php } ?>>
-							<label for="customCheckbox"> Free Lesson</label>        
-						</div>                      
-					</div> 
+						<div class="form-group ">
+							<label for="package_status" class="col-sm-6 control-label">Free Lesson <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="free_lesson" placeholder="Enter Free Lesson" value="<?= $all_courses['free_lesson'] ?>">
+							</div>
+						</div> 
+					</div>
 				</div> 
 				<div class="row">
 					<div class="col-md-6">
@@ -168,21 +172,17 @@
 						</div>
 					</div>
 				</div>
-				<!--<div class="row">
+				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group ">
-							<label for="package_status" class="col-sm-6 control-label">Status <i class="required">*</i>
+							<label for="package_status" class="col-sm-6 control-label">Term's & Conditons <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select  class="form-control" name="status" data-placeholder="Select Status" >
-									<option value="" hidden>Status</option>
-									<option value="0">Inactive</option>
-									<option value="1">Active</option>
-								</select>
+								<textarea name="terms_conditonsDetails" rows="5" cols="80" class="" style="width: 100%;"><?= $all_courses['terms_conditonsDetails']; ?></textarea>
 							</div>
 						</div> 
 					</div>
-				</div> -->
+				</div>
 
                       <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
               </form>

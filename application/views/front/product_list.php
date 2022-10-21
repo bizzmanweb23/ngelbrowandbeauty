@@ -78,12 +78,12 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="productCaption">
-                    <h2><a href="<?= base_url(); ?>productDetails/<?= $productImg_row['id'] ?>" target="_blank"><?= $productImg_row['name'] ?></a></h2>
-						<h3>$<?php if($productImg_row['discounted_price'] == ''){ ?>
-								<?= $productImg_row['price'] ?>
+                  <div class="productCaption h-75">
+                    <span class="align-middle"><a class ="text-dark" href="<?= base_url(); ?>productDetails/<?= $productImg_row['id'] ?>" target="_blank"><?= $productImg_row['name'] ?></a></span>
+						<h3 class="align-middle"><?php if($productImg_row['discounted_price'] != 0){ ?>
+								$<?= $productImg_row['discounted_price']; ?>
 						<?php }else{ ?>
-							<?= $productImg_row['discounted_price'] ?>
+							$<?= $productImg_row['price']; ?>
 						<?php } ?>
 							</h3>
                     <a href="<?= base_url(); ?>productDetails/<?= $productImg_row['id'] ?>" target="_blank" class="btn btn-primary btn-block mt-2">View Details</a>
@@ -91,7 +91,7 @@
                  
                 </div>
               </div>
-							<?php	endforeach; ?>
+			<?php	endforeach; ?>
 
             </div>
 

@@ -40,6 +40,7 @@ class CourseManagement_Model extends CI_Model
 					'trainer_id' 		=> $row['trainer_id'],
 					'free_lesson' 		=> $row['free_lesson'],
 					'recomandation_fill' => $row['recomandation_fill'],
+					'terms_conditonsDetails' => $row['terms_conditonsDetails'],
 					
 				);	
 
@@ -81,6 +82,7 @@ class CourseManagement_Model extends CI_Model
 					'free_lesson' 		=> $row['free_lesson'],
 					'recomandation_fill' => $row['recomandation_fill'],
 					'trainer_id' 		=> $row['trainer_id'],
+					'terms_conditonsDetails' => $row['terms_conditonsDetails'],
 				);	
 
 			}

@@ -30,6 +30,7 @@
                 <table class="table table-bordered" id = "salary_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
+					<th>Package Id</th>
                     <th>Package Name </th>
                     <th>Detail</th>
 					<th>Price</th>
@@ -43,6 +44,7 @@
                   <tbody>
                     <?php foreach($productPackages as $packagesRow): ?>
                       <tr>
+						<td><?= $packagesRow['id'] ?></td>
                         <td><?= $packagesRow['package_name']?></td>
 						<td><?= $packagesRow['package_detail'] ?></td>	
                         <td>$<?= $packagesRow['package_price']?></td>

@@ -89,21 +89,21 @@
 			
 			<tr>
 			<td>Hse / Blk No.</td>
-			<td><input type="text" class="form-control" name="hse_blk_no" placeholder="Enter Hse / Blk No." value="">
+			<td><input type="text" class="form-control" name="hse_blk_no" placeholder="Enter Hse / Blk No." value="" required>
 			
 			</td>
 			</tr>
 
 			<tr>
 			<td>Unit No.</td>
-			<td><input type="text" class="form-control" name="unit_no" placeholder="Enter Unit No." value="">
+			<td><input type="text" class="form-control" name="unit_no" placeholder="Enter Unit No." value="" required>
 			
 			</td>
 			</tr>
 
 			<tr>
 			<td>Building / Street Name</td>
-			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Building / Street Name" value="">
+			<td><input type="text" class="form-control" name="building_streetName" placeholder="Enter Building / Street Name" value="" required>
 			
 			</td>
 			</tr>
@@ -118,12 +118,12 @@
 			
 			<tr>
 			<td>Country</td>
-			<td><input type="text" class="form-control" name="country" placeholder="Enter Country" value=""></td>
+			<td><input type="text" class="form-control" name="country" placeholder="Enter Country" value="" required></td>
 			</tr>
 			
 			<tr>
 			<td>Postal Code</td>
-			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Postal Code" value="">
+			<td><input type="number" class="form-control" name="pin_code" placeholder="Enter Postal Code" value="" required>
 			
 			</td>
 			</tr>

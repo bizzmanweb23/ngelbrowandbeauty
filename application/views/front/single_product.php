@@ -30,12 +30,12 @@
 									</div>
 									<div class="row">
 										<div class="col-md-12">
-										<h3><?php if($productDetails['discounted_price'] != ''){ ?>	
+										<h3><?php if($productDetails['discounted_price'] != 0){ ?>	
 												$<?= $productDetails['discounted_price'] ?>
 											<?php }else{ ?>
 												$<?= $productDetails['price'] ?>
 											<?php } ?>
-											<del><?php if($productDetails['discounted_price'] != ''){ ?>	
+											<del><?php if($productDetails['discounted_price'] != 0){ ?>	
 												$<?= $productDetails['price'] ?>
 											<?php }else{ ?>
 												

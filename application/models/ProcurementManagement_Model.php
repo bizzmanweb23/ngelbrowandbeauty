@@ -66,6 +66,7 @@ class ProcurementManagement_Model extends CI_Model
 		$this->db->select('nbb_supplier_order.*,nbb_supplier.supplier_name');
 		$this->db->from('nbb_supplier_order');
 		$this->db->join('nbb_supplier', 'nbb_supplier.id = nbb_supplier_order.supplier_id', 'LEFT');
+		$this->db->order_by("nbb_supplier_order.id", "DESC");
 		return $this->db->get()->result_array();
 	}
 	function getSupplierOrderProduct($id){

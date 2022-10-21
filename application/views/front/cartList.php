@@ -1,5 +1,5 @@
 <!-- ORDER SECTION -->
-    <section class="clearfix orderArea">
+    <section class="clearfix orderArea my-5">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">

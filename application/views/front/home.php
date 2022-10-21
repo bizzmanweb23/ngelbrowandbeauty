@@ -10,7 +10,7 @@
             <div class="slide-inner2 common-inner">
 							<!--img src="<?= base_url(); ?>assets/front/img/slider-logo.png" class="img-fluid" style = "max-width: 150px;mix-blend-mode:color;">-->
               <span class="h1 from-bottom">Welcome to n'gel</span><br>
-              <span class="h4 from-bottom">We provide best skin care & aging solution </span><br>
+              <span class="h4 from-bottom">We bring out your confidence in every aspect of your life. </span><br>
               <a href="javascript:void(0)" class="btn btn-primary first-btn waves-effect waves-light scale-up">More Details</a>
             </div>
           </div>
@@ -108,7 +108,7 @@
     <section class="clearfix varietySection">
       <div class="container">
         <div class="secotionTitle">
-          <h2><span>Discover</span>variety of Services</h2>
+          <h2>variety of Services</h2>
         </div>
         <div class="row">
           <div class="col-12">
@@ -181,7 +181,7 @@
 <!-- PRODUCT SECTION -->
 
 <!-- PARTNER LOGO SECTION -->
-<section class="clearfix productSection">
+<!--section class="clearfix productSection">
   <div class="container">
     <div class="secotionTitle">
       <h2><span>Natural </span>Our Products</h2>
@@ -203,17 +203,27 @@
                   <div class="productMask">
                     <ul class="list-inline productOption">
                       <li class="favourite-icon">
-                        <a class="icon" href="javascript:void(0)">
-                          <i class="fa fa-heart" aria-hidden="true"></i>
-                        </a>
+                       
+												<?php $user_id = $this->session->userdata('id');  
+												$orderTotal_sql = "SELECT nbb_wishlist.* 
+												FROM nbb_wishlist 
+												WHERE nbb_wishlist.product_id = '".$servicesImg_row['id']."' AND nbb_wishlist.userId = '".$user_id."'";  
+													$orderTotal_query = $this->db->query($orderTotal_sql); 
+													$orderTotal_num = $orderTotal_query->num_rows();
+													if($orderTotal_num > 0){ ?>
+															<a class="icon wishList" href="javascript:void(0)"><i class="fa fa-heart" style='color: #c90003' aria-hidden="true"></i></a>
+															
+													<?php }else{ ?>
+														<a class="icon addwishList" href="javascript:void(0)" data-product_id="<?=  $servicesImg_row['id']; ?>"><i class="fa fa-heart wishList_<?=  $servicesImg_row['id']; ?>" aria-hidden="true" ></i></a>
+													<?php } ?>
                       </li>
 
                     </ul>
                   </div>
                 </div>
-                <div class="productCaption">
-                  <h2><a href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank"><?= $servicesImg_row['name'] ?></a></h2>
-                  <h3>$<?php if($servicesImg_row['discounted_price'] == ''){ ?>
+                <div class="productCaption h-75">
+                  <span class="align-middle"><a class ="text-dark" href="<?= base_url(); ?>productDetails/<?= $servicesImg_row['id'] ?>" target="_blank"><?= $servicesImg_row['name'] ?></a></span>
+                  <h3 class="align-middel">$<?php if($servicesImg_row['discounted_price'] == ''){ ?>
 													<?= $servicesImg_row['price'] ?>
 											<?php }else{ ?>
 												<?= $servicesImg_row['discounted_price'] ?>
@@ -229,123 +239,7 @@
       </div>
     </div>
   </div>
-</section>
-
-
-
-
-    <section class="clearfix productSection d-none">
-      <div class="container">
-        <div class="secotionTitle">
-          <h2><span>Natural </span>Our Products</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <div id="productSlider" class="carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-                <li data-target="#productSlider" data-slide-to="1"></li>
-              </ol>
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="productImage">
-                        <img src="<?= base_url(); ?>/assets/front/img/home/home-product.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/home-product.jpg" alt="Image Product" class="img-responsive lazyestload">
-                        <a href="cart.html"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="productInfo">
-                        <h3>Traditional Massage</h3>
-                        <h4>$25.00 Per Head</h4>
-                        <ul class="list-inline rating">
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese runt mollit anim id est laborum. </p>
-                        <a href="javascript:void(0)" class="btn btn-primary first-btn">read more</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="productImage">
-                        <img src="<?= base_url(); ?>assets/front/img/home/home-product.jpg" data-src="<?= base_url(); ?>/assets/front/img/home/home-product.jpg" alt="Image Product" class="img-responsive">
-                        <a href="cart.html"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-                    
-                    <div class="col-md-6">
-                      <div class="productInfo">
-                        <h3>Body Massage</h3>
-                        <h4>$55.00 Per Head</h4>
-                        <ul class="list-inline rating">
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                        </ul>
-                        <p>Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese runt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        <a href="javascript:void(0)" class="btn btn-primary first-btn">read more</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Left and right controls -->
-              <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-
-
-<!-- CALL TO ACTION SECTION -->
-    <section class="clearfix callAction">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-7 col-sm-offset-1 col-xs-12">
-            <div class="callInfo">
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis.</p>
-            </div>
-          </div>
-          <div class="col-sm-4 col-xs-12">
-            <a href="pricing.html" class="btn btn-primary first-btn callBtn">view Courses</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-
+</section>-->
 
 <!-- CONTACT US SECTION -->
     <section class="clearfix contactSection padding">
@@ -526,6 +420,27 @@
 			});
 
 	}
+	$(document).ready(function(){
+			$(".addwishList").on('click', function(e){
+					var product_id = $(this).attr('data-product_id');
+					//alert(product_id);
+					var url = "<?php echo base_url() ?>front/Product/post_add_wishList";
+						$('.wishList_'+product_id).css('color', '#c90003');
+
+					$.ajax({
+						type : 'POST',
+						url : url, 
+						data :  {productId:product_id}, 
+						success : function(data){
+              //$(".wishList").find('.fa-heart').css('color', '#c90003');
+							/*$('.wishList').hide();
+							var alertBox = '<i class="fa fa-heart" style="color: #c90003" aria-hidden="true"></i>';
+							$('.wishListlogo').html(alertBox);*/
+							
+						}
+					});
+				});
+	});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  

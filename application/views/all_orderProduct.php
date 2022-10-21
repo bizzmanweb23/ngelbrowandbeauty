@@ -74,7 +74,7 @@
 											<?php } ?>
 										</td>
 											<td><?= $orderProductRow['create_date']?></td>
-											<td><?php if($orderProductRow['order_status'] == 1)
+											<td><?php /*if($orderProductRow['order_status'] == 1)
 											{ ?>
 											<span class = "btn btn-success" style="box-shadow:none !important; text-transform:uppercase;">Current Order</span>
 											<?php }elseif($orderProductRow['order_status'] == 2){ ?>
@@ -83,7 +83,9 @@
 											<span class="btn btn-danger" style="box-shadow:none !important; text-transform:uppercase;">Canceled</span>
 											<?php }else{ ?>
 											<span></span>
-											<?php } ?></td>
+											<?php } */ ?>
+											<?= $orderProductRow['order_status'] ?>
+											</td>
 											
 											<td><?= $orderProductRow['e_first_name'].' '.$orderProductRow['e_last_name'] ?></td>
 

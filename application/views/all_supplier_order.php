@@ -40,7 +40,7 @@
                         <td><?= $OrderSupplierRow['order_code']?></td>
                         <td><?= $OrderSupplierRow['supplier_name']?></td>
                         <td><?php if($OrderSupplierRow['order_details'] != ''){ ?>
-													<?= substr($OrderSupplierRow['order_details'],0,50) ?>...<a data-OrderSupplierid="<?=  $OrderSupplierRow['id'];?>" href="javascript:void(0);" class="btn btn-default OrderSupplierDetails" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>
+													<?= substr($OrderSupplierRow['order_details'],0,50) ?>...
 													<?php }else{ ?>
 
 													<?php } ?>
@@ -55,7 +55,8 @@
                             } ?>
                         </td>
                         <td>
-												<a href="<?= base_url('admin/ProcurementManagement/view_OrderProductList/'.$OrderSupplierRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-list"></i></a>
+													<a data-OrderSupplierid="<?=  $OrderSupplierRow['id'];?>" href="javascript:void(0);" class="btn btn-default OrderSupplierDetails" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>
+													<a href="<?= base_url('admin/ProcurementManagement/view_OrderProductList/'.$OrderSupplierRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-list"></i></a>
 							
 												</td>
                       </tr>
@@ -79,13 +80,11 @@
 <div id="OrderSupplierDetailsModal" class="modal fade" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Supplier Order </h5>
+				<div class="modal-header" style="background-color: #61d3d4; color:#000000;">
+					<h5 class="modal-title" align="center">Order Details </h5>
 					<button type="button" class="close close_btn" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-		
-					<h5 class= "product_style" align="center">Order Details</h5>
 					<div class = "OrderSupplierdata"></div>
 				</div>
 				<div class="modal-footer">

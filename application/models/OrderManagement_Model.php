@@ -142,11 +142,15 @@ class OrderManagement_Model extends CI_Model
 		nbb_customer.first_name,
 		nbb_customer.last_name,
 		nbb_employees.first_name as e_first_name,
-		nbb_employees.last_name as e_last_name');
+		nbb_employees.last_name as e_last_name,
+		nbb_delivery_details.delivery_status,
+		nbb_delivery_status.status_name as order_status');
 		$this->db->from('nbb_order_main');
 		$this->db->join('nbb_customer', 'nbb_customer.id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_payment_type', 'nbb_payment_type.id = nbb_order_main.payment_method', 'LEFT');
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_order_main.saler_id', 'LEFT');
+		$this->db->join('nbb_delivery_details', 'nbb_delivery_details.order_id = nbb_order_main.id', 'LEFT');
+		$this->db->join('nbb_delivery_status', 'nbb_delivery_status.id = nbb_delivery_details.delivery_status', 'LEFT');
 		$where = array(
 			'nbb_order_main.type_flag' => 'O'
 		  );

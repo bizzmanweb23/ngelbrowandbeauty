@@ -25,10 +25,25 @@ class Courses extends CI_Controller {
 		$this->load->view('front/footer');
 
     }
-	public function enroll_course(){
+	public function course_details(){
 
 		// @$session = $this->session->get_userdata($user);
 		// $id  =  $session['id'];
+			$id =  $this->uri->segment(2);
+
+			$result['courseData'] = $this->Course->getAllCourseDetails($id);
+			$result['allhere_about_us'] = $this->Course->getAllhere_about_us();
+
+			$datahader['allchild_category'] = $this->Header->getAllchild_category();
+			$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
+			$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
+			$this->load->view('front/header',$datahader);
+			$this->load->view('front/courseDetails', $result);
+			$this->load->view('front/footer');
+	}
+	public function enroll_course(){
+
 			$id =  $this->uri->segment(2);
 
 			$result['courseData'] = $this->Course->getAllCourseEnroll($id);
