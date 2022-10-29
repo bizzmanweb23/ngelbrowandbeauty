@@ -22,6 +22,12 @@ class Header_Model extends CI_Model
 		$this->db->where('nbb_child_category.parent_category_id', '3');
 		return $this->db->get()->result_array();
 	}
+	/*function getAllpackage_category(){
+		$this->db->select('nbb_child_category.*');
+		$this->db->from('nbb_child_category');
+		$this->db->where('nbb_child_category.parent_category_id', '4');
+		return $this->db->get()->result_array();
+	}*/
 	function getAllservicesList($id){
 		$this->db->select('nbb_service.*');
 		$this->db->from('nbb_service');

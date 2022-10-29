@@ -63,48 +63,76 @@
                  	</div>
                 </div> 
 
-
                 <div class="row">
-                
-                <div class="form-group ">
+                	<div class="form-group ">
                       <label for="Description" class="col-sm-2 control-label">Description
                       </label>
                         <div class="col-md-12">
                             <textarea id="description" name="description" rows="5" cols="80" style = "width: 100%;"><?= $serviceData['description'];?></textarea>
                         </div>
                   </div>  
-                
-                 </div>         
+                </div>         
                  
-                 <div class="row">       
+                <div class="row">       
                  
-                <div class="col-md-6">      
-                <div class="form-group ">
-                    <label for="service_price" class="col-sm-6 control-label">Service Price
-                    <i class="required">*</i>
-                    </label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" name="service_price" id="service_price" placeholder="Service Price Max Length : 50." value="<?= $serviceData['service_price'];?>">
-                    </div>
-                </div>        
-                </div> 
-                <div class="col-md-6">                       
-                <div class="form-group ">
-										<label for="duration" class="col-sm-6 control-label">Duration 
-										</label>
-										<div class="col-sm-12">
-											<input type="Number" class="form-control" name="duration" id="duration" placeholder="Duration (Use only Number)" value="<?= $serviceData['duration']; ?>">
-											<?php /*<select  class="form-control chosen chosen-select" name="duration" id="duration" data-placeholder="Select Duration" >
-														<option value="" selected hidden>Select Duration</option>
-														<option value="30" <?php if($serviceData['duration'] == '30'){echo "Selected";} ?>>30 minutes</option>
-														<option value="60" <?php if($serviceData['duration'] == '60'){echo "Selected";} ?>>60 minutes</option>
-														<option value="90" <?php if($serviceData['duration'] == '90'){echo "Selected";} ?>>90 minutes</option>
-														<option value="120" <?php if($serviceData['duration'] == '120'){echo "Selected";} ?>>120 minutes</option>
-												</select> */ ?>
+									<div class="col-md-6">      
+										<div class="form-group ">
+												<label for="service_price" class="col-sm-6 control-label">Service Price<i class="required">*</i></label>
+												<div class="col-sm-12">
+														<input type="text" class="form-control" name="service_price" id="service_price" placeholder="Service Price Max Length : 50." value="<?= $serviceData['service_price'];?>">
+												</div>
+											</div>        
+									</div> 
+										
+									<div class="col-md-6">                       
+										<div class="form-group ">
+												<label for="duration" class="col-sm-6 control-label">Duration </label>
+												<div class="col-sm-12">
+													<input type="Number" class="form-control" name="duration" id="duration" placeholder="Duration (Use only Number)" value="<?= $serviceData['duration']; ?>">
+													
+												</div>
 										</div>
-                </div>
-                </div>
+									</div>
                 </div>   
+								<div class="row">       
+                 
+									<div class="col-md-6">      
+										<div class="form-group ">
+												<label for="package_session" class="col-sm-6 control-label">Package Session<i class="required">*</i></label>
+												<div class="col-sm-12">
+														<input type="text" class="form-control" name="package_session" placeholder="Package Session" value="<?= $serviceData['package_session'];?>">
+												</div>
+											</div>        
+										</div> 
+										<div class="col-md-6">      
+											<div class="form-group ">
+												<label for="package_times_price" class="col-sm-6 control-label">Package Price<i class="required">*</i></label>
+												<div class="col-sm-12">
+														<input type="text" class="form-control" name="package_times_price" placeholder="Package x 10 times(Use only Number)" value = "<?= $serviceData['package_times_price'];?>">
+												</div>
+											</div>        
+										</div> 
+                </div>   
+								<div class="row">
+									<div class="col-md-6 discountAmount">      
+										<div class="form-group">
+											<div class="col-md-12">
+												<label for="Discount" class="control-label">Discount Percentage:</label>
+											</div>
+											<div class="col-md-12">
+												<input type="text" class="form-control discountPercentage" name="discountPercentage" placeholder="Enter Discount" value="<?= $serviceData['discount_percent']; ?>">
+											</div>
+										</div>        
+									</div> 
+									<div class="col-md-6 discountAmount">      
+										<div class="form-group">
+											<label for="Discount" class="col-md-6 control-label">Discounted Price:</label>
+											<div class="col-sm-12">
+												<input type="text" class="form-control discounted_price" name="discounted_price" value="<?= $serviceData['discount_price']; ?>" readonly>
+											</div>
+										</div>        
+									</div> 
+								</div>
                <div class="row">
                  <div class="col-md-6">
                 <div class="form-group ">
@@ -169,16 +197,28 @@
                   </div>
                   </div> 
                   </div>   
-									<div class="col-md-4">
-										<div class="form-group ">
-											<label for="image" class="col-sm-6 control-label">Service Icon 
-											</label>
-												<div class="col-sm-12">
-														<div id="image"><img id="serviceimg" src="<?php echo site_url() ?>uploads/service_img/<?php echo $serviceData['service_icon'];?>" height="150" width="150"/></div>
-														<input type="file" name="servicefiles" onchange="imgshow(this);">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group ">
+												<label for="image" class="col-sm-6 control-label">Service Icon 
+												</label>
+													<div class="col-sm-12">
+															<div id="image"><img id="serviceimg" src="<?php echo site_url() ?>uploads/service_img/<?php echo $serviceData['service_icon'];?>" height="150" width="150"/></div>
+															<input type="file" name="servicefiles" onchange="imgshow(this);">
+													</div>
+											</div>
+										</div> 
+										<div class="col-md-6">
+												<div class="form-group ">
+													<label for="image" class="col-sm-6 control-label">Rating </label>
+														<div class="col-sm-12">
+															<div id="image"></div>
+																<input type="text" class="form-control" name="rating" id="rating" placeholder="Enter Rating" value="<?= $serviceData['rating'];?>">
+															</div>
 												</div>
-										</div>
-                  </div>                           
+											</div>  
+									</div>
+									                          
                       
                     <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
               </form>
@@ -210,4 +250,18 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+	$(document).ready(function(){
+		
+		$('.discountPercentage').on('keyup', function(){
+			var discountPercentage = $(this).val();
+			var service_price = $('#service_price').val();
+			//alert(product_price);
+			var pricePercentage = (service_price * discountPercentage)/100;
+			var discountPrice = service_price - pricePercentage;
+
+			
+			$(".discounted_price").val(discountPrice); 
+		});
+	});
 </script>

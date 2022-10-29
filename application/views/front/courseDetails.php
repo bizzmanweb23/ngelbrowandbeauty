@@ -72,7 +72,7 @@
 											<div class="row">
 												
 												<div class="col-lg-6">
-													<h3 class="h6">Term's & Conditons</h3>
+													<h3 class="h6">Term's & Conditions</h3>
 													<p class="taxt-dark">
 														<?= $courseData['terms_conditonsDetails']; ?>
 													</p>

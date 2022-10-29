@@ -305,8 +305,8 @@ if ($this->session->userdata('id')) {
 								<ul class="nav ms-2 ps-1">
 									<li class="nav-item">
 									<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_employees">
-											<span class="sidenav-mini-icon"> E </span>
-											<span class="sidenav-normal"> Employee Registration </span>
+											<span class="sidenav-mini-icon"> R </span>
+											<span class="sidenav-normal"> Registered Employee </span>
 										</a>
 									</li>
 									<li class="nav-item">
@@ -321,12 +321,41 @@ if ($this->session->userdata('id')) {
 											<span class="sidenav-normal"> Therapists </span>
 										</a>
 									</li>
-									<li class="nav-item">
+									<!--<li class="nav-item">
 										<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/allEmployeeSalary">
 											<span class="sidenav-mini-icon"> E </span>
 											<span class="sidenav-normal"> Employee Salary </span>
 										</a>
-									</li>
+									</li>-->
+									<li class="nav-item">
+									<a data-bs-toggle="collapse" href="#pagesExamples13" class="nav-link collapsed" aria-controls="pagesExamples13" role="button" aria-expanded="false">
+										<span class="nav-link-text ms-1" style="color:#000000; font-weight:bold; font-zise:14px !important;">Employee Salary</span>
+									</a>
+									<div class="collapse" id="pagesExamples13">
+										<ul class="nav ms-2 ps-1">
+											<li class="nav-item">
+												<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/allEmployeeSalary">
+													<span class="sidenav-mini-icon"> F </span>
+													<span class="sidenav-normal"> Full Time Pay </span>
+												</a>
+											</li>
+											<li class="nav-item">
+											<a class="nav-link" href="<?= base_url(); ?>admin/employeeManagement/all_PartnerShare">
+													<span class="sidenav-mini-icon"> P </span>
+													<span class="sidenav-normal"> Partner Share </span>
+												</a>
+											</li>
+											<!--<li class="nav-item ">
+												<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_therapists">
+													<span class="sidenav-mini-icon"> T </span>
+													<span class="sidenav-normal"> Therapists </span>
+												</a>
+											</li>-->
+											
+											
+										</ul>
+									</div>
+								</li>
 									<!--<li class="nav-item">
 										<a class="nav-link" href="<?= base_url(); ?>admin/Pay_Structure/allPay_Structure">
 											<span class="sidenav-mini-icon"> P </span>

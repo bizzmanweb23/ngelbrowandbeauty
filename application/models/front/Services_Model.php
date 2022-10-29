@@ -92,5 +92,60 @@ class Services_Model extends CI_Model
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_dashboard.therapist_id', 'LEFT');
 		return $this->db->get()->result_array();
 	}
+	function getallserviceOrderDetails($serviceId,$user_id){
+		$this->db->select('nbb_order_service.*,
+		nbb_service.service_name');
+		$this->db->from('nbb_order_service');
+		$where = array(
+			'nbb_order_service.user_id'   => $user_id,
+			'nbb_order_service.service_id'   => $serviceId,
+			'nbb_order_service.payment_status'   => 0,
+			'nbb_order_service.status'   => 1,
+			);
+		$this->db->where($where);
+		$this->db->join('nbb_service', 'nbb_service.id = nbb_order_service.service_id', 'LEFT');
+		$service_query = $this->db->get()->result_array();
+		//print_r($service_query);
+		$data = array();			
+
+			foreach($service_query as $row){				
+
+				$data = array(
+					'order_service_id' => $row['id'],
+					'service_name' 		=> $row['service_name'],
+					'service_price' 		=> $row['service_price'],
+					'times_packages' 		=> $row['times_packages'],
+				);	
+			}
+			return $data;
+	}
+	function getServiceOrderData($orderserviceId,$user_id){
+		$this->db->select('nbb_order_service.*,
+		nbb_service.service_name');
+		$this->db->from('nbb_order_service');
+		$where = array(
+			'nbb_order_service.user_id'   => $user_id,
+			'nbb_order_service.id'   => $orderserviceId,
+			'nbb_order_service.payment_status'   => 1,
+			'nbb_order_service.status'   => 2,
+			);
+		$this->db->where($where);
+		$this->db->join('nbb_service', 'nbb_service.id = nbb_order_service.service_id', 'LEFT');
+		$service_query = $this->db->get()->result_array();
+		//print_r($service_query);
+		$data = array();			
+
+			foreach($service_query as $row){				
+
+				$data = array(
+					'order_service_id' => $row['id'],
+					'service_name' 		=> $row['service_name'],
+					'service_id' 		=> $row['service_id'],
+					'service_price' 		=> $row['service_price'],
+					'times_packages' 		=> $row['times_packages'],
+				);	
+			}
+			return $data;
+	}
 }
 ?>

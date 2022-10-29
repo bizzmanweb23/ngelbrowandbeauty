@@ -139,15 +139,27 @@
 						buttons: [
 						]
     });
+		$('.Childcategory_table').DataTable({
+						dom: 'Bfrtip',
+						buttons: [
+						]
+    });
+		//course_table
+		$('.course_table').DataTable({
+				dom: 'Bfrtip',
+				buttons: [
+				]
+    });
+		//student_table
+		$('.student_table').DataTable({
+				dom: 'Bfrtip',
+				buttons: [
+				]
+    });
 		//product_table
 		$('.product_table').DataTable( {
 						dom: 'Bfrtip',
 						buttons: ['csv', 'excel', 'pdf']
-    });
-		//service_table
-		$('.service_table').DataTable( {
-						dom: 'Bfrtip',
-						buttons: []
     });
 		//dailySales_table
 		/*$('.dailySales_table').DataTable({
@@ -171,6 +183,11 @@
 						buttons: []
     });
 		$('.payment_table').DataTable( {
+						dom: 'Bfrtip',
+						buttons: []
+    });
+		//service_table
+		$('#service_table').DataTable( {
 						dom: 'Bfrtip',
 						buttons: []
     });

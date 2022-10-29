@@ -42,7 +42,7 @@ class Product extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
+		
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/single_product', $data);
 		$this->load->view('front/footer');
@@ -57,7 +57,7 @@ class Product extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
+		
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/cartList', $data);
 		$this->load->view('front/footer');
@@ -137,7 +137,7 @@ class Product extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
+		
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/currentOrder', $data);
 		$this->load->view('front/footer');
@@ -278,7 +278,7 @@ class Product extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
+		
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/wishlist', $data);
 		$this->load->view('front/footer');
@@ -366,7 +366,7 @@ class Product extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
+		
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/order_summary',$data);
 		$this->load->view('front/footer');

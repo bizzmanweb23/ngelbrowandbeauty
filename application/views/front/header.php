@@ -193,7 +193,7 @@ function googleTranslateElementInit() {
                 </ul>
               </li>*/ ?>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('contactus') ?>">Contact us</a>
+                <a class="nav-link" href="<?php echo base_url('contactus') ?>">Contact Us</a>
               </li>
 							<?php if($this->session->userdata('id')>0){ 
 

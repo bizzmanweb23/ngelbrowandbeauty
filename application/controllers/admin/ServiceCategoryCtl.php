@@ -247,6 +247,11 @@ class ServiceCategoryCtl extends CI_Controller {
 				  $service_price = $this->input->post('service_price');
 				  $duration = $this->input->post('duration');
 				  $therapist_commission = $this->input->post('therapist_commission');
+				  $discountPercentage = $this->input->post('discountPercentage');
+				  $discounted_price = $this->input->post('discounted_price');
+				  $package_session = $this->input->post('package_session');
+				  $package_times_price = $this->input->post('package_times_price');
+				  $rating = $this->input->post('rating');
 				  $amount = $this->input->post('amount');
 				  $priority = $this->input->post('priority');
 				  $loyalty_points = $this->input->post('loyalty_points');
@@ -283,6 +288,11 @@ class ServiceCategoryCtl extends CI_Controller {
 						  $uploadData[$i]['commission_amount'] = $amount;
 						  $uploadData[$i]['priority'] = $priority;
 						  $uploadData[$i]['loyalty_points'] = $loyalty_points;
+						  $uploadData[$i]['discount_price'] = $discounted_price;
+						  $uploadData[$i]['discount_percent'] = $discountPercentage;
+						  $uploadData[$i]['package_session'] = $package_session;
+						  $uploadData[$i]['package_times_price'] = $package_times_price;
+						  $uploadData[$i]['rating'] = $rating;
 						  $uploadData[$i]['status'] = $status;
 						  $uploadData[$i]['created_by'] = $this->session->userdata('id');
 						  $uploadData[$i]['created_at'] = date("Y-m-d H:i:s");
@@ -343,6 +353,11 @@ class ServiceCategoryCtl extends CI_Controller {
 				'commission_amount' => $this->input->post('amount'),
 				'priority' => $this->input->post('priority'),
 				'loyalty_points' => $this->input->post('loyalty_points'),
+				'discount_percent' => $this->input->post('discountPercentage'),
+				'discount_price' => $this->input->post('discounted_price'),
+				'package_session' => $this->input->post('package_session'),
+				'package_times_price' => $this->input->post('package_times_price'),
+				'rating' => $this->input->post('rating'),
 				'status' => $this->input->post('status'),
 			);
 			$result = $this->Main->update('id',$service_id, $service_data,'nbb_service');

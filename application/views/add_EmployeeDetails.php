@@ -102,11 +102,11 @@
 							<tr>
 								<td>ID No.</td>
 								<td>
-									<input type="text" name="aadhar_number" placeholder="Aadhar Number" value="" class="form-control" >
+									<input type="text" name="aadhar_number" placeholder="Enter ID No." value="" class="form-control" >
 								</td>
 								<td>Passport No.</td>
 								<td>
-									<input type="text" name="pan_number" placeholder="Pan Card Number" value="" class="form-control" >
+									<input type="text" name="pan_number" placeholder="Enter Passport No." value="" class="form-control" >
 								</td>
 							</tr>
 						</table>
@@ -117,28 +117,37 @@
 					<h3>Address Details</h3>
 						<table width="100%">
 							<tr>
-								<td>State</td>
+								<td>Hse / Blk No.</td>
 								<td>
-									<input type="text" name="state" value ="" class="form-control">
+									<input type="text" name="hse_blk_no" value ="" class="form-control" placeholder="Enter Hse / Blk No.">
 								</td>
-								<td>City</td>
+								<td>Unit No.</td>
 								<td>
-									<input type="text" name="city" value="" class="form-control">
+									<input type="text" name="unit_no" value="" class="form-control" placeholder="Enter Unit No.">
 								</td>
-								<td>Land mark</td>
+								
+							</tr>
+
+							<tr>
+								<td>Building / Street Name</td>
 								<td>
-									<input type="text" name="land_mark" value="" class="form-control">
+									<input type="text" name="building_street" value="" class="form-control" placeholder = "Enter Building / Street Name">
 								</td>
-								<td>Pin Code</td>
+								<td>Address 1</td>
 								<td>
-									<input type="text" name="pin_code" value="" class="form-control" class="form-control" >
+									<input type="text" name="address1" value="" class="form-control" placeholder = "Enter Address 1">
 								</td>
 							</tr>
 							
 							<tr>
-								<td>Full Address</td>
+								<td>Country</td>
 								<td>
-									<textarea name="full_address" rows="2" cols="80" style = "width: 100%;" class="form-control" class="form-control" ></textarea>
+									<input type="text" name="country" value="" class="form-control" placeholder = "Country">
+								</td>
+							
+								<td>Postal Code</td>
+								<td>
+									<input type="text" name="postalcode" value="" class="form-control" placeholder = "Postal Code">
 								</td>
 							</tr>
 							

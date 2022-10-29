@@ -17,7 +17,7 @@ class User extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-
+		
 		$user_id=$this->session->userdata('id');
 		$data['expense_wallet'] = $this->Header->getAllexpense_wallet($user_id);
 		$data['credit_wallet'] = $this->Header->getAllexpense_wallet($user_id);

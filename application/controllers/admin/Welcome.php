@@ -277,7 +277,12 @@ class Welcome extends CI_Controller {
             $totalDuration =0;
             foreach($sId as $val){
                 $data=$this->Auth->getServiceByID($val);
-                $totalPrice += $data->service_price;
+				if($data->discount_price != 0 ){
+					$totalPrice += $data->discount_price;
+				}else{
+					$totalPrice += $data->service_price;
+				}
+                
                 $totalDuration += $data->duration;
             }
             $data1['totalPrice']=$totalPrice;

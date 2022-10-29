@@ -29,6 +29,17 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->where('nbb_employees.status', '0');
 		return $this->db->get()->result_array();
 	}
+	function getAllpartnership(){
+		$this->db->select('nbb_employees.*,
+		nbb_roles.role_name AS designation_name,
+		nbb_job_type.type_name as job_type');
+		$this->db->from('nbb_employees');
+		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employees.designation', 'LEFT');
+		$this->db->join('nbb_job_type', 'nbb_job_type.id = nbb_employees.job_type_id', 'LEFT');
+		$multiClause = array('nbb_employees.status' => 1, 'nbb_employees.job_type_id' => 2);
+		$this->db->where($multiClause);
+		return $this->db->get()->result_array();
+	}
 	function getAllEmployeeAttendance($empid){
 		$this->db->select('nbb_employees_attendance.emp_id,
 		nbb_employees_attendance.login,
@@ -90,11 +101,12 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->select('nbb_employees.*,
 		nbb_job_type.type_name as jobtype,
 		nbb_roles.role_name,
-		nbb_employee_address.full_address,
-		nbb_employee_address.land_mark,
-		nbb_employee_address.city,
-		nbb_employee_address.pincode,
-		nbb_employee_address.state');
+		nbb_employee_address.address1,
+		nbb_employee_address.country,
+		nbb_employee_address.hse_blk_no,
+		nbb_employee_address.unit_no,
+		nbb_employee_address.postalcode,
+		nbb_employee_address.building_street');
 		$this->db->from('nbb_employees');
 		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employees.designation', 'LEFT');
 		$this->db->join('nbb_employee_address', 'nbb_employee_address.emp_id = nbb_employees.id', 'LEFT');
@@ -130,11 +142,12 @@ class EmployeeManagement_model extends CI_Model
 				'jobtype' => $row['jobtype'],
 				'date_of_joining' => $row['date_of_joining'],
 				'willing_to_relocate' => $row['willing_to_relocate'],
-				'full_address' => $row['full_address'],
-				'land_mark' => $row['land_mark'],
-				'city' => $row['city'],
-				'state' => $row['state'],
-				'pincode' => $row['pincode'],
+				'address1' => $row['address1'],
+				'country' => $row['country'],
+				'hse_blk_no' => $row['hse_blk_no'],
+				'unit_no' => $row['unit_no'],
+				'building_street' => $row['building_street'],
+				'postalcode' => $row['postalcode'],
 			);
 		}
 		return $data;

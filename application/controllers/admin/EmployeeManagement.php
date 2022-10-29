@@ -61,11 +61,12 @@ class EmployeeManagement extends CI_Controller {
 			if($insert_id){
 				$address_data = array(
 					'emp_id' => $insert_id,
-					'full_address' => $this->input->post('full_address'),
-					'land_mark' => $this->input->post('land_mark'),
-					'city' => $this->input->post('city'),
-					'state' => $this->input->post('state'),
-					'pincode' => $this->input->post('pin_code'));
+					'address1' => $this->input->post('address1'),
+					'country' => $this->input->post('country'),
+					'unit_no' => $this->input->post('unit_no'),
+					'building_street' => $this->input->post('building_street'),
+					'hse_blk_no' => $this->input->post('hse_blk_no'),
+					'postalcode' => $this->input->post('postalcode'));
 		
 					$insert2 = $this->EmployeeManagement->storeEmployeeaddress($address_data);
 			}
@@ -157,11 +158,12 @@ class EmployeeManagement extends CI_Controller {
 
 		$emp_id = $this->input->post('emp_id');
 			$address_data = array(
-				'full_address' => $this->input->post('full_address'),
-				'land_mark' => $this->input->post('land_mark'),
-				'city' => $this->input->post('city'),
-				'state' => $this->input->post('state'),
-				'pincode' => $this->input->post('pin_code'));
+				'address1' => $this->input->post('address1'),
+				'country' => $this->input->post('country'),
+				'unit_no' => $this->input->post('unit_no'),
+				'building_street' => $this->input->post('building_street'),
+				'hse_blk_no' => $this->input->post('hse_blk_no'),
+				'postalcode' => $this->input->post('postalcode'));
 	
 			$update=$this->Main->update('emp_id',$emp_id, $address_data,'nbb_employee_address');   
 			if($update){
@@ -364,6 +366,25 @@ class EmployeeManagement extends CI_Controller {
 				redirect('admin/employeeManagement/allEmployeeSalary');
 			}
 	}
+	public function all_PartnerShare(){
+
+		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeeCommissionSalary();
+		//$data['EmployeeFultimeSalary'] = $this->EmployeeManagement->getAllEmployeeFultimeSalary();
+		//$data['EmployeepartnershipSalary'] = $this->EmployeeManagement->getAllEmployeepartnershipSalary();
+		$this->layout->view('all_PartnerShare',$data); 
+	}
+	public function add_Partnership(){
+		$data['name'] = $this->session->userdata('name');
+		$data['lastpay_structure'] = $this->PayStructure->getLastpay_structure();
+		$data['allemployees'] = $this->EmployeeManagement->getAllpartnership();
+		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
+		$data['commission_structure_a'] = $this->PayStructure->getAllcommission_structure_a();
+		/*$data['commission_structure_b'] = $this->PayStructure->getAllcommission_structure_b();
+		$data['commission_structure_c'] = $this->PayStructure->getAllcommission_structure_c();*/
+		$data['commission_c_partnership'] = $this->PayStructure->getAllcommission_c_partnership();
+		$data['manual_fee'] = $this->PayStructure->getAllmanual_fee();
+       	$this->layout->view('add_Partnership',$data); 
+	}
 	public function allLeaveList(){
 
 		$data['name'] = $this->session->userdata('name');
@@ -383,7 +404,7 @@ class EmployeeManagement extends CI_Controller {
 		$diff       = date_diff($datetime1,$datetime2);
 		$days       = $diff->format("%a")+1;
 		/*$yearly_leave = 13;
-		$*/
+		*/
 		
 		$data = array(
 			'emp_id' 			=> $this->input->post('employeeName'),

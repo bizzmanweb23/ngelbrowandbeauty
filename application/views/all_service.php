@@ -24,16 +24,18 @@
               <!-- /.card-header -->
               <div class="card-body">
                  <div class="site-table" style="overflow: auto; height: 400px ">
-                <table class="table table-bordered service_table" style="overflow: auto; width: 800px; height: 250px; text-align: center;">
+                <table class="table table-bordered" id = "example2" style="overflow: auto; width: 800px; height: 250px; text-align: center;">
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
                     <th>Service Name</th>
                     <th>Service Icon</th>
-                    <th> Category</th>
+                    <th>Category</th>
                     <th>Description</th>
-                    <th>Service price</th>
+                    <th>Price</th>
+										<th>Discounted price</th>
+										<th>Package Session</th>
+										<th>Package Price </th>
                     <th>Therapist Commission</th>
-                    <th>Commission Type</th>
                     <th>Duration</th>
                     <th>Priority</th>
                     <th>Loyalty points</th>
@@ -51,9 +53,16 @@
 													<?= substr($services['description'],0,50); ?>....
 												<?php } ?>
 												</td>
-                        <td><?= $services['service_price']?></td>
+                        <td>$<?= $services['service_price']?></td>
+												<td>$<?= $services['discount_price']?></td>
+												<td><?= $services['package_session']?></td>
+												<td><?php if($services['package_times_price'] != ''){ ?>
+														$<?= $services['package_times_price']; ?>
+												<?php }else{ ?>
+
+												<?php } ?>
+												</td>
                         <td><?= $services['therapist_commission']?></td>
-                        <td><?= $services['commission_amount']?></td>
                         <td><?= $services['duration']?></td>
                         <td>
 													<?php if($services['priority'] == 1){ 

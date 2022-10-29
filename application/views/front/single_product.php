@@ -24,7 +24,7 @@
 							<div class="col-md-12">
 								<div class="singleProductInfo">
 									<div class="row">
-										<div class="col-md-12">
+										<div class="col-md-8">
 										<h2 class="font-weight-bold"><?= $productDetails['pname'] ?>(<?= $productDetails['sku'] ?>)</h2>
 										</div>
 									</div>
@@ -92,7 +92,13 @@
 									<div class="row">
 										<div class="col-md-5">
 											<div class="finalCart">
+											<?php if($this->session->userdata('id')>0){ ?>
 												<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Add to cart</button>
+											<?php }else{ ?>
+												
+												<a href="javascript:void(0)" onclick="return swal('Please Login First')" class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Add to cart</a>
+											<?php } ?>
+												
 											</div>
 										</div>
 										<div class="col-md-4">
@@ -187,6 +193,8 @@
 
       </div>
     </section>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
 <script type = "text/javascript">
 	function calculate_total_price(price){
 		var quantity = $( ".quantity" ).val(); 

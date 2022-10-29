@@ -25,6 +25,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/login');
 		$this->load->view('front/footer');
@@ -35,6 +36,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/register');
 		$this->load->view('front/footer');
@@ -196,6 +198,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+		$datahader['allpackage_category'] = $this->Header->getAllpackage_category();
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/enterotp');
 		$this->load->view('front/footer');
@@ -318,7 +321,7 @@ class Home extends CI_Controller {
 					<tbody style="margin-top: 15px;">
 					  <tr class="">
 					<td class="">
-					<img alt="robot picture" class="" height="155" src="'.site_url('/assets/img/LOGO.png').'" width="155">
+					<img alt="robot picture" class="" height="155" src="'.site_url('/assets/front/img/logo.png').'" width="155">
 					</td>
 					</tr>
 					<tr class=""><td class="headline">Welcome to N`gel brow & beauty</td></tr>
@@ -400,6 +403,8 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+		
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/home',$data);
 		$this->load->view('front/footer');
@@ -410,6 +415,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/about');
 		$this->load->view('front/footer');
@@ -446,6 +452,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/services-details');
 		$this->load->view('front/footer');
@@ -470,6 +477,7 @@ class Home extends CI_Controller {
 		   $datahader['allchild_category'] = $this->Header->getAllchild_category();
 		   $datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		   $datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+		   $datahader['allpackage_category'] = $this->Header->getAllpackage_category();
 		   $this->load->view('front/header',$datahader);
         $this->load->view('front/services-details', $data);
 		$this->load->view('front/footer');
@@ -481,6 +489,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/contact-us');
 		$this->load->view('front/footer');
@@ -522,6 +531,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/checkout');
 		$this->load->view('front/footer');
@@ -536,6 +546,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/user_profile', $data);
 		$this->load->view('front/footer');
@@ -678,6 +689,7 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/referToFriend', $data);
 		$this->load->view('front/footer');
@@ -727,6 +739,8 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+		
+
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/referregister');
 		$this->load->view('front/footer');
@@ -791,19 +805,19 @@ class Home extends CI_Controller {
 			   
 			  
 
-				   $to = $email;
-				   $subject = "N'gel brow & beauty confirmation";
-				   $txt = $message;
-	   
-				   $retval = mail($to,$subject,$txt,$headers);
-		
-					   if( $retval == true ) {
-						   $data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
-					   }else {
-						   $data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
-					   }
-					   
-			   }
+				$to = $email;
+				$subject = "N'gel brow & beauty confirmation";
+				$txt = $message;
+	
+				$retval = mail($to,$subject,$txt,$headers);
+	
+					if( $retval == true ) {
+						$data = array('success' => true, 'msg'=> 'Please check your Mail for confirmation.');
+					}else {
+						$data = array('success' => true, 'msg'=> 'Problem in Sending Mail.');
+					}
+					
+			}
 			   
 	   }
 	   echo json_encode($data);

@@ -38,10 +38,10 @@
                     <tr>
 					  	        <td><?= $cartProductRow['order_number']?></td>
 						          <td>
-												<?php if($orderProductRow['customer_firstname'] == ''){ ?>	
-												<?= $orderProductRow['first_name'].' '.$orderProductRow['last_name'] ?>
+												<?php if($cartProductRow['customer_firstname'] == ''){ ?>	
+												<?= $cartProductRow['first_name'].' '.$cartProductRow['last_name'] ?>
 												<?php }else{ ?>
-													<?= $orderProductRow['customer_firstname'].' '.$orderProductRow['customer_lastname']?>
+													<?= $cartProductRow['customer_firstname'].' '.$cartProductRow['customer_lastname']?>
 												<?php } ?>
 											</td>
                         <td><?= $cartProductRow['create_date']?></td>

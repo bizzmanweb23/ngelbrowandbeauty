@@ -189,7 +189,7 @@ class ProcurementManagement extends CI_Controller {
                                 <table width= "100%" style="border-spacing: 0;">
                                     <tr>
                                         <td style="background-color: #F6F6F6; padding: 10px; text-align: center;">
-                                            <a href="#"><img src="'.site_url('/assets/img/LOGO.png').'" alt="logo" width="200" title="logo"></a>
+                                            <a href="#"><img src="'.site_url('/assets/front/img/logo.png').'" alt="logo" width="200" title="logo"></a>
                                         </td>
                                     </tr>
                                 </table>

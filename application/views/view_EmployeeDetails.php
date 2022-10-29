@@ -35,24 +35,28 @@
 								</div>
 								<ul class="list-group list-group-flush">
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0">Full Address</h6>
-									<span class="text-secondary"><?= $emp_Details['full_address'] ?></span>
+									<h6 class="mb-0">Hse / Blk No.</h6>
+									<span class="text-secondary"><?= $emp_Details['hse_blk_no'] ?></span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0">City</h6>
-									<span class="text-secondary"><?= $emp_Details['city'] ?></span>
+									<h6 class="mb-0">Unit No.</h6>
+									<span class="text-secondary"><?= $emp_Details['unit_no'] ?></span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0">State</h6>
-									<span class="text-secondary"><?= $emp_Details['state'] ?></span>
+									<h6 class="mb-0">Building / Street Name</h6>
+									<span class="text-secondary"><?= $emp_Details['building_street'] ?></span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0">Land Mark</h6>
-									<span class="text-secondary"><?= $emp_Details['land_mark'] ?></span>
+									<h6 class="mb-0">Address 1 </h6>
+									<span class="text-secondary"><?= $emp_Details['address1'] ?></span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0">Pincode</h6>
-									<span class="text-secondary"><?= $emp_Details['pincode'] ?></span>
+									<h6 class="mb-0">Country </h6>
+									<span class="text-secondary"><?= $emp_Details['country'] ?></span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0">Postal Code </h6>
+									<span class="text-secondary"><?= $emp_Details['postalcode'] ?></span>
 								</li>
 								</ul>
 							</div>
@@ -309,43 +313,50 @@
 		  <input type="hidden" name="emp_id" value ="<?= $emp_Details['id'] ?>" class="form-control">
 	  		<div class="row">
 				<div class="col-sm-3">
-					<h6 class="mb-0">full_address</h6>
+					<h6 class="mb-0">Hse / Blk No.</h6>
 				</div>
-				
 				<div class="col-md-9 text-secondary">
-					<textarea name="full_address" rows="2" cols="80" class="form-control" class="form-control" ><?= $emp_Details['full_address'] ?></textarea>
+					<input type="text" name="hse_blk_no" value ="<?= $emp_Details['hse_blk_no'] ?>" class="form-control">
 				</div>
 			</div>
 			<div class="row pt-2">
 				<div class="col-md-3">
-					<h6 class="mb-0">State</h6>
+					<h6 class="mb-0">Unit No</h6>
 				</div>
 				<div class="col-md-9 text-secondary">
-					<input type="text" name="state" value ="<?= $emp_Details['state'] ?>" class="form-control">
+					<input type="text" name="unit_no" value ="<?= $emp_Details['unit_no'] ?>" class="form-control">
 				</div>
 			</div>
 			<div class="row pt-2">
 				<div class="col-md-3">
-					<h6 class="mb-0">City</h6>
+					<h6 class="mb-0">Building / Street Name</h6>
 				</div>
 				<div class="col-md-9 text-secondary">
-					<input type="text" name="city" value ="<?= $emp_Details['city'] ?>" class="form-control">
+					<input type="text" name="building_street" value ="<?= $emp_Details['building_street'] ?>" class="form-control">
 				</div>
 			</div>
 			<div class="row pt-2">
 				<div class="col-md-3">
-					<h6 class="mb-0">Land Mark</h6>
+					<h6 class="mb-0">Address 1</h6>
 				</div>
 				<div class="col-md-9 text-secondary">
-					<input type="text" name="land_mark" value ="<?= $emp_Details['land_mark'] ?>" class="form-control">
+					<input type="text" name="address1" value ="<?= $emp_Details['address1'] ?>" class="form-control">
 				</div>
 			</div>
 			<div class="row pt-2">
 				<div class="col-md-3">
-					<h6 class="mb-0">Pincode</h6>
+					<h6 class="mb-0">Country </h6>
 				</div>
 				<div class="col-md-9 text-secondary">
-					<input type="text" name="pin_code" value ="<?= $emp_Details['pincode'] ?>" class="form-control">
+					<input type="text" name="country" value ="<?= $emp_Details['country'] ?>" class="form-control">
+				</div>
+			</div>
+			<div class="row pt-2">
+				<div class="col-md-3">
+					<h6 class="mb-0">Postal Code </h6>
+				</div>
+				<div class="col-md-9 text-secondary">
+					<input type="text" name="postalcode" value ="<?= $emp_Details['postalcode'] ?>" class="form-control">
 				</div>
 			</div>
 			<div class=" pt-2 text-center">

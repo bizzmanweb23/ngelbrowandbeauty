@@ -175,7 +175,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group ">
-							<label for="package_status" class="col-sm-6 control-label">Term's & Conditons <i class="required">*</i>
+							<label for="package_status" class="col-sm-6 control-label">Term's & Conditions <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
 								<textarea name="terms_conditonsDetails" rows="5" cols="80" class="" style="width: 100%;"><?= $all_courses['terms_conditonsDetails']; ?></textarea>
@@ -184,7 +184,7 @@
 					</div>
 				</div>
 
-                      <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
+                    <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
               </form>
 			 
               </div>
