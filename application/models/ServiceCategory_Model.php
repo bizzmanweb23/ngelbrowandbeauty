@@ -87,7 +87,21 @@ class ServiceCategory_Model extends CI_Model
         $insert = $this->db->insert_batch('nbb_category',$data); 
         return true;
     }
-
+	function getAllsubChildCategory()
+    {
+		
+        $this->db->select('nbb_sub_child_category.*,nbb_child_category.category_name');
+        $this->db->from('nbb_sub_child_category');
+		$this->db->join('nbb_child_category','nbb_child_category.id = nbb_sub_child_category.child_category');
+        return $this->db->get()->result_array();
+    }
+	function getAllSubChildCategoryEdit($id)
+    {
+        $this->db->select('nbb_sub_child_category.*');
+        $this->db->from('nbb_sub_child_category');
+		$this->db->where('id',$id);
+        return $this->db->get()->result_array();
+    }
     function getAllTodayAppointment()
     {
 		$now = date('Y-m-d');

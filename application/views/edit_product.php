@@ -93,6 +93,16 @@
 				<div class="row">
 					<div class="col-md-3">      
 						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Lowest Price
+							<i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control lowest_price" name="lowest_price" placeholder="Enter Lowest Price" value="<?= $productData['lowest_price'] ?>">
+							</div>
+						</div>        
+					</div>
+					<div class="col-md-3">      
+						<div class="form-group ">
 							<label for="service_price" class="col-sm-6 control-label">Product Price
 							<i class="required">*</i>
 							</label>
@@ -101,6 +111,8 @@
 							</div>
 						</div>        
 					</div>
+					</div> 
+					<div class="row">
 					<div class="col-md-3">                       
 						<div class="form-group ">
 							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
@@ -141,8 +153,8 @@
 							<div class="col-md-12">
 								<input type="text" class="form-control discountPercentage" name="discountPercentage" placeholder="Enter Discount" value="<?= $productData['discountPercentage'] ?>">
 							</div>
-						</div>        
-					</div> 
+						</div>  
+					</div>
 					<div class="col-md-3 discountAmount" style="display: none;">      
 						<div class="form-group">
 							<label for="Discount" class="col-md-6 control-label">Discounted Price:</label>

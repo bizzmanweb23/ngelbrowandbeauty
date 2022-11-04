@@ -218,6 +218,73 @@ class ServiceCategoryCtl extends CI_Controller {
            }
        }
     }
+	public function all_subChildCategory()
+    {
+       $data['category'] = $this->ServiceCategory->getAllsubChildCategory();
+       $this->layout->view('all_subChildCategory',$data); 
+    }
+
+	public function add_subChildCategory(){
+		$data['ChildCategory'] = $this->ServiceCategory->getAllCategory();
+        $this->layout->view('add_sub_childcategory',$data);
+    }
+	public function post_add_subChildCategory()
+	{
+		$Category_data = array(
+			'child_category' => $this->input->post('child_category'),
+			'sub_child_category' => $this->input->post('sub_child_category'),
+			'details' => $this->input->post('details'),
+			'status' => $this->input->post('status')
+			
+		);
+		$result = $this->Main->insert('nbb_sub_child_category',$Category_data);
+		
+		if($result == true)
+			{
+				redirect('admin/ServiceCategoryCtl/all_subChildCategory');
+			} 
+
+  	}
+
+	public function edit_subChildcategory(){
+		
+		$subChildCategoryId = $this->uri->segment(4);
+		$data['subchildcategory'] = $this->ServiceCategory->getAllSubChildCategoryEdit($subChildCategoryId);
+		$data['ChildCategory'] = $this->ServiceCategory->getAllCategory();
+		$this->layout->view('edit_subChildcategory',$data);
+	}
+	public function post_edit_subChildcategory()
+	{
+		$servicecategory_id = $this->input->post('subChildcategory_id');
+
+		$Category_data = array(
+			'child_category' => $this->input->post('child_category'),
+			'sub_child_category' => $this->input->post('sub_child_category'),
+			'details' => $this->input->post('details'),
+			'status' => $this->input->post('status')
+			
+		);
+			$result = $this->Main->update('id',$servicecategory_id, $Category_data,'nbb_sub_child_category');
+			
+		if($result == true)
+			{
+				
+				redirect('admin/ServiceCategoryCtl/all_subChildCategory');
+			}  
+	}
+  	public function deletesubChildCategory()
+		{
+		
+			$categoryId=$this->uri->segment(4);
+			$result=$this->Main->delete('id',$categoryId,'nbb_sub_child_category');
+			if($result==true)
+			{
+				redirect('admin/ServiceCategoryCtl/all_subChildCategory');
+			}
+			
+		
+		}
+
 	public function service()
     {
 
@@ -243,7 +310,9 @@ class ServiceCategoryCtl extends CI_Controller {
 				  $service_name = $this->input->post('service_name');
 				  $main_category = $this->input->post('main_category');
 				  $service_category = $this->input->post('service_category');
+				  $sub_child_category = $this->input->post('sub_child_category');
 				  $description = $this->input->post('description');
+				  $lowest_price = $this->input->post('lowest_price');
 				  $service_price = $this->input->post('service_price');
 				  $duration = $this->input->post('duration');
 				  $therapist_commission = $this->input->post('therapist_commission');
@@ -281,7 +350,9 @@ class ServiceCategoryCtl extends CI_Controller {
 						  $uploadData[$i]['service_name'] = $service_name;
 						  $uploadData[$i]['main_category_id'] = $main_category;
 						  $uploadData[$i]['service_category'] = $service_category;
+						  $uploadData[$i]['sub_child_category'] = $sub_child_category;
 						  $uploadData[$i]['description'] = $description;
+						  $uploadData[$i]['lowest_price'] = $lowest_price;
 						  $uploadData[$i]['service_price'] = $service_price;
 						  $uploadData[$i]['duration'] = $duration;
 						  $uploadData[$i]['therapist_commission'] = $therapist_commission;
@@ -338,6 +409,7 @@ class ServiceCategoryCtl extends CI_Controller {
 		$data['serviceDataEdit'] = $this->ServiceCategory->getServiceDataEdit($serviceId);
 		$data['category'] = $this->ServiceCategory->getAllParentCategory();
 		$data['ChildCategory'] = $this->ServiceCategory->getAllChildCategory();
+		$data['subChildCategory'] = $this->ServiceCategory->getAllsubChildCategory();
 		$this->layout->view('edit_service',$data);
    	}
 	public function post_edit_service()
@@ -346,7 +418,9 @@ class ServiceCategoryCtl extends CI_Controller {
 			$service_data = array(
 				'service_name' => $this->input->post('service_name'),
 				'service_category' => $this->input->post('service_category'),
+				'sub_child_category' => $this->input->post('sub_child_category'),
 				'description' => $this->input->post('description'),
+				'lowest_price' => $this->input->post('lowest_price'),
 				'service_price' => $this->input->post('service_price'),
 				'duration' => $this->input->post('duration'),
 				'therapist_commission' => $this->input->post('therapist_commission'),

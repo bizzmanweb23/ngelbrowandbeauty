@@ -428,7 +428,6 @@ class Home extends CI_Controller {
 		$data['allservices'] = $this->Header->getAllservicesList($catServiceId);
 		$data['activeServices'] = $this->Header->getactiveServices($catServiceId);
 		$datahader['catagoryName'] = $this->Services->getchild_categoryName($catServiceId);
-		$data['packageServices'] = $this->Header->getPackageServices();
 
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
@@ -436,6 +435,23 @@ class Home extends CI_Controller {
 
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/service', $data);
+		$this->load->view('front/footer');
+		 
+    }
+	public function subServices(){
+   	 
+		$subcatServiceId = $this->uri->segment(2);
+		//echo $serviceId;exit;
+		$data['allservices'] = $this->Services->getAllsubCatservicesList($subcatServiceId);
+		$data['activeServices'] = $this->Services->getactivesubCatServices($subcatServiceId);
+		$datahader['catagoryName'] = $this->Services->getsubChild_categoryName($subcatServiceId);
+
+		$datahader['allchild_category'] = $this->Header->getAllchild_category();
+		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
+		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
+		$this->load->view('front/header',$datahader);
+        $this->load->view('front/subcateservice', $data);
 		$this->load->view('front/footer');
 		 
     }

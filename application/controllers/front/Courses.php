@@ -17,7 +17,7 @@ class Courses extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-		$datahader['allpackage_category'] = $this->Header->getAllpackage_category();
+		
 
 		$results['allcourse'] = $this->Course->getAllCourse();
 
@@ -38,7 +38,6 @@ class Courses extends CI_Controller {
 			$datahader['allchild_category'] = $this->Header->getAllchild_category();
 			$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 			$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-			$datahader['allpackage_category'] = $this->Header->getAllpackage_category();
 
 			$this->load->view('front/header',$datahader);
 			$this->load->view('front/courseDetails', $result);
@@ -54,7 +53,6 @@ class Courses extends CI_Controller {
 			$datahader['allchild_category'] = $this->Header->getAllchild_category();
 			$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 			$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-			$datahader['allpackage_category'] = $this->Header->getAllpackage_category();
 
 			$this->load->view('front/header',$datahader);
 			$this->load->view('front/enroll_course', $result);

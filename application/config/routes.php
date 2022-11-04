@@ -61,6 +61,7 @@ $route['referdToFriend'] = 'front/Home/ReferdToFriend';
 $route['products/(:any)'] = 'front/Product/products/$i';
 //$route['courses'] = 'front/Home/courses';
 $route['services/(:any)'] = 'front/Home/services/$i';
+$route['subServices/(:any)'] = 'front/Home/subServices/$i';
 //$route['main'] = 'front/Home';
 $route['services-list'] = 'front/Home/services_details';
 $route['checkout'] = 'front/Home/checkout';

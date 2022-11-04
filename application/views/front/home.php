@@ -5,12 +5,12 @@
         
 
         <!-- Slide One -->
-        <div class="slide slideResize slide1" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/SkincareBanner.jpg);">
+        <div class="slide slideResize slide1" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/NewBanner.png);">
           <div class="container">
             <div class="slide-inner2 common-inner">
 							<!--img src="<?= base_url(); ?>assets/front/img/slider-logo.png" class="img-fluid" style = "max-width: 150px;mix-blend-mode:color;">-->
-              <span class="h1 from-bottom">Welcome to n'gel</span><br>
-              <span class="h4 from-bottom">We bring out your confidence in every aspect of your life. </span><br>
+              <span class="h1 from-bottom">Welcome to N’gel Beauty</span><br>
+              <span class="h4 from-bottom">Angel Face N'gel美业，天使之颜 </span><br>
               <a href="javascript:void(0)" class="btn btn-primary first-btn waves-effect waves-light scale-up">More Details</a>
             </div>
           </div>

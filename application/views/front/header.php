@@ -165,11 +165,39 @@ function googleTranslateElementInit() {
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Services</a>
-                <ul class="dropdown-menu">
+								
+								<ul class="dropdown-menu">
+									<!--<li><a tabindex="-1" href="#">HTML</a></li>
+									<li><a tabindex="-1" href="#">CSS</a></li>-->
+									<?php foreach($allchild_category as $allchild_category_row): 
+										$sub_child_category_sql = "SELECT nbb_sub_child_category.*
+										FROM nbb_sub_child_category 
+										WHERE nbb_sub_child_category.child_category = '".$allchild_category_row['id']."' AND nbb_sub_child_category.status = 1 ";
+										$sub_child_category_query = $this->db->query($sub_child_category_sql);
+										$sub_child_category_data = $sub_child_category_query->result_array();
+										$filterquery_rownum = $sub_child_category_query->num_rows();
+									if($filterquery_rownum > 0){ ?>
+									<li class="nav-item dropdown dropdown-submenu">
+									<a href="<?php echo base_url('services/'.$allchild_category_row['id']) ?>"><span class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $allchild_category_row['category_name'];?></span></a> 
+									
+										<ul class="dropdown-menu">
+											<?php foreach($sub_child_category_data as $sub_child_category_row){?>
+											<li><a tabindex="-1" href="<?php echo base_url('subServices/'.$sub_child_category_row['id']) ?>"><?= $sub_child_category_row['sub_child_category']; ?></a></li>
+											<?php } ?>
+										</ul>
+									<?php	}else{ ?>
+										<li><a href="<?php echo base_url('services/'.$allchild_category_row['id']) ?>"><?= $allchild_category_row['category_name'];?></a></li>
+									<?php } ?>
+										
+									</li>
+									<?php	endforeach; ?>
+								</ul>
+
+                <!--<ul class="dropdown-menu">
 									<?php foreach($allchild_category as $allchild_category_row): ?>
 										<li><a href="<?php echo base_url('services/'.$allchild_category_row['id']) ?>"><?= $allchild_category_row['category_name'];?></a></li>
 									<?php	endforeach; ?>
-                </ul>
+                </ul>-->
               </li>
 							<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Product</a>
@@ -249,3 +277,18 @@ function googleTranslateElementInit() {
       </nav>
 			 
     </header>
+<style>
+.dropdown-submenu {
+  position: relative;
+	margin-right: 1px;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+display: block;
+}
+</style>

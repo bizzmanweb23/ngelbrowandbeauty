@@ -145,9 +145,9 @@ class POS_management extends CI_Controller {
 				$price = $row['price'];
 				$available_stock = $row['available_stock'];
 
-				if($discounted_price != ''){
+				if($discounted_price != 0){
 					$p_price = $discounted_price;
-				}else if($price != ''){
+				}else if($price != 0){
 					$p_price = $price;
 				}
 

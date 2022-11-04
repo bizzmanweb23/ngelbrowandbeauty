@@ -131,6 +131,12 @@ if ($this->session->userdata('id')) {
 									<span class="sidenav-normal"> Sub-Category </span>
 								</a>
 							</li>
+							<li class="nav-item ">
+							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_subChildCategory">
+									<span class="sidenav-mini-icon"> S </span>
+									<span class="sidenav-normal"> Sub Child-Category </span>
+								</a>
+							</li>
 							
 						</ul>
 					</div>
@@ -197,7 +203,7 @@ if ($this->session->userdata('id')) {
 						</ul>
 					</div>
 				</li>  
-				<?php } if( $menuname == 'POS Management'){ ?>
+				<?php }if( $menuname == 'POS Management'){ ?>
 						<li class="nav-item">
 								<a data-bs-toggle="collapse" href="#pagesExamples13" class="nav-link collapsed" aria-controls="pagesExamples13" role="button" aria-expanded="false">
 								<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;"><i class="far fa-handshake"></i>
@@ -256,7 +262,7 @@ if ($this->session->userdata('id')) {
 						</ul>
                     </div>
 				</li>   
-				<?php } if( $menuname == 'Procurement Module'){ ?>
+				<?php }if( $menuname == 'Procurement Module'){ ?>
 				<li class="nav-item">
 					<a data-bs-toggle="collapse" href="#pagesExamples9" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style="background-color:#61d3d4 !important;">
@@ -345,12 +351,12 @@ if ($this->session->userdata('id')) {
 													<span class="sidenav-normal"> Partner Share </span>
 												</a>
 											</li>
-											<!--<li class="nav-item ">
-												<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_therapists">
-													<span class="sidenav-mini-icon"> T </span>
-													<span class="sidenav-normal"> Therapists </span>
+											<li class="nav-item ">
+												<a class="nav-link " href="<?= base_url(); ?>admin/PartTime">
+													<span class="sidenav-mini-icon"> P </span>
+													<span class="sidenav-normal"> Part Time </span>
 												</a>
-											</li>-->
+											</li>
 											
 											
 										</ul>

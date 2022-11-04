@@ -8,26 +8,23 @@ class Header_Model extends CI_Model
 		$this->db->select('nbb_child_category.*');
 		$this->db->from('nbb_child_category');
 		$this->db->where('nbb_child_category.parent_category_id', '1');
+		$this->db->order_by('nbb_child_category.category_name','DESC');
 		return $this->db->get()->result_array();
 	}
 	function getAllProduct_category(){
 		$this->db->select('nbb_child_category.*');
 		$this->db->from('nbb_child_category');
 		$this->db->where('nbb_child_category.parent_category_id', '2');
+		$this->db->order_by('nbb_child_category.category_name','DESC');
 		return $this->db->get()->result_array();
 	}
 	function getAllCourse_category(){
 		$this->db->select('nbb_child_category.*');
 		$this->db->from('nbb_child_category');
 		$this->db->where('nbb_child_category.parent_category_id', '3');
+		$this->db->order_by('nbb_child_category.category_name','DESC');
 		return $this->db->get()->result_array();
 	}
-	/*function getAllpackage_category(){
-		$this->db->select('nbb_child_category.*');
-		$this->db->from('nbb_child_category');
-		$this->db->where('nbb_child_category.parent_category_id', '4');
-		return $this->db->get()->result_array();
-	}*/
 	function getAllservicesList($id){
 		$this->db->select('nbb_service.*');
 		$this->db->from('nbb_service');

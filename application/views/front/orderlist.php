@@ -24,9 +24,6 @@
 
                     <tbody>
 										<?php foreach($allorders as $allorders_row): ?>
-											<?php 
-												
-											?>
                       <tr>
                         <td>#<?= $allorders_row['order_number']; ?></td>
                         <td><?=  date("d-m-Y", strtotime($allorders_row['create_date'])); ?></td>

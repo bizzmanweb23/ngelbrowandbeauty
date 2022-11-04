@@ -341,6 +341,7 @@ class Product extends CI_Controller {
             
     }
 	public function orderlist(){ 
+		
 		$user_id=$this->session->userdata('id');
 		$data['allorders'] = $this->Product->getAllorderlist($user_id);
 
@@ -349,7 +350,7 @@ class Product extends CI_Controller {
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
 
 		$this->load->view('front/header',$datahader);
-        $this->load->view('front/orderList',$data);
+        $this->load->view('front/orderlist',$data);
 		$this->load->view('front/footer');
 		 
     } 
@@ -369,8 +370,7 @@ class Product extends CI_Controller {
 		
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/order_summary',$data);
-		$this->load->view('front/footer');
-		 
+		$this->load->view('front/footer');	 
     }
 	public function showInvoice()
     {

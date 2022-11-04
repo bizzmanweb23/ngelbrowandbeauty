@@ -38,17 +38,29 @@ class Services_Model extends CI_Model
 			}
 			return $time;
 		}
-	function getServicename($id){
+	function getServicename($serviceId,$user_id){
 
-		$this->db->select('nbb_service.id as service_id,
+		/*$this->db->select('nbb_service.id as service_id,
 		nbb_service.service_name,
 		nbb_service.service_price');
 		$this->db->from('nbb_service');
 		$where = array(
 				'nbb_service.id'   => $id
 				);
+		$this->db->where($where);*/
+		$this->db->select('nbb_order_service.*,
+		nbb_service.service_name');
+		$this->db->from('nbb_order_service');
+		$where = array(
+			'nbb_order_service.user_id'   => $user_id,
+			'nbb_order_service.service_id'   => $serviceId,
+			'nbb_order_service.payment_status'   => 1,
+			'nbb_order_service.status'   => 2,
+			);
 		$this->db->where($where);
+		$this->db->join('nbb_service', 'nbb_service.id = nbb_order_service.service_id', 'LEFT');
 		$service_query = $this->db->get()->result_array();
+
 			$data = array();			
 
 			foreach($service_query as $row){				
@@ -57,6 +69,7 @@ class Services_Model extends CI_Model
 					'service_id' 		=> $row['service_id'],
 					'service_name' 		=> $row['service_name'],
 					'service_price' 	=> $row['service_price'],
+					'times_packages' 	=> $row['times_packages'],
 				);	
 			}
 			return $data;
@@ -90,6 +103,16 @@ class Services_Model extends CI_Model
 		$this->db->where('nbb_dashboard.user_id',$user_id);
 		$this->db->join('nbb_service', 'nbb_service.id = nbb_dashboard.services', 'LEFT');
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_dashboard.therapist_id', 'LEFT');
+		return $this->db->get()->result_array();
+	}
+	function getallorder_service($user_id){
+
+		$this->db->select('nbb_order_service.*,
+		nbb_service.service_name,
+		nbb_service.service_price');
+		$this->db->from('nbb_order_service');
+		$this->db->where('nbb_order_service.user_id',$user_id);
+		$this->db->join('nbb_service', 'nbb_service.id = nbb_order_service.service_id', 'LEFT');
 		return $this->db->get()->result_array();
 	}
 	function getallserviceOrderDetails($serviceId,$user_id){
@@ -143,6 +166,37 @@ class Services_Model extends CI_Model
 					'service_id' 		=> $row['service_id'],
 					'service_price' 		=> $row['service_price'],
 					'times_packages' 		=> $row['times_packages'],
+				);	
+			}
+			return $data;
+	}
+	function getAllsubCatservicesList($id){
+		$this->db->select('nbb_service.*');
+		$this->db->from('nbb_service');
+		$this->db->where('nbb_service.sub_child_category', $id); 
+		return $result = $this->db->get()->result_array(); 	
+	}
+	function getactivesubCatServices($id){
+		$this->db->select('nbb_service.*');
+		$this->db->from('nbb_service');
+		$this->db->where('nbb_service.sub_child_category', $id);
+		$this->db->limit(1);  
+		return $result = $this->db->get()->result_array(); 	
+	}
+	function getsubChild_categoryName($id){
+		$this->db->select('nbb_sub_child_category.sub_child_category');
+		$this->db->from('nbb_sub_child_category');
+		$where = array(
+			'nbb_sub_child_category.id'   => $id,
+			);
+		$this->db->where($where);
+		$category_query = $this->db->get()->result_array();
+		$data = array();			
+
+			foreach($category_query as $row){				
+
+				$data = array(
+					'sub_child_category' 	=> $row['sub_child_category'],
 				);	
 			}
 			return $data;

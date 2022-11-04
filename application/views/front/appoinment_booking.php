@@ -23,6 +23,12 @@
 													<h4 class="card-title font-weight-bold" style="color: #63d4d6;"><?= $serviceName['service_name']; ?></h4>
 													<input type="hidden" value="<?= $serviceName['service_id']; ?>" name="service_id">
 													<input type="hidden" value="<?= $serviceName['service_price']; ?>" name="service_price">
+													<?php if($serviceName['times_packages'] == '1'){?>
+														<input type="hidden" value="One Time session" name="times_packages">
+													<?php }else{ ?>
+														<input type="hidden" value="Package" name="times_packages">
+													<?php } ?>
+													
 												</div>
 											</div>
 										<h4 class="card-title  mt-3">Schedule Timings</h4>

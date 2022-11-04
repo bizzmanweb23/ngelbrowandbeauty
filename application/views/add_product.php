@@ -92,14 +92,22 @@
 				<div class="row">
 					<div class="col-md-3">      
 						<div class="form-group ">
-							<label for="service_price" class="col-sm-6 control-label">Product Price
-							<i class="required">*</i>
-							</label>
+							<label for="lowest_price" class="col-sm-6 control-label">Lowest price<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control lowest_price" name="lowest_price" placeholder="Enter Lowest Price" value="">
+							</div>
+						</div>        
+					</div>
+					<div class="col-md-3">      
+						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Product Price<i class="required">*</i></label>
 							<div class="col-sm-12">
 								<input type="text" class="form-control product_price" name="product_price" placeholder="Enter Product Price" value="" required>
 							</div>
 						</div>        
 					</div>
+				</div>
+				<div class="row">
 					<div class="col-md-3">                       
 						<div class="form-group ">
 							<label for="stock" class="col-sm-6 control-label">Types <i class="required">*</i></label>
@@ -129,7 +137,7 @@
 								<input type="text" class="form-control discounted_price" name="discounted_price" value="" readonly>
 							</div>
 						</div>        
-					</div> 
+					</div>
 				</div>
 				
                 <div class="row"> 

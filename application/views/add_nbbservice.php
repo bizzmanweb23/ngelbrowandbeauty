@@ -34,7 +34,7 @@
 					</div>
                 </div>
 				<div class="row">
-					<div class="col-md-6"> 
+					<div class="col-md-4"> 
 						<div class="form-group ">
 							<label for="category" class="col-sm-6 control-label"> Main Category
 							<i class="required">*</i>
@@ -50,13 +50,23 @@
 						</div> 
 					</div>
 									
-					<div class="col-md-6"> 
+					<div class="col-md-4"> 
 						<div class="form-group ">
 							<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
 							<div class="col-sm-12">
 								<select class="form-control service_category" name="service_category" required>
 									<option>Select Main Category First</option>
 								
+								</select>
+							</div>
+						</div> 
+					</div>
+					<div class="col-md-4"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Sub-Child-Category<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select class="form-control sub_child_category" name="sub_child_category">
+									<option>Select Sub-Category First</option>
 								</select>
 							</div>
 						</div> 
@@ -72,18 +82,24 @@
 					</div>  
                 </div>         
                  
-                <div class="row">       
-					<div class="col-md-6">      
-						<div class="form-group ">
-								<label for="service_price" class="col-sm-6 control-label">Service Price
-								<i class="required">*</i>
-								</label>
+                <div class="row">   
+					<div class="col-md-4">      
+						<div class="form-group">
+							<label for="service_price" class="col-sm-6 control-label">lowest_price<i class="required">*</i></label>
 								<div class="col-sm-12">
-										<input type="text" class="form-control" name="service_price" id="service_price" placeholder="Service Price Max Length : 50." value="">
+									<input type="number" class="form-control" name="lowest_price" placeholder="Lowest Price Max Length : 30." value="">
 								</div>
 						</div>        
+					</div>     
+					<div class="col-md-4">      
+						<div class="form-group ">
+							<label for="service_price" class="col-sm-6 control-label">Highest price<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<input type="number" class="form-control" name="service_price" id="service_price" placeholder="Highest price Max Length : 30." value="" required>
+							</div>
+						</div>        
 					</div> 
-					<div class="col-md-6">                       
+					<div class="col-md-4">                       
 						<div class="form-group ">
 							<label for="duration" class="col-sm-6 control-label">Duration 
 							</label>
@@ -158,43 +174,31 @@
 					</div>  
                 </div> 
                 <div class="row">
-                  	<div class="col-md-4">
+                  	<div class="col-md-6">
 						<div class="form-group ">
 							<label for="priority" class="col-sm-6 control-label">Priority </label>
 							<div class="col-sm-12">
 								<!--<input type="text" class="form-control" name="priority" id="priority" placeholder="Priority" value="">-->
-									<select class="form-control" id="priority" name="priority">
-										<option value="" selected hidden>Set Priority</option>
-											<option value="1">High</option>
-											<option value="2">Important</option>
-											<option value="3">Normal</option>
-											<option value="4">Low</option>
-									</select>
+								<select class="form-control" id="priority" name="priority">
+									<option value="" selected hidden>Set Priority</option>
+										<option value="1">High</option>
+										<option value="2">Important</option>
+										<option value="3">Normal</option>
+										<option value="4">Low</option>
+								</select>
 							</div>
 						</div>
                   	</div>
-					<div class="col-md-4">
-						<div class="form-group ">
-								<label for="loyalty_points" class="col-sm-6 control-label">Loyalty Points
-								</label>
-								<div class="col-sm-12">
-									<input type="text" class="form-control" name="loyalty_points" id="loyalty_points" placeholder="Loyalty Points" value="">
-									<small class="info help-block">
-									</small>
-								</div>
-						</div>
-					</div>
-                  <div class="col-md-4">                              
+                  <div class="col-md-6">                              
 					<div class="form-group ">
 						<label for="status" class="col-sm-6 control-label">Status <i class="required">*</i></label>
 						<div class="col-sm-12">
-								<select class="form-control" name="status" id="status" data-placeholder="Select Status" >
-										<option value="" hidden>Select Status</option>
-										<option value="0">Inactive</option>
-										<option value="1">Active</option>
-								</select>
-								<small class="info help-block">
-								</small>
+							<select class="form-control" name="status" id="status" data-placeholder="Select Status" >
+								<option value="" hidden>Select Status</option>
+								<option value="0">Inactive</option>
+								<option value="1">Active</option>
+							</select>
+								
 						</div>
 					</div>
                   </div> 
@@ -204,10 +208,10 @@
 							<div class="form-group ">
 								<label for="image" class="col-sm-6 control-label">Service Icon 
 								</label>
-									<div class="col-sm-12">
-											<div id="image"></div>
-											<input type="file" name="files[]" multiple required="" class="form-control">
-									</div>
+								<div class="col-sm-12">
+									<div id="image"></div>
+									<input type="file" name="files[]" multiple required="" class="form-control">
+								</div>
 							</div>
 						</div> 
 						<div class="col-md-6">
@@ -250,7 +254,19 @@
 					$('.service_category').html(response);
 				}
 			}); 
+		});
+		$('.service_category').on('change', function(){
+			var child_categoryID = $(this).val();
+			//alert(main_categoryID);
 			
+			$.ajax({
+				type:'GET',
+				url:'<?= base_url("admin/ProductManagement/select_Sub_child_Category")?>',
+				data: {child_categoryID:child_categoryID},
+				success:function(response){
+					$('.sub_child_category').html(response);
+				}
+			}); 
 		});
 		$('.discountPercentage').on('keyup', function(){
 			var discountPercentage = $(this).val();

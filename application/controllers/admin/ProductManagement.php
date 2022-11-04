@@ -124,6 +124,7 @@ class ProductManagement extends CI_Controller {
 			'short_description' => $this->input->post('shortDescription'),
 			'tags' => $this->input->post('product_tag'),
 			'weight' => $this->input->post('product_weight'),
+			'lowest_price' => $this->input->post('lowest_price'),
 			'price' => $this->input->post('product_price'),
 			'stock' => $this->input->post('stock'),
 			'available_stock' => $this->input->post('stock'),
@@ -177,7 +178,8 @@ class ProductManagement extends CI_Controller {
         }
 		if($uploadImgData ==true || $result == true)
 			{
-				redirect('product'); 
+				//redirect('product'); 
+				redirect('admin/ProductManagement/add_product');
 			}  
 		        
 		
@@ -207,6 +209,7 @@ class ProductManagement extends CI_Controller {
 			'short_description' => $this->input->post('shortDescription'),
 			'tags' => $this->input->post('product_tag'),
 			'weight' => $this->input->post('product_weight'),
+			'lowest_price' => $this->input->post('lowest_price'),
 			'price' => $this->input->post('product_price'),
 			'stock' => $this->input->post('stock'),
 			'mfg_date' => $this->input->post('mfg_date'),
@@ -364,6 +367,26 @@ class ProductManagement extends CI_Controller {
 			echo '<option value="" hidden>Select Sub-Category</option>'; 
 			foreach($main_category_result as $main_categoryRow){ 
 				echo '<option value="'.$main_categoryRow['id'].'">'.$main_categoryRow['category_name'].'</option>'; 
+			} 
+		}else{ 
+			echo '<option value="">Sub-Category Not Available</option>'; 
+		} 
+		
+	}
+	public function select_Sub_child_Category()
+	{
+ 
+		$subChild_categoryID = $_GET['child_categoryID'];
+		//echo $task_id;
+		
+		$subChild_category_sql = "SELECT nbb_sub_child_category.* FROM nbb_sub_child_category WHERE nbb_sub_child_category.child_category = ".$subChild_categoryID; 
+		$subChild_category_query = $this->db->query($subChild_category_sql); 
+		$subChild_category_result = $subChild_category_query->result_array();
+		// Generate HTML of state options list 
+		if($subChild_category_query->num_rows() > 0){ 
+			echo '<option value="" hidden>Select Sub-Category</option>'; 
+			foreach($subChild_category_result as $subChild_categoryRow){ 
+				echo '<option value="'.$subChild_categoryRow['id'].'">'.$subChild_categoryRow['sub_child_category'].'</option>'; 
 			} 
 		}else{ 
 			echo '<option value="">Sub-Category Not Available</option>'; 

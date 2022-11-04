@@ -97,7 +97,7 @@
 
             <input type="hidden" class="catId" name="catId" value="<?= $catId = $this->uri->segment(2); ?>">
 			
-            <div class="paginationCommon productPagination">
+            <!--div class="paginationCommon productPagination">
               <nav aria-label="Page navigation">
 			 
                 <ul class="pagination">
@@ -122,7 +122,7 @@
                 </ul>
 				
               </nav>
-            </div>
+            </div-->
         
 			
 			    </div>

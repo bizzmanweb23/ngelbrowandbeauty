@@ -18,8 +18,9 @@ class Service extends CI_Controller {
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
 		
 		$serviceId = $this->uri->segment(2);
+		$user_id = $this->session->userdata('id');
 		$datahader['allTharapist'] = $this->Services->getAllTharapist();
-		$datahader['serviceName'] = $this->Services->getServicename($serviceId);
+		$datahader['serviceName'] = $this->Services->getServicename($serviceId,$user_id);
 
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/appoinment_booking');
@@ -76,6 +77,7 @@ class Service extends CI_Controller {
 			'end_date' => $schedule_date,
 			'end_time' => $endTime,
 			'amount' => $service_price,
+			'times_packages' => $times_packages,
 		);  
 			$insert = $this->Main->insert('nbb_dashboard',$data); 
             if($insert == true)
@@ -91,6 +93,7 @@ class Service extends CI_Controller {
 		
 		$user_id = $this->session->userdata('id');
 		$data['appoinmentDetails'] = $this->Services->getallappoinment($user_id);
+		$data['order_service'] = $this->Services->getallorder_service($user_id);
 
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/appointment_booingtable',$data);

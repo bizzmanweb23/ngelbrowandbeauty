@@ -16,16 +16,17 @@
 				</ul>-->
           </div>
 
-			<form name ="payroll" action="<?= base_url('add_to_cart')?>" method="post" enctype="multipart/form-data">
+			
+							<div class="col-md-6">
+							<form name ="payroll" action="<?= base_url('add_to_cart')?>" method="post" enctype="multipart/form-data">
 								
-						<input type="hidden" class="form-control" name="product_id" value="<?= $productDetails['id'] ?>">
-						<input type="hidden" class="form-control stock" name="stock" value="<?= $productDetails['stock'] ?>">
-						<input type="hidden" class="form-control" name="product_price" value="<?= $productDetails['price'] ?>">
-							<div class="col-md-12">
+								<input type="hidden" class="form-control" name="product_id" value="<?= $productDetails['id'] ?>">
+								<input type="hidden" class="form-control stock" name="stock" value="<?= $productDetails['stock'] ?>">
+								<input type="hidden" class="form-control" name="product_price" value="<?= $productDetails['price'] ?>">
 								<div class="singleProductInfo">
 									<div class="row">
 										<div class="col-md-8">
-										<h2 class="font-weight-bold"><?= $productDetails['pname'] ?>(<?= $productDetails['sku'] ?>)</h2>
+										<span class="font-weight-bold" style="font-size: 20px;"><?= $productDetails['pname'] ?>(<?= $productDetails['sku'] ?>)</span>
 										</div>
 									</div>
 									<div class="row">
@@ -69,21 +70,21 @@
 										<div class="form-group mt-0">
 										<label class="font-weight-bold">Quantity:</label>
 										
-											<?php if($productDetails['discounted_price'] != ''){ ?>	
-												<input type="text" class="form-control quantity" name="quantity" value="1" min="1" max="999" onkeyup="calculate_total_price(<?= $productDetails['discounted_price'] ?>)">
+											<input type="number" class="form-control quantity" name="quantity" value="1" min="1" max="999">
+
+											<?php if($productDetails['discounted_price'] != 0){ ?>	
+												<input type="hidden" class="form-control product_price" name="product_price" value="<?= $productDetails['discounted_price'] ?>">
 											<?php }else{ ?>
-												<input type="text" class="form-control quantity" name="quantity" value="1" min="1" max="999" onkeyup="calculate_total_price(<?= $productDetails['price'] ?>)">
-											<?php } ?>
+												<input type="hidden" class="form-control product_price" name="product_price" value="<?= $productDetails['price'] ?>">
+											<?php }  ?>
+																	
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
 										<label class="font-weight-bold">Total price:</label>
-										<?php if($productDetails['discounted_price'] != ''){ ?>	
-											<input type="text" class="form-control displayprice" name="totalPrice" value="<?= $productDetails['discounted_price'] ?>" min="1" max="999" readonly>
-											<?php }else{ ?>
+
 												<input type="text" class="form-control displayprice" name="totalPrice" value="<?= $productDetails['price'] ?>" min="1" max="999" readonly>
-											<?php } ?>
 											
 										</div>
 									</div>
@@ -92,9 +93,14 @@
 									<div class="row">
 										<div class="col-md-5">
 											<div class="finalCart">
-											<?php if($this->session->userdata('id')>0){ ?>
+											<?php if($this->session->userdata('id')>0){ 
+												if($productDetails['available_stock'] == 0){ ?>
+												
+													<span style="color:red;font-weight:bold;font-size: 18px;">Out Of Stock</span>
+											<?php } else{ ?>
 												<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Add to cart</button>
-											<?php }else{ ?>
+											<?php }
+										 	}else{ ?>
 												
 												<a href="javascript:void(0)" onclick="return swal('Please Login First')" class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Add to cart</a>
 											<?php } ?>
@@ -131,8 +137,9 @@
 										<li><a href="javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 									</ul>-->
 								</div>
+								</form>
 							</div>
-					</form>
+					
         </div>
 
         <div class="row">
@@ -197,17 +204,29 @@
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
 <script type = "text/javascript">
 	function calculate_total_price(price){
+		//alert(price);
 		var quantity = $( ".quantity" ).val(); 
 		var available_stock = $( ".stock" ).val();
 		
-    var product_total_base_price = price * quantity;
+    	var product_total_base_price = price * quantity;
 		var result2 = available_stock - quantity;
-		//alert(result2); 
+		//alert(product_total_base_price); 
 		$(".displayprice").val(product_total_base_price);
 		$(".stocknow").val(result2);
 	}
 
 	$(document).ready(function(){
+		$('.quantity').on('keyup change', function() {
+			var price = $( ".product_price" ).val(); 
+			var quantity = $( ".quantity" ).val(); 
+			var available_stock = $( ".stock" ).val();
+			
+			var product_total_base_price = price * quantity;
+			var result2 = available_stock - quantity;
+			//alert(product_total_base_price); 
+			$(".displayprice").val(product_total_base_price);
+			$(".stocknow").val(result2);
+		});
 			$(".addwishList").on('click', function(e){
 					var product_id = $(this).attr('data-product_id');
 					//alert(product_id);

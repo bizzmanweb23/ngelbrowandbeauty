@@ -23,28 +23,28 @@
               <div class="card-body">
                 <form id="add_category" action="<?= base_url('admin/ServiceCategoryCtl/post_add_category')?>" method="post" enctype="multipart/form-data">
                 <div class="row">
-									<div class="col-md-6">             
-										<div class="form-group ">
-												<label for="name" class="col-sm-6 control-label">Parent Category <i class="required">*</i>
-												</label>
-												<div class="col-sm-12">
-													<select  class="form-control chosen chosen-select-deselect" name="parent_category">
-														<option hidden>Select Parent Category</option>
-															<?php foreach($parentCategory as $parentCategoryRow): ?>
-															<option value="<?= $parentCategoryRow['id']?>"><?= $parentCategoryRow['name']?></option>
-															<?php endforeach; ?> 
-													</select>
-												</div>
-									</div>
-                	</div>
-                  <div class="col-md-6">             
-										<div class="form-group ">
-												<label for="name" class="col-sm-6 control-label">Sub-Category Name <i class="required">*</i>
-												</label>
-												<div class="col-sm-12">
-														<input type="text" class="form-control" name="name" id="name" placeholder="Name Max Length : 100." value="">
-												</div>
-										</div>
+					<div class="col-md-6">             
+						<div class="form-group ">
+							<label for="name" class="col-sm-6 control-label">Parent Category <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<select  class="form-control chosen chosen-select-deselect" name="parent_category">
+									<option hidden>Select Parent Category</option>
+										<?php foreach($parentCategory as $parentCategoryRow): ?>
+										<option value="<?= $parentCategoryRow['id']?>"><?= $parentCategoryRow['name']?></option>
+										<?php endforeach; ?> 
+								</select>
+							</div>
+						</div>
+					</div>
+                  	<div class="col-md-6">             
+						<div class="form-group ">
+							<label for="name" class="col-sm-6 control-label">Sub-Category Name <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+									<input type="text" class="form-control" name="name" id="name" placeholder="Name Max Length : 100." value="">
+							</div>
+						</div>
                 	</div>
                 </div>
 								 
