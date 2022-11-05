@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 		//$this->load->library('m_pdf');
 		//$this->db2 = $this->load->database('database2', TRUE);
 	}
-	public function index(){ 
+	public function allhome(){ 
 
 		$data['allSemiservices'] = $this->Home->getAllSemiservicesList();
 		$data['activeServices'] = $this->Home->getactiveSemiServices();

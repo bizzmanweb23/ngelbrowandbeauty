@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 //$route['default_controller'] = 'front/Home/allhome';
-$route['home'] = 'front/Home';
+$route['home'] = 'front/Home/allhome';
 $route['login'] = 'front/Home/login';
 $route['signup'] = 'front/Home/register';
 $route['ReferredRegister/(:any)'] = 'front/Home/registerReferal/$i';
