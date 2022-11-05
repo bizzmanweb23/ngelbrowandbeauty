@@ -133,6 +133,7 @@
 																			</span>
 																			
 																		</h4>-->
+																		<?php if($servicesImg_row['service_category'] == 1){ ?>
 																		<div class="row mt-3">
 																					<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
 																					<?php if($order_service_rownum > 0){ ?>
@@ -167,6 +168,17 @@
 																					<input type="hidden" name="package_times_price" value="<?= $servicesImg_row['package_times_price']; ?>">
 																					</div>
 																		</div>
+																		<?php }else{ ?>
+																			<div class="row mt-3">
+																				<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
+														  							<label>Price</label>
+																				</div>
+																				<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">					
+																					s$<?= $servicesImg_row['service_price'] ?>
+																					<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
+																				</div>
+																			</div>
+																		<?php } ?>
 																		
 																		<div class="mt-3">
 																		<?php if($this->session->userdata('id')>0){ 

@@ -73,32 +73,7 @@
 							<?= $servicesImg_row['description'] ?>
 						</div>
 			</div>
-			<!--	<h4 class="price">One Time price: 
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="timePrice" id="timesPrice1" value="1" required>
-					</div>
-					<span class="pull-right" style="font-size: 40px">
-						<?php if($servicesImg_row['discount_price'] == 0){ ?>
-							$<?= $servicesImg_row['service_price'] ?>
-							<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
-						<?php }else{ ?>
-							$<?= $servicesImg_row['discount_price'] ?>
-							<input type="hidden" name="service_price" value="<?= $servicesImg_row['discount_price']; ?>">
-						<?php } ?>
-					</span>
-				</h4>
-				<h4 class="price"><?= $servicesImg_row['package_session'] ?> times Package: 
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="timePrice" id="timesPrice2" value="10" required>
-					</div>
-					<span class="pull-right" style="font-size: 40px;">
-					
-						$<?= $servicesImg_row['package_times_price'] ?>
-						<input type="hidden" name="package_times_price" value="<?= $servicesImg_row['package_times_price']; ?>">
-					</span>
-					
-				</h4>-->
-				<div class="row mt-3">
+			<?php /* <div class="row mt-3">
 							<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
 							<?php if($order_service_rownum > 0){ ?>
 									
@@ -110,12 +85,29 @@
 							</div>
 							<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
 									<?php if($servicesImg_row['discount_price'] == 0){ ?>
-									$<?= $servicesImg_row['service_price'] ?>
+									s$<?= $servicesImg_row['service_price'] ?>
 									<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
 								<?php }else{ ?>
-									$<?= $servicesImg_row['discount_price'] ?>
+									s$<?= $servicesImg_row['discount_price'] ?>
 									<input type="hidden" name="service_price" value="<?= $servicesImg_row['discount_price']; ?>">
 								<?php } ?>
+							</div>
+				</div> */ ?>
+			<?php if($servicesImg_row['service_category'] == 1){ ?>
+				<div class="row mt-3">
+							<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
+							<?php if($order_service_rownum > 0){ ?>
+									
+							<?php }else{ ?>
+								<input type="radio" id="timesPrice1" name="timePrice" value="1" required>
+							<?php } ?>
+								
+  							<label>One Time price</label>
+							</div>
+							<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
+									
+									s$<?= $servicesImg_row['service_price'] ?>
+									<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
 							</div>
 				</div>
 				<div class="row pt-2">
@@ -128,10 +120,21 @@
   								<label><?= $servicesImg_row['package_session'] ?> Times Package:</label>
 							</div>
 							<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
-							$<?= $servicesImg_row['package_times_price'] ?>
+							s$<?= $servicesImg_row['package_times_price'] ?>
 							<input type="hidden" name="package_times_price" value="<?= $servicesImg_row['package_times_price']; ?>">
 							</div>
 				</div>
+				<?php }else{ ?>
+					<div class="row mt-3">
+						<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
+  							<label>Price</label>
+						</div>
+						<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">					
+							s$<?= $servicesImg_row['service_price'] ?>
+							<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
+						</div>
+					</div>
+				<?php } ?>
 				
 				<div class="mt-3">
 				<?php if($this->session->userdata('id')>0){ 

@@ -12,7 +12,23 @@ class Home extends CI_Controller {
 		//$this->load->library('m_pdf');
 		//$this->db2 = $this->load->database('database2', TRUE);
 	}
+	public function index(){ 
 
+		$data['allSemiservices'] = $this->Home->getAllSemiservicesList();
+		$data['activeServices'] = $this->Home->getactiveSemiServices();
+		$data['allproducts'] = $this->Home->getHomeproductList();
+
+		$datahader['allchild_category'] = $this->Header->getAllchild_category();
+		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
+		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+		
+
+		$this->load->view('front/header',$datahader);
+        $this->load->view('front/home',$data);
+		$this->load->view('front/footer');
+		 
+    }
+	
 	public function get_roles(){
 		$this->db->select('*');
 		$this->db->from('nbb_roles');
@@ -198,7 +214,6 @@ class Home extends CI_Controller {
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-		$datahader['allpackage_category'] = $this->Header->getAllpackage_category();
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/enterotp');
 		$this->load->view('front/footer');
@@ -394,22 +409,7 @@ class Home extends CI_Controller {
 			}
 
 	}
-	public function all_home(){ 
-
-		$data['allservices'] = $this->Home->getAllservicesList();
-		$data['activeServices'] = $this->Home->getactiveServices();
-		$data['allproducts'] = $this->Home->getHomeproductList();
-
-		$datahader['allchild_category'] = $this->Header->getAllchild_category();
-		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
-		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-		
-
-		$this->load->view('front/header',$datahader);
-        $this->load->view('front/home',$data);
-		$this->load->view('front/footer');
-		 
-    }
+	
     public function about(){
      
 		$datahader['allchild_category'] = $this->Header->getAllchild_category();
@@ -493,7 +493,6 @@ class Home extends CI_Controller {
 		   $datahader['allchild_category'] = $this->Header->getAllchild_category();
 		   $datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		   $datahader['allcourse_category'] = $this->Header->getAllCourse_category();
-		   $datahader['allpackage_category'] = $this->Header->getAllpackage_category();
 		   $this->load->view('front/header',$datahader);
         $this->load->view('front/services-details', $data);
 		$this->load->view('front/footer');

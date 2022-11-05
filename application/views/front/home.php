@@ -10,7 +10,7 @@
             <div class="slide-inner2 common-inner">
 							<!--img src="<?= base_url(); ?>assets/front/img/slider-logo.png" class="img-fluid" style = "max-width: 150px;mix-blend-mode:color;">-->
               <span class="h1 from-bottom">Welcome to N’gel Beauty</span><br>
-              <span class="h4 from-bottom">Angel Face N'gel美业，天使之颜 </span><br>
+              <span class="h4 from-bottom">N’gel  美业  天使之颜  </span><br>
               <a href="javascript:void(0)" class="btn btn-primary first-btn waves-effect waves-light scale-up">More Details</a>
             </div>
           </div>
@@ -124,8 +124,8 @@
 											
 											
                         <ul class="nav nav-tabs force-overflow">
-													<?php foreach($allservices as $allservices_row): ?>
-                          	<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?> <span>$<?= $allservices_row['service_price'] ?></span></a></li>
+													<?php foreach($allSemiservices as $allservices_row): ?>
+                          	<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?></a></li>
 													<?php	endforeach; ?>
                           
                         </ul>
@@ -209,50 +209,26 @@
 																					<?= $servicesImg_row['description'] ?>
 																				</div>
 																	</div>
-																	<!--	<h4 class="price">One Time price: 
-																			<div class="form-check">
-																				<input class="form-check-input" type="radio" name="timePrice" id="timesPrice1" value="1" required>
-																			</div>
-																			<span class="pull-right" style="font-size: 40px">
-																				<?php if($servicesImg_row['discount_price'] == 0){ ?>
-																					$<?= $servicesImg_row['service_price'] ?>
-																					<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
-																				<?php }else{ ?>
-																					$<?= $servicesImg_row['discount_price'] ?>
-																					<input type="hidden" name="service_price" value="<?= $servicesImg_row['discount_price']; ?>">
-																				<?php } ?>
-																			</span>
-																		</h4>
-																		<h4 class="price"><?= $servicesImg_row['package_session'] ?> times Package: 
-																			<div class="form-check">
-																				<input class="form-check-input" type="radio" name="timePrice" id="timesPrice2" value="10" required>
-																			</div>
-																			<span class="pull-right" style="font-size: 40px;">
-																			
-																				$<?= $servicesImg_row['package_times_price'] ?>
-																				<input type="hidden" name="package_times_price" value="<?= $servicesImg_row['package_times_price']; ?>">
-																			</span>
-																			
-																		</h4>-->
-																		<div class="row mt-3">
-																					<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
-																					<?php if($order_service_rownum > 0){ ?>
-																							
-																					<?php }else{ ?>
-																						<input type="radio" id="timesPrice1" name="timePrice" value="1" required>
-																					<?php } ?>
+																
+																	<?php /* <div class="row mt-3">
+																				<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
+																				<?php if($order_service_rownum > 0){ ?>
 																						
-	  																				<label>One Time price</label>
-																					</div>
-																					<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
-																							<?php if($servicesImg_row['discount_price'] == 0){ ?>
-																							$<?= $servicesImg_row['service_price'] ?>
-																							<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
-																						<?php }else{ ?>
-																							$<?= $servicesImg_row['discount_price'] ?>
-																							<input type="hidden" name="service_price" value="<?= $servicesImg_row['discount_price']; ?>">
-																						<?php } ?>
-																					</div>
+																				<?php }else{ ?>
+																					<input type="radio" id="timesPrice1" name="timePrice" value="1" required>
+																				<?php } ?>
+																					
+  																				<label>One Time price</label>
+																				</div>
+																				<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
+																						<?php if($servicesImg_row['discount_price'] == 0){ ?>
+																						$<?= $servicesImg_row['service_price'] ?>
+																						<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
+																					<?php }else{ ?>
+																						$<?= $servicesImg_row['discount_price'] ?>
+																						<input type="hidden" name="service_price" value="<?= $servicesImg_row['discount_price']; ?>">
+																					<?php } ?>
+																				</div>
 																		</div>
 																		<div class="row pt-2">
 																				<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
@@ -267,7 +243,17 @@
 																					$<?= $servicesImg_row['package_times_price'] ?>
 																					<input type="hidden" name="package_times_price" value="<?= $servicesImg_row['package_times_price']; ?>">
 																					</div>
+																		</div> */ ?>
+																		<div class="row mt-3">
+																				<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
+  																				<label>Price</label>
+																				</div>
+																				<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">					
+																						s$<?= $servicesImg_row['service_price'] ?>
+																						<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
+																				</div>
 																		</div>
+
 																		
 																		<div class="mt-3">
 																		<?php if($this->session->userdata('id')>0){ 
@@ -429,62 +415,6 @@
                 <li><i class="fa fa-phone" aria-hidden="true"></i> +55 654 545 122</li>
                 <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a> <br></li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-<!-- PARTNER LOGO SECTION -->
-    <section class="clearfix brandArea patternbg">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="owl-carousel partnersLogoSlider">
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/brand-1.png" src="<?= base_url(); ?>/assets/front/img/home/brand-1.png" alt="Image Partner">
-                </div>
-              </div> 
-
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/brand-2.png" src="<?= base_url(); ?>/assets/front/img/home/brand-2.png" alt="Image Partner">
-                </div>
-              </div>
-
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/brand-1.png" src="<?= base_url(); ?>/assets/front/img/home/brand-1.png" alt="Image Partner">
-                </div>
-              </div>
-
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/brand-4.png" src="<?= base_url(); ?>/assets/front/img/home/brand-4.png" alt="Image Partner">
-                </div>
-              </div>
-
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/brand-1.png" src="<?= base_url(); ?>/assets/front/img/home/brand-1.png" alt="Image Partner">
-                </div>
-              </div>  
-
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/brand-2.png"  src="<?= base_url(); ?>/assets/front/img/home/brand-2.png" alt="Image Partner">
-                </div>
-              </div>
-
-            
-
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img class="lazyestload" data-src="<?= base_url(); ?>/assets/front/img/home/brand-4.png" src="<?= base_url(); ?>/assets/front/img/home/brand-4.png" alt="Image Partner">
-                </div>
-              </div>
             </div>
           </div>
         </div>

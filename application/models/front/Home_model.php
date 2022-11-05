@@ -43,6 +43,27 @@ class Home_model extends CI_Model
 		$this->db->limit(1);  
 		return $result = $this->db->get()->result_array(); 	
 	}
+	function getAllSemiservicesList(){
+		$this->db->select('nbb_service.*');
+		$this->db->from('nbb_service');
+		$wheredata = array(
+			'nbb_service.status' 		=> 1,
+			'nbb_service.service_category' 		=> 19,
+		);
+		$this->db->where($wheredata);
+		return $result = $this->db->get()->result_array(); 	
+	}
+	function getactiveSemiServices(){
+		$this->db->select('nbb_service.*');
+		$this->db->from('nbb_service');
+		$wheredata = array(
+			'nbb_service.status' 		=> 1,
+			'nbb_service.service_category' 		=> 19,
+		);
+		$this->db->where($wheredata);
+		$this->db->limit(1);  
+		return $result = $this->db->get()->result_array(); 	
+	}
 	function getShipping_address($user_id){
 		$this->db->select('nbb_shipping_address.*');
 		$this->db->from('nbb_shipping_address');
