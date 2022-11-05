@@ -249,13 +249,13 @@
   																				<label>Price</label>
 																				</div>
 																				<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">					
-																						s$<?= $servicesImg_row['service_price'] ?>
+																						S$&nbsp;<?= $servicesImg_row['lowest_price'] ?>&nbsp;-&nbsp;S$&nbsp;<?= $servicesImg_row['service_price'] ?>
 																						<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
 																				</div>
 																		</div>
 
 																		
-																		<div class="mt-3">
+																		<div class="row mt-3">
 																		<?php if($this->session->userdata('id')>0){ 
 																			 if($order_service_rownum > 0){ 
 																			?>

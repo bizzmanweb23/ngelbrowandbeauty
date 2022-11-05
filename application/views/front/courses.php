@@ -11,7 +11,7 @@
       <div class="container">
         <div class="row">
 				<?php foreach($allcourse as $course_row): ?>
-          <div class="col-md-4">
+          <div class="col">
             <div class="blogPost">
               <img src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" data-src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" class="img-responsive">
               <h3><?= $course_row['course_name'] ?></h3>
@@ -22,7 +22,7 @@
 							</p>
 							<div class="row">
 								<div class="col-md-6">
-										<p style="color: #000;"><?php if($course_row['course_fees'] != ''){ ?><h2 class="align-middle" style="color: #63d4d6;">$<?= $course_row['course_fees'] ?></h2><?php }else{} ?></p>
+										<p style="color: #000;"><?php if($course_row['course_fees'] != ''){ ?><h2 class="align-middle" style="color: #63d4d6;">S$&nbsp;<?= $course_row['course_fees'] ?></h2><?php }else{} ?></p>
 								</div>
 
 							</div>
