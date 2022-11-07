@@ -50,14 +50,13 @@
 								</td>
 								<td>
 									<h6 class="mb-0"><?= date("d-m-Y", strtotime($order_serviceRow['created_at'])); ?></h6>
-								</td>
-								
+								</td>										
 								<td>
-								<?php /* if($order_serviceRow['status'] == 3){ ?>
-									
+								<?php if($this->session->userdata('id')>0){  ?>
+									<a href="<?= base_url('appointmentBooking/'.$order_serviceRow['id'])?>" class="btn btn-primary first-btn px-2" target="_blank">Make An Appoinment</a>
 								<?php }else{ ?>
-									<a class="label label-primary appoinment_button" href="<?= base_url() ?>front/Service/update_appointmentStatus?appoinment_id=<?= $order_serviceRow['id']; ?>" onclick="return confirm('Are you sure you want to Cancel this Appoinment?');" style="background-color: #FF0000;"> ×</a>
-								<?php } */ ?>
+									<a href="javascript:void(0)" onclick="return swal('Please Login First')" class="btn btn-primary first-btn px-2">Make An Appoinment</a>
+								<?php } ?>
 									
 								</td>
 							</tr>
@@ -148,7 +147,8 @@
 
 	
 	
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
 <style>
 
 .main-content {

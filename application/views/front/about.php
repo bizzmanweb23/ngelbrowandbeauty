@@ -14,7 +14,7 @@
             </div>
             <div class="col-sm-7 col-xs-12 mt-4">
              
-                <h2 style="text-transform: capitalize;"> N'gel brow & beauty</h2>
+                <h2 style="text-transform: capitalize;"> N'gel</h2>
                 <div class="row">
 									<div class="col-md-12">
 										<p style="color: #000;">Established in 2017，N’GEL has been consistently providing customized Semi-permanent Makeup and Aesthetic Beauty Skin management to all our dear customers.

@@ -361,6 +361,37 @@ class ApiController extends CI_Controller
                 ]);
         }
     } 
+	//======Sub Child CATEGORY======//
+	public function get_subchild_category()
+    {
+        $subchild_category =  $this->input->get('subchild_category'); 
+        
+        $this->db->select('id as subchild_catId ,child_category,sub_child_category,subchild_cat_image');  
+        $this->db->from('nbb_sub_child_category');
+        $this->db->where('child_category',$subchild_category);
+        $result = $this->db->get();
+        $rows = $result->num_rows(); 
+        
+        $subchild_category = $result->result_array();
+        
+        if($rows){
+            for($i=0 ; $i<count($subchild_category); $i++){
+                $subchild_category[$i]['subchild_cat_image'] = $this->url.'uploads/service_img/'.$subchild_category[$i]['subchild_cat_image'];
+            }
+            
+            echo json_encode([
+                    'responsecode'=>$this->responseCode, 
+                    'message'=>'success',
+                    'data'=>$subchild_category,
+                ]);
+        } else {
+            echo json_encode([
+                    'responsecode'=>$this->error,
+                    'message'=>'Not Found',
+                     
+                ]);
+        }
+    } 
 //======PRODUCT CATEGORY======//
     public function get_product_category()
     { 

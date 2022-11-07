@@ -238,8 +238,43 @@ class ServiceCategoryCtl extends CI_Controller {
 			
 		);
 		$result = $this->Main->insert('nbb_sub_child_category',$Category_data);
+		$insert_id = $this->db->insert_id();
+		if($result ==true)
+		{
+			$this->load->library('upload');
+			if($_FILES['subchild_cat_image']['name'] != '')
+			{
+
+				$_FILES['file']['name']       = $_FILES['subchild_cat_image']['name'];
+				$_FILES['file']['type']       = $_FILES['subchild_cat_image']['type'];
+				$_FILES['file']['tmp_name']   = $_FILES['subchild_cat_image']['tmp_name'];
+				$_FILES['file']['error']      = $_FILES['subchild_cat_image']['error'];
+				$_FILES['file']['size']       = $_FILES['subchild_cat_image']['size'];
+
+				// File upload configuration
+				$uploadPath = 'uploads/category_image/';
+				$config['upload_path'] = $uploadPath;
+				$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+				$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+				$config['max_height'] = "";
+				$config['max_width'] = "";
+
+				// Load and initialize upload library
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				// Upload file to server
+				if($this->upload->do_upload('file')){
+					// Uploaded file data
+					$imageData = $this->upload->data();
+					$uploadImgData['subchild_cat_image'] = $imageData['file_name'];
+				}
+				$update=$this->Main->update('id',$insert_id, $uploadImgData,'nbb_sub_child_category');         
+			} 
+
+		}
 		
-		if($result == true)
+		if($result == true || $update == true)
 			{
 				redirect('admin/ServiceCategoryCtl/all_subChildCategory');
 			} 
@@ -265,8 +300,42 @@ class ServiceCategoryCtl extends CI_Controller {
 			
 		);
 			$result = $this->Main->update('id',$servicecategory_id, $Category_data,'nbb_sub_child_category');
+			if($result ==true)
+			{
+				$this->load->library('upload');
+				if($_FILES['subchild_cat_image']['name'] != '')
+				{
+
+					$_FILES['file']['name']       = $_FILES['subchild_cat_image']['name'];
+					$_FILES['file']['type']       = $_FILES['subchild_cat_image']['type'];
+					$_FILES['file']['tmp_name']   = $_FILES['subchild_cat_image']['tmp_name'];
+					$_FILES['file']['error']      = $_FILES['subchild_cat_image']['error'];
+					$_FILES['file']['size']       = $_FILES['subchild_cat_image']['size'];
+
+					// File upload configuration
+					$uploadPath = 'uploads/category_image/';
+					$config['upload_path'] = $uploadPath;
+					$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+					$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+					$config['max_height'] = "";
+					$config['max_width'] = "";
+
+					// Load and initialize upload library
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+
+					// Upload file to server
+					if($this->upload->do_upload('file')){
+						// Uploaded file data
+						$imageData = $this->upload->data();
+						$uploadImgData['subchild_cat_image'] = $imageData['file_name'];
+					}
+					$update=$this->Main->update('id',$servicecategory_id, $uploadImgData,'nbb_sub_child_category');         
+				} 
+
+			}
 			
-		if($result == true)
+		if($result == true || $update == true)
 			{
 				
 				redirect('admin/ServiceCategoryCtl/all_subChildCategory');

@@ -3,16 +3,16 @@
     <section class="clearfix varietySection">
       <div class="container-fluid">
         <div class="secotionTitle">
-          <h2><span>Discover</span>variety of services</h2>
+          <h2><span>Discover</span><?= $catagoryName['category_name']; ?></h2>
         </div>
         <div class="row">
           <div class="col-12">
             <div class="tabbable tabTop">
-							<div class="card mb-3">
+							<!--<div class="card mb-3">
 								<div class="card-header font-weight-bold" style="background-color: #63d4d6;">
 								<div class="font-weight-bold text-center" style="color: #fff;font-size: 25px;"><?= $catagoryName['category_name']; ?></div>
 								</div>
-							</div>
+							</div>-->
               
               <div class="tab-content">
                 <div class="tab-pane active">
@@ -24,7 +24,7 @@
 											
                         <ul class="nav nav-tabs">
 													<?php foreach($allservices as $allservices_row): ?>
-                          	<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?> <span>$<?= $allservices_row['service_price'] ?></span></a></li>
+                          	<li><a href="javascript:void(0)" style="cursor: pointer;" data-toggle="tab" class="active" onclick="showServiceDetails(<?= $allservices_row['id'] ?>)"><?= $allservices_row['service_name'] ?></a></li>
 													<?php	endforeach; ?>
                           
                         </ul>
@@ -55,48 +55,7 @@
 																			<div class="col-md-7">
 
 																			<h3 class="mt-5 pt-2"><?= $servicesImg_row['service_name'] ?></h3>
-																		<div class="ratings">
-																		<h6>
-																			<?php if($servicesImg_row['rating'] == 1){ ?>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																			<?php }elseif($servicesImg_row['rating'] == 2){ ?>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																			<?php }elseif($servicesImg_row['rating'] == 3){ ?>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																			<?php }elseif($servicesImg_row['rating'] == 4){ ?>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star"></span>
-																			<?php }elseif($servicesImg_row['rating'] == 5){ ?>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																				<span class="fa fa-star" style=" color: orange;"></span>
-																			<?php }else{ ?>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																				<span class="fa fa-star"></span>
-																			<?php }?>
-																			
-																		</h6>
-																	</div>
+																		
 																	<div class="row pt-2">	
 																		<div class="col-md-12">
 																			<label class="font-weight-bold">Description:</label>
@@ -146,10 +105,10 @@
 																					</div>
 																					<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
 																							<?php if($servicesImg_row['discount_price'] == 0){ ?>
-																							$<?= $servicesImg_row['service_price'] ?>
+																							S$&nbsp;<?= $servicesImg_row['service_price'] ?>
 																							<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
 																						<?php }else{ ?>
-																							$<?= $servicesImg_row['discount_price'] ?>
+																							S$&nbsp;<?= $servicesImg_row['discount_price'] ?>
 																							<input type="hidden" name="service_price" value="<?= $servicesImg_row['discount_price']; ?>">
 																						<?php } ?>
 																					</div>
@@ -164,7 +123,7 @@
 	  																				<label><?= $servicesImg_row['package_session'] ?> Times Package:</label>
 																					</div>
 																					<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
-																					$<?= $servicesImg_row['package_times_price'] ?>
+																					S$&nbsp;<?= $servicesImg_row['package_times_price'] ?>
 																					<input type="hidden" name="package_times_price" value="<?= $servicesImg_row['package_times_price']; ?>">
 																					</div>
 																		</div>

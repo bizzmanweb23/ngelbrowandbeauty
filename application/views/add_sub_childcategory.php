@@ -54,19 +54,27 @@
                   </div>
                                                        
                   <div class="row"> 
-						<div class="col-md-6">                       
-							<div class="form-group ">
-								<label for="status" class="col-sm-6 control-label">Status <i class="required">*</i></label>
-								<div class="col-sm-12">
-									<select  class="form-control chosen chosen-select" name="status" id="status">
-										<option value="" hidden>Select Status</option>
-										<option value="0">Inactive</option>
-										<option value="1">Active</option>
-									</select>
-								</div>
-							</div>
-                    	</div> 
-								   
+										<div class="col-md-6">                       
+											<div class="form-group">
+												<label for="status" class="col-sm-6 control-label">Status <i class="required">*</i></label>
+												<div class="col-sm-12">
+													<select  class="form-control chosen chosen-select" name="status" id="status">
+														<option value="" hidden>Select Status</option>
+														<option value="0">Inactive</option>
+														<option value="1">Active</option>
+													</select>
+												</div>
+											</div>
+                    </div> 
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="image" class="col-sm-6 control-label">Image
+												</label>
+													<div class="col-sm-12">
+															<input type="file" name="subchild_cat_image" class="form-control">
+													</div>
+											</div>
+										</div>   
                   </div> 
                     <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:150px;">
               </form>

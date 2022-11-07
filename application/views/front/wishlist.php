@@ -1,4 +1,3 @@
-
 <!-- ORDER SECTION -->
       <section class="clearfix orderSection padding">
         <div class="container">

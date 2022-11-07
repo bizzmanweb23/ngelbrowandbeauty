@@ -68,6 +68,15 @@
 							</div>
 						</div>
 					</div> 
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="image" class="col-sm-6 control-label">Image
+							</label>
+							<div class="col-sm-12">
+									<input type="file" name="subchild_cat_image" class="form-control">
+							</div>
+						</div>
+					</div>
 								   
                   </div> 
                     <input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:150px;">

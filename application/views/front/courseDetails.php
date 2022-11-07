@@ -14,11 +14,31 @@
 							<div class="card mb-4">
 								<div class="card-body">
 									<h3 class="h6"><strong> Course Information</strong></h3>
-									<ul>
-										<li>Course Fees <span class="text-right pull-right">$<?= $courseData['course_fees']; ?></span></li>
-										<li>Durations <span class="text-right pull-right"><?= $courseData['durations']; ?></span></li>
-										<li>Trainer <span class="text-right pull-right"> $<?= $courseData['first_name'].' '.$courseData['last_name']; ?></span></li>
-									</ul>
+									<div class="row pt-1">
+										<div class="col-md-5">
+											Course Fees
+										</div>
+										<div class="col-md-7">
+											$<?= $courseData['course_fees']; ?>
+										</div>
+									</div>
+									<div class="row pt-2">
+										<div class="col-md-5">
+											Durations
+										</div>
+										<div class="col-md-7">
+											<?= $courseData['durations']; ?>
+										</div>
+									</div>
+									<div class="row pt-2">
+										<div class="col-md-5">
+											Trainer
+										</div>
+										<div class="col-md-7">
+											<?= $courseData['first_name'].' '.$courseData['last_name']; ?>
+										</div>
+									</div>
+									
 								</div>
 							</div>
 							<div class="card mb-4">
@@ -27,7 +47,7 @@
 									<h3 class="h6"><strong> Free Lesson</strong></h3>
 									<p class="taxt-dark"><?= $courseData['free_lesson'] ?> </p>
 									
-									<h3 class="h6"><strong> Recomandation Fill</strong></h3>
+									<h3 class="h6"><strong> Recomandation</strong></h3>
 									<p class="text-dark"><?= $courseData['recomandation_fill'] ?></p>
 								</div>
 							</div>

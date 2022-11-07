@@ -58,33 +58,33 @@
                   </div>
                                                        
                   <div class="row">
-										<div class="col-md-6">
-											<div class="form-group ">
-												<label for="image" class="col-sm-6 control-label">Category Image
-												</label>
-													<div class="col-sm-12">
-															<div id="image"></div>
-															<input type="file" name="product_cat_image">
-															<small class="info help-block">
-															</small>
-													</div>
-											</div>
-										</div>   
-											<div class="col-md-6">                       
-												<div class="form-group ">
-													<label for="status" class="col-sm-6 control-label">Status 
-													<i class="required">*</i>
-													</label>
-													<div class="col-sm-12">
-																<select  class="form-control chosen chosen-select" name="status" id="status">
-																	<option value="" hidden>Select Status</option>
-																	<option value="0">Inactive</option>
-																	<option value="1">Active</option>
-																</select>
-															<small class="info help-block">
-															</small>
-													</div>
-												</div>
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="image" class="col-sm-6 control-label">Category Image
+							</label>
+								<div class="col-sm-12">
+										<div id="image"></div>
+										<input type="file" name="product_cat_image">
+										<small class="info help-block">
+										</small>
+								</div>
+						</div>
+					</div>   
+						<div class="col-md-6">                       
+							<div class="form-group ">
+								<label for="status" class="col-sm-6 control-label">Status 
+								<i class="required">*</i>
+								</label>
+								<div class="col-sm-12">
+											<select  class="form-control chosen chosen-select" name="status" id="status">
+												<option value="" hidden>Select Status</option>
+												<option value="0">Inactive</option>
+												<option value="1">Active</option>
+											</select>
+										<small class="info help-block">
+										</small>
+								</div>
+							</div>
                     </div> 
 								   
                   </div> 

@@ -20,48 +20,7 @@
 					<div class="col-md-7">
 
 					<h3 class="mt-5 pt-2"><?= $servicesImg_row['service_name'] ?></h3>
-				<div class="ratings">
-				<h6>
-					<?php if($servicesImg_row['rating'] == 1){ ?>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-					<?php }elseif($servicesImg_row['rating'] == 2){ ?>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-					<?php }elseif($servicesImg_row['rating'] == 3){ ?>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-					<?php }elseif($servicesImg_row['rating'] == 4){ ?>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star"></span>
-					<?php }elseif($servicesImg_row['rating'] == 5){ ?>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-						<span class="fa fa-star" style=" color: orange;"></span>
-					<?php }else{ ?>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-					<?php }?>
-					
-				</h6>
-			</div>
+				
 			<div class="row pt-2">	
 				<div class="col-md-12">
 					<label class="font-weight-bold">Description:</label>
