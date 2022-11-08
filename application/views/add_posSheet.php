@@ -103,6 +103,47 @@
 								<div class="col-md-3 col-xs-2">
 									<span class="btn btn-primary clone_button">Add More Product</span>
 								</div>
+								<!--<div class="col-md-4 col-xs-2">
+									<input type="submit" class="btn btn-primary btn-custom" value="Generate Invoice" style="width: 250px;">
+								</div>-->
+							</div>
+						</div>
+						
+					</div>
+
+
+					<div class = "row mt-3">
+						<div class="col-md-12">
+							<h4 class="col-md-12 control-label">Service</h4>
+
+								<div class="clone_service">
+
+									<div class="row">
+									
+										<div class="col-md-4"> 
+											<label for="Quantity" class="col-sm-6 control-label">Service </label>
+											<select class="form-control service_name" name="serviceID[]">
+												<option value="" hidden>Please select Service</option>
+												<?php foreach($services_data as $services_dataRow) { ?>
+													<option value="<?= $services_dataRow['id'] ?>"><?= $services_dataRow['service_name'] ?></option>
+												<?php } ?>					
+											</select>
+										</div>
+										<div class="col-md-3">
+											<div class="col-md-12">
+												<label for="age" class="control-label">Service Price</label>
+												<input type="text" class="form-control" name="sirvece_price[]" value="">
+											</div>
+											
+										</div>
+									</div>
+							
+								</div>
+
+							<div class="row pt-2 mt-3">
+								<div class="col-md-3 col-xs-2">
+									<span class="btn btn-primary AddMoreService">Add More Service</span>
+								</div>
 								<div class="col-md-4 col-xs-2">
 									<input type="submit" class="btn btn-primary btn-custom" value="Generate Invoice" style="width: 250px;">
 								</div>
@@ -201,6 +242,11 @@
 		count++;
 		  var clonetext = '<div class="row mt-2"><div class="col-md-4"><select class="form-control product_name_'+count+'" name="productID[]" onchange="showProductPrice('+count+');"><option value="" hidden>Please select Product</option><?php foreach($product_data as $product_dataRow) { ?><option value="<?= $product_dataRow['id'] ?>"><?= $product_dataRow['name'] ?></option><?php } ?></select><div class="product_stock_'+count+'"></div></div><div class="col-md-3"><div class="col-md-12"><input type="text" class="form-control" name="product_price[]" id="price_'+count+'" value=""></div></div><div class="col-md-3"><div class="form-group"><div class="col-md-12"><input type="number" class="form-control" name="quantity[]" id="quantity_'+count+'" onkeyup ="calculate_total_quantity('+count+');"></div></div></div><div class="col-md-2"><div class="col-md-12"><input type="text" class="form-control" name="totalPrice[]" id="totalPrice_'+count+'" readonly></div></div></div>';
 		  $('.clone_wrapper').append(clonetext);
+		});
+
+		$('.AddMoreService').click(function() {
+		  var service_text =' <div class="row"><div class="col-md-4"><label for="Quantity" class="col-sm-6 control-label">Service </label><select class="form-control service_name" name="serviceID[]"><option value="" hidden>Please select Service</option><?php foreach($services_data as $services_dataRow) { ?><option value="<?= $services_dataRow['id'] ?>"><?= $services_dataRow['service_name'] ?></option><?php } ?></select></div><div class="col-md-3"><div class="col-md-12"><label for="age" class="control-label">Service Price</label><input type="text" class="form-control" name="sirvece_price[]" value=""></div></div></div>';
+		  $('.clone_service').append(service_text);
 		});
 	});
  </script> 

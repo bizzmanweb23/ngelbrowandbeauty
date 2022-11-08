@@ -128,11 +128,14 @@
 																		</div>
 																		<?php }else{ ?>
 																			<div class="row mt-3">
-																				<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
-														  							<label>Price</label>
+																				<div class="col-md-2" style="font-size: 20px; color: #63d4d6;">
+														  							<label>Price:</label>
 																				</div>
 																				<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">					
-																					S$&nbsp;<?= $servicesImg_row['lowest_price'] ?>&nbsp;-&nbsp;S$&nbsp;<?= $servicesImg_row['service_price'] ?>
+																				<?php if($servicesImg_row['lowest_price'] != 0){ ?>
+																					S$&nbsp;<?= $servicesImg_row['lowest_price'] ?>&nbsp;-&nbsp;
+																				<?php } ?>		
+																				S$&nbsp;<?= $servicesImg_row['service_price'] ?>
 																						
 																					<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
 																				</div>
@@ -193,134 +196,6 @@
       </div>
     </section>
 
-		
-<!-- OFFERS SECTION -->
-    <!--<section class="clearfix offersSection patternbg">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3 col-xs-12">
-            <div class="offerContent">
-              <img class="lazyestload" src="img/home/offer-1.jpg" data-src="img/home/offer-1.jpg" alt="Image Offer">
-              <div class="offerMasking">
-                <div class="offerTitle"><h4><a href="#">Skin Care</a></h4></div>
-              </div>
-              <div class="offerPrice"><h5>$25</h5></div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12">
-            <div class="offerContent">
-              <img class="lazyestload" data-src="img/home/offer-2.jpg" src="img/home/offer-2.jpg" alt="Image Offer">
-              <div class="offerMasking">
-                <div class="offerTitle"><h4><a href="#">Body massage</a></h4></div>
-              </div>
-              <div class="offerPrice"><h5>$45</h5></div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12">
-            <div class="offerContent">
-              <img class="lazyestload" src="img/home/offer-3.jpg" data-src="img/home/offer-3.jpg" alt="Image Offer">
-              <div class="offerMasking">
-                <div class="offerTitle"><h4><a href="#">Nail Care</a></h4></div>
-              </div>
-              <div class="offerPrice"><h5>$65</h5></div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12">
-            <div class="offerContent">
-              <img class="lazyestload" src="img/home/offer-4.jpg" data-src="img/home/offer-4.jpg" alt="Image Offer">
-              <div class="offerMasking">
-                <div class="offerTitle"><h4><a href="#">beauty Care</a></h4></div>
-              </div>
-              <div class="offerPrice"><h5>$75</h5></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>-->
-
-<!-- PRICING 4 COL SECTION -->
-    <!--section class="clearfix pricingSection">
-      <div class="container">
-        <div class="secotionTitle">
-          <h2>Services Pricing</h2>
-        </div>
-
-        <div class="row">
-
-          <div class="col-md-4">
-            <div class="priceTableWrapper">
-              <div class="priceImage">
-                <img src="<?= base_url(); ?>/uploads/service_img/ao.jpg" data-src="<?= base_url(); ?>/uploads/service_img/ao.jpg" alt="Image Price" class="img-responsive">
-                <div class="maskImage">
-                  <h3>Hydration Skin Care</h3>
-                </div>
-                <div class="priceTag">
-                  <h4>$59</h4>
-                </div>
-              </div>
-
-              <div class="priceInfo">
-                <ul class="list-unstyled">
-                  <li>Body Hand and Foot Massage</li>
-                  <li>Lip Blush</li>
-                  <li>6D Microblading Brows</li>
-                  <li>Natural Classic</li>
-                </ul>
-                <a href="javascript:void(0)" class="btn btn-primary first-btn">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="priceTableWrapper">
-              <div class="priceImage">
-                <img src="<?= base_url(); ?>/uploads/service_img/h.jpg" data-src="<?= base_url(); ?>/uploads/service_img/h.jpg" alt="Image Price" class="img-responsive">
-                <div class="maskImage">
-                  <h3>Peel Deep Cleansing</h3>
-                </div>
-                <div class="priceTag">
-                  <h4>$79</h4>
-                </div>
-              </div>
-
-              <div class="priceInfo">
-                <ul class="list-unstyled">
-                  <li>Gua Sha (Face , Eyes, Neck )</li>
-                  <li>Lash Mix</li>
-                  <li>Pores Therapy</li>
-                  <li>Mites Removal</li>
-                </ul>
-                <a href="javascript:void(0)" class="btn btn-primary first-btn">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="priceTableWrapper">
-              <div class="priceImage">
-                <img src="<?= base_url(); ?>/uploads/service_img/y.jpg" data-src="<?= base_url(); ?>/uploads/service_img/y.jpg" alt="Image Price" class="img-responsive">
-                <div class="maskImage">
-                  <h3>Acne Care</h3>
-                </div>
-                <div class="priceTag">
-                  <h4>$85</h4>
-                </div>
-              </div>
-
-              <div class="priceInfo">
-                <ul class="list-unstyled">
-                  <li>Tightening Care</li>
-                  <li>V-shape face lifting</li>
-                  <li>Fine Eyeliner</li>
-                  <li>IPL</li>
-                </ul>
-                <a href="javascript:void(0)" class="btn btn-primary first-btn">Buy Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section-->
 
 
 <!-- APPOINMENT MODAL -->
@@ -383,7 +258,6 @@
     </div>
   </div>
 </div>
-
 
 <script>
 	function showServiceDetails(i){

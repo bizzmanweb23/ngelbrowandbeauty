@@ -5,7 +5,7 @@
         
 
         <!-- Slide One -->
-        <div class="slide slideResize slide1" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/NewBanner.png);">
+        <div class="slide slideResize slide1" style="background-image: url(<?= base_url(); ?>/assets/front/img/home/NewBanner.jpg);">
           <div class="container">
             <div class="slide-inner2 common-inner">
 							<!--img src="<?= base_url(); ?>assets/front/img/slider-logo.png" class="img-fluid" style = "max-width: 150px;mix-blend-mode:color;">-->
@@ -156,17 +156,16 @@
 														<div class="col-md-7">
 
 														<h3 class="mt-5 pt-2"><?= $servicesImg_row['service_name'] ?></h3>
-												<div class="row pt-2">	
-													<div class="col-md-12">
-														<label class="font-weight-bold">Description:</label>
-													</div>
-												</div>
-												<div class="row pt-1">
-															
+														<div class="row pt-2">	
 															<div class="col-md-12">
-																<?= $servicesImg_row['description'] ?>
+																<label class="font-weight-bold">Description:</label>
 															</div>
-												</div>
+														</div>
+														<div class="row pt-1">
+																<div class="col-md-12">
+																	<?= $servicesImg_row['description'] ?>
+																</div>
+														</div>
 											
 												<?php /* <div class="row mt-3">
 															<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
@@ -202,12 +201,15 @@
 																<input type="hidden" name="package_times_price" value="<?= $servicesImg_row['package_times_price']; ?>">
 																</div>
 													</div> */ ?>
-													<div class="row mt-3">
-															<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
-  																				<label>Price</label>
+													<div class="row pt-3">
+															<div class="col-md-2" style="font-size: 20px; color: #63d4d6;">
+  															<label>Price:</label>
 															</div>
-															<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">					
-																	S$&nbsp;<?= $servicesImg_row['lowest_price'] ?>&nbsp;-&nbsp;S$&nbsp;<?= $servicesImg_row['service_price'] ?>
+															<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">
+															<?php if($servicesImg_row['lowest_price'] != 0){ ?>
+																S$&nbsp;<?= $servicesImg_row['lowest_price'] ?>&nbsp;-&nbsp;
+															<?php } ?>					
+																	S$&nbsp;<?= $servicesImg_row['service_price'] ?>
 																	<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
 															</div>
 													</div>

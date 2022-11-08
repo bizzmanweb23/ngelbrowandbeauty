@@ -136,13 +136,24 @@ class Service extends CI_Controller {
 		}elseif($timePrice == 10){
 			$service_price = $this->input->post('package_times_price');
 		}
-		$orderdata = array(
-			'user_id' => $user_id,
-			'service_id' => $service_id,
-			'times_packages' => $timePrice,
-			'service_price' => $service_price,
-			'status' => 1,
-		); 
+		if($timePrice != ''){
+			$orderdata = array(
+				'user_id' => $user_id,
+				'service_id' => $service_id,
+				'times_packages' => $timePrice,
+				'service_price' => $service_price,
+				'status' => 1,
+			); 
+		}elseif($timePrice == ''){
+			$orderdata = array(
+				'user_id' => $user_id,
+				'service_id' => $service_id,
+				'times_packages' => 1,
+				'service_price' => $this->input->post('service_price'),
+				'status' => 1,
+			); 
+		}
+		
 	 
 		$result2 = $this->db->insert('nbb_order_service',$orderdata);  
 		if($result2){

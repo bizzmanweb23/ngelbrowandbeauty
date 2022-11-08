@@ -112,7 +112,7 @@ $route['dashboard'] = 'admin/welcome/dashboard';
 /*$route['branch'] = 'admin/welcome/branch';
 $route['branch/login'] = 'branch/login';*/
 
-$route['welcome'] = 'admin/welcome';
+//$route['welcome'] = 'admin/welcome';
 $route['add_employeeSalary'] = 'admin/employeeManagement/post_add_employeeSalary';
 //$route['employee/attendance/counter'] = 'admin/comissionController/attendance_sum';
 $route['branch/dashboard'] = 'admin/welcome/dashboard';

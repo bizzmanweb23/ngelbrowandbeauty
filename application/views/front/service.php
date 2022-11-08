@@ -129,11 +129,14 @@
 																		</div>
 																		<?php }else{ ?>
 																			<div class="row mt-3">
-																				<div class="col-md-6" style="font-size: 20px; color: #63d4d6;">
-														  							<label>Price</label>
+																				<div class="col-md-2" style="font-size: 20px; color: #63d4d6;">
+														  							<label>Price:</label>
 																				</div>
-																				<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">					
-																					S$&nbsp;<?= $servicesImg_row['lowest_price'] ?>&nbsp;-&nbsp;S$&nbsp;<?= $servicesImg_row['service_price'] ?>
+																				<div class="col-md-6 font-weight-bold" style="font-size: 28px; color: #63d4d6;">	
+																				<?php if($servicesImg_row['lowest_price'] != 0){ ?>
+																					S$&nbsp;<?= $servicesImg_row['lowest_price'] ?>&nbsp;-&nbsp;
+																				<?php } ?>				
+																					S$&nbsp;<?= $servicesImg_row['service_price'] ?>
 																						
 																					<input type="hidden" name="service_price" value="<?= $servicesImg_row['service_price']; ?>">
 																				</div>

@@ -15,6 +15,7 @@ class POS_management extends CI_Controller {
         $data['customer'] = $this->Auth->getAllCustomer();
 		$data['allemployees'] = $this->EmployeeManagement->getAllemployees();
 		$data['product_data'] = $this->OrderManagement->getAllProduct();
+		$data['services_data'] = $this->ServiceCategory->getAllServices();
         $this->layout->view('add_posSheet',$data);
 	}
 
@@ -45,34 +46,66 @@ class POS_management extends CI_Controller {
 			$this->db->update('nbb_order_main', array('order_number'=>$order_number));
 
 			$mulproductid = $_POST['productID'];
-			for($i=0;$i < count($mulproductid);$i++){
-				$allproductID = $mulproductid[$i];
-				
-				$orderdata = array(
-					'order_id' => $orderId,
-					'product_id' => $allproductID,
-					'total_quantity' => $this->input->post('quantity')[$i],
-					'total_price' => $this->input->post('totalPrice')[$i],
-					'product_price' => $this->input->post('product_price')[$i],
-				); 
-				$result2 = $this->db->insert('nbb_order_product',$orderdata); 
-
-				$orderProductDate = $this->POS->orderProductlistingdata($orderId);
-		
-				foreach($orderProductDate as $orderProductrow){	
-					$product_id = $orderProductrow['product_id'];	
-					$alltotal_quantity = $orderProductrow['total_quantity'];	
-
-				$producttotalPrice = $this->POS->getproductDetails($product_id);
-				$available_stock = $producttotalPrice['available_stock'];
-				$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
-
-				$this->db->where('id' , $product_id);
-				$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+			$mulserviceId = $_POST['serviceID'];
+			if($mulproductid != ''){
+				for($i=0;$i < count($mulproductid);$i++){
+					$allproductID = $mulproductid[$i];
+					
+					$orderdata = array(
+						'order_id' => $orderId,
+						'product_id' => $allproductID,
+						'total_quantity' => $this->input->post('quantity')[$i],
+						'total_price' => $this->input->post('totalPrice')[$i],
+						'product_price' => $this->input->post('product_price')[$i],
+					); 
+					$result2 = $this->db->insert('nbb_order_product',$orderdata); 
+	
+					$orderProductDate = $this->POS->orderProductlistingdata($orderId);
+			
+					foreach($orderProductDate as $orderProductrow){	
+						$product_id = $orderProductrow['product_id'];	
+						$alltotal_quantity = $orderProductrow['total_quantity'];	
+	
+					$producttotalPrice = $this->POS->getproductDetails($product_id);
+					$available_stock = $producttotalPrice['available_stock'];
+					$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
+	
+					$this->db->where('id' , $product_id);
+					$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+						
+					}
 					
 				}
-				
 			}
+			if($mulserviceId != ''){
+				for($i=0;$i < count($mulserviceId);$i++){
+					$allmulserviceId = $mulserviceId[$i];
+					
+					$orderdata = array(
+						'order_id' => $orderId,
+						'product_id' => $allproductID,
+						'product_price' => $this->input->post('product_price')[$i],
+					); 
+					$result2 = $this->db->insert('nbb_pos_Service',$orderdata); 
+	
+					$orderProductDate = $this->POS->orderProductlistingdata($orderId);
+			
+					foreach($orderProductDate as $orderProductrow){	
+						$product_id = $orderProductrow['product_id'];	
+						$alltotal_quantity = $orderProductrow['total_quantity'];	
+	
+					$producttotalPrice = $this->POS->getproductDetails($product_id);
+					$available_stock = $producttotalPrice['available_stock'];
+					$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
+	
+					$this->db->where('id' , $product_id);
+					$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+						
+					}
+					
+				}
+			}
+			
 			//$order_product_data = $this->OrderManagement->orderProductlistingdata($orderId);
 		$data["productlistingdata"]=$this->OrderManagement->orderProductlistingdata($orderId);
 		$data["producttotalPrice"]=$this->OrderManagement->getProducttotalPrice($orderId);

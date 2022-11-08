@@ -35,7 +35,7 @@
 											Trainer
 										</div>
 										<div class="col-md-7">
-											<?= $courseData['first_name'].' '.$courseData['last_name']; ?>
+											Vivian Kang
 										</div>
 									</div>
 									
@@ -76,7 +76,7 @@
 													<img src="<?= base_url()?>/uploads/course_image/<?= $courseData['course_image']; ?>" width="250" height="100" class="img-thumbnail">	
 												
 											</div>
-											<div class="mb-3 d-flex justify-content-between">
+											<div class="mb-3 d-flex justify-content-between pt-3">
 												
 												<div class="d-flex">
 													<?= $courseData['description']; ?>

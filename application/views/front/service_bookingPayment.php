@@ -40,7 +40,7 @@
                             <a class="btn btn-primary p-3 w-100 h-100 d-flex align-items-center justify-content-between"
                                 data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
                                 aria-controls="collapseExample">
-                                <span class="fw-bold">Credit Card</span>
+                                <span class="fw-bold">QR Code</span>
                                 <span class="">
                                     <span class="fab fa-cc-amex"></span>
                                     <span class="fab fa-cc-mastercard"></span>
@@ -64,7 +64,8 @@
 									</p>
                                 </div>
                                 <div class="col-lg-7 pt-1">
-										<a href="<?php echo base_url('paymentGateService/'.$serviceOrderDetails['order_service_id']); ?>" class="btn btn-warning px-2">Pay with <img src="<?php echo base_url('uploads/paypal.png'); ?>" /></a>
+									<img src="<?= base_url(); ?>/assets/front/img/qr_code.jpeg" class="img-thumbnail">
+										<!--<a href="<?php echo base_url('paymentGateService/'.$serviceOrderDetails['order_service_id']); ?>" class="btn btn-warning px-2">Pay with <img src="<?php echo base_url('uploads/paypal.png'); ?>" /></a>-->
                                        <!-- <div class="row">
                                             <div class="col-12 mt-2">
                                                 <div class="form__div">
