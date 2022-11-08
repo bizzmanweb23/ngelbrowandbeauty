@@ -251,10 +251,10 @@ class ApiController extends CI_Controller
         echo json_encode([
             'responsecode' => $this->responseCode,
             'message' => 'Success',
-            /*'offer'=>$offers,
-            'products' => $products ,*/
+            'offer'=>$offers,
+            'products' => $products ,
             'services' => $main,
-            //'course' => $course ,
+            'course' => $course ,
         ]);
 
     }
