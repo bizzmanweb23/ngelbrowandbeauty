@@ -33,8 +33,11 @@
 					</div>
 					<span class="CheckContactMatch"></span> 
 					<div class="form-group">
-						<input class="form-control password" type="password" name="password" value="" placeholder="Enter Password" required />
-					</div>        
+						<input type="password" class="form-control password" name="password" id="logPwd" placeholder="Enter Password" required>
+						<span class="fa fa-fw fa-eye field-icon" onclick="showPassword()"></span>
+			
+                  </div>
+					      
 					<div class="form-group">
 						<input class="form-control confirm_password" type="password" name="confirm_password" value="" placeholder="Confirm Password" required/>
                   	</div>
@@ -48,7 +51,24 @@
         </div>
       </div>
     </section>
+	<style>
+	.field-icon {
+		float: right;
+		margin-left: -25px;
+		margin-top: -25px;
+		position: relative;
+		z-index: 2;
+		}
+		</style>
 	<script>
+	function showPassword() {
+		var passwordVal = document.getElementById("logPwd");
+		if (passwordVal.type === "password") {
+			passwordVal.type = "text";
+		} else {
+			passwordVal.type = "password";
+		}
+	}
     $(document).ready(function() {
       	$(".confirm_password").on('keyup', function() {
 

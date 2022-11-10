@@ -59,11 +59,12 @@ class Home extends CI_Controller {
 		
 	}
 
-	public function post_login(){
+	/*public function post_login(){
 
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{	
 			$name = $this->input->post('email');
+			$logPassword = $this->input->post('password');
 			$emailfield = '';
 			$numberfield = '';
 			if(is_numeric($name)){
@@ -71,11 +72,22 @@ class Home extends CI_Controller {
 			} elseif (filter_var($name, FILTER_VALIDATE_EMAIL)) {
 				$emailfield = $this->input->post('email');
 			}
-			
+
+			$loginuserCheck_sql  = "SELECT nbb_customer.email 
+			FROM nbb_customer 
+			WHERE nbb_customer.email = '".$emailfield."' OR nbb_customer.contact = '".$emailfield."' AND nbb_customer.password = '".$logPassword."'"; 
+			$loginuserCheck_query = $this->db->query($loginuserCheck_sql);
+			$loginuserCheck_rownum = $loginuserCheck_query->num_rows();
+
+			if($loginuserCheck_rownum > 0){
+				
+
+			}
+
 			$data = array(
 				'email' => $emailfield,
 				'contact' => $numberfield,
-				'password' => md5($this->input->post('password')),
+				'password' => md5($logPassword),
 				);
 	
 				$check = $this->AuthFront->logindata($data);
@@ -98,6 +110,84 @@ class Home extends CI_Controller {
 				redirect('login');
 			}
 		}
+	}*/
+	public function post_login(){
+
+		if($_SERVER['REQUEST_METHOD']=='POST')
+		{	
+			$name = $this->input->post('email');
+			$logPassword = $this->input->post('password');
+			$emailfield = '';
+			$numberfield = '';
+			if(is_numeric($name)){
+				$numberfield = $this->input->post('email');
+			} elseif (filter_var($name, FILTER_VALIDATE_EMAIL)) {
+				$emailfield = $this->input->post('email');
+			}
+
+			$loginuserCheck_sql  = "SELECT nbb_customer.email 
+			FROM nbb_customer 
+			WHERE nbb_customer.email = '".$emailfield."' OR nbb_customer.contact = '".$numberfield."' AND nbb_customer.password = '".$logPassword."'"; 
+			$loginuserCheck_query = $this->db->query($loginuserCheck_sql);
+			echo $loginuserCheck_rownum = $loginuserCheck_query->num_rows();
+
+			if($loginuserCheck_rownum > 0){
+				$data = array(
+					'email' => $emailfield,
+					'contact' => $numberfield,
+					'password' => md5($logPassword),
+					);
+		
+					$check = $this->AuthFront->logindata($data);
+					//print_r($check);exit;
+					
+					if($check == true){
+		
+						$user = array(
+						'id' => $check->id,
+						'email' => $check->email,
+						);
+					// print_r($user);exit;
+					$this->session->sess_expiration = '14400';
+					$this->session->set_userdata($user);
+
+				}
+				 /* $returndata = array(
+					'massage' => 'Login Success.'
+				   );*/
+				   return 1;
+			}else{
+				
+				 /*$returndata = array(
+					'massage' => 'Login failed! wrong user credentials.'
+				   );*/
+				   return 0;
+			}
+			
+		}
+		
+	}
+	public function emailvalidation(){
+		
+		$userid = $_GET['emailid'];
+		$logPassword = $_GET['logPassword'];
+
+		$emailfield = '';
+			$numberfield = '';
+			if(is_numeric($userid)){
+				$numberfield = $_GET['emailid'];
+			} elseif (filter_var($userid, FILTER_VALIDATE_EMAIL)) {
+				$emailfield = $_GET['emailid'];
+			}
+		
+		$loginuserCheck_sql  = "SELECT nbb_customer.email 
+		FROM nbb_customer 
+		WHERE nbb_customer.email = '".$emailfield."' OR nbb_customer.contact = '".$emailfield."' AND nbb_customer.password = '".$logPassword."'"; 
+		
+		$loginuserCheck_query = $this->db->query($loginuserCheck_sql);
+		$loginuserCheck_rownum = $loginuserCheck_query->num_rows();
+		echo json_encode( $loginuserCheck_rownum );
+
 	}
 	public function logout(){
 	    $this->session->sess_destroy();

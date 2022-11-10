@@ -43,7 +43,7 @@
 												<td><?php if($categories['product_cat_image'] == ''){ ?>
 
 												<?php }else{ ?>
-													<img src="<?= base_url(); ?>/uploads/category_image/<?= $categories['product_cat_image'] ?>" width="60" height="60">
+													<img src="<?= base_url(); ?>uploads/category_image/<?= $categories['product_cat_image'] ?>" width="60" height="60">
 												<?php } ?>
 													</td>
                         <td><?php if($categories['category_details'] != ''){ ?>

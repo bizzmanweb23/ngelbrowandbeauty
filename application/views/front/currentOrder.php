@@ -143,7 +143,7 @@
                     </div>
                   </div>
 
-									<div class="col-6">
+									<!--<div class="col-6">
                     <div class="radio-inline chooseOption">
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
@@ -152,7 +152,7 @@
                         </label>
                       </div>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
 
               </div>
@@ -169,7 +169,7 @@
                       <tr>
                         <td><div class="cartImage"><img src="<?= base_url(); ?>/uploads/product_img/<?= $cartproductRow['p_image'] ?>" data-src="<?= base_url(); ?>/uploads/product_img/<?= $cartproductRow['p_image'] ?>" width="95" height="95" alt="Image cart"></div></td>
                         <td><?= $cartproductRow['p_name'];?> <br><span  class="font-weight-bold">Qnt:&nbsp;&nbsp; <?= $cartproductRow['total_quantity']; ?> </span></td>
-                        <td><span class="price">$<?= $cartproductRow['total_price']; ?></span></td>
+                        <td><span class="price">S$&nbsp;<?= $cartproductRow['total_price']; ?></span></td>
                       </tr>
 											<?php endforeach; ?> 
                       
@@ -184,7 +184,7 @@
 								<input type="hidden" class="form-control" name="total_price" value="<?= $producttotalPrice['total_price']; ?>">
 								<div class="paymentPart">
 									<div class="form-group">
-										<div class="totalAmount"><span>Total:</span><strong>$<?= $producttotalPrice['total_price']; ?></strong></div>
+										<div class="totalAmount"><span>Total:</span><strong>S$&nbsp;<?= $producttotalPrice['total_price']; ?></strong></div>
 									<button type="submit" class="btn btn-primary">Complete payment</button>
 									</div>
 								</div>

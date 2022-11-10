@@ -29,6 +29,7 @@
                   <tr>
                     <th>Sub Category</th>
                     <th>Sub-Child-Category</th>
+										<th>Image</th>
                     <th>Category Detail</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -37,8 +38,14 @@
                   <tbody>
                     <?php foreach($category as $categories): ?>
                       <tr>
-						<td><?= $categories['category_name']?></td>
+												<td><?= $categories['category_name']?></td>
                         <td><?= $categories['sub_child_category']?></td>
+												<td><?php if($categories['subchild_cat_image'] == ''){ ?>
+
+												<?php }else{ ?>
+													<img src="<?= base_url(); ?>uploads/category_image/<?= $categories['subchild_cat_image'] ?>" width="60" height="60">
+												<?php } ?>
+												</td>
                         <td><?php if($categories['details'] != ''){ ?>
 							<?= substr($categories['details'],0,50); ?>...
 							<?php }else{} ?>

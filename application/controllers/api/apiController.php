@@ -191,28 +191,32 @@ class ApiController extends CI_Controller
         }
 
         //service
-		$this->db->select('nbb_child_category.*,nbb_child_category.id as c_id'); 
+		/*$this->db->select('nbb_child_category.*,nbb_child_category.id as c_id'); 
 		$this->db->select('nbb_sub_child_category.*,nbb_sub_child_category.id as sub_child_id');
         $this->db->from('nbb_child_category');  
 		$this->db->join('nbb_sub_child_category','nbb_sub_child_category.child_category  = nbb_child_category.id','LEFT');
         $this->db->where('nbb_child_category.parent_category_id',1);
         $result = $this->db->get();
         $rows = $result->num_rows();
+        $main = $result->result_array();*/
+		$this->db->select('nbb_child_category.*,nbb_child_category.id as c_id'); 
+        $this->db->from('nbb_child_category');  
+        $this->db->where('nbb_child_category.parent_category_id',1);
+        $result = $this->db->get();
+        $rows = $result->num_rows();
         $main = $result->result_array();
-
-		
-        
-        //$category = $result->result_array();
 
 		if($rows){
             for($i=0 ; $i<count($main); $i++){
 					$this->db->select('nbb_sub_child_category.*');
 					$this->db->from('nbb_sub_child_category');
 					$this->db->where('nbb_sub_child_category.child_category',$main[$i]['c_id']);
-					$result = $this->db->get(); 
+					$result2 = $this->db->get(); 
+					$subChild = $result2->result_array();
 				$main[$i]['product_cat_image'] = $this->url.'uploads/service_img/'.$main[$i]['product_cat_image'];
               
-					if($main[$i]['c_id'] == $main[$i]['sub_child_id']){
+					//if($main[$i]['c_id'] == $main[$i]['sub_child_id']){
+					if($main[$i]['c_id'] == $subChild[$i]['child_category']){
 						$main[$i]['subchild_cat_image'] = $this->url.'uploads/service_img/'.$main[$i]['subchild_cat_image'];
 						$main[$i]['child'] = $result->result_array();
 					}   

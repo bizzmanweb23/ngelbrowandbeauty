@@ -16,7 +16,7 @@
 
                           <td><a class="text-wrap" href="<?= base_url(); ?>productDetails/<?= $cartproductRow['product_id'] ?>"><?= $cartproductRow['p_name'];?></a> <br><span  class="font-weight-bold">Qnt:&nbsp;&nbsp; <?= $cartproductRow['total_quantity']; ?> </span></td>
 
-                          <td><span class="price">$<?= $cartproductRow['total_price']; ?></span></td>
+                          <td><span class="price">S$&nbsp;<?= $cartproductRow['total_price']; ?></span></td>
                           <td>
 														<a href="<?= base_url(); ?>deleteorderProduct/<?= $cartproductRow['order_productId'] ?>">
 															<button type="button" class="close">
@@ -42,9 +42,9 @@
                 <div class="panel-body">
                  <div class="cart-total-list">
                   <ul>
-                    <li>Product name goes here <span class="text-right pull-right">$<?= $producttotalPrice['total_price']; ?></span></li>
-                    <li>Delivary Charge <span class="text-right pull-right">$0.00</span></li>
-                    <li><strong>Total</strong> <span class="text-right pull-right"> $<?= $producttotalPrice['total_price']; ?></span></li>
+                    <li>Product name goes here <span class="text-right pull-right">S$&nbsp;<?= $producttotalPrice['total_price']; ?></span></li>
+                    <li>Delivary Charge <span class="text-right pull-right">S$0.00&nbsp;</span></li>
+                    <li><strong>Total</strong> <span class="text-right pull-right"> S$&nbsp;<?= $producttotalPrice['total_price']; ?></span></li>
                     
                   </ul>
                  </div>
