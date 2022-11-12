@@ -162,15 +162,63 @@ class Service extends CI_Controller {
 		
 	}
 	public function paymentGatewayService(){
-		$orderserviceId = $this->uri->segment(2);
+		//$orderserviceId = $this->uri->segment(2);
+		$orderserviceId = $this->input->post('order_service_id');
 		$user_id = $this->session->userdata('id');
-
+		$serviceId = $this->input->post('serviceId');
+		$service_price = $this->input->post('service_price');
 		$orderdata = array(
 			'payment_status' => 1,
 			'status' => 2,
 		); 
 	 
 		$result = $this->Main->update('id',$orderserviceId, $orderdata,'nbb_order_service');
+
+		if($result ==true)
+			{
+				$this->load->library('upload');
+				if($_FILES['payment_file']['name'] != '')
+				{
+
+					$_FILES['file']['name']       = $_FILES['payment_file']['name'];
+					$_FILES['file']['type']       = $_FILES['payment_file']['type'];
+					$_FILES['file']['tmp_name']   = $_FILES['payment_file']['tmp_name'];
+					$_FILES['file']['error']      = $_FILES['payment_file']['error'];
+					$_FILES['file']['size']       = $_FILES['payment_file']['size'];
+
+					// File upload configuration
+					$uploadPath = 'uploads/payment_image/';
+					$config['upload_path'] = $uploadPath;
+					$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+					$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+					$config['max_height'] = "";
+					$config['max_width'] = "";
+
+					// Load and initialize upload library
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+
+					// Upload file to server
+					if($this->upload->do_upload('file')){
+						// Uploaded file data
+						$imageData = $this->upload->data();
+						$uploadImgData['payment_file'] = $imageData['file_name'];
+					}
+					$update=$this->Main->update('id',$orderserviceId, $uploadImgData,'nbb_order_service');         
+				} 
+
+				$paymentdata = array(
+					'user_id' => $user_id,
+					'Service_id' => $serviceId,
+					'payment_gross' => $service_price,
+					'payment_file' => $_FILES['payment_file']['name'],
+					'status' => 1,
+				); 
+		 
+				$result2 = $this->db->insert('nbb_payments',$paymentdata);  
+				
+
+			}
 		if($result){
 			redirect('thanksPaymentService/'.$orderserviceId);
 		}

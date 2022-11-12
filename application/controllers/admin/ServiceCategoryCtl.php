@@ -376,6 +376,11 @@ class ServiceCategoryCtl extends CI_Controller {
 	  $statusMsg = "";
 		if(!empty($_FILES['files']['name']) && count(array_filter($_FILES['files']['name'])) > 0)
 			{
+				if($this->input->post('package_session') == ''){
+					$session_val = 1;
+				}else{
+					$session_val = $this->input->post('package_session');
+				}
 				  $service_name = $this->input->post('service_name');
 				  $main_category = $this->input->post('main_category');
 				  $service_category = $this->input->post('service_category');
@@ -387,7 +392,7 @@ class ServiceCategoryCtl extends CI_Controller {
 				  $therapist_commission = $this->input->post('therapist_commission');
 				  $discountPercentage = $this->input->post('discountPercentage');
 				  $discounted_price = $this->input->post('discounted_price');
-				  $package_session = $this->input->post('package_session');
+				  $package_session = $session_val;
 				  $package_times_price = $this->input->post('package_times_price');
 				  $rating = $this->input->post('rating');
 				  $amount = $this->input->post('amount');
@@ -484,6 +489,12 @@ class ServiceCategoryCtl extends CI_Controller {
 	public function post_edit_service()
 	{
 		$service_id = $this->input->post('service_id');
+		$package_session = $this->input->post('package_session');
+		if($package_session == ''){
+			$session_val = 1;
+		}else{
+			$session_val = $this->input->post('package_session');
+		}
 			$service_data = array(
 				'service_name' => $this->input->post('service_name'),
 				'service_category' => $this->input->post('service_category'),
@@ -498,7 +509,7 @@ class ServiceCategoryCtl extends CI_Controller {
 				'loyalty_points' => $this->input->post('loyalty_points'),
 				'discount_percent' => $this->input->post('discountPercentage'),
 				'discount_price' => $this->input->post('discounted_price'),
-				'package_session' => $this->input->post('package_session'),
+				'package_session' => $session_val,
 				'package_times_price' => $this->input->post('package_times_price'),
 				'rating' => $this->input->post('rating'),
 				'status' => $this->input->post('status'),
@@ -818,6 +829,11 @@ class ServiceCategoryCtl extends CI_Controller {
       
        $this->load->view('appointmentSearchFile',$data); 
 
+    }
+	public function all_ServiceBooking()
+    {
+       $data['ServiceBooking'] = $this->ServiceCategory->getAllServiceBooking();
+       $this->layout->view('all_serviceBooking',$data); 
     }
 
 }

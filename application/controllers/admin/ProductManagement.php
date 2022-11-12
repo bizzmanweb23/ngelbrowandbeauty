@@ -178,8 +178,8 @@ class ProductManagement extends CI_Controller {
         }
 		if($uploadImgData ==true || $result == true)
 			{
-				//redirect('product'); 
-				redirect('admin/ProductManagement/add_product');
+				redirect('product'); 
+				//redirect('admin/ProductManagement/add_product');
 			}  
 		        
 		

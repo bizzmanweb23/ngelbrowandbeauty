@@ -29,17 +29,38 @@
                                     </p>
                                     <p style="color: #000;" class="mb-0 pt-3 h6">
                                         <span class="font-weight-bold">Price:</span>
-                                        <span style="color: #63d4d6;">$<?= $serviceOrderDetails['service_price']; ?></span>
+                                        <span style="color: #63d4d6;">S$<?= $serviceOrderDetails['service_price']; ?></span>
                                     </p>
                                     <p style="color: #000;" class="mb-0 pt-3 h6"> <span class="font-weight-bold">Service Type:</span>
                                         <span style="color: #63d4d6;">Package</span>
 									</p>
                                 </div>
                                 <div class="col-md-4 pt-1">
-									<img src="<?= base_url(); ?>/assets/front/img/qr_code.jpeg" class="img-thumbnail">
+									<div class="form-group">
+										<img src="<?= base_url(); ?>/assets/front/img/qr_code.jpeg" class="img-responsive">
+									</div>
 									
-                                </div>
+										<form id="add_customer" action="<?php echo base_url('paymentGateService') ?>" method="post" enctype="multipart/form-data">
+											<input type="hidden" class="form-control" name="order_service_id" value="<?= $serviceOrderDetails['order_service_id']; ?>">
+											<?php $serviceId = $this->uri->segment(2); ?>
+											<input type="hidden" class="form-control" name="serviceId" value="<?= $serviceId; ?>">
+											<input type="hidden" class="form-control" name="service_price" value="<?= $serviceOrderDetails['service_price']; ?>">
+											
+											<div class="form-group pt-2">
+												<label for="image" class="col-md-6 control-label">Payment Slip</label>
+												<div class="col-md-12">
+													<input type="file" name="payment_file" class="form-control" required>
+												</div>
+											</div>
+											<div class="form-group pt-1">
+												<button type="submit" class="btn btn-primary first-btn px-1">Submit</button>
+											</div>
+										</form>
+									</div>
+                                
+								
                             </div>
+							
                         </div>
                     </div>
                 </div>

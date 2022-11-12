@@ -93,12 +93,12 @@ if ($this->session->userdata('id')) {
 									<span class="sidenav-normal"> Service </span>
 								</a>
 							</li>
-							<?php /*<li class="nav-item ">
-							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_category">
-									<span class="sidenav-mini-icon"> C </span>
-									<span class="sidenav-normal"> Categories </span>
+							<li class="nav-item ">
+							<a class="nav-link " href="<?= base_url(); ?>admin/ServiceCategoryCtl/all_ServiceBooking">
+									<span class="sidenav-mini-icon"> S </span>
+									<span class="sidenav-normal"> Service Booking </span>
 								</a>
-							</li>*/ ?>
+							</li>
 							<li class="nav-item ">
 							<a class="nav-link" href="<?= base_url(); ?>admin/ServiceCategoryCtl/appointment">
 							<span class="sidenav-mini-icon"> A </span>

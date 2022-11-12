@@ -249,5 +249,16 @@ class ServiceCategory_Model extends CI_Model
 		return $result_nbb_dashboard = $nbb_dashboard_query->result_array();	
 
 	}
-
+	function getAllServiceBooking()
+    {
+        $this->db->select('nbb_order_service.*,
+		nbb_service.service_name,
+		nbb_service.package_session,
+		nbb_customer.first_name,
+		nbb_customer.last_name');
+        $this->db->from('nbb_order_service');
+		$this->db->join('nbb_service','nbb_service.id = nbb_order_service.service_id');
+		$this->db->join('nbb_customer','nbb_customer.id = nbb_order_service.user_id');
+        return $this->db->get()->result_array();
+    }
 }

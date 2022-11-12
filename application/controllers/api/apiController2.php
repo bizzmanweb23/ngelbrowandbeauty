@@ -47,7 +47,7 @@ class ApiController extends CI_Controller
   }
 
     public function signup(){ 
-      $input = $this->input->post();
+       $input = $this->input->post();
       $email = $this->input->post('email');
      
       $this->db->select('*');
@@ -96,177 +96,6 @@ class ApiController extends CI_Controller
 
       }
       exit(); 
-  }
-  ////verify opt
-  public function verify_otp()
-  {
-      $userid = $this->input->post('userid');
-      $otp = $this->input->post('otp');
-      
-      $this->db->select('*');
-      $this->db->from('nbb_customer');
-      $this->db->where(array('id'=>$userid, 'otp'=>$otp));
-      $result  = $this->db->get();
-      $row = $result->num_rows();
-      
-      
-       if($row){
-        
-        echo json_encode([
-          'responsecode'=>$this->responseCode,
-          'message'=>'Otp Verified Successfully', 
-        
-        ]);
-        
-      }else {
-        
-        echo json_encode([
-          'responsecode'=>$this->error,
-          'message'=>'Not Found',
-          
-        ]);
-        
-      }
-  }
-  //get otp
-  public function get_otp()
-  {
-      
-      $userid = $this->input->get('userid');
-      $email = $this->input->get('email');
-      
-      $this->db->select('*');
-      $this->db->from('nbb_customer');
-      $this->db->where('id' ,$userid);
-      $result  = $this->db->get();
-      $e = $result->result_array();
-     $email =  $e[0]['email'];
-      
-      $row =  $result->num_rows();  
-      
-    if($row){
-          
-//         $ref_number = 'NBB'.random_string('alnum',5);
-// 		$otp_number = random_string('alnum',4); 
-		$otp = rand(1111,9999);
-		
-		$inputArray = ([ 
-          
-          'otp' => $otp,
-        ]);
-        $this->db->where('id',$userid);
-        $saved = $this->db->update('nbb_customer' , $inputArray);  
-		
-		mail($email,'Otp',$otp);
-        
-        echo json_encode([
-          'responsecode'=>$this->responseCode,
-          'message'=>'Success',
-          'opt'=>$otp,
-          
-        ]); 
-       
-        
-    }else {
-        
-        echo json_encode([
-          'responsecode'=>$this->error,
-          'message'=>'failed',
-          
-        ]);
-        
-    }
-      
-  }
-  public function forgot_password()
-  {
-      $email = $this->input->post('email');
-      $userid = $this->input->post('userid');
-      
-      $this->db->select('*');
-      $this->db->from('nbb_customer');
-      $this->db->where('email',$email);
-      $result  = $this->db->get();
-      $row = $result->num_rows();
-      
-      $uid = $result->result_array()[0]['id'];
-        
-      if($row){
-          
-        $otp = rand(1111,9999);
-		
-		$inputArray = ([  
-          'otp' => $otp,
-        ]);
-        
-        $this->db->where('email',$email);
-        $saved = $this->db->update('nbb_customer' , $inputArray);  
-		
-		mail($email,'Otp',$otp);
-		
-        echo json_encode([
-          'responsecode'=>$this->responseCode,
-          'message'=>'Success', 
-          'userid'=>$uid,
-          'otp'=>$otp,
-        
-        ]);
-        
-      }else {
-        
-        echo json_encode([
-          'responsecode'=>$this->error,
-          'message'=>'Email Not Found',
-          
-        ]);
-        
-      }
-  }
-  public function reset_password()
-  {
-      $p1 = $this->input->post('newPassword');
-      $p2 = $this->input->post('confirmPassword');
-      
-      $email = $this->input->post('email');
-      $userid = $this->input->post('userid');
-      
-      $this->db->select('*');
-      $this->db->from('nbb_customer');
-      $this->db->where(array('id'=>$userid,'email'=>$email));
-      $result  = $this->db->get();
-      $emailrow = $result->num_rows();
-        
-      if($emailrow){
-         if($p1 == $p2){
-            $inputArray = ([  
-              'password' => md5($this->input->post('newPassword')),
-            ]);
-            
-           $this->db->where(array('id'=>$userid,'email'=>$email));
-            $saved = $this->db->update('nbb_customer' , $inputArray);
-            
-            if($saved){
-                echo json_encode([
-                'responsecode'=>$this->responseCode,
-                'message'=>'Password Updated successfully!',
-              
-                ]);
-            }
-            
-          } else {
-              echo json_encode([ 
-              'message'=>'Password does not match',
-              
-            ]);
-          }  
-      } else {
-           echo json_encode([ 
-               'responsecode'=>$this->error,
-              'message'=>'Email Not found',
-              
-            ]);
-      }
-     
   }
   ///UPLOAD PROFILE IMAGE
     public function upload_image()
@@ -348,43 +177,49 @@ class ApiController extends CI_Controller
         } 
         
         //product
-        //$this->db->select('nbb_product.id as pid, nbb_product_image.image, name'); 
-        $this->db->select('id , nbb_child_category.parent_category_id as cateogry_id, category_name,product_cat_image');
-        $this->db->from('nbb_child_category');   
-        // $this->db->join('nbb_product','nbb_product.categorie_id = nbb_child_category.parent_category_id');
-        // $this->db->join('nbb_product_image','nbb_product_image.product_id = nbb_product.id');
-        $this->db->where('parent_category_id', 2);
-        $result = $this->db->get();
-        $rows = $result->num_rows();  
-        
-        $product = $result->result_array();
-         for($i=0 ; $i<count($product); $i++){
-            if($product[$i]['product_cat_image'] == 'null'){
-                $product[$i]['product_cat_image'] = 'no image found';
+        $this->db->select('nbb_product.id as product_id,name, nbb_product_image.*');
+        $this->db->from('nbb_product');
+        $this->db->join('nbb_product_image', 'nbb_product_image.product_id = nbb_product.id');
+        $products = $this->db->get()->result_array();
+
+        for($i=0 ; $i<count($products); $i++){
+            if( $products[$i]['image'] == 'null'){
+                 $products[$i]['image'] =  'no image found';
+            }else{
+                $products[$i]['image'] = $this->url.'uploads/product_img/'.$products[$i]['image'];
             }
-            else {
-                $product[$i]['product_cat_image'] = $this->url.'uploads/product_img/'.$product[$i]['product_cat_image'];    
-            }
-            
         }
 
         //service
-		$this->db->select('nbb_child_category.id as p_id,category_name,product_cat_image');  
+		/*$this->db->select('nbb_child_category.*,nbb_child_category.id as c_id'); 
+		$this->db->select('nbb_sub_child_category.*,nbb_sub_child_category.id as sub_child_id');
+        $this->db->from('nbb_child_category');  
+		$this->db->join('nbb_sub_child_category','nbb_sub_child_category.child_category  = nbb_child_category.id','LEFT');
+        $this->db->where('nbb_child_category.parent_category_id',1);
+        $result = $this->db->get();
+        $rows = $result->num_rows();
+        $main = $result->result_array();*/
+		$this->db->select('nbb_child_category.*,nbb_child_category.id as c_id'); 
         $this->db->from('nbb_child_category');  
         $this->db->where('nbb_child_category.parent_category_id',1);
         $result = $this->db->get();
         $rows = $result->num_rows();
         $main = $result->result_array();
 
-		
-        
-        //$category = $result->result_array();
-
 		if($rows){
-            for($i=0 ; $i<count($main); $i++){ 
-					
+            for($i=0 ; $i<count($main); $i++){
+					$this->db->select('nbb_sub_child_category.*');
+					$this->db->from('nbb_sub_child_category');
+					$this->db->where('nbb_sub_child_category.child_category',$main[$i]['c_id']);
+					$result2 = $this->db->get(); 
+					$subChild = $result2->result_array();
 				$main[$i]['product_cat_image'] = $this->url.'uploads/service_img/'.$main[$i]['product_cat_image'];
-               
+              
+					//if($main[$i]['c_id'] == $main[$i]['sub_child_id']){
+					if($main[$i]['c_id'] == $subChild[$i]['child_category']){
+						$main[$i]['subchild_cat_image'] = $this->url.'uploads/service_img/'.$main[$i]['subchild_cat_image'];
+						$main[$i]['child'] = $result->result_array();
+					}   
                 }    
 		}
         
@@ -421,7 +256,7 @@ class ApiController extends CI_Controller
             'responsecode' => $this->responseCode,
             'message' => 'Success',
             'offer'=>$offers,
-            'products' => $product ,
+            'products' => $products ,
             'services' => $main,
             'course' => $course ,
         ]);
@@ -466,7 +301,7 @@ class ApiController extends CI_Controller
 
    }
 //===UPDATE PROFILE===//
-public function update_profile()
+    public function update_profile()
     {
         
         $id = $this->input->post('userid');  
@@ -476,14 +311,12 @@ public function update_profile()
         $email = $this->input->post('email');
         $phone = $this->input->post('contact');
         $password = md5($this->input->post('password'));
-		$gender = $this->input->post('gender'); 
-        $shipping_country = $this->input->post('shipping_country');
-        $shipping_hse_blk_no = $this->input->post('shipping_hse_blk_no');
-        $shippingunit_no = $this->input->post('shippingunit_no');
-        $shipping_address = $this->input->post('shipping_address');
-		$shipping_street = $this->input->post('shipping_street');
-        $shipping_postalcode = $this->input->post('shipping_postalcode');
-        
+        $country = $this->input->post('country');
+        $state = $this->input->post('state');
+        $city = $this->input->post('city');
+        $address = $this->input->post('address');
+        $zipcode = $this->input->post('zipcode');
+        $gender = $this->input->post('gender'); 
         
         $this->db->select('*');
         $this->db->from('nbb_customer');
@@ -499,49 +332,19 @@ public function update_profile()
               'email'=>$email,
               'password'=>$password,
               'contact'=>$phone,
-              /*'cus_country'=>$country,
+              'cus_country'=>$country,
               'cus_state'=>$state,
               'cus_city'=>$city,
               'cus_zipcode'=>$zipcode,
-              'address'=>$address,  */
-              'gender'=>$gender,
+              'address'=>$address,  
+              'cus_gender'=>$gender,
             ); 
             $this->db->where('id',$id);
             $this->db->update('nbb_customer',$data); 
-
-			$shipping_data = array(
-				'user_id' => $id,
-				'shipping_address' => $shipping_address,
-				'shipping_country' => $shipping_country,
-				'shipping_hse_blk_no' => $shipping_hse_blk_no,
-				'shippingunit_no' => $shippingunit_no,
-				'shipping_street' => $shipping_street,
-				'shipping_postalcode' => $shipping_postalcode
-			);
-			$shipping_address_query = $this->db->query("SELECT * FROM nbb_shipping_address WHERE nbb_shipping_address.user_id = '".$id."'");
-			$shipping_address_rownum = $shipping_address_query->num_rows();
-			//$shipping_address_array = $shipping_address_query->result_array();
-			if($shipping_address_rownum > 0){
-				$this->Main->update('user_id',$id, $shipping_data,'nbb_shipping_address');  
-			}else{
-				$this->db->insert('nbb_shipping_address', $shipping_data);
-			}
             
-            $this->db->select('nbb_customer.id,
-			 nbb_customer.first_name, 
-			 nbb_customer.last_name, 
-			 nbb_customer.email,
-			 nbb_customer.contact, 
-			 nbb_customer.gender,
-			 nbb_shipping_address.shipping_address,
-			 nbb_shipping_address.shipping_country,
-			 nbb_shipping_address.shipping_hse_blk_no,
-			 nbb_shipping_address.shippingunit_no,
-			 nbb_shipping_address.shipping_street,
-			 nbb_shipping_address.shipping_postalcode');
+            $this->db->select('id, first_name, last_name, email,contact, cus_state,cus_country,cus_city,cus_zipcode,address,cus_gender');
             $this->db->from('nbb_customer');
-			$this->db->join('nbb_shipping_address','nbb_shipping_address.user_id = nbb_customer.id');
-            $this->db->where('nbb_customer.id', $id);
+            $this->db->where('id', $id);
             $result  = $this->db->get(); 
                 
             echo json_encode([ 
@@ -590,24 +393,29 @@ public function update_profile()
                 ]);
         }
     } 
-	public function get_child_category()
+	public function get_subchild_category()
     {
-        $cid = $this->input->get('catid'); 
+		$this->db->select('nbb_child_category.*,nbb_child_category.id as c_id'); 
 		$this->db->select('nbb_sub_child_category.*');
-        $this->db->from('nbb_sub_child_category');   
-        $this->db->where('nbb_sub_child_category.child_category',$cid);
+        $this->db->from('nbb_child_category');  
+		$this->db->join('nbb_sub_child_category','nbb_sub_child_category.child_category  = nbb_child_category.id','LEFT');
+        $this->db->where('nbb_child_category.parent_category_id',1);
         $result = $this->db->get();
         $rows = $result->num_rows();
         $main = $result->result_array();
         
         
-      
-        
+       /* print "<pre>";
+        print_r($main);
+        exit();*/
         if($rows){
             for($i=0 ; $i<count($main); $i++){
-                $main[$i]['subchild_cat_image'] = $this->url.'uploads/service_img/'.$main[$i]['subchild_cat_image']; 
-                    
-                } 
+                $main[$i]['subchild_cat_image'] = $this->url.'uploads/service_img/'.$main[$i]['subchild_cat_image'];
+					
+                    $cid = $main[$i]['id'];
+                }    
+            
+            
             echo json_encode([
                     'responsecode'=>$this->responseCode, 
                     'message'=>'success',
@@ -773,7 +581,7 @@ public function update_profile()
         }
         
        
-        $this->db->select('id,service_name,service_icon,description,discount_price, discount_percent, rating,service_price as price,package_times_price,package_session'); 
+        $this->db->select('id,service_name,service_icon,description,discount_price, discount_percent, rating'); 
         $this->db->from('nbb_service'); 
         $this->db->where('service_category',$id);
         $result = $this->db->get()->result_array(); 
@@ -882,29 +690,34 @@ public function update_profile()
   public function add_shipping_address()
   {
     $id = $this->input->post('userid');
-	$shipping_address_query = $this->db->query("SELECT * FROM nbb_shipping_address WHERE nbb_shipping_address.user_id = '".$id."'");
-	$shipping_address_rownum = $shipping_address_query->num_rows();
+
+    $firstname = $this->input->post('firstname');
+    $lastname = $this->input->post('lastname');
+    $email = $this->input->post('email');
+    $phone = $this->input->post('mobile');
+    $country = $this->input->post('country');
+    $state = $this->input->post('state_area_province');
+    $city = $this->input->post('city');
+    $address = $this->input->post('address');
+    $street = $this->input->post('street');
+    $zipcode = $this->input->post('zipcode');
+ 
+
     $data = array(
-      		'user_id'=>$id,
-		  	'shipping_firstname'=>$this->input->post('firstname'),
-		  	'shipping_lastname'=>$this->input->post('lastname'), 
-		  	'shipping_contactno'=>$this->input->post('mobile'),  
-		  	'shipping_hse_blk_no'=>$this->input->post('house_block_no'),
-		  	'shipping_postalcode'=>$this->input->post('zipcode'),
-		  	'shipping_country'=>$this->input->post('country'),
-			'shipping_address'=>$this->input->post('address'),
-		  	'shipping_street'=>$this->input->post('street'),
-		  	'shippingunit_no' => $this->input->post('shippingunit_no'),
+      'user_id'=>$id,
+      'shipping_firstname'=>$firstname,
+      'shipping_lastname'=>$lastname,
+      'shipping_contactno'=>$phone,
+      'shipping_email'=>$email,
+      'shipping_postalcode'=>$zipcode,
+      'shipping_country'=>$country,
+      'shipping_state'=>$state,
+      'shipping_city'=>$city,
+      'shipping_street'=>$street,
+      'shipping_address'=>$address,
     );
     
-   
-		if($shipping_address_rownum > 0){
-			$this->db->where('user_id',$id);
-       		$result = $this->db->update('nbb_shipping_address',$data);
-		}else{
-			$result = $this->db->insert('nbb_shipping_address', $data);
-		}
-
+    $result = $this->db->insert('nbb_shipping_address', $data);
     if($result){
         $this->db->select('*');
         $this->db->from('nbb_shipping_address');
@@ -925,15 +738,14 @@ public function update_profile()
 
   }
 ///==========EDIT SHIPPING ADDRESS==========///
-public function update_shipping_address()
+ public function update_shipping_address()
   {
-     
-   $id = $this->input->post('shipping_address_id');
+    $id = $this->input->post('shipping_address_id');
     $uid = $this->input->post('userid');
-   
+    
     $this->db->select('*');
     $this->db->from('nbb_shipping_address');
-    $this->db->where('user_id',$uid);
+    $this->db->where(array('user_id'=>$uid,'id'=>$id));
     $result  = $this->db->get();
     $rows = $result->num_rows();
 
@@ -941,16 +753,17 @@ public function update_shipping_address()
         $upd_fields = array(
             'user_id'=>$uid ,
             'shipping_firstname'=>$this->input->post('firstname'),
-            'shipping_lastname'=>$this->input->post('lastname'), 
-            'shipping_contactno'=>$this->input->post('mobile'),  
-            'shipping_hse_blk_no'=>$this->input->post('house_block_no'),
+            'shipping_lastname'=>$this->input->post('lastname'),
+            'shipping_email'=>$this->input->post('email'),
+            'shipping_contactno'=>$this->input->post('mobile'),
+            'shipping_city'=>$this->input->post('city'),
+            'shipping_state'=>$this->input->post('state_area_province'),
             'shipping_postalcode'=>$this->input->post('zipcode'),
             'shipping_country'=>$this->input->post('country'),
             'shipping_address'=>$this->input->post('address'),
             'shipping_street'=>$this->input->post('street'),
-			'shippingunit_no' => $this->input->post('shippingunit_no'),
         );
-        $this->db->where('user_id',$uid);
+        $this->db->where('id',$id);
         $this->db->update('nbb_shipping_address',$upd_fields);
         ///get update data///
         
@@ -974,7 +787,6 @@ public function update_shipping_address()
     }
 
   }
- 
   ///GET TIME SLOTS///
     public function get_time_slot()
     {
@@ -1095,7 +907,7 @@ public function get_course_list()
         $uid = $this->input->get('userid');
         $sid = $this->input->get('shipping_address_id');
         
-        $this->db->select('id, user_id, created_at, shipping_firstname, shipping_lastname, shipping_contactno, shipping_address, shipping_country, shipping_hse_blk_no, shippingunit_no, shipping_street, shipping_postalcode');
+        $this->db->select('id, shipping_firstname,shipping_lastname,shipping_email,shipping_contactno,shipping_city,shipping_state, shipping_postalcode,shipping_country');
         $this->db->from('nbb_shipping_address');
         $this->db->where(array('id'=>$sid,'user_id'=>$uid));
         $result = $this->db->get();
@@ -1123,46 +935,41 @@ public function get_course_list()
     {
         $id = $this->input->post('userid');
         
-        $shipping_firstname = $this->input->post('firstname');
-        $shipping_lastname = $this->input->post('lastname');
-        $shipping_contactno = $this->input->post('mobile');
-		$shipping_country = $this->input->post('shipping_country');
-        $shipping_hse_blk_no = $this->input->post('shipping_hse_blk_no');
-        $shippingunit_no = $this->input->post('shippingunit_no');
-        $shipping_address = $this->input->post('shipping_address');
-		$shipping_street = $this->input->post('shipping_street');
-        $shipping_postalcode = $this->input->post('shipping_postalcode');
+        $firstname = $this->input->post('firstname');
+        $lastname = $this->input->post('lastname');
+        $email = $this->input->post('email');
+        $phone = $this->input->post('mobile');
+        $country = $this->input->post('country');
+        $state = $this->input->post('state_area_province');
+        $city = $this->input->post('city');
+        $address = $this->input->post('address');
+        $zipcode = $this->input->post('zipcode');
 
-		$shipping_data = array(
-			'user_id' => $id,
-			'shipping_firstname' => $shipping_firstname,
-			'shipping_lastname' => $shipping_lastname,
-			'shipping_contactno' => $shipping_contactno,
-			'shipping_address' => $shipping_address,
-			'shipping_country' => $shipping_country,
-			'shipping_hse_blk_no' => $shipping_hse_blk_no,
-			'shippingunit_no' => $shippingunit_no,
-			'shipping_street' => $shipping_street,
-			'shipping_postalcode' => $shipping_postalcode
-		);
-		$shipping_address_query = $this->db->query("SELECT * FROM nbb_shipping_address WHERE nbb_shipping_address.user_id = '".$id."'");
-		$shipping_address_rownum = $shipping_address_query->num_rows();
-		if($shipping_address_rownum > 0){
-			$result = $this->Main->update('user_id',$id, $shipping_data,'nbb_shipping_address');  
-		}else{
-			$result = $this->db->insert('nbb_shipping_address', $shipping_data);
-		}
+        $data = array(
+            'user_id' => $id,
+            'shipping_firstname' => $firstname,
+            'shipping_lastname' => $lastname,
+            'shipping_contactno' => $phone,
+            'shipping_email' => $email,
+            'shipping_postalcode' => $zipcode,
+            'shipping_country' => $country,
+            'shipping_state' => $state,
+            'shipping_city' => $city,
+            'shipping_address' => $address,
+        );
+
+        $result = $this->db->insert('nbb_shipping_address', $data);
         if ($result) {
             echo json_encode([
                 'responsecode' => $this->responseCode,
                 'message' => 'Default Address Set Successfully',
-                'data' => $shipping_data,
+                'data' => $data,
             ]);
         } else {
             echo json_encode([
                 'responsecode' => $this->error,
                 'message' => 'try again',
-                'data' => $shipping_data,
+                'data' => $data,
             ]);
         } 
     }
@@ -1698,9 +1505,8 @@ public function add_to_cart()
       } 
       else {
            echo json_encode([
-               'responsecode'=>$this->error,
-                'message'=>'Not Found',
-                'data'=>array(),  
+               'responsecode'=>$this->responseCode,
+            'data'=>'Not found',  
         ]);
       } 
        

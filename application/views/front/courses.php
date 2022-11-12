@@ -1,5 +1,11 @@
 <!-- HEADER -->
-    
+    <style>
+			.blogPost {
+					margin-bottom: 100px;
+					margin: auto;
+					width: 75%;
+			}
+		</style>
     <!-- PAGE TITLE SECTION -->
      <section class="clearfix pageTitleArea" style="background-image: url(assets/front/img/blog/Course.png);">
         <div class="container">
@@ -13,10 +19,10 @@
 				<?php foreach($allcourse as $course_row): ?>
           <div class="col">
             <div class="blogPost">
-              <img src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" data-src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" class="img-responsive">
+              <img src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" data-src="<?= base_url(); ?>uploads/course_image/<?= $course_row['course_image'] ?>" class="mx-auto rounded">
               <h3><?= $course_row['course_name'] ?></h3>
 							<?php $description = substr($course_row['description'],0,200); ?>
-              <p style="color: #000;"><?php if($course_row['description'] != ''){ ?>
+              <p class="text-justify" style="color: #000;"><?php if($course_row['description'] != ''){ ?>
 								<?= $description; ?>...
 							<?php }else{} ?>
 							</p>
@@ -34,32 +40,7 @@
         </div>
 
        
-          
-
-       <!--<div class=" ">
-          <div class="paginationCommon paginationOne ">
-          <nav aria-label="Page navigation">
-            <ul class="pagination">
-              <li>
-                <a href="javascript:void(0)" aria-label="Previous">
-                  <span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-                </a>
-              </li>
-              <li class="active"><a href="javascript:void(0)">1</a></li>
-              <li><a href="javascript:void(0)">2</a></li>
-              <li><a href="javascript:void(0)">3</a></li>
-              <li><a href="javascript:void(0)">4</a></li>
-              <li><a href="javascript:void(0)">5</a></li>
-              <li>
-                <a href="javascript:void(0)" aria-label="Next">
-                  <span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-       </div>-->
-
+      
 
       </div>
     </section>

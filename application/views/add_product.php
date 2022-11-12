@@ -172,7 +172,7 @@
 
 				<div class="row">       
 					
-					<div class="col-md-4">      
+					<div class="col-md-6">      
 						<div class="form-group">
 							<label for="service_price" class="col-sm-6 control-label">Colour
 							<i class="required">*</i>
@@ -182,17 +182,17 @@
 							</div>
 						</div>        
 					</div> 
-					<div class="col-md-4">      
+					<!--<div class="col-md-4">      
 						<div class="form-group">
 							<label for="service_price" class="col-sm-6 control-label">Rating
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="number" class="form-control" name="rating" required placeholder="Enter rating" value="">
+								<input type="number" class="form-control" name="rating" placeholder="Enter rating" value="">
 							</div>
 						</div>        
-					</div>
-					<div class="col-md-4">
+					</div>-->
+					<div class="col-md-6">
 						<div class="form-group form-check">
 							<input type="checkbox" class="form-check-input" name="light_medical_beauty" value="1">
 							<label for="customCheckbox"> Light Medical Beauty Product</label>        
@@ -271,7 +271,7 @@
 							<label for="image" class="col-sm-6 control-label">Product Image </label>
 							<div class="col-sm-12">
 								<div id="image"></div>
-								<input type="file" name="productfiles[]" multiple required="">
+								<input type="file" name="productfiles[]" multiple required="" class="form-control">
 							</div>
 						</div>
 					</div>

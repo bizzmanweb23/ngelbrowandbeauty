@@ -45,10 +45,10 @@
 								<!-- Shipping information -->
 								<div class="card-body">
 									<h3 class="h6"><strong> Free Lesson</strong></h3>
-									<p class="taxt-dark"><?= $courseData['free_lesson'] ?> </p>
+									<p class="taxt-dark text-justify"><?= $courseData['free_lesson'] ?> </p>
 									
 									<h3 class="h6"><strong> Recomandation</strong></h3>
-									<p class="text-dark"><?= $courseData['recomandation_fill'] ?></p>
+									<p class="text-dark text-justify"><?= $courseData['recomandation_fill'] ?></p>
 								</div>
 							</div>
 							</div>
@@ -78,7 +78,7 @@
 											</div>
 											<div class="mb-3 d-flex justify-content-between pt-3">
 												
-												<div class="d-flex">
+												<div class="d-flex text-justify">
 													<?= $courseData['description']; ?>
 												</div>
 											</div>
@@ -87,19 +87,19 @@
 										</div>
 									</div>
 									<!-- Payment -->
-									<div class="card mb-4">
+									<!--<div class="card mb-4">
 										<div class="card-body">
 											<div class="row">
 												
 												<div class="col-lg-6">
 													<h3 class="h6">Term's & Conditions</h3>
-													<p class="taxt-dark">
+													<p class="taxt-dark text-justify">
 														<?= $courseData['terms_conditonsDetails']; ?>
 													</p>
 												</div>
 											</div>
 										</div>
-									</div>
+									</div>-->
 								</div>
 								
 							</div>

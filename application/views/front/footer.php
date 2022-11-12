@@ -13,7 +13,7 @@
               <img src="<?= base_url(); ?>assets/front/img/logo.png" class="img-fluid" style = "max-width: 150px;">
 
                 </a>
-                <p>Established in 2017，N’GEL has been consistently providing customized Semi-permanent Makeup and Aesthetic Beauty Skin management to all our dear customers.</p>
+                <p class="text-justify">Established in 2017，N’GEL has been consistently providing customized Semi-permanent Makeup and Aesthetic Beauty Skin management to all our dear customers.</p>
                 
               </div>
             </div>
