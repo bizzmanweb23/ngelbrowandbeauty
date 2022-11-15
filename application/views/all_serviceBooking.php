@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Supplier Management</h1>
+            <h1>Service Booking</h1>
           </div>
         </div>
       </div><!-- /.container-fluid --> 
@@ -32,7 +32,6 @@
                   <th>Created Date</th>
 									<th>Payment Slip</th>
 									<th>Payment Status</th>
-                  <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -48,11 +47,6 @@
 													<?php } ?>
 													</td>
 												<td><?= $ServiceBookingRow['payment_status'] ?></td>
-                        <td>
-													<!--<a href="<?= base_url('admin/ProcurementManagement/deleteSupplier/'. $ServiceBookingRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>-->
-													<a href="<?= base_url('admin/ProcurementManagement/sendEmailSupplier/'. $ServiceBookingRow['id'])?>" class="btn btn-default" title="Email" style="color:#61d3d4"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-
-												</td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

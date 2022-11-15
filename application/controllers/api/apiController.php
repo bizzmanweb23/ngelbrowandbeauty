@@ -268,67 +268,7 @@ class ApiController extends CI_Controller
       }
      
   }
-  ///UPLOAD PROFILE IMAGE
-    public function upload_image()
-    {   
-        $uid = $this->input->post('userid');
-        
-        $this->db->select('*');
-        $this->db->from('nbb_customer');
-        $this->db->where('id',$uid);
-        $result = $this->db->get();
-        $row = $result->num_rows();
-        
-        if($row){
-                $this->load->helper('file');
-                $this->load->library('upload');
-        
-                $config['upload_path'] = 'uploads/customer_image';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['encrypt_name'] = TRUE;
 
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config); 
-               
-                $file_name;
-                
-                if ($this->upload->do_upload('image'))
-                {
-                     $file_info = $this->upload->data();
-                    $file_name = $file_info['file_name'];
-          
-                    $this->db->where('id',$uid);
-                    $this->db->update('nbb_customer',
-                        array('profile_picture'=>$file_name)
-                        );
-                   
-                    
-                    $data = array('upload_data' => $this->upload->data()); 
-                    echo json_encode([
-                        'responsecode'=>$this->responseCode,
-                        'message'=>'Image Uploaded',
-                        
-                    ]); 
-                   
-                }
-                else
-                { 
-                    $error = array('error' => $this->upload->display_errors());  
-                    echo json_encode([
-                        'responsecode'=>$this->error,
-                        'message'=>'image uploading error',
-                        'data'=>$result->result_array(),
-                    ]);  
-                }
-                
-        } else {
-                echo json_encode([
-                    'responsecode'=>$this->error,
-                    'message'=>'Record Not found',
-                ]);    
-        } 
-      
-    }
   //DASHBOARD//
     public function getDashboard()
     {
@@ -558,6 +498,71 @@ public function update_profile()
             ]);
         }
     
+    }
+	//=====upload_image======//
+	public function upload_image()
+    {   
+        $uid = $this->input->post('userid');
+        
+        $this->db->select('*');
+        $this->db->from('nbb_customer');
+        $this->db->where('id',$uid);
+        $result = $this->db->get();
+        $row = $result->num_rows();
+        
+        if($row){
+			$this->load->library('upload');
+			if($_FILES['profile_picture']['name'] != '')
+			{
+
+				$_FILES['file']['name']       = $_FILES['profile_picture']['name'];
+				$_FILES['file']['type']       = $_FILES['profile_picture']['type'];
+				$_FILES['file']['tmp_name']   = $_FILES['profile_picture']['tmp_name'];
+				$_FILES['file']['error']      = $_FILES['profile_picture']['error'];
+				$_FILES['file']['size']       = $_FILES['profile_picture']['size'];
+
+				// File upload configuration
+				$uploadPath = 'uploads/profile_img/';
+				$config['upload_path'] = $uploadPath;
+				$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+				$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+				$config['max_height'] = "";
+				$config['max_width'] = "";
+
+				// Load and initialize upload library
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				// Upload file to server
+				if($this->upload->do_upload('file')){
+					// Uploaded file data
+					$imageData = $this->upload->data();
+					$uploadImgData['profile_picture'] = $imageData['file_name'];
+				}
+				$update = $this->Main->update('id',$uid, $uploadImgData,'nbb_customer');    
+
+				echo json_encode([
+					'responsecode'=>$this->responseCode,
+					'message'=>'Image Uploaded',
+					
+				]);      
+			}else
+                { 
+                    $error = array('error' => $this->upload->display_errors());  
+                    echo json_encode([
+                        'responsecode'=>$this->error,
+                        'message'=>'image uploading error',
+                        'data'=>$result->result_array(),
+                    ]);  
+                }
+                
+        } else {
+                echo json_encode([
+                    'responsecode'=>$this->error,
+                    'message'=>'Record Not found',
+                ]);    
+        } 
+      
     }
 //=====SERVICES CATEGORY======//
     public function get_service_category()

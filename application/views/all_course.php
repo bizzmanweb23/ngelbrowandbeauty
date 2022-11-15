@@ -53,7 +53,7 @@
 
 								} ?>
 							</td>
-							<td><?php if($courseRow['course_fees'] != ''){?>
+							<td><?php if($courseRow['description'] != ''){?>
 								<?= substr($courseRow['description'],0,50);?>...
 							<?php }else{}?>
 							</td>

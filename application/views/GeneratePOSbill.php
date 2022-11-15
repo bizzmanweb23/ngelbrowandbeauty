@@ -49,7 +49,7 @@
 									Price
 								</td>
 								<td style="width:15%; text-align:left;">
-								Total Amount
+								Total
 								</td>
 							</tr>
 								<?php 
@@ -75,9 +75,47 @@
 					</table>
 						</td>
 					</tr>
+
+					<tr>
+						<td colspan="5">
+						<table cellspacing="0px" cellpadding="3px">
+							<tr class="heading">
+								<td style="width:15%; text-align:left;">
+									Service Name
+								</td>
+								<td style="width:25%; text-align:left;">
+									Amount
+								</td>
+							</tr>
+								<?php 
+									$service_name = '';
+									$service_price = '';
+									
+								foreach($servicedata as $servicedata_row){
+									$service_name = $servicedata_row['service_name'];
+									$service_price = $servicedata_row['price'];
+								 ?>
+								<tr class="item">
+									<td style="width:15%;text-align:left;"> <?= $service_name ?></td>
+									<td style="width:25%;text-align:left;"><?= $service_price ?></td>
+								</tr>
+						<?php 	} ?>
+					</table>
+						</td>
+					</tr>
+
 					<tr class="total">
 					
-					<td colspan="4" align="right">  Grand Total :  <b>  <?= $producttotalPrice['total_price'] ?> </b> </td>
+					<td colspan="4" align="right">  Product Total :  <b>  <?= $producttotalPrice['total_price'] ?> </b> </td>
+					
+					</tr>
+					<tr class="total">
+					
+					<td colspan="4" align="right">  Service Total :  <b>  <?= $servicetotalPrice['total_ServicePrice'] ?> </b> </td>
+					</tr>
+					<tr class="total">
+					<?php $grandTotal = $producttotalPrice['total_price'] + $servicetotalPrice['total_ServicePrice'];?>
+					<td colspan="4" align="right">  Service Total :  <b>  <?= $grandTotal; ?> </b> </td>
 					</tr>
 					<tr class="total">
 						  <td colspan="4" align="right">  GST :  <b> </b> </td>

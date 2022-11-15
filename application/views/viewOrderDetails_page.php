@@ -71,7 +71,7 @@
 									</div>
 								</div>
 								<hr>
-								<div class="row">
+								<?php /*<div class="row">
 									<dt class="col-sm-12 font-weight-bold">Product Description</dt>
 									<dd class="col-sm-12"><?php
 									if(isset($short_description['short_description']) && $short_description['short_description'] != ''){
@@ -81,6 +81,16 @@
 										echo "...";
 									 }
 									  ?>.</dd>
+									</div>*/ ?>
+									<div class="row">
+									<dt class="col-sm-12 font-weight-bold">Payment Details</dt>
+									<dd class="col-sm-12"><?php
+									if(isset($OrderDetails['payment_file']) && $OrderDetails['payment_file'] != ''){ ?>
+										<a href="<?= base_url(); ?>/uploads/payment_image/<?= $OrderDetails['payment_file'] ?>" class="btn btn-success" target="_blank">View File</a>
+									<?php  }else{ 
+										echo "";
+									 }?>
+									  </dd>
 									</div>
 								</div>
 							</div>

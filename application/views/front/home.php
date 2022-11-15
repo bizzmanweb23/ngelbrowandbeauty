@@ -10,7 +10,7 @@
             <div class="slide-inner2 common-inner">
 							<!--img src="<?= base_url(); ?>assets/front/img/slider-logo.png" class="img-fluid" style = "max-width: 150px;mix-blend-mode:color;">-->
               <span class="h1 from-bottom">Welcome to N’gel</span><br>
-              <span class="h2 from-bottom">N’gel&nbsp;&nbsp; 美业&nbsp;  天使&nbsp; 之颜  </span><br>
+              <span class="h2 from-bottom">N’gel&nbsp;&nbsp; 美业&nbsp;  天使之颜  </span><br>
               <a href="javascript:void(0)" class="btn btn-primary first-btn waves-effect waves-light scale-up">More Details</a>
             </div>
           </div>

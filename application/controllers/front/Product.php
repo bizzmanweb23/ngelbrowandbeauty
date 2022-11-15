@@ -160,6 +160,49 @@ class Product extends CI_Controller {
 		$this->db->update('nbb_order_main', $mainorderdata);
 
 		$user_id = $this->session->userdata('id');  
+
+		$paymentdata = array(
+			'user_id' => $user_id,
+			'order_id' => $Id,
+			'payment_gross' => $total_price,
+			'status' => 1,
+		); 
+		$result2 = $this->db->insert('nbb_payments',$paymentdata);  
+		$paymentId = $this->db->insert_id();
+		if($result2 ==true)
+			{
+				$this->load->library('upload');
+				if($_FILES['payment_file']['name'] != '')
+				{
+
+					$_FILES['file']['name']       = $_FILES['payment_file']['name'];
+					$_FILES['file']['type']       = $_FILES['payment_file']['type'];
+					$_FILES['file']['tmp_name']   = $_FILES['payment_file']['tmp_name'];
+					$_FILES['file']['error']      = $_FILES['payment_file']['error'];
+					$_FILES['file']['size']       = $_FILES['payment_file']['size'];
+
+					// File upload configuration
+					$uploadPath = 'uploads/payment_image/';
+					$config['upload_path'] = $uploadPath;
+					$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+					$config['max_size'] = ""; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+					$config['max_height'] = "";
+					$config['max_width'] = "";
+
+					// Load and initialize upload library
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+
+					// Upload file to server
+					if($this->upload->do_upload('file')){
+						// Uploaded file data
+						$imageData = $this->upload->data();
+						$uploadImgData['payment_file'] = $imageData['file_name'];
+					}
+					$update=$this->Main->update('id',$paymentId, $uploadImgData,'nbb_payments');         
+				} 
+			}
+
         $referred_by_qry = $this->db->query("SELECT nbb_customer.id,nbb_customer.referred_by 
 		FROM nbb_customer 
 		WHERE nbb_customer.id = '".$user_id."'");
@@ -180,6 +223,7 @@ class Product extends CI_Controller {
 			$referred_uid = $userrow['id'];	
 			 
 		}
+
 		
 		if($referred_uid != ''){
 
@@ -236,8 +280,12 @@ class Product extends CI_Controller {
 			'shipping_address' => $this->Product->getshipping_address($user_id)
 		);
 
-
+		$datahader['allchild_category'] = $this->Header->getAllchild_category();
+		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
+		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+		$this->load->view('front/header',$datahader);
         $this->load->view('front/order_confirmation', $data);
+		$this->load->view('front/footer');
 
 	}
 

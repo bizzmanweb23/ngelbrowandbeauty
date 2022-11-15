@@ -215,6 +215,8 @@ class OrderManagement extends CI_Controller {
 		$order_product_id = $this->uri->segment(4);
 		$order_id = $this->uri->segment(5);
 		$data['OrderDetails'] = $this->OrderManagement->getAllOrderDetails($order_id,$order_product_id);
+		//$data['OrderDetails'] = $this->OrderManagement->getAllPaymentDetails($order_id);
+
 
 		$this->layout->view('viewOrderDetails_page',$data);
 	}

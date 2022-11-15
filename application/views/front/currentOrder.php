@@ -125,12 +125,8 @@
                  
 									<?php endforeach; ?>
                 </div>
-  							<hr>
-                <div class="cardTitle extraSpace">
-                  <h3>Payment Type</h3>
-                </div>
-  
-                <div class="form-group row">
+  						
+                <!--<div class="form-group row">
 
                   <div class="col-6">
                     <div class="radio-inline chooseOption">
@@ -143,17 +139,7 @@
                     </div>
                   </div>
 
-									<!--<div class="col-6">
-                    <div class="radio-inline chooseOption">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                          Pay with <img src="<?= base_url(); ?>uploads/gpay.png" alt="Image paypal">
-                        </label>
-                      </div>
-                    </div>
-                  </div>-->
-                </div>
+                </div>-->
 
               </div>
             </div>
@@ -182,7 +168,28 @@
 								
 								<input type="hidden" class="form-control" name="order_id" value="<?= $producttotalPrice['order_id'] ?>">
 								<input type="hidden" class="form-control" name="total_price" value="<?= $producttotalPrice['total_price']; ?>">
+								
 								<div class="paymentPart">
+									<div class="row">
+										<div class="col-md-12">
+												<h4>Payment Method</h4>
+												<div class="form-group">
+														<img src="<?= base_url(); ?>/assets/front/img/qr_code.jpeg" class="img-responsive">
+												</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group pt-2">
+													<label for="image" class="col-md-6 control-label">Payment Slip</label>
+													<div class="col-md-12">
+														<input type="file" name="payment_file" class="form-control" required>
+													</div>
+											</div>
+										</div>
+									</div>
+									<hr>
+								
 									<div class="form-group">
 										<div class="totalAmount"><span>Total:</span><strong>S$&nbsp;<?= $producttotalPrice['total_price']; ?></strong></div>
 									<button type="submit" class="btn btn-primary">Complete payment</button>

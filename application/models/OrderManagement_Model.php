@@ -54,6 +54,16 @@ class OrderManagement_Model extends CI_Model
 		$this->db->from('nbb_product');
 		return $this->db->get()->result_array();*/
 	}
+	function orderservicedata($order_id = ''){
+		$servicet_sql  = "SELECT nbb_posservice_order.*, 
+				nbb_service.service_name
+				FROM nbb_posservice_order 
+				LEFT JOIN nbb_service ON nbb_service.id = nbb_posservice_order.service_id 
+				WHERE nbb_posservice_order.order_id = $order_id"; 
+		$servicet_query = $this->db->query($servicet_sql);
+		$filterservice = $servicet_query->result_array();
+		return $filterservice;
+	}
 	/*function getAvailableStockByID($id){
         $this->db->select('nbb_product.available_stock');
         $this->db->from('nbb_product');
@@ -260,6 +270,8 @@ class OrderManagement_Model extends CI_Model
 		nbb_order_main.payment_method,
 		nbb_product.name AS product_name,
 		nbb_product.short_description,
+		nbb_payments.payment_file,
+		nbb_payments.payment_gross,
 		nbb_customer.*,
 		nbb_billing_address.*,
 		nbb_shipping_address.*,
@@ -271,6 +283,7 @@ class OrderManagement_Model extends CI_Model
 		$this->db->join('nbb_billing_address', 'nbb_billing_address.user_id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_shipping_address', 'nbb_shipping_address.user_id = nbb_order_main.user_id', 'LEFT');
 		$this->db->join('nbb_delivery_details', 'nbb_delivery_details.order_id = nbb_order_main.id', 'LEFT');
+		$this->db->join('nbb_payments', 'nbb_payments.order_id = nbb_order_main.id', 'LEFT');
 		$where = array(
 			'nbb_order_main.type_flag' => 'O',
 			'nbb_order_main.id'   => $order_id,
@@ -335,6 +348,8 @@ class OrderManagement_Model extends CI_Model
 				'tacking_details' 		=> $row['tacking_details'],
 				'date_booked' 			=> $row['date_booked'],
 				'delivery_status'       => $row['delivery_status'],
+				'payment_file'       	=> $row['payment_file'],
+				'payment_gross'       	=> $row['payment_gross'],
 			);	
 
 		}
@@ -561,5 +576,21 @@ class OrderManagement_Model extends CI_Model
 		}
 		return $data;
 	}
+	function getservicetotalPrice($order_id){
 
+		$orderTotal_sql = "SELECT SUM(nbb_posservice_order.price) AS total_ServicePrice
+			FROM nbb_posservice_order
+			WHERE nbb_posservice_order.order_id = '".$order_id."'";
+		$orderTotal_query = $this->db->query($orderTotal_sql); 
+		$orderTotal_result = $orderTotal_query->result_array();	
+		$data = array();			
+
+		foreach($orderTotal_result as $row){	
+			$data = array(
+				'total_ServicePrice' 	=> $row['total_ServicePrice'],
+			);	
+			
+		}
+		return $data;
+	}
 }

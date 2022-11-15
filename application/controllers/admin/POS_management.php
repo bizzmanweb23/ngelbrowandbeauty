@@ -25,103 +25,103 @@ class POS_management extends CI_Controller {
 		$customer_fname = $this->input->post('customer_fname');
 		$customer_lname = $this->input->post('customer_lname');
 		$customer_address = $this->input->post('customer_address');
+		$saler_id = $this->input->post('saler_id');
 		$stock = '';
 		$cal_stock = '';
+		$mulserviceId = $_POST['serviceID'];
 
-        $data = array(
-            'customer_phone' => $customer_phone,
-			'customer_firstname' => $customer_fname,
-            'customer_lastname' => $customer_lname,
-			'customer_address' => $customer_address,
-			'order_status'  => 1,
-			'type_flag' =>  'O',
-			'order_system' => 'POS'
-		); 
-
-			$result = $this->OrderManagement->insertOrder($data);  
-			$orderId = $this->db->insert_id();
-
-			$order_number = $this->generateOrderNumber($orderId);			
-			$this->db->where('id' , $orderId);
-			$this->db->update('nbb_order_main', array('order_number'=>$order_number));
-
-			$mulproductid = $_POST['productID'];
-			$mulserviceId = $_POST['serviceID'];
-			if($mulproductid != ''){
-				for($i=0;$i < count($mulproductid);$i++){
-					$allproductID = $mulproductid[$i];
-					
-					$orderdata = array(
-						'order_id' => $orderId,
-						'product_id' => $allproductID,
-						'total_quantity' => $this->input->post('quantity')[$i],
-						'total_price' => $this->input->post('totalPrice')[$i],
-						'product_price' => $this->input->post('product_price')[$i],
-					); 
-					$result2 = $this->db->insert('nbb_order_product',$orderdata); 
+			$data = array(
+				'customer_phone' => $customer_phone,
+				'customer_firstname' => $customer_fname,
+				'customer_lastname' => $customer_lname,
+				'customer_address' => $customer_address,
+				'saler_id'			=> $saler_id,
+				'order_status'  => 1,
+				'type_flag' =>  'O',
+				'order_system' => 'POS'
+			); 
 	
-					$orderProductDate = $this->POS->orderProductlistingdata($orderId);
-			
-					foreach($orderProductDate as $orderProductrow){	
-						$product_id = $orderProductrow['product_id'];	
-						$alltotal_quantity = $orderProductrow['total_quantity'];	
+				$result = $this->OrderManagement->insertOrder($data);  
+				$orderId = $this->db->insert_id();
 	
-					$producttotalPrice = $this->POS->getproductDetails($product_id);
-					$available_stock = $producttotalPrice['available_stock'];
-					$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
+				$order_number = $this->generateOrderNumber($orderId);			
+				$this->db->where('id' , $orderId);
+				$this->db->update('nbb_order_main', array('order_number'=>$order_number));
 	
-					$this->db->where('id' , $product_id);
-					$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+				$mulproductid = $_POST['productID'];
+				
+				if($mulproductid != ''){
+					for($i=0;$i < count($mulproductid);$i++){
+						$allproductID = $mulproductid[$i];
+						
+						$orderdata = array(
+							'order_id' => $orderId,
+							'product_id' => $allproductID,
+							'total_quantity' => $this->input->post('quantity')[$i],
+							'total_price' => $this->input->post('totalPrice')[$i],
+							'product_price' => $this->input->post('product_price')[$i],
+						); 
+						$result2 = $this->db->insert('nbb_order_product',$orderdata); 
+		
+						$orderProductDate = $this->POS->orderProductlistingdata($orderId);
+				
+						foreach($orderProductDate as $orderProductrow){	
+							$product_id = $orderProductrow['product_id'];	
+							$alltotal_quantity = $orderProductrow['total_quantity'];	
+		
+						$producttotalPrice = $this->POS->getproductDetails($product_id);
+						$available_stock = $producttotalPrice['available_stock'];
+						$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
+		
+						$this->db->where('id' , $product_id);
+						$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
+							
+						}
 						
 					}
-					
 				}
-			}
+					
+
 			if($mulserviceId != ''){
+			
 				for($i=0;$i < count($mulserviceId);$i++){
 					$allmulserviceId = $mulserviceId[$i];
 					
 					$orderdata = array(
-						'order_id' => $orderId,
-						'product_id' => $allproductID,
-						'product_price' => $this->input->post('product_price')[$i],
+						'order_id' 			=> $orderId,
+						'customer_number' 	=> $customer_phone,
+						'first_name' 		=> $customer_fname,
+						'last_name' 		=> $customer_lname,
+						'customer_address' 	=> $customer_address,
+						'sales_executive'	=> $saler_id,
+						'service_id' 		=> $allmulserviceId,
+						'price' 			=> $this->input->post('sirvece_price')[$i],
+						'status'			=> 1
 					); 
-					$result2 = $this->db->insert('nbb_pos_Service',$orderdata); 
-	
-					$orderProductDate = $this->POS->orderProductlistingdata($orderId);
-			
-					foreach($orderProductDate as $orderProductrow){	
-						$product_id = $orderProductrow['product_id'];	
-						$alltotal_quantity = $orderProductrow['total_quantity'];	
-	
-					$producttotalPrice = $this->POS->getproductDetails($product_id);
-					$available_stock = $producttotalPrice['available_stock'];
-					$cal_stock = $producttotalPrice['available_stock'] - $alltotal_quantity;
-	
-					$this->db->where('id' , $product_id);
-					$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
-						
-					}
+					$result2 = $this->db->insert('nbb_posservice_order',$orderdata); 
 					
 				}
-			}
 			
-			//$order_product_data = $this->OrderManagement->orderProductlistingdata($orderId);
+			}
+       
+
+		if($result2 == true)
+		{
+		//$order_product_data = $this->OrderManagement->orderProductlistingdata($orderId);
 		$data["productlistingdata"]=$this->OrderManagement->orderProductlistingdata($orderId);
 		$data["producttotalPrice"]=$this->OrderManagement->getProducttotalPrice($orderId);
+		$data["servicedata"]=$this->OrderManagement->orderservicedata($orderId);
+		$data["servicetotalPrice"]=$this->OrderManagement->getservicetotalPrice($orderId);
 		$data["customer_address"]= $customer_address;
 		$data["customer_fname"]= $customer_fname;
 		$data["customer_lname"]= $customer_lname;
 		$data["customer_phone"]= $customer_phone;
 		$data["order_number"]= $order_number;
-			
 
-		if($result2 == true)
-		{
-			$mpdf = new \Mpdf\Mpdf();
-			$html=$this->load->view('GeneratePOSbill',$data,true);
-			$mpdf->WriteHTML($html);
-			$mpdf->Output('billSheet"'.$customer_fname.'_'.$customer_lname.'".pdf','D');
+		$mpdf = new \Mpdf\Mpdf();
+		$html=$this->load->view('GeneratePOSbill',$data,true);
+		$mpdf->WriteHTML($html);
+		$mpdf->Output('billSheet"'.$customer_fname.'_'.$customer_lname.'".pdf','D');
 
 			return redirect('admin/OrderManagement/all_OrderProduct');
 		} 
