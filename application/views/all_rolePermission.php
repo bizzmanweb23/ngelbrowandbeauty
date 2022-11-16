@@ -23,7 +23,7 @@
 										<div class="row">
 											<div class="col-md-4">
 												<div class="form-group ">
-													<select class="form-control" name="role_name">
+													<select class="form-control" name="role_name" required>
 														<option hidden> Select Designation </option>
 														<?php foreach($allRoles as $allRolesRow): ?>
 														<option value="<?= $allRolesRow['id']?>"><?= $allRolesRow['role_name']?></option>
@@ -33,8 +33,7 @@
 											</div>
 											<div class="col-md-6">
 												<div class="form-group ">
-													<select multiple class="selectpicker form-control" data-live-search="true" name="menuname[]" style="height: 45px !important;">
-															<!--<option value="" selected disabled hidden>  </option>-->
+													<select multiple class="selectpicker form-control" data-live-search="true" name="menuname[]" required>
 															<?php foreach($allPermission as $permissionRow): ?>
 															<option value="<?= $permissionRow['id']?>"><?= $permissionRow['menuname']?></option>
 															<?php endforeach; ?>  

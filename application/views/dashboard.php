@@ -1,18 +1,16 @@
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.5/dist/fullcalendar.min.css' rel='stylesheet' />
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@1.10.4/dist/scheduler.min.css' rel='stylesheet' />
-<!-- <script src='https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js'></script> -->
+
 <script src='https://cdn.jsdelivr.net/npm/moment@2/min/moment.min.js'></script>
 <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
 <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
-
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.5/dist/fullcalendar.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@1.10.4/dist/scheduler.min.js'></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>-->
 
 
 <style>
@@ -149,7 +147,6 @@ display:none;
 											<th>Start Time</th>
 											<th>End Time</th>
 											<th>Status</th>
-											<th>Payment Method</th>
 											<th>View Details</th>
 											<!--<th>Action</th>-->
 										</tr>
@@ -196,12 +193,6 @@ display:none;
 												<label class="mb-0 badge badge-danger" style = "background-color: #FFA500;" title="" data-original-title="Pending">Pending</label>
 											<?php }?>
 											
-											</td>
-											<td>
-												<span class="img-thumb">
-													<i class="fab fa-cc-paypal"></i>
-													<span class="ml-2">Paypal</span>
-												</span>
 											</td>
 											<td>
 											<a href="<?= base_url('admin/ServiceCategoryCtl/appointment')?>" target="_blank" title="View"><label class="mb-0 badge badge-primary" data-original-title="Pending">View Detail</label><a>
@@ -304,16 +295,14 @@ display:none;
 													</div>
 
 													<div class="form-group ">
-														<label for="services" class="col-sm-6 control-label">Services 
-														</label>
-														<div class="col-sm-12">
-														<select multiple data-live-search="true" class="selectpicker form-control" name="service[]" id="services" style="height: 45px !important;">
-															<option value="" disabled> Select Services </option>
-															<?php foreach($service as $services): ?>
-															<option value="<?= $services['id']?>"><?= $services['service_name']?></option>
-														<?php endforeach; ?> 
-															
-														</select>
+														<label for="services" class="col-md-6 control-label">Services</label>
+														<div class="col-md-12">
+															<select multiple class="chosen-select form-control" name="service[]" id="services" style="height: 45px !important;">
+																<option value="" disabled> Select Services </option>
+																<?php foreach($service as $services): ?>
+																<option value="<?= $services['id']?>"><?= $services['service_name']?></option>
+																<?php endforeach; ?> 
+															</select>
 														</div>
 													</div>  
 
@@ -327,21 +316,21 @@ display:none;
 												
 														<div class="col-md-6">
 															<div class="form-group">
-																<label for="sduration" class="col-sm-6 control-label">Duration</label>
+																<label for="sduration" class="col-md-6 control-label">Duration</label>
 																<input type="text" class="form-control" name="sduration" id="sduration" placeholder="Total Duration" value="" readonly>
 															</div>
 														</div> 
 													</div> 
 
 													<div class="form-group">
-														<label for="start-date" class="col-sm-3 control-label">Start</label>
+														<label for="start-date" class="col-md-3 control-label">Start</label>
 														<div class="row">
-															<div class="input-group col-sm-6 date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="start" data-link-format="yyyy-mm-dd" >
-																<input type="date" class="form-control" id="start-date" name="start_date" placeholder="Start Date"  style="background-color: white; cursor: default;" />
+															<div class="input-group col-md-6 date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="start" data-link-format="yyyy-mm-dd" >
+																<input type="date" class="form-control" id="start-date" name="start_date" placeholder="Start Date" style="background-color: white; " />
 																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 															</div>
-															<div class="col-sm-3">
-																<input type="time" name="start_time" id="start-time" class="form-control"  style="background-color: white; cursor: default;"/>
+															<div class="col-md-3">
+																<input type="time" name="start_time" id="start-time" class="form-control"  style="background-color: white;"/>
 															</div>
 														</div>
 													</div>
@@ -354,7 +343,7 @@ display:none;
 																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 															</div>
 															<div class="col-sm-3">
-																<input type="time" name="end_time" id="end-time" class="form-control"   style="background-color: white; cursor: default;" />
+																<input type="time" name="end_time" id="end-time" class="form-control"   style="background-color: white;" />
 															</div>
 														</div> 
 													</div>
@@ -424,12 +413,12 @@ display:none;
 </div>
 <script>
 
-	$('select').selectpicker(
+	/*$('#services').selectpicker(
 		{  
 			liveSearchPlaceholder: 'Search service',
 			noneSelectedText: 'Select Services'
 		}
-	);
+	);*/
 
     // format time displayed
     function formatTimeStr(dateStr) {

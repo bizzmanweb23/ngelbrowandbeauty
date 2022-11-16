@@ -384,7 +384,7 @@ class ApiController extends CI_Controller
             $profile[$i]['profile_picture'] = 'no image found';
         }
         else{
-            $profile[$i]['profile_picture'] = $this->url.'uploads/customer_image/'.$profile[$i]['profile_picture'];
+            $profile[$i]['profile_picture'] = $this->url.'uploads/profile_img/'.$profile[$i]['profile_picture'];
         }
             
     }
@@ -1484,15 +1484,28 @@ public function add_to_cart()
     $uid = $this->input->get('userid');
      
    
-    $this->db->select('nbb_user_cart.product_id as cart_id,nbb_user_cart.user_id as user_id, product_qty'); 
+   $this->db->select('nbb_order_product.product_id as cart_id,
+	nbb_order_product.total_quantity,
+	nbb_order_product.total_price,
+	nbb_order_product.product_price,
+	nbb_order_main.user_id,
+	nbb_order_main.order_number, 
+	nbb_order_main.type_flag'); 
     $this->db->select('nbb_product.id as product_id ,name,available_stock,price,discountPercentage,discounted_price,rating');
     $this->db->select('nbb_product_image.product_id as img_id,nbb_product_image.image');
-    $this->db->from('nbb_user_cart');
-    $this->db->join('nbb_product','nbb_product.id  = nbb_user_cart.product_id');
-    $this->db->join('nbb_product_image','nbb_product_image.product_id = nbb_user_cart.product_id');
-	$this->db->where('user_id',$uid);
+    $this->db->from('nbb_order_product');
+    $this->db->join('nbb_product','nbb_product.id  = nbb_order_product.product_id');
+	$this->db->join('nbb_order_main','nbb_order_main.id  = nbb_order_product.order_id');
+    $this->db->join('nbb_product_image','nbb_product_image.product_id = nbb_order_product.product_id');
+	$where = array(
+		'nbb_order_main.type_flag' => 'C',
+		'nbb_order_main.order_status'   => 1,
+		'nbb_order_main.user_id'  => $uid
+	  );
+	$this->db->where($where);
+	$result = $this->db->get(); 
 	
-    $result = $this->db->get();  
+     
     $row = $result->num_rows();  
     
     $product = $result->result_array(); 

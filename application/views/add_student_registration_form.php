@@ -141,7 +141,7 @@
 			<tr>
 			<td>Course Applied For</td>
 			<td>
-				<select  class="form-control chosen chosen-select-deselect" name="course_id">
+				<select  class="form-control chosen chosen-select-deselect" name="course_id" required>
 					<option value="" hidden>Select Course</option>
 					<?php foreach($all_courses as $coursesRow): ?>
 					<option value="<?= $coursesRow['id']?>"><?= $coursesRow['course_name']?></option>
