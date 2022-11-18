@@ -31,7 +31,7 @@
                   <th>Service Price</th>
                   <th>Created Date</th>
 									<th>Payment Slip</th>
-									<th>Payment Status</th>
+									<th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -43,10 +43,12 @@
                         <td><?= $ServiceBookingRow['service_price']?></td>
                         <td><?= date("d-m-Y", strtotime($ServiceBookingRow['created_at']));?></td>
 												<td><?php if($ServiceBookingRow['payment_file'] !=''){ ?>
-													<a href="<?= base_url(); ?>/uploads/payment_image/<?= $ServiceBookingRow['payment_file'] ?>" class="btn btn-default" target="_blank"><img src="<?= base_url(); ?>/uploads/payment_image/<?= $ServiceBookingRow['payment_file'] ?>" width="50" height="40"></a>
+													<a href="<?= base_url(); ?>/uploads/payment_image/<?= $ServiceBookingRow['payment_file'] ?>" class="btn btn-default" target="_blank">View</a>
 													<?php } ?>
 													</td>
-												<td><?= $ServiceBookingRow['payment_status'] ?></td>
+												<td>
+												<a data-ServiceBooking_id="<?= $ServiceBookingRow['id'] ?>" href="javascript:void(0);" class="btn btn-default ServiceBookingStatus" title="Edit" style="color:#61d3d4" ><i class="fa fa-edit"></i></a>
+												</td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -65,3 +67,50 @@
     </section>
 </div> 
 
+<div id="ServiceBookingStatusModal" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Payment Status</h5>
+				<button type="button" class="close close_btn" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form id="add_category" action="<?= base_url('admin/ServiceCategoryCtl/update_paymentService')?>" method="post" enctype="multipart/form-data">   
+					<input type="hidden" class="status_ServiceBookingid" name = "status_ServiceBookingid" value="">
+					<div class="row">     
+						<div class="col-md-12">                       
+							<div class="form-group">
+								<select  class="form-control chosen chosen-select" name="status" id="status">
+									<option value="" hidden>Select Response Option</option>
+									<option value="2">Approved</option>
+									<option value="0">Cancel</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">    
+						<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width:130px;"> 
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary close_btn" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){  	
+		$(".ServiceBookingStatus").click(function(){
+				$("#ServiceBookingStatusModal").modal('show');
+				var ServiceBookingID = $(this).attr('data-ServiceBooking_id');
+				$("#ServiceBookingStatusModal .status_ServiceBookingid").val( ServiceBookingID );
+				
+			});
+			$(".close_btn").click(function(){
+					$("#ServiceBookingStatusModal").modal("hide"); 
+					
+			});
+	});
+</script>

@@ -116,6 +116,7 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
 /*
 $db['database2'] = array(
 	'dsn' => '',

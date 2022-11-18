@@ -379,8 +379,7 @@ class EmployeeManagement extends CI_Controller {
 		$data['allemployees'] = $this->EmployeeManagement->getAllpartnership();
 		$data['empDesignation'] = $this->EmployeeManagement->getAllemp_designation();
 		$data['commission_structure_a'] = $this->PayStructure->getAllcommission_structure_a();
-		/*$data['commission_structure_b'] = $this->PayStructure->getAllcommission_structure_b();
-		$data['commission_structure_c'] = $this->PayStructure->getAllcommission_structure_c();*/
+		
 		$data['commission_c_partnership'] = $this->PayStructure->getAllcommission_c_partnership();
 		$data['manual_fee'] = $this->PayStructure->getAllmanual_fee();
        	$this->layout->view('add_Partnership',$data); 

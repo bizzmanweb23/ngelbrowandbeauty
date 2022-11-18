@@ -37,24 +37,25 @@
 
 	              <!-- /.card-header -->
 					      <div class="card-body">
-							<!--Full Time Staff -->
+							<!--Partnership Staff -->
 							<div class ="FullTimeStaff">
 								<form name ="payroll" action="<?= base_url('add_partnershipSalary')?>" method="post" enctype="multipart/form-data">
 								
 								<div class="row">
 								
-									<div class="form-group col">
-										<label for="from_date">Select Year:</label>
+									<div class="form-group col-md-6">
+										<label for="from_date"> Year:</label>
 										<select  name = "getyear" class="form-control getyear">
-										<?php  $lasttenYear = (int)date("Y") - 20;
+											<option value="" hidden>Select Year</option>
+											<?php  $lasttenYear = (int)date("Y") - 20;
 												$curyear = (int)date("Y");
 												for($i=$lasttenYear; $i<= $curyear; $i++){?>
-												<option value="<?php echo $i;?>" <?php if($i == $i) echo 'selected'; ?>><?php echo $i;?></option>  
+												<option value="<?php echo $i;?>"><?php echo $i;?></option>  
 											<?php } ?>
 										</select>
 									</div>
 		
-									<div class="col">
+									<div class="col-md-6">
 										<div class="form-group">
 											<label class="control-label " for="pwd">Employee Name:</label>
 											<div class=" ">
@@ -67,65 +68,49 @@
 											</div>
 										</div>
 									</div>
-									<div class="col">
-										<div class="form-group">
-											<label class="control-label" for="">Desingnation</label>
-											<div class=" ">
-												<input type="text" name="designation" class="form-control designation" readonly>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-6">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Service Profit :</label>
+											<label class="control-label col-md-12" for="pwd">Service Total :</label>
 											<div class="col-md-12">
-												<input type="text" name="basic_salary" id="basic-salary" placeholder="Basic Salary" class="form-control basic-salary" readonly>
-											</div>
-										</div>
-									</div>
-									
-								</div>
-								<!--<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Beauty Package Share :</label>
-											<div class="col-md-12">
-												<input type="text" name="fullTimesales_Amount" placeholder="Sales Amount" class="form-control sales_amount" readonly>
+												<input type="text" name="service_total" id="service_total" placeholder="Service Total" class="form-control service_total" readonly>
 											</div>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Sales Commission $ :</label>
+											<label class="control-label col-md-12" for="pwd">Service Profit :</label>
 											<div class="col-md-12">
-												<input type="text" name="fullTimecommission_Pay" placeholder="Sales Commission Pay" class="form-control commission_pay" readonly>
+												<input type="text" name="service_profit" id="service_profit" placeholder="Service Profit" class="form-control service_profit" readonly>
 											</div>
 										</div>
 									</div>
-								</div>-->
+								</div>
+								
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-6">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Electric light Skin Management:</label>
+											<label class="control-label col-md-12" for="pwd">Product Total:</label>
 											<div class="col-md-12">
-												<input type="text" name="attendance_hours" placeholder="Perfect attendance" class="form-control attendance-hours" readonly>
+												<input type="text" name="product_total" placeholder="Product Total" class="form-control product_total" readonly>
 											</div>
 										</div>
 									</div>
-									<!--<div class="col-md-6">
+									<div class="col-md-6">
 										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Perfect attendance bonus $ :</label>
+											<label class="control-label col-md-12" for="pwd">Product Profit:</label>
 											<div class="col-md-12">
-												<input name="fullTimePerfectAttendance" placeholder="Perfect attendance bonus" class="form-control attendance-bonus" readonly>
+												<input type="text" name="product_Profit" placeholder="Product Profit" class="form-control product_Profit" readonly>
 											</div>
 										</div>
-									</div>--> 
+									</div>
+									
 								</div>
 
-								<div class="row">
+								<!--<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
 											<label class="control-label col-md-12" for="pwd">Profit Sharing :</label>
@@ -134,14 +119,7 @@
 											</div>
 										</div>
 									</div>
-									<!--<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label label col-md-12" for="pwd" >Service Bonus % :</label>
-											<div class="col-md-12">
-												<input type="text" name="service_bonus" placeholder="Service Bonus"  class="form-control workmanship" readonly>
-											</div>
-										</div>
-									</div>-->
+									
 								</div>
 								<div class="row">
 								<div class="col-md-12">
@@ -152,16 +130,8 @@
 											</div>
 										</div>
 									</div>
-									<!--<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-12" for="pwd">Total Earning $ :</label>
-											<div class="col-md-12">
-												<input name="total_earnings" placeholder="Total Earning" class="form-control total-earnings" readonly>
-												
-											</div>
-										</div>
-									</div>-->
-								</div>
+									
+								</div>-->
 								<div class="row">
 								
 									<div class="col-md-6">
@@ -199,150 +169,59 @@
 
 <script type = "text/javascript">
 $(document).ready(function(){
-	$(".getyear, .fullTimeemployeeName").on('change', function(e){
+	$(".getyear").on('change', function(e){
 			e.preventDefault();
 			//$empId = $(this).val();
 			var salarygetyear = $('.getyear').val();
-			var empId = $('.fullTimeemployeeName').val();
+			//var empId = $('.fullTimeemployeeName').val();
 			//alert(salarygetyear);
 
-
-			/*get_empsalarycpf(salaryDate,empId);
-			get_CommissionPay_bonus(salaryDate,empId);
-			get_attendance_bonus(salaryDate,empId);
-			get_therapist_bonus(salaryDate,empId);
-			get_totalearnings(salaryDate,empId);	*/
-		
+			get_service_bonus(salarygetyear);
+			CommissionPay_bonus(salarygetyear);
 	});
 
 
-
-function get_CommissionPay_bonus(salaryDate,empId){
-
-	$.ajax({	
-		type: "POST",	
-		url: "<?= base_url("admin/comissionController/getparnershipCommissionPay")?>",
-		data: {data: empId , salaryDate:salaryDate},
-		dataType: "JSON",
-		success:function(data){	
-			//alert(data);
-			$.each(data, function (key, val) {
-				//console.log('test');
-				$(".sales_amount").val(val.total);
-				$(".commission_pay").val(val.commission);
-				$(".sales_bonus").val(val.totalbonus);
-			});
-			
-		}
-	});
-
-}
-
-function get_attendance_bonus(salaryDate,empId){
+function get_service_bonus(salaryDate){
 	
 	$.ajax({
-			url : "<?php echo base_url('admin/comissionController/attendance_sum'); ?>",
+			url : "<?php echo base_url('admin/comissionController/partnershipServiceCommission'); ?>",
 			type : "post",
-			data : {data: empId , salaryDate:salaryDate},
+			data : {salaryDate:salaryDate},
 			dataType: 'json',
 			success : function(data){
-
 				$.each(data, function (key, val) {
 				//console.log('test');
-					$(".attendance-hours").val(val.total_hours);
-					$(".attendance-bonus").val(val.attendance_bonus);
+					$(".service_total").val(val.total_amount);
+					$(".service_profit").val(val.service_bonus);
 				});
 
 
 			}
 
-		});
+	});
 }
-function get_therapist_bonus(salaryDate,empId){
-	
+
+function CommissionPay_bonus(salaryDate){
 	$.ajax({
-			url : "<?php echo base_url('admin/comissionController/dashboard_sum'); ?>",
+			url : "<?php echo base_url('admin/comissionController/parnershipCommissionPay'); ?>",
 			type : "post",
-			data : {data: empId , salaryDate:salaryDate},
-			dataType: 'json',
-			success : function(data){
-
-				$.each(data, function (key, val) {
+			data : {salaryDate:salaryDate},
+			dataType: 'JSON',
+			success : function(responce){
+				console.log('test');
+				$.each(responce, function (key, val) {
 				//console.log('test');
-					$(".service-amount").val(val.total_amount);
-					$(".workmanship").val(val.service_bonus);
+				$(".product_total").val(val.salestotal);
+				$(".product_Profit").val(val.salesCommission);
 				});
-
-
-			}
-
-		});
-}
-function get_totalearnings(salaryDate,empId){
-	//alert(empId);
-	/*var totalEarnings = 0;
-			var attBonus = 0;
-			var workmanship  = 0;
-			var salesBonus = 0;
-			var commission_added = 0;
-			var basicSalary = 0;
-			var cpfAdded = 0;
-	
-			
-			attBonus = $('.attendance-bonus').val();
-			workmanship  = $('.workmanship').val();
-			salesBonus = $('.sales_bonus').val();
-			commission_added = $('.commission_pay').val();
-			basicSalary = $('.basic-salary').val();
-			cpfAdded = $(".cpf").val();
-			console.log(basicSalary);
-			
-			//alert(basicSalary);
-			totalEarnings = parseFloat(commission_added)+parseFloat(workmanship)+parseFloat(salesBonus)+parseFloat(attBonus)+parseFloat(basicSalary)+parseFloat(cpfAdded);
-
-			var earningval = parseFloat(totalEarnings);
-
-			//console.log(totalEarnings);
-			if(earningval != ''){
-				$('.total-earnings').val(basicSalary);
-			}else{
-				
-				$('.total-earnings').val(basicSalary);
-			}*/
-
-			$.ajax({
-			url : "<?php echo base_url('admin/comissionController/totalearnings'); ?>",
-			type : "post",
-			data : {data: empId , salaryDate:salaryDate},
-			dataType: 'json',
-			success : function(data){
-				//alert(data);
-				$('.total-earnings').val(data);
-			}
-
-		});
-}
-
-function get_empsalarycpf(salaryDate,empId){
-	//alert(empId);
-
-	$.ajax({	
-		type: "POST",	
-		url: "<?= base_url("admin/comissionController/empCommission")?>",
-		data: {data: empId , salaryDate: salaryDate},
-		dataType: "JSON",
-		success:function(data){	
-			//alert(data);
-			$.each(data, function (key, val) {
-				//console.log('test');
-				//alert(val.empbasicSalary);
-				$(".designation").val(val.role_name);
-				$(".basic-salary").val(val.empbasicSalary);
-				$(".cpf").val(val.CPFtotal);
-			});
+		},
+		error: function (error) {
+			alert('error ');
 		}
+
 	});
 
 }
+
 });
 </script>

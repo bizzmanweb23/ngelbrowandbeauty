@@ -32,7 +32,7 @@
 
               </div>
               <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
-			  	<a href="<?= base_url('appointmentBooking/'.$serviceOrderDetails['service_id'])?>" class="btn btn-primary first-btn px-2" target="_blank">Make An Appoinment</a>
+								<a href="<?= base_url('appointmentList')?>" class="btn btn-primary first-btn px-2" target="_blank">Go to Booking page</a>
               </div>
 
       </div>

@@ -40,7 +40,7 @@
 																$user_id = $this->session->userdata('id');
 																$order_servicerownum_sql = "SELECT nbb_order_service.*
 																FROM nbb_order_service 
-																WHERE nbb_order_service.user_id = '".$user_id."' AND nbb_order_service.service_id = $id AND nbb_order_service.payment_status = '1' AND nbb_order_service.status = '2'";
+																WHERE nbb_order_service.user_id = '".$user_id."' AND nbb_order_service.service_id = $id AND nbb_order_service.payment_status = '2' AND nbb_order_service.status = '2'";
 																$order_servicerownum_query = $this->db->query($order_servicerownum_sql);
 																$order_service_rownum = $order_servicerownum_query->num_rows();
 																?>

@@ -24,7 +24,7 @@
 											<div class="col-md-4">
 												<div class="form-group ">
 													<select class="form-control" name="role_name" required>
-														<option hidden> Select Designation </option>
+														<option hidden value=""> Select Designation </option>
 														<?php foreach($allRoles as $allRolesRow): ?>
 														<option value="<?= $allRolesRow['id']?>"><?= $allRolesRow['role_name']?></option>
 														<?php endforeach; ?>  

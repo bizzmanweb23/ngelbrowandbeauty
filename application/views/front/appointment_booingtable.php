@@ -43,7 +43,9 @@
 								</td>
 								<td>
 									<?php if($order_serviceRow['payment_status'] == 0){ ?>
-										<h6 class="mb-0 " style="color: red;">Payment Not Completed</h6>
+										<h6 class="mb-0 " style="color: red;">Upload valid transaction statement</h6>
+									<?php }elseif($order_serviceRow['payment_status'] == 1){ ?>
+										Wait For Admin Responce
 									<?php }else{ ?>
 										<h6 class="mb-0 " style="color: green;">Done</h6>
 									<?php } ?>
@@ -52,11 +54,15 @@
 									<h6 class="mb-0"><?= date("d-m-Y", strtotime($order_serviceRow['created_at'])); ?></h6>
 								</td>										
 								<td>
-								<?php if($this->session->userdata('id')>0){  ?>
-									<a href="<?= base_url('appointmentBooking/'.$order_serviceRow['id'])?>" class="btn btn-primary first-btn px-2" target="_blank">Make An Appoinment</a>
-								<?php }else{ ?>
-									<a href="javascript:void(0)" onclick="return swal('Please Login First')" class="btn btn-primary first-btn px-2">Make An Appoinment</a>
-								<?php } ?>
+								<?php if($order_serviceRow['payment_status'] == 0 || $order_serviceRow['payment_status'] == 2){ ?>
+								 
+								<?php }else{
+									 if($this->session->userdata('id')>0){ ?>
+										<a href="<?= base_url('appointmentBooking/'.$order_serviceRow['id'])?>" class="btn btn-primary first-btn px-2" target="_blank">Make An Appoinment</a>
+									<?php }else{ ?>
+										<a href="javascript:void(0)" onclick="return swal('Please Login First')" class="btn btn-primary first-btn px-2">Make An Appoinment</a>
+									<?php  }
+								} ?>
 									
 								</td>
 							</tr>

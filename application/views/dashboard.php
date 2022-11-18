@@ -326,11 +326,11 @@ display:none;
 														<label for="start-date" class="col-md-3 control-label">Start</label>
 														<div class="row">
 															<div class="input-group col-md-6 date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="start" data-link-format="yyyy-mm-dd" >
-																<input type="date" class="form-control" id="start-date" name="start_date" placeholder="Start Date" style="background-color: white; " />
+																<input type="date" class="form-control" id="start-date" name="start_date" placeholder="Start Date" style="background-color: white;" readonly />
 																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 															</div>
 															<div class="col-md-3">
-																<input type="time" name="start_time" id="start-time" class="form-control"  style="background-color: white;"/>
+																<input type="time" name="start_time" id="start-time" readonly class="form-control"  style="background-color: white;"/>
 															</div>
 														</div>
 													</div>
@@ -338,12 +338,14 @@ display:none;
 													<div class="form-group" id="end-group">
 														<label for="end" class="col-sm-3 control-label">End</label>
 														<div class="row">
-															<div class="input-group col-sm-6 form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="end" data-link-format="yyyy-mm-dd">
-																<input type="date" class="form-control" placeholder="End Date" name="end_date" id="end-date"  style="background-color: white; cursor: default;"/>
-																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+															<div class="col-md-6">
+																<div class="input-group form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="end" data-link-format="yyyy-mm-dd">
+																	<input type="date" class="form-control" placeholder="End Date" name="end_date" id="end-date"  style="background-color: white; cursor: default;" readonly/>
+																	<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+																</div>
 															</div>
-															<div class="col-sm-3">
-																<input type="time" name="end_time" id="end-time" class="form-control"   style="background-color: white;" />
+															<div class="col-md-3">
+																<input type="time" name="end_time" id="end-time" class="form-control"   style="background-color: white;" readonly />
 															</div>
 														</div> 
 													</div>

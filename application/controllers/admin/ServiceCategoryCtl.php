@@ -835,5 +835,16 @@ class ServiceCategoryCtl extends CI_Controller {
        $data['ServiceBooking'] = $this->ServiceCategory->getAllServiceBooking();
        $this->layout->view('all_serviceBooking',$data); 
     }
+	public function update_paymentService()
+	{
+		$status_ServiceBookingid = $this->input->post('status_ServiceBookingid');
+		$ServiceStatus = $this->input->post('status');
+
+		$this->db->where('id' , $status_ServiceBookingid);
+		$this->db->update('nbb_order_service', array('payment_status'=>$ServiceStatus));
+
+		redirect('admin/ServiceCategoryCtl/all_ServiceBooking');
+
+	}
 
 }

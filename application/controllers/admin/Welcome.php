@@ -443,7 +443,6 @@ class Welcome extends CI_Controller {
     public function customer()
     {
        $data['customer'] = $this->Auth->getAllCustomer();
-	   $data['allstate'] = $this->CustomerManagement->getAllstate();
        $this->layout->view('customers',$data); 
     }
 
@@ -486,7 +485,7 @@ class Welcome extends CI_Controller {
 
     public function logout(){
 	    $this->session->sess_destroy();
-	    redirect('welcome');
+	    redirect('admin');
    }    
   
 }
