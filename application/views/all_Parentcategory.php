@@ -36,7 +36,10 @@
                     <?php foreach($parentCategory as $parentCategoryRow): ?>
                       <tr>
                         <td><?= $parentCategoryRow['name']?></td>
-                        <td><?= $parentCategoryRow['details']?></td>
+                        <td><?php if($parentCategoryRow['details'] != ''){ ?>
+													<?= substr($parentCategoryRow['details'],0,50); ?>...
+												<?php }else{} ?>
+												</td>
                         <td>
 													<a href="<?= base_url('admin/ServiceCategoryCtl/edit_parentCategory/'.$parentCategoryRow['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
 													<a href="<?= base_url('admin/ServiceCategoryCtl/deleteParentCategory/'. $parentCategoryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>

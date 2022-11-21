@@ -28,7 +28,7 @@
 							<label for="name" class="col-sm-6 control-label">Parent Category <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select  class="form-control chosen chosen-select-deselect" name="parent_category">
+								<select  class="form-control chosen chosen-select-deselect" name="parent_category" required>
 									<option hidden>Select Parent Category</option>
 										<?php foreach($parentCategory as $parentCategoryRow): ?>
 										<option value="<?= $parentCategoryRow['id']?>"><?= $parentCategoryRow['name']?></option>
@@ -42,7 +42,7 @@
 							<label for="name" class="col-sm-6 control-label">Sub-Category Name <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-									<input type="text" class="form-control" name="name" id="name" placeholder="Name Max Length : 100." value="">
+									<input type="text" class="form-control" name="name" id="name" placeholder="Sub-Category Name" value="" required>
 							</div>
 						</div>
                 	</div>
@@ -53,7 +53,7 @@
                     <i class="required">*</i>
                     </label>
                     	<div class="col-md-12">
-                            <textarea id="details" name="details" rows="5" cols="80" placeholder=" Max Length : 255." style = "width:100%;" ></textarea>
+                            <textarea id="details" name="details" rows="5" cols="80" placeholder="Category Detail" style = "width:100%;" ></textarea>
                       </div>
                   </div>
                                                        
@@ -65,8 +65,7 @@
 								<div class="col-sm-12">
 										<div id="image"></div>
 										<input type="file" name="product_cat_image">
-										<small class="info help-block">
-										</small>
+										
 								</div>
 						</div>
 					</div>   

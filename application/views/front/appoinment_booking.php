@@ -21,6 +21,8 @@
 												</div>
 												<div class="col-md-5">
 													<h4 class="card-title font-weight-bold" style="color: #63d4d6;"><?= $serviceName['service_name']; ?></h4>
+													<?php $serviceOrderId = $this->uri->segment(2); ?>
+													<input type="hidden" value="<?= $serviceOrderId; ?>" name="serviceOrderId">
 													<input type="hidden" value="<?= $serviceName['service_id']; ?>" name="service_id">
 													<input type="hidden" value="<?= $serviceName['service_price']; ?>" name="service_price">
 													<?php if($serviceName['times_packages'] == '1'){?>

@@ -25,13 +25,14 @@
                 <table class="table table-bordered supplier_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
                   <tr>
-					        <th>user Name</th>
-                  <th>service Name</th>
-									<th>No Of Session </th>
-                  <th>Service Price</th>
-                  <th>Created Date</th>
-									<th>Payment Slip</th>
-									<th>Action</th>
+					<th>user Name</th>
+                	<th>service Name</th>
+					<th>No Of Session </th>
+                  	<th>Service Price</th>
+                  	<th>Created Date</th>
+					<th>Payment Slip</th>
+					<th>Admin Responce </th>
+					<th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -39,16 +40,23 @@
                       <tr>
                         <td><?= $ServiceBookingRow['first_name'].' '.$ServiceBookingRow['last_name']?></td>
                         <td><?= $ServiceBookingRow['service_name']?></td>
-												<td><?= $ServiceBookingRow['package_session']?></td>
+						<td><?= $ServiceBookingRow['package_session']?></td>
                         <td><?= $ServiceBookingRow['service_price']?></td>
                         <td><?= date("d-m-Y", strtotime($ServiceBookingRow['created_at']));?></td>
-												<td><?php if($ServiceBookingRow['payment_file'] !=''){ ?>
-													<a href="<?= base_url(); ?>/uploads/payment_image/<?= $ServiceBookingRow['payment_file'] ?>" class="btn btn-default" target="_blank">View</a>
-													<?php } ?>
-													</td>
-												<td>
-												<a data-ServiceBooking_id="<?= $ServiceBookingRow['id'] ?>" href="javascript:void(0);" class="btn btn-default ServiceBookingStatus" title="Edit" style="color:#61d3d4" ><i class="fa fa-edit"></i></a>
-												</td>
+						<td><?php if($ServiceBookingRow['payment_file'] !=''){ ?>
+							<a href="<?= base_url(); ?>/uploads/payment_image/<?= $ServiceBookingRow['payment_file'] ?>" class="btn btn-default" target="_blank">View</a>
+							<?php } ?>
+						</td>
+						<td>
+							<?php if($ServiceBookingRow['payment_status'] == 0){ ?>
+								Cancel
+							<?php }elseif($ServiceBookingRow['payment_status'] == 2){ ?>
+								Approved
+							<?php }else{} ?>
+						</td>
+						<td>
+						<a data-ServiceBooking_id="<?= $ServiceBookingRow['id'] ?>" href="javascript:void(0);" class="btn btn-default ServiceBookingStatus" title="Edit" style="color:#61d3d4" ><i class="fa fa-edit"></i></a>
+						</td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

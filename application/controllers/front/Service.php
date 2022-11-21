@@ -17,10 +17,10 @@ class Service extends CI_Controller {
 		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
 		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
 		
-		$serviceId = $this->uri->segment(2);
+		$order_serviceId = $this->uri->segment(2);
 		$user_id = $this->session->userdata('id');
 		$datahader['allTharapist'] = $this->Services->getAllTharapist();
-		$datahader['serviceName'] = $this->Services->getServicename($serviceId,$user_id);
+		$datahader['serviceName'] = $this->Services->getServicename($order_serviceId,$user_id);
 
 		$this->load->view('front/header',$datahader);
         $this->load->view('front/appoinment_booking');
@@ -45,6 +45,7 @@ class Service extends CI_Controller {
 		
 		
 		$selected_timeslot  = $this->input->post('selected_timeslot');
+		$serviceOrderId  = $this->input->post('serviceOrderId');
 
 		list($startTime, $endTime) = explode("-", $selected_timeslot);
 
@@ -80,7 +81,11 @@ class Service extends CI_Controller {
 			'times_packages' => $times_packages,
 		);  
 			$insert = $this->Main->insert('nbb_dashboard',$data); 
-            if($insert == true)
+
+			$this->db->where('id' , $serviceOrderId);
+			$update_order_service = $this->db->update('nbb_order_service', array('status'=> 3));
+
+            if($insert == true || $update_order_service == true)
             {
                 return redirect('appointmentList');
             }

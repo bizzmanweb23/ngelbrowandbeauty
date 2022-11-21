@@ -24,7 +24,7 @@
                 <form id="add_category" action="<?= base_url('admin/Pay_Structure/post_edit_cpf')?>" method="post" enctype="multipart/form-data">
                 <div class="row">
 					<input type="hidden" class="form-control" name="cpf_id" value="<?= $allcpf['id']?>">
-						<div class="col-md-6">             
+						<div class="col-md-12">             
 							<div class="form-group ">
 								<label for="name" class="col-sm-6 control-label">Year <i class="required">*</i>
 								</label>
@@ -40,15 +40,26 @@
 								</div>
 							</div>
                 	</div>
-                  <div class="col-md-6">             
-						<div class="form-group ">
-							<label for="name" class="col-sm-6 control-label">Age <i class="required">*</i>
+                </div>
+				<div class="row">
+					<div class="col-md-6">             
+						<div class="form-group">
+							<label for="name" class="col-sm-6 control-label">Start Age <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="cpf_age" placeholder="CPF Age" value="<?= $allcpf['age']?>">
+								<input type="text" class="form-control" name="start_age" placeholder="Start Age" value="<?= $allcpf['start_age']; ?>" required>
 							</div>
 						</div>
                 	</div>
+					<div class="col-md-6">             
+						<div class="form-group">
+							<label for="name" class="col-sm-6 control-label">End Age <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="end_age" placeholder="End Age" value="<?= $allcpf['end_age']; ?>" required>
+							</div>
+						</div>
+                	</div>	
                 </div>
 
 				<div class="row">
@@ -79,7 +90,7 @@
 									<label for="name" class="col-md-12 control-label">Employee CPF <i class="required">*</i></label>
 								</div>
 								<div class="col-sm-12">
-									<input type="text" class="form-control" name="employee_cpf" placeholder="Employee CPF" value="<?= $allcpf['emp_cpf']?>">
+									<input type="text" class="form-control" name="emp_cpf" placeholder="Employee CPF" value="<?= $allcpf['emp_cpf']?>">
 								</div>
 							</div>
                 	</div>

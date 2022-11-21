@@ -402,12 +402,12 @@
         <div class="modal-body">
 		<form id="add_category" action="<?= base_url('admin/Pay_Structure/post_add_cpf')?>" method="post" enctype="multipart/form-data">
                 <div class="row">
-					<div class="col-md-6">             
+					<div class="col-md-12">             
 						<div class="form-group ">
 							<label for="name" class="col-sm-6 control-label">Year <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select name = "getyear" class="form-control getyear">
+								<select name = "getyear" class="form-control getyear" required>
 									<option value = "">Select Year</option>
 									<?php  $lasttenYear = (int)date("Y")- 35;
 										$curyear = (int)date("Y");
@@ -418,15 +418,27 @@
 							</div>
 						</div>
                 	</div>
-                  	<div class="col-md-6">             
-						<div class="form-group ">
-							<label for="name" class="col-sm-6 control-label">Age <i class="required">*</i>
+                  	
+                </div>
+				<div class="row">
+					<div class="col-md-6">             
+						<div class="form-group">
+							<label for="name" class="col-sm-6 control-label">Start Age <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="cpf_age" placeholder="CPF Age" value="">
+								<input type="text" class="form-control" name="start_age" placeholder="Start Age" value="" required>
 							</div>
 						</div>
                 	</div>
+					<div class="col-md-6">             
+						<div class="form-group">
+							<label for="name" class="col-sm-6 control-label">End Age <i class="required">*</i>
+							</label>
+							<div class="col-sm-12">
+								<input type="text" class="form-control" name="end_age" placeholder="End Age" value="" required>
+							</div>
+						</div>
+                	</div>	
                 </div>
 				<div class="row">
 					<div class="col-md-6">             
@@ -434,7 +446,7 @@
 							<label for="name" class="col-sm-6 control-label">Start Range <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="salary_from" placeholder="Start Range" value="">
+								<input type="text" class="form-control" name="salary_from" placeholder="Start Range" value="" required>
 							</div>
 						</div>
                 	</div>
@@ -443,7 +455,7 @@
 							<label for="name" class="col-sm-6 control-label">End Range <i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="salary_to" placeholder="End Range" value="">
+								<input type="text" class="form-control" name="salary_to" placeholder="End Range" value="" required>
 							</div>
 						</div>
                 	</div>	
@@ -464,7 +476,7 @@
 							<i class="required">*</i>
 							</label>
 							<div class="col-sm-12">
-								<select  class="form-control chosen chosen-select" name="status">
+								<select  class="form-control chosen chosen-select" name="status" required>
 									<option value="" hidden>Select Status</option>
 									<option value="1">Active</option>
 									<option value="0">Inactive</option>
@@ -478,7 +490,7 @@
 								<label for="name" class="col-md-12 control-label">Employee CPF <i class="required">*</i></label>
 							</div>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="employee_cpf" placeholder="Employee CPF" value="">
+								<input type="text" class="form-control" name="emp_cpf" placeholder="Employee CPF" value="" required>
 							</div>
 						</div>
                 	</div>		   

@@ -284,10 +284,11 @@ class Pay_Structure extends CI_Controller {
 	public function post_add_cpf(){
 		$data = array(
 			'year' => $this->input->post('getyear'),
-			'age' => $this->input->post('cpf_age'),
-			'total_wages' => $this->input->post('total_wages'),
-			'employer_cpf' => $this->input->post('employer_cpf'),
-			'employee_cpf' => $this->input->post('employee_cpf'),
+			'emp_cpf' => $this->input->post('emp_cpf'),
+			'start_age' => $this->input->post('start_age'),
+			'end_age' => $this->input->post('end_age'),
+			'salary_from' => $this->input->post('salary_from'),
+			'salary_to' => $this->input->post('salary_to'),
 			'status' => $this->input->post('status')
 		);
 
@@ -305,11 +306,13 @@ class Pay_Structure extends CI_Controller {
 		$cpf_id = $this->input->post('cpf_id');
 		$data = array(
 			'year' => $this->input->post('getyear'),
-			'age' => $this->input->post('cpf_age'),
-			'total_wages' => $this->input->post('total_wages'),
-			'employer_cpf' => $this->input->post('employer_cpf'),
-			'employee_cpf' => $this->input->post('employee_cpf'),
-			'status' => $this->input->post('status'));
+			'emp_cpf' => $this->input->post('emp_cpf'),
+			'start_age' => $this->input->post('start_age'),
+			'end_age' => $this->input->post('end_age'),
+			'salary_from' => $this->input->post('salary_from'),
+			'salary_to' => $this->input->post('salary_to'),
+			'status' => $this->input->post('status')
+		);
 
 			$result = $this->Main->update('id',$cpf_id, $data,'nbb_cpf');
 			if($result){
@@ -324,7 +327,7 @@ class Pay_Structure extends CI_Controller {
 			$result=$this->Main->delete('id',$Id,'nbb_cpf');
 			if($result==true)
 			{
-				redirect('admin/pay_Structure/viewCPF');
+				redirect('admin/pay_Structure/allPay_Structure');
 			}
 		}
 	}

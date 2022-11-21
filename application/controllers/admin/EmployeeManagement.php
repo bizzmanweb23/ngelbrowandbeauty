@@ -368,7 +368,7 @@ class EmployeeManagement extends CI_Controller {
 	}
 	public function all_PartnerShare(){
 
-		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeeCommissionSalary();
+		$data['employeeSalary'] = $this->EmployeeManagement->getAllEmployeepartnershipSalary();
 		//$data['EmployeeFultimeSalary'] = $this->EmployeeManagement->getAllEmployeeFultimeSalary();
 		//$data['EmployeepartnershipSalary'] = $this->EmployeeManagement->getAllEmployeepartnershipSalary();
 		$this->layout->view('all_PartnerShare',$data); 
@@ -383,6 +383,20 @@ class EmployeeManagement extends CI_Controller {
 		$data['commission_c_partnership'] = $this->PayStructure->getAllcommission_c_partnership();
 		$data['manual_fee'] = $this->PayStructure->getAllmanual_fee();
        	$this->layout->view('add_Partnership',$data); 
+	}
+	public function post_add_partnershipSalary(){
+		$data = array(
+			'year' 		=> $this->input->post('getyear'),
+			'emp_id' 	=> $this->input->post('fullTimeemployeeName'),
+			'service_profit' => $this->input->post('service_profit'),
+			'product_Profit' => $this->input->post('product_Profit'),
+			'total_earnings' => $this->input->post('total_earnings'),
+			'status' => '1');
+
+			$insert = $this->Main->insert('nbb_partnership',$data); 
+			if($insert){
+				redirect('admin/employeeManagement/all_PartnerShare');
+			}
 	}
 	public function allLeaveList(){
 
@@ -702,6 +716,18 @@ class EmployeeManagement extends CI_Controller {
 		   if($result==true)
 		   {
 			   redirect('admin/employeeManagement/allEmployeeSalary');
+		   }
+	   }
+	}
+	public function deletePartnerSalary()
+	{
+	   if($this->session->has_userdata('id')!=false)
+	   {
+		   $empSalaryId=$this->uri->segment(4);
+		   $result=$this->Main->delete('id',$empSalaryId,'nbb_partnership');
+		   if($result==true)
+		   {
+			   redirect('admin/employeeManagement/all_PartnerShare');
 		   }
 	   }
 	}

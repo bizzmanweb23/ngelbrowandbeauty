@@ -47,19 +47,19 @@
 												<?php } ?>
 												</td>
                         <td><?php if($categories['details'] != ''){ ?>
-							<?= substr($categories['details'],0,50); ?>...
-							<?php }else{} ?>
-						</td>
+													<?= substr($categories['details'],0,50); ?>...
+													<?php }else{} ?>
+												</td>
                         <td><?php if($categories['status'] == 1){ ?>
-								Active
-							<?php }else{ ?>
-								Inactive
-							<?php } ?>
-						</td>
+														Active
+													<?php }else{ ?>
+														Inactive
+													<?php } ?>
+												</td>
                         <td>
-							<a href="<?= base_url('admin/ServiceCategoryCtl/edit_subChildcategory/'.$categories['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
-							<a href="<?= base_url('admin/ServiceCategoryCtl/deletesubChildCategory/'. $categories['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
-						</td>
+													<a href="<?= base_url('admin/ServiceCategoryCtl/edit_subChildcategory/'.$categories['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
+													<a href="<?= base_url('admin/ServiceCategoryCtl/deletesubChildCategory/'. $categories['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
+												</td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

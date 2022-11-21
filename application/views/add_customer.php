@@ -38,7 +38,7 @@
 								<label for="first_name" class="col-sm-6 control-label">First Name 
 								</label>
 								<div class="col-sm-12">
-									<input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name Max Length : 100." value="" required>
+									<input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name" value="" required>
 								</div>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 								<label for="last_name" class="col-sm-6 control-label">Last Name
 								</label>
 								<div class="col-sm-12">
-									<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name Max Length : 100." value="" required>
+									<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name" value="" required>
 								</div>
 							</div>
 						</div>

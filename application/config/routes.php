@@ -115,6 +115,7 @@ $route['branch/login'] = 'branch/login';*/
 
 //$route['welcome'] = 'admin/welcome';
 $route['add_employeeSalary'] = 'admin/employeeManagement/post_add_employeeSalary';
+$route['add_partnershipSalary'] = 'admin/employeeManagement/post_add_partnershipSalary';
 //$route['employee/attendance/counter'] = 'admin/comissionController/attendance_sum';
 $route['branch/dashboard'] = 'admin/welcome/dashboard';
 $route['users'] = 'admin/welcome/users';

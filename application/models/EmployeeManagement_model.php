@@ -315,7 +315,6 @@ class EmployeeManagement_model extends CI_Model
 				echo json_encode($dataArr);
 	}
 
-
 	function getAllEmployeeCommissionSalary(){
 		$this->db->select('nbb_employee_salary.*,
 		nbb_employees.emp_number,
@@ -325,6 +324,7 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_employee_salary.emp_id', 'LEFT');
 		return $this->db->get()->result_array();
 	}
+	
 	function getAllEmployeeFultimeSalary(){
 		$this->db->select('nbb_employee_salary.*,
 		nbb_employees.emp_number,
@@ -339,7 +339,7 @@ class EmployeeManagement_model extends CI_Model
 		return $this->db->get()->result_array();
 	}
 	function getAllEmployeepartnershipSalary(){
-		$this->db->select('nbb_employee_salary.*,
+		/*$this->db->select('nbb_employee_salary.*,
 		nbb_employees.emp_number,
 		nbb_employees.first_name,
 		nbb_employees.last_name,
@@ -349,6 +349,13 @@ class EmployeeManagement_model extends CI_Model
 		$this->db->join('nbb_roles', 'nbb_roles.id = nbb_employee_salary.dept_id', 'LEFT');
 		$multiClause = array('nbb_employee_salary.job_type' => 2 );
 		$this->db->where($multiClause);
+		return $this->db->get()->result_array();*/
+		$this->db->select('nbb_partnership.*,
+		nbb_employees.emp_number,
+		nbb_employees.first_name,
+		nbb_employees.last_name');
+		$this->db->from('nbb_partnership');
+		$this->db->join('nbb_employees', 'nbb_employees.id = nbb_partnership.emp_id', 'LEFT');
 		return $this->db->get()->result_array();
 	}
 	function geteditEmployeeSalary($id){

@@ -26,7 +26,7 @@
 						<div class="form-group ">
 							<label for="name" class="col-sm-6 control-label">Category Name <i class="required">*</i></label>
 							<div class="col-sm-12">
-								<input type="text" class="form-control" name="name" placeholder="Name Max Length : 100." value="">
+								<input type="text" class="form-control" name="name" placeholder="Category Name" value="" required>
 							</div>
 						</div>
                 	</div>
@@ -34,7 +34,7 @@
                 <div class="form-group ">
                     <label for="category" class="col-md-12 control-label">Category Detail<i class="required">*</i></label>
                     	<div class="col-md-12">
-                            <textarea name="details" rows="5" cols="80" placeholder=" Max Length : 255." style = "width: 50%;" ></textarea>
+                            <textarea name="details" rows="5" cols="80" placeholder="Category Detail" style = "width: 50%;" ></textarea>
                       	</div>
                 </div>
                                                        

@@ -57,7 +57,7 @@
                         <td>
 													
 													<a href="<?= base_url('admin/EmployeeManagement/viewEmployeeDetails/'.$employeesRow['id'])?>" class="btn btn-default" target="_blank" title="View" style="color:#61d3d4"><i class="fa fa-eye" aria-hidden="true"></i></a>
-													<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$employeesRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+													<a href="<?= base_url('admin/EmployeeManagement/empArchive/'.$employeesRow['id'])?>" onclick="return confirm('Are you sure you want to Archive this data?')" class="btn btn-default" data-toggle="tooltip" title="deactivate Account" style="color:#61d3d4"><i class="fa fa-user-times" aria-hidden="true"></i></a>
 												</td>
                       </tr>
                     <?php endforeach; ?>

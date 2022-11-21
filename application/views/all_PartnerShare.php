@@ -38,44 +38,38 @@
 			  <div id="menu1">
 			  <h5>Partnership</h5>
 				<div class="site-table" style = "overflow: auto; height: 400px">
-					<!--<table class="table table-bordered fultimeSalaryTable" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+					<table class="table table-bordered fultimeSalaryTable" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
 						<thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 						<tr>
-							<th>Employee number </th>
-							<th>Employee Name</th>
+							<th>Year</th>
+							<th>Partner Code </th>
+							<th>Partner Name</th>
 							<th>Designation</th>
-							<th>Basic Pay</th>
-							<th>CPF</th>
-							<th>Sales Commission</th>
-							<th>Sales Bonus</th>
-							<th>Perfect Attendance</th>
-							<th>Service Bonus </th>
-							<th>Total Earning</th>
+							<th>Service profit</th>
+							<th>Product Profit</th>
+							<th>Total Earnings</th>
 							<th>Action</th>
 						</tr>
 						</thead>
 						<tbody>
-							<?php foreach($employeeSalary as $EmployeeFultimeSalaryRow): ?>
+							<?php foreach($employeeSalary as $employeeSalaryRow): ?>
 								<tr>
-									<td><?= $EmployeeFultimeSalaryRow['emp_number']?></td>
-									<td><?= $EmployeeFultimeSalaryRow['first_name'].' '.$EmployeeFultimeSalaryRow['last_name']?></td>	
-									<td><?= $EmployeeFultimeSalaryRow['dept_id']?></td>
-									<td><?= $EmployeeFultimeSalaryRow['basic_pay']?></td>
-									<td><?= $EmployeeFultimeSalaryRow['cpf']?></td>
-									<td><?= $EmployeeFultimeSalaryRow['commission_Pay']?></td>
-									<td><?= $EmployeeFultimeSalaryRow['sales_bonus'] ?></td>
-									<td><?= $EmployeeFultimeSalaryRow['perfectAttendance'] ?></td>
-									<td><?= $EmployeeFultimeSalaryRow['service_bonus'] ?></td>
-									<td><?= $EmployeeFultimeSalaryRow['total_earnings'] ?></td>
+									<td><?= $employeeSalaryRow['year']; ?></td>
+									<td><?= $employeeSalaryRow['emp_number']?></td>
+									<td><?= $employeeSalaryRow['first_name'].' '.$employeeSalaryRow['last_name']?></td>	
+									<td>$<?= $employeeSalaryRow['service_profit']?></td>
+									<td>$<?= $employeeSalaryRow['product_Profit']?></td>
+									<td>$<?= $employeeSalaryRow['total_earnings']?></td>
+									<td><?= date("d-m-Y", strtotime($employeeSalaryRow['created_at'])); ?></td>
 									<td>
 									
-									<a href="<?= base_url('admin/employeeManagement/deleteEmployeeSalary/'. $EmployeeFultimeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
+									<a href="<?= base_url('admin/employeeManagement/deletePartnerSalary/'. $employeeSalaryRow['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 									
 								</td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
-					</table>-->
+					</table>
 				</div>
 			</div>
 
@@ -93,9 +87,3 @@
       <!-- /.container-fluid -->
     </section>
  </div> 
-
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-

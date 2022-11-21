@@ -60,13 +60,13 @@
 
 													<a href="<?= base_url('admin/CustomerManagement/editCustomer/'. $customers['id'])?>" class="btn btn-default" data-toggle="tooltip" title="Edit" style="color:#61d3d4"><i class="fa fa-edit"></i></a>
 
-													<a href="<?= base_url('admin/welcome/viewPastTransaction/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="past transaction history" style="color:#61d3d4"><i class="fa fa-eye"></i></a>
+													<a href="<?= base_url('admin/welcome/viewPastTransaction/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="past Order history" style="color:#61d3d4"><i class="fa fa-eye"></i></a>
 
 													<a href="<?= base_url('admin/welcome/all_paymenthistory/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Transaction History" style="color:#61d3d4"><i class="fa fa-credit-card"></i></a>
 
 													<a href="<?= base_url('admin/welcome/all_ExpenseWallet/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Expense Wallet" style="color:#61d3d4"><i class="fa fa-wallet"></i></a>
 
-													<a href="<?= base_url('admin/welcome/all_CreditWallet/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Credit Wallet" style="color:#61d3d4"><i class="fa fa-wallet"></i></a>
+													<a href="<?= base_url('admin/welcome/all_CreditWallet/'.$customers['id'])?>" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Credit Wallet" style="color:#61d3d4"><i class="fa fa-folder"></i></a>
 
                          	<a href="<?= base_url('admin/CustomerManagement/deleteCustomer/'. $customers['id'])?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-default" data-toggle="tooltip" title="Delete" style="color:#61d3d4"><i class="fa fa-trash"></i></a>
 

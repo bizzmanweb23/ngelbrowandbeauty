@@ -382,5 +382,38 @@ class comissionController extends CI_Controller {
 				echo json_encode($CommissionArr);
 	
 		}
+	function parnershipTotalEarning(){
+		$salaryDate = $this->input->post('salaryDate');
+			$employees_dashboard_sql = "SELECT SUM(nbb_dashboard.amount) AS totalAmount,
+			DATE_FORMAT(nbb_dashboard.start_date, '%Y') as month
+			FROM nbb_dashboard
+			WHERE DATE_FORMAT(nbb_dashboard.start_date, '%Y') = '".$salaryDate."'";
+			
+			$employees_dashboard_query = $this->db->query($employees_dashboard_sql);
+			$employees_dashboard_data = $employees_dashboard_query->result_array();
+	
+			foreach($employees_dashboard_data as $row){
+					$total_amount = round($row['totalAmount']);
+					$service_bonus = ($total_amount * 20)/100;
+			}
+			
+			$order_product_sql  = "SELECT DATE_FORMAT(nbb_order_main.create_date, '%Y') as month,
+			sum(nbb_order_product.total_price) as total
+			FROM nbb_order_product
+			LEFT JOIN nbb_order_main ON nbb_order_main.id = nbb_order_product.order_id 
+			WHERE DATE_FORMAT(nbb_order_main.create_date, '%Y') = '".$salaryDate."'"; 
+	
+			$order_product_query = $this->db->query($order_product_sql);
+			$order_product_data = $order_product_query->result_array();
+			$CommissionArr = array();
+			foreach($order_product_data as $row){
+	
+				$salestotal = round($row['total']);
+				$salesCommission = ($salestotal * 10) / 100;
+	
+				}
+			$sum = $service_bonus + $salesCommission;
+			echo $sum;
+	}
 }
 ?>

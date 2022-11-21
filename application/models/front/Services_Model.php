@@ -40,27 +40,18 @@ class Services_Model extends CI_Model
 		}
 	function getServicename($serviceId,$user_id){
 
-		/*$this->db->select('nbb_service.id as service_id,
-		nbb_service.service_name,
-		nbb_service.service_price');
-		$this->db->from('nbb_service');
-		$where = array(
-				'nbb_service.id'   => $id
-				);
-		$this->db->where($where);*/
 		$this->db->select('nbb_order_service.*,
 		nbb_service.service_name');
 		$this->db->from('nbb_order_service');
 		$where = array(
 			'nbb_order_service.user_id'   => $user_id,
-			'nbb_order_service.service_id'   => $serviceId,
-			'nbb_order_service.payment_status'   => 1,
-			'nbb_order_service.status'   => 2,
+			'nbb_order_service.id'   => $serviceId,
+			'nbb_order_service.payment_status'   => 2,
+			'nbb_order_service.status'   => 2
 			);
 		$this->db->where($where);
 		$this->db->join('nbb_service', 'nbb_service.id = nbb_order_service.service_id', 'LEFT');
 		$service_query = $this->db->get()->result_array();
-
 			$data = array();			
 
 			foreach($service_query as $row){				
@@ -107,13 +98,14 @@ class Services_Model extends CI_Model
 	}
 	function getallorder_service($user_id){
 
-		$this->db->select('nbb_order_service.*,
+		$order_service_sql = "SELECT nbb_order_service.*,
 		nbb_service.service_name,
-		nbb_service.service_price');
-		$this->db->from('nbb_order_service');
-		$this->db->where('nbb_order_service.user_id',$user_id);
-		$this->db->join('nbb_service', 'nbb_service.id = nbb_order_service.service_id', 'LEFT');
-		return $this->db->get()->result_array();
+		nbb_service.service_price
+		FROM nbb_order_service
+		LEFT JOIN nbb_service ON nbb_service.id = nbb_order_service.service_id
+		WHERE nbb_order_service.user_id = '".$user_id."' AND nbb_order_service.status != 3";
+		$order_service_query = $this->db->query($order_service_sql); 
+		return $order_service_query->result_array();
 	}
 	function getallserviceOrderDetails($serviceId,$user_id){
 		$this->db->select('nbb_order_service.*,

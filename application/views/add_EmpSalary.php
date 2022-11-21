@@ -46,7 +46,7 @@
 										<div class="form-group">
 											<label class="control-label  " for="pwd">Select Month:</label>
 											<div class="col-md-12">
-												<input type="month" name="fullTimesalaryDate" class="form-control fullTimesalaryDate">
+												<input type="month" name="fullTimesalaryDate" class="form-control fullTimesalaryDate" required>
 											</div>
 										</div>
 									</div>
@@ -54,7 +54,7 @@
 										<div class="form-group">
 											<label class="control-label " for="pwd">Employee Name:</label>
 											<div class=" ">
-												<select name="fullTimeemployeeName" class="form-control fullTimeemployeeName">
+												<select name="fullTimeemployeeName" class="form-control fullTimeemployeeName" required>
 													<option>Select Employee Name</option>
 													<?php foreach($allemployees as $allemployeesnRow): ?>
 													<option value="<?= $allemployeesnRow['id']?>"><?= $allemployeesnRow['first_name'].' '.$allemployeesnRow['last_name'] ;?></option>

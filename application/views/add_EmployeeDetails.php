@@ -42,25 +42,25 @@
 								</td>
 								<td>First Name</td>
 								<td>
-									<input type="text" name="first_name" placeholder="First Name" value ="" class="form-control">
+									<input type="text" name="first_name" placeholder="First Name" value ="" class="form-control" required>
 								</td>
 								<td>Last Name</td>
 								<td>
-									<input type="text" name="last_name" placeholder="Last Name" value ="" class="form-control">
+									<input type="text" name="last_name" placeholder="Last Name" value ="" class="form-control" required>
 								</td>
 							</tr>
 							<tr>
 								<td>Mobile Number</td>
 								<td>
-									<input type="text" name="mobile_number" placeholder="Mobile Number" value="" class="form-control">
+									<input type="text" name="mobile_number" placeholder="Mobile Number" value="" class="form-control" required>
 								</td>
 								<td>Email Id</td>
 								<td>
-									<input type="text" name="email" placeholder="your id@gmail.com" value="" class="form-control"  autocomplete="off">
+									<input type="text" name="email" placeholder="your id@gmail.com" value="" class="form-control"  autocomplete="off" required>
 								</td>
 								<td>Password</td>
 								<td>
-									<input type="Password" name="password" placeholder="Password" value="" class="form-control"  autocomplete="off">
+									<input type="Password" name="password" placeholder="Password" value="" class="form-control" required autocomplete="off">
 								</td>
 							</tr>
 							<tr>
@@ -80,7 +80,7 @@
 							<tr>
 								<td>Date of Birth</td>
 								<td>
-									<input type="date" class="form-control" name="dob" id="dob" placeholder="Input Date of Birth" value="">
+									<input type="date" class="form-control" name="dob" id="dob" placeholder="Input Date of Birth" value="" required>
 								</td>
 								<td>Date of Birth</td>
 								<td>
@@ -90,7 +90,7 @@
 							<tr>
 								<td colspan="1">Select Gender</td>
 								<td>
-									<input type="radio" name="gender" value="Male" ><label for="Male">Male </label>
+									<input type="radio" name="gender" value="Male"><label for="Male">Male </label>
 								</td>
 								<td>
 									<input type="radio" name="gender" value="Female" ><label for="Female">Female </label>
@@ -102,7 +102,7 @@
 							<tr>
 								<td>ID No.</td>
 								<td>
-									<input type="text" name="aadhar_number" placeholder="Enter ID No." value="" class="form-control" >
+									<input type="text" name="aadhar_number" placeholder="Enter ID No." value="" class="form-control" required>
 								</td>
 								<td>Passport No.</td>
 								<td>
@@ -287,7 +287,7 @@
 							<tr>
 								<td>Designation</td>
 								<td>
-									<select name="designation" class="form-control choiceDesignation">
+									<select name="designation" class="form-control choiceDesignation" required>
 										<option>Select Designation</option>
 										<?php foreach($empDesignation as $empDesignationRow): ?>
 										<option value="<?= $empDesignationRow['id']?>"><?= $empDesignationRow['role_name']?></option>

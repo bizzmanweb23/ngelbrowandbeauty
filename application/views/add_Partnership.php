@@ -45,7 +45,7 @@
 								
 									<div class="form-group col-md-6">
 										<label for="from_date"> Year:</label>
-										<select  name = "getyear" class="form-control getyear">
+										<select  name = "getyear" class="form-control getyear" required>
 											<option value="" hidden>Select Year</option>
 											<?php  $lasttenYear = (int)date("Y") - 20;
 												$curyear = (int)date("Y");
@@ -59,7 +59,7 @@
 										<div class="form-group">
 											<label class="control-label " for="pwd">Employee Name:</label>
 											<div class=" ">
-												<select name="fullTimeemployeeName" class="form-control fullTimeemployeeName">
+												<select name="fullTimeemployeeName" class="form-control fullTimeemployeeName" required>
 													<option>Select Employee Name</option>
 													<?php foreach($allemployees as $allemployeesnRow): ?>
 													<option value="<?= $allemployeesnRow['id']?>"><?= $allemployeesnRow['first_name'].' '.$allemployeesnRow['last_name'] ;?></option>
@@ -138,7 +138,7 @@
 										<div class="form-group">
 											<label class="control-label col-md-12" for="pwd">Total Earning $ :</label>
 											<div class="col-md-12">
-												<input name="total_earnings" placeholder="Total Earning" class="form-control total-earnings" readonly>
+												<input name="total_earnings" placeholder="Total Earning" class="form-control total_earnings" readonly>
 												
 											</div>
 										</div>
@@ -178,6 +178,7 @@ $(document).ready(function(){
 
 			get_service_bonus(salarygetyear);
 			CommissionPay_bonus(salarygetyear);
+			totalEarning(salarygetyear);
 	});
 
 
@@ -194,8 +195,6 @@ function get_service_bonus(salaryDate){
 					$(".service_total").val(val.total_amount);
 					$(".service_profit").val(val.service_bonus);
 				});
-
-
 			}
 
 	});
@@ -219,6 +218,21 @@ function CommissionPay_bonus(salaryDate){
 			alert('error ');
 		}
 
+	});
+
+}
+function totalEarning(salaryDate){
+	$.ajax({
+		url : "<?php echo base_url('admin/comissionController/parnershipTotalEarning'); ?>",
+		type : "post",
+		data : {salaryDate:salaryDate},
+		dataType: 'JSON',
+		success : function(data){
+			$('.total_earnings').val(data);
+		},
+		error: function (error) {
+			alert('error');
+		}
 	});
 
 }

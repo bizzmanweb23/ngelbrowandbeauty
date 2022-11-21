@@ -179,7 +179,7 @@ display:none;
 												}
 												?>
 											</td>
-											<td><?= $appointments['amount']?></td>
+											<td>$<?= $appointments['amount']?></td>
 											<td><?= $appointments['start_time']?></td>
 											<td><?= $appointments['end_time']?></td>
 											<td>

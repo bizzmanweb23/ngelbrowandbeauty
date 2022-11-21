@@ -40,13 +40,13 @@
                 <div class="col">
                       <div class="form-group">
                         <label >Employee</label>
-                          <select class="form-control chosen chosen-select-deselect form-sm workmanship-select" >
-                            <option disabled value="">Select Workmanship</option>
+                          <select class="form-control chosen chosen-select-deselect form-sm workmanship-select" required>
+                            <option disabled value="">Select Employee</option>
                             <?php foreach ($employees as $employee) { ?>
                               <option value="<?= $employee['id'] ?>"><?= $employee['first_name'].' '.$employee['last_name']?></option>
                             <?php } ?>
                           </select>
-                          <?php   echo site_url("PartTime/save"); ?>
+                          <?php echo site_url("PartTime/save"); ?>
                       </div>
                   </div>
 
@@ -55,7 +55,7 @@
                           <label >Total Amount
                             <i class="required">*</i>
                           </label>
-                            <select class="form-control chosen chosen-select-deselect form-sm sales-amount"  >
+                            <select class="form-control chosen chosen-select-deselect form-sm sales-amount" required>
                               <option disabled value="">Select Amount</option>
                               <?php foreach ($sales as $amount) { ?>
                                <option value="<?= $amount['sales_amount'] ?>"><?= $amount['sales_amount'] ?></option>
@@ -69,7 +69,7 @@
                             <label for="amount"  >Products
                               <i class="required">*</i>
                             </label>
-                              <select class="form-control chosen chosen-select-deselect form-sm sales-product" >
+                              <select class="form-control chosen chosen-select-deselect form-sm sales-product" required>
                                 <option disabled value="">Select product</option>
                                 <?php foreach ($product as $product) { ?>
                                  <option value="<?= $product['price'] ?>"><?= $product['name'] ?></option>
