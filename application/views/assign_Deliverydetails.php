@@ -18,10 +18,11 @@
           <div class="col-12">
 
             <div class="card" style="border-radius: 15px">
-              <?php foreach($deliveryDetails as $deliveryDetailsrow){ ?>
+             
               <!-- /.card-header -->
               <div class="card-body">
 					<form action="<?= base_url('admin/OrderManagement/post_edit_DeliveryDetails')?>" method="post" enctype="multipart/form-data">
+					<?php foreach($deliveryDetails as $deliveryDetailsrow){ ?>
 						<input type="hidden" class="form-control" name="order_id" value="<?= $deliveryDetailsrow['id'] ?>">
 						<div class="form-group row">
 							<div class="col-sm-4">
@@ -102,9 +103,10 @@
 						<div class="text-center">
 							<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
 						</div>
+						<?php } ?>
 					</form>
 				</div>
-			  <?php } ?>
+			  
               <!-- /.card-body -->
             </div>
             <!-- /.card -->

@@ -407,7 +407,7 @@ class OrderManagement_Model extends CI_Model
 		nbb_employees.first_name,
 		nbb_employees.last_name');
 		$this->db->from('nbb_employees');
-		$this->db->where('designation','3');
+		$this->db->where('designation','11');
 		return $this->db->get()->result_array();
 	}
 	function showInvoiceDetails($id)

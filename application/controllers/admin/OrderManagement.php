@@ -306,7 +306,7 @@ class OrderManagement extends CI_Controller {
 		}    
 		if($result == true)
 		{
-			return redirect('admin/OrderManagement/editDeliveryDetails/'.$order_id);
+			return redirect('admin/OrderManagement/all_OrderProduct');
 		}
 		else
 		{

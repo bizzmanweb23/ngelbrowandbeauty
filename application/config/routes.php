@@ -59,6 +59,7 @@ $route['about'] = 'front/Home/about';
 $route['myProfile'] = 'front/Home/my_profile';
 $route['referdToFriend'] = 'front/Home/ReferdToFriend';
 $route['products/(:any)'] = 'front/Product/products/$i';
+$route['subProduct/(:any)'] = 'front/Product/subProduct/$i';
 //$route['courses'] = 'front/Home/courses';
 $route['services/(:any)'] = 'front/Home/services/$i';
 $route['subServices/(:any)'] = 'front/Home/subServices/$i';

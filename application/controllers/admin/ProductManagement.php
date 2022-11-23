@@ -117,6 +117,7 @@ class ProductManagement extends CI_Controller {
 			'supplier_id' => $this->input->post('supplier_name'),
 			'categorie_id' => $this->input->post('main_category'),
 			'product_category_id' => $this->input->post('product_category'),
+			'sub_child_category_id' => $this->input->post('sub_child_category'),
 			'sku' => $this->input->post('product_sku'),
 			'name' => $this->input->post('product_name'),
 			'product_code' => $this->input->post('product_code'),
@@ -192,6 +193,7 @@ class ProductManagement extends CI_Controller {
 		   	//$data['category'] = $this->ProductManagement->getAllProductCategory();
 			$data['category'] = $this->ServiceCategory->getAllParentCategory();
 			$data['ChildCategory'] = $this->ProductManagement->getAllChildCategory();
+			$data['subChildCategory'] = $this->ServiceCategory->getAllsubChildCategory();
 		   	$productId = $this->uri->segment(4);
 			$data['productDataEdit'] = $this->ProductManagement->getProductDataEdit($productId);
 			$data['all_Supplier']=$this->ProcurementManagement->getAllsupplier();
@@ -202,6 +204,7 @@ class ProductManagement extends CI_Controller {
 	  	$product_id = $this->input->post('product_id');
 			$product_data = array(
 			'product_category_id' => $this->input->post('product_category'),
+			'sub_child_category_id' => $this->input->post('sub_child_category'),
 			'sku' => $this->input->post('product_sku'),
 			'name' => $this->input->post('product_name'),
 			'product_code' => $this->input->post('product_code'),

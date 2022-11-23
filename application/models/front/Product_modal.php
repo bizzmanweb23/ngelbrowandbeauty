@@ -23,6 +23,26 @@ class Product_modal extends CI_Model
 		return $product_data = $product_query->num_rows();;
 
 	}
+	function getAllSubproductList($id){
+		
+		$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
+		FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
+		FROM nbb_product 
+		WHERE nbb_product.sub_child_category_id = '".$id."' AND nbb_product.status = 1 ";
+		$product_query = $this->db->query($all_product_sql);
+		return $product_data = $product_query->result_array();
+
+	}
+	function getAllSubProductrow_num($id){
+		
+		$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
+		FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
+		FROM nbb_product 
+		WHERE nbb_product.sub_child_category_id = '".$id."' AND nbb_product.status = 1 ";
+		$product_query = $this->db->query($all_product_sql);
+		return $product_data = $product_query->num_rows();;
+
+	}
 	function getproductDetails($id){
 		
 		$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
@@ -168,6 +188,46 @@ class Product_modal extends CI_Model
 		FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
 		FROM nbb_product 
 		WHERE nbb_product.product_category_id = '".$catId."' AND nbb_product.status = 1 ";
+		$product_query = $this->db->query($all_product_sql);
+		$product_data = $product_query->result_array();
+		$filterquery_rownum = $product_query->num_rows();
+
+		//$filterproduct=$filterquery->result_array();
+		return $filterquery_rownum;
+	}
+	function SubProductListFilterData($catId,$fromPriceRange,$toPriceRange,$page_num){
+		$where = '';
+		$limit_per_page = 3;
+		$limit = '';
+			
+			$minusToPriceRange = $toPriceRange - 1;
+			if($fromPriceRange != '' || $toPriceRange != ''){
+				$where .= " AND nbb_product.price >= '".$fromPriceRange."' AND nbb_product.price <= '".$minusToPriceRange."'";
+			}
+
+			if ($page_num) {
+				if (isset($page_num)) { $page  = $page_num; } else { $page=1; };  
+				$start_from = ($page-1) * $limit_per_page;
+				$limit .= " LIMIT $start_from, $limit_per_page";  
+			}else{
+				$limit .= " LIMIT 0, $limit_per_page";  
+			}
+
+			$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
+			FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
+			FROM nbb_product 
+			WHERE nbb_product.sub_child_category_id = '".$catId."' AND nbb_product.status = 1".$where.$limit;
+			$product_query = $this->db->query($all_product_sql);
+			return $product_data = $product_query->result_array();
+				 
+	}
+	
+	function subPaginationProductListingData($catId,$page_num){
+
+		$all_product_sql = "SELECT DISTINCT nbb_product.*, (SELECT nbb_product_image.image 
+		FROM nbb_product_image WHERE nbb_product_image.product_id = nbb_product.id LIMIT 1) as p_image 
+		FROM nbb_product 
+		WHERE nbb_product.sub_child_category_id = '".$catId."' AND nbb_product.status = 1 ";
 		$product_query = $this->db->query($all_product_sql);
 		$product_data = $product_query->result_array();
 		$filterquery_rownum = $product_query->num_rows();

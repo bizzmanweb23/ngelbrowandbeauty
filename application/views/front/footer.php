@@ -99,7 +99,7 @@
 
             <div class="col-md-7">
               <div class="copyRightText">
-                <p>&copy; 2022 Copyright <a target="_blank" href="#">Ngelbrowandbeauty</a> by <a target="_blank" href="#">CSS PTE LTD</a></p>
+                <p>&copy; 2022 Copyright <a target="_blank" href="#">Ngelbrowandbeauty</a> by <a target="_blank" href="#">People’s Choice Pte. Ltd.</a></p>
               </div>
             </div>
           </div>

@@ -34,6 +34,27 @@ class Product extends CI_Controller {
 		$this->load->view('front/footer');
 		 
     } 
+	public function subProduct(){ 
+		$catId = $this->uri->segment(2);
+		//echo $serviceId;exit;
+		$products_rownum = '';
+		$data['allproducts'] = $this->Product->getAllSubproductList($catId);
+		$allproductrow_num = $this->Product->getAllSubProductrow_num($catId);
+		//echo $allproductrow_num;
+		$showing_limit = 3;
+		$total_pages = ceil($allproductrow_num / $showing_limit); 
+		
+		$data['total_pages'] = $total_pages;
+
+		$datahader['allchild_category'] = $this->Header->getAllchild_category();
+		$datahader['allProduct_category'] = $this->Header->getAllProduct_category();
+		$datahader['allcourse_category'] = $this->Header->getAllCourse_category();
+
+		$this->load->view('front/header',$datahader);
+        $this->load->view('front/subproduct_list',$data);
+		$this->load->view('front/footer');
+		 
+    } 
 	public function productDetailsView(){
 		$pId = $this->uri->segment(2);
 		//echo $serviceId;exit;
@@ -273,6 +294,13 @@ class Product extends CI_Controller {
 		$this->db->update('nbb_product', array('available_stock'=>$cal_stock));
 			 
 		}
+
+		$delivery_detaildata = array(
+			'order_id' => $Id,
+		); 
+		
+		$this->db->insert('nbb_delivery_details', $delivery_detaildata);
+		
 		
 		$data = array(
 			'total_price' 	=> $total_price,
@@ -467,6 +495,24 @@ class Product extends CI_Controller {
 		);
 
 		$this->load->view('front/searchFilterData', $data);
+	
+	}
+	public function get_subProduct_filter()
+	{
+		
+		$catId = $_POST['catId'];
+		$fromPriceRange = $_POST['fromPriceRange'];
+		$toPriceRange = $_POST['toPriceRange'];
+		$page_num = '';
+
+		$filter_productlist = $this->Product->SubProductListFilterData($catId,$fromPriceRange,$toPriceRange,$page_num);
+		$pagination_productdetails = $this->Product->subPaginationProductListingData($catId,$page_num);
+		$data = array(
+			'allproducts' 	=> $filter_productlist,	
+			'pagination_productdetails'		=> $pagination_productdetails		
+		);
+		 
+			$this->load->view('front/searchFilterData', $data);
 	
 	}
 	public function generateOrderNumber($id)

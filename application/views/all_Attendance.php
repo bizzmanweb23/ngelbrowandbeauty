@@ -63,8 +63,8 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                 <div class="site-table" style="overflow: auto; height: 400px">
-                <table class="table table-bordered" id = "Attendance_table" style="overflow: auto; width: 100%; height: 250px; text-align: center;">
+                 <div class="site-table" style="overflow: auto; height: 350px">
+                <table class="table table-bordered" id = "Attendance_table" style="overflow: auto; width: 100%; height: 240px; text-align: center;">
                   <thead style="background-color: #61d3d4; color:#000000;position: sticky;top: 0;">
 						<tr>
 							<th>Employee Id </th>

@@ -45,7 +45,7 @@
                 </div>
                 
 				<div class="row">
-					<div class="col-md-6"> 
+					<div class="col-md-4"> 
 						<div class="form-group ">
 							<label for="category" class="col-sm-6 control-label"> Main Category
 							<i class="required">*</i>
@@ -56,7 +56,7 @@
 						</div> 
                  	</div>
 					
-                 	<div class="col-md-6"> 
+                 	<div class="col-md-4"> 
 						<div class="form-group ">
 							<label for="category" class="col-sm-6 control-label"> Sub-Category<i class="required">*</i></label>
 							<div class="col-sm-12">
@@ -69,6 +69,19 @@
 							</div>
 						</div> 
                  	</div>
+					<div class="col-md-4"> 
+						<div class="form-group ">
+							<label for="category" class="col-sm-6 control-label"> Sub-Child-Category<i class="required">*</i></label>
+							<div class="col-sm-12">
+								<select class="form-control sub_child_category" name="sub_child_category">
+									<option>Select Sub-Category First</option>
+									<?php foreach($subChildCategory as $subChildCategoryRow): ?>
+									<option value="<?= $subChildCategoryRow['id']?>"<?php if($productData['sub_child_category_id'] == $subChildCategoryRow['id']){ echo "Selected";} ?>><?= $subChildCategoryRow['sub_child_category']?></option>
+									<?php endforeach; ?> 
+								</select>
+							</div>
+						</div> 
+					</div>
                 </div> 
 
 				<div class="row">
@@ -348,6 +361,19 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
+		$('.product_category').on('change', function(){
+			var child_categoryID = $(this).val();
+			//alert(main_categoryID);
+			
+			$.ajax({
+				type:'GET',
+				url:'<?= base_url("admin/ProductManagement/select_Sub_child_Category")?>',
+				data: {child_categoryID:child_categoryID},
+				success:function(response){
+					$('.sub_child_category').html(response);
+				}
+			}); 
+		});
 		$(".deleteproductimgrow").click(function() {
 			var element = $(this);
 			var imageID= $(this).data('image_id');

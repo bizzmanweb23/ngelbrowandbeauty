@@ -218,13 +218,20 @@
 			display: none;
 		}	
 	.circle {
-		top: 10px;
+		/*top: 10px;
 		background-color:#C8C8C8;
 		overflow: hidden;
 		border-radius: 4px;
   		padding: 5px;
 		width: 100px;
-    	height: 100px;
+    	height: 100px;*/
+
+		border-radius: 1000px !important;
+		overflow: hidden;
+		width: 122px;
+		height: 122px;
+		top: 10px;
+		background-color: #C8C8C8;
 	}
 	.img_profile {
 		max-width: 100%;

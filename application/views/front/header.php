@@ -201,13 +201,42 @@ function googleTranslateElementInit() {
               </li>
 							<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Product</a>
+								
+								<ul class="dropdown-menu">
+									<?php foreach($allProduct_category as $product_category_row):
+										$productsub_childcategory_sql = "SELECT nbb_sub_child_category.*
+										FROM nbb_sub_child_category 
+										WHERE nbb_sub_child_category.child_category = '".$product_category_row['id']."' AND nbb_sub_child_category.status = 1 ";
+										$productsub_childcategory_query = $this->db->query($productsub_childcategory_sql);
+										$productsub_child_data = $productsub_childcategory_query->result_array();
+										$productsub_childcategory_rownum = $productsub_childcategory_query->num_rows();
+									if($productsub_childcategory_rownum > 0){ ?>
+									<li class="nav-item dropdown dropdown-submenu">
+									<a href="<?php echo base_url('products/'.$product_category_row['id']) ?>"><span class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $product_category_row['category_name'];?></span></a> 
+									
+										<ul class="dropdown-menu">
+											<?php foreach($productsub_child_data as $productsub_child_row){?>
+											<li><a tabindex="-1" href="<?php echo base_url('subProduct/'.$productsub_child_row['id']) ?>"><?= $productsub_child_row['sub_child_category']; ?></a></li>
+											<?php } ?>
+										</ul>
+									<?php	}else{ ?>
+										<li><a href="<?php echo base_url('products/'.$product_category_row['id']) ?>"><?= $product_category_row['category_name'];?></a></li>
+									<?php } ?>
+										
+									</li>
+									<?php	endforeach; ?>
+								</ul>
+
+              </li>
+							<!--<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="javascript:void(0)">Product</a>
                 <ul class="dropdown-menu">
 									<?php foreach($allProduct_category as $product_category_row): ?>
 										<li><a href="<?php echo base_url('products/'.$product_category_row['id']) ?>"><?= $product_category_row['category_name'];?></a></li>
 									<?php	endforeach; ?>
                   
                 </ul>
-              </li>
+              </li>-->
 							<li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('courses') ?>">Course</a>
               </li>

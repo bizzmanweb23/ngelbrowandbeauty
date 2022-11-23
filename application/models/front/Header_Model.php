@@ -8,6 +8,7 @@ class Header_Model extends CI_Model
 		$this->db->select('nbb_child_category.*');
 		$this->db->from('nbb_child_category');
 		$this->db->where('nbb_child_category.parent_category_id', '1');
+		$this->db->where('nbb_child_category.status', '1');
 		$this->db->order_by('nbb_child_category.id','DESC');
 		return $this->db->get()->result_array();
 	}

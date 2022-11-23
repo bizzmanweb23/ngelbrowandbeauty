@@ -122,7 +122,10 @@
 							</tr>
 						</table>
 
-						<input type="submit" class="btn btn-primary btn-custom" value="submit" style="width: 150px;">
+						<div class="col mt-4 text-center">
+							<input type="submit" class="btn btn-primary btn-custom" value="submit">
+						</div>
+						
 					</form>
 				</div>
                 <div class="modal-footer">
